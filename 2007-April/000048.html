@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Moon-net]  WSJT on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BMoon-net%5D%20%20WSJT%20on%20Linux&In-Reply-To=%3C46115139.7070409%40tn.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000045.html">
+   <LINK REL="Next"  HREF="000050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Moon-net]  WSJT on Linux</H1>
+    <B>&quot;Piotr M. Stu&#322;a&quot;</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BMoon-net%5D%20%20WSJT%20on%20Linux&In-Reply-To=%3C46115139.7070409%40tn.pl%3E"
+       TITLE="[Wsjt-devel] [Moon-net]  WSJT on Linux">sp9ttg at tn.pl
+       </A><BR>
+    <I>Mon Apr  2 20:53:45 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000045.html">[Wsjt-devel] [Moon-net]  WSJT on Linux
+</A></li>
+        <LI>Next message: <A HREF="000050.html">[Wsjt-devel] WSJT on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Taylor napisa&#322;(a):
+&gt;<i> Hi Piotr,
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Joe,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This is exactly the same problem I've experienced compiling 
+</I>&gt;&gt;<i> 'with-alsa'. Samplerate
+</I>&gt;&gt;<i> shown here is very the same. Compiling without ALSA did not work too 
+</I>&gt;&gt;<i> - WSJT
+</I>&gt;&gt;<i> is not decoding sigs from-air and wav examples. I'm not a Linux geek, 
+</I>&gt;&gt;<i> so I can only
+</I>&gt;&gt;<i> beta-test.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> WSJT is the last piece of software that prevents me to port my 
+</I>&gt;&gt;<i> virtual life into Linux box.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -- 
+</I>&gt;&gt;&gt;<i> Piotr
+</I>&gt;&gt;&gt;<i> SP9TTG
+</I>&gt;&gt;&gt;<i> <A HREF="http://www.piotrstula.com">http://www.piotrstula.com</A>
+</I>&gt;<i>
+</I>&gt;<i> Clearly we should find the cause of this problem, and fix it.
+</I>&gt;<i>
+</I>&gt;<i> As you will have gathered from the messages I sent earlier today to 
+</I>&gt;<i> the wsjt-devel list, it has been quite a while since I used WSJT with 
+</I>&gt;<i> alsa sound compiled in.
+</I>&gt;<i>
+</I>&gt;<i> It compiles and runs on my system now, but something is obviously 
+</I>&gt;<i> wrong with configuration of the audio input stream.  James 
+</I>&gt;<i> Courtier-Dutton is the author of the ALSA startup code for WSJT, and 
+</I>&gt;<i> he is an alsa developer.  I am sure he can help us to find the problem.
+</I>&gt;<i>
+</I>&gt;<i> I have re-read your earlier message in which you say that you can 
+</I>&gt;<i> compile OK with portaudio, and the program appears to run OK, but does 
+</I>&gt;<i> not seem to decode JT65 signals properly.  Can you give us further 
+</I>&gt;<i> details?  Is the audio level correct (i.e., around 0 dB) ? Does the 
+</I>&gt;<i> waterfall look normal?  Does the &quot;green line&quot; look reasonable?  Does 
+</I>&gt;<i> the program decode OK in FSK441 mode?
+</I>&gt;<i>
+</I>&gt;<i> Many of us have used WSJT successfully under linux, so I am sure we 
+</I>&gt;<i> can find the solution to your problem.
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>&gt;<i>
+</I>Joe - RRR !
+
+I have just messed up moon-net with wsjt-devel - same account.
+I will do some new tests with newer WSJT source code from Harry LZ1BB 
+and optionally
+the one provided by apt-get (seems to be the different one) then I will
+prepare a report.
+
+During my last (portaudio) tests the waterfall looked pretty normal, 
+there was nice 'like always' traces on it when
+receiving real EME. But all I've got was few decodes then NIL for rest 
+of my tests. Audio level = 0dB.
+Even strong samples (RU1AA -12, W5UN -13) never produced right decodes, 
+in spite of sharp red peak in good
+place on frequency axis. Very the same with JT65 wav's included in Joe's 
+tutorial.
+Every function seems to work properly but no decodes at all. If I 
+haven't checked the decoding I would never know that something is wrong.
+This resembles to me similar problems what Harry got few months ago with 
+one of his linux machines.
+
+FSK test will be done now, did not tested it after JT65 test failed.
+
+As far as I know portaudio does some use of ALSA, maybe it's time to get 
+rid of
+'--with-alsa' option as obsolete ?
+
+73!
+
+
+
+-- 
+Piotr
+SP9TTG
+<A HREF="http://www.piotrstula.com">http://www.piotrstula.com</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000045.html">[Wsjt-devel] [Moon-net]  WSJT on Linux
+</A></li>
+	<LI>Next message: <A HREF="000050.html">[Wsjt-devel] WSJT on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

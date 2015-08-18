@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CEEAA6A.60801%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000987.html">
+   <LINK REL="Next"  HREF="000989.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CEEAA6A.60801%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Nov 25 19:26:50 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000987.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="000989.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#988">[ date ]</a>
+              <a href="thread.html#988">[ thread ]</a>
+              <a href="subject.html#988">[ subject ]</a>
+              <a href="author.html#988">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Having run WSPR for a couple of days with band-hopping enabled in 
+various configurations, I have some thoughts to share for your 
+consideration.  They are in no particular order... just the order in 
+which I made my notes.
+
+1. Maybe there should be an on-screen indicator (or checkbox) that shows 
+whether hopping is enabled.
+
+2. Ability to save/restore hopping setups.
+
+3. To consider: do we need separate &quot;Tx %&quot; sliders for each band?  An 
+alternative would be to use the main slider for all bands, except that 
+some bands could be marked &quot;Rx Only&quot;.
+
+4. Write frequency-change information to ALL_MEPT.TXT ?
+
+5. Fully random, no-memory selection of band and Tx/Rx state at the end 
+of each two minute interval may be &quot;too random&quot;.  For example, it may 
+take a long time -- far longer than the predictable average -- before 
+you transmit on a particular band among all those selected.  I can think 
+of many possible alternative scheduling algorithms.  For example: when 
+hopping is selected or changed, randomly choose a sequence in which the 
+N bands will be cycled through.  Each band would be visited exactly once 
+per cycle.  After a band change, the first period will always be Tx 
+(unless that band is Rx Only).  (This allows an automatic antenna tuner 
+to do its thing.)  Unless Tx % is set to 100%, the Tx period will then 
+be followed by M Rx periods, where M = (100/pctx) -1.  Occasionally 
+(maybe 1/4 of the time?) M should be increased or decreased by 1, in a 
+random way, to break up any possible &quot;resonances&quot; with the scheduling of 
+another WSPR station.  After the M Rx periods, it's on to the next band.
+
+6. How best to take advantage of automatic antenna tuners?  The one I've 
+been using is truly automatic: if SNR &gt; 3 at the start of a 
+transmission, it tunes to achieve SWR &lt; 1.5 in the first 1-4 seconds. 
+No special &quot;tune&quot; transmission is required.  Tuners with 
+frequency-lookup tables would be even better.
+
+7. Should we put band labels on the wsterfall, maybe just above the time 
+stamps?
+
+8. Maybe the band-map needs to be re-thought.  At present it lists tha 
+stations heard in the last hour, in oprder of frequency, and it's 
+cleared on any band change.  With frequency hopping it might be better 
+not to clear window when the frequency changes, and to label the entries 
+by band?
+
+Thats all for now.  I suggest that we work through some of these things, 
+and any other suggestions made here, before we turn &quot;WSPR 2.5&quot; (or 
+whatever it should be called) loose on a much larger group of users.
+
+Comments welcome!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000987.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="000989.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#988">[ date ]</a>
+              <a href="thread.html#988">[ thread ]</a>
+              <a href="subject.html#988">[ subject ]</a>
+              <a href="author.html#988">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

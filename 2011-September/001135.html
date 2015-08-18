@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] call to use obsolte font
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C4E856AB2.4090207%40omen.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001134.html">
+   <LINK REL="Next"  HREF="001136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] call to use obsolte font</H1>
+    <B>Chuck Forsberg WA7KGX N2469R</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C4E856AB2.4090207%40omen.com%3E"
+       TITLE="[Wsjt-devel] call to use obsolte font">caf at omen.com
+       </A><BR>
+    <I>Fri Sep 30 09:07:30 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001134.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+        <LI>Next message: <A HREF="001136.html">[Wsjt-devel] WSJT moving to SourceForge
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1135">[ date ]</a>
+              <a href="thread.html#1135">[ thread ]</a>
+              <a href="subject.html#1135">[ subject ]</a>
+              <a href="author.html#1135">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I Installed Fedora 64 bit 16 Beta Release Candidate 4 on a partition on my
+office computer this afternoon.  This uses a 3.1 kernel.
+I did a svn co on WSPRthis afternoon and after the usual stuff WSPR 3.0
+has been hopping happily for several hours.
+
+On 09/29/2011 03:06 PM, Richard wrote:
+&gt;<i> On Thu, 2011-09-29 at 16:02 -0400, Joe Taylor wrote:
+</I>&gt;&gt;<i> Richard --
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I do have a major problem with kernel 3.0.1 as its causing problems with
+</I>&gt;&gt;&gt;<i> alsa and the effect is that it skips the requested card and jumps to the
+</I>&gt;&gt;&gt;<i> default
+</I>&gt;&gt;&gt;<i> ie.
+</I>&gt;&gt;&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;&gt;&gt;<i> Device  Channels  Channels
+</I>&gt;&gt;&gt;<i> ------------------------------------------------------------------
+</I>&gt;&gt;&gt;<i>      0        2         8       HDA ATI SB: ALC892 Analog (hw:0,0)
+</I>&gt;&gt;&gt;<i>      1        2         2       HDA ATI SB: ALC892 Digital (hw:0,1)
+</I>&gt;&gt;&gt;<i>      2        0         2       HDA ATI HDMI: HDMI 0 (hw:1,3)
+</I>&gt;&gt;&gt;<i>      3        0         8       front
+</I>&gt;&gt;&gt;<i>      4        0         8       surround40
+</I>&gt;&gt;&gt;<i>      5        0        128       surround41
+</I>&gt;&gt;&gt;<i>      6        0        128       surround50
+</I>&gt;&gt;&gt;<i>      7        0         8       surround51
+</I>&gt;&gt;&gt;<i>      8        0         8       surround71
+</I>&gt;&gt;&gt;<i>      9        0         2       iec958
+</I>&gt;&gt;&gt;<i>     10        2         2       spdif
+</I>&gt;&gt;&gt;<i>     11       32        32       pulse
+</I>&gt;&gt;&gt;<i>     12        0         2       dmix
+</I>&gt;&gt;&gt;<i>     13       32        32       default
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> User requested devices:   Input =  0   Output =  0
+</I>&gt;&gt;&gt;<i> Default devices:          Input = 13   Output = 13
+</I>&gt;&gt;&gt;<i> Will open devices:        Input = 13   Output = 13
+</I>&gt;&gt;<i> The device you asked for evidently reported that it does not support the
+</I>&gt;&gt;<i> required native sample rate (11025 Hz for WSJT).
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Many thanks Joe, That points the problem back at Alsa maybe even udev,
+</I>&gt;<i> as as the M-audio D66 definitely supports that rate, but strangely
+</I>&gt;<i> pa_devs shows it only able to sample at 48000, and that gets rejected
+</I>&gt;<i> when its found. its another clue as to whats going on.
+</I>
+-- 
+Chuck Forsberg WA7KGX N2469R     <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">caf at omen.com</A>   www.omen.com
+Developer of Industrial ZMODEM(Tm) for Embedded Applications
+   Omen Technology Inc      &quot;The High Reliability Software&quot;
+10255 NW Old Cornelius Pass Portland OR 97231   503-614-0430
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001134.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+	<LI>Next message: <A HREF="001136.html">[Wsjt-devel] WSJT moving to SourceForge
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1135">[ date ]</a>
+              <a href="thread.html#1135">[ thread ]</a>
+              <a href="subject.html#1135">[ subject ]</a>
+              <a href="author.html#1135">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

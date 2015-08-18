@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Crash in CPlotter::DrawOverlay()
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Crash%20in%20CPlotter%3A%3ADrawOverlay%28%29&In-Reply-To=%3C522F6F62.2020503%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001924.html">
+   <LINK REL="Next"  HREF="001925.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Crash in CPlotter::DrawOverlay()</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Crash%20in%20CPlotter%3A%3ADrawOverlay%28%29&In-Reply-To=%3C522F6F62.2020503%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Crash in CPlotter::DrawOverlay()">g4wjs at classdesign.com
+       </A><BR>
+    <I>Tue Sep 10 21:13:38 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001924.html">[Wsjt-devel] Crash in CPlotter::DrawOverlay()
+</A></li>
+        <LI>Next message: <A HREF="001925.html">[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1927">[ date ]</a>
+              <a href="thread.html#1927">[ thread ]</a>
+              <a href="subject.html#1927">[ subject ]</a>
+              <a href="author.html#1927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 10/09/2013 00:02, Bill Somerville wrote:
+
+Looks like no one else has hit this problem.
+
+After a bit of analysis it seems like it might be a Qt or compiler bug. 
+That MMX instruction at the top of the stack shouldn't produce a SEGV 
+unless the stack variable 'value128' is somehow not on valid stack storage.
+
+Odd that a query on this list about alloca() and stack probes should be 
+followed by me hitting an apparent stack allocation problem.
+
+More info below.
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> I'm having problems with a SEGV on Windows in the above function. I 
+</I>&gt;<i> haven't changed any code in the waterfall whatsoever and I suspect 
+</I>&gt;<i> this is actually a memory corruption from code elsewhere. It is 
+</I>&gt;<i> probably some changes in my workspace, but before I start trying to 
+</I>&gt;<i> back my changes out to find the culprit, I wonder if anyone has seem 
+</I>&gt;<i> similar problems before?
+</I>Program received signal SIGSEGV, Segmentation fault.
+qt_memfill32_avx (dest=0x175d7020, value=4278190207, count=1820)
+     at painting/qdrawhelper_sse2.cpp:264
+264         const __m128i value128 = _mm_set_epi32(value, value, value, 
+value);
+(gdb) bt
+#0  qt_memfill32_avx (dest=0x175d7020, value=4278190207, count=1820)
+     at painting/qdrawhelper_sse2.cpp:264
+#1  0x018a7a41 in comp_func_solid_SourceOver_avx (destPixels=0x175d7020,
+     length=1820, color=4278190207, const_alpha=255)
+     at painting/qdrawhelper_sse2.cpp:288
+#2  0x019f7702 in qt_gradient_quint32 (count=95, spans=0x28b58c,
+     userData=0x17dfee08) at painting\qdrawhelper.cpp:5479
+#3  0x01a1ed90 in fillRect_normalized (r=..., data=0x17dfee08, 
+pe=0x14502e08)
+     at painting\qpaintengine_raster.cpp:1487
+#4  0x01a1ef13 in QRasterPaintEngine::drawRects (this=0x14503a60,
+     rects=0x28c8c8, rectCount=1) at painting\qpaintengine_raster.cpp:1516
+#5  0x01a34799 in QPainter::drawRects (this=0x28c994, rects=0x28c8c8,
+     rectCount=1) at painting\qpainter.cpp:3563
+#6  0x0054f07b in QPainter::drawRect (this=0x28c994, x=0, y=0, w=1820, h=96)
+     at C:/Tools/Qt/5.1.0/mingw48_32/include/QtGui/qpainter.h:582
+#7  0x0041391e in CPlotter::DrawOverlay (this=0x144e7fe8)
+     at C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\plotter.cpp:175
+#8  0x004152a7 in CPlotter::setDialFreq (this=0x144e7fe8, d=14.0761)
+     at C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\plotter.cpp:472
+#9  0x00417d63 in WideGraph::setDialFreq (this=0x144e7e80, d=14.0761)
+     at C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\widegraph.cpp:322
+#10 0x0042c986 in MainWindow::dialFreqChanged2 (this=0x28fa78, f=14.0761)
+     at 
+C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\mainwindow.cpp:949
+#11 0x0043bc5b in MainWindow::handle_frequency_change (this=0x28fa78,
+     f=14076100, vfo=Transceiver::A)
+     at 
+C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\mainwindow.cpp:2950
+#12 0x0054fef3 in QtPrivate::FunctorCall&lt;QtPrivate::IndexesList&lt;0, 1&gt;, 
+QtPrivate::List&lt;double, Transceiver::VFO&gt;, void, void 
+(MainWindow::*)(double, Transceiver::VFO)&gt;::call (f=
+     (void (MainWindow::*)(MainWindow * const, double, 
+Transceiver::VFO)) 0x43bbd
+6 &lt;MainWindow::handle_frequency_change(double, Transceiver::VFO)&gt;,
+     o=0x28fa78, arg=0x28cd4c)
+     at C:/Tools/Qt/5.1.0/mingw48_32/include/QtCore/qobjectdefs_impl.h:508
+#13 0x00550ab2 in QtPrivate::FunctionPointer&lt;void 
+(MainWindow::*)(double, Transceiver::VFO)&gt;::call&lt;QtPrivate::List&lt;double, 
+Transceiver::VFO&gt;, void&gt; (f=
+     (void (MainWindow::*)(MainWindow * const, double, 
+Transceiver::VFO)) 0x43bbd
+6 &lt;MainWindow::handle_frequency_change(double, Transceiver::VFO)&gt;,
+     o=0x28fa78, arg=0x28cd4c)
+     at C:/Tools/Qt/5.1.0/mingw48_32/include/QtCore/qobjectdefs_impl.h:527
+#14 0x00550193 in QtPrivate::QSlotObject&lt;void (MainWindow::*)(double, 
+Transceiver::VFO), QtPrivate::List&lt;double, Transceiver::VFO&gt;, 
+void&gt;::impl (which=1,
+     this_=0x16303050, r=0x28fa78, a=0x28cd4c, ret=0x0)
+     at C:/Tools/Qt/5.1.0/mingw48_32/include/QtCore/qobject_impl.h:147
+#15 0x6ba11a1d in QtPrivate::QSlotObjectBase::call (this=0x16303050,
+     r=0x28fa78, a=0x28cd4c)
+     at 
+C:/Users/bill/Documents/src/Qt/root/mingw48_32/include/QtCore/qobject_impl.h:130
+#16 0x6b9252fb in QMetaObject::activate (sender=0x162fd1d0, signalOffset=3,
+     local_signal_index=0, argv=0x28cd4c) at kernel\qobject.cpp:3486
+#17 0x6b924d66 in QMetaObject::activate (sender=0x162fd1d0, m=0x56f1a0,
+     local_signal_index=0, argv=0x28cd4c) at kernel\qobject.cpp:3369
+#18 0x00440cb8 in Transceiver::frequency_change (this=0x162fd1d0,
+     _t1=14076100, _t2=Transceiver::A)
+     at 
+C:/Users/bill/Documents/objdir/wsjtx/qt5-dev/mingw48_32/Debug/moc_Transceiver.cpp:176
+#19 0x0043e8d1 in OmniRigTransceiver::handle_params_change (this=0x162fd1d0,
+     rig_number=1, params=2)
+     at 
+C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\OmniRigTransceiver.cpp:213
+#20 0x00440725 in OmniRigTransceiver::qt_static_metacall (_o=0x162fd1d0,
+     _c=QMetaObject::InvokeMetaMethod, _id=5, _a=0x28cf40)
+     at 
+C:/Users/bill/Documents/objdir/wsjtx/qt5-dev/mingw48_32/Debug/moc_OmniRigTransceiver.cpp:99
+#21 0x6b9253c4 in QMetaObject::activate (sender=0x162fd238, signalOffset=3,
+     local_signal_index=1, argv=0x28cf40) at kernel\qobject.cpp:3494
+#22 0x6b924d66 in QMetaObject::activate (sender=0x162fd238, m=0x56f0f8,
+     local_signal_index=1, argv=0x28cf40) at kernel\qobject.cpp:3369
+#23 0x00503a73 in QAxBase::qt_static_metacall (_t=0x162fd240,
+     _c=QMetaObject::InvokeMetaMethod, _id=1, _a=0x28cf40) at 
+qaxbase.cpp:3746
+#24 0x00528f66 in QAxEventSink::Invoke (this=0x16301820, dispIdMember=4,
+     riid=..., wFlags=1, pDispParams=0x17d9098) at qaxbase.cpp:473
+#25 0x7573c8ef in VarCyFromUI1 () from C:\windows\SysWOW64\oleaut32.dll
+#26 0x757583c9 in VarBstrFromUI4 () from C:\windows\SysWOW64\oleaut32.dll
+#27 0x7570a25a in RPCRT4!I_RpcTurnOnEEInfoPropagation ()
+    from C:\windows\SysWOW64\rpcrt4.dll
+#28 0x76cdb1cf in combase!CoReleaseServerProcess ()
+    from C:\windows\SysWOW64\combase.dll
+#29 0x75797d67 in VarBstrFromI4 () from C:\windows\SysWOW64\oleaut32.dll
+#30 0x76cdb0d5 in combase!CoReleaseServerProcess ()
+    from C:\windows\SysWOW64\combase.dll
+#31 0x76bf030b in combase!ObjectStublessClient13 ()
+    from C:\windows\SysWOW64\combase.dll
+#32 0x76cdb49c in combase!CoReleaseServerProcess ()
+    from C:\windows\SysWOW64\combase.dll
+#33 0x76cdbba8 in combase!CoReleaseServerProcess ()
+    from C:\windows\SysWOW64\combase.dll
+#34 0x76bec8c2 in combase!CoReleaseMarshalData ()
+    from C:\windows\SysWOW64\combase.dll
+#35 0x752b77d8 in USER32!DestroyCaret () from C:\windows\SysWOW64\user32.dll
+#36 0x001c19b2 in ?? ()
+warning: (Internal error: pc 0x3ff in read in psymtab, but not in symtab.)
+
+warning: (Internal error: pc 0x3ff in read in psymtab, but not in symtab.)
+
+#37 0x00000400 in ?? ()
+warning: (Internal error: pc 0x3ff in read in psymtab, but not in symtab.)
+
+#38 0x0000babe in ?? ()
+#39 0x017cd9e0 in ?? ()
+#40 0x752b78cb in USER32!DestroyCaret () from C:\windows\SysWOW64\user32.dll
+#41 0x76bec60d in combase!CoReleaseMarshalData ()
+    from C:\windows\SysWOW64\combase.dll
+#42 0x752b899d in USER32!GetLastActivePopup ()
+    from C:\windows\SysWOW64\user32.dll
+#43 0x752b8a66 in USER32!DlgDirListComboBoxW ()
+    from C:\windows\SysWOW64\user32.dll
+#44 0x6b941e9b in QEventDispatcherWin32::processEvents (this=0x14418d50,
+     flags=...) at kernel\qeventdispatcher_win.cpp:756
+#45 0x1456d3ce in QWindowsGuiEventDispatcher::processEvents 
+(this=0x14418d50,
+     flags=...) at qwindowsguieventdispatcher.cpp:78
+#46 0x6b8f9028 in QEventLoop::processEvents (this=0x28f9c0, flags=...)
+     at kernel\qeventloop.cpp:136
+#47 0x6b8f92c3 in QEventLoop::exec (this=0x28f9c0, flags=...)
+     at kernel\qeventloop.cpp:212
+#48 0x6b8fb568 in QCoreApplication::exec ()
+     at kernel\qcoreapplication.cpp:1120
+#49 0x018b9bc6 in QGuiApplication::exec () at 
+kernel\qguiapplication.cpp:1220
+#50 0x0967b07f in QApplication::exec () at kernel\qapplication.cpp:2689
+#51 0x0043c6e5 in main (argc=1, argv=0x3e6cd8)
+     at C:\Users\bill\Documents\vbox-shares\transfer\wsjtx\main.cpp:85
+(gdb)
+&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001924.html">[Wsjt-devel] Crash in CPlotter::DrawOverlay()
+</A></li>
+	<LI>Next message: <A HREF="001925.html">[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1927">[ date ]</a>
+              <a href="thread.html#1927">[ thread ]</a>
+              <a href="subject.html#1927">[ subject ]</a>
+              <a href="author.html#1927">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

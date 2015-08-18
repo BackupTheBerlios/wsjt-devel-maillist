@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy49z3rROqKdqozjjwgbUUyLsh8QpRo%2B2uYM-n827E-4rXg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001583.html">
+   <LINK REL="Next"  HREF="001588.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy49z3rROqKdqozjjwgbUUyLsh8QpRo%2B2uYM-n827E-4rXg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Jul 28 17:57:41 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001583.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001588.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1584">[ date ]</a>
+              <a href="thread.html#1584">[ thread ]</a>
+              <a href="subject.html#1584">[ subject ]</a>
+              <a href="author.html#1584">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Claude,
+
+On Sun, Jul 28, 2013 at 11:39 AM, Claude Frantz &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ClaudeFrantzX665 at lavabit.com</A>&gt; wrote:
+
+&gt;<i> On 07/28/2013 04:10 PM, Edson W. R. Pereira wrote:
+</I>&gt;<i>
+</I>&gt;<i>  Yesterday I've done a few tests with Qt5 Audio and have some
+</I>&gt;&gt;<i> observations. On Linux, Qt5 either uses pulseaudio or ALSA as sound
+</I>&gt;&gt;<i> input/output. Either one or the ohter (not both).
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The idea behind pulseaudio is to liberate the application from the need to
+</I>&gt;<i> deal with the hardware. The application, as client, requests streams from
+</I>&gt;<i> the pulseaudio server. The selection of devices, the mixer, the volume
+</I>&gt;<i> control are now a matter which pulseaudio has to manage. There are tools
+</I>&gt;<i> available to the user. pulseaudio is now the standard sound system of most
+</I>&gt;<i> modern Linux distributions.
+</I>&gt;<i>
+</I>
+I thought that was the purpose for ALSA! ;-)
+
+I understand the idea behind pulseaudio as a sound server. However, I had
+some bad experience with it in the past while trying to use it with fldigi
+and with SDR software. It added unnecessary latency, complexity and, at the
+time, it did not work well with jackd. Also, there is the risk of some
+application injecting undesirable audio samples on a stream that is being
+transmitted. As far as I know, pulseaudio is (was) *not* designed for
+real-time audio. This is fine for using the computer to play music, but
+undesirable for low latency audio applications. Jackd shines in this
+respect.
+
+We could, of course, run some tests with recent pulseaudio releases and Qt5
+and check if it is good enough for WSPR-X.
+
+73,
+
+-- Edson PY2SDR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130728/c69bbafe/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130728/c69bbafe/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001583.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001588.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1584">[ date ]</a>
+              <a href="thread.html#1584">[ thread ]</a>
+              <a href="subject.html#1584">[ subject ]</a>
+              <a href="author.html#1584">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Show DXCC suggestion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Show%20DXCC%20suggestion&In-Reply-To=%3C52E59499.6030707%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002113.html">
+   <LINK REL="Next"  HREF="002115.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Show DXCC suggestion</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Show%20DXCC%20suggestion&In-Reply-To=%3C52E59499.6030707%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X Show DXCC suggestion">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Mon Jan 27 00:04:57 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002113.html">[Wsjt-devel] WSJT-X Show DXCC suggestion
+</A></li>
+        <LI>Next message: <A HREF="002115.html">[Wsjt-devel] compiling latest manual version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2116">[ date ]</a>
+              <a href="thread.html#2116">[ thread ]</a>
+              <a href="subject.html#2116">[ subject ]</a>
+              <a href="author.html#2116">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bob
+
+Thanks - this is a known bug (well, by me at least!).  A similar issue 
+occurs for calls from the Philippines (DX prefix).  I had a grand plan 
+to rethink the parsing but I probably should just submit a fix something 
+along the lines of your suggestion - after this version gets released.
+
+Cheers
+Murray
+VK3ACF
+
+
+On 27/01/14 06:36, Bob McCormick W1QA wrote:
+&gt;<i> The Show DXCC suggestion logic will false identify countries when users
+</I>&gt;<i> modify the standard WSJT CQ sequence:
+</I>&gt;<i>
+</I>&gt;<i> CQ MYCALL MYGRID
+</I>&gt;<i>
+</I>&gt;<i> To wit:
+</I>&gt;<i>
+</I>&gt;<i> CQ DX MYCALL - I want DX
+</I>&gt;<i> CQ MA MYCALL - I want Massachusetts
+</I>&gt;<i>
+</I>&gt;<i> Maybe a slight change in the parsing logic could help?  After finding the CQ
+</I>&gt;<i> if the next item delimited by spaces is 3 characters or less then throw it
+</I>&gt;<i> away and continue with the remaining string.  Excepting 3-character special
+</I>&gt;<i> event calls this should help with correctly identifying the calling station
+</I>&gt;<i> and its country.
+</I>&gt;<i>
+</I>&gt;<i> Bob W1QA
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002113.html">[Wsjt-devel] WSJT-X Show DXCC suggestion
+</A></li>
+	<LI>Next message: <A HREF="002115.html">[Wsjt-devel] compiling latest manual version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2116">[ date ]</a>
+              <a href="thread.html#2116">[ thread ]</a>
+              <a href="subject.html#2116">[ subject ]</a>
+              <a href="author.html#2116">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Two%20suggestions%20for%20WSPR%203.0%20Manual%20%26%20GUI&In-Reply-To=%3CAANLkTi%3Dh%2BL2iC3BzanJp2v7LdVGtZdxYLLO8BaT8%3DEmc%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001069.html">
+   <LINK REL="Next"  HREF="001072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Two%20suggestions%20for%20WSPR%203.0%20Manual%20%26%20GUI&In-Reply-To=%3CAANLkTi%3Dh%2BL2iC3BzanJp2v7LdVGtZdxYLLO8BaT8%3DEmc%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI">stoledo at tau.ac.il
+       </A><BR>
+    <I>Sun Dec 26 08:07:41 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001069.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+        <LI>Next message: <A HREF="001072.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1070">[ date ]</a>
+              <a href="thread.html#1070">[ thread ]</a>
+              <a href="subject.html#1070">[ subject ]</a>
+              <a href="author.html#1070">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A correction and some progress.
+
+First, I noticed that the 3.0 manual does state which channel is I and which
+is Q in the straight and reversed IQ settings. Sorry about this, but I still
+think it would still be good to label them as such in the GUI.
+
+Second, I figured out the Fiq formula (Fiq=dial_freq -
+softrock_center_freq). For my 40m softrock receiver, whose central frequency
+is 7.056, the settings is theoretically -17400. In practice I found out that
+-17285 is much closer to the correct setting.
+
+Sivan
+
+On Wed, Dec 22, 2010 at 12:13 PM, Sivan Toledo &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">stoledo at tau.ac.il</A>&gt; wrote:
+
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> Two small suggestions for the 3.0 manual and GUI:
+</I>&gt;<i>
+</I>&gt;<i> 1. Rather than &quot;Reverse TX IQ&quot; and &quot;Reverse RX IQ&quot; checkboxes, I suggest
+</I>&gt;<i> the more informative &quot;I=left, Q=right&quot; and &quot;I=right, Q=left&quot; with radio
+</I>&gt;<i> buttons or a combo box. This has two advantages. First, it tells people what
+</I>&gt;<i> to do: they can trace the I and Q routing in their radio (almost; the
+</I>&gt;<i> softrock schematics don't say which channel is I and which is Q, but this is
+</I>&gt;<i> easy to fix), then figure out whether the tip or ring is left, and they are
+</I>&gt;<i> done. With &quot;correct&quot; vs. &quot;reverse&quot; terminology there is no way to figure out
+</I>&gt;<i> what to do. Second, this is the terminology used in Rocky, and it's easy to
+</I>&gt;<i> figure out in Rocky whether you are reversed or not (e.g. by checking that
+</I>&gt;<i> the PSK31 bands which are easy to identify are in the right frequency, or by
+</I>&gt;<i> checking an SSB signal for correct USB or LSB). I came up with the
+</I>&gt;<i> suggestion while reading the manual, but this is better fixed in the GUI
+</I>&gt;<i> than just in the manual.
+</I>&gt;<i>
+</I>&gt;<i> 2. It would be good to add the formula for setting Fiq. I tried to hunt for
+</I>&gt;<i> the WSPR band yesterday with a crystal-controlled RX-only softrock, even
+</I>&gt;<i> though I knew the center frequency with reasonable accuracy and even though
+</I>&gt;<i> I was able to spot the PSK31 signals in Rocky. Between the dial frequency,
+</I>&gt;<i> BFO frequency, and Fiq, I could not figure out how to set Fiq. It would be
+</I>&gt;<i> good to have a formula, perhaps with an example.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Sivan
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101226/6e4bee93/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101226/6e4bee93/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001069.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+	<LI>Next message: <A HREF="001072.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1070">[ date ]</a>
+              <a href="thread.html#1070">[ thread ]</a>
+              <a href="subject.html#1070">[ subject ]</a>
+              <a href="author.html#1070">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

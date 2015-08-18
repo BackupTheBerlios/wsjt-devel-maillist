@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio I/O on the *nix platform
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20I/O%20on%20the%20%2Anix%20platform&In-Reply-To=%3C51A50AB6.7030801%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001322.html">
+   <LINK REL="Next"  HREF="001319.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio I/O on the *nix platform</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20I/O%20on%20the%20%2Anix%20platform&In-Reply-To=%3C51A50AB6.7030801%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Audio I/O on the *nix platform">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 28 21:51:18 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001322.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+        <LI>Next message: <A HREF="001319.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1316">[ date ]</a>
+              <a href="thread.html#1316">[ thread ]</a>
+              <a href="subject.html#1316">[ subject ]</a>
+              <a href="author.html#1316">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+It would be nice if we understood exactly what's happening with WSJT-X's 
+audio output under Linux.  It works, but a few details of exactly how it 
+works are presently obscure at best.
+
+In particular: Some time ago, Edson (PY2SDR) found that although the 
+code in soundout.cpp explicitly sets the number of output channels to 1 
+in the statement &quot;outParam.channelCount=1&quot; (line #145 in revision 3318), 
+some audio devices act as though they are expecting dual-channel 
+(&quot;stereo&quot;) data anyway.  To deal with this we inserted two &quot;#ifdef unix&quot; 
+conditionals so that we would send the same audio data to each of the 
+two channels.
+
+More recently, John (AC6SL) and I have determined that other audio 
+devices behave as we originally thought all should behave -- i.e., they 
+act like single-channel (&quot;mono&quot;) devices when told to do so.
+
+I don't yet understand why this is so, or how to fix it properly. 
+Perhaps it will be taken care of when/if we move from portAudio to 
+QAudio.  In the meantime, as a temporary work-around, in revisions 
+3317/3318 I have inserted code that makes all audio output on unix-like 
+platforms use two channels.  On my test Linux system, at least, this 
+makes all relevant audio devices (and pseudo-devices invoked with an 
+&quot;.asoundrc&quot; file) work properly.
+
+Please check to see if this works OK on your Linux system.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001322.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+	<LI>Next message: <A HREF="001319.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1316">[ date ]</a>
+              <a href="thread.html#1316">[ thread ]</a>
+              <a href="subject.html#1316">[ subject ]</a>
+              <a href="author.html#1316">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

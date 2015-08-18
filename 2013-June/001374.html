@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Help with compilation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Help%20with%20compilation&In-Reply-To=%3CBLU172-W42C4D07DF6516CD86C3097AA870%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001373.html">
+   <LINK REL="Next"  HREF="001376.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Help with compilation</H1>
+    <B>Rodrigo Araujo Lima</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Help%20with%20compilation&In-Reply-To=%3CBLU172-W42C4D07DF6516CD86C3097AA870%40phx.gbl%3E"
+       TITLE="[Wsjt-devel] Help with compilation">rodrigo2011al at hotmail.com
+       </A><BR>
+    <I>Thu Jun 13 16:26:51 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001373.html">[Wsjt-devel] WSJT-X v1.1 beta, r3385
+</A></li>
+        <LI>Next message: <A HREF="001376.html">[Wsjt-devel] Help with compilation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1374">[ date ]</a>
+              <a href="thread.html#1374">[ thread ]</a>
+              <a href="subject.html#1374">[ subject ]</a>
+              <a href="author.html#1374">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>What is happening? Can anyone help me?
+Thank you,
+73
+
+
+Below the errors and information of the compilers I'm using:
+================================================================
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at athlonx3</A>:/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386# uname -a
+Linux athlonx3 3.2.0-4-amd64 #1 SMP Debian 3.2.41-2+deb7u2 x86_64 GNU/Linux
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at athlonx3</A>:/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386# gcc -v
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.7/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.7.2-5' --with-bugurl=<A HREF="file:///usr/share/doc/gcc-4.7/README.Bugs">file:///usr/share/doc/gcc-4.7/README.Bugs</A> --enable-languages=c,c++,go,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.7 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.7 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.7.2 (Debian 4.7.2-5) 
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at athlonx3</A>:/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386# gfortran -v
+Using built-in specs.
+COLLECT_GCC=gfortran
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.7/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.7.2-5' --with-bugurl=<A HREF="file:///usr/share/doc/gcc-4.7/README.Bugs">file:///usr/share/doc/gcc-4.7/README.Bugs</A> --enable-languages=c,c++,go,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.7 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.7 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --enable-plugin --enable-objc-gc --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.7.2 (Debian 4.7.2-5) 
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at athlonx3</A>:/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386# python2.7 wsjt.py
+******************************************************************
+WSJT Version 5.9.7 r386 , by K1JT
+Revision date: 2007-05-09 10:59:41 -0400 (Wed, 09 May 2007) 
+Run date:   Thu Jun 13 14:21:58 2013 UTC
+Using PortAudio.
+At line 53 of file decode1.F90 (unit = 21, file = '/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386/ALL.TXT')
+Fortran runtime error: Sequential READ or WRITE not allowed after EOF marker, possibly use REWIND or BACKSPACE
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at athlonx3</A>:/home/rodrigo/Documentos/WSJT/wsjt-5.9.7.r386# 
+
+ 		 	   		  
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130613/7b1ffda4/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130613/7b1ffda4/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001373.html">[Wsjt-devel] WSJT-X v1.1 beta, r3385
+</A></li>
+	<LI>Next message: <A HREF="001376.html">[Wsjt-devel] Help with compilation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1374">[ date ]</a>
+              <a href="thread.html#1374">[ thread ]</a>
+              <a href="subject.html#1374">[ subject ]</a>
+              <a href="author.html#1374">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Compatability with M-Audio pci sound cards
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compatability%20with%20M-Audio%20pci%20sound%20cards&In-Reply-To=%3C1317464926.10311.22.camel%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Compatability with M-Audio pci sound cards</H1>
+    <B>Richard Bown</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compatability%20with%20M-Audio%20pci%20sound%20cards&In-Reply-To=%3C1317464926.10311.22.camel%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] Compatability with M-Audio pci sound cards">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Sat Oct  1 12:28:46 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001138.html">[Wsjt-devel] WSJT hosted at SourceForge
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1137">[ date ]</a>
+              <a href="thread.html#1137">[ thread ]</a>
+              <a href="subject.html#1137">[ subject ]</a>
+              <a href="author.html#1137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+After spending a day + downloading kernels and just running aplay -l and
+pa_devs with my M-audio D66 card, I've come to the following
+conclusions.
+There is interaction between pulseadio and  alsa, but its more on the
+default config scripts.
+The major problem is the kernel, it could be something with Udev, but
+from kernel 2.6.38 which is when Gnome 3 was shipped with some distros
+the D66 card sampling rates are only read as 48000, thats when the card
+is found.
+Incidentally 2.6.38 is the changing point from kernel 2.6.x to 3.0.x
+the last RT kernel 2.6.33 is OK so is 2.6.32-5 as shipped with Debian
+squeeze.
+Where I've been building equipment and not operating , as I upgraded
+distros, I compiled wsjt but didn't check it used the correct sound
+card, which with hind sight I should have.
+I wasn't aware that wsjt uses a low sample rate 11025, which was why the
+card was working with other apps, that use 48000.
+I'll leave Fed FC15 with gnome 3 on the laptop, the xyl likes its
+simplicity, and moved this machine to Deb squeeze.
+Hope that save someone else's hair.
+
+73 Richard g8jvm
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001138.html">[Wsjt-devel] WSJT hosted at SourceForge
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1137">[ date ]</a>
+              <a href="thread.html#1137">[ thread ]</a>
+              <a href="subject.html#1137">[ subject ]</a>
+              <a href="author.html#1137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

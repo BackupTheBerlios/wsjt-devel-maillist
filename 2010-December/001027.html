@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 2.20 r2283 beta tests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.20%20r2283%20beta%20tests&In-Reply-To=%3C4CFE9536.8010809%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001024.html">
+   <LINK REL="Next"  HREF="001028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 2.20 r2283 beta tests</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.20%20r2283%20beta%20tests&In-Reply-To=%3C4CFE9536.8010809%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR 2.20 r2283 beta tests">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Dec  7 21:12:38 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001024.html">[Wsjt-devel] Fw: Re:  ATU tuneup and Save/Restore
+</A></li>
+        <LI>Next message: <A HREF="001028.html">[Wsjt-devel] WSPR 2.20 r2283
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1027">[ date ]</a>
+              <a href="thread.html#1027">[ thread ]</a>
+              <a href="subject.html#1027">[ subject ]</a>
+              <a href="author.html#1027">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If you have been testing WSPR 2.2 with its frequency-hopping, feature, 
+please upgrade to revision 2283.  Direct links for download are:
+
+Windows:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSPR2.20_r2283.EXE">http://www.physics.princeton.edu/pulsar/K1JT/WSPR2.20_r2283.EXE</A>
+
+Linux:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/wspr_2.20r2283_i386.deb">http://www.physics.princeton.edu/pulsar/K1JT/wspr_2.20r2283_i386.deb</A>
+
+This version has several new features:
+
+1. A checkbox labeled &quot;Coordinated bands&quot; is now available at the bottom 
+of WSPR's Frequency Hopping screen.  If this box is checked, the 
+first-choice selected band will be determined by the UTC minute at which 
+a 2-minute sequence starts:
+
+  UTC   Band
+Minute  (m)
+----------------
+00      160
+02       80
+04       60
+06       40
+08       30
+10       20
+12       17
+14       15
+16       12
+18       10
+
+20      160
+22       80
+... etc
+
+The sequence of ten possible bands repeats three times each hour.  If 
+the first choice band has not been checked as an active band, a random 
+band choice is made among those that are active.
+
+Decision whether to receive or transmit is purely random, using the Tx 
+fraction for the selected band.
+
+If all WSPR stations using frequency hopping use the &quot;Coordinated bands&quot; 
+option, a sizable group of will move together from band to band.  During 
+any particular sequence, something like 20% of the stations (depending 
+on their Tx fraction settings) will transmit, and the rest will receive. 
+  The average number of spots will be much larger than that if band 
+selection is random.  If a band gets too crowded -- say, if you often 
+see more than 6-8 stations in one sequence -- you should probably reduce 
+your Tx fraction for that band.
+
+2. There is now an &quot;ATU tuneup&quot; feature.  When WSPR hops to a new band, 
+if the &quot;Tuneup&quot; box for that band is checked the program will transmit a 
+carrier for 4 seconds.  This should happen at about 115-119 s in the 
+basic 120-second cycle.  The idea is that automatic ATU's would tune 
+themselves during this time.  (It may turn out to be better to use a 
+shorter tuneup interval, say 1 second, or to make the duration a user 
+parameter.  Automatic ATU's with memory need only a very short signal.)
+
+3. Frequency-hopping parameters are saved on program exit and restored 
+when the program is restarted.  The information goes to a new file named 
+&quot;hopping.ini&quot;.
+
+As usual, user feedback is encouraged!
+
+I have been running in this mode for the past few days, and will 
+continue doing so this week.  Please give it a try, so we can have a 
+significant number of stations moving together from band to band.
+
+     -- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001024.html">[Wsjt-devel] Fw: Re:  ATU tuneup and Save/Restore
+</A></li>
+	<LI>Next message: <A HREF="001028.html">[Wsjt-devel] WSPR 2.20 r2283
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1027">[ date ]</a>
+              <a href="thread.html#1027">[ thread ]</a>
+              <a href="subject.html#1027">[ subject ]</a>
+              <a href="author.html#1027">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

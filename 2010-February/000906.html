@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B843675.4090906%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000905.html">
+   <LINK REL="Next"  HREF="000907.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B843675.4090906%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Feb 23 21:11:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000905.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+        <LI>Next message: <A HREF="000907.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#906">[ date ]</a>
+              <a href="thread.html#906">[ thread ]</a>
+              <a href="subject.html#906">[ subject ]</a>
+              <a href="author.html#906">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+On 2/23/2010 2:16 PM, David A. Ranch wrote:
+&gt;<i> ... I start wsjt 7.05r1800 from the command prompt,
+</I>&gt;<i> I see the following in the shell:
+</I>&gt;<i> --
+</I>&gt;<i> $ wsjt
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 7.05 r1800 , by K1JT
+</I>&gt;<i> Revision date: 2010-02-16 09:00:39 -0800 (Tue, 16 Feb 2010)
+</I>&gt;<i> Run date:   Tue Feb 23 19:05:45 2010 UTC
+</I>&gt;<i> JACK tmpdir identified as [/dev/shm]
+</I>&gt;<i>
+</I>&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;<i> Device  Channels  Channels
+</I>&gt;<i> ------------------------------------------------------------------
+</I>&gt;<i>      0       16        16       /dev/dsp
+</I>&gt;<i>      1       16        16       /dev/dsp1
+</I>&gt;<i>      2       16        16       /dev/dsp2
+</I>&gt;<i>      3        2         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4
+</I>&gt;<i> (hw:0,0)
+</I>&gt;<i>      4        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> MIC ADC (hw:0,1)
+</I>&gt;<i>      5        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> MIC2 ADC (hw:0,2)
+</I>&gt;<i>      6        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> ADC2 (hw:0,3)
+</I>&gt;<i>      7        0         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> IEC958 (hw:0,4)
+</I>&gt;<i>      8        2         2       USB Audio CODEC : USB Audio (hw:1,0)
+</I>&gt;<i>      9        1         1       Intel 82801DB-ICH4 Modem: Intel
+</I>&gt;<i> 82801DB-ICH4 Modem - Modem (hw:2,0)
+</I>&gt;<i>     10        0         2       front
+</I>&gt;<i>     11        0         2       iec958
+</I>&gt;<i>     12        0         2       spdif
+</I>&gt;<i>     13        2         2       radio
+</I>&gt;<i>     14        2         2       radioconv
+</I>&gt;<i>     15       128        128       default
+</I>&gt;<i>     16        0         2       dmix
+</I>&gt;<i>
+</I>&gt;<i> User requested devices:   Input = 14   Output = 14
+</I>&gt;<i> Default devices:          Input = 15   Output = 15
+</I>&gt;<i> Will open devices:        Input = 14   Output = 14
+</I>&gt;<i> JACK tmpdir identified as [/dev/shm]
+</I>&gt;<i> Audio streams running normally.
+</I>&gt;<i> ******************************************************************
+</I>
+OK, this looks reasonable.  I don't know where those lines of
+&quot;JACK tmpdir identified as [/dev/shm]&quot; come from, but then I have not 
+played with JACK.
+
+&gt;<i> Now, if I shift modes to say JT65, I then see the following in the
+</I>&gt;<i> shell.  It might be worth noting that when I start in FSK144 or JT6M,
+</I>&gt;<i> the default SpecJT view is the horizontal H1 view.  Once I shift to any
+</I>&gt;<i> of these other modes, the SpecJT view changes to &quot;speed: 3&quot; vertical
+</I>&gt;<i> view.  It continues to work and I can shift back to the H1 view.
+</I>
+This is correct behavior.  FSK441 and JT6M are best viewed with the 
+fast-moving, low-frequency-resolution, horizontally scrolling 
+waterfalls; JT65 is best viewed with a slow, high-resolution, vertically 
+scrolling waterfall.
+
+&gt;<i> Exception in Tkinter callback
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 1345, in __call__
+</I>&gt;<i>       return self.func(*args)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 456, in callit
+</I>&gt;<i>       func(*args)
+</I>&gt;<i>     File &quot;/usr//bin/wsjt.py&quot;, line 1687, in update
+</I>&gt;<i>       graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2102, in create_text
+</I>&gt;<i>       return self._create('text', args, kw)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2076, in _create
+</I>&gt;<i>       return getint(self.tk.call(
+</I>&gt;<i> TclError: font &quot;&quot; doesn't exist
+</I>
+It would appear that something is broken in your Python.  For a similar 
+problem, see email from Richard Bown, wsjt-devel 7/3/2008.  I do not 
+recall how he fixed his problem; it was not a problem in the source code.
+
+As far as I know, none of us in the &quot;devel&quot; group has used the Centos 
+distribution, so you're likely to be on your own for finding this bug.
+
+&gt;<i> If I shutdown and restart WSJT (which will now be permanently broken
+</I>&gt;<i> until I manually edit the WSJT.INI file, I see the following in the
+</I>&gt;<i> command shell:
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> $ wsjt
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 7.05 r1800 , by K1JT
+</I>&gt;<i> Revision date: 2010-02-16 09:00:39 -0800 (Tue, 16 Feb 2010)
+</I>&gt;<i> Run date:   Tue Feb 23 19:12:48 2010 UTC
+</I>&gt;<i> JACK tmpdir identified as [/dev/shm]
+</I>&gt;<i>
+</I>&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;<i> Device  Channels  Channels
+</I>&gt;<i> ------------------------------------------------------------------
+</I>&gt;<i>      0       16        16       /dev/dsp
+</I>&gt;<i>      1       16        16       /dev/dsp1
+</I>&gt;<i>      2       16        16       /dev/dsp2
+</I>&gt;<i>      3        2         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4
+</I>&gt;<i> (hw:0,0)
+</I>&gt;<i>      4        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> MIC ADC (hw:0,1)
+</I>&gt;<i>      5        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> MIC2 ADC (hw:0,2)
+</I>&gt;<i>      6        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> ADC2 (hw:0,3)
+</I>&gt;<i>      7        0         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 -
+</I>&gt;<i> IEC958 (hw:0,4)
+</I>&gt;<i>      8        2         2       USB Audio CODEC : USB Audio (hw:1,0)
+</I>&gt;<i>      9        1         1       Intel 82801DB-ICH4 Modem: Intel
+</I>&gt;<i> 82801DB-ICH4 Modem - Modem (hw:2,0)
+</I>&gt;<i>     10        0         2       front
+</I>&gt;<i>     11        0         2       iec958
+</I>&gt;<i>     12        0         2       spdif
+</I>&gt;<i>     13        2         2       radio
+</I>&gt;<i>     14        2         2       radioconv
+</I>&gt;<i>     15       128        128       default
+</I>&gt;<i>     16        0         2       dmix
+</I>&gt;<i>
+</I>&gt;<i> User requested devices:   Input = 14   Output = 14
+</I>&gt;<i> Default devices:          Input = 15   Output = 15
+</I>&gt;<i> Will open devices:        Input = 14   Output = 14
+</I>&gt;<i> JACK tmpdir identified as [/dev/shm]
+</I>&gt;<i> Audio streams running normally.
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> Exception in Tkinter callback
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 1345, in __call__
+</I>&gt;<i>       return self.func(*args)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 456, in callit
+</I>&gt;<i>       func(*args)
+</I>&gt;<i>     File &quot;/usr//bin/wsjt.py&quot;, line 1687, in update
+</I>&gt;<i>       graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2102, in create_text
+</I>&gt;<i>       return self._create('text', args, kw)
+</I>&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2076, in _create
+</I>&gt;<i>       return getint(self.tk.call(
+</I>&gt;<i> TclError: font &quot;&quot; doesn't exist
+</I>
+The program restarts in the mode you were in when you terminated it. 
+You are therefore starting in JT65 mode, and you will see the same error 
+as before.
+
+&gt;<i> Ps. I had unicasted an email to you about compiling issues with WSJT a
+</I>&gt;<i> week or so ago.  I'm beyond that point now but I'm curious if you
+</I>&gt;<i> received it?
+</I>
+No.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000905.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+	<LI>Next message: <A HREF="000907.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#906">[ date ]</a>
+              <a href="thread.html#906">[ thread ]</a>
+              <a href="subject.html#906">[ subject ]</a>
+              <a href="author.html#906">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

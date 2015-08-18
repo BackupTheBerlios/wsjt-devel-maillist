@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20AsciiDoc%20Install%20%26%26%20Setup%20for%20%2ANix&In-Reply-To=%3C1390893476.3669.10.camel%40srv2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002127.html">
+   <LINK REL="Next"  HREF="002129.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20AsciiDoc%20Install%20%26%26%20Setup%20for%20%2ANix&In-Reply-To=%3C1390893476.3669.10.camel%40srv2%3E"
+       TITLE="[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix">ki7mt at yahoo.com
+       </A><BR>
+    <I>Tue Jan 28 08:17:56 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002127.html">[Wsjt-devel] compiling latest manual version
+</A></li>
+        <LI>Next message: <A HREF="002129.html">[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2128">[ date ]</a>
+              <a href="thread.html#2128">[ thread ]</a>
+              <a href="subject.html#2128">[ subject ]</a>
+              <a href="author.html#2128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello All,
+
+This is a quick *Nix How-to for Installing AsciiDoc. A Windows How-To
+will be available in the next few days. It installs AsciiDoc to the
+$USER account rather than system wide. There are numerous reasons why we
+should do this, which will be detailed in the quick-reference guide.
+
+* My workstation is Ubuntu 14.04-Dev. Ubuntu uses Bash and apt-get for
+the shell and package manager respectively. If your distribution uses a
+different shell or pkg manager, adjust commands accordingly. While
+detailed, this How-To should take =&lt; 10 minutes to install &amp;&amp; test build
+WSJT-X User Guide.
+
+NOTE: For developers with commit privileges, in the TEST &amp; BUILD
+section, you can use your standard method of pulling the repo if
+desired.
+
+# DEPENDENCIES
+* For WSJT-X Documentation, 4 packages are required:
+- Python ==&gt; Installed by default on most systems
+- Mercurial ==&gt; vcs used with AsciiDoc
+- Source highlight ==&gt; syntax highlighting
+- Subversion ==&gt; for repository interaction
+
+* All commands are performed in a terminal, Ctrl+Alt+T in Ubuntu.
+* If your shell is Bash, you can Copy &amp; Paste most commands directly
+
+# UPDATE SYSTEM FIRST
+sudo apt-get update &amp;&amp; sudo apt-get upgrade
+
+
+## INSTALL DEPS
+sudo apt-get install mercurial source-highlight subversion
+
+* Check hg, python, subversion and source highlight are installed
+hg --version
+svn --version
+python -V
+source-highlight --version
+
+Note: If any package check returns with an error, resolve before
+continuing!!.
+
+
+## CHECK for SYSTEM-WIDE AsciiDoc INSTALLATION
+asciidoc --version
+
+If it returns a version number:
+sudo apt-get purge asciidoc
+
+
+## SETUP ENVIRONMENT
+* Add Directories and source profiles
+mkdir $HOME/bin
+source ~/.bashrc &amp;&amp; source ~/.profile
+
+* Check $HOME/bin is in your $PATH
+echo $PATH
+
+Note:
+- You may have to log out and back in for the addition to take place.
+- If need be, add the following to your shell profile, then source or
+log out / back in:
+
+if [ -d &quot;$HOME/bin&quot; ]
+then
+  PATH=&quot;$HOME/bin:$PATH&quot;
+fi
+
+## DOWNLOAD &amp;&amp; CONFIGURE ASCIIDOC BINARY
+cd ~/bin
+hg clone -r 8.6.9 <A HREF="https://asciidoc.googlecode.com/hg/">https://asciidoc.googlecode.com/hg/</A> asciidoc-8.6.9
+cd asciidoc-8.6.9 &amp;&amp; hg pull &amp;&amp; hg update &amp;&amp; cd ..
+ln -s ~/bin/asciidoc-8.6.9/asciidoc.py ~/bin/asciidoc
+asciidoc --version
+
+Returns: asciidoc 8.6.9
+
+That's It !!
+
+## POST INSTALL WSJT-X DOCS BUILD
+* cd to where you want the docs. I use ~/Projects/documentation/wsjtx
+cd ~/Projects/documentation/wsjtx
+
+* Note: This pulls &quot;just&quot; the Documentation Tree, without History 
+svn export <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx/doc">svn://svn.berlios.de/wsjt/branches/wsjtx/doc</A>
+cd ./doc
+./build-doc.sh toc2
+
+* Now Open wsjtx-main-toc.html, command line, or browse to the folder.
+chromium-browser wsjtx-main-toc2.html
+firefox wsjtx-main-toc2.html
+
+If you have any problems, send me a note, I'm sure we can sort it out.
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 490 bytes
+Desc: This is a digitally signed message part
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140128/ca51fae9/attachment.pgp">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140128/ca51fae9/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002127.html">[Wsjt-devel] compiling latest manual version
+</A></li>
+	<LI>Next message: <A HREF="002129.html">[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2128">[ date ]</a>
+              <a href="thread.html#2128">[ thread ]</a>
+              <a href="subject.html#2128">[ subject ]</a>
+              <a href="author.html#2128">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

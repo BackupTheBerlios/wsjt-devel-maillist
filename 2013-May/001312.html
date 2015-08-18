@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A4BBEC.8090302%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001311.html">
+   <LINK REL="Next"  HREF="001313.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A4BBEC.8090302%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 28 16:15:08 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001311.html">[Wsjt-devel] hamlib rigctld
+</A></li>
+        <LI>Next message: <A HREF="001313.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1312">[ date ]</a>
+              <a href="thread.html#1312">[ thread ]</a>
+              <a href="subject.html#1312">[ subject ]</a>
+              <a href="author.html#1312">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear colleagues,
+
+I suggest that we are essentially ready to make a release of WSJT-X 
+Version 1.0.
+
+Here's an organizational proposal for our subsequent development efforts:
+
+1. We should release Version 1.0 very soon -- it will be something close 
+to revision 3316.  We would tag this as &quot;WSJT-X-Revision-1.0&quot; and copy 
+it to the SVN &quot;tags&quot; area for archiving purposes.  We should make a tar 
+file of the complete V1.0 code and post it on the Berlios site.
+
+2. The present code branch -- the one we have been using for WSJT-X 
+development -- would henceforth be reserved for bug fixes (leading to 
+versions 1.0.1, 1.0.2, etc...) and possibly some relatively minor 
+feature additions (versions 1.1.0, 1.2.0, whatever).
+
+3. A number of other development ideas have been discussed:
+     - Moving from Qt4 to Qt5, and eliminating dependence on Qwt
+     - Adding rig control through DxLab Commander
+     - Migrating from PortAudio to Qt's built-in QAudio handlers
+     - Adding other WSJT modes: JT65, FSK441, ISCAT, JT4 ...
+I suggest that these developments would best be pursued in new, separate 
+branches of our SVN tree.  When any one of them matures to the point 
+where it would clearly provide desirable new capability for WSJT-X, code 
+from that branch can be merged back into the main development branch.
+
+Does this plan make sense to everyone?  Other suggestions?
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001311.html">[Wsjt-devel] hamlib rigctld
+</A></li>
+	<LI>Next message: <A HREF="001313.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1312">[ date ]</a>
+              <a href="thread.html#1312">[ thread ]</a>
+              <a href="subject.html#1312">[ subject ]</a>
+              <a href="author.html#1312">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

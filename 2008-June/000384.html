@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on MacOSX 10.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3CAFBB8C32-FE8C-4B82-92A2-124AB2A8DB74%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000372.html">
+   <LINK REL="Next"  HREF="000387.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on MacOSX 10.4</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3CAFBB8C32-FE8C-4B82-92A2-124AB2A8DB74%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT on MacOSX 10.4">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Jun 25 17:11:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000372.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+        <LI>Next message: <A HREF="000387.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Jonathan,
+
+You write concerning my conversion of .WAV files:
+ &gt; Writing endian neutral code isn't difficult. It's a matter of  
+reading/writing
+ &gt; at the byte level and doing bit shifts...
+
+My strategy in getting WSJT working on a Mac is first to take the  
+source code without any modification whatsoever and try to get it to  
+work. This means converting files externally such as .WAV files and  
+sky temperature files.   This way I can be sure that if problems  
+arise they are not due to any errors mistakenly inserted into code by  
+me.
+
+Also you note:
+ &gt; Just a thought, but shouldn't you be aiming at Mac OS 5.x nowadays
+
+Not necessarily.   WSJT is not a Cocoa/Carbon application but code  
+operating at darwin level and therefore essentially unaware of  
+differences between 10.4.11 and 10.5.3.   Mentioning OSX 10.4  was  
+just a commentary.   The real issue is that I am using Xcode 2.5  
+which has the latest compilers and libraries for any OSX release,  
+10.4 or 10.5.    The standard 10.5 release contains an old version of  
+python (2.5.1) and does not have numpy or scipy or other adjuncts  
+required by WSJT.  All these have to be installed anyway.
+
+Current state:  FSK441 and JT65B works.  However, debugging JT6M  
+throws up code errors.  (Fortunately) Mac OSX does not zero execution  
+memory and therefore the use of undefined variables is exposed and   
+causes havoc - ie program crashes.   The problem is finding is  
+finding them.  Two such cases have already been found.   Maybe there  
+are more.
+
+Now that I have had to jump into the code to fix these,  I have gone  
+ahead and installed endian checks in getfile.F90 and astro.f and no  
+longer need my converted files.     I agree, endian checks are  
+trivial.    Little-endian is just a nasty fact of life.   (Ever tried  
+a hex dump of a little endian data file looking for erroneous  
+structures?   It's hopeless....)
+
+Have you got WSJT going on your 10.5 Intel?
+
+A final note:  Joe writes in connection with problems reported by  
+Harry:     &quot;Software does not break all by itself. &quot;    Yes, indeed.   
+I have always argued that software should be called hardware because  
+it doesn't break by itself, and hardware should be called software  
+because it does.   My hardware colleagues naturally have a different  
+point of view....
+
+Thanks for commenting...
+
+73 John   G4KLA
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000372.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+	<LI>Next message: <A HREF="000387.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

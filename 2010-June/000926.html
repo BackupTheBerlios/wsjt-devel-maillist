@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Ubuntu 9.04 install observations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%209.04%20install%20observations&In-Reply-To=%3CAANLkTimZSHn7je_ZxNmjrHdhEpcGDISn3ATUYOtOhjSf%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000925.html">
+   <LINK REL="Next"  HREF="000927.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Ubuntu 9.04 install observations</H1>
+    <B>Steve Meuse</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%209.04%20install%20observations&In-Reply-To=%3CAANLkTimZSHn7je_ZxNmjrHdhEpcGDISn3ATUYOtOhjSf%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Ubuntu 9.04 install observations">smeuse at gmail.com
+       </A><BR>
+    <I>Thu Jun  3 03:50:20 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000925.html">[Wsjt-devel] Ubuntu 9.04 install observations
+</A></li>
+        <LI>Next message: <A HREF="000927.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Oh, great! Didn't realize those lists existed, I'll check them out....
+
+-Steve
+
+On Wed, Jun 2, 2010 at 9:39 PM, sconklin Lists &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">steve-ml at conklinhouse.com</A>&gt;wrote:
+
+&gt;<i> On Mon, May 31, 2010 at 12:30 PM, Steve Meuse &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Just did a fresh install on Ubuntu 9.04 and I noticed a few things.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; First, the complete package list that I needed to installed:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; subversion
+</I>&gt;<i> &gt; python-dev
+</I>&gt;<i> &gt; python2.5-dev
+</I>&gt;<i> &gt; python-imaging-tk
+</I>&gt;<i> &gt; python-pmw
+</I>&gt;<i> &gt; fftw3-dev
+</I>&gt;<i> &gt; portaudio19-dev
+</I>&gt;<i> &gt; libsamplerate0-dev
+</I>&gt;<i> &gt; python-f2py
+</I>&gt;<i> &gt; gfortran
+</I>&gt;<i> &gt; python-dev
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It wouldn't compile with just python2.5-dev, I ended up having to install
+</I>&gt;<i> &gt; python-dev, which I believe is now 2.6....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Also, I noticed that Audio.so wasn't being copied (make install) to the
+</I>&gt;<i> &gt; WsjtMod directory under:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; /usr/local/lib/python2.6/dist-packages/WsjtMod/
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I had to copy it over by hand. Not sure if that was appropriate or what,
+</I>&gt;<i> but
+</I>&gt;<i> &gt; it was an oversight maybe we could update the Make/config scripts.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Also, on Ubutnu 9.04 python gets installed into /usr/bin, but it seems
+</I>&gt;<i> like
+</I>&gt;<i> &gt; the default directory configure used was /usr/local which barfed up a
+</I>&gt;<i> bunch
+</I>&gt;<i> &gt; of errors when calling the /usr/local/bin/wsjt script. The gist is that
+</I>&gt;<i> the
+</I>&gt;<i> &gt; instal files went into /usr/local/share/wsjt, but since python was in
+</I>&gt;<i> &gt; /usr/bin it looked for those files in /usr/share/wsjt. To get around it I
+</I>&gt;<i> &gt; just made a symlink in /usr/local/bin/ to /usr/bin/python (which itself
+</I>&gt;<i> is a
+</I>&gt;<i> &gt; symlink!).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Minor nits, I know, but maybe with some judicious adjustment of defaults
+</I>&gt;<i> we
+</I>&gt;<i> &gt; can get more folks using the Linux version :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I may attempt running it on 10.04, but I've had some stability issues on
+</I>&gt;<i> the
+</I>&gt;<i> &gt; machine that it's been installed on. Seems like a widespread issue from
+</I>&gt;<i> &gt; reading the forums, possible bad Intel video driver issues.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -Steve
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Wsjt-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> Steve,
+</I>&gt;<i>
+</I>&gt;<i> Thanks for the detailed notes. FYI, we have a developer's team and
+</I>&gt;<i> mailing list for Ubuntu ham-related issues, I've forwarded this to
+</I>&gt;<i> that list so that if/when someone wants to have a look, we have your
+</I>&gt;<i> information.
+</I>&gt;<i>
+</I>&gt;<i> There is a bug open to update wsjt to the latest version. When this is
+</I>&gt;<i> done, it will probably be for the current and next releases, and so
+</I>&gt;<i> may not be backported to 9.04 or 9.10. That bug is here:
+</I>&gt;<i> <A HREF="https://bugs.launchpad.net/ubuntu/+source/wsjt/+bug/588359">https://bugs.launchpad.net/ubuntu/+source/wsjt/+bug/588359</A>
+</I>&gt;<i>
+</I>&gt;<i> If you do try to build wsjt on 10.04, please feel free to document the
+</I>&gt;<i> results in that bug. As you said, there are a few Intel graphics
+</I>&gt;<i> stability problems, but we're working them.
+</I>&gt;<i>
+</I>&gt;<i> Anyone is welcome to join the ubuntu-hams team or the
+</I>&gt;<i> ubuntu-hams-devel team. You can find more information here:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://launchpad.net/~ubuntu-hams">https://launchpad.net/~ubuntu-hams</A> &lt;<A HREF="https://launchpad.net/%7Eubuntu-hams">https://launchpad.net/%7Eubuntu-hams</A>&gt;
+</I>&gt;<i> <A HREF="https://launchpad.net/~ubuntu-hams-devel&lt;https://launchpad.net/%7Eubuntu-hams-devel">https://launchpad.net/~ubuntu-hams-devel&lt;https://launchpad.net/%7Eubuntu-hams-devel</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Steve AI4QR
+</I>&gt;<i> (Ubuntu kernel developer)
+</I>&gt;<i>
+</I>
+
+
+-- 
+
+-Steve
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100602/5f06447a/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100602/5f06447a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000925.html">[Wsjt-devel] Ubuntu 9.04 install observations
+</A></li>
+	<LI>Next message: <A HREF="000927.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

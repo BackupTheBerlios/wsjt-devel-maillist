@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compile on Ubuntu 9.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compile%20on%20Ubuntu%209.04&In-Reply-To=%3C4A139343.3080903%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000665.html">
+   <LINK REL="Next"  HREF="000671.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compile on Ubuntu 9.04</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compile%20on%20Ubuntu%209.04&In-Reply-To=%3C4A139343.3080903%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] compile on Ubuntu 9.04">djmunn at bigpond.com
+       </A><BR>
+    <I>Wed May 20 07:21:07 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000665.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+        <LI>Next message: <A HREF="000671.html">[Wsjt-devel] WSPR revision 1257
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#666">[ date ]</a>
+              <a href="thread.html#666">[ thread ]</a>
+              <a href="subject.html#666">[ subject ]</a>
+              <a href="author.html#666">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe......have been able to compile WSJT7r1251 on my system...
+its a AMD K8 with a 3100+ 1.8ghz processor and 1gig ram running Ubuntu 9.04
+./configure --enable-g95 with no problems
+&quot;make&quot; gives a number of warnings but will compile the Audio.so
+
+when i use python wsjt.py in a terminal to start it it says the Audio ok
+
+however i am getting the following in the terminal when exit the program
+
+Exception in Tkinter call back
+Traceback (most recent call last)
+File &quot;wsjt.py&quot; line 1356 in GenStdMsgs
+MsgBox (&quot;Bad call in To Radio?\nPlease Check&quot;)
+file &quot;wsjt.py&quot; line 440 in MsgBox
+tMessageBox (message=t)
+Type Error: 'module' object is not callable
+
+Audio Streams terminated normally
+Segmentation Fault
+
+i have not seen the Message Box  that usually comes up with the Main 
+screen and SpecJT....
+sometimes the main screen only starts an in the header it shows TK....no 
+SpecJT screen
+
+any ideas on whats causing the problem
+
+73 David VK4BDJ
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000665.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+	<LI>Next message: <A HREF="000671.html">[Wsjt-devel] WSPR revision 1257
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#666">[ date ]</a>
+              <a href="thread.html#666">[ thread ]</a>
+              <a href="subject.html#666">[ subject ]</a>
+              <a href="author.html#666">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

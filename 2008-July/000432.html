@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Mac /  WSPR developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C48779DCD.3040703%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000431.html">
+   <LINK REL="Next"  HREF="000433.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Mac /  WSPR developments</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C48779DCD.3040703%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Mac /  WSPR developments">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul 11 19:52:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000431.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+        <LI>Next message: <A HREF="000433.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#432">[ date ]</a>
+              <a href="thread.html#432">[ thread ]</a>
+              <a href="subject.html#432">[ subject ]</a>
+              <a href="author.html#432">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bruce,
+
+Good job on your Mac successes!
+
+&gt;<i> WSPR:  I've backported the endian changes to the wspr branch (except for 
+</I>&gt;<i> getfile).  It's a pain to have diverged code like that; it would seem to 
+</I>&gt;<i> make sense to build wspr out of the trunk along side wsjt so that 
+</I>&gt;<i> algorithm improvements go into both.  
+</I>
+Yes, there are some pains related to the structure of our 
+code tree.  Do keep in mind that at present we have some 
+significant differences between what's wanted for WSPR (the 
+program) and for WSPR-mode in WSJT.  Among these are the 
+following:
+
+1. WSPR uses 12000 Hz sampling.  WSJT, alas, uses 11025 Hz. 
+  It would be better use 12000 Hz everywhere now, ... but 
+that means a lot of changes in WSJT.  I haven't yet felt the 
+time was right for making this major change.
+
+2. For its beacon-like purposes, WSPR wants to decode all 
+the signals it finds in a narrow band segment, currently 200 
+Hz.  For making QSOs, WSJT may want to focus on signals 
+within &quot;Tol&quot; of the &quot;Freeze DF&quot;.
+
+&gt;<i> Tx works perfectly fine, but Rx is 
+</I>&gt;<i> not decoding correctly....sync, snr, and freq identification are all 
+</I>&gt;<i> good, but somewhere from decode162 on isn't working, as everything comes 
+</I>&gt;<i> out undecodable ('*** ??? ***').  Fano seems to see the signals OK (low 
+</I>&gt;<i> cycle count when processing), but but that's as far as I got. My WSPRing 
+</I>&gt;<i> on 30m right now is from the Mac, and it's being copied well.
+</I>
+Hmmm...
+
+Present versions of wqencode.f90 and wqdecode.f90 should be 
+copied from trunk into the wspr branch, but I don't think 
+that's your problem.  If the Fano cycle count is low it has 
+almost certainly decoded the 50-bit binary message 
+correctly.  It sounds like something is amiss when unpacking 
+those 50 bits to produce human-readable messages?
+
+&gt;<i> WSJT:  I've only tried JT65A.  JT65A receives and decodes fine, and 
+</I>&gt;<i> seems to Tx OK.  However, I'm getting bogus DFs in some places, and 
+</I>&gt;<i> certainly when I click in the spectrum to try to decode something, the 
+</I>&gt;<i> resulting df is bogus.  I haven't looked at that at all, but probably 
+</I>&gt;<i> simple.  John, do you see that as well?
+</I>
+Hope I didn't break something with all my messing around to 
+put WSPR mode into WSJT.  I don't think I've seen this when 
+running here, but I'll watch for such problems.
+
+&gt;<i> I am heading on vacation for much of the next two weeks starting Sunday, 
+</I>&gt;<i> so not sure how much farther I will get.  I may check in the wspr branch 
+</I>&gt;<i> changes later today, but I was hoping to get decoding working again first!
+</I>
+Seems like we're all planning holidays soon.  I'll be around 
+for most of July, but gone for most of August.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000431.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+	<LI>Next message: <A HREF="000433.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#432">[ date ]</a>
+              <a href="thread.html#432">[ thread ]</a>
+              <a href="subject.html#432">[ subject ]</a>
+              <a href="author.html#432">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel]  WSPR on Linux x64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSPR%20on%20Linux%20x64&In-Reply-To=%3C4B407741.3090504%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000893.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel]  WSPR on Linux x64</H1>
+    <B>motokilljoy</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSPR%20on%20Linux%20x64&In-Reply-To=%3C4B407741.3090504%40gmail.com%3E"
+       TITLE="[Wsjt-devel]  WSPR on Linux x64">motokilljoy at gmail.com
+       </A><BR>
+    <I>Sun Jan  3 11:53:53 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000893.html">[Wsjt-devel] wsjt -r1751
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#892">[ date ]</a>
+              <a href="thread.html#892">[ thread ]</a>
+              <a href="subject.html#892">[ subject ]</a>
+              <a href="author.html#892">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>root@:/usr/local/src/trunk# python /usr/local/bin/wspr.py
+******************************************************************
+WSPR Version 2.0_r1714 , by K1JT
+Run date:   Sun Jan  3 10:47:05 2010 UTC
+*** glibc detected *** python: double free or corruption (!prev): 
+0x0000000002adae70 ***
+======= Backtrace: =========
+/lib/libc.so.6[0x7fb338c48dd6]
+/lib/libc.so.6(cfree+0x6c)[0x7fb338c4d70c]
+/usr/lib/libportaudio.so.2[0x7fb32db34425]
+/usr/lib/libportaudio.so.2[0x7fb32db34960]
+/usr/lib/libportaudio.so.2[0x7fb32db39593]
+/usr/lib/python2.5/site-packages/WsprMod/w.so(soundin_+0xb5)[0x7fb32dd54ac5]
+/usr/lib/python2.5/site-packages/WsprMod/w.so(rx_+0x5f)[0x7fb32dd596bf]
+/lib/libpthread.so.0[0x7fb3395d3a04]
+/lib/libc.so.6(clone+0x6d)[0x7fb338cb27bd]
+======= Memory map: ========
+00400000-0051f000 r-xp 00000000 fc:00 7029008                            
+/usr/bin/python2.5
+0071f000-00720000 r--p 0011f000 fc:00 7029008                            
+/usr/bin/python2.5
+00720000-00752000 rw-p 00120000 fc:00 7029008                            
+/usr/bin/python2.5
+00752000-0075a000 rw-p 00000000 00:00 0
+01bd0000-02af1000 rw-p 00000000 00:00 0                                  
+[heap]
+7fb31c000000-7fb31c021000 rw-p 00000000 00:00 0
+7fb31c021000-7fb320000000 ---p 00000000 00:00 0
+7fb321319000-7fb32531a000 rw-s 00000000 00:11 11041979                   
+/dev/shm/pulse-shm-348507820
+7fb32531a000-7fb32531b000 ---p 00000000 00:00 0
+7fb32531b000-7fb325b1b000 rwxp 00000000 00:00 0
+7fb328507000-7fb328508000 ---p 00000000 00:00 0
+7fb328508000-7fb328d08000 rwxp 00000000 00:00 0
+7fb328d08000-7fb328d09000 ---p 00000000 00:00 0
+7fb328d09000-7fb329509000 rwxp 00000000 00:00 0
+7fb329509000-7fb32950b000 r-xp 00000000 fc:00 1778977                    
+/usr/lib/python2.5/site-packages/PIL/_imagingtk.so
+7fb32950b000-7fb32970a000 ---p 00002000 fc:00 1778977                    
+/usr/lib/python2.5/site-packages/PIL/_imagingtk.so
+7fb32970a000-7fb32970b000 r--p 00001000 fc:00 1778977                    
+/usr/lib/python2.5/site-packages/PIL/_imagingtk.so
+7fb32970b000-7fb32970c000 rw-p 00002000 fc:00 1778977                    
+/usr/lib/python2.5/site-packages/PIL/_imagingtk.so
+7fb32970c000-7fb329711000 r-xp 00000000 fc:00 1082001                    
+/usr/lib/libXfixes.so.3.1.0
+7fb329711000-7fb329910000 ---p 00005000 fc:00 1082001                    
+/usr/lib/libXfixes.so.3.1.0
+7fb329910000-7fb329911000 r--p 00004000 fc:00 1082001                    
+/usr/lib/libXfixes.so.3.1.0
+7fb329911000-7fb329912000 rw-p 00005000 fc:00 1082001                    
+/usr/lib/libXfixes.so.3.1.0
+7fb329912000-7fb32991b000 r-xp 00000000 fc:00 1082012                    
+/usr/lib/libXcursor.so.1.0.2
+7fb32991b000-7fb329b1a000 ---p 00009000 fc:00 1082012                    
+/usr/lib/libXcursor.so.1.0.2
+7fb329b1a000-7fb329b1b000 r--p 00008000 fc:00 1082012                    
+/usr/lib/libXcursor.so.1.0.2
+7fb329b1b000-7fb329b1c000 rw-p 00009000 fc:00 1082012                    
+/usr/lib/libXcursor.so.1.0.2
+7fb329b1c000-7fb329b21000 r-xp 00000000 fc:00 1139009                    
+/usr/lib/alsa-lib/libasound_module_pcm_pulse.so
+7fb329b21000-7fb329d21000 ---p 00005000 fc:00 1139009                    
+/usr/lib/alsa-lib/libasound_module_pcm_pulse.so
+7fb329d21000-7fb329d22000 r--p 00005000 fc:00 1139009                    
+/usr/lib/alsa-lib/libasound_module_pcm_pulse.so
+7fb329d22000-7fb329d23000 rw-p 00006000 fc:00 1139009                    
+/usr/lib/alsa-lib/libasound_module_pcm_pulse.so
+7fb329d23000-7fb329d28000 r-xp 00000000 fc:00 1082875                    
+/usr/lib/libogg.so.0.6.0
+7fb329d28000-7fb329f27000 ---p 00005000 fc:00 1082875                    
+/usr/lib/libogg.so.0.6.0
+7fb329f27000-7fb329f28000 r--p 00004000 fc:00 1082875                    
+/usr/lib/libogg.so.0.6.0
+7fb329f28000-7fb329f29000 rw-p 00005000 fc:00 1082875                    
+/usr/lib/libogg.so.0.6.0
+7fb329f29000-7fb329f48000 r-xp 00000000 fc:00 1084119                    
+/usr/lib/libvorbis.so.0.4.0
+7fb329f48000-7fb32a147000 ---p 0001f000 fc:00 1084119                    
+/usr/lib/libvorbis.so.0.4.0
+7fb32a147000-7fb32a148000 r--p 0001e000 fc:00 1084119                    
+/usr/lib/libvorbis.so.0.4.0
+7fb32a148000-7fb32a156000 rw-p 0001f000 fc:00 1084119                    
+/usr/lib/libvorbis.so.0.4.0
+7fb32a156000-7fb32a170000 r-xp 00000000 fc:00 1082899                    
+/usr/lib/libvorbisenc.so.2.0.3
+7fb32a170000-7fb32a36f000 ---p 0001a000 fc:00 1082899                    
+/usr/lib/libvorbisenc.so.2.0.3
+7fb32a36f000-7fb32a370000 r--p 00019000 fc:00 1082899                    
+/usr/lib/libvorbisenc.so.2.0.3
+7fb32a370000-7fb32a530000 rw-p 0001a000 fc:00 1082899                    
+/usr/lib/libvorbisenc.so.2.0.3
+7fb32a530000-7fb32a579000 r-xp 00000000 fc:00 1084131                    
+/usr/lib/libFLAC.so.8.2.0
+7fb32a579000-7fb32a779000 ---p 00049000 fc:00 1084131                    
+/usr/lib/libFLAC.so.8.2.0
+7fb32a779000-7fb32a77a000 r--p 00049000 fc:00 1084131                    
+/usr/lib/libFLAC.so.8.2.0
+7fb32a77a000-7fb32a77b000 rw-p 0004a000 fc:00 1084131                    
+/usr/lib/libFLAC.so.8.2.0
+7fb32a77b000-7fb32a77e000 r-xp 00000000 fc:00 3236006                    
+/lib/libuuid.so.1.3.0
+7fb32a77e000-7fb32a97e000 ---p 00003000 fc:00 3236006                    
+/lib/libuuid.so.1.3.0
+7fb32a97e000-7fb32a97f000 r--p 00003000 fc:00 3236006                    
+/lib/libuuid.so.1.3.0
+7fb32a97f000-7fb32a980000 rw-p 00004000 fc:00 3236006                    
+/lib/libuuid.so.1.3.0
+7fb32a980000-7fb32a9bd000 r-xp 00000000 fc:00 3238081                    
+/lib/libdbus-1.so.3.4.0
+7fb32a9bd000-7fb32abbd000 ---p 0003d000 fc:00 3238081                    
+/lib/libdbus-1.so.3.4.0
+7fb32abbd000-7fb32abbe000 r--p 0003d000 fc:00 3238081                    
+/lib/libdbus-1.so.3.4.0
+7fb32abbe000-7fb32abbf000 rw-p 0003e000 fc:00 3238081                    
+/lib/libdbus-1.so.3.4.0
+7fb32abbf000-7fb32ac1b000 r-xp 00000000 fc:00 1084139                    
+/usr/lib/libsndfile.so.1.0.20
+7fb32ac1b000-7fb32ae1a000 ---p 0005c000 fc:00 1084139                    
+/usr/lib/libsndfile.so.1.0.20
+7fb32ae1a000-7fb32ae1c000 r--p 0005b000 fc:00 1084139                    
+/usr/lib/libsndfile.so.1.0.20
+7fb32ae1c000-7fb32ae1d000 rw-p 0005d000 fc:00 1084139                    
+/usr/lib/libsndfile.so.1.0.20
+7fb32ae1d000-7fb32ae21000 rw-p 00000000 00:00 0
+7fb32ae21000-7fb32ae2a000 r-xp 00000000 fc:00 3238023                    
+/lib/libwrap.so.0.7.6
+7fb32ae2a000-7fb32b029000 ---p 00009000 fc:00 3238023                    
+/lib/libwrap.so.0.7.6
+7fb32b029000-7fb32b02a000 r--p 00008000 fc:00 3238023                    
+/lib/libwrap.so.0.7.6
+7fb32b02a000-7fb32b02b000 rw-p 00009000 fc:00 3238023                    
+/lib/libwrap.so.0.7.6
+7fb32b02b000-7fb32b02c000 rw-p 00000000 00:00 0
+7fb32b02c000-7fb32b031000 r-xp 00000000 fc:00 7053371                    
+/usr/lib/libXtst.so.6.1.0
+7fb32b031000-7fb32b231000 ---p 00005000 fc:00 7053371                    
+/usr/lib/libXtst.so.6.1.0
+7fb32b231000-7fb32b232000 r--p 00005000 fc:00 7053371                    
+/usr/lib/libXtst.so.6.1.0
+7fb32b232000-7fb32b233000 rw-p 00006000 fc:00 7053371                    
+/usr/lib/libXtst.so.6.1.0
+7fb32b233000-7fb32b23b000 r-xp 00000000 fc:00 1082743                    
+/usr/lib/libSM.so.6.0.0
+7fb32b23b000-7fb32b43a000 ---p 00008000 fc:00 1082743                    
+/usr/lib/libSM.so.6.0.0
+7fb32b43a000-7fb32b43b000 r--p 00007000 fc:00 1082743                    
+/usr/lib/libSM.so.6.0.0
+7fb32b43b000-7fb32b43c000 rw-p 00008000 fc:00 1082743                    
+/usr/lib/libSM.so.6.0.0
+7fb32b43c000-7fb32b453000 r-xp 00000000 fc:00 1083902                    
+/usr/lib/libICE.so.6.3.0
+7fb32b453000-7fb32b652000 ---p 00017000 fc:00 1083902                    
+/usr/lib/libICE.so.6.3.0
+7fb32b652000-7fb32b653000 r--p 00016000 fc:00 1083902                    
+/usr/lib/libICE.so.6.3.0
+7fb32b653000-7fb32b654000 rw-p 00017000 fc:00 1083902                    
+/usr/lib/libICE.so.6.3.0
+7fb32b654000-7fb32b657000 rw-p 00000000 00:00 0
+7fb32b657000-7fb32b6a1000 r-xp 00000000 fc:00 1084175                    
+/usr/lib/libpulsecommon-0.9.19.so
+7fb32b6a1000-7fb32b8a0000 ---p 0004a000 fc:00 1084175                    
+/usr/lib/libpulsecommon-0.9.19.so
+7fb32b8a0000-7fb32b8a1000 r--p 00049000 fc:00 1084175                    
+/usr/lib/libpulsecommon-0.9.19.so
+7fb32b8a1000-7fb32b8a2000 rw-p 0004a000 fc:00 1084175                    
+/usr/lib/libpulsecommon-0.9.19.so
+7fb32b8a2000-7fb32b8e0000 r-xp 00000000 fc:00 1084171                    
+/usr/lib/libpulse.so.0.12.0
+7fb32b8e0000-7fb32bae0000 ---p 0003e000 fc:00 1084171                    
+/usr/lib/libpulse.so.0.12.0
+7fb32bae0000-7fb32bae1000 r--p 0003e000 fc:00 1084171                    
+/usr/lib/libpulse.so.0.12.0
+7fb32bae1000-7fb32bae2000 rw-p 0003f000 fc:00 1084171                    
+/usr/lib/libpulse.so.0.12.0
+7fb32bce4000-7fb32bd31000 rw-p 00000000 00:00 0
+7fb32bd31000-7fb32bd3d000 r-xp 00000000 fc:00 3238321                    
+/lib/libnss_files-2.10.1.so
+7fb32bd3d000-7fb32bf3c000 ---p 0000c000 fc:00 3238321                    
+/lib/libnss_files-2.10.1.so
+7fb32bf3c000-7fb32bf3d000 r--p 0000b000 fc:00 3238321                    
+/lib/libnss_files-2.10.1.so
+7fb32bf3d000-7fb32bf3e000 rw-p 0000c000 fc:00 3238321                    
+/lib/libnss_files-2.10.1.so
+7fb32bf3e000-7fb32bf48000 r-xp 00000000 fc:00 3238323                    
+/lib/libnss_nis-2.10.1.soAborted
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000893.html">[Wsjt-devel] wsjt -r1751
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#892">[ date ]</a>
+              <a href="thread.html#892">[ thread ]</a>
+              <a href="subject.html#892">[ subject ]</a>
+              <a href="author.html#892">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

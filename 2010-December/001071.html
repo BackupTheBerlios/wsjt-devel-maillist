@@ -1,0 +1,558 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20trunk%20on%20ubuntu%2010.04%20%28amd64%29%20and%20PTT%20problem&In-Reply-To=%3C87k4iwhbp2.fsf%40penny.tippete.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001073.html">
+   <LINK REL="Next"  HREF="001077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem</H1>
+    <B>Pierfrancesco Caci</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20trunk%20on%20ubuntu%2010.04%20%28amd64%29%20and%20PTT%20problem&In-Reply-To=%3C87k4iwhbp2.fsf%40penny.tippete.net%3E"
+       TITLE="[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem">ik5pvx at tippete.net
+       </A><BR>
+    <I>Sun Dec 26 15:04:57 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001073.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+        <LI>Next message: <A HREF="001077.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1071">[ date ]</a>
+              <a href="thread.html#1071">[ thread ]</a>
+              <a href="subject.html#1071">[ subject ]</a>
+              <a href="author.html#1071">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello,
+I compiled trunk today. The system is an ubuntu 10.04 at 64bits, 
+with the following software versions:
+
+    * python2.5-dev
+this is no longer available, using python2.6-dev instead
+
+    * python-numpy
+using 1:1.3.0-3build1
+
+    * python-imaging-tk
+using 1.1.7-1ubuntu0.1
+
+    * python-pmw
+using 1.3.2-4
+
+    * libportaudio2
+using 19+svn20090620-0ubuntu2
+
+    * libportaudio-dev
+using portaudio19-dev
+
+    * libsamplerate0-dev
+using 0.1.7-3
+
+    * g95
+this is not available, using gfortran instead (4:4.4.3-1ubuntu1)
+
+The output from configure and make is enclosed at the end of this
+message. There are a number of errors/warning that may be of interest. 
+
+I have an issue with PTT keying: this version seems to use both RTS and
+DTR at the same time, regardless of what I configure in the setup
+menu. This results in CW being keyed with my rig, and the corresponding
+annoying sidetone all throughout my transmission. This would not happen
+with &quot;previous version&quot;, only problem here is that I can't recall what
+was the previous one since I overwrote it with this compilation. My last 
+jt65 contact was on 17 August 2010, and I see that ptt.c was modified in
+october. Any ideas?
+
+
+Pf, ik5pvx 
+
+--------------- output from configure and make follows ---------------
+
+Script started on Sun Dec 26 10:34:17 2010
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>:~/build/wsjt/trunk $ ./configure --enable-gfortran
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g77... no
+checking for xlf... no
+checking for f77... no
+checking for frt... no
+checking for pgf77... no
+checking for cf77... no
+checking for fort77... no
+checking for fl32... no
+checking for af77... no
+checking for xlf90... no
+checking for f90... no
+checking for pgf90... no
+checking for pghpf... no
+checking for epcf90... no
+checking for gfortran... gfortran
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether gfortran accepts -g... yes
+./configure: line 3077: test: =: unary operator expected
+checking uname -s... no
+checking for g95... no
+checking for gfortran... /usr/bin/gfortran
+*** gfortran compiler found at /usr/bin/gfortran
+*** No g95 compiler found
+checking for a v19 portaudio ... checking for Pa_GetVersion in -lportaudio... yes
+checking if gcc is Apple GCC... no
+checking for library containing strerror... none required
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking whether gcc needs -traditional... no
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for rm... /bin/rm
+checking for cp... /bin/cp
+checking for mv... /bin/mv
+checking for ln... /bin/ln
+checking for sed... /bin/sed
+checking for ar... /usr/bin/ar
+checking for ld... /usr/bin/ld
+checking for test... /usr/bin/test
+checking for python... /usr/local/bin/python
+checking for f2py... /usr/bin/f2py
+checking OS... checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking sys/syslog.h usability... yes
+checking sys/syslog.h presence... yes
+checking for sys/syslog.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking libgen.h usability... yes
+checking libgen.h presence... yes
+checking for libgen.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking wait.h usability... yes
+checking wait.h presence... yes
+checking for wait.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for sys/resource.h... (cached) yes
+checking linux/ppdev.h usability... yes
+checking linux/ppdev.h presence... yes
+checking for linux/ppdev.h... yes
+checking dev/ppbus/ppi.h usability... no
+checking dev/ppbus/ppi.h presence... no
+checking for dev/ppbus/ppi.h... no
+checking for sys/stat.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking fftw3.h usability... yes
+checking fftw3.h presence... yes
+checking for fftw3.h... yes
+checking samplerate.h usability... yes
+checking samplerate.h presence... yes
+checking for samplerate.h... yes
+checking whether string.h and strings.h may both be included... yes
+checking for sfftw_destroy_plan_ in -lfftw3f... yes
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+configure: creating ./config.status
+config.status: creating Makefile
+
+***************
+Using gfortran as fortran compiler.
+
+Compiling wsjt 
+
+Installing into: /usr/local
+
+]0;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>: /home/ik5pvx/build/wsjt/trunk<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>:~/build/wsjt/trunk $ make
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c init_rs.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c encode_rs.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c decode_rs.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c fano.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c tab.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c nhash.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c -DSTARNIX=1 cutil.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c fthread.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c tmoonsub.c
+tmoonsub.c: In function &#8216;getargs&#8217;:
+tmoonsub.c:59: warning: format not a string literal and no format arguments
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c ptt_unix.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c igray.c
+cc -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -c wrapkarn.c
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c wsjt1.f90
+wsjt1.f90:33.15:
+
+  real red(512)
+               1
+Warning: Unused variable 'red' declared at (1)
+wsjt1.f90:36.18:
+
+  real yellow(216)
+                  1
+Warning: Unused variable 'yellow' declared at (1)
+wsjt1.f90:37.19:
+
+  real yellow0(216)
+                   1
+Warning: Unused variable 'yellow0' declared at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c astro.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c azdist.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c coord.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c dcoord.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c deg2grid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c dot.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ftsky.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c geocentric.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c GeoDist.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c grid2deg.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c moon2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c MoonDop.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c sun.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c toxyz.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c pfxdump.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c avesp2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c bzap.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c spec441.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c spec2d.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c mtdecode.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c stdecode.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c indexx.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c s2shape.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c flat2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c gen65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c gen24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c entail.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c genmet.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c wsjt24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c sync24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ps24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c xcor24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c decode24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c chkmsg.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c gentone.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c interleave24.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c syncf0.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c syncf1.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c synct.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c avemsg6m.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c set.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c flatten.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c db.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c pctile.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c sort.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ssort.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ps.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c smooth.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ping.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c longx.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c peakup.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c sync.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c detect.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c avemsg65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c decode65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c demod64a.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c encode65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c extract.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c chkhist.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c flat1.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c gencw.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c gencwid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c msgtype.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c getpfx1.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c getpfx2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c getsnr.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c graycode.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c grid2k.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c interleave63.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c k2grid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c limit.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c lpf1.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c morse.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c nchar.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c packcall.f
+packcall.f:39.26:
+
+         tmp=' '//callsign
+                          1
+Warning: CHARACTER expression will be truncated in assignment (6/7) at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c packgrid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c packmsg.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c packtext.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c setup65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c short65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c slope.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c spec2d65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c sync65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackcall.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackgrid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackmsg.f
+unpackmsg.f:60.35:
+
+         msg=c1//'                '
+                                   1
+Warning: CHARACTER expression will be truncated in assignment (22/28) at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c unpacktext.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c xcor.f
+xcor.f:12.29:
+
+      real a(NSMAX),a2(NSMAX)
+                             1
+Warning: Unused variable 'a2' declared at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c xfft.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c xfft2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c wsjt65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c ftpeak65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c fil651.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c fil652.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c fil653.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c symsync65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c rfile2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c encode232.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC -c deep65.f90
+/usr/bin/f2py -c --quiet --noopt --debug \
+	--f77flags=&quot;-g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC&quot; --f90flags=&quot;-g -O2 -fno-range-check -ffixed-line-length-none			-Wall -fbounds-check -fno-second-underscore -fPIC&quot; \
+	init_rs.o encode_rs.o decode_rs.o fano.o tab.o nhash.o cutil.o fthread.o tmoonsub.o wsjt1.o astro.o azdist.o coord.o dcoord.o deg2grid.o dot.o ftsky.o geocentric.o GeoDist.o grid2deg.o moon2.o MoonDop.o sun.o toxyz.o pfxdump.o avesp2.o bzap.o spec441.o spec2d.o mtdecode.o stdecode.o indexx.o s2shape.o flat2.o gen65.o gen24.o entail.o genmet.o wsjt24.o sync24.o ps24.o xcor24.o decode24.o chkmsg.o gentone.o interleave24.o syncf0.o syncf1.o synct.o avemsg6m.o set.o flatten.o db.o pctile.o sort.o ssort.o ps.o smooth.o ping.o longx.o peakup.o sync.o detect.o avemsg65.o decode65.o demod64a.o encode65.o extract.o chkhist.o flat1.o gencw.o gencwid.o msgtype.o getpfx1.o getpfx2.o getsnr.o graycode.o grid2k.o interleave63.o k2grid.o limit.o lpf1.o morse.o nchar.o packcall.o packgrid.o packmsg.o packtext.o setup65.o short65.o slope.o spec2d65.o sync65.o unpackcall.o unpackgrid.o unpackmsg.o unpacktext.o xcor.o xfft.o xfft2.o wsjt65.o ftpeak65.o fil651.o fil652.o fil653.o symsync65.o rfile2.o encode232.o deep65.o -m Audio \
+	--fcompiler=gnu95 --f77exec=gfortran --f90exec=gfortran \
+	-I/usr/include -I/usr/local/include  -DPACKAGE_NAME=\&quot;wsjt\&quot; -DPACKAGE_TARNAME=\&quot;wsjt\&quot; -DPACKAGE_VERSION=\&quot;7.04\&quot; -DPACKAGE_STRING=\&quot;wsjt\ 7.04\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DFC_LIB_PATH=\&quot;/usr/lib/gcc/x86_64-linux-gnu/4.4.3/\&quot; -DFC=\&quot;gfortran\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -I. -L/usr/lib -L/usr/local/lib  -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/ -lpthread  -lportaudio -lsamplerate -lfftw3f \
+	only: ftn_init ftn_quit audio_init spec getfile azdist0 astro0 chkt0 : abc441.f90 astro0.f90 audio_init.f90 azdist0.f90 decode1.f90 decode2.f90 decode3.f90 ftn_init.f90 ftn_quit.f90 get_fname.f90 getfile.f90 horizspec.f90 hscroll.f90 pix2d.f90 pix2d65.f90 rfile.f90 savedata.f90 spec.f90 match.f90 wsjtgen.f90 fivehz.f90 chkt0.f90 gran.f90 makepings.f90 packpfx.f90 unpackpfx.f90 genms.f90 decodems.f90 setupms.f90 thnix.f90 tweak1.f90 smo.f90 analytic.f90 geniscat.f90 iscat.f90 four2a.f90 hipass.f90 msdf.f90 syncms.f90 lenms.f90 jtms.f90 foldms.f90 avecho.f90 echogen.f90 alignmsg.f90 chk441.f90 gen441.f90 tm2.f90 gendiana.f90 diana.f90 specdiana.f90 syncdiana.f90 decdiana.f90 \
+	ptt_unix.c igray.c wrapkarn.c a2d.f90 jtaudio.c start_threads.c resample.c
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+buildmodule: Could not found the body of interfaced routine &quot;abc441&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode1&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode2&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode3&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;get_fname&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;check_endian&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;iswap_int&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;iswap_short&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;horizspec&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hscroll&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d65&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;rfile&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;savedata&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;match&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wsjtgen&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehz&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehztx&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;addnoise&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gran&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;makepings&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packpfx&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;unpackpfx&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;genms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decodems&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;setupms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;cs_init&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;cs_destroy&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;th_create&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;th_exit&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;cs_lock&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;cs_unlock&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;tweak1&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;smo&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;analytic&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;geniscat&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;iscat&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;four2a&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hipass&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;msdf&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;syncms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;lenms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;jtms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;foldms&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;avecho&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;echogen&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;alignmsg&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;chk441&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gen441&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;tm2&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gendiana&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;diana&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;specdiana&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;syncdiana&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decdiana&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;. Skipping.
+[32mFound executable /usr/bin/gfortran[0m
+pix2d.f90:1.42:
+
+subroutine pix2d(d2,jz,mousebutton,mousedf,nfreeze,mode,s2,nchan,nz,b)
+                                          1
+Warning: Unused dummy argument 'mousedf' at (1)
+pix2d.f90:1.50:
+
+subroutine pix2d(d2,jz,mousebutton,mousedf,nfreeze,mode,s2,nchan,nz,b)
+                                                  1
+Warning: Unused dummy argument 'nfreeze' at (1)
+makepings.f90: In function &#8216;makepings&#8217;:
+makepings.f90:14: warning: &#8216;amp&#8217; may be used uninitialized in this function
+makepings.f90:15: warning: &#8216;t0&#8217; may be used uninitialized in this function
+makepings.f90:12: warning: &#8216;w&#8217; may be used uninitialized in this function
+packpfx.f90:26.37:
+
+     if(pfx(3:3).eq.' ') pfx=' '//pfx
+                                     1
+Warning: CHARACTER expression will be truncated in assignment (3/4) at (1)
+packpfx.f90:27.37:
+
+     if(pfx(3:3).eq.' ') pfx=' '//pfx
+                                     1
+Warning: CHARACTER expression will be truncated in assignment (3/4) at (1)
+unpackpfx.f90:20.26:
+
+     call1=pfx//'/'//call1
+                          1
+Warning: CHARACTER expression will be truncated in assignment (12/16) at (1)
+decodems.f90: In function &#8216;decodems&#8217;:
+decodems.f90:31: warning: &#8216;kpk&#8217; may be used uninitialized in this function
+iscat.f90: In function &#8216;iscat&#8217;:
+iscat.f90:146: warning: &#8216;ipk2&#8217; may be used uninitialized in this function
+iscat.f90:179: warning: &#8216;ipk3&#8217; may be used uninitialized in this function
+msdf.f90:1.28:
+
+subroutine msdf(cdat,npts,t2,nfft1,f0,nfreeze,mousedf,dftolerance,dfx,snrsq2)
+                            1
+Warning: Unused dummy argument 't2' at (1)
+msdf.f90: In function &#8216;msdf&#8217;:
+msdf.f90:60: warning: &#8216;jpk&#8217; may be used uninitialized in this function
+lenms.f90: In function &#8216;lenms&#8217;:
+lenms.f90:26: warning: &#8216;kpk&#8217; may be used uninitialized in this function
+jtms.f90:2.44:
+
+     DFTolerance,MouseDF,pick,mycall,hiscall)
+                                            1
+Warning: Unused dummy argument 'hiscall' at (1)
+foldms.f90: In function &#8216;foldms&#8217;:
+foldms.f90:32: warning: &#8216;kpk&#8217; may be used uninitialized in this function
+avecho.f90:2.13:
+
+     dlatency,nsave,f1,nsum,nclearave,ss1,ss2)
+             1
+Warning: Unused dummy argument 'dlatency' at (1)
+avecho.f90:1.62:
+
+subroutine avecho(fname,ntime,y1,ibuf0,ntc,necho,nfrit,ndither,      &amp;
+                                                              1
+Warning: Unused dummy argument 'ndither' at (1)
+avecho.f90:1.48:
+
+subroutine avecho(fname,ntime,y1,ibuf0,ntc,necho,nfrit,ndither,      &amp;
+                                                1
+Warning: Unused dummy argument 'necho' at (1)
+avecho.f90:1.29:
+
+subroutine avecho(fname,ntime,y1,ibuf0,ntc,necho,nfrit,ndither,      &amp;
+                             1
+Warning: Unused dummy argument 'ntime' at (1)
+avecho.f90: In function &#8216;avecho&#8217;:
+avecho.f90:98: warning: &#8216;ipk&#8217; may be used uninitialized in this function
+chk441.f90: In function &#8216;chk441&#8217;:
+chk441.f90:78: warning: &#8216;dfx&#8217; may be used uninitialized in this function
+chk441.f90:77: warning: &#8216;ipk&#8217; may be used uninitialized in this function
+tm2.f90:6.13:
+
+  real*4 day4,xlat4,xlon4,xl4,b4
+             1
+Warning: Unused variable 'day4' declared at (1)
+gendiana.f90:1.67:
+
+subroutine gendiana(msg,msglen,samfac,iwave,nwave,msgsent,sendingsh)
+                                                                   1
+Warning: Unused dummy argument 'sendingsh' at (1)
+diana.f90:10.18:
+
+  character c42*42
+                  1
+Warning: Unused variable 'c42' declared at (1)
+syncdiana.f90: In function &#8216;syncdiana&#8217;:
+syncdiana.f90:36: warning: &#8216;jpk1&#8217; may be used uninitialized in this function
+syncdiana.f90:86: warning: &#8216;ipk2&#8217; may be used uninitialized in this function
+decdiana.f90:1.27:
+
+subroutine decdiana(s0,jsym,ipk,jpk,msglen,msg,nsnr)
+                           1
+Warning: Unused dummy argument 'jsym' at (1)
+decdiana.f90: In function &#8216;decdiana&#8217;:
+decdiana.f90:51: warning: &#8216;ipk3&#8217; may be used uninitialized in this function
+mv Audio.so WsjtMod
+]0;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>: /home/ik5pvx/build/wsjt/trunk<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>:~/build/wsjt/trunk $ exit
+
+Script done on Sun Dec 26 10:35:06 2010
+
+
+-- 
+Pierfrancesco Caci
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001073.html">[Wsjt-devel] Two suggestions for WSPR 3.0 Manual &amp; GUI
+</A></li>
+	<LI>Next message: <A HREF="001077.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1071">[ date ]</a>
+              <a href="thread.html#1071">[ thread ]</a>
+              <a href="subject.html#1071">[ subject ]</a>
+              <a href="author.html#1071">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

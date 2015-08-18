@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTik0oSW6-jVt%3DyT3igBQrw1kFPZzEbnVrud%3DTV_t%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000997.html">
+   <LINK REL="Next"  HREF="000986.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTik0oSW6-jVt%3DyT3igBQrw1kFPZzEbnVrud%3DTV_t%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">sivan.toledo at gmail.com
+       </A><BR>
+    <I>Thu Nov 25 07:30:32 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000997.html">[Wsjt-devel] Frequency hopping
+</A></li>
+        <LI>Next message: <A HREF="000986.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#982">[ date ]</a>
+              <a href="thread.html#982">[ thread ]</a>
+              <a href="subject.html#982">[ subject ]</a>
+              <a href="author.html#982">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm delighted it works.
+
+&gt;<i>From the features of rigctl I gather that many users (perhaps all of them)
+</I>won't be able to trasmit a CW tone for tuning using the script, right?
+
+So I guess that I should still add an option for a short tuning tone to the
+code, so that WSPR can both do the T/R switching (a user script can also do
+that) and generate the audio tone (which I think a user script cannot easily
+do).
+
+Regards, Sivan
+
+On Wed, Nov 24, 2010 at 11:13 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I have been running WSPR with Sivan's enhancement to allow frequency
+</I>&gt;<i> hopping.  It works very well here...
+</I>&gt;<i>
+</I>&gt;<i> I've now added another feature: whenever WSPR executes a successful
+</I>&gt;<i> band-chance command to a CAT-controlled radio, it looks for a file named
+</I>&gt;<i> user_hardware.bat, user_hardware.exe, or user_hardware in the working
+</I>&gt;<i> directory.  If one of these is found, WSPR tries to execute the command
+</I>&gt;<i>
+</I>&gt;<i> user_hardware nnn
+</I>&gt;<i>
+</I>&gt;<i> where nnn is the band-designation wavelength in meters.
+</I>&gt;<i>
+</I>&gt;<i> My station uses a USB-interfaced device called &quot;LabJack U12&quot; to control
+</I>&gt;<i> various bandswitching functions external to the radio.  In particular, it
+</I>&gt;<i> connects the radio to a selected antenna for each HF band.
+</I>&gt;<i>
+</I>&gt;<i> The simple Python program &quot;user_hardware.py&quot; is an example of how my
+</I>&gt;<i> station can control antenna switching through the LabJack.  To enable this
+</I>&gt;<i> feature in a clean WSPR installation, I would need to add a batch file
+</I>&gt;<i> user_hardware.bat containing this single line:
+</I>&gt;<i>
+</I>&gt;<i> python user_hardware.py %1
+</I>&gt;<i>
+</I>&gt;<i> Other users may write their own station control program using any desired
+</I>&gt;<i> computer language.
+</I>&gt;<i>
+</I>&gt;<i> I am now running WSPR with frequency hopping among 5 bands.
+</I>&gt;<i>
+</I>&gt;<i> Comments welcome!
+</I>&gt;<i>
+</I>&gt;<i>        -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101125/b0b19c2e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101125/b0b19c2e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000997.html">[Wsjt-devel] Frequency hopping
+</A></li>
+	<LI>Next message: <A HREF="000986.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#982">[ date ]</a>
+              <a href="thread.html#982">[ thread ]</a>
+              <a href="subject.html#982">[ subject ]</a>
+              <a href="author.html#982">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

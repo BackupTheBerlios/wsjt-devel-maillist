@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Configuration dialog proposal.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C5235A9B0.5000102%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001942.html">
+   <LINK REL="Next"  HREF="001946.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Configuration dialog proposal.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C5235A9B0.5000102%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Configuration dialog proposal.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sun Sep 15 14:36:00 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001942.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001946.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1943">[ date ]</a>
+              <a href="thread.html#1943">[ thread ]</a>
+              <a href="subject.html#1943">[ subject ]</a>
+              <a href="author.html#1943">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/09/2013 13:12, John Nelson wrote:
+&gt;<i> Bil
+</I>&gt;<i>
+</I>&gt;&gt;<i> They simply allow '/dev/rig' as the CAT device and the user is expected to make a symlink to the actual device.
+</I>&gt;<i> But /dev is reconstituted on reboot and the soft link is removed.  Several Mac users tried this and complained about the need to re-establish the link until I pointed out that the UserGuide explicitly told them how to extend the CAT list thus making meddling with /dev unnecessary.
+</I>&gt;<i>
+</I>&gt;<i> So the link has  has be redone again, and then again.   Don't you think this is clumsy?   I don't agree with the suggestion.
+</I>Ah OK, there are similar issues with Linux since distros started using 
+udev for device management. In that case it's pretty straightforward to 
+add a custom udev rule to reincarnate the custom device on reboot.
+
+Looking for a similar feature on OS-X doesn't reveal much of any use.
+
+It is possible to have editable items in a combo box, that is probably 
+the best way to allow for a custom device without having users delve 
+into configuration files. I'll have a go at adding that to my current 
+configuration changes with the user entered item(s) being saved in the 
+.ini file.
+
+I have looked at enumerating the actual available serial devices but 
+this is a whole can of worms in itself (with a nested can of more worms 
+when hot-plugged devices like USB get included), I will also revisit 
+that when I get the basic rig control working the way I think it should.
+&gt;<i>
+</I>&gt;&gt;<i> CAT port and serial port may be different or the same with my current configuration code.
+</I>&gt;<i> Agreed.  It's just that the proposed naming convention is more logical (I think).  I assumed in your scheme  Serial port   would appear in wsjtx.ini  as SerialPort   and   CATPort would be so named although CATport already exists in wsjtx.ini but is used for something else.     It would be better for names in wsjtx.ini to match with names (if possible) on the configuration panel
+</I>&gt;<i>
+</I>&gt;&gt;<i> IMHO just announcing in the release note for a version that certain configuration options will need resetting after an upgrade is probably the best overall solution.
+</I>&gt;<i> Agreed.
+</I>&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001942.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001946.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1943">[ date ]</a>
+              <a href="thread.html#1943">[ thread ]</a>
+              <a href="subject.html#1943">[ subject ]</a>
+              <a href="author.html#1943">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

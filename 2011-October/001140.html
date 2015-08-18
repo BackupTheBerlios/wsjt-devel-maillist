@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] oss problem ????
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C20111007150750.64b12bfe%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001139.html">
+   <LINK REL="Next"  HREF="001141.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] oss problem ????</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C20111007150750.64b12bfe%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] oss problem ????">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Oct  7 16:07:50 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001139.html">[Wsjt-devel] WSJT hosted at SourceForge
+</A></li>
+        <LI>Next message: <A HREF="001141.html">[Wsjt-devel] oss problem ????
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1140">[ date ]</a>
+              <a href="thread.html#1140">[ thread ]</a>
+              <a href="subject.html#1140">[ subject ]</a>
+              <a href="author.html#1140">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+I thought I'd give kernel 3.0.1 on Debian 6.5 a try, on Debian 6.0 with kernel 2.6.35 there are no
+problems I've found.
+
+However, the seems to be a problem possible with OSS, see below, One thing I did notice and I'll be
+flagging on the debian list is when K3.0.1 is loaded with its dependencies most of the audio modules get
+blacklisted .
+could you point me in the direction to find whats missing please.
+
+******************************************************************
+WSJT Version 9.1 r2442 , by K1JT
+Revision date: 2011-09-13 20:56:36 +0100 (Tue, 13 Sep 2011) 
+Run date:   Fri Oct  7 13:58:34 2011 UTC
+Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS, &amp;temp )' failed in 'src/hostapi/oss/pa_unix_oss.c', line: 397
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0       16         0       /dev/dsp1
+   1        0        10       M Audio Delta 66: ICE1712 multi (hw:0,0)
+   2        2         0       Conexant CX8801: CX88 Digital (hw:1,0)
+   3        0        128       front
+   4        0        128       surround40
+   5        0        128       surround41
+   6        0        128       surround50
+   7        0        128       surround51
+   8        0        128       iec958
+   9        0        128       spdif
+  10       128        128       default
+  11        0        10       dmix
+
+User requested devices:   Input =  5   Output =  5
+Default devices:          Input =  0   Output =  0
+Will open devices:        Input =  5   Output =  5
+Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS, &amp;temp )' failed in 'src/hostapi/oss/pa_unix_oss.c', line: 397
+Expression 'parameters-&gt;channelCount &lt;= maxChans' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 926
+Expression 'ValidateParameters( inputParameters, hostApi, StreamDirection_In )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1136
+Error opening input audio stream.
+	Errortext: Invalid number of channels
+	Number: -9998
+Error opening output audio stream.
+	Errortext: Invalid sample rate
+	Number: -9997
+Error  3 in JTaudio, you will only be able to work offline.
+
+
+
+thanks-- 
+Best wishes / 73
+
+e-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+Richard Bown
+nil carborundum a illegitemis
+##################################################################################
+Ham Call G8JVM . OS Fedora FC15 x86_64 on a Dual core AMD Athlon 4400, 4 GB RAM
+Maidenhead QRA: IO82SP38, LAT. 52 39.720' N LONG. 2 28.171 W ( degs mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+################################################################################## 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001139.html">[Wsjt-devel] WSJT hosted at SourceForge
+</A></li>
+	<LI>Next message: <A HREF="001141.html">[Wsjt-devel] oss problem ????
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1140">[ date ]</a>
+              <a href="thread.html#1140">[ thread ]</a>
+              <a href="subject.html#1140">[ subject ]</a>
+              <a href="author.html#1140">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

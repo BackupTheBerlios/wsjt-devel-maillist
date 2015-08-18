@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48rGH_W4Q_m%2BSnfK2wg0UeF7Xz65%3D37SD3aJpBrbVTF-g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001668.html">
+   <LINK REL="Next"  HREF="001673.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48rGH_W4Q_m%2BSnfK2wg0UeF7Xz65%3D37SD3aJpBrbVTF-g%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Aug  4 13:43:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001668.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001673.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1672">[ date ]</a>
+              <a href="thread.html#1672">[ thread ]</a>
+              <a href="subject.html#1672">[ subject ]</a>
+              <a href="author.html#1672">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Casting the first argument for the call to std::min to qint64 allows
+compilation, but the program fails with a SIGSEGV when I select my audio
+device.
+
+73,
+
+-- Edson
+
+$ ./wsjtx
+SoundInput active
+
+audio input buffer size =  2400  bytes
+
+0 QSOs and 0 countries worked in file &quot;wsjtx_log.adi&quot;
+SoundInput stopped
+
+SoundInput active
+
+audio input buffer size =  2400  bytes
+
+Segmentation fault (core dumped)
+
+
+On Sat, Aug 3, 2013 at 10:56 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Bill,
+</I>&gt;<i>
+</I>&gt;<i> Compiled and running without problems, so far.  Have made a few QSOs on
+</I>&gt;<i> both modes.
+</I>&gt;<i>
+</I>&gt;<i> Is there a known reason that it won't compile in Qt4, or have you simply
+</I>&gt;<i> not tried?
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 8/3/2013 7:59 PM, Bill Somerville wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have a working version of WSJT-X that uses the Qt audio input and
+</I>&gt;&gt;<i> output streams. Qt5 is required to build this, PortAudio is not required.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If anyone wants to test this (I have only tested on Windows so far) I
+</I>&gt;&gt;<i> would appreciate any feedback on building or running.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Attached is a patch which you can apply to the r3522 codebase, there are
+</I>&gt;&gt;<i> four new files which all go in the top directory with the other main C++
+</I>&gt;&gt;<i> sources, I believe the patch program will create these.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To apply the patch use the standard *nix patch command in the root
+</I>&gt;&gt;<i> directory of the project as follows:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> patch -p0 -i &lt;patch-file-path&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As the changes are quite extensive I think a build and test on *nix and
+</I>&gt;&gt;<i> OS-X might be better before any checkin.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/e2f90b1e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/e2f90b1e/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001668.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001673.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1672">[ date ]</a>
+              <a href="thread.html#1672">[ thread ]</a>
+              <a href="subject.html#1672">[ subject ]</a>
+              <a href="author.html#1672">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

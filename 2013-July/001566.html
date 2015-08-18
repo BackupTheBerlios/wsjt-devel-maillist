@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3C51F2C971.8030905%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001565.html">
+   <LINK REL="Next"  HREF="001534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3C51F2C971.8030905%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.1">joe at princeton.edu
+       </A><BR>
+    <I>Fri Jul 26 21:09:37 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001565.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+        <LI>Next message: <A HREF="001534.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1566">[ date ]</a>
+              <a href="thread.html#1566">[ thread ]</a>
+              <a href="subject.html#1566">[ subject ]</a>
+              <a href="author.html#1566">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson and all,
+
+1. Yes, by all means go ahead with the plan to make your code for 
+PSK-Reporter active on all platforms.  This will remove any dependence 
+on Windows file PSKReporter.dll and its exported function names.
+
+2. I am making the switch from Qt4 to Qt5 TODAY.  Henceforth I will be 
+building under Qt5, in both Windows and Linux.
+
+3. I think we're agreed that our next major task is to re-write 
+soundin.cpp and soundout.cpp to use Qt's built-in QAudio tools instead 
+of PortAudio.  Edson, are you willing to take on this task?  It need not 
+have a short deadline, since we already have a solid system for audio I/O.
+
+4. In parallel with #3, it would be good to straighten out any remaining 
+issues with respect to rig control, GUI behavior, etc.  I would be happy 
+to see input to this list about what's most important in this area, and 
+volunteers to work in any capacity on pieces of it.
+
+I will continue to think about the possibilities of adding support for 
+I/Q transceivers such as SoftRock and adding other WSJT modes to WSJT-X. 
+  Are there other important areas that we should be addressing?
+
+What do others here think about my question of how best to encourage 
+more people to switch from JT65 to JT9, and to use JT9 on more bands?
+
+	-- Joe, K1JT
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001565.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+	<LI>Next message: <A HREF="001534.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1566">[ date ]</a>
+              <a href="thread.html#1566">[ thread ]</a>
+              <a href="subject.html#1566">[ subject ]</a>
+              <a href="author.html#1566">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

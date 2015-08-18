@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20in%20/branches/wsjtx&In-Reply-To=%3C51F6A4FE.9050009%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001603.html">
+   <LINK REL="Next"  HREF="001605.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20in%20/branches/wsjtx&In-Reply-To=%3C51F6A4FE.9050009%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx">joe at princeton.edu
+       </A><BR>
+    <I>Mon Jul 29 19:23:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001603.html">[Wsjt-devel] WSJTX compile HowTo
+</A></li>
+        <LI>Next message: <A HREF="001605.html">[Wsjt-devel] Compiling WSJT-X 1.1 on OS X 10.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1594">[ date ]</a>
+              <a href="thread.html#1594">[ thread ]</a>
+              <a href="subject.html#1594">[ subject ]</a>
+              <a href="author.html#1594">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe M,
+
+Questions like yours are best addressed to the wsjt-devel list.
+Your best source of information on compiling WSJT-X in OS X will be John 
+Nelson, G4KLA.  No doubt John will respond when he finds time.
+
+Changing the value of NSMAX is *NOT* a good idea.  Its size defines the 
+maximum number of bins in spectra computed for the waterfall.
+
+In \Linux it's easy to change the system default maximum size of a 
+shared memory region.  You can just do this:
+
+# echo &quot;8388608&quot; &gt; /proc/sys/kernel/shmmax
+
+Or preferably, to preserve the new configuration after a reboot add the 
+following to /etc/sysctl.conf
+
+kernel.shmmax = 8388608
+
+Calls to QSharedMemory::lock() are unnecessary since only the GUI writes 
+to this region and synchronization is done in another way.  On the jt9 
+side, jt9com is read-only.
+
+The Fortran compiler decorates external symbols with a trailing 
+underscore.  Thus to a C or C++ program, jt9com becomes jt9com_.
+
+	-- Joe, K1JT
+
+
+
+On 7/29/2013 12:10 PM, Joe Mastroianni wrote:
+&gt;<i> Hi Joe
+</I>&gt;<i>
+</I>&gt;<i> For reasons I can&#8217;t entirely articulate I decided to try to build wsjt-x on
+</I>&gt;<i> MacOsX 10.8. I have parallels on that machine and can run it fine in windows
+</I>&gt;<i> mode, so it is strictly in the sense of self-abuse that I&#8217;m trying this, and
+</I>&gt;<i> also with the possibility in my heart that I can somehow get the PTT to work
+</I>&gt;<i> correctly on my IC7600 and get the windows all sized nicely in Qt.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> In any case, I'm noticing the following in my compilation - MacOSx doesn't seem
+</I>&gt;<i> to like to create a QSharedMemory object of size &quot;sizeof(jt9com_)&quot; which is just
+</I>&gt;<i> north of 7Meg on my machine. I get an error after the QSharedMemory::create
+</I>&gt;<i> function that I've hit a system specific limitation. So I figured I needed to
+</I>&gt;<i> try to shrink it (and later, figure out how to increase that number on the
+</I>&gt;<i> MacOsX side). I noticed in your common.h on the Qt side of things that you
+</I>&gt;<i> increased the variable NSMAX to 6824 from 1365. I reduced it to 1365 in both the
+</I>&gt;<i> fortran and Qt sides of things, and I could get it to compile and link, but it
+</I>&gt;<i> freezes during runtime.
+</I>&gt;<i>
+</I>&gt;<i> I noticed a few things -
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> First when initializing the QSharedMemory object there isn't a call to
+</I>&gt;<i> QSharedMemory::lock() before attempting to zero out the memory space. (and then
+</I>&gt;<i> subsequent unlock) That was creating sporadic crashes, at least on my MacBookPro.
+</I>&gt;<i>
+</I>&gt;<i> That was easy enough to solve but I will have to go through the rest of the code
+</I>&gt;<i> at some point to do locks and unlocks.
+</I>&gt;<i>
+</I>&gt;<i> The other thing I noticed is that the &quot;extern struct&quot; in common.h on the C++
+</I>&gt;<i> side doesn't match the common/jtcom on the Fortran side. There are 32 extra
+</I>&gt;<i> bytes on the C++ side and I was wondering what I'm missing. I noticed that
+</I>&gt;<i> jt9com is NOT &quot;jt9com_&quot; and I've yet to figure where that declaration is coming
+</I>&gt;<i> from.
+</I>&gt;<i>
+</I>&gt;<i> Anyway, thanks for your great program.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> With kind regards,
+</I>&gt;<i>
+</I>&gt;<i> Joe
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001603.html">[Wsjt-devel] WSJTX compile HowTo
+</A></li>
+	<LI>Next message: <A HREF="001605.html">[Wsjt-devel] Compiling WSJT-X 1.1 on OS X 10.8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1594">[ date ]</a>
+              <a href="thread.html#1594">[ thread ]</a>
+              <a href="subject.html#1594">[ subject ]</a>
+              <a href="author.html#1594">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

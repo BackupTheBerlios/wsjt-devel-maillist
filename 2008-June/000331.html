@@ -1,0 +1,401 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C1212807346.17803.8.camel%40enterprise.gimmel.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000328.html">
+   <LINK REL="Next"  HREF="000336.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Tim Gimmel</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C1212807346.17803.8.camel%40enterprise.gimmel.org%3E"
+       TITLE="[Wsjt-devel] revision 844">tjg at henderson.net
+       </A><BR>
+    <I>Sat Jun  7 04:55:46 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000328.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000336.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#331">[ date ]</a>
+              <a href="thread.html#331">[ thread ]</a>
+              <a href="subject.html#331">[ subject ]</a>
+              <a href="author.html#331">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2008-06-06 at 15:37 -0400, Diane Bruce wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> revision 844 of wsjt should check for a v19 portaudio in /usr/include
+</I>&gt;<i> and /usr/lib; then try for a v19 portaudio in /usr/local/include/portaudio2
+</I>&gt;<i> and /usr/local/lib/portaudio2 by default. The
+</I>&gt;<i> --with-portaudio-include-dir=&lt;path&gt; and --with-portaudio-lib-dir=&lt;path&gt;
+</I>&gt;<i> have been left in place as they will surely still be needed.
+</I>&gt;<i> 
+</I>&gt;<i> Let me know how this works out for others.
+</I>
+Diane,
+I had some issues (I think) with configure on wsjt r845.  If I specify
+the location of portaudio it works FB, but if I let ./configure try to
+find it it on its own, I get this error when running wsjt:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ python wsjt.py
+Traceback (most recent call last):
+  File &quot;wsjt.py&quot;, line 11, in ?
+      from WsjtMod import Audio
+      ImportError: /home/tim/src/trunk/WsjtMod/Audio.so: undefined
+symbol: Pa_IsStreamActive
+      <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$
+
+I have attached the configure outputs in 'wsjt_845_error' and have
+attached the config.status files of the one that works and the one that
+does not work.
+Let me know if you need more &quot;stuff&quot;.
+
+73,
+Tim kb4ama
+
+&gt;<i> 
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>-------------- next part --------------
+./configure --enable-g95 --with-portaudio-include-dir=/usr/local/include --with-portaudio-lib-dir=/usr/local/lib
+****The above works FB.
+
+./configure
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ python wsjt.py
+Traceback (most recent call last):
+  File &quot;wsjt.py&quot;, line 11, in ?
+      from WsjtMod import Audio
+      ImportError: /home/tim/src/trunk/WsjtMod/Audio.so: undefined symbol: Pa_IsStreamActive
+      <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$
+******The above not so much.
+
+./configure --enable-g95
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ python wsjt.py
+Traceback (most recent call last):
+  File &quot;wsjt.py&quot;, line 11, in ?
+      from WsjtMod import Audio
+      ImportError: /home/tim/src/trunk/WsjtMod/Audio.so: undefined symbol: Pa_IsStreamActive
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Tim at scotty</A>:~/src/trunk$
+*******The above not so much either
+
+Here is configure text:
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">im at scotty</A>:~/src/trunk$ make clean
+rm -f -f *.o *.pyc *.so *~ JT65code wsjt6 WsjtMod/*.pyc WsjtMod/*.pyc \
+                WsjtMod/*.so
+		<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ ./configure --enable-g95
+		checking for gcc... gcc
+		checking for C compiler default output file name... a.out
+		checking whether the C compiler works... yes
+		checking whether we are cross compiling... no
+		checking for suffix of executables...
+		checking for suffix of object files... o
+		checking whether we are using the GNU C compiler... yes
+		checking whether gcc accepts -g... yes
+		checking for gcc option to accept ISO C89... none needed
+		checking for g77... g77
+		checking whether we are using the GNU Fortran 77 compiler... yes
+		checking whether g77 accepts -g... yes
+		checking uname -s for Cygwin, Solaris or HPUX... no
+		checking if gcc is Apple GCC... no
+		checking for library containing strerror... none required
+		checking for inline... inline
+		checking how to run the C preprocessor... gcc -E
+		checking for grep that handles long lines and -e... /bin/grep
+		checking for egrep... /bin/grep -E
+		checking whether gcc needs -traditional... no
+		checking whether make sets $(MAKE)... yes
+		checking for a BSD-compatible install... /usr/bin/install -c
+		checking for rm... /bin/rm
+		checking for cp... /bin/cp
+		checking for mv... /bin/mv
+		checking for ln... /bin/ln
+		checking for sed... /bin/sed
+		checking for ar... /usr/bin/ar
+		checking for ld... /usr/bin/ld
+		checking for test... /usr/bin/test
+		checking for python... /usr/bin/python
+		checking for f2py... /usr/bin/f2py
+		checking for g95... /usr/bin/g95
+		checking g95 lib path... /home/tim/src/g95-install/bin/../lib/gcc-lib/i686-suse-linux-gnu/4.0.3//
+		checking g95 lib path... checking for gfortran42... no
+		checking for gfortran... /usr/bin/gfortran
+		checking gfortran lib path... /usr/lib/gcc/i486-linux-gnu/4.1.2/
+		checking OS... checking for ANSI C header files... yes
+		checking for sys/types.h... yes
+		checking for sys/stat.h... yes
+		checking for stdlib.h... yes
+		checking for string.h... yes
+		checking for memory.h... yes
+		checking for strings.h... yes
+		checking for inttypes.h... yes
+		checking for stdint.h... yes
+		checking for unistd.h... yes
+		checking for inttypes.h... (cached) yes
+		checking for stdint.h... (cached) yes
+		checking sys/resource.h usability... yes
+		checking sys/resource.h presence... yes
+		checking for sys/resource.h... yes
+		checking sys/param.h usability... yes
+		checking sys/param.h presence... yes
+		checking for sys/param.h... yes
+		checking errno.h usability... yes
+		checking errno.h presence... yes
+		checking for errno.h... yes
+		checking sys/syslog.h usability... yes
+		checking sys/syslog.h presence... yes
+		checking for sys/syslog.h... yes
+		checking stddef.h usability... yes
+		checking stddef.h presence... yes
+		checking for stddef.h... yes
+		checking libgen.h usability... yes
+		checking libgen.h presence... yes
+		checking for libgen.h... yes
+		checking sys/wait.h usability... yes
+		checking sys/wait.h presence... yes
+		checking for sys/wait.h... yes
+		checking wait.h usability... yes
+		checking wait.h presence... yes
+		checking for wait.h... yes
+		checking stdio.h usability... yes
+		checking stdio.h presence... yes
+		checking for stdio.h... yes
+		checking termios.h usability... yes
+		checking termios.h presence... yes
+		checking for termios.h... yes
+		checking for sys/resource.h... (cached) yes
+		checking linux/ppdev.h usability... yes
+		checking linux/ppdev.h presence... yes
+		checking for linux/ppdev.h... yes
+		checking dev/ppbus/ppi.h usability... no
+		checking dev/ppbus/ppi.h presence... no
+		checking for dev/ppbus/ppi.h... no
+		checking for sys/stat.h... (cached) yes
+		checking fcntl.h usability... yes
+		checking fcntl.h presence... yes
+		checking for fcntl.h... yes
+		checking sys/ioctl.h usability... yes
+		checking sys/ioctl.h presence... yes
+		checking for sys/ioctl.h... yes
+		checking whether time.h and sys/time.h may both be included... yes
+		checking fftw3.h usability... yes
+		checking fftw3.h presence... yes
+		checking for fftw3.h... yes
+		checking samplerate.h usability... yes
+		checking samplerate.h presence... yes
+		checking for samplerate.h... yes
+		checking whether string.h and strings.h may both be included... yes
+		checking for fftwf_mkplan in -lfftw3f... yes
+		checking size of int64_t... 8
+		checking size of long long... 8
+		checking for uint64_t... yes
+		checking for int64_t... yes
+		checking for u_int32_t... yes
+		checking for u_int16_t... yes
+		checking whether byte ordering is bigendian... no
+		checking stdarg.h usability... yes
+		checking stdarg.h presence... yes
+		checking for stdarg.h... yes
+		*** gfortran compiler found
+		*** g95 compiler found
+		Trying FreeBSD paths
+		configure: creating ./config.status
+		config.status: creating Makefile
+
+
+		Using g95 as fortran compiler.
+
+		Compiling wsjt 5.9.6
+
+		Installing into: /usr/local/
+
+		<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$
+***********The above configure will compile but not run.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ make clean
+rm -f -f *.o *.pyc *.so *~ JT65code wsjt6 WsjtMod/*.pyc WsjtMod/*.pyc \
+                WsjtMod/*.so
+		<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ rm config.status
+		<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$ ./configure --enable-g95 --with-portaudio-include-dir=/usr/local/include --with-portaudio-lib-dir=/usr/local/lib
+		checking for gcc... gcc
+		checking for C compiler default output file name... a.out
+		checking whether the C compiler works... yes
+		checking whether we are cross compiling... no
+		checking for suffix of executables...
+		checking for suffix of object files... o
+		checking whether we are using the GNU C compiler... yes
+		checking whether gcc accepts -g... yes
+		checking for gcc option to accept ISO C89... none needed
+		checking for g77... g77
+		checking whether we are using the GNU Fortran 77 compiler... yes
+		checking whether g77 accepts -g... yes
+		checking uname -s for Cygwin, Solaris or HPUX... no
+		checking if gcc is Apple GCC... no
+		checking for library containing strerror... none required
+		checking for inline... inline
+		checking how to run the C preprocessor... gcc -E
+		checking for grep that handles long lines and -e... /bin/grep
+		checking for egrep... /bin/grep -E
+		checking whether gcc needs -traditional... no
+		checking whether make sets $(MAKE)... yes
+		checking for a BSD-compatible install... /usr/bin/install -c
+		checking for rm... /bin/rm
+		checking for cp... /bin/cp
+		checking for mv... /bin/mv
+		checking for ln... /bin/ln
+		checking for sed... /bin/sed
+		checking for ar... /usr/bin/ar
+		checking for ld... /usr/bin/ld
+		checking for test... /usr/bin/test
+		checking for python... /usr/bin/python
+		checking for f2py... /usr/bin/f2py
+		checking for g95... /usr/bin/g95
+		checking g95 lib path... /home/tim/src/g95-install/bin/../lib/gcc-lib/i686-suse-linux-gnu/4.0.3//
+		checking g95 lib path... checking for gfortran42... no
+		checking for gfortran... /usr/bin/gfortran
+		checking gfortran lib path... /usr/lib/gcc/i486-linux-gnu/4.1.2/
+		checking OS... checking for ANSI C header files... yes
+		checking for sys/types.h... yes
+		checking for sys/stat.h... yes
+		checking for stdlib.h... yes
+		checking for string.h... yes
+		checking for memory.h... yes
+		checking for strings.h... yes
+		checking for inttypes.h... yes
+		checking for stdint.h... yes
+		checking for unistd.h... yes
+		checking for inttypes.h... (cached) yes
+		checking for stdint.h... (cached) yes
+		checking sys/resource.h usability... yes
+		checking sys/resource.h presence... yes
+		checking for sys/resource.h... yes
+		checking sys/param.h usability... yes
+		checking sys/param.h presence... yes
+		checking for sys/param.h... yes
+		checking errno.h usability... yes
+		checking errno.h presence... yes
+		checking for errno.h... yes
+		checking sys/syslog.h usability... yes
+		checking sys/syslog.h presence... yes
+		checking for sys/syslog.h... yes
+		checking stddef.h usability... yes
+		checking stddef.h presence... yes
+		checking for stddef.h... yes
+		checking libgen.h usability... yes
+		checking libgen.h presence... yes
+		checking for libgen.h... yes
+		checking sys/wait.h usability... yes
+		checking sys/wait.h presence... yes
+		checking for sys/wait.h... yes
+		checking wait.h usability... yes
+		checking wait.h presence... yes
+		checking for wait.h... yes
+		checking stdio.h usability... yes
+		checking stdio.h presence... yes
+		checking for stdio.h... yes
+		checking termios.h usability... yes
+		checking termios.h presence... yes
+		checking for termios.h... yes
+		checking for sys/resource.h... (cached) yes
+		checking linux/ppdev.h usability... yes
+		checking linux/ppdev.h presence... yes
+		checking for linux/ppdev.h... yes
+		checking dev/ppbus/ppi.h usability... no
+		checking dev/ppbus/ppi.h presence... no
+		checking for dev/ppbus/ppi.h... no
+		checking for sys/stat.h... (cached) yes
+		checking fcntl.h usability... yes
+		checking fcntl.h presence... yes
+		checking for fcntl.h... yes
+		checking sys/ioctl.h usability... yes
+		checking sys/ioctl.h presence... yes
+		checking for sys/ioctl.h... yes
+		checking whether time.h and sys/time.h may both be included... yes
+		checking fftw3.h usability... yes
+		checking fftw3.h presence... yes
+		checking for fftw3.h... yes
+		checking samplerate.h usability... yes
+		checking samplerate.h presence... yes
+		checking for samplerate.h... yes
+		checking whether string.h and strings.h may both be included... yes
+		checking for fftwf_mkplan in -lfftw3f... yes
+		checking size of int64_t... 8
+		checking size of long long... 8
+		checking for uint64_t... yes
+		checking for int64_t... yes
+		checking for u_int32_t... yes
+		checking for u_int16_t... yes
+		checking whether byte ordering is bigendian... no
+		checking stdarg.h usability... yes
+		checking stdarg.h presence... yes
+		checking for stdarg.h... yes
+		*** gfortran compiler found
+		*** g95 compiler found
+		checking for Pa_GetVersion in -lportaudio... yes
+		configure: creating ./config.status
+		config.status: creating Makefile
+
+
+		Using g95 as fortran compiler.
+
+		Compiling wsjt 5.9.6
+
+		Installing into: /usr/local/
+
+		<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/trunk$
+********* The above configure is good *******************
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: config.status.bad
+Type: application/x-shellscript
+Size: 24716 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080606/00dc1f51/attachment.bin">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080606/00dc1f51/attachment.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: config.status.good
+Type: application/x-shellscript
+Size: 24970 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080606/00dc1f51/attachment-0001.bin">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080606/00dc1f51/attachment-0001.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000328.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000336.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#331">[ date ]</a>
+              <a href="thread.html#331">[ thread ]</a>
+              <a href="subject.html#331">[ subject ]</a>
+              <a href="author.html#331">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

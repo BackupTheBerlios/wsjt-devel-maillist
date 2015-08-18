@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C20080603191601.GA97075%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000295.html">
+   <LINK REL="Next"  HREF="000296.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C20080603191601.GA97075%40night.db.net%3E"
+       TITLE="[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]">db at db.net
+       </A><BR>
+    <I>Tue Jun  3 21:16:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000295.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+        <LI>Next message: <A HREF="000296.html">[Wsjt-devel] wsjt+wspr on FreeBSD 7.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+On Mon, Jun 02, 2008 at 09:41:10PM +0100, Richard Bown wrote:
+&gt;<i> On Mon, 02 Jun 2008 09:30:34 -0400
+</I>&gt;<i> Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Joe I've copies a Russian make.mo across to LOCALES,
+</I>&gt;<i> not sure what the end product will be , all text in Cyrillic ?
+</I>
+Actually, there was/is an easier way.
+
+man locale
+Try export LANG=en_US-.UTF-8
+
+or for csh setenv LANG en_US-.UTF-8
+
+On my pc-bsd system
+
+ls /usr/local/share/locale/en_GB/LC_MESSAGES/
+GConf2.mo           compiz.mo           gnome-mime-data.mo  kmplayer.mo
+amarok.mo           digikam.mo          gtk-engines.mo      libwnck.mo
+aspell.mo           emerald.mo          gtk20-properties.mo shared-mime-info.mo
+atk10.mo            glib20.mo           gtk20.mo
+
+&gt;<i> the build no longer fails at the earlier point but now fails here:-
+</I>&gt;<i>
+</I>&gt;<i> cc1: error: unrecognized command line option &quot;-ftrace=full&quot;
+</I>
+Tell me what cc -v gives you please?
+
+Can you manually delete -ftrace=full from the Makefile and see if that runs?
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000295.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+	<LI>Next message: <A HREF="000296.html">[Wsjt-devel] wsjt+wspr on FreeBSD 7.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

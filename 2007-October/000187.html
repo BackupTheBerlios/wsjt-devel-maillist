@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] lastest wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071014234141.0b527210%40gb7tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000192.html">
+   <LINK REL="Next"  HREF="000188.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] lastest wsjt</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071014234141.0b527210%40gb7tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] lastest wsjt">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Mon Oct 15 00:41:41 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000192.html">[Wsjt-devel] [Moon-net] Linux wsjt598r558 with JT2 JT4
+</A></li>
+        <LI>Next message: <A HREF="000188.html">[Wsjt-devel] lastest wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#187">[ date ]</a>
+              <a href="thread.html#187">[ thread ]</a>
+              <a href="subject.html#187">[ subject ]</a>
+              <a href="author.html#187">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 11 Oct 2007 18:47:03 +0300
+Harry Popov &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">lz1bb at mail.bg</A>&gt; wrote:
+
+&gt;<i> Hi Richard,
+</I>&gt;<i> 
+</I>&gt;<i> Last official rpm of WSJT is:
+</I>&gt;<i> <A HREF="http://lz1bb.bfra.org/wsjt/wsjt-5.9.7.r385-1.i586.rpm">http://lz1bb.bfra.org/wsjt/wsjt-5.9.7.r385-1.i586.rpm</A>
+</I>&gt;<i> 
+</I>&gt;<i> Still not tested on Mandriva 2008 as I still use 2007.0. I do not have
+</I>&gt;<i> time to upgrade. So any results on Mandriva 2008.0 will be apreciated
+</I>&gt;<i> as report.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>
+
+Hi Harry
+not having much luck getting wsjt to run on MDV 2008.
+
+the problem is something to do with python imaging.
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">oot at gb7tf</A> wsjt-5.9.8.r558]# python wsjt.py
+******************************************************************
+WSJT Version 5.9.8 r558 , by K1JT
+Revision date: 2007-10-08 16:47:34 +0300 (Mon, 08 Oct 2007) 
+Run date:   Sun Oct 14 22:25:16 2007 UTC
+Traceback (most recent call last):
+  File &quot;wsjt.py&quot;, line 106, in &lt;module&gt;
+    pim=ImageTk.PhotoImage(im)
+  File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 116, in
+__init__ self.paste(image)
+  File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 181, in
+paste import _imagingtk
+ImportError: No module named _imagingtk
+
+
+That is returned whether you build from the tar ball, or install from a
+RPM.
+
+Before building the latest tarball I installed numpy and built and
+loaded python 2.5.1 , so thyt should eliminate any Mandriva problems
+with python imaging.
+I've also loaded everything with TK in the file name, plus the devel
+files.
+
+here's a dump of strace,and this was after I downloaded the latest
+Python tarball , built and installed it:-
+
+stat64(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/_imagingtk&quot;, 0xbfad4c04) = -1 ENOENT (No
+such file or directory) open(&quot;/usr/lib/python2.5/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/_imagingtkmodule.so&quot;, O_RDONLY|O_LARGEFILE) =
+-1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/_imagingtk.py&quot;, O_RDONLY|O_LARGEFILE) = -1
+ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/_imagingtk.pyc&quot;, O_RDONLY|O_LARGEFILE) = -1
+ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/plat-linux2/_imagingtk&quot;, 0xbfad4c04) = -1
+ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/plat-linux2/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/plat-linux2/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/plat-linux2/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/plat-linux2/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/lib-tk/_imagingtk&quot;, 0xbfad4c04) = -1 ENOENT
+(No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-tk/_imagingtk.so&quot;, O_RDONLY|O_LARGEFILE) =
+-1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-tk/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-tk/_imagingtk.py&quot;, O_RDONLY|O_LARGEFILE) =
+-1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-tk/_imagingtk.pyc&quot;, O_RDONLY|O_LARGEFILE)
+= -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/lib-dynload/_imagingtk&quot;, 0xbfad4c04) = -1
+ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-dynload/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-dynload/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-dynload/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/lib-dynload/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/_imagingtk&quot;, 0xbfad4c04) = -1
+ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/Numeric/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/Numeric/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/Numeric/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/Numeric/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/Numeric/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/PIL/_imagingtk&quot;, 0xbfad4c04) =
+-1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/PIL/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/PIL/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/PIL/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/PIL/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/gst-0.10/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gst-0.10/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gst-0.10/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gst-0.10/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gst-0.10/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/gtk-2.0/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gtk-2.0/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gtk-2.0/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gtk-2.0/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/gtk-2.0/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+stat64(&quot;/usr/lib/python2.5/site-packages/wx-2.8-gtk2-unicode/_imagingtk&quot;,
+0xbfad4c04) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/wx-2.8-gtk2-unicode/_imagingtk.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/wx-2.8-gtk2-unicode/_imagingtkmodule.so&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/wx-2.8-gtk2-unicode/_imagingtk.py&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/lib/python2.5/site-packages/wx-2.8-gtk2-unicode/_imagingtk.pyc&quot;,
+O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+futex(0x8051fe8, FUTEX_WAKE, 1)         = 0 write(2, &quot;Traceback (most
+recent call last&quot;..., 35Traceback (most recent call last): ) = 35
+open(&quot;wsjt.py&quot;, O_RDONLY|O_LARGEFILE)   = 4 write(2, &quot;  File
+\&quot;wsjt.py\&quot;, line 106, in &lt;&quot;..., 40  File &quot;wsjt.py&quot;, line 106, in
+&lt;module&gt; ) = 40 fstat64(4, {st_mode=S_IFREG|0644, st_size=88910, ...})
+= 0 mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS,
+-1, 0) = 0xb7a16000 read(4, &quot;#!/usr/bin/env python\n#---------&quot;...,
+4096) = 4096 write(2, &quot;    &quot;, 4    )                     = 4 write(2,
+&quot;pim=ImageTk.PhotoImage(im)\n&quot;, 27pim=ImageTk.PhotoImage(im) ) = 27
+close(4)                                = 0 munmap(0xb7a16000,
+4096)                = 0
+open(&quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;,
+O_RDONLY|O_LARGEFILE) = 4 write(2, &quot;  File
+\&quot;/usr/lib/python2.5/site-&quot;..., 80  File
+&quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 116, in
+__init__ ) = 80 fstat64(4, {st_mode=S_IFREG|0644, st_size=9295, ...}) =
+0 mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS,
+-1, 0) = 0xb7a16000 read(4, &quot;#\n# The Python Imaging Library.\n&quot;...,
+4096) = 4096 write(2, &quot;    &quot;, 4    )                     = 4 write(2,
+&quot;self.paste(image)\n&quot;, 18self.paste(image) )     = 18
+close(4)                                = 0 munmap(0xb7a16000,
+4096)                = 0
+open(&quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;,
+O_RDONLY|O_LARGEFILE) = 4 write(2, &quot;  File
+\&quot;/usr/lib/python2.5/site-&quot;..., 77  File
+&quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 181, in paste )
+= 77 fstat64(4, {st_mode=S_IFREG|0644, st_size=9295, ...}) = 0
+mmap2(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1,
+0) = 0xb7a16000 read(4, &quot;#\n# The Python Imaging Library.\n&quot;..., 4096)
+= 4096 read(4, &quot;e)\n        except:\n            p&quot;..., 4096) = 4096
+write(2, &quot;    &quot;, 4    )                     = 4 write(2, &quot;import
+_imagingtk\n&quot;, 18import _imagingtk )     = 18
+close(4)                                = 0 munmap(0xb7a16000,
+4096)                = 0 write(2, &quot;ImportError&quot;,
+11ImportError)             = 11 write(2, &quot;: &quot;,
+2: )                       = 2 write(2, &quot;No module named _&quot;  &quot;,
+26No module named _imagingtk) = 26 write(2, &quot;\n&quot;,
+1 )                       = 1 rt_sigaction(SIGINT, {SIG_DFL},
+{0xb7d8e110, [], 0}, 8) = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+brk(0x8753000)                          = 0x8753000 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8459ee0, FUTEX_WAKE, 1)         = 0 futex(0x8459ee0,
+FUTEX_WAKE, 1)         = 0 futex(0x8459ee0, FUTEX_WAKE, 1)         = 0
+futex(0x8069cd0, FUTEX_WAKE, 1)         = 0 futex(0x804a1a0,
+FUTEX_WAKE, 1)         = 0 futex(0x804a1a0, FUTEX_WAKE, 1)         = 0
+futex(0x804a1a0, FUTEX_WAKE, 1)         = 0
+close(0)                                = 0
+exit_group(1)                           = ? Process 25639 detached
+
+
+
+
+it would seem there is no &quot;imagingtk in python 2.5.1. Not on this
+machine, Were the previous builds  made using Python 2.4 ???
+
+BTW python imaging &amp; python-imaging-devel are installed, and should
+have been over written when I compiled the Python Tarball..
+
+
+HTH
+-- 
+
+Best Wishes
+
+Richard Bown
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Registered Linux User 365161
+OS Mandriva 2008.0 Kernel 2.6.22.9-desktop-1mdv
+HAM Callsign G8JVM : Locator IO82SP
+QRV all bands 80mtrs to 3 cms ,( non WARC )
+<A HREF="http://www.software-radio.org.uk">http://www.software-radio.org.uk</A>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000192.html">[Wsjt-devel] [Moon-net] Linux wsjt598r558 with JT2 JT4
+</A></li>
+	<LI>Next message: <A HREF="000188.html">[Wsjt-devel] lastest wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#187">[ date ]</a>
+              <a href="thread.html#187">[ thread ]</a>
+              <a href="subject.html#187">[ subject ]</a>
+              <a href="author.html#187">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

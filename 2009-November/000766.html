@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Alsa messages; Debian packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AEEECAE.3030708%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000765.html">
+   <LINK REL="Next"  HREF="000767.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Alsa messages; Debian packages</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AEEECAE.3030708%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Alsa messages; Debian packages">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Nov  2 15:29:02 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000765.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+        <LI>Next message: <A HREF="000767.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry, and all --
+
+My instructions recommend installing wspr into the user's 
+$HOME area -- a perfectly reasonable approach for an 
+experimental program.  When/if someone comes forward with a 
+better way to configure the .deb file, I will be delighted 
+to have their suggested improvements in the repository.
+
+	-- Joe, K1JT
+
+Harry Popov wrote:
+&gt;<i> Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 1. I have implemented a &quot;make deb&quot; command that creates a *.deb 
+</I>&gt;&gt;<i> package that installs easily on Ubuntu (and possible other 
+</I>&gt;&gt;<i> Debian-based linux distributions).
+</I>&gt;&gt;<i> If you download this file you can install and execute WSPR on Ubuntu 
+</I>&gt;&gt;<i> with the command
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> % sudo dpkg --instdir=. -i wspr_2.00r1596_i386.deb
+</I>&gt;&gt;<i> % cd WSPR
+</I>&gt;&gt;<i> % ./wspr
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm told that if you use GUI methods -- download the file to the 
+</I>&gt;&gt;<i> Ubuntu desktop and double-click on it -- WSPR is installed under the 
+</I>&gt;&gt;<i> root directory, i.e., at /WSPR.  Does anybody know how to change the 
+</I>&gt;&gt;<i> .deb file so that it will go into a better place such as $HOME ?  Is 
+</I>&gt;&gt;<i> this the best place?
+</I>&gt;<i> 
+</I>&gt;<i> Hi Joe,
+</I>&gt;<i> 
+</I>&gt;<i> It is not a good idea to install all files of any Linux programs in one 
+</I>&gt;<i> and the same folder. This is fine in Windows but in Linux the developers 
+</I>&gt;<i> have created strict rules which file where to be installed.
+</I>&gt;<i> 
+</I>&gt;<i> Here is an example where I install each of the files of WSJT in the rpms 
+</I>&gt;<i> which I prepared ago. The Linux rules are the same for both deb and rpm 
+</I>&gt;<i> development. Actually they are the same rules used in the original 
+</I>&gt;<i> Ubuntu WSJT deb file.
+</I>&gt;<i> 
+</I>&gt;<i> Yes the program  will work fine if you install all files in one folder 
+</I>&gt;<i> but this is out of the Linux rules. I kindly please you to remove &quot;make 
+</I>&gt;<i> deb&quot; command until things are regulated. Other way we will distribute at 
+</I>&gt;<i> least bad manners between Linux users. Breaking the Linux rules is 
+</I>&gt;<i> actually much worst than bad manners.
+</I>&gt;<i> 
+</I>&gt;<i> /usr/bin/KVASD
+</I>&gt;<i> /usr/bin/wsjt
+</I>&gt;<i> /usr/lib/wsjt/Audio.so
+</I>&gt;<i> /usr/share/doc/wsjt/WSJT_User_600.pdf
+</I>&gt;<i> /usr/share/doc/wsjt/WSJT_Quick_Reference.pdf
+</I>&gt;<i> /usr/share/doc/wsjt/changelog.gz
+</I>&gt;<i> /usr/share/doc/wsjt/copyright
+</I>&gt;<i> /usr/share/doc/wsjt/examples
+</I>&gt;<i> /usr/share/doc/wsjt/examples/W8WN_010809_110400.WAV
+</I>&gt;<i> /usr/share/pixmaps/wsjt-mini.xpm
+</I>&gt;<i> /usr/share/pixmaps/wsjt.png
+</I>&gt;<i> /usr/share/pixmaps/wsjt.xpm
+</I>&gt;<i> /usr/share/wsjt/CALL3.TXT.gz
+</I>&gt;<i> /usr/share/wsjt/Pmw.py
+</I>&gt;<i> /usr/share/wsjt/PmwBlt.py
+</I>&gt;<i> /usr/share/wsjt/PmwColor.py
+</I>&gt;<i> /usr/share/wsjt/TSKY.DAT.gz
+</I>&gt;<i> /usr/share/wsjt/astro.py
+</I>&gt;<i> /usr/share/wsjt/g.py
+</I>&gt;<i> /usr/share/wsjt/options.py
+</I>&gt;<i> /usr/share/wsjt/palettes.py
+</I>&gt;<i> /usr/share/wsjt/smeter.py
+</I>&gt;<i> /usr/share/wsjt/specjt.py
+</I>&gt;<i> /usr/share/wsjt/wsjt.py
+</I>&gt;<i> /usr/share/wsjt/wsjtrc
+</I>&gt;<i> 
+</I>&gt;<i> I do start the program by a wrapper named wsjt. It check and if not 
+</I>&gt;<i> existing creates ~/.wsjt folder and populate it with some necessory 
+</I>&gt;<i> files. Actually this happens only once at the first start. Here is the 
+</I>&gt;<i> wrapper which actually I shamesly plagiarized from Hamish, VK3SB:
+</I>&gt;<i> 
+</I>&gt;<i> #!/bin/sh
+</I>&gt;<i> if [ -e /usr/local/bin/python ] ; then
+</I>&gt;<i>     LOCALBASE=/usr/local/
+</I>&gt;<i> else
+</I>&gt;<i>     LOCALBASE=/usr/
+</I>&gt;<i> fi
+</I>&gt;<i> if [ ! -e ~/.wsjt ] ; then
+</I>&gt;<i>     mkdir ~/.wsjt
+</I>&gt;<i>     mkdir ~/.wsjt/RxWav
+</I>&gt;<i> fi
+</I>&gt;<i> if [ ! -e ~/.wsjt/CALL3.TXT ] ; then
+</I>&gt;<i>     cp -f ${LOCALBASE}/share/wsjt/CALL3.TXT ~/.wsjt
+</I>&gt;<i> fi
+</I>&gt;<i> cd ~/.wsjt
+</I>&gt;<i> python ${LOCALBASE}/bin/wsjt.py
+</I>&gt;<i> 
+</I>&gt;<i> I hope this helps.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000765.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+	<LI>Next message: <A HREF="000767.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#766">[ date ]</a>
+              <a href="thread.html#766">[ thread ]</a>
+              <a href="subject.html#766">[ subject ]</a>
+              <a href="author.html#766">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

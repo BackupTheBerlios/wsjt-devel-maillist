@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re: Wspr crash &amp; problem with endianness	determination]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20Wspr%20crash%20%26%20problem%20with%20endianness%0A%09determination%5D&In-Reply-To=%3C48C68C18.2060706%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000509.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re: Wspr crash &amp; problem with endianness	determination]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20Wspr%20crash%20%26%20problem%20with%20endianness%0A%09determination%5D&In-Reply-To=%3C48C68C18.2060706%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re: Wspr crash &amp; problem with endianness	determination]">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Sep  9 16:45:44 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000509.html">[Wsjt-devel] [wsjtgroup] Map65 on Ubuntu ...
+</A></li>
+        <LI>Next message: <A HREF="000511.html">[Wsjt-devel] WSPR problem using Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To John Nelson, G4KLA:
+
+the email below bounced when sent to <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>, 
+so I am sending it to the wsjt-devel list.  I hope you 
+receive it!
+
+	-- 73, Joe, K1JT
+
+-------- Original Message --------
+Subject: Re: Wspr crash &amp; problem with endianness determination
+Date: Tue, 09 Sep 2008 10:42:02 -0400
+From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+To: Karza &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">oh2gqc at sral.fi</A>&gt;
+CC: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>
+
+
+Hi Kari,
+
+Sorry for the delay in answering your emails.  I think the
+code for determining the CPU's &quot;endian&quot; nature came from
+John, G4KLA.  Therefore I am copying him on this message.
+We should certainly fix the problem in wfile5.F; maybe John
+can look into this.
+
+As for the crashing on bounds error at line 30 of mept162.F:
+it appears that somehow the decoder thought that more than
+275 legitimate sync patterns had been found.  (Very
+unlikely!)  If reprocessing the same data does not cause the
+error to appear again, then as you say it must be a side
+effect of a bug somewhere else.  I guess we will need to
+watch for the problem to appear again, and try to diagnose
+it eventually.
+
+For what it's worth: for much of the time when I'm not
+otherwise active on the air, I run WSPR on 10 m 24 hours a
+day.  I have not seen any program crashes with WSPR v1.0.
+
+	-- 73, Joe, K1JT
+
+
+Karza wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i> 
+</I>&gt;<i> A few of weeks ago I reported an out-of-bounds
+</I>&gt;<i> crash of wspr. At that time I did not have
+</I>&gt;<i> file saving enabled so I could not send the
+</I>&gt;<i> file to you for analysis.
+</I>&gt;<i> 
+</I>&gt;<i> Well, a week ago the crash occurred again
+</I>&gt;<i> and I then the discovered some problems with
+</I>&gt;<i> file saving in wspr.
+</I>&gt;<i> 
+</I>&gt;<i> Fist of all, the crashing function 'mept162.F'
+</I>&gt;<i> was called _before_ the WAV-file was saved
+</I>&gt;<i> so the data got lost when the program crashed.
+</I>&gt;<i> 
+</I>&gt;<i> I attempted to fix this by moving the call to mept162
+</I>&gt;<i> after the call to wfile5 ( in decode.F90 ).
+</I>&gt;<i> 
+</I>&gt;<i> That change caused wspr to completely
+</I>&gt;<i> cease decoding any signals!
+</I>&gt;<i> 
+</I>&gt;<i> Upon investigating the coding of wfile5.F, I found
+</I>&gt;<i> out that the way of determining endianness of
+</I>&gt;<i> the platform does not work correctly. It finds
+</I>&gt;<i> my PC to be big endian and swaps the bytes of
+</I>&gt;<i> WAV header and data. Thus the data fed to the decoding
+</I>&gt;<i> routine and saved file is garbage.
+</I>&gt;<i> 
+</I>&gt;<i> This can also be seen by issuing command 'file' against
+</I>&gt;<i> the created WAV-files. They are reported by 'file' as
+</I>&gt;<i> &quot;RIFF (little-endian) data, WAVE audio, 256 channels&quot;.
+</I>&gt;<i> Also programs like aplay or Audacity fail to play back these files.
+</I>&gt;<i> 
+</I>&gt;<i> I believe that the determination in wfile5 fails because
+</I>&gt;<i> in the common area the 16-bit variables nfmt2 and nchan2 are
+</I>&gt;<i> adjacent. Equivalencing nfmt2 and n4 then 'casts' n4 over
+</I>&gt;<i> both variables like this:
+</I>&gt;<i> 
+</I>&gt;<i> | nfmt2 | nchan2 |
+</I>&gt;<i> | ------ n4 ---- |
+</I>&gt;<i> 
+</I>&gt;<i> Now when both of the variables above are set to 1, the bytes
+</I>&gt;<i> in the memory ( in an little-endian box ) look like this
+</I>&gt;<i> 
+</I>&gt;<i> | nfmt2 | nchan2 |
+</I>&gt;<i>   01 00   01 00
+</I>&gt;<i> | ------ n4 ---- |
+</I>&gt;<i> 
+</I>&gt;<i> So the value of n4 is now 65537, not 1!
+</I>&gt;<i> Therefore the statement &quot;if (n4.ne.nfmt2)&quot;
+</I>&gt;<i> evaluates to True and the bytes are swapped,
+</I>&gt;<i> which [on a PC] is wrong.
+</I>&gt;<i> 
+</I>&gt;<i> [The error could possibly be fixed by changing the
+</I>&gt;<i> 'if' to test value 65537 or perhaps leaving the if as it is
+</I>&gt;<i> but declaring n4 as integer*1 instead of letting it default
+</I>&gt;<i> to an 32-bit integer. I don't currently have access to a
+</I>&gt;<i> big-endian box, so I cannot be sure what would work. ]
+</I>&gt;<i> 
+</I>&gt;<i> I just commented out the call to byte-swapping routine and
+</I>&gt;<i> now the decoding works again and I get valid WAV-files.
+</I>&gt;<i> 
+</I>&gt;<i> OK, so here I am again saving files all weekend. And
+</I>&gt;<i> it just happened that the error occurred again today!
+</I>&gt;<i> WSPR crashed with a message:
+</I>&gt;<i> &quot;Fortran runtime error: Array reference out of bounds for array 'sstf', 
+</I>&gt;<i> upper bound of dimension 2 exceeded (in file 'mept162.F', at line 30)&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Now the strange thing is that playing back the
+</I>&gt;<i> last saved file in wspr does _not_ cause it to crash again.
+</I>&gt;<i> 
+</I>&gt;<i> Don't know why it doesn't, perhaps it's not the audio
+</I>&gt;<i> data but a some odd bug somewhere?
+</I>&gt;<i> 
+</I>&gt;<i> I uploaded the last saved file to
+</I>&gt;<i> <A HREF="http://oh2gqc.wippiespace.com/wspr/080817_1624.wav">http://oh2gqc.wippiespace.com/wspr/080817_1624.wav</A>
+</I>&gt;<i> should you want to investigate it.
+</I>&gt;<i> 
+</I>&gt;<i> BR &amp; 73's de
+</I>&gt;<i> Kari
+</I>&gt;<i> oh2gqc
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000509.html">[Wsjt-devel] [wsjtgroup] Map65 on Ubuntu ...
+</A></li>
+	<LI>Next message: <A HREF="000511.html">[Wsjt-devel] WSPR problem using Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#510">[ date ]</a>
+              <a href="thread.html#510">[ thread ]</a>
+              <a href="subject.html#510">[ subject ]</a>
+              <a href="author.html#510">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

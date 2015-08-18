@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E971C7.3050506%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002146.html">
+   <LINK REL="Next"  HREF="002149.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E971C7.3050506%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jan 29 22:25:27 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002146.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+        <LI>Next message: <A HREF="002149.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2148">[ date ]</a>
+              <a href="thread.html#2148">[ thread ]</a>
+              <a href="subject.html#2148">[ subject ]</a>
+              <a href="author.html#2148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+On 29/01/2014 21:11, Joe Taylor wrote:
+&gt;<i> On 1/29/2014 2:44 PM, Chuck Forsberg WA7KGX wrote:
+</I>&gt;&gt;<i> If the 64 bit  kvasd  Joe compiled at omen.com is present, there are
+</I>&gt;&gt;<i> no decodes after the first minute's batch.
+</I>&gt;&gt;<i> CPU utilization goes to 100 per cent and stays there.  Kvasd continues
+</I>&gt;&gt;<i> at 100 per cent CPU utilization even if wsjtx is terminated. Rather than
+</I>&gt;&gt;<i> improving sensitivity by 2 db it makes wsjtx deaf.
+</I>&gt;<i>
+</I>&gt;&gt;<i> The downloadable kvasd is a 32 bit version.  Hardly anyone runs 32 bit
+</I>&gt;&gt;<i> Linux anymore.
+</I>&gt;<i>
+</I>&gt;&gt;<i> I finally got the 32 bit KVASD running. I had to poke, prod and cajole
+</I>&gt;&gt;<i> Rawhide (very unstable cutting edge developmental Linux) to install
+</I>&gt;&gt;<i> the required 32 bit libs.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for putting in such heroic efforts to make the pre-compiled 
+</I>&gt;<i> 32-bit kvasd run on your very unstable cutting edge developmental Linux.
+</I>&gt;<i>
+</I>&gt;<i> We're not necessarily set up to support such systems with 
+</I>&gt;<i> click-to-install packages.  Please feel free to volunteer your help, 
+</I>&gt;<i> if you think there is a need.
+</I>&gt;<i>
+</I>&gt;<i> The KVASD decoder is necessarily an extra nuisance because of its 
+</I>&gt;<i> patented algorithm and non-open source code.  However, since 99% of 
+</I>&gt;<i> our users run Windows, the nuisance is well contained in practice.
+</I>&gt;<i> Moreover, the improved sensitivity of soft-decision decoding makes 
+</I>&gt;<i> KVASD well worth the extra effort -- especially for EME, the original 
+</I>&gt;<i> target purpose for JT65.
+</I>Just to fill in a couple of gaps.
+
+I found that the 32-bit kvasd wouldn't run on a vanilla Ubuntu 13.10 
+64-bit. A quick check with 'ldd kvasd' showed that the library 
+libgfortran.so.3 in 32-bit form was missing.
+
+Using:
+
+sudo apt-get install libgfortran3:i386
+
+was all that was required to enable kvasd to run. Clearly 32-bit support 
+libraries aren't present in the current 64-bit Ubuntu but installing the 
+Fortran library pulls in all the other required dependencies.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-install/bin$ dpkg --get-selections | grep -e 
+&quot;386&quot;
+gcc-4.8-base:i386                install
+libc6:i386                    install
+libc6-i386                    install
+libgcc1:i386                    install
+libgfortran3:i386                install
+libquadmath0:i386                install
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-install/bin$
+
+
+&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002146.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+	<LI>Next message: <A HREF="002149.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2148">[ date ]</a>
+              <a href="thread.html#2148">[ thread ]</a>
+              <a href="subject.html#2148">[ subject ]</a>
+              <a href="author.html#2148">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r873
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r873&In-Reply-To=%3C37610FF9-81A4-4855-BDC0-585327C0F6D5%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000400.html">
+   <LINK REL="Next"  HREF="000407.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r873</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r873&In-Reply-To=%3C37610FF9-81A4-4855-BDC0-585327C0F6D5%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] r873">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Sat Jul  5 15:18:45 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000400.html">[Wsjt-devel] [Fwd: Re:  r873]
+</A></li>
+        <LI>Next message: <A HREF="000407.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#406">[ date ]</a>
+              <a href="thread.html#406">[ thread ]</a>
+              <a href="subject.html#406">[ subject ]</a>
+              <a href="author.html#406">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry reported this problem:
+ &gt; WSJT Version 7.0 r863 , by K1JT
+ &gt; Revision date: 2008-06-08 23:59:18 +0300 (Sun, 08 Jun 2008)
+ &gt; Run date:   Tue Jun 24 16:56:56 2008 UTC
+ &gt; 0-th dimension must be 12 but got 0 (not defined).
+ &gt; Traceback (most recent call last):
+ &gt;   File &quot;wsjt.py&quot;, line 2378, in &lt;module&gt;
+ &gt;     ModeFSK441()
+ &gt;   File &quot;wsjt.py&quot;, line 588, in ModeFSK441
+ &gt;     GenStdMsgs()
+ &gt;   File &quot;wsjt.py&quot;, line 1280, in GenStdMsgs
+ &gt;     Audio.gcom2.hiscall=(ToRadio.get()+'            ')[:12]
+ &gt; SystemError: error return without exception set
+
+This is definitely not a WSJT release issue.  I have seen this  
+before.  It appears to be a problem with Python and a possible  
+incompatibility with f2py and/or other parts of the system  
+infrastructure.   I have seen this exact problem while working to get  
+release 863 going on a borrowed Intel Mac with MacOSX 10.5.   I did  
+have WSJT working on the Intel Mac but after I made changes to the  
+fortran compiler to get rid of some linker errors (&quot;can't find  
+atom...&quot;) then I saw the same problem as Harry.   I tried this:
+
+gcom2.f90 contains definitions like these.
+
+integer ndecoding      !Decoder status (see decode2.f90)     GUI,Decoder
+character mycall*12    !My call sign                            GUI
+character hiscall*12   !His call sign                           GUI
+character hisgrid*6    !His grid locator                        GUI
+
+Now launch python and do this:
+Python 2.5.1 (r251:54869, Apr 18 2007, 22:08:04)
+[GCC 4.0.1 (Apple Computer, Inc. build 5367)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+ &gt;&gt;&gt; from WsjtMod import Audio
+ &gt;&gt;&gt; Audio.gcom2.ndecoding=1234
+ &gt;&gt;&gt; print Audio.gcom2.ndecoding
+1234
+ &gt;&gt;&gt; Audio.gcom2.hiscall=&quot;g4kla       &quot;
+0-th dimension must be 12 but got 0 (not defined).
+Traceback (most recent call last):
+   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+SystemError: error return without exception set
+ &gt;&gt;&gt;
+
+While python manages integers, in some circumstances it does not seem  
+to like byte arrays and a size of 0 is returned for hiscall and any  
+other byte array.
+
+If I repeat the same as above on MacOSX 10.4 (with the identical WSJT  
+release which is operational, but with different compilers and  
+versions of numpy etc) I get:
+
+Python 2.5.1 (r251:54869, Apr 18 2007, 22:08:04)
+[GCC 4.0.1 (Apple Computer, Inc. build 5367)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+ &gt;&gt;&gt; from WsjtMod import Audio
+ &gt;&gt;&gt; Audio.gcom2.ndecoding=1234
+ &gt;&gt;&gt; print Audio.gcom2.ndecoding
+1234
+ &gt;&gt;&gt; Audio.gcom2.hiscall=&quot;g4kla       &quot;
+ &gt;&gt;&gt; print Audio.gcom2.hiscall
+['g' '4' 'k' 'l' 'a' ' ' ' ' ' ' ' ' ' ' ' ' ' ']
+
+This clearly demonstrates that the problem is dependent on system  
+infrastructure and not WSJT code.   Where the problem lies with  
+gfortran/python/f2py I haven't yet discovered - but I am certain that  
+it has nothing to do with the release code.
+
+John
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080705/dc952335/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080705/dc952335/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000400.html">[Wsjt-devel] [Fwd: Re:  r873]
+</A></li>
+	<LI>Next message: <A HREF="000407.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#406">[ date ]</a>
+              <a href="thread.html#406">[ thread ]</a>
+              <a href="subject.html#406">[ subject ]</a>
+              <a href="author.html#406">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C520E7F0B.8040007%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001820.html">
+   <LINK REL="Next"  HREF="001864.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C520E7F0B.8040007%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.">joe at princeton.edu
+       </A><BR>
+    <I>Fri Aug 16 21:35:39 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001820.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+        <LI>Next message: <A HREF="001864.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1862">[ date ]</a>
+              <a href="thread.html#1862">[ thread ]</a>
+              <a href="subject.html#1862">[ subject ]</a>
+              <a href="author.html#1862">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Bill made some reasonable suggestions about separating the &quot;Modulator&quot; 
+functions for MFSK data, CW data and &quot;Tune&quot; audio.  I see no problem 
+with the proposed course of action.
+
+On the CMake front I made negative progress today, and I'm not sure why. 
+  I can't seem to build in MinGW using the CMake scripts now, even 
+though I succeeded (once) yesterday.  Today I'm back to having it fail 
+to find the &quot;glu32&quot; library.  I have no idea why it succeeded (once) 
+yesterday, but now fails.
+
+Anyway, I've put CMake aside for now.  I built libjt9.a and jt9.exe 
+using .../lib/Makefile.MinGW, and wsjtx.exe (v1.2 r3556) from within 
+QtCreator, as I have always done before.  I checked out the resulting 
+package and believe it is complete -- I hope our users will find no 
+installation problems.
+
+I really appreciate all the recent contributions here!  This project has 
+become very much a group effort, and the results provide strong evidence 
+of the skills and experience you bring to it.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001820.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+	<LI>Next message: <A HREF="001864.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1862">[ date ]</a>
+              <a href="thread.html#1862">[ thread ]</a>
+              <a href="subject.html#1862">[ subject ]</a>
+              <a href="author.html#1862">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

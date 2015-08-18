@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A6205C6.8080507%40superbug.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000690.html">
+   <LINK REL="Next"  HREF="000693.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>James Courtier-Dutton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A6205C6.8080507%40superbug.co.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">James at superbug.co.uk
+       </A><BR>
+    <I>Sat Jul 18 19:26:30 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000690.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000693.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#692">[ date ]</a>
+              <a href="thread.html#692">[ thread ]</a>
+              <a href="subject.html#692">[ subject ]</a>
+              <a href="author.html#692">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>James Courtier-Dutton wrote:
+&gt;<i> Joe Taylor wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi James,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks for the additional information.  At present I will 
+</I>&gt;&gt;<i> still put my money on a thread-conflict problem... but do 
+</I>&gt;&gt;<i> let us know if you make further progress with your 
+</I>&gt;&gt;<i> alternative hypothesis!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	-- Joe, K1JT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I would not say I was an expert in fortran, although I can read and
+</I>&gt;<i> write some code in it.
+</I>&gt;<i> Is is normal for over 1k of data to be passed on the stack when making
+</I>&gt;<i> function calls?
+</I>&gt;<i> I only ask, because one generally tries to avoid this sort of think in C.
+</I>&gt;<i> By looking at the resulting assembler code, this is happening a lot
+</I>&gt;<i> within wsjt.
+</I>&gt;<i> I have only looked in the fortran.f90 code that ends up in the python
+</I>&gt;<i> interface lib for wsjt: Audio.so
+</I>&gt;<i> For re-entrant code, should you really be using the &quot;save&quot; fortran
+</I>&gt;<i> statement?
+</I>&gt;<i> It exists in quite a few places across the fortran code base within wsjt.
+</I>&gt;<i>
+</I>&gt;<i> Note, I am quite good at reading assembler code due to my reverse
+</I>&gt;<i> engineering background.
+</I>&gt;<i>
+</I>&gt;<i> Kind Regards
+</I>&gt;<i>
+</I>&gt;<i> James
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I have found something that might be interesting.
+<A HREF="http://cens.ioc.ee/pipermail/f2py-users/2007-September/001458.html">http://cens.ioc.ee/pipermail/f2py-users/2007-September/001458.html</A>
+
+This highlights problems with f2py and data consistency between fortran
+and python.
+After some diagnosis, I have concluded that the format statements are
+getting corrupted.
+This only seems to happen to the parts of the code that make calls
+between python and the fortran.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000690.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000693.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#692">[ date ]</a>
+              <a href="thread.html#692">[ thread ]</a>
+              <a href="subject.html#692">[ subject ]</a>
+              <a href="author.html#692">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

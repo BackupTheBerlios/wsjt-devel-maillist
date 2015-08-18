@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re:  WSJT .deb file]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20WSJT%20.deb%20file%5D&In-Reply-To=%3C4A76F8F6.3080601%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000715.html">
+   <LINK REL="Next"  HREF="000717.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re:  WSJT .deb file]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20WSJT%20.deb%20file%5D&In-Reply-To=%3C4A76F8F6.3080601%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re:  WSJT .deb file]">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Aug  3 16:49:26 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000715.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000717.html">[Wsjt-devel] WSJT .deb file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#716">[ date ]</a>
+              <a href="thread.html#716">[ thread ]</a>
+              <a href="subject.html#716">[ subject ]</a>
+              <a href="author.html#716">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Harry and all,
+
+Harry Popov wrote:
+&gt;<i> Sad report from this machine running Debian Testing. After one of the
+</I>&gt;<i> recent updates all my precompiled WSJT revisions refused to work. Just
+</I>&gt;<i> at the start they end with segmentation fault. 
+</I>
+Yes.  Last week I also found this to be true after
+installing Debian 5.0 for a test.  I did not establish with
+certainty just what is broken, but I suspect an
+incompatibility between versions of python, python-numpy,
+and/or f2py.  I reverted to Xubuntu 9.04 on my Linux machines.
+
+&gt;<i> P.S. Joe, I installed your deb file but the same segmentation fault. So
+</I>&gt;<i> I think the problem is not in the deb package. Just to mention...please
+</I>&gt;<i> clean the SVN folders in the deb. Too many kbits with unused code after
+</I>&gt;<i> installing the deb.
+</I>
+Thanks, I did not notice the hidden .svn directory until
+after packaging the .deb file.  I will fix it soon.
+
+&gt;<i> As I reported I could not compile wsjt r.1311. The problem wa in file
+</I>&gt;<i> thnix.f90. I did removed lines 4, 5, 6 and 8.
+</I>
+I do not understand what you did, or why it would have
+helped anything???  WSJT r1311+ cannot function properly
+with those lines removed from thnix.f90.
+
+
+	-- 73, Joe, K1JT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000715.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000717.html">[Wsjt-devel] WSJT .deb file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#716">[ date ]</a>
+              <a href="thread.html#716">[ thread ]</a>
+              <a href="subject.html#716">[ subject ]</a>
+              <a href="author.html#716">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

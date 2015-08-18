@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Compilation of wsjt-7.03_r1090 on debian 5.0r1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compilation%20of%20wsjt-7.03_r1090%20on%20debian%205.0r1&In-Reply-To=%3C200911271850.43992.pinozollo%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000879.html">
+   <LINK REL="Next"  HREF="000880.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Compilation of wsjt-7.03_r1090 on debian 5.0r1</H1>
+    <B>Pino Zollo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compilation%20of%20wsjt-7.03_r1090%20on%20debian%205.0r1&In-Reply-To=%3C200911271850.43992.pinozollo%40gmail.com%3E"
+       TITLE="[Wsjt-devel] Compilation of wsjt-7.03_r1090 on debian 5.0r1">pinozollo at gmail.com
+       </A><BR>
+    <I>Fri Nov 27 22:50:43 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000879.html">[Wsjt-devel] www.compute-1.amazonaws.com
+</A></li>
+        <LI>Next message: <A HREF="000880.html">[Wsjt-devel] www.compute-1.amazonaws.com
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#878">[ date ]</a>
+              <a href="thread.html#878">[ thread ]</a>
+              <a href="subject.html#878">[ subject ]</a>
+              <a href="author.html#878">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe and Harry,
+
+Please a hint on the compilation of WSJT wsjt-7.03_r1090
+
+It seems that numpy is hitting me again ... I have the 1.3.0 installed from 
+source on Debian 5.0r1.
+
+Best 73
+
+Pino ZP4KFX
+
+--------------------
+
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating setup.py
+
+***************
+Using gfortran as fortran compiler.
+
+Compiling wsjt 7.0 r848     &lt;-------- ? 
+
+Installing into: /usr/local/
+
+--------------------------------------------
+In file included 
+from /usr/lib/python2.5/site-packages/numpy/core/include/numpy/ndarrayobject.h:239,
+                 
+from /usr/lib/python2.5/site-packages/numpy/core/include/numpy/arrayobject.h:14,
+                 from /tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.h:13,
+                 from /tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.c:2:
+/usr/include/inttypes.h:298: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;imaxabs&#8217;
+/usr/include/inttypes.h:301: error: expected &#8216;)&#8217; before &#8216;__numer&#8217;
+/usr/include/inttypes.h:305: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;strtoimax&#8217;
+/usr/include/inttypes.h:309: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;strtoumax&#8217;
+/usr/include/inttypes.h:313: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;wcstoimax&#8217;
+/usr/include/inttypes.h:318: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;wcstoumax&#8217;
+/usr/include/inttypes.h:386: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoimax&#8217;
+/usr/include/inttypes.h:402: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoumax&#8217;
+/usr/include/inttypes.h:416: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoimax&#8217;
+/usr/include/inttypes.h:433: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoumax&#8217;
+In file included 
+from /usr/lib/python2.5/site-packages/numpy/core/include/numpy/ndarrayobject.h:239,
+                 
+from /usr/lib/python2.5/site-packages/numpy/core/include/numpy/arrayobject.h:14,
+                 from /tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.h:13,
+                 from /tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.c:2:
+/usr/include/inttypes.h:298: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;imaxabs&#8217;
+/usr/include/inttypes.h:301: error: expected &#8216;)&#8217; before &#8216;__numer&#8217;
+/usr/include/inttypes.h:305: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;strtoimax&#8217;
+/usr/include/inttypes.h:309: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;strtoumax&#8217;
+/usr/include/inttypes.h:313: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;wcstoimax&#8217;
+/usr/include/inttypes.h:318: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; 
+or &#8216;__attribute__&#8217; before &#8216;wcstoumax&#8217;
+/usr/include/inttypes.h:386: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoimax&#8217;
+/usr/include/inttypes.h:402: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoumax&#8217;
+/usr/include/inttypes.h:416: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoimax&#8217;
+/usr/include/inttypes.h:433: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoumax&#8217;
+error: 
+Command &quot;gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -DPACKAGE_NAME=&quot;wsjt&quot; -DPACKAGE_TARNAME=&quot;wsjt&quot; -DPACKAGE_VERSION=&quot;5.9.6&quot; -DPACKAGE_STRING=&quot;wsjt 
+5.9.6&quot; -DPACKAGE_BUGREPORT=&quot;&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DPREFIX=&quot;/usr/local/&quot; -DFC_LIB_PATH=&quot;/usr/lib/gcc/i486-linux-gnu/4.3.2/&quot; -DFC=&quot;gfortran&quot; -DHAS_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_SAMPLERATE_H=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1 -I/usr/include -I/usr/local/include -I. -I/tmp/tmp5OVtNc/src.linux-i686-2.5 -I/usr/lib/python2.5/site-packages/numpy/core/include -I/usr/include/python2.5 -c /tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.c -o /tmp/tmp5OVtNc/tmp/tmp5OVtNc/src.linux-i686-2.5/fortranobject.o&quot; 
+failed with exit status 1
+make: *** [WsjtMod/Audio.so] Error 1
+IK1CHE:/usr/src/wsjt-7.03_r1090/trunk# 
+
+---------------------------------------------------------------------
+
+-- 
+Key ID: 0xF6768208 
+Key fingerprint = B16D 0A7C 5B29 A334 CE6A  71F6 EAF8 3D88 F676 8208
+Key server: <A HREF="hkp://wwwkeys.eu.pgp.net">hkp://wwwkeys.eu.pgp.net</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000879.html">[Wsjt-devel] www.compute-1.amazonaws.com
+</A></li>
+	<LI>Next message: <A HREF="000880.html">[Wsjt-devel] www.compute-1.amazonaws.com
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#878">[ date ]</a>
+              <a href="thread.html#878">[ thread ]</a>
+              <a href="subject.html#878">[ subject ]</a>
+              <a href="author.html#878">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

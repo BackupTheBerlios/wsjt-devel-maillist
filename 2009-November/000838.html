@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Still working through WSPR on Mandriva 2010
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C200911161342.01231.k9ao%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000837.html">
+   <LINK REL="Next"  HREF="000839.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Still working through WSPR on Mandriva 2010</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C200911161342.01231.k9ao%40charter.net%3E"
+       TITLE="[Wsjt-devel] Still working through WSPR on Mandriva 2010">k9ao at charter.net
+       </A><BR>
+    <I>Mon Nov 16 19:42:01 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000837.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+        <LI>Next message: <A HREF="000839.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#838">[ date ]</a>
+              <a href="thread.html#838">[ thread ]</a>
+              <a href="subject.html#838">[ subject ]</a>
+              <a href="author.html#838">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 16 November 2009 01:30:20 pm Michel, VE2ExB wrote:
+&gt;<i> Same here, I can not reproduce your segfault.
+</I>&gt;<i> 
+</I>&gt;<i> Which version of portaudio you have, here it is
+</I>&gt;<i> 
+</I>&gt;<i> version 19+svn20090620+withjack2
+</I>&gt;<i>
+</I>
+Version 19, shipped with the distro.
+
+A quick look at the package change log looks like nothing has changed since 
+2008.
+
+And WSJT and Fldigi work fine with this version of PortAudio.
+
+I'm not using Jack at all, and it isn't installed. I'm wondering if this isn't 
+a sample rate issue then, wouldn't Jack handle any conversions? 
+
+Rick Kunath, k9ao
+
+The last few changes:
+-------------------------------------
+ * Thu Sep 03 2009 Christophe Fergeau &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">cfergeau at mandriva.com</A>&gt; 19-13mdv2010.0
+        + Revision: 426738
+        - rebuild
+        - Don't uselessly call autoreconf
+        
+        * Sat Dec 13 2008 Adam Williamson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">awilliamson at mandriva.org</A>&gt; 
+19-12mdv2009.1
+        + Revision: 314007
+        - celt-devel not libcelt-devel
+        - buildrequires libcelt-devel too
+        - buildrequires libsamplerate-devel, apparently?
+        - add alsa_pulse.patch (from Fedora #445644 / Kevin Kofler): fix support
+          for non-mmap ALSA devices (importantly, Pulse)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000837.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+	<LI>Next message: <A HREF="000839.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#838">[ date ]</a>
+              <a href="thread.html#838">[ thread ]</a>
+              <a href="subject.html#838">[ subject ]</a>
+              <a href="author.html#838">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C1241970827.4a06f88bcd391%40webmail.st-andrews.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000604.html">
+   <LINK REL="Next"  HREF="000607.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>jem74 at st-andrews.ac.uk</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C1241970827.4a06f88bcd391%40webmail.st-andrews.ac.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">jem74 at st-andrews.ac.uk
+       </A><BR>
+    <I>Sun May 10 17:53:47 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000604.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000607.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#605">[ date ]</a>
+              <a href="thread.html#605">[ thread ]</a>
+              <a href="subject.html#605">[ subject ]</a>
+              <a href="author.html#605">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here is a backtrace from gdb .. astro0 is the last thing of noticeable interest
+to do anything before the segfault...
+
+
+Starting program: /usr/bin/python /usr/bin/wsjt.py
+[Thread debugging using libthread_db enabled]
+[New Thread 0xb7ef18c0 (LWP 18564)]
+[New Thread 0xb7a9eb90 (LWP 18572)]
+******************************************************************
+WSJT Version 7.04 r1203 , by K1JT
+Revision date: 2009-05-05 21:13:03 +0100 (Tue, 05 May 2009)
+Run date:   Sun May 10 15:50:07 2009 UTC
+Error when searching CALL3.TXT, or no such file present
+[New Thread 0xafdd7b90 (LWP 18581)]
+[New Thread 0xaf5d6b90 (LWP 18582)]
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xb7ef18c0 (LWP 18564)]
+0xb0f8abbd in ?? () from /usr/lib/libgfortran.so.3
+(gdb) where
+#0  0xb0f8abbd in ?? () from /usr/lib/libgfortran.so.3
+#1  0xb0f8ac41 in ?? () from /usr/lib/libgfortran.so.3
+#2  0xb0f8ba70 in ?? () from /usr/lib/libgfortran.so.3
+#3  0xb0f986a0 in ?? () from /usr/lib/libgfortran.so.3
+#4  0xb12508f9 in astro0 (nyear=@0xbfcc7c04, month=@0xbfcc7bfc,
+    nday=@0xbfcc7bf4, uth8=@0xbfcc7bec, nfreq=@0xbfcc7be4, grid=@0xa3102c0,
+    cauxra=@0xa2ed300, cauxdec=@0xa2f6ef0, azsun8=@0xbfcc7ba0,
+    elsun8=@0xbfcc7b98, azmoon8=@0xbfcc7b90, elmoon8=@0xbfcc7b88,
+    azmoonb8=@0xbfcc7b80, elmoonb8=@0xbfcc7b78, ntsky=@0xbfcc7bb8,
+    ndop=@0xbfcc7bb4, ndop00=@0xbfcc7bb0, dbmoon8=@0xbfcc7b70,
+    ramoon8=@0xbfcc7b68, decmoon8=@0xbfcc7b60, ha8=@0xbfcc7b58,
+    dgrd8=@0xbfcc7b50, sd8=@0xbfcc7b48, poloffset8=@0xbfcc7b40,
+    xnr8=@0xbfcc7b38, dfdt=@0xbfcc7b30, dfdt0=@0xbfcc7b28, raaux8=@0xbfcc7bac,
+    decaux8=@0xbfcc7ba8, azaux8=@0xbfcc7b20, elaux8=@0xbfcc7b18, _grid=6,
+    _cauxra=9, _cauxdec=9) at astro0.F90:110
+#5  0xb124c886 in f2py_rout_Audio_astro0 (capi_self=0x9e84338,
+    capi_args=0xa15c5a4, capi_keywds=0x0, f2py_func=0xb124fa20 &lt;astro0&gt;)
+    at /tmp/tmpgYfu31/src.linux-i686-2.5/Audiomodule.c:438
+#6  0xb124cef9 in fortran_call (fp=0xb804bff4, arg=0xa15c5a4, kw=0x0)
+    at /tmp/tmpgYfu31/src.linux-i686-2.5/fortranobject.c:318
+#7  0x0805d867 in PyObject_Call (func=0xb804bff4, arg=0xa15c5a4, kw=0x0)
+    at ../Objects/abstract.c:1861
+#8  0x080cc8a7 in PyEval_EvalFrameEx (f=0xa3140f4, throwflag=0)
+
+
+Quoting Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;:
+
+&gt;<i> Here's an update on my tests with gfortran and (K)ubuntu 9.04.
+</I>&gt;<i>
+</I>&gt;<i> 1. I executed the automatic update procedures from Kubuntu
+</I>&gt;<i> 8.04 to 8.10 and then 8.10 to 9.04. Kubuntu 9.04 looks very
+</I>&gt;<i> nice, and it runs as expected.  It is certainly not a
+</I>&gt;<i> &quot;disaster&quot;.
+</I>&gt;<i>
+</I>&gt;<i> 2. I had to make just two manual package additions:
+</I>&gt;<i> tcl8.5-dev and tk8.5-dev.
+</I>&gt;<i>
+</I>&gt;<i> 3. WSJT and WPSR compile and run properly with g95, and they
+</I>&gt;<i> look nice.  (K)ubuntu 9.04 has apparently done something
+</I>&gt;<i> good with the appearance of standard fonts.
+</I>&gt;<i>
+</I>&gt;<i> 4. Both WSJT and WSPR crash on startup if compiled with
+</I>&gt;<i> gfortran, just as they did in 8.04.
+</I>&gt;<i>
+</I>&gt;<i> 5. I spent about 8 hours trying to isolate the problem with
+</I>&gt;<i> gfortran, without much success.  I am left with a strong
+</I>&gt;<i> suspicion that it has to do with Fortran I/O in a
+</I>&gt;<i> multi-threaded environment, perhaps especially with internal
+</I>&gt;<i> read/write statements.  (These are the ones that involve
+</I>&gt;<i> formatted transfers to/from a character variable, but no I/O
+</I>&gt;<i> to a physical device.)  I could certainly be wrong about
+</I>&gt;<i> this... I haven't isolated a real &quot;smoking gun&quot;.
+</I>&gt;<i>
+</I>&gt;<i> I am putting the problem aside for now.
+</I>&gt;<i>
+</I>&gt;<i> As far as I know, there is no reason that a .deb package
+</I>&gt;<i> can't be made using the g95 compiler.  Maybe someone want to
+</I>&gt;<i> do this?  Or, maybe *nix users of these programs will need
+</I>&gt;<i> to compile their own from source code.  It's really not that
+</I>&gt;<i> hard -- Harry and others have spelled out all the necessary
+</I>&gt;<i> steps.
+</I>&gt;<i>
+</I>&gt;<i> Comments?
+</I>&gt;<i>
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+
+
+------------------------------------------------------------------
+University of St Andrews Webmail: <A HREF="https://webmail.st-andrews.ac.uk">https://webmail.st-andrews.ac.uk</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000604.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000607.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#605">[ date ]</a>
+              <a href="thread.html#605">[ thread ]</a>
+              <a href="subject.html#605">[ subject ]</a>
+              <a href="author.html#605">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

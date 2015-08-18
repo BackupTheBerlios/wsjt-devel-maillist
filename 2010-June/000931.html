@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Beta release of WSJT8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Beta%20release%20of%20WSJT8&In-Reply-To=%3C4C1E3669.1000302%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000930.html">
+   <LINK REL="Next"  HREF="000932.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Beta release of WSJT8</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Beta%20release%20of%20WSJT8&In-Reply-To=%3C4C1E3669.1000302%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Beta release of WSJT8">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun Jun 20 17:40:25 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000930.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+        <LI>Next message: <A HREF="000932.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#931">[ date ]</a>
+              <a href="thread.html#931">[ thread ]</a>
+              <a href="subject.html#931">[ subject ]</a>
+              <a href="author.html#931">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Many thanks to all who have sent reports on their tests with WSJT8. 
+Here's an early summary of what people are discovering.
+
+1. On first startup you must select your audio devices, then exit the 
+program and restart.  Yes, it's in the manual ...
+
+2. ISCAT appears to be an excellent mode for 6 meters.  Many QSOs were 
+made with it yesterday.  As far as I have heard, its performance is 
+excellent -- better than JT6M.  I was pleased yesterday to have my CQs 
+on 50.260 answered by many stations... astonishingly, including KF6JEP 
+in DM12, 2400 miles away.  Of course this must have been double-hop Es 
+-- or perhaps &quot;chord-hop&quot; Es? -- rather than ionoscatter.  Signals were 
+barely audible, if at all.  Copy was &quot;all or nothing&quot;, as expected for 
+the FEC used in ISCAT.  No other west-coast stations were heard at the 
+time (or at any other time yesterday).
+
+3. Some have reported good results with JTMS for meteor scatter on 6m 
+and 2m.  Others have not had good results.  If you have WAV files with 
+decent JTMS pings, whether they decoded or not, please send me a few.
+
+4. JT64 and JT8 work very well at HF, although the program operating 
+features are a bit clunky.  (That can easily be fixed; right now, I'm 
+most interested in testing the modes themselves.)
+
+Neither JT64 nor JT8 works for EME -- at least, not in WSJT8r1944. 
+Could it be that I have not allowed enough DT range to accopmmodate the 
+2.5 s EME delay??  Probably this, or something else stupid, is 
+preventing EME decodes.  Or, perhaps, the tone spacing is too close for 
+these modes to work without some software AFC ?  It seems that I have 
+some work to do.  If you have a few files with good EME signals in JT64 
+or JT8, please send them to me for analysis.
+
+I'm traveling for part of next week, but will post messages here when 
+there is news to share.
+
+Thanks again for your help in testing the experimental modes in WSJT8.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000930.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+	<LI>Next message: <A HREF="000932.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#931">[ date ]</a>
+              <a href="thread.html#931">[ thread ]</a>
+              <a href="subject.html#931">[ subject ]</a>
+              <a href="author.html#931">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

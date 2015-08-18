@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X and Qt 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20and%20Qt%205&In-Reply-To=%3CCALNQy4_0kGnhwj0x7Tm4pWLEYdUODpVrCQ6JDEFjfd%2B5JzB4ng%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001299.html">
+   <LINK REL="Next"  HREF="001301.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X and Qt 5</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20and%20Qt%205&In-Reply-To=%3CCALNQy4_0kGnhwj0x7Tm4pWLEYdUODpVrCQ6JDEFjfd%2B5JzB4ng%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X and Qt 5">ewpereira at gmail.com
+       </A><BR>
+    <I>Thu May 23 19:37:04 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001299.html">[Wsjt-devel] WSJT-X and Qt 5
+</A></li>
+        <LI>Next message: <A HREF="001301.html">[Wsjt-devel] WSJTX r3310
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1300">[ date ]</a>
+              <a href="thread.html#1300">[ thread ]</a>
+              <a href="subject.html#1300">[ subject ]</a>
+              <a href="author.html#1300">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Were you trying to run qmake from creator or on the command line? If on
+creator, can you verify what path creator is using for qmake? It seems
+creator is using the qmake for qt4.
+
+I will try replicating the issue you have encountered on my system later
+today.
+
+73,
+
+-- Edson
+
+On Thu, May 23, 2013 at 2:22 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Edson and all,
+</I>&gt;<i>
+</I>&gt;<i> I have been building WSJT-X with Qt 4.7 or 4.8.  Today I installed Qt
+</I>&gt;<i> 5.0.2 and played with it long enough to hit a dead end (for now). Here's
+</I>&gt;<i> what I did, and what happened:
+</I>&gt;<i>
+</I>&gt;<i> 1. Added &quot;QT += widgets&quot; in wsjtx.pro
+</I>&gt;<i>
+</I>&gt;<i> 2. Replaced &quot;#include &lt;QtGui&gt;&quot; with &quot;#include &lt;QtWidgets&gt;&quot; in logqso.h,
+</I>&gt;<i> main.cpp, mainwindow.h, and plotter.h
+</I>&gt;<i>
+</I>&gt;<i> When I try to compile, the automatically generated files ui_*.h contain
+</I>&gt;<i> many statements of the form
+</I>&gt;<i>
+</I>&gt;<i> #include &lt;QtGui/Qsomething...&gt;
+</I>&gt;<i>
+</I>&gt;<i> These should probably be &quot;&lt;QtWidgets/Qsomething...&gt;&quot; , but why doesn't
+</I>&gt;<i> QtCreator (or qmake, or ... ) know this?
+</I>&gt;<i>
+</I>&gt;<i> So, for now I am back to Qt 4.x.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130523/cee28715/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130523/cee28715/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001299.html">[Wsjt-devel] WSJT-X and Qt 5
+</A></li>
+	<LI>Next message: <A HREF="001301.html">[Wsjt-devel] WSJTX r3310
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1300">[ date ]</a>
+              <a href="thread.html#1300">[ thread ]</a>
+              <a href="subject.html#1300">[ subject ]</a>
+              <a href="author.html#1300">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

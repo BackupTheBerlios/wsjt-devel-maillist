@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT FreeBSD amd64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701050300x699e5b7ay1793a1c3f373fb60%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000020.html">
+   <LINK REL="Next"  HREF="000022.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT FreeBSD amd64</H1>
+    <B>Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701050300x699e5b7ay1793a1c3f373fb60%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT FreeBSD amd64">mm0dqp at gmail.com
+       </A><BR>
+    <I>Fri Jan  5 12:00:59 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000020.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+        <LI>Next message: <A HREF="000022.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The fix quoted earlier regarding ldexpf seems to do the trick . The
+next error I encounter is portaudio need to be compiled in PIC mode
+(-fPIC) , I think Hammish mentioned this in a recent post? Could this
+be implemented so that the portaudio static libs are compiled with
+-fPIC  on archs other than i386?
+
+Erik MM0DQP
+
+On 04/01/07, Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt; wrote:
+&gt;<i> Hmm ,
+</I>&gt;<i> I'll answer myself , Overlooked the obvisious bit of looking in the
+</I>&gt;<i> amd64 mailing list, attached is a quote with the fix , will try it and
+</I>&gt;<i> let you know what happened .
+</I>&gt;<i>
+</I>&gt;<i> QUOTE&gt;&gt;&gt;
+</I>&gt;<i> #-FIX-
+</I>&gt;<i> #Required sources:
+</I>&gt;<i> #The required version of src/lib/msun/src/s_scalbnf.c is 1.8 which has
+</I>&gt;<i> #been included in all 6.x RELENGs.
+</I>&gt;<i> #
+</I>&gt;<i> #The required assembly version (src/lib/msun/amd64/s_scalbnf.S 1.2)
+</I>&gt;<i> #_is_not_correct_ in _any_ RELEASE to date.  It is correct in HEAD but
+</I>&gt;<i> #not in 6.0,  6.1 or  6.2 RELENGs.
+</I>&gt;<i> #(<A HREF="http://www.freebsd.org/cgi/cvsweb.cgi/src/lib/msun/amd64/s_scalbnf.S">http://www.freebsd.org/cgi/cvsweb.cgi/src/lib/msun/amd64/s_scalbnf.S</A>).
+</I>&gt;<i> #
+</I>&gt;<i> #Build, Test, Install:
+</I>&gt;<i> #After updating your s_scalbnf.S, you can 'make clean; make build' in
+</I>&gt;<i> #src/lib/msun.  Your new library will be
+</I>&gt;<i> #/usr/obj/usr/src/lib/msun/libm.so.4.  Check for ldexpf, as above.  And
+</I>&gt;<i> #'make install' if the build worked.
+</I>&gt;<i> #
+</I>&gt;<i> #Note that this still needs to be fixed in the future releases, and
+</I>&gt;<i> #that this is really a 'bad thing'.
+</I>&gt;<i> #
+</I>&gt;<i> #Thanks to Steve Kargl for getting me pointed in the right direction.
+</I>&gt;<i> #
+</I>&gt;<i> #-Kael
+</I>&gt;<i> &lt;&lt;&lt;<A HREF="http://lists.freebsd.org/pipermail/freebsd-amd64/2006-December/009263.html">http://lists.freebsd.org/pipermail/freebsd-amd64/2006-December/009263.html</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cheers Erik MM0DQP
+</I>&gt;<i>
+</I>&gt;<i> On 04/01/07, Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt; I should really be CC'ing all these emails about compiling on amd64
+</I>&gt;<i> &gt; Freebsd 6.1 to the reflector incase it is useful to someone :-/
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Cheers Erik MM0DQP
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ---------- Forwarded message ----------
+</I>&gt;<i> &gt; From: Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt;
+</I>&gt;<i> &gt; Date: 04-Jan-2007 21:18
+</I>&gt;<i> &gt; Subject: WSJT FreeBSD
+</I>&gt;<i> &gt; To: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi Diane,
+</I>&gt;<i> &gt; Got a bit of time tonight to try compile wsjt again. Did a reformat
+</I>&gt;<i> &gt; and installed a bare Freebsd 6.1 system with the minimums.
+</I>&gt;<i> &gt; As suspected the compile ran through until py-scipy fails at &quot;import
+</I>&gt;<i> &gt; umath&quot; with an &quot;undefined symbol 'ldexpf'&quot; from numpy :S although
+</I>&gt;<i> &gt; numpy compiled fine!
+</I>&gt;<i> &gt; A little bit of research led me to a post on a FreeBSD Port Forum
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; QUOTE &gt;&gt;&gt;
+</I>&gt;<i> &gt; #On AMD64 6.0-RELEASE, the port builds and installs.  At run time this is
+</I>&gt;<i> &gt; #what you get:
+</I>&gt;<i> &gt; #Python 2.4.3 (#2, Nov 29 2006, 14:57:08)
+</I>&gt;<i> &gt; #[GCC 3.4.4 [FreeBSD] 20050518] on freebsd6
+</I>&gt;<i> &gt; #Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</I>&gt;<i> &gt; #&gt;&gt;&gt; import numpy
+</I>&gt;<i> &gt; #Traceback (most recent call last):
+</I>&gt;<i> &gt; #  File &quot;&lt;stdin&gt;&quot;, line 1, in ?
+</I>&gt;<i> &gt; #  File &quot;/usr/local/lib/python2.4/site-packages/numpy/__init__.py&quot;, line 36,
+</I>&gt;<i> &gt; #in ?
+</I>&gt;<i> &gt; #    import core
+</I>&gt;<i> &gt; #  File &quot;/usr/local/lib/python2.4/site-packages/numpy/core/__init__.py&quot;, line
+</I>&gt;<i> &gt; #6, in ?
+</I>&gt;<i> &gt; #    import umath
+</I>&gt;<i> &gt; #ImportError: /usr/local/lib/python2.4/site-packages/numpy/core/umath.so:
+</I>&gt;<i> &gt; #Undefined symbol &quot;ldexpf&quot;
+</I>&gt;<i> &gt; #&gt;&gt;&gt;
+</I>&gt;<i> &gt; #
+</I>&gt;<i> &gt; #ldd reports that umath.so is linked to libm, but oddly it does not have
+</I>&gt;<i> &gt; #ldexpf!  Obviously an operating system problem, but I thought you might be
+</I>&gt;<i> &gt; #interested.
+</I>&gt;<i> &gt; #
+</I>&gt;<i> &gt; #Regards,
+</I>&gt;<i> &gt; #Kael
+</I>&gt;<i> &gt; &lt;&lt;&lt; <A HREF="http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html">http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Cant see any follow up on this and I've looked fairly hard although
+</I>&gt;<i> &gt; that doesn't mean I missed the big billboard with the answer :)).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Any ideas ??
+</I>&gt;<i> &gt; Cheers Erik MM0DQP
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000020.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+	<LI>Next message: <A HREF="000022.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Still working through WSPR on Mandriva 2010
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C200911161145.55443.k9ao%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000826.html">
+   <LINK REL="Next"  HREF="000829.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Still working through WSPR on Mandriva 2010</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C200911161145.55443.k9ao%40charter.net%3E"
+       TITLE="[Wsjt-devel] Still working through WSPR on Mandriva 2010">k9ao at charter.net
+       </A><BR>
+    <I>Mon Nov 16 17:45:55 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000826.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+        <LI>Next message: <A HREF="000829.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#828">[ date ]</a>
+              <a href="thread.html#828">[ thread ]</a>
+              <a href="subject.html#828">[ subject ]</a>
+              <a href="author.html#828">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I did a fresh checkout of WSPR SVN (r1695) and get this at decode time:
+
+--------------------------
+
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( &amp;alsaApi-&gt;baseHostApiRep, params, streamDir, &amp;self-&gt;pcm 
+)' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1182
+python: src/hostapi/alsa/pa_linux_alsa.c:1416: PaAlsaStream_Initialize: 
+Assertion `self-&gt;capture.nfds || self-&gt;playback.nfds' failed.
+Aborted
+
+--------------------------
+
+I downloaded a wav file from the Internet that was saved by someone from WSPR 
+and when I open that in WSPR, I do get a decode and get the normal waterfall 
+display. So I don't know why I get the crash here on decoding from the sound 
+card?
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000826.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+	<LI>Next message: <A HREF="000829.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#828">[ date ]</a>
+              <a href="thread.html#828">[ thread ]</a>
+              <a href="subject.html#828">[ subject ]</a>
+              <a href="author.html#828">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

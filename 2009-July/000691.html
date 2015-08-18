@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3CD4127737-1A0D-4FAE-B427-7FDC22447899%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000688.html">
+   <LINK REL="Next"  HREF="000695.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3CD4127737-1A0D-4FAE-B427-7FDC22447899%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Mon Jul 13 19:41:11 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000688.html">[Wsjt-devel] assistance required_ SORTED
+</A></li>
+        <LI>Next message: <A HREF="000695.html">[Wsjt-devel] JT4g  r1269 -  Which JT4 bandwidth decoded ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#691">[ date ]</a>
+              <a href="thread.html#691">[ thread ]</a>
+              <a href="subject.html#691">[ subject ]</a>
+              <a href="author.html#691">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>James writes:
+
+&quot;For re-entrant code, should you really be using the &quot;save&quot; fortran  
+statement?&quot;
+
+In particular, when the save statement does not specifically refer to  
+named variables, fortran rules indicate that all variables -  
+including common blocks - will be saved.    This can lead to  
+unintended consequences when other parts of the code might make  
+changes to variables in common blocks.
+
+There are situations when &quot;save&quot; is needed but with reference only to  
+particular variables.   It might be better to avoid the use of &quot;save&quot;  
+where no variables are named.
+
+John  G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000688.html">[Wsjt-devel] assistance required_ SORTED
+</A></li>
+	<LI>Next message: <A HREF="000695.html">[Wsjt-devel] JT4g  r1269 -  Which JT4 bandwidth decoded ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#691">[ date ]</a>
+              <a href="thread.html#691">[ thread ]</a>
+              <a href="subject.html#691">[ subject ]</a>
+              <a href="author.html#691">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

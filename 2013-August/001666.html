@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r3522 - core dump on restart
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3522%20-%20core%20dump%20on%20restart&In-Reply-To=%3CCAH-RX43y48JeAOpVD6B1c-VvMrZ_Gp74RvsKMoTm9JYB0b8ssA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001665.html">
+   <LINK REL="Next"  HREF="001667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r3522 - core dump on restart</H1>
+    <B>Josh Rovero</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3522%20-%20core%20dump%20on%20restart&In-Reply-To=%3CCAH-RX43y48JeAOpVD6B1c-VvMrZ_Gp74RvsKMoTm9JYB0b8ssA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] r3522 - core dump on restart">josh.rovero at gmail.com
+       </A><BR>
+    <I>Sat Aug  3 17:45:09 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001665.html">[Wsjt-devel] r3522 build notes on Linux
+</A></li>
+        <LI>Next message: <A HREF="001667.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1666">[ date ]</a>
+              <a href="thread.html#1666">[ thread ]</a>
+              <a href="subject.html#1666">[ subject ]</a>
+              <a href="author.html#1666">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Scenario:
+
+Run wsjtx 1.1.1. r3522 for a while making QSO's on 10 and 12 meters.
+Stop wsjtx
+Start fldigi with same radio, do some stuff, exit fldigi.
+restart wsjtx
+Core dump:
+
+Program (running under ddd) received signal SIGSEGV, Segmentation fault.
+0x00007ffff628b457 in QString::operator=(QString const&amp;) () from
+libQt5Core.so.5
+
+I think it is something in one of the files wsjtx writes/leaves around,
+since rebuilding the exe and installing into the same wsjtx_install
+directory does not fix the problem.
+-- 
+P.J. &quot;Josh&quot; Rovero                   Ham Radio: KK1D
+<A HREF="http://www.roveroresearch.org">http://www.roveroresearch.org</A>   <A HREF="http://www.roveroresearch.info">http://www.roveroresearch.info</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130803/b89067b5/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130803/b89067b5/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001665.html">[Wsjt-devel] r3522 build notes on Linux
+</A></li>
+	<LI>Next message: <A HREF="001667.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1666">[ date ]</a>
+              <a href="thread.html#1666">[ thread ]</a>
+              <a href="subject.html#1666">[ subject ]</a>
+              <a href="author.html#1666">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

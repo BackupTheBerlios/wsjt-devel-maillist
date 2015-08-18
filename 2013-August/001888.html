@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Setup Cmake for non-standard Qt location
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Setup%20Cmake%20for%20non-standard%20Qt%20location&In-Reply-To=%3C52189CBF.5050202%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001887.html">
+   <LINK REL="Next"  HREF="001889.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Setup Cmake for non-standard Qt location</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Setup%20Cmake%20for%20non-standard%20Qt%20location&In-Reply-To=%3C52189CBF.5050202%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Setup Cmake for non-standard Qt location">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Aug 24 13:45:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001887.html">[Wsjt-devel] Setup Cmake for non-standard Qt location
+</A></li>
+        <LI>Next message: <A HREF="001889.html">[Wsjt-devel] Rev 3564 - larger screen fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1888">[ date ]</a>
+              <a href="thread.html#1888">[ thread ]</a>
+              <a href="subject.html#1888">[ subject ]</a>
+              <a href="author.html#1888">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 24/08/2013 08:36, David Birnbaum wrote:
+Hi David,
+&gt;<i> I've edited the CMakeLists.txt file to put in the location of my Qt 
+</I>&gt;<i> libraries (to be sure that I use the latest Qt5 and not the default 
+</I>&gt;<i> with Ubuntu 13.04) but is there a more formal way?
+</I>That isn't the way to do it. The CMake scripts are intended to be 100% 
+portable across platforms, tool chains and, pre-requisite locations. We 
+aren't quite there but it is close.
+
+You two main options for this scenario. In a simple case like this you 
+need to pass the CMake variable CMAKE_PREFIX_PATH to the CMake makefile 
+generation command. For more complex variants where many tools and 
+pre-requisites are in non-standard locations you can create a local 
+toolchain definition file for each configuration you want to build with. 
+This file would contain set commands for CMake variables as describe for 
+the Windows MinGW build instructions.
+
+So for your case, say your Qt root is at  ~david/src/Qt/qt5, your svn 
+workspace id checked out into ~/src/wsjtx you would invoke the cmake 
+generator something like this:
+
+mkdir ~/build/wsjtx/my-qt5-dev/{Debug,Release}
+cd ~/build/wsjtx/my-qt5-dev/Debug
+cmake -D CMAKE_INSTALL_PATH=~/test-install -D 
+CMAKE_PREFIX_PATH=~/src/Qt/qt5 -D CMAKE_BUILD_TYPE=Debug ~/src/wsjtx
+cd ../Release
+cmake -D CMAKE_INSTALL_PATH=~/test-install -D 
+CMAKE_PREFIX_PATH=~/src/Qt/qt5 -D CMAKE_BUILD_TYPE=Release ~/src/wsjtx
+cd ../Debug
+cmake --build . --target install -- -j
+cd ~/test-install/bin
+./wsjtx
+
+If you want to test some changes then make your edits and type:
+
+cmake --build ~/build/wsjtx/my-qt5-dev/Debug --target install -- -j
+./wsjtx
+
+repeat the last three steps until the program is perfect ;)
+
+To test a release build:
+
+cmake --build ~/build/wsjtx/my-qt5-dev/Release --target install -- -j
+./wsjtx
+
+Hope that helps.
+
+I have one question, why do you need to use a custom install or build of 
+Qt5? I find the qt5 packages in Ubuntu 13.04 work without any problems.
+&gt;<i>
+</I>&gt;<i> dave
+</I>&gt;<i> k2lyv
+</I>&gt;<i>
+</I>&gt;<i> P.S.  I can get v3563 to compile this way, but it gets a seg fault 
+</I>&gt;<i> after issuing a message at startup &quot;Error starting jt9-s&quot;  Running 
+</I>&gt;<i> under gdb doesn't give any more detail about the location of the seg 
+</I>&gt;<i> fault.
+</I>Perhaps you are not running from directory where jt9 is. Not sure why 
+there is a SEGV without any helpful back trace in gdb, are you using a 
+debug build?
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001887.html">[Wsjt-devel] Setup Cmake for non-standard Qt location
+</A></li>
+	<LI>Next message: <A HREF="001889.html">[Wsjt-devel] Rev 3564 - larger screen fonts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1888">[ date ]</a>
+              <a href="thread.html#1888">[ thread ]</a>
+              <a href="subject.html#1888">[ subject ]</a>
+              <a href="author.html#1888">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

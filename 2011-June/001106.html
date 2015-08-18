@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] USB to serial issue ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C4DF62E0D.607%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001105.html">
+   <LINK REL="Next"  HREF="001107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] USB to serial issue ?</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C4DF62E0D.607%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] USB to serial issue ?">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Mon Jun 13 17:34:37 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001105.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+        <LI>Next message: <A HREF="001107.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1106">[ date ]</a>
+              <a href="thread.html#1106">[ thread ]</a>
+              <a href="subject.html#1106">[ subject ]</a>
+              <a href="author.html#1106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Guillaume,
+
+Seems to me like device permission problem, you might have to write a
+udev rule, could be something like;
+
+SUBSYSTEM==&quot;usb&quot;, SYSFS{idVendor}==&quot;0000&quot;, MODE=&quot;0666&quot;
+
+replace &quot;0000&quot; with the usb vendor id from lsusb command.
+
+in a file named 51-prolific-rules in /etc/udev/rules.d/ directory
+
+Hope this helps,
+
+73
+de Mike, VE2ExB
+
+Le 2011-06-13 11:04, f8arr a &#233;crit :
+&gt;<i> Hello moonbouncers.
+</I>&gt;<i>
+</I>&gt;<i> Apologies for the bandwich, this is a Linux issue. But perhaps someone
+</I>&gt;<i> has allready faced it ...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Here is the case :
+</I>&gt;<i> In order to have a TX port on WSJT I use /dev/ttyUSB0 from prolific
+</I>&gt;<i> pl2303.
+</I>&gt;<i> At boot, the serial comes up to TX.
+</I>&gt;<i> On messages I have only this message :
+</I>&gt;<i>
+</I>&gt;<i> /Jun 13 17:00:08 f8arr2-station kernel: [ 3574.706035] usb 3-1: new
+</I>&gt;<i> full speed USB device using uhci_hcd and address 8
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852805] usb 3-1: New USB
+</I>&gt;<i> device found, idVendor=067b, idProduct=2303
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852814] usb 3-1: New USB
+</I>&gt;<i> device strings: Mfr=1, Product=2, SerialNumber=0
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852819] usb 3-1:
+</I>&gt;<i> Product: USB-Serial Controller
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852823] usb 3-1:
+</I>&gt;<i> Manufacturer: Prolific Technology Inc.
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.855943] pl2303 3-1:1.0:
+</I>&gt;<i> pl2303 converter detected
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.868109] usb 3-1: pl2303
+</I>&gt;<i> converter now attached to ttyUSB0
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station mtp-probe: checking bus 3, device 8:
+</I>&gt;<i> &quot;/sys/devices/pci0000:00/0000:00:1d.1/usb3/3-1&quot;
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station mtp-probe: bus: 3, device: 8 was not an
+</I>&gt;<i> MTP device/
+</I>&gt;<i>
+</I>&gt;<i> Of course, If I run WSJT it can't commute the TX with an error message
+</I>&gt;<i> &quot;Can't connect to /dev/ttyUSB0&quot;
+</I>&gt;<i>
+</I>&gt;<i> My user is on the &quot;dialout&quot; and &quot;uucp&quot; group.
+</I>&gt;<i>
+</I>&gt;<i> I tried exactly the same manipulation with my only real RS232 port and
+</I>&gt;<i> it works like a charm.. (but dedicated to an other action).
+</I>&gt;<i> Of course, same configuration was ok under my ubuntu 10.04. but I
+</I>&gt;<i> switched to Fedora 15...
+</I>&gt;<i>
+</I>&gt;<i> If someone had a idea.. it would be great. My freind google didn't
+</I>&gt;<i> came with something looking good...
+</I>&gt;<i>
+</I>&gt;<i> regards
+</I>&gt;<i> F8ARR - Guillaume
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+-- 
+...and the wave propagates in the same direction as \mathbf{E} \times \mathbf{B} ,
+the Poyinting vector defined by,
+
+    \mathbf{S} = \frac{1}{\mu_0} \mathbf{E} \times \mathbf{B}
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110613/eafbf7aa/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110613/eafbf7aa/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001105.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+	<LI>Next message: <A HREF="001107.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1106">[ date ]</a>
+              <a href="thread.html#1106">[ thread ]</a>
+              <a href="subject.html#1106">[ subject ]</a>
+              <a href="author.html#1106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

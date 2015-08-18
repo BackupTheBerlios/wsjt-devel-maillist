@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Version 1.2 beta release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCADTTAazXkvJSJ6%2BmO%2B34Evo5fm8pfKn8arXikEWD41YJFuSgWg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001757.html">
+   <LINK REL="Next"  HREF="001760.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Version 1.2 beta release?</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCADTTAazXkvJSJ6%2BmO%2B34Evo5fm8pfKn8arXikEWD41YJFuSgWg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Version 1.2 beta release?">jnogatch at gmail.com
+       </A><BR>
+    <I>Thu Aug  8 23:52:00 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001757.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+        <LI>Next message: <A HREF="001760.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1759">[ date ]</a>
+              <a href="thread.html#1759">[ thread ]</a>
+              <a href="subject.html#1759">[ subject ]</a>
+              <a href="author.html#1759">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Can you try running pavucontrol on Ubuntu 12.10 to see if your sound card is listed?
+</I>
+pavucontrol displays an error message: &quot;Connection to PulseAudio failed ... &quot;
+
+I suspect there is something wrong with PulseAudio on this particular
+laptop. I had been trying to pipe soundcard audio over IP, and it
+probably got left in a bad state.
+
+
+&gt;<i> How did you get Qt5 installed?
+</I>
+sudo add-apt-repository ppa:ubuntu-sdk-team/ppa
+sudo apt-get update
+sudo apt-get install qtbase5-dev
+sudo apt-get install qtmultimedia5-dev
+export QT_SELECT=qt5
+qmake
+make 2&gt;&amp;1 | tee -a ../wsjtx_3536.log
+
+Note that setting QT_SELECT=qt4 can be used to &quot;make clean; qmake;
+make&quot; with Qt4.
+
+
+&gt;<i> ...do you have libpulse-dev installed?
+</I>
+Yes:  dpkg -l libpulse-dev
+...
+ii  libpulse-dev:amd64            1:2.1-0ubuntu4.1    amd64
+   PulseAudio client development headers and libraries
+
+
+I found a useful test program that lists the audio devices at:
+ <A HREF="https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688">https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688</A>
+
+On my Ubuntu 13.04 system:
+$ ./test y
+l: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+l: &quot;alsa_output.pci-0000_00_01.1.hdmi-stereo&quot;
+res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+$ ./test n
+res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+
+On 12.10, using Qt5:
+$ ./test y
+res: &quot;&quot;
+$ ./test n
+res: &quot;&quot;
+
+On 12.10, using Qt4, I must make several changes to -I and -l in the Makefile:
+$ make clean;make
+rm -f test.o
+rm -f *~ core *.core
+g++ -c -m64 -pipe -g -Wall -W -D_REENTRANT -DQT_WEBKIT
+-DQT_MULTIMEDIA_LIB -DQT_CORE_LIB -DQT_SHARED
+-I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore
+-I/usr/include/QtMultimediaKit -I/usr/include/QtMobility
+-I/usr/include/qt4 -I. -o test.o test.cpp
+g++ -m64 -o test test.o    -L/usr/lib/x86_64-linux-gnu
+-lQtMultimediaKit -lQtCore -lpthread
+{ test -n &quot;&quot; &amp;&amp; DESTDIR=&quot;&quot; || DESTDIR=.; } &amp;&amp; test $(gdb --version |
+sed -e 's,[^0-9]\+\([0-9]\)\.\([0-9]\).*,\1\2,;q') -gt 72 &amp;&amp; gdb --nx
+--batch --quiet -ex 'set confirm off' -ex &quot;save gdb-index $DESTDIR&quot;
+-ex quit 'test' &amp;&amp; test -f test.gdb-index &amp;&amp; objcopy --add-section
+'.gdb_index=test.gdb-index' --set-section-flags '.gdb_index=readonly'
+'test' 'test' &amp;&amp; rm -f test.gdb-index || true
+
+...and then there is still a pulseaudio problem:
+$ ./test y
+Unable to create a connection to the pulseaudio context
+^C
+$ ./test n
+Unable to create a connection to the pulseaudio context
+^C
+
+In summary:
+1. This particular ubuntu 12.10 laptop has a problem with PulseAudio.
+2. Trying to support both Qt4 &amp; Qt5 is likely to be difficult. I am in
+favor of using Qt5 only.
+
+-John AC6SL
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001757.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+	<LI>Next message: <A HREF="001760.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1759">[ date ]</a>
+              <a href="thread.html#1759">[ thread ]</a>
+              <a href="subject.html#1759">[ subject ]</a>
+              <a href="author.html#1759">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

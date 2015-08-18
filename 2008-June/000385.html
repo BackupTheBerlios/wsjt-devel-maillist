@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on MacOSX 10.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C41C78196-C970-45FB-8354-0FCC3E0BAE90%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000369.html">
+   <LINK REL="Next"  HREF="000386.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on MacOSX 10.4</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C41C78196-C970-45FB-8354-0FCC3E0BAE90%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT on MacOSX 10.4">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Jun 26 18:15:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000369.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+        <LI>Next message: <A HREF="000386.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Diane,
+
+WSJT is now working on the Mac - at least as defined as being able to  
+decode correctly all the files in the RxWav/Samples directory  
+together with the W8WN_010809_110400.WAV file which is part of the  
+release package.    All checked against a PC running r386 but with  
+Deep Search enabled as advised by Joe.
+
+I have changed the following files:
+wsjt.py:   to insert the menu changes for a Mac (switched if system  
+is darwin) as provided by Nick Repin.  I will send his diff file  
+which I used.
+
+wsjt1.f   to initialise npkept at the start since this can be  
+incremented by decode6m without first having been defined
+
+longx.f   to initialise the dits array since undefined elements cause  
+a program crash when the index nc is incorrect when defining the message
+
+four2a.f  to  work correctly with the single-precision FFTW library    
+(four2a replaces four2 in the Makefile)
+
+astro.F  to convert TSKY.DAT if CPU is big-endian
+
+getfile.F90  to convert .WAV files if CPU is big-endian
+
+and also changed this code in getfile.F90:
+
+      do i=1,ndata
+         n1=d1(i)
+         n4=n4+128
+         d2c(i)=250*n1
+      enddo
+
+n1 (integer*1)  is equivalenced to n4 (integer*4).   This code will  
+*only* work correctly on a little-endian CPU.    In the interests of  
+open-source, could I suggest that this be replaced by the  
+following.   (n4 is not equivalenced to anything.)    This code is  
+then endian independent.    (This problem took several days to pin  
+down and was the reason that JTxx wouldn't work....)
+
+      do i=1,ndata
+         n4=d1(i)
+         if (n4.lt.0) n4=256+n4
+         d2c(i)=250*n4
+      enddo
+
+I will send these files to you directly so you can diff them against  
+whichever version you are using, if this is of interest.
+
+Now I can start using it!!
+
+73 John   G4KLA
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000369.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+	<LI>Next message: <A HREF="000386.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#385">[ date ]</a>
+              <a href="thread.html#385">[ thread ]</a>
+              <a href="subject.html#385">[ subject ]</a>
+              <a href="author.html#385">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

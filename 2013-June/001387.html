@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX JT65
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20JT65&In-Reply-To=%3C51CA0A60.6040100%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001386.html">
+   <LINK REL="Next"  HREF="001388.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX JT65</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20JT65&In-Reply-To=%3C51CA0A60.6040100%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX JT65">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 25 23:23:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001386.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+        <LI>Next message: <A HREF="001388.html">[Wsjt-devel] [WSJT-SVN] r3393 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1387">[ date ]</a>
+              <a href="thread.html#1387">[ thread ]</a>
+              <a href="subject.html#1387">[ subject ]</a>
+              <a href="author.html#1387">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+Thanks for the report!
+
+VK4BDJ wrote:
+&gt;<i> at the moment i am copying JT65 on 14076
+</I>&gt;<i> with WSJTX.....i got the KVASD sorted out and
+</I>&gt;<i> now im copying signals down to -29
+</I>&gt;<i> thats real low
+</I>
+Yes, the sensitivity is very good.  However, in cases where one or more 
+strong signals are within +/- 1000 Hz of the one being decoded (and 
+perhaps certain other situations that also don't occur in EME usage) the 
+JT65 S/N values computed in r3391 and earlier are NOT reliable.  JT65 
+cannot decode signals with actual S/N below about -25 dB.
+
+A better S/N estimator was introduced today in r3392.  Further tests 
+(and perhaps further improvements) are planned.
+
+&gt;<i> im using a FT-450D thru a Rigblaster Advantage
+</I>&gt;<i> with a 6 band Hexbeam pointed NW short path
+</I>&gt;<i>
+</I>&gt;<i> propagation is good so there are plenty of good sigs
+</I>&gt;<i> out of EU
+</I>&gt;<i>
+</I>&gt;<i> just noticed that the last list of minute decodes
+</I>&gt;<i> were 7 stations all under -20
+</I>
+Sounds very good!  Let me know if you find any operational problems.  I 
+hope to merge the v1.1 code back into the main WSJT-X branch soon, and 
+then make an open release of version 1.1.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001386.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+	<LI>Next message: <A HREF="001388.html">[Wsjt-devel] [WSJT-SVN] r3393 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1387">[ date ]</a>
+              <a href="thread.html#1387">[ thread ]</a>
+              <a href="subject.html#1387">[ subject ]</a>
+              <a href="author.html#1387">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

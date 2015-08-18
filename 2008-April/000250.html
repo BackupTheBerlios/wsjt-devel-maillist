@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] problem starting wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20problem%20starting%20wsjt&In-Reply-To=%3C20080429221713.GA9561%40cloud.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000251.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] problem starting wsjt</H1>
+    <B>Hamish Moffatt</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20problem%20starting%20wsjt&In-Reply-To=%3C20080429221713.GA9561%40cloud.net.au%3E"
+       TITLE="[Wsjt-devel] problem starting wsjt">hamish at debian.org
+       </A><BR>
+    <I>Wed Apr 30 00:17:14 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000249.html">[Wsjt-devel] problem starting wsjt
+</A></li>
+        <LI>Next message: <A HREF="000251.html">[Wsjt-devel] problem starting wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Apr 29, 2008 at 01:34:36PM -0400, Diane Bruce wrote:
+&gt;<i> On Tue, Apr 29, 2008 at 06:12:28PM +0100, Richard-1 wrote:
+</I>&gt;<i> &gt; Hi all
+</I>&gt;<i> &gt; I've just installed MDV 2008.1 x86_64.
+</I>&gt;<i> &gt; No problems getting it to compile with portaudio as before,but
+</I>&gt;<i> &gt; getting this:-
+</I>&gt;<i> &gt; [<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at gb7tf</A> wsjt-5.9.8.r558]# python wsjt
+</I>&gt;<i> &gt;   File &quot;wsjt&quot;, line 2
+</I>&gt;<i> &gt;     if [ -e /usr/local/bin/python ] ; then
+</I>&gt;<i> &gt;                                     ^
+</I>&gt;<i> &gt; SyntaxError: invalid syntax
+</I>&gt;<i> 
+</I>&gt;<i> I bet you are running csh. That above syntax is proper for sh, bash.
+</I>&gt;<i> Are you missing the #!/bin/sh line? Is it +x ?
+</I>
+Actually Richard appears to be forcing Python to interpret the sh script
+by running:
+
+&gt;<i> &gt; [<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at gb7tf</A> wsjt-5.9.8.r558]# python wsjt
+</I>
+Richard, just run &quot;./wsjt&quot; instead. That file is in shell script, not
+python.
+
+
+Hamish
+-- 
+Hamish Moffatt VK3SB &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000249.html">[Wsjt-devel] problem starting wsjt
+</A></li>
+	<LI>Next message: <A HREF="000251.html">[Wsjt-devel] problem starting wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#250">[ date ]</a>
+              <a href="thread.html#250">[ thread ]</a>
+              <a href="subject.html#250">[ subject ]</a>
+              <a href="author.html#250">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 r3480
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r3480&In-Reply-To=%3C51DF20F8.1080903%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001499.html">
+   <LINK REL="Next"  HREF="001501.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 r3480</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r3480&In-Reply-To=%3C51DF20F8.1080903%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 r3480">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jul 11 23:17:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001499.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+        <LI>Next message: <A HREF="001501.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+VK4BDJ  wrote:
+&gt;<i> Hi Joe .....i love the new +2khz button works very well
+</I>&gt;<i> big pat on the back for that innnovation
+</I>
+Your speed in compiling new svn commits is amazing!  Happy to hear that 
+you like the new &quot;+2 kHz&quot; checkbox.
+
+On another matter, the question of startup default frequencies:
+
+After receiving a bunch of input from the wsjtgroup reflector, as well 
+as off-list, I've concluded that the best frequencies are probably these:
+
+Band   JT65
+--------------
+  160   1.838
+   80   3.576
+   60   5.357
+   40   7.076
+   30  10.138
+   20  14.076
+   17  18.102
+   15  21.076
+   12  24.917
+   10  28.076
+    6  50.276
+
+For narrow-band, JT9-only operation, add 2 kHz.  (That's what the new 
+checbox is for, of course.)
+
+Regarding 30m: I've inserted what might be called a &quot;software notch 
+filter&quot;.  If you try to transmit in the WSPR band, the program will 
+refuse and pop up this message:
+
+&quot;Please choose another Tx frequency.
+  WSJT-X will not knowingly transmit
+  between 10.139 900 and 10.140 320 MHz,
+  the 30 m sub-band for WSPR transmissions.&quot;
+
+This enforces a small &quot;hole&quot; in the WSJT-X displayed portion of the 30m 
+band, set aside for use by WSPR.  Rather conveniently, it's located 
+between the JT65 and JT9 segments: from 1900 to 2320 Hz on your WSJT-X 
+waterfall.  (The blanked-out width is 320 Hz -- the 200 Hz width of the 
+WSPR band, plus the 177 Hz width of a JT65 signal, plus a 20 Hz guard 
+band on each end.)
+
+Comments???
+
+Any reason not to make a second (and possibly final) beta release of 
+WSJT-X Version 1.1 ?
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001499.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+	<LI>Next message: <A HREF="001501.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1500">[ date ]</a>
+              <a href="thread.html#1500">[ thread ]</a>
+              <a href="subject.html#1500">[ subject ]</a>
+              <a href="author.html#1500">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

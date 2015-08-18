@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Linrad] Re: Ubuntu 8.10
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BLinrad%5D%20Re%3A%20Ubuntu%208.10&In-Reply-To=%3C4929BBA7.8000705%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000546.html">
+   <LINK REL="Next"  HREF="000549.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Linrad] Re: Ubuntu 8.10</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BLinrad%5D%20Re%3A%20Ubuntu%208.10&In-Reply-To=%3C4929BBA7.8000705%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Linrad] Re: Ubuntu 8.10">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun Nov 23 21:23:03 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000546.html">[Wsjt-devel] WSPR 1.1
+</A></li>
+        <LI>Next message: <A HREF="000549.html">[Wsjt-devel] Introduction - David GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#547">[ date ]</a>
+              <a href="thread.html#547">[ thread ]</a>
+              <a href="subject.html#547">[ subject ]</a>
+              <a href="author.html#547">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Roger beat me to it.
+
+I recommend to anyone running near-real-time applications like Linrad, 
+WSJT, WSPR, and MAP65 on a consumer O/S, including Linux: turn off the 
+&quot;eye candy&quot; features offered by the O/S.  This applies to Ubuntu Linux 
+and to any other O/S that offers snazzy &quot;Windows-like&quot; or &quot;Mac-like&quot; 
+decorative features.  (I imagine that Vista is particularly bad, 
+although I haven't used it.)
+
+You can't afford to have your CPU paying close attention to on-screen 
+&quot;appearance features&quot; (which of course offer no advantage whatsoever to 
+your ham radio applications), when your program needs the CPU to be 
+paying attention to signals you're trying to extract from the noise.
+
+For what it's worth, I also advise users of ham radio software to make a 
+decision about whether you are primarily interested in the radio 
+applications, or the computer setup.  If the latter, then of course you 
+may wish to install every new O/S release when it comes out; but then, 
+do not be surprised if something in Linrad, MAP65, or whatever, does not 
+work as you expect -- and do not expect the program authors to find time 
+to solve your problem, right away.
+
+I like to have stable O/S installations in both Windows and Linux that I 
+can use both for program development and for operating.  I tend to stay 
+with these installations, essentially unchanged, for at least several years.
+
+Because it's relevant to discussions that have taken place on the WSJT 
+developers reflector, I am copying this message to that forum, as well.
+
+	-- 73, Joe, K1JT
+
+Leif Asbrink wrote:
+&gt;<i> Hi Roger,
+</I>&gt;<i> 
+</I>&gt;<i> You have solved the problem:-) My Ubuntu 8.10 installation had
+</I>&gt;<i> 'Visual Effects' set to 'Normal'. That was the reason for
+</I>&gt;<i> abnormal behaviour.
+</I>&gt;<i> 
+</I>&gt;<i> I have now set visual effects to 'None' and now the computer
+</I>&gt;<i> has normal behaviour and seems to run as well as with other
+</I>&gt;<i> distributions. (I have not analyzed timing issues in detail.)
+</I>&gt;<i> Thank you Roger:-)
+</I>&gt;<i> 
+</I>&gt;<i>                         ---  0  ---
+</I>&gt;<i> 
+</I>&gt;<i> According to public media here in Sweden it seems like the
+</I>&gt;<i> leading distributions are:
+</I>&gt;<i> 
+</I>&gt;<i> 1)Ubuntu
+</I>&gt;<i> 2)Fedora
+</I>&gt;<i> 3)Opensuse
+</I>&gt;<i> 4)Mandriva 
+</I>&gt;<i> 
+</I>&gt;<i> I am using Debian for my daily work, and I have now tested
+</I>&gt;<i> Ubuntu 8.10 and Mandriva 2009 (the most recent ones) Both of
+</I>&gt;<i> them (now) run well although I was not able to change the
+</I>&gt;<i> numbering of my soundcards under Mandriva. ALSA is different 
+</I>&gt;<i> there somehow.
+</I>&gt;<i> 
+</I>&gt;<i> I will test Fedora and Opensuse also.
+</I>&gt;<i> 
+</I>&gt;<i> Is there anyone on this list who prefers another distribution
+</I>&gt;<i> than the five mentioned? Slackware, Gentoo, CentOS or something 
+</I>&gt;<i> else? If you post a message to this list about why you prefer it
+</I>&gt;<i> I will install it on my multi-partition hard disk and try to 
+</I>&gt;<i> install Linrad on it to see if there are any surprises...
+</I>&gt;<i> 
+</I>&gt;<i> 73
+</I>&gt;<i> 
+</I>&gt;<i> Leif / SM5BSZ
+</I>&gt;<i> 
+</I>&gt;<i> On Sun, 23 Nov 2008 09:43:03 -0500
+</I>&gt;<i> w3sz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">w3sz at comcast.net</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> What follows may or may not be germane to the issue you describe.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I found that an earlier version of Ubuntu [8.04] installed, by  
+</I>&gt;&gt;<i> default, here with 'Appearance' extras selected that caused no problem  
+</I>&gt;&gt;<i> on 'modern' Core2Duo machines but which brought to its knees an old  
+</I>&gt;&gt;<i> Pentium III that I ran remotely via VNC and using the Gnome desktop.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The atrocious refresh and HID delays disappeared when I changed the  
+</I>&gt;&gt;<i> 'appearance
+</I>&gt;&gt;<i> enhancements' to 'none' by clicking on 'System' then 'Preferences'  
+</I>&gt;&gt;<i> then 'Appearance' then &quot;Visual Effects', and then clicking to select  
+</I>&gt;&gt;<i> the 'None' radio button.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I found that neither 'Normal' or 'Extra' settings of the 'Visual  
+</I>&gt;&gt;<i> Effects' gave satisfactory performance when the VNC server was active  
+</I>&gt;&gt;<i> on this old, slow machine.  With the setting of 'None', everything  
+</I>&gt;&gt;<i> works acceptably.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Check your 8.10 install and see if something other than 'None' is  
+</I>&gt;&gt;<i> selected.  If so, select 'None', then recheck your CPU utilization.  I  
+</I>&gt;&gt;<i> would also suggest rebooting and then checking it again after making  
+</I>&gt;&gt;<i> the change from either 'Normal' or 'Extra' to 'None'.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Because you report that 8.04 did not exhibit porcine CPU behavior for  
+</I>&gt;&gt;<i> you, this issue may not be related to your problem.  On the other  
+</I>&gt;&gt;<i> hand, it is possible that the 'default' settings of 'Visual Effects'  
+</I>&gt;&gt;<i> have not remained constant throughout the lifetime of 8.04, and that  
+</I>&gt;&gt;<i> your default install settings for 8.04 were not identical to mine,  
+</I>&gt;&gt;<i> thus preventing you from seeing the problem
+</I>&gt;&gt;<i> with 8.04.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If the above issue is NOT germane to the problem you described, please  
+</I>&gt;&gt;<i> accept my apologies for the bandwidth.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Roger Rehr
+</I>&gt;&gt;<i> W3SZ
+</I>&gt;&gt;<i> <A HREF="http://www.nitehawk.com/w3sz">http://www.nitehawk.com/w3sz</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Quoting Leif Asbrink &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">leif at sm5bsz.com</A>&gt;:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi All,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The latest version of Ubuntu is extremely CPU hungry when
+</I>&gt;&gt;&gt;<i> used with X11. Just running the system monitor loads the
+</I>&gt;&gt;&gt;<i> CPU with 20%. Xorg, the X11 server uses 15% and the system
+</I>&gt;&gt;&gt;<i> monitor uses 4%.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Debian unstable which has the same system monitor uses
+</I>&gt;&gt;&gt;<i> 6% for Xorg and 4% for the system monitor.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Debian stable uses the older system monitor which is far less
+</I>&gt;&gt;&gt;<i> CPU hungry. It moves the curves horizontally step-wize and
+</I>&gt;&gt;&gt;<i> uses 4% for Xorg and only 1% for the monitor itself.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The above numbers are for a 2.6GHz Pentium IV.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The very high load caused by the X11 server may make it necessary
+</I>&gt;&gt;&gt;<i> to increase the output delay margin and to decrease the max
+</I>&gt;&gt;&gt;<i> DMA rate.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I would recommend Ubuntu 8.04 or any other Linux distribution
+</I>&gt;&gt;&gt;<i> if you want to run Linrad under X11.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> In case you love Ubuntu 8.10 for some reason, download
+</I>&gt;&gt;&gt;<i> svgalib1925-1.tbz from here:
+</I>&gt;&gt;&gt;<i> <A HREF="http://www.sm5bsz.com/linuxdsp/install/svgainst.htm">http://www.sm5bsz.com/linuxdsp/install/svgainst.htm</A>
+</I>&gt;&gt;&gt;<i> The modified svgalib-1.9.25 package will compile under
+</I>&gt;&gt;&gt;<i> Ubuntu 8.10
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Press Ctrl Alt F1 to get into terminal mode and run Linrad
+</I>&gt;&gt;&gt;<i> from there (do not forget sudo.) Ubuntu 8.10 runs at full speed
+</I>&gt;&gt;&gt;<i> With svgalib in terminal mode:-)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 73
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Leif / SM5BSZ
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000546.html">[Wsjt-devel] WSPR 1.1
+</A></li>
+	<LI>Next message: <A HREF="000549.html">[Wsjt-devel] Introduction - David GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#547">[ date ]</a>
+              <a href="thread.html#547">[ thread ]</a>
+              <a href="subject.html#547">[ subject ]</a>
+              <a href="author.html#547">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

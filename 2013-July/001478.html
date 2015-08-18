@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20in%20/branches/wsjtx&In-Reply-To=%3C51DB53AD.9000209%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001476.html">
+   <LINK REL="Next"  HREF="001479.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20in%20/branches/wsjtx&In-Reply-To=%3C51DB53AD.9000209%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  9 02:05:01 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001476.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+        <LI>Next message: <A HREF="001479.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1478">[ date ]</a>
+              <a href="thread.html#1478">[ thread ]</a>
+              <a href="subject.html#1478">[ subject ]</a>
+              <a href="author.html#1478">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David --
+
+Makefile.linux was correct as is.  There is no need to compile a program 
+called jt65.  The jt65 decoder is part of the executable jt9.
+
+	-- Joe, K1JT
+
+On 07/08/2013 06:40 PM, David wrote:
+&gt;<i> Hi Joe...d/l the branches/wsjtx version
+</I>&gt;<i> and tried to compile on my laptop
+</I>&gt;<i>
+</I>&gt;<i> when i use Make -f Makefile.linux in the /lib dir
+</I>&gt;<i> i found it was only compiling jt9 and no jt65
+</I>&gt;<i> went fishing among paperwork and found that the commands
+</I>&gt;<i> for compiling jt65 were missing from the Makefile.linux
+</I>&gt;<i>
+</I>&gt;<i> line 19 added jt65 to the end after jt9code
+</I>&gt;<i>
+</I>&gt;<i> then after OBJS4 added OBJS5
+</I>&gt;<i>
+</I>&gt;<i> OBJS5 = jt65.o
+</I>&gt;<i> jt65: $(OBSJ5) libjt9.a
+</I>&gt;<i>      g++ -o jt65 $(OBJS5) libjt9.a -lfftw3f -lgfortran -QtCore
+</I>&gt;<i>      cp jt65 ../../wsjtx_install
+</I>&gt;<i>
+</I>&gt;<i> then on the last line added jt65 after jt9code
+</I>&gt;<i>
+</I>&gt;<i> i was the able to compile both jt9 and jt65 and put them in wsjtx_install
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001476.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+	<LI>Next message: <A HREF="001479.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1478">[ date ]</a>
+              <a href="thread.html#1478">[ thread ]</a>
+              <a href="subject.html#1478">[ subject ]</a>
+              <a href="author.html#1478">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

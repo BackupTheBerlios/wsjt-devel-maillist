@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT FreeBSD amd64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701041329y1be7197bq7bfd81f490b75a23%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT FreeBSD amd64</H1>
+    <B>Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701041329y1be7197bq7bfd81f490b75a23%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT FreeBSD amd64">mm0dqp at gmail.com
+       </A><BR>
+    <I>Thu Jan  4 22:29:49 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Wsjt-devel] Fwd: WSJT FreeBSD amd64
+</A></li>
+        <LI>Next message: <A HREF="000021.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hmm ,
+I'll answer myself , Overlooked the obvisious bit of looking in the
+amd64 mailing list, attached is a quote with the fix , will try it and
+let you know what happened .
+
+QUOTE&gt;&gt;&gt;
+#-FIX-
+#Required sources:
+#The required version of src/lib/msun/src/s_scalbnf.c is 1.8 which has
+#been included in all 6.x RELENGs.
+#
+#The required assembly version (src/lib/msun/amd64/s_scalbnf.S 1.2)
+#_is_not_correct_ in _any_ RELEASE to date.  It is correct in HEAD but
+#not in 6.0,  6.1 or  6.2 RELENGs.
+#(<A HREF="http://www.freebsd.org/cgi/cvsweb.cgi/src/lib/msun/amd64/s_scalbnf.S">http://www.freebsd.org/cgi/cvsweb.cgi/src/lib/msun/amd64/s_scalbnf.S</A>).
+#
+#Build, Test, Install:
+#After updating your s_scalbnf.S, you can 'make clean; make build' in
+#src/lib/msun.  Your new library will be
+#/usr/obj/usr/src/lib/msun/libm.so.4.  Check for ldexpf, as above.  And
+#'make install' if the build worked.
+#
+#Note that this still needs to be fixed in the future releases, and
+#that this is really a 'bad thing'.
+#
+#Thanks to Steve Kargl for getting me pointed in the right direction.
+#
+#-Kael
+&lt;&lt;&lt;<A HREF="http://lists.freebsd.org/pipermail/freebsd-amd64/2006-December/009263.html">http://lists.freebsd.org/pipermail/freebsd-amd64/2006-December/009263.html</A>
+
+
+Cheers Erik MM0DQP
+
+On 04/01/07, Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt; wrote:
+&gt;<i> I should really be CC'ing all these emails about compiling on amd64
+</I>&gt;<i> Freebsd 6.1 to the reflector incase it is useful to someone :-/
+</I>&gt;<i>
+</I>&gt;<i> Cheers Erik MM0DQP
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt;
+</I>&gt;<i> Date: 04-Jan-2007 21:18
+</I>&gt;<i> Subject: WSJT FreeBSD
+</I>&gt;<i> To: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Diane,
+</I>&gt;<i> Got a bit of time tonight to try compile wsjt again. Did a reformat
+</I>&gt;<i> and installed a bare Freebsd 6.1 system with the minimums.
+</I>&gt;<i> As suspected the compile ran through until py-scipy fails at &quot;import
+</I>&gt;<i> umath&quot; with an &quot;undefined symbol 'ldexpf'&quot; from numpy :S although
+</I>&gt;<i> numpy compiled fine!
+</I>&gt;<i> A little bit of research led me to a post on a FreeBSD Port Forum
+</I>&gt;<i>
+</I>&gt;<i> QUOTE &gt;&gt;&gt;
+</I>&gt;<i> #On AMD64 6.0-RELEASE, the port builds and installs.  At run time this is
+</I>&gt;<i> #what you get:
+</I>&gt;<i> #Python 2.4.3 (#2, Nov 29 2006, 14:57:08)
+</I>&gt;<i> #[GCC 3.4.4 [FreeBSD] 20050518] on freebsd6
+</I>&gt;<i> #Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</I>&gt;<i> #&gt;&gt;&gt; import numpy
+</I>&gt;<i> #Traceback (most recent call last):
+</I>&gt;<i> #  File &quot;&lt;stdin&gt;&quot;, line 1, in ?
+</I>&gt;<i> #  File &quot;/usr/local/lib/python2.4/site-packages/numpy/__init__.py&quot;, line 36,
+</I>&gt;<i> #in ?
+</I>&gt;<i> #    import core
+</I>&gt;<i> #  File &quot;/usr/local/lib/python2.4/site-packages/numpy/core/__init__.py&quot;, line
+</I>&gt;<i> #6, in ?
+</I>&gt;<i> #    import umath
+</I>&gt;<i> #ImportError: /usr/local/lib/python2.4/site-packages/numpy/core/umath.so:
+</I>&gt;<i> #Undefined symbol &quot;ldexpf&quot;
+</I>&gt;<i> #&gt;&gt;&gt;
+</I>&gt;<i> #
+</I>&gt;<i> #ldd reports that umath.so is linked to libm, but oddly it does not have
+</I>&gt;<i> #ldexpf!  Obviously an operating system problem, but I thought you might be
+</I>&gt;<i> #interested.
+</I>&gt;<i> #
+</I>&gt;<i> #Regards,
+</I>&gt;<i> #Kael
+</I>&gt;<i> &lt;&lt;&lt; <A HREF="http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html">http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html</A>
+</I>&gt;<i>
+</I>&gt;<i> Cant see any follow up on this and I've looked fairly hard although
+</I>&gt;<i> that doesn't mean I missed the big billboard with the answer :)).
+</I>&gt;<i>
+</I>&gt;<i> Any ideas ??
+</I>&gt;<i> Cheers Erik MM0DQP
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Wsjt-devel] Fwd: WSJT FreeBSD amd64
+</A></li>
+	<LI>Next message: <A HREF="000021.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] kvasd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20kvasd&In-Reply-To=%3C51E75209.4020707%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001527.html">
+   <LINK REL="Next"  HREF="001529.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] kvasd</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20kvasd&In-Reply-To=%3C51E75209.4020707%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] kvasd">djmunn at bigpond.com
+       </A><BR>
+    <I>Thu Jul 18 04:25:13 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001527.html">[Wsjt-devel] kvasd
+</A></li>
+        <LI>Next message: <A HREF="001529.html">[Wsjt-devel] Changes to support multiple instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1528">[ date ]</a>
+              <a href="thread.html#1528">[ thread ]</a>
+              <a href="subject.html#1528">[ subject ]</a>
+              <a href="author.html#1528">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Murray and Joe
+ive fixed the problem
+I d/l afresh copy of kvasd form Joes site and installed it
+somewhere along the line the other one got mangled
+
+73 David VK4BDJ
+
+
+
+On 18/07/13 08:25, Murray Curtis wrote:
+&gt;<i> Hi David
+</I>&gt;<i>
+</I>&gt;<i> ldd (list library dependencies) could help you. If you run ldd ./kdasd 
+</I>&gt;<i> in the directory where kvasd is it will show you what kvasd is using 
+</I>&gt;<i> and, more importantly, any that are missing. However trying to run a 
+</I>&gt;<i> binary without all its dependencies won't, well shouldn't, cause a seg 
+</I>&gt;<i> fault, it should print out a meaningful error to stderr (in the 
+</I>&gt;<i> terminal).
+</I>&gt;<i>
+</I>&gt;<i> I'm using Mint 14 as well. Running ldd here gives:
+</I>&gt;<i>  ldd ./kvasd
+</I>&gt;<i>     linux-gate.so.1 =&gt;  (0xb7722000)
+</I>&gt;<i>     libgfortran.so.3 =&gt; /usr/lib/i386-linux-gnu/libgfortran.so.3 
+</I>&gt;<i> (0xb760c000)
+</I>&gt;<i>     libm.so.6 =&gt; /lib/i386-linux-gnu/libm.so.6 (0xb75e0000)
+</I>&gt;<i>     libgcc_s.so.1 =&gt; /lib/i386-linux-gnu/libgcc_s.so.1 (0xb75c1000)
+</I>&gt;<i>     libc.so.6 =&gt; /lib/i386-linux-gnu/libc.so.6 (0xb7417000)
+</I>&gt;<i>     libquadmath.so.0 =&gt; /usr/lib/i386-linux-gnu/libquadmath.so.0 
+</I>&gt;<i> (0xb739f000)
+</I>&gt;<i>     /lib/ld-linux.so.2 (0xb7723000)
+</I>&gt;<i>
+</I>&gt;<i> I *think* the only non-standard library there is libfortran.
+</I>&gt;<i>
+</I>&gt;<i> Hope that helps
+</I>&gt;<i> Cheers
+</I>&gt;<i> Murray
+</I>&gt;<i> VK3ACF
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 18/07/13 07:31, David wrote:
+</I>&gt;&gt;<i> Hi Joe ...im wondering if you can help me with a little problem
+</I>&gt;&gt;<i> on my too desktops im running Linux Mint 14 Cinnamon (Ubuntu 12.10)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> if i cd to the directory where  ksavd is with a terminal and the run 
+</I>&gt;&gt;<i> ./kvasd
+</I>&gt;&gt;<i> i get the copywrite message
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> but if i do the same thing on my laptop ..Linux Mint 14 Cinnamon.. 
+</I>&gt;&gt;<i> .with a terminal cd to the directory
+</I>&gt;&gt;<i> where kvasd is and run it with ./kvasd i get a segmentation fault
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> i suspect im missing a dependency but i cant seem to find which one
+</I>&gt;&gt;<i> would you have any idea what it could be
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> r3492 is running very well on my desktop...looks good
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> David VK4BDJ
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001527.html">[Wsjt-devel] kvasd
+</A></li>
+	<LI>Next message: <A HREF="001529.html">[Wsjt-devel] Changes to support multiple instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1528">[ date ]</a>
+              <a href="thread.html#1528">[ thread ]</a>
+              <a href="subject.html#1528">[ subject ]</a>
+              <a href="author.html#1528">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Subject:WSPR Linux GUI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Subject%3AWSPR%20Linux%20GUI&In-Reply-To=%3C380-220081231703627505%40M2W039.mail2web.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000558.html">
+   <LINK REL="Next"  HREF="000560.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Subject:WSPR Linux GUI</H1>
+    <B>g3zjo at npton.plus.com</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Subject%3AWSPR%20Linux%20GUI&In-Reply-To=%3C380-220081231703627505%40M2W039.mail2web.com%3E"
+       TITLE="[Wsjt-devel] Subject:WSPR Linux GUI">g3zjo at npton.plus.com
+       </A><BR>
+    <I>Wed Dec 17 01:36:27 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000558.html">[Wsjt-devel] WSJT Linux GUI
+</A></li>
+        <LI>Next message: <A HREF="000560.html">[Wsjt-devel] Subject:WSPR Linux GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Joe
+
+&gt;<i>As far as I can see, it does just what I said it would do.  In line 943 
+</I>&gt;<i>delete 5 spaces before &quot;dB&quot;, 4 before &quot;DT&quot;, 3 before &quot;Freq, and 8 before 
+</I>&gt;<i>&quot;Drift&quot;.  In line 944 change the constant 150 to 123.  The column 
+</I>&gt;<i>headings will then be neatly aligned.  Nothing moves West when I tell it 
+</I>&gt;<i>to move East.  It behaves just as expected.
+</I>
+Yep I tried all the deleting of spaces. Changing the constant 150 to 123,
+123 was the figure I came up with too. That fixes it for the Screen
+resolution and geometry which you have and me too.
+
+Each Linux release will need the constant changed after compile because it
+is a fixed value, and the geometry of the GUI varies. Plus when run on a
+high resolution monitor it changes again.
+The value is obviously OK for MS Windows. 
+ 
+Being nomadic as described it needs to be anchored. As I said I expected
+that some Python'ite would have a simple answer.
+
+&gt;<i>Nothing moves West when I tell it to move East.  It behaves just as
+</I>expected.
+
+In true experimental fashion I tried instead of anchor 'w', anchor 'e', the
+text wraps round and appears on the west. I tried anchor center and it
+moves to the west. Needing to describe that effect, I said it makes the
+Label appear to be outside the frame.
+
+I tried giving the label  a widget to anchor to, that works but the label
+is still mobile varying with geometry. The only way I could see of giving
+it a position that will not change with GUI size is to fix it 'e' pad it
+and move the 'Decoded text' box with it.
+
+What I described places the label in the same position in the same frame as
+the box it is labelling, wise? Any itinerant behaviour is thus cured. Yes
+it is merely a personal mod.
+
+&gt;<i>Of course you should feel free to modify the code for your own use, 
+</I>&gt;<i>however you see fit.
+</I>
+Yes and interesting too.
+
+&gt;<i>I don't know of any reasonable way to make these things 
+</I>&gt;<i>fully platform- and font-independent.
+</I>
+It is a fact surely that this odd bit of incompatibility with MS Windows
+will effect everyone who compiles for Linux. I described a way of fixing
+it, I am sure there are other probably better ways too.
+
+If that was fixed the  WSPR GUI would be platform and font independent
+across a dozen different Linux distros as tested at this QTH and in
+Denmark. Pretty good I recon.
+
+OK enough said on the subject.
+
+--------------------------------------------------------------------
+mail2web.com &#150; What can On Demand Business Solutions do for you?
+<A HREF="http://link.mail2web.com/Business/SharePoint">http://link.mail2web.com/Business/SharePoint</A>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000558.html">[Wsjt-devel] WSJT Linux GUI
+</A></li>
+	<LI>Next message: <A HREF="000560.html">[Wsjt-devel] Subject:WSPR Linux GUI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#559">[ date ]</a>
+              <a href="thread.html#559">[ thread ]</a>
+              <a href="subject.html#559">[ subject ]</a>
+              <a href="author.html#559">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

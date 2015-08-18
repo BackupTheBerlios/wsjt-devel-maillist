@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT under Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20under%20Linux&In-Reply-To=%3C516D574E.6040700%40omen.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001199.html">
+   <LINK REL="Next"  HREF="001201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT under Linux</H1>
+    <B>Chuck Forsberg WA7KGX N2469R</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20under%20Linux&In-Reply-To=%3C516D574E.6040700%40omen.com%3E"
+       TITLE="[Wsjt-devel] WSJT under Linux">caf at omen.com
+       </A><BR>
+    <I>Tue Apr 16 15:51:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001199.html">[Wsjt-devel] WSJT under Linux
+</A></li>
+        <LI>Next message: <A HREF="001201.html">[Wsjt-devel] WSJT-X v0.9 r3187
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1200">[ date ]</a>
+              <a href="thread.html#1200">[ thread ]</a>
+              <a href="subject.html#1200">[ subject ]</a>
+              <a href="author.html#1200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 04/16/2013 02:04 AM, f1ebk wrote:
+&gt;<i> I saw there is a .deb file on Joe's website and tried to install in on
+</I>&gt;<i> my laptop with no success...
+</I>&gt;<i> I am using UBUNTU 12.04, so should I use the 11.04 to get WSJT running
+</I>&gt;<i> under linux, or another distrib ?
+</I>&gt;<i>
+</I>&gt;<i> Very 73
+</I>&gt;<i>
+</I>&gt;<i> Patrick, F1EBK
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>I have been compiling WSPR under Fedora for some time.
+The latest Fedora version requires the &quot;load Image...&quot; line in wspr.py
+to be prefixed with &quot;from PIL&quot;.  The following installs libs
+needed for Gnuradio and WSPR:
+date
+set -x
+yum --nogpgcheck  -y --skip-broken install gnuplot gifsicle giflib-devel 
+ImageMagick-devel xfburn telnet-server xfce4-terminal xterm
+
+yum --nogpgcheck  -y --skip-broken install portaudio-devel 
+libsamplerate-devel *python-imaging* hamlib-devel numpy-f2py 
+gcc-gfortran svn git
+
+yum --nogpgcheck  -y --skip-broken install cmake boost-devel 
+cppunit-devel fftw3-devel gsl-devel nasm yasm tiger* rss-glx* sphinx  
+python-sphinx
+
+yum --nogpgcheck  -y --skip-broken install wxPython-devel python-cheetah 
+PyOpenGL  *qt4* *qt-4* tbb  qwt-devel PyQwt PyQt-devel *swig*
+
+yum --nogpgcheck  -y --skip-broken install wxPython-devel python-lxml  
+alsa-lib-devel  texlive-dvips libXaw-devel ncurses-devel xscreensaver-extras
+
+echo DONE
+date
+
+
+-- 
+      Chuck Forsberg WA7KGX   <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">caf at omen.com</A>   www.omen.com
+Developer of Industrial ZMODEM(Tm) for Embedded Applications
+   Omen Technology Inc      &quot;The High Reliability Software&quot;
+10255 NW Old Cornelius Pass Portland OR 97231   503-614-0430
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001199.html">[Wsjt-devel] WSJT under Linux
+</A></li>
+	<LI>Next message: <A HREF="001201.html">[Wsjt-devel] WSJT-X v0.9 r3187
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1200">[ date ]</a>
+              <a href="thread.html#1200">[ thread ]</a>
+              <a href="subject.html#1200">[ subject ]</a>
+              <a href="author.html#1200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

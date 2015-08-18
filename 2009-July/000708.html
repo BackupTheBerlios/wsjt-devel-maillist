@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT7, r1277
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3C4A6A30DE.4060408%40superbug.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000707.html">
+   <LINK REL="Next"  HREF="000709.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT7, r1277</H1>
+    <B>James Courtier-Dutton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3C4A6A30DE.4060408%40superbug.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT7, r1277">James at superbug.co.uk
+       </A><BR>
+    <I>Sat Jul 25 00:08:30 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000707.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+        <LI>Next message: <A HREF="000709.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry Popov wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Similarly, by setting ltrace=3 you can get some more verbose 
+</I>&gt;&gt;<i> diagnostics.  Harry, I suggest that you set ltrace=3, 
+</I>&gt;&gt;<i> re-compile, and let me know if you get any messages before 
+</I>&gt;&gt;<i> the segmentation fault.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I did. Here are the messages:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~/WSJTSVN$ python -O wsjt.py
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 7.04 r1277 , by K1JT
+</I>&gt;<i> Revision date: 2009-07-22 22:58:34 +0300 (Wed, 22 Jul 2009) 
+</I>&gt;<i> Run date:   Fri Jul 24 06:24:06 2009 UTC
+</I>&gt;<i>  Mutex locked by ftn_init
+</I>&gt;<i>  Mutex unlocked
+</I>&gt;<i> Segmentation fault
+</I>&gt;<i>
+</I>&gt;<i> If this help here is the output of gdb:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~/WSJTSVN$ gdb python
+</I>&gt;<i> (gdb) run wsjt.py
+</I>&gt;<i> Starting program: /usr/bin/python wsjt.py
+</I>&gt;<i> [Thread debugging using libthread_db enabled]
+</I>&gt;<i> [New Thread 0xb7d626c0 (LWP 16941)]
+</I>&gt;<i> [New Thread 0xb75d2b90 (LWP 16944)]
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 7.04 r1277 , by K1JT
+</I>&gt;<i> Revision date: 2009-07-22 22:58:34 +0300 (Wed, 22 Jul 2009) 
+</I>&gt;<i> Run date:   Fri Jul 24 06:36:41 2009 UTC
+</I>&gt;<i>  Mutex locked by ftn_init
+</I>&gt;<i>  Mutex unlocked
+</I>&gt;<i>
+</I>&gt;<i> Program received signal SIGSEGV, Segmentation fault.
+</I>&gt;<i> [Switching to Thread 0xb7d626c0 (LWP 16941)]
+</I>&gt;<i> 0xb035f37d in Tk_GetImageMasterData () from /usr/lib/libtk8.4.so.0
+</I>&gt;<i> (gdb) 
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Please add at the end
+(gdb) thread apply bt all
+then
+(gdb) bt full
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000707.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+	<LI>Next message: <A HREF="000709.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

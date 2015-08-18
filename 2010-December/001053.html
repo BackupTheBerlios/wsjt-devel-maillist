@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 3.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%203.0&In-Reply-To=%3C4D079C0E.3000208%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001052.html">
+   <LINK REL="Next"  HREF="001059.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 3.0</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%203.0&In-Reply-To=%3C4D079C0E.3000208%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR 3.0">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Dec 14 17:32:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001052.html">[Wsjt-devel] Running WSPR on slow hardware
+</A></li>
+        <LI>Next message: <A HREF="001059.html">[Wsjt-devel] WSPR 3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1053">[ date ]</a>
+              <a href="thread.html#1053">[ thread ]</a>
+              <a href="subject.html#1053">[ subject ]</a>
+              <a href="author.html#1053">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all on the Developer's list,
+
+I have bumped the WSPR version number to 3.0 and created a new &quot;WSPR 3.0 
+User's Guide&quot; to replace the older Guide and its Supplement.  The new 
+documentation incorporates instructions for I-Q mode and Frequency 
+Hopping -- both of which are significant advances since WSPR 2.0 -- as 
+well as a number of relatively minor improvements.
+
+Because several people have asked for it, I've modified the source 
+encoding/decoding routines so that power levels less than 1 mW (i.e., 
+negative values of dBm) are supported in standard Type 1 messages.
+Negative dBm's are *not* supported for Type 2 and Type 3 messages (the 
+ones that convey compound callsigns and 6-digit grid locators).
+
+Transmission of negative dBm values should be used sparingly until most 
+people have converted to WSPR 3.0.  Messages with negative dBm values 
+will not be decoded correctly by older versions of WSPR.
+
+Installation files for WSPR 3.0 have been posted at these URLs:
+
+Windows:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSPR3.00_r2290.EXE">http://www.physics.princeton.edu/pulsar/K1JT/WSPR3.00_r2290.EXE</A>
+
+Linux:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/wspr_3.00r2290_i386.deb">http://www.physics.princeton.edu/pulsar/K1JT/wspr_3.00r2290_i386.deb</A>
+
+The new online User's Guide is available at:
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR_3.0_User.pdf">http://physics.princeton.edu/pulsar/K1JT/WSPR_3.0_User.pdf</A>
+
+I will greatly appreciate any quick feedback on the new User's Guide, 
+and of course on WSPR 3.0 itself.  I would like to make an open release 
+within a few days.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001052.html">[Wsjt-devel] Running WSPR on slow hardware
+</A></li>
+	<LI>Next message: <A HREF="001059.html">[Wsjt-devel] WSPR 3.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1053">[ date ]</a>
+              <a href="thread.html#1053">[ thread ]</a>
+              <a href="subject.html#1053">[ subject ]</a>
+              <a href="author.html#1053">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 r3455
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r3455&In-Reply-To=%3C51D3E829.70306%40lavabit.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001448.html">
+   <LINK REL="Next"  HREF="001450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 r3455</H1>
+    <B>Claude Frantz</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r3455&In-Reply-To=%3C51D3E829.70306%40lavabit.com%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 r3455">ClaudeFrantzX665 at lavabit.com
+       </A><BR>
+    <I>Wed Jul  3 11:00:25 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001448.html">[Wsjt-devel] WSJTX 1.1 r3455
+</A></li>
+        <LI>Next message: <A HREF="001450.html">[Wsjt-devel] WSJT-X v1.1, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1449">[ date ]</a>
+              <a href="thread.html#1449">[ thread ]</a>
+              <a href="subject.html#1449">[ subject ]</a>
+              <a href="author.html#1449">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/03/2013 04:57 AM, David wrote:
+
+&gt;<i> Hi Joe.....Qt Creator error with this version
+</I>&gt;<i>
+</I>&gt;<i> in function 'int pttint, int,int*,int*0':        getfile.cpp
+</I>&gt;<i> 'close' was not declared                         getfile.cpp
+</I>
+The same problem here.
+
+g++ -c -pipe -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 
+-fstack-protector --param=ssp-buffer-size=4 -m32 -march=i686 -mtune=atom 
+-fasynchronous-unwind-tables -O2 -D_REENTRANT -Wall -W -DQT4 -DUNIX 
+-DQT_NO_DEBUG -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED 
+-I/usr/lib/qt4/mkspecs/linux-g++ -I. -I/usr/include/QtCore 
+-I/usr/include/QtNetwork -I/usr/include/QtGui -I/usr/include -I. -I. -o 
+getfile.o getfile.cpp
+getfile.cpp: In function &#8216;int ptt(int, int, int*, int*)&#8217;:
+getfile.cpp:199:22: error: &#8216;close&#8217; was not declared in this scope
+getfile.cpp: In function &#8216;void savewav(QString, int)&#8217;:
+getfile.cpp:94:34: warning: ignoring return value of &#8216;size_t 
+fwrite(const void*, size_t, size_t, FILE*)&#8217;, declared with attribute 
+warn_unused_result [-Wunused-result]
+getfile.cpp:97:33: warning: ignoring return value of &#8216;size_t 
+fwrite(const void*, size_t, size_t, FILE*)&#8217;, declared with attribute 
+warn_unused_result [-Wunused-result]
+make: *** [getfile.o] Error 1
+
+Best 88 de Claude
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001448.html">[Wsjt-devel] WSJTX 1.1 r3455
+</A></li>
+	<LI>Next message: <A HREF="001450.html">[Wsjt-devel] WSJT-X v1.1, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1449">[ date ]</a>
+              <a href="thread.html#1449">[ thread ]</a>
+              <a href="subject.html#1449">[ subject ]</a>
+              <a href="author.html#1449">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

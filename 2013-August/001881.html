@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Question - WSJT-X: CMake scrips
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20-%20WSJT-X%3A%20CMake%20scrips&In-Reply-To=%3C520FC0D2.1060200%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001880.html">
+   <LINK REL="Next"  HREF="001882.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Question - WSJT-X: CMake scrips</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20-%20WSJT-X%3A%20CMake%20scrips&In-Reply-To=%3C520FC0D2.1060200%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Question - WSJT-X: CMake scrips">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Aug 17 20:28:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001880.html">[Wsjt-devel] Question - WSJT-X: CMake scrips
+</A></li>
+        <LI>Next message: <A HREF="001882.html">[Wsjt-devel] Trying to user cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1881">[ date ]</a>
+              <a href="thread.html#1881">[ thread ]</a>
+              <a href="subject.html#1881">[ subject ]</a>
+              <a href="author.html#1881">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 17/08/2013 19:16, Greg Beam wrote:
+&gt;<i> Thanks Bill,
+</I>Hi Greg,
+&gt;<i>
+</I>&gt;<i> I'll be finishing a major update today to the script I sent you the 
+</I>&gt;<i> other day. It now takes into account, the following ( I took your 
+</I>&gt;<i> advice :-) ):
+</I>&gt;<i>
+</I>&gt;<i> UPDATE_LOCAL = YES, NO, ASK to update local repo's
+</I>&gt;<i> BUILD_OPTIONS = BOTH, DEBUG or RELEASE
+</I>&gt;<i> SRC / where you source files will be located.
+</I>&gt;<i> DEBUG directory / put that where ya want it
+</I>&gt;<i> RELEASE directory also put that where you want it
+</I>&gt;<i>
+</I>&gt;<i> Next release will allow for: getopts command line options, adding 
+</I>&gt;<i> custom Qt5 Lib DIR etc etc.
+</I>&gt;<i>
+</I>&gt;<i> I'll be adding gui stuff and allot more test / failure event  handling 
+</I>&gt;<i> over the next few days.
+</I>&gt;<i>
+</I>&gt;<i> Questions:
+</I>&gt;<i>
+</I>&gt;<i> In an earlier e-mail, you said we don't need to re-run CMake after an 
+</I>&gt;<i> svn update to a new wsjtx-rxxx number if we've ran it once before. How 
+</I>&gt;<i> can I test against that, is there a specific file placed in the 
+</I>&gt;<i> /src/wsjtx source folder or are all the CMake conf / generated files 
+</I>&gt;<i> placed in the destination folders ?
+</I>Unless coded to do so or run from the source tree (not usually a good 
+idea), CMake only writes to the build tree and the install tree. In 
+theory cmake only ever needs running once for any particular build tree. 
+There might be a reason to re-run it if the cmake command line options 
+need to be changed but everything else is dealt with by the generated 
+makefiles. For example if there is a CMAKE_TOOLCHAIN_FILE specified in 
+the orginal cmake command to specify a cross build; then changing that 
+toolchain file would trigger an automatic rerun of cmake with the same 
+command line arguments as originally used. This all happens when make is 
+run on the generated makefiles.
+
+So I would say either, only run cmake if you are also creating a new 
+build tree or, alternatively check if the file CMakeCache.txt exists in 
+the  top level directory of the build tree.
+&gt;<i>
+</I>&gt;<i> I just need to add the logic to the script as to when too or when not 
+</I>&gt;<i> too re-run Cmake directives.
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i> Greg
+</I>&gt;<i> KI7MT
+</I>HTH
+73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130817/7b9788c7/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130817/7b9788c7/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001880.html">[Wsjt-devel] Question - WSJT-X: CMake scrips
+</A></li>
+	<LI>Next message: <A HREF="001882.html">[Wsjt-devel] Trying to user cmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1881">[ date ]</a>
+              <a href="thread.html#1881">[ thread ]</a>
+              <a href="subject.html#1881">[ subject ]</a>
+              <a href="author.html#1881">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT8 on Debian 5.01
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT8%20on%20Debian%205.01&In-Reply-To=%3C201006211139.24292.pinozollo%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000935.html">
+   <LINK REL="Next"  HREF="000934.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT8 on Debian 5.01</H1>
+    <B>Pino Zollo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT8%20on%20Debian%205.01&In-Reply-To=%3C201006211139.24292.pinozollo%40gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT8 on Debian 5.01">pinozollo at gmail.com
+       </A><BR>
+    <I>Mon Jun 21 17:39:23 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000935.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+        <LI>Next message: <A HREF="000934.html">[Wsjt-devel] Opening Samples/JT8.wav or JT64.wav
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#933">[ date ]</a>
+              <a href="thread.html#933">[ thread ]</a>
+              <a href="subject.html#933">[ subject ]</a>
+              <a href="author.html#933">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">pino at IK1CHE</A>:~/WSJT8/WSJT8$ ./wsjt
+******************************************************************
+WSJT Version 8.0 r1943 , by K1JT
+Revision date: 2010-06-18 14:43:23 -0400 (Fri, 18 Jun 2010) 
+Run date:   Mon Jun 21 15:32:53 2010 UTC
+err_open_in: -9997   Requested sample rate: 12000.000000
+Expression 'SetApproximateSampleRate( pcm, hwParams, sr )' failed 
+in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1291
+Expression 'PaAlsaStreamComponent_InitialConfigure( &amp;self-&gt;capture, inParams, 
+self-&gt;primeBuffers, hwParamsCapture, &amp;realSr )' failed 
+in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1862
+Expression 'PaAlsaStream_Configure( stream, inputParameters, outputParameters, 
+sampleRate, framesPerBuffer, &amp;inputLatency, &amp;outputLatency, 
+&amp;hostBufferSizeMode )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 
+1986
+Error A opening input audio stream:
+	Errortext: Invalid sample rate
+	Number: -9997
+Error B opening output audio stream.
+	Errortext: Invalid sample rate
+	Number: -9997
+Error  3 in JTaudio, you will only be able to work offline.
+
+-----------------------------------
+
+Having selected both for input and output 
+2 SiS SI7012: SiS SI7012 (hw:0,0)
+
+Best 73
+
+Pino ZP4KFX
+-- 
+
+&quot;In the universe there is no time existing as a physical reality,
+ there is no past, no present and no future&quot;
+&quot;Time is a mind construction into which one experiences motion&quot;
+&quot;Time is a flow of irreversible material changes&quot;
+-Davide Fiscaletti
+
+Key ID: 0xF6768208 
+Key fingerprint = B16D 0A7C 5B29 A334 CE6A  71F6 EAF8 3D88 F676 8208
+Key server: <A HREF="hkp://wwwkeys.eu.pgp.net">hkp://wwwkeys.eu.pgp.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000935.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+	<LI>Next message: <A HREF="000934.html">[Wsjt-devel] Opening Samples/JT8.wav or JT64.wav
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#933">[ date ]</a>
+              <a href="thread.html#933">[ thread ]</a>
+              <a href="subject.html#933">[ subject ]</a>
+              <a href="author.html#933">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

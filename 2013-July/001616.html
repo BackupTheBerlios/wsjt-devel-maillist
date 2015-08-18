@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAudio for input
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input&In-Reply-To=%3C51F82E06.4080201%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001614.html">
+   <LINK REL="Next"  HREF="001617.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAudio for input</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input&In-Reply-To=%3C51F82E06.4080201%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] QAudio for input">joe at princeton.edu
+       </A><BR>
+    <I>Tue Jul 30 23:20:06 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001614.html">[Wsjt-devel] QAudio for input
+</A></li>
+        <LI>Next message: <A HREF="001617.html">[Wsjt-devel] QAudio for input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1616">[ date ]</a>
+              <a href="thread.html#1616">[ thread ]</a>
+              <a href="subject.html#1616">[ subject ]</a>
+              <a href="author.html#1616">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David --
+
+Here's the line that selects an input device number:
+
+	inputDevice = m_InDevices.at(0);
+
+You can try replacing 0 with 1, 2, ... until you find the right one for 
+your setup.
+
+I haven't tried it in Linux, yet.
+
+	-- Joe
+
+
+On 7/30/2013 5:07 PM, David wrote:
+&gt;<i> Hi Joe.....compiled this revision with QAudio
+</I>&gt;<i> get the program to start then it crashes ...Segmentation fault
+</I>&gt;<i>
+</I>&gt;<i> this would be because of line 267 in soundin.cpp
+</I>&gt;<i> what do i change this line to to be able to get it to work
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 31/07/13 06:48, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Revision 3510 includes some very basic proof-of-concept code using
+</I>&gt;&gt;<i> QAudioInput instead of PortAudio for sound input. It builds on Bill's
+</I>&gt;&gt;<i> refactored code. By default, this test code is not active, and the
+</I>&gt;&gt;<i> program will compile using PortAudio.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To compile using QAudio, uncomment the line
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #DEFINES += QAUDIO_INPUT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> in wsjtx.pro. The files soundin.h and soundin.cpp each have two
+</I>&gt;&gt;<i> disjoint sections: the first using portaudio, the second using QAudio.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Note that device selection in the QAudio code is presently
+</I>&gt;&gt;<i> hard-wired to use the default input device. You can change this
+</I>&gt;&gt;<i> choice on line 267 in soundin.cpp, to test on your system.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have no special pride in this code -- I just made something that
+</I>&gt;&gt;<i> works, and dropped it into Bill's code. Please feel free to make it
+</I>&gt;&gt;<i> better.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I suggest that we do something similar for audio output. When/if we
+</I>&gt;&gt;<i> make the changes permanent, we'll need also to modify the device
+</I>&gt;&gt;<i> selection code in devsetup.cpp.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bill, are you working on a SoundOut class?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Edson, am I duplicating your efforts here?? Is pulseaudio going to
+</I>&gt;&gt;<i> work in your Linux system?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Other comments?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001614.html">[Wsjt-devel] QAudio for input
+</A></li>
+	<LI>Next message: <A HREF="001617.html">[Wsjt-devel] QAudio for input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1616">[ date ]</a>
+              <a href="thread.html#1616">[ thread ]</a>
+              <a href="subject.html#1616">[ subject ]</a>
+              <a href="author.html#1616">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Proposal to add a library.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Proposal%20to%20add%20a%20library.&In-Reply-To=%3CCALNQy4-N87A%2Bn9ygmtV9UtP3f96htSedNGSHQrTq5NhwAmHd-Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001751.html">
+   <LINK REL="Next"  HREF="001758.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Proposal to add a library.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Proposal%20to%20add%20a%20library.&In-Reply-To=%3CCALNQy4-N87A%2Bn9ygmtV9UtP3f96htSedNGSHQrTq5NhwAmHd-Q%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Proposal to add a library.">ewpereira at gmail.com
+       </A><BR>
+    <I>Thu Aug  8 22:33:25 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001751.html">[Wsjt-devel] WSJT-X: Proposal to add a library.
+</A></li>
+        <LI>Next message: <A HREF="001758.html">[Wsjt-devel] WSJT-X: Proposal to add a library.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1756">[ date ]</a>
+              <a href="thread.html#1756">[ thread ]</a>
+              <a href="subject.html#1756">[ subject ]</a>
+              <a href="author.html#1756">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+So far, Qt5 appears to be quite stable. Do you think it is worth the effort
+to keep compatibility with Qt4? I think we could direct our time and energy
+in moving forward with features, stability, etc. and keep the codebase Qt5
+only. Since we are distributing binaries for Windows, and our user
+community is mostly Windows centric, Qt4 is a non issue there. On Linux and
+OSX, Qt5 can be compiled from sources quite easily. Another area of concern
+is maintenance. Supporting two major versions of Qt may become an issue as
+Qt5 progresses.
+
+73,
+
+-- Edson PY2SDR
+
+
+On Thu, Aug 8, 2013 at 8:40 AM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> Qt5 adds some really nice features including a new QObject::connect() set
+</I>&gt;<i> of overloads that are far more flexible and efficient. They allow type safe
+</I>&gt;<i> connections (i.e.checked by the compiler) and connections to arbitrary
+</I>&gt;<i> functions or function objects (allowing use of the powerful C++03 binders
+</I>&gt;<i> and function objects).
+</I>&gt;<i>
+</I>&gt;<i> Since we are still making efforts to support Qt4 and there is a suggestion
+</I>&gt;<i> that the C++ Standard library should not be used (I understand that where
+</I>&gt;<i> Qt provides matching functionality, but note that Qt is clearly moving away
+</I>&gt;<i> from this by extending their containers to provide Standard Library style
+</I>&gt;<i> iterators); I propose that we add the following small library to the code
+</I>&gt;<i> base:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://kdemonkey.blogspot.co.**uk/2013/06/qt-signal-tools-02.**html&lt;http://kdemonkey.blogspot.co.uk/2013/06/qt-signal-tools-02.html">http://kdemonkey.blogspot.co.**uk/2013/06/qt-signal-tools-02.**html&lt;http://kdemonkey.blogspot.co.uk/2013/06/qt-signal-tools-02.html</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> This library adds a small number of helper functions and classes that
+</I>&gt;<i> emulate most of the new Qt5 connect features in Qt4. The library is BSD
+</I>&gt;<i> licensed and could be simply added to our source code or we could make a it
+</I>&gt;<i> prerequisite for building, there is one CPP file and some headers. Since
+</I>&gt;<i> the makefile doesn't produce a library, I assume the source is intended to
+</I>&gt;<i> be added directly to a project that uses it, which the BSD license allows.
+</I>&gt;<i>
+</I>&gt;<i> To test it out do:
+</I>&gt;<i>
+</I>&gt;<i> cd &lt;somewhere-in-your-sourec-**tree&gt;       # I use ~/src
+</I>&gt;<i> git clone <A HREF="https://github.com/**robertknight/qt-signal-tools.**git&lt;https://github.com/robertknight/qt-signal-tools.git">https://github.com/**robertknight/qt-signal-tools.**git&lt;https://github.com/robertknight/qt-signal-tools.git</A>&gt;
+</I>&gt;<i> cd qt-signal-tools
+</I>&gt;<i> qmake -makefile qt-signal-tools.pro
+</I>&gt;<i> make
+</I>&gt;<i> tests/tests
+</I>&gt;<i>
+</I>&gt;<i> Thoughts?
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130808/177e1ba9/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130808/177e1ba9/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001751.html">[Wsjt-devel] WSJT-X: Proposal to add a library.
+</A></li>
+	<LI>Next message: <A HREF="001758.html">[Wsjt-devel] WSJT-X: Proposal to add a library.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1756">[ date ]</a>
+              <a href="thread.html#1756">[ thread ]</a>
+              <a href="subject.html#1756">[ subject ]</a>
+              <a href="author.html#1756">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

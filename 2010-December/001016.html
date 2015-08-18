@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C7AF5C357-4F41-40AB-B240-AF9913778A56%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001015.html">
+   <LINK REL="Next"  HREF="001009.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C7AF5C357-4F41-40AB-B240-AF9913778A56%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Mon Dec  6 10:06:29 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001015.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="001009.html">[Wsjt-devel] Hopping schedules
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1016">[ date ]</a>
+              <a href="thread.html#1016">[ thread ]</a>
+              <a href="subject.html#1016">[ subject ]</a>
+              <a href="author.html#1016">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan,
+
+Thanks for the report.   Last night I switched to 80 through 30 but  
+shortly after added 20.    As of 08:31 I have switched back to 80  
+through 10 (RX only on 60).
+
+You mention:  2 not coordinated (40m on 5:32 and 20m on 23:16).   
+(Presumably 23:16 on 5 Dec and 05:32 on 6 Dec).   I think these are  
+allowed in Joe's scheme - see my logs below.
+
+However, a close inspection of the logs shows some curious gaps where  
+band changes do not occur.    I will investigate further.
+
+I make use of Joe's user_hardware facility to record band changes,  
+and have inserted another call in wspr2.f90 like this to indicate  
+when Tx occurs.  (I know TX sequences are logged in ALL_WSPR.TXT but  
+these logs are more useful...)
+
+       call random_number(x)
+!      print *,'random number: ',x,100.0*x,1.0*pctx
+       if (100*x .lt. 1.0*pctx) then
+         ntxnext=1
+         iret=system('user_hardware')          // Note - without an  
+argument
+
+and user_hardware does this to produce logs:
+
+#!/bin/sh
+loop=`exec date`
+if [ $# -eq 0 ]
+then
+   echo &quot;${loop}: Tx&quot; &gt;&gt; ./band_change_04dec
+else
+   echo &quot;${loop}: band change ${1}m&quot; &gt;&gt; ./band_change_04dec
+fi
+exit
+
+Sun Dec  5 22:57:57 GMT 2010: band change 30m           There should  
+be a band change at 22:59:55  ?
+Sun Dec  5 23:01:54 GMT 2010: band change 80m
+Sun Dec  5 23:03:54 GMT 2010: band change 60m
+Sun Dec  5 23:05:55 GMT 2010: band change 40m
+Sun Dec  5 23:07:54 GMT 2010: band change 30m
+Sun Dec  5 23:09:55 GMT 2010: band change 20m           Why is there  
+a gap at  23:11:55?
+Sun Dec  5 23:13:55 GMT 2010: band change 30m
+Sun Dec  5 23:14:00 GMT 2010: Tx
+Sun Dec  5 23:15:56 GMT 2010: band change 20m           Transmission  
+at this time should be 12m but not checked, so random selection to  
+20m which is ok
+Sun Dec  5 23:16:00 GMT 2010: Tx
+Sun Dec  5 23:19:54 GMT 2010: band change 40m
+Sun Dec  5 23:21:55 GMT 2010: band change 80m
+Sun Dec  5 23:23:54 GMT 2010: band change 60m
+
+and
+
+Mon Dec  6 05:25:55 GMT 2010: band change 40m
+Mon Dec  6 05:26:00 GMT 2010: Tx
+Mon Dec  6 05:27:56 GMT 2010: band change 30m
+Mon Dec  6 05:29:55 GMT 2010: band change 20m
+Mon Dec  6 05:30:00 GMT 2010: Tx
+Mon Dec  6 05:31:56 GMT 2010: band change 40m    This transmission is  
+OK.   Schedule would be 17m but not checked, so random selection.
+Mon Dec  6 05:32:00 GMT 2010: Tx
+Mon Dec  6 05:33:56 GMT 2010: band change 80m
+Mon Dec  6 05:35:54 GMT 2010: band change 60m
+Mon Dec  6 05:37:55 GMT 2010: band change 30m
+
+  -- John G4KLA
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101206/c555d9cf/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101206/c555d9cf/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001015.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="001009.html">[Wsjt-devel] Hopping schedules
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1016">[ date ]</a>
+              <a href="thread.html#1016">[ thread ]</a>
+              <a href="subject.html#1016">[ subject ]</a>
+              <a href="author.html#1016">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

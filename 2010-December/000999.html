@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping&In-Reply-To=%3CAANLkTimuvcjqyB7J-nSTVH%2BUfJOTd9MuXnT_q0WPAHhg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000998.html">
+   <LINK REL="Next"  HREF="001000.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping&In-Reply-To=%3CAANLkTimuvcjqyB7J-nSTVH%2BUfJOTd9MuXnT_q0WPAHhg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Frequency hopping">stoledo at tau.ac.il
+       </A><BR>
+    <I>Wed Dec  1 09:45:32 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000998.html">[Wsjt-devel] Frequency hopping
+</A></li>
+        <LI>Next message: <A HREF="001000.html">[Wsjt-devel] Frequency hopping
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Dec 1, 2010 at 12:35 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Is everyone comfortable with the idea of releasing a beta version of WSPR
+</I>&gt;<i> 2.2 (or whatever we should call it) with frequency hopping?  It will surely
+</I>&gt;<i> continue to evolve, as the program always has done, but it's stable abd very
+</I>&gt;<i> usable.  Opening it to use by others should generate some useful input.
+</I>&gt;<i>
+</I>
+I think feedback would indeed be useful.
+
+
+&gt;<i> I have thought a bit more about the randomization of band selection and T/R
+</I>&gt;<i> sequences.  As I mentioned before, I think that truly random, wholly
+</I>&gt;<i> uncorrelated band selection may be &quot;too random&quot; for our purpose.  A better
+</I>&gt;<i> model might be something closer to shuffling a deck of cards.  We have one
+</I>&gt;<i> &quot;card&quot; for each of N bands, and do a random shuffle to choose the order in
+</I>&gt;<i> which they will be visited.  When N-1 bands have already been visited,
+</I>&gt;<i> there's nothing random about which band will come next -- but quite possibly
+</I>&gt;<i> that's what we want.  Similarly, perhaps, for chosing whether to Rx or Tx in
+</I>&gt;<i> a given sequence.  If I have selected pctx=25 and have already done 3 Rx
+</I>&gt;<i> sequences, I probably want to Tx in the next sequence on this band.
+</I>&gt;<i>
+</I>
+I think that we need to separate this into two questions and to address each
+one separately.
+
+The first question is whether we need to give the user control over band
+selection and T/R while WSPR is hopping, and if so, how. The scenario here
+is a user that looks at the screen and does not like the fact that the radio
+has not hopped to 20m in the last 10 minutes. I already wrote that I think
+that this is a real concern and that we should perhaps address it by
+allowing the user to say what the next band should be and what the next T/R
+decision should be, without quitting hopping. We can also imagine longer
+term control but I think it will just complicate things.
+
+The second question is what we want to optimize during long hopping periods
+in which the user is not constantly looking at the screen, and how to
+optimize this metric. I think that this is basically an engineering question
+(and a tractable one), rather than a user-experience question.
+
+We can define the metric to optimize fairly simply: the expected number of
+periods between two slots in which station 1 transmits on a band and station
+2 receives on the same band. For the same expected value, we should prefer
+the hopping strategy with the small standard deviation (the more regular
+rendezvous). If both expectation and std dev are similar, we should prefer
+the strategy that feels less random to the user.
+
+I wrote a small simulation program (in Matlab) that lets two stations hop
+under given band and pctx settings and computes these statistics (both ways,
+1 hears 2 and 2 hears 1). I implemented 3 hopping schedules: (a) totally
+random, (b) each station picks a random permutation of bands and cycles
+through it, and (c) each station picks up a random permutation but replaces
+it with another after going through it once. The T/R was totally random in
+all cases (but I can enhance the program to model other T/R strategies). I
+ran experiments in which each station hops on 5 bands, but with only 1 band
+in common. One transmits on this band 10% or the time, the other 50%. I ran
+it for 1M cycles (close to 4 years). The average periods in (a) and (c) were
+quite similar, around 500 for hearing the 10% station and 55 periods for
+hearing the 50% station. These correspond to about once every two hours and
+once eveyr 16 hours. Strategy (c) was terrible; in most experiments they
+never heard each other (because their 5-band cycles were misaligned), but in
+the rest the averages were small, about 100 and 11.
+
+My suggestion is to experiment with this simulation until we find a hopping
+and T/R strategy that delivers good statistics  in reasonable scenarios (and
+if possible, is relatively regular) and does not behave terribly in any
+scenario, and then implement it in WSPR. I'll be happy to commit the code (~
+100 lines) to SVN, and/or to port it from Matlab to Python if others want to
+play with it too.
+
+
+&gt;<i>
+</I>&gt;<i> Comments?
+</I>&gt;<i>
+</I>&gt;<i>        -- Joe
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101201/c676032c/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101201/c676032c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000998.html">[Wsjt-devel] Frequency hopping
+</A></li>
+	<LI>Next message: <A HREF="001000.html">[Wsjt-devel] Frequency hopping
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

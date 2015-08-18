@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3C87DC3558-F0B6-48EF-86B5-C018454A406C%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000789.html">
+   <LINK REL="Next"  HREF="000790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 2.0</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3C87DC3558-F0B6-48EF-86B5-C018454A406C%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSPR 2.0">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Fri Nov  6 15:39:40 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000789.html">[Wsjt-devel] wsjt7 on Mandriva 2010.0 x86_64
+</A></li>
+        <LI>Next message: <A HREF="000790.html">[Wsjt-devel] WSPR: build problem on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#788">[ date ]</a>
+              <a href="thread.html#788">[ thread ]</a>
+              <a href="subject.html#788">[ subject ]</a>
+              <a href="author.html#788">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I had previously reported that r1631 executes correctly.    This was  
+premature.   The test (on Mac OSX) was mainly to check that there  
+were no link errors.
+
+I am having trouble with the versions after r1627, namely when the  
+sampling rate was increased to 48000.   Here's what I see:
+
+WSPR Version 2.0_r1631 , by  
+K1JT                                     // this at the end of the  
+&quot;tune&quot; cycle
+Run date:   Fri Nov  6 11:32:17 2009 UTC
+An error occured while using the portaudio stream
+Error number: -9980
+Error message: Output underflowed
+  Error in soundout          -1
+
+WSPR Version 2.0_r1631 , by K1JT                                   //  
+this at the end of a receive cycle.   at approx 1min 56 secs
+Run date:   Fri Nov  6 11:33:32 2009 UTC
+An error occured while using the portaudio stream
+Error number: -9981
+Error message: Input overflowed
+  Error in soundin          -1
+
+I am using a SignaLink USB interface with specification:
+&quot;Sampling size/rate:  16 bit.  All standard rates are supported up to  
+48Khz&quot;
+
+padevsub.c checks sample rate with Pa_IsFormatSupported and it is  
+satisfied.   It writes audio_caps as follows:
+  0    2    2       0       0  Built-in Audio
+  1    0    2       1       0  USB Audio CODEC       no errors from  
+Pa_IsFormatSupported
+  2    2    0       0       1  USB Audio CODEC       no  
+errors            ditto
+
+USB Probe gives this information:
+         Descriptor Version Number:   0x0110
+         Device Class:   0   (Composite)
+         Device Subclass:   0
+         Device Protocol:   0
+         Device MaxPacketSize:   8
+         Device VendorID/ProductID:   0x08BB/0x2904   (Texas  
+Instruments Japan)
+         Device Version Number:   0x0100
+         Number of Configurations:   1
+         Manufacturer String:   1 &quot;Burr-Brown from TI              &quot;
+         Product String:   2 &quot;USB Audio CODEC &quot;
+         Serial Number String:   0 (none)
+
+It seems that the device should be recognised correctly by wspr so I  
+conclude (for the moment) that there is some curious behaviour on my  
+Mac from portaudio but cannot figure out what it is.
+
+If I arbitrarily reduce the number of frames (3rd argument to  
+Pa_ReadStream) by 50%, then the error (input overflow) still occurs,  
+this time after 1 minute.    How can it have overflowed?
+
+Question:   Joe - any idea where I should look next?
+
+    --- John  G4KLA
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20091106/44a01e99/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20091106/44a01e99/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000789.html">[Wsjt-devel] wsjt7 on Mandriva 2010.0 x86_64
+</A></li>
+	<LI>Next message: <A HREF="000790.html">[Wsjt-devel] WSPR: build problem on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#788">[ date ]</a>
+              <a href="thread.html#788">[ thread ]</a>
+              <a href="subject.html#788">[ subject ]</a>
+              <a href="author.html#788">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

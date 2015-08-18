@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X multiple instance support - how does it	work?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20multiple%20instance%20support%20-%20how%20does%20it%0A%09work%3F&In-Reply-To=%3C52EFA925.4010900%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002204.html">
+   <LINK REL="Next"  HREF="002206.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X multiple instance support - how does it	work?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20multiple%20instance%20support%20-%20how%20does%20it%0A%09work%3F&In-Reply-To=%3C52EFA925.4010900%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X multiple instance support - how does it	work?">joe at princeton.edu
+       </A><BR>
+    <I>Mon Feb  3 15:35:17 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002204.html">[Wsjt-devel] WSJT-X multiple instance support - how does it work?
+</A></li>
+        <LI>Next message: <A HREF="002206.html">[Wsjt-devel] Multiple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2210">[ date ]</a>
+              <a href="thread.html#2210">[ thread ]</a>
+              <a href="subject.html#2210">[ subject ]</a>
+              <a href="author.html#2210">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Laurie,
+
+Josh, KK1D, provided good answers to your first two questions.
+
+The answer to the third is this:
+
+If &quot;Allow multiple instances&quot; was *not* checked when WSJT-X was last 
+exited, the next program startup (in Windows only) will attempt to kill 
+any running instances of the decoder back end, jt9.exe, before starting 
+a new one.
+
+	-- 73, Joe, K1JT
+
+On 2/2/2014 5:48 PM, Laurie VK3AMA wrote:
+&gt;<i> Couldn't find anything in the help file and the list archives are not
+</I>&gt;<i> searchable (that I could find).
+</I>&gt;<i>
+</I>&gt;<i> Multiple Instances in WSJT-X....
+</I>&gt;<i>
+</I>&gt;<i> * How is this supposed to work?
+</I>&gt;<i> * Does this require each instance to have its own folder?
+</I>&gt;<i> * What does enabling the multiple instances menu do?
+</I>&gt;<i>
+</I>&gt;<i> de Laurie VK3AMA
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002204.html">[Wsjt-devel] WSJT-X multiple instance support - how does it work?
+</A></li>
+	<LI>Next message: <A HREF="002206.html">[Wsjt-devel] Multiple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2210">[ date ]</a>
+              <a href="thread.html#2210">[ thread ]</a>
+              <a href="subject.html#2210">[ subject ]</a>
+              <a href="author.html#2210">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Jack and WSPR and Linrad
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C1257455168.29360.17.camel%40pierre-desktop%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000783.html">
+   <LINK REL="Next"  HREF="000787.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Jack and WSPR and Linrad</H1>
+    <B>Pierre Vanhoucke</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C1257455168.29360.17.camel%40pierre-desktop%3E"
+       TITLE="[Wsjt-devel] Jack and WSPR and Linrad">pierre.vanhoucke at skynet.be
+       </A><BR>
+    <I>Thu Nov  5 22:06:08 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000783.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+        <LI>Next message: <A HREF="000787.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+On Thu, 2009-11-05 at 12:01 -0500, Joe Taylor wrote:
+&gt;<i> Hi Pierre,
+</I>&gt;<i> 
+</I>&gt;<i> Pierre Vanhoucke wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I compiled WSPR on my Ubuntu system which has portaudio with Jack
+</I>&gt;<i> &gt; installed.
+</I>&gt;<i> &gt; When I start Jack and WSPR I can indeed select jack as an input or
+</I>&gt;<i> &gt; output device for WSPR (if the jack server is started with the right
+</I>&gt;<i> &gt; sample-rate=12000 and frames-per-period=2048 ). 
+</I>&gt;<i> &gt; However there is no WSPR client visible in the &quot;connect&quot; box of
+</I>&gt;<i> &gt; qjackctl. As a consequence, I cannot connect the output of Linrad to the
+</I>&gt;<i> &gt; input of WSPR.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I think that the reason is that the sound.c module in WSPR is using
+</I>&gt;<i> &gt; portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode.
+</I>&gt;<i> 
+</I>&gt;<i> This sounds plausible to me.  WSPR does use blocking I/O for 
+</I>&gt;<i> its calls to PortAudio; WSJT, MAP65, and MPA65-IQ use 
+</I>&gt;<i> callback mode.  There is no particularly good reason for 
+</I>&gt;<i> this distinction.  It came about when I was first writing 
+</I>&gt;<i> WSPR; I wanted to try the &quot;other&quot; PortAudio method, to see 
+</I>&gt;<i> what advantages/disadvantages there might be.
+</I>&gt;<i> 
+</I>&gt;<i> If there turns out to be a good reason to convert WSPR to 
+</I>&gt;<i> using the callback method, this could certainly be done.
+</I>&gt;<i> 
+</I>&gt;<i> Do take note of the fact that starting with r1628, WSPR is 
+</I>&gt;<i> using 48 kHz sampling instead of 12 kHz.
+</I>&gt;<i> 
+</I>&gt;<i> Most of the WSPR code assumes a 12 kHz sample rate. I had 
+</I>&gt;<i> thought that this would be a good match to nearly all of 
+</I>&gt;<i> today's sound cards, which could use their 48 kHz native 
+</I>&gt;<i> sample rate and do an easy filter/decimation stage to 
+</I>&gt;<i> produce the 12 kHz samples requested by WSPR.  I was 
+</I>&gt;<i> astonished to learn from G3ZOD that when WSPR is started on 
+</I>&gt;<i> a machine with a Delta44 sound card, Windows (or the Delta44 
+</I>&gt;<i> driver?) sets its hardware sample rate to 44100 Hz (not 
+</I>&gt;<i> 48000 Hz!) and then does a relative poor sample-rate 
+</I>&gt;<i> conversion to produce the 12000 Hz samples.  Aarrgghh!
+</I>&gt;<i> 
+</I>&gt;<i> So maybe it will be more reliable to have WSPR (and 
+</I>&gt;<i> eventually WSJT?) sample at 48 kHz, and do any rate 
+</I>&gt;<i> conversions myself.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I will drop this question on the portaudio mailinglist to get it
+</I>&gt;<i> &gt; confirmed, unless someone else from this list can do it.
+</I>&gt;<i> 
+</I>&gt;<i> Good idea.  I will look forward to hearing what you learn.
+</I>
+Up to now I got no feedback from the portaudio mailinglist but as the
+proof of the pudding is in the eating I did the following test:
+I built WSJT on my Ubuntu system and selected Jack as input ( after
+setting the Jack samplerate to 11025 ;-)  )
+
+--&gt; With WSJT I got indeed the Portaudio client of WSJT in the &quot;connect&quot;
+box of qjackctl. :-)
+
+For your information:
+There is a trick to get the name of your application appear in the
+connect box of qjackctl instead of the default name &quot;Portaudio&quot;.
+
+Before Pa_initialize you insert following statements:
+
+//set the name of the jack client
+const char my_jack_client_name[8] =&quot;WSJT&quot;;
+PaError PaJack_SetClientName(const char *name);
+PaJack_SetClientName(my_jack_client_name);	
+
+73
+
+Pierre/ON5GN
+
+ 
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000783.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+	<LI>Next message: <A HREF="000787.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

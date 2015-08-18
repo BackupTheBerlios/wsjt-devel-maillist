@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519ABA29.4020204%40msteiner.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001288.html">
+   <LINK REL="Next"  HREF="001290.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X developments</H1>
+    <B>Michael</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519ABA29.4020204%40msteiner.at%3E"
+       TITLE="[Wsjt-devel] WSJT-X developments">michael at msteiner.at
+       </A><BR>
+    <I>Tue May 21 02:04:57 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001288.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+        <LI>Next message: <A HREF="001290.html">[Wsjt-devel]  WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1289">[ date ]</a>
+              <a href="thread.html#1289">[ thread ]</a>
+              <a href="subject.html#1289">[ subject ]</a>
+              <a href="author.html#1289">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe!
+
+In the past I modified the content of the boxes containing the tty (cat) 
+devices directly in the source code to adapt them. I use VOX mode as 
+standard.
+Yes it makes sense for me to have an editable input line there.
+Is it possible to get something similar to an .ini or .xml file the 
+program can read and write system specific settings, that we can edit 
+offline?
+
+There is another problem with the source for Linux.
+Program crashes always when txing cycle is over or when tuning is stopped.
+It is similar in wsjtx and wsprx, but I had it never in wspr and wsjt. I 
+had this problem at actual releases 64bit of ubuntu 12.04/12.10 and 
+debian 7. I tried it with 3 fresh installations to be shure to have 
+clean systems. Even changing libriaries didn't change anything.
+Unfortuanetly when I wrote here to the list I got no reply to this 
+matter. Even not a hint where to start with troubleshooting.
+
+My questions are:
+Is this a known problem or only my one?
+Is this solved in the meantime by rev. xxxx, because others had similar 
+problems?
+Is this depending on some special settings not visible at the first view?
+Is this the right place to ask this questions?
+If there are some problems, should I set some debugging specific flags 
+and install additional libraries for that purpose?
+
+Please let me know how to go further on.
+73,
+Michael oe1msb
+
+
+Am 20.05.2013 16:58, schrieb Joe Taylor:
+&gt;<i> Hi all -- and especially users of WSJT-X under Linux,
+</I>&gt;<i>
+</I>&gt;<i> A few words about recent evolution of the WSJT-X code, and some 
+</I>&gt;<i> upcoming plans.
+</I>&gt;<i>
+</I>&gt;<i> Up to now, all of my JT9 operating has been done under Windows. Over 
+</I>&gt;<i> the past weekend I installed Ubuntu 12.04 LTS on my main hamshack 
+</I>&gt;<i> computer, so I could play with WSJT-X under a current distribution of 
+</I>&gt;<i> Linux.  Getting it to work in my setup involved some necessary changes 
+</I>&gt;<i> to ptt_unix.c and the way it is called from the GUI.  This effort drew 
+</I>&gt;<i> my attention to some weaknesses in the way we allow users to specify 
+</I>&gt;<i> such things as &quot;PTT Port&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Is it true that everyone using WSJT-X under Linux has selected either 
+</I>&gt;<i> CAT of VOX for PTT Method?  It seems this must be the case, since we 
+</I>&gt;<i> have provided no way to select a device such as /dev/ttyS0 for PTT 
+</I>&gt;<i> control via the DTR or RTS line of a serial port.  Since that's what I 
+</I>&gt;<i> normally use in my station setup, I implemented it that way, 
+</I>&gt;<i> temporarily &quot;hard-wiring&quot; the code to use my device /dev/ttyS0.  (This 
+</I>&gt;<i> code has not been committed to the SVN repository, as yet.)
+</I>&gt;<i>
+</I>&gt;<i> My present plan is to change the QComboBox now offering a list of PTT 
+</I>&gt;<i> Port options to a QLineEdit, instead.  Then one can type in a value 
+</I>&gt;<i> such as &quot;COM1&quot; in Windows, or &quot;/dev/ttyS0&quot; in *nix.
+</I>&gt;<i>
+</I>&gt;<i> Does this make sense to everyone?
+</I>&gt;<i>
+</I>&gt;<i> In making these tests I also became aware of a fact that should have 
+</I>&gt;<i> been obvious -- details of the GUI appearance are not just different 
+</I>&gt;<i> on Windows and Linux, but different on Linux distributions using 
+</I>&gt;<i> different window managers.  The default Ubuntu distribution even 
+</I>&gt;<i> removes the menu bar from the main window, displaying it instead at 
+</I>&gt;<i> the top of screen. (Yes, I learned how to disable this feature.)
+</I>&gt;<i>
+</I>&gt;<i> Another change, this time already committed to the SVN repository: for 
+</I>&gt;<i> the present, at least, I disabled submodes JT9-5, JT9-10, and JT9-30, 
+</I>&gt;<i> (which are not being used, as far as I know).  The program's memory 
+</I>&gt;<i> requirements are now smaller by some 150 MB.
+</I>&gt;<i>
+</I>&gt;<i> Comments and other proposals are welcome, as always.
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001288.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+	<LI>Next message: <A HREF="001290.html">[Wsjt-devel]  WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1289">[ date ]</a>
+              <a href="thread.html#1289">[ thread ]</a>
+              <a href="subject.html#1289">[ subject ]</a>
+              <a href="author.html#1289">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

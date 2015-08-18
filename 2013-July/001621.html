@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAudio for input
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input&In-Reply-To=%3C51F87223.5070801%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001620.html">
+   <LINK REL="Next"  HREF="001628.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAudio for input</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input&In-Reply-To=%3C51F87223.5070801%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] QAudio for input">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jul 31 04:10:43 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001620.html">[Wsjt-devel] QAudio for input
+</A></li>
+        <LI>Next message: <A HREF="001628.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1621">[ date ]</a>
+              <a href="thread.html#1621">[ thread ]</a>
+              <a href="subject.html#1621">[ subject ]</a>
+              <a href="author.html#1621">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+&gt;<i> 1) The audio output routine appears to allow T/R period and #
+</I>&gt;<i> samples/symbol to be changed on the fly mid transmission. Is this really
+</I>&gt;<i> a valid thing to do?
+</I>
+No.
+
+&gt;<i> 2) I am struggling to understand the setting of SNR at the start of a
+</I>&gt;<i> transmission period and also live changes to it during transmission. It
+</I>&gt;<i> appears to be possible to start with it set to 99.0, can you explain how
+</I>&gt;<i> SNR changes the current transmission please?
+</I>
+This is an undocumented feature that I've sometimes used for testing the 
+decoders.  Random gaussian noise is added to the generated audio signal 
+so that it will have a specified S/N.
+
+Specifying a positive SNR (for example, snr=99) is taken to mean &quot;this 
+is a normal transmission, don't add any noise.&quot;
+
+	-- Joe
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001620.html">[Wsjt-devel] QAudio for input
+</A></li>
+	<LI>Next message: <A HREF="001628.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1621">[ date ]</a>
+              <a href="thread.html#1621">[ thread ]</a>
+              <a href="subject.html#1621">[ subject ]</a>
+              <a href="author.html#1621">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

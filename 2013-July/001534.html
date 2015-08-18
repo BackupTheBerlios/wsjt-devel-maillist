@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX V1.1 Release version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20V1.1%20Release%20version&In-Reply-To=%3C1374305555.13038.YahooMailNeo%40web186001.mail.ir2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001566.html">
+   <LINK REL="Next"  HREF="001535.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX V1.1 Release version</H1>
+    <B>David Owen</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20V1.1%20Release%20version&In-Reply-To=%3C1374305555.13038.YahooMailNeo%40web186001.mail.ir2.yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJTX V1.1 Release version">djmowen at talk21.com
+       </A><BR>
+    <I>Sat Jul 20 09:32:35 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001566.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+        <LI>Next message: <A HREF="001535.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1534">[ date ]</a>
+              <a href="thread.html#1534">[ thread ]</a>
+              <a href="subject.html#1534">[ subject ]</a>
+              <a href="author.html#1534">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Taylor and Others
+
+The WSJTX release version for Windows works well with my Icom IC703 and IC7200 radios with a SLUSB
+external sound card and HP PC and laptop.
+
+The faster JT9 decoding is very helpful
+- my PC&#160;used to take&#160;up to 30s to decode 10 JT9 messages and&#160;make it difficult&#160;to reply in the same minute.
+The longest decoding time now is about 20 seconds.
+
+The &quot;Split&quot; TX mode scheme works with both radios as long as&#160;you leave time, about 5 seconds, for a lot of reading 
+and writing (seems like more than really necessary) of the A and B frequencies &#160;by the CIV controller
+before manualy setting the SPLIT mode or activating the antenna tuner on the radio.
+Both&#160;&#160;of these actions can cause current CAT commands to be aborted and sometimes leave the A / B VFOs&#160;
+incorrectly set.
+
+I have been looking at the source code to see how difficult it would be to compile it myself.
+It looks like a lot of effort.
+Looking at the sources for the first time, they are an odd mixture of old-style Fortran and the latest GUI language.
+Some of the more difficult bits of coding, particularly decoding and error correction, come from
+general purpose programs written by KA9Q. He probably deserves a more visible credit somewhere.
+
+Regards
+
+David Owen
+
+G1OXB
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001566.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+	<LI>Next message: <A HREF="001535.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1534">[ date ]</a>
+              <a href="thread.html#1534">[ thread ]</a>
+              <a href="subject.html#1534">[ subject ]</a>
+              <a href="author.html#1534">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

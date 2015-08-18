@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Band Settings and Multiple Antenna Descriptions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20Settings%20and%20Multiple%20Antenna%20Descriptions&In-Reply-To=%3C51EE62CA.9030800%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001551.html">
+   <LINK REL="Next"  HREF="001544.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Band Settings and Multiple Antenna Descriptions</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20Settings%20and%20Multiple%20Antenna%20Descriptions&In-Reply-To=%3C51EE62CA.9030800%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] Band Settings and Multiple Antenna Descriptions">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Tue Jul 23 13:02:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001551.html">[Wsjt-devel] Decoded txt
+</A></li>
+        <LI>Next message: <A HREF="001544.html">[Wsjt-devel] Band Settings and Multiple Antenna Descriptions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1543">[ date ]</a>
+              <a href="thread.html#1543">[ thread ]</a>
+              <a href="subject.html#1543">[ subject ]</a>
+              <a href="author.html#1543">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All
+
+I've just committed revision 3498.  The third tab on the setup window is 
+now called band settings and has a scrolling list of band entries. The 
+left column is the text visible on the main window where you select the 
+band.  I've not put a limit on the length of text you may enter here but 
+you'll only get to see the last 8 characters or so.
+
+Each band entry has its own frequency as before and now has its own 
+antenna description that is sent to PSK reporter when so enabled.
+
+On the main window I've moved the 'readFreq' button down beside a 
+slightly shortened &quot;+2 kHz&quot; button.
+
+The entry for the default frequencies has a new name in the ini file - 
+you'll notice all the band frequencies will be set back to their 
+defaults when you first run this version.
+
+I don't have a suitable Windows environment for testing but the only 
+Windows specific code is the string passed to the PSK reporter 
+interface.  Should be fine but please let me know if thats not the case.
+
+Thanks to Edson PY2SDR we now have antenna descriptions sent to PSK 
+reporter from Linux. I've not been able to test that until tonight; 20M 
+has been dead the last few days.
+
+Any feedback welcome.  Joe and I had a bit of discussion about how to 
+make multiple antennas work but I'm sure there will be improvements or 
+alternatives to this current system.
+
+Cheers
+Murray
+VK3ACF
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001551.html">[Wsjt-devel] Decoded txt
+</A></li>
+	<LI>Next message: <A HREF="001544.html">[Wsjt-devel] Band Settings and Multiple Antenna Descriptions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1543">[ date ]</a>
+              <a href="thread.html#1543">[ thread ]</a>
+              <a href="subject.html#1543">[ subject ]</a>
+              <a href="author.html#1543">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR v2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C8E1B8012-BB95-4255-8D5F-031EC2181D6E%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000756.html">
+   <LINK REL="Next"  HREF="000755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR v2.0</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C8E1B8012-BB95-4255-8D5F-031EC2181D6E%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSPR v2.0">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Fri Oct 30 17:19:04 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000756.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+        <LI>Next message: <A HREF="000755.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diane and Joe,
+
+Thanks for confirmation about the fftw3 library and how to fix it.
+
+It would be a help if the Win/Ubuntu version of the library could be  
+constructed with the correct Fortran entry points.   This has two  
+advantages:
+
+a)  four2a.f would then conform to the usual Fortran convention (of  
+not using trailing underscores)
+b)  source code would be compiled and linked correctly by a wider  
+community - eg including BSD Unix used on Macs, and perhaps over  
+versions of Linux.
+
+The alternative would be to have additional #ifdef's in four2a.f to  
+distinguish between versions of the library which have conventional  
+and unconventional Fortran entry points.
+
+---73 John   G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000756.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+	<LI>Next message: <A HREF="000755.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#758">[ date ]</a>
+              <a href="thread.html#758">[ thread ]</a>
+              <a href="subject.html#758">[ subject ]</a>
+              <a href="author.html#758">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

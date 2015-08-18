@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 31
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2069%2C%20Issue%2031&In-Reply-To=%3CCAD%2BDZ5hehxR-STqEwLCb%3D_hcpcpega0VQ%2BgJ1eiNeYu5UZu5eA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001850.html">
+   <LINK REL="Next"  HREF="001829.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 31</H1>
+    <B>David Birnbaum</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2069%2C%20Issue%2031&In-Reply-To=%3CCAD%2BDZ5hehxR-STqEwLCb%3D_hcpcpega0VQ%2BgJ1eiNeYu5UZu5eA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 31">dbirnbau at gmail.com
+       </A><BR>
+    <I>Wed Aug 14 16:42:02 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001850.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001829.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1831">[ date ]</a>
+              <a href="thread.html#1831">[ thread ]</a>
+              <a href="subject.html#1831">[ subject ]</a>
+              <a href="author.html#1831">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've upgraded my system to Ubuntu 13.04, downloaded the Qt binaries (5.1.0)
+from the Qt website and installed them in my home directory.
+
+Using qmake from the 5.1.0 directory tree builds v3545 without issue.  (I
+just did a &quot;&quot;make&quot; not &quot;make -j3&quot; if that makes any difference). Program
+runs, detects audio devices, although name is different and only one
+choice.    Palettes work once I move the Paeltte directory into the
+wsjtx_install directory.  But no decoding and no rig control.  Rig is Yaesu
+FT450D.
+
+Running v 3496 from JNogatch on same computer no problems.  Rig control,
+and decode all work fine.
+
+Using latest Qt5 from Ubunut doesn't work.  So at least one piece of the
+puzzle is fixed.
+
+dave k2lyv
+
+
+On Mon, Aug 12, 2013 at 4:19 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>&gt;wrote:
+
+&gt;<i> Send Wsjt-devel mailing list submissions to
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Wsjt-devel digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. Re: WSJT-X: commited r3542. (Claude Frantz)
+</I>&gt;<i>    2. Re: while trying to compile revision 3546 (Greg Beam)
+</I>&gt;<i>    3. WSJT-X: JT65, JT9, CW and, tuning. (Bill Somerville)
+</I>&gt;<i>    4. Re: while trying to compile revision 3546 (John Nogatch)
+</I>&gt;<i>    5. Re: while trying to compile revision 3546 (Bill Somerville)
+</I>&gt;<i>    6. Re: while trying to compile revision 3546 (Edson W. R. Pereira)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Claude Frantz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Claude.Frantz at bayern-mail.de</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 12 Aug 2013 12:37:57 +0200
+</I>&gt;<i> Subject: Re: [Wsjt-devel] WSJT-X: commited r3542.
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Thank you for the introduction of the attenuator.
+</I>&gt;<i>
+</I>&gt;<i> Now, for every sending cycle, pulseaudio saves a new entry in the volume
+</I>&gt;<i> level database saved in ~/.pulse/*stream-volumes.tdb, for every stream name
+</I>&gt;<i> which is different in every cycle. This file is becoming quite large.
+</I>&gt;<i>
+</I>&gt;<i> Best 88 de Claude
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt;
+</I>&gt;<i> To: WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Cc: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+</I>&gt;<i> Date: Mon, 12 Aug 2013 06:19:43 -0700 (PDT)
+</I>&gt;<i> Subject: Re: [Wsjt-devel] while trying to compile revision 3546
+</I>&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> I think I've narrowed this down to a missing package. If some of you that
+</I>&gt;<i> are having this trouble could check their install, would be appreciated.
+</I>&gt;<i>
+</I>&gt;<i> I built a fresh Ubuntu 12.04 + Update, Upgrade and Dist-Upgrade.
+</I>&gt;<i>
+</I>&gt;<i> Packages added after updates:
+</I>&gt;<i> sudo apt-get install build-essential, gfortran, subversion.
+</I>&gt;<i>
+</I>&gt;<i> Added the Qt5 PPA, then installed Qt5 packages
+</I>&gt;<i> sudo add-apt-repository ppa:ubuntu-sdk-team/ppa
+</I>&gt;<i> sudo apt-get update
+</I>&gt;<i> sudo apt-get install qtbase5-dev qtmultimedia5-dev libpulse-dev
+</I>&gt;<i> libhamlib-dev
+</I>&gt;<i>
+</I>&gt;<i> Then I ran the Launchpad Test: ./test y
+</I>&gt;<i> It failed with res: &quot;null&quot;.
+</I>&gt;<i>
+</I>&gt;<i> I started searching qtmultimedia for pulseaudio packages and found (
+</I>&gt;<i> libqt5multimedia5-plugins ) was not installed. Installed the plugins and
+</I>&gt;<i> ./test y passed.
+</I>&gt;<i>
+</I>&gt;<i> Then
+</I>&gt;<i> svn co new r3546
+</I>&gt;<i> cd ./wsjtx/lib
+</I>&gt;<i> make -f Makfile.linux &lt;-- ran no errors
+</I>&gt;<i> cd ../
+</I>&gt;<i> export QT_SELECT=qt5 &lt;-- This is annoying to do each build
+</I>&gt;<i> qmake &lt;-- no errors
+</I>&gt;<i> make -j3 &lt;-- passed no errors
+</I>&gt;<i>
+</I>&gt;<i> r3546 ran with only (1) error at start-up, which was the palette error,
+</I>&gt;<i> fixed by copying the folder from the source tree.
+</I>&gt;<i>
+</I>&gt;<i> On the configuration screen, audio was back to normal. Will keep chasing
+</I>&gt;<i> this one through the different UB distros as time allows.
+</I>&gt;<i>
+</I>&gt;<i> 73's
+</I>&gt;<i> Greg
+</I>&gt;<i> KI7MT
+</I>&gt;<i>
+</I>&gt;<i>   ------------------------------
+</I>&gt;<i>  *From:* Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+</I>&gt;<i> *To:*
+</I>&gt;<i> *Cc:* WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> *Sent:* Sunday, August 11, 2013 9:48 AM
+</I>&gt;<i> *Subject:* Re: [Wsjt-devel] while trying to compile revision 3546
+</I>&gt;<i>
+</I>&gt;<i> Hi John,
+</I>&gt;<i>
+</I>&gt;<i> &gt; Joe, could you elaborate on how you installed Qt5? What version of
+</I>&gt;<i> ubuntu linux?
+</I>&gt;<i>
+</I>&gt;<i> I went to <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A> and downloaded from the link
+</I>&gt;<i> labeled &quot;Qt 5.1.0 for Linux 32-bit (417 MB)&quot;.
+</I>&gt;<i>
+</I>&gt;<i> I was unsure of the &quot;proper&quot; place to install in linux (it's Ubuntu
+</I>&gt;<i> 12.04), so I installed in my home directory.  Available audio devices
+</I>&gt;<i> appear in the list and seem to work as expected.
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+</I>&gt;<i> To: WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 12 Aug 2013 17:02:24 +0100
+</I>&gt;<i> Subject: [Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</I>&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> As part of improving the keying in wsjtx it has become apparent that the
+</I>&gt;<i> current synthesiser can be simplified if sending MFSK data, CW data and,
+</I>&gt;<i> tuning were 3 distinct functions rather than the current implementation
+</I>&gt;<i> where they are intermingled.
+</I>&gt;<i>
+</I>&gt;<i> Does anyone have any objections if I were to divided them into three
+</I>&gt;<i> separate algorithms sharing common base tools like sinusoid generation and
+</I>&gt;<i> noise generation and keying. I would implement as three separate messages
+</I>&gt;<i> (slots) to start one of the above with common a common signal to notify of
+</I>&gt;<i> completion. There would be a common mute message that toggles generation on
+</I>&gt;<i> and off without loss of synchronisation and, an interrupt message (which
+</I>&gt;<i> would be also the means of terminating the tune state). The main benefits
+</I>&gt;<i> would be simpler &amp; clearer code and the possibility of the generator being
+</I>&gt;<i> responsible for implicit timing of messages rather than having to run
+</I>&gt;<i> parallel timers.
+</I>&gt;<i>
+</I>&gt;<i> The only consequence I can see is that at present it is technically
+</I>&gt;<i> possible to switch to a single tone tuning signal while sending an MFSK
+</I>&gt;<i> data stream or CW message and then revert back to the message while
+</I>&gt;<i> maintaining continuous phase. Given that a message is continuous phase and
+</I>&gt;<i> amplitude I can't see any reason to switch back and forth between tuning
+</I>&gt;<i> and message.
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt;
+</I>&gt;<i> To: Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt;
+</I>&gt;<i> Cc: WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Date: Mon, 12 Aug 2013 11:20:50 -0700
+</I>&gt;<i> Subject: Re: [Wsjt-devel] while trying to compile revision 3546
+</I>&gt;<i> On Mon, Aug 12, 2013 at 6:19 AM, Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; wrote:...
+</I>&gt;<i> &gt; I think I've narrowed this down to a missing package. ...
+</I>&gt;<i> libqt5multimedia5-plugins ....
+</I>&gt;<i>
+</I>&gt;<i> Yes! Good work, Greg. Even though wsjtx builds correctly, ldd does not
+</I>&gt;<i> show any missing libraries, and there are no runtime error messages,
+</I>&gt;<i> without that additional package no audio devices are listed. The small
+</I>&gt;<i> &quot;test&quot; program does demonstrate the same behavior.
+</I>&gt;<i>
+</I>&gt;<i> I believe this is specific to Ubuntu 12.04 and 12.10. In 13.04, the Qt
+</I>&gt;<i> packages appear to have different names, and I am unsure which
+</I>&gt;<i> supplies that functionality, but it just happened to be already
+</I>&gt;<i> installed on my 13.04 system.
+</I>&gt;<i>
+</I>&gt;<i> Now that it is working, I see the names of the audio devices are not
+</I>&gt;<i> as recognizable as they used to be, e.g.
+</I>&gt;<i> &quot;alsa_output.pci-0000_06_00.0.analog-stereo&quot;.
+</I>&gt;<i>
+</I>&gt;<i> I also noted that Decode was taking way too long, looked at process
+</I>&gt;<i> activity with &quot;top&quot;, and saw that Xorg was hogging the CPU. It was
+</I>&gt;<i> because I had left pavucontrol running and its realtime updating of
+</I>&gt;<i> its VU meters is extremely X-intensive!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; ...
+</I>&gt;<i> &gt; I went to <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A> and downloaded from the link
+</I>&gt;<i> &gt; labeled &quot;Qt 5.1.0 for Linux 32-bit (417 MB)&quot;.
+</I>&gt;<i>
+</I>&gt;<i> That site looks like a good resource, but it does not specify what
+</I>&gt;<i> version of linux it is built for, i.e. if libc and other libraries
+</I>&gt;<i> installed on your system are compatible.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; I was unsure of the &quot;proper&quot; place to install in linux (it's Ubuntu
+</I>&gt;<i> 12.04), so I installed in my home directory.
+</I>&gt;<i>
+</I>&gt;<i> That is another advantage of the &quot;apt-get install&quot; methodology.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt;  Available audio devices appear in the list and seem to work as expected.
+</I>&gt;<i>
+</I>&gt;<i> OK, I will not argue with success!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -John AC6SL
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 12 Aug 2013 19:43:08 +0100
+</I>&gt;<i> Subject: Re: [Wsjt-devel] while trying to compile revision 3546
+</I>&gt;<i> On 12/08/2013 19:20, John Nogatch wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi Josh &amp; Greg ...
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Mon, Aug 12, 2013 at 6:19 AM, Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; wrote:...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I think I've narrowed this down to a missing package. ...
+</I>&gt;&gt;&gt;<i> libqt5multimedia5-plugins ....
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Yes! Good work, Greg. Even though wsjtx builds correctly, ldd does not
+</I>&gt;&gt;<i> show any missing libraries, and there are no runtime error messages,
+</I>&gt;&gt;<i> without that additional package no audio devices are listed. The small
+</I>&gt;&gt;<i> &quot;test&quot; program does demonstrate the same behavior.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I believe this is specific to Ubuntu 12.04 and 12.10. In 13.04, the Qt
+</I>&gt;&gt;<i> packages appear to have different names, and I am unsure which
+</I>&gt;&gt;<i> supplies that functionality, but it just happened to be already
+</I>&gt;&gt;<i> installed on my 13.04 system.
+</I>&gt;&gt;<i>
+</I>&gt;<i> The Qt5 plugins are runtime loaded so will not be picked up by 'ldd' which
+</I>&gt;<i> only sees linktime dependants.
+</I>&gt;<i>
+</I>&gt;<i> It would seem that between 12.10 and 13.04 the plugin code has been
+</I>&gt;<i> statically linked into the Qt5Multimedia shared library. Here on 13.04 if I
+</I>&gt;<i> 'ldd' the library rather than our executable I see all the link references
+</I>&gt;<i> to the audio APIs as follows:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-**install/bin$ ldd /usr/lib/x86_64-linux-gnu/*
+</I>&gt;<i> *libQt5Multimedia.so.5
+</I>&gt;<i>     linux-vdso.so.1 =&gt;  (0x00007fff02f32000)
+</I>&gt;<i>     libpulse.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libpulse.so.0
+</I>&gt;<i> (0x00007f82a69b1000)
+</I>&gt;<i>     libQt5Gui.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Gui.so.5
+</I>&gt;<i> (0x00007f82a63d5000)
+</I>&gt;<i>     libQt5Network.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Network.so.5
+</I>&gt;<i> (0x00007f82a609d000)
+</I>&gt;<i>     libQt5Core.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Core.so.5
+</I>&gt;<i> (0x00007f82a5a89000)
+</I>&gt;<i>     libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libstdc++.so.6
+</I>&gt;<i> (0x00007f82a5785000)
+</I>&gt;<i>     libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.**6 (0x00007f82a53bc000)
+</I>&gt;<i>     libjson.so.0 =&gt; /lib/x86_64-linux-gnu/libjson.**so.0
+</I>&gt;<i> (0x00007f82a51b3000)
+</I>&gt;<i>     libpulsecommon-3.0.so =&gt; /usr/lib/x86_64-linux-gnu/**pulseaudio/
+</I>&gt;<i> libpulsecommon-3.0.**so &lt;<A HREF="http://libpulsecommon-3.0.so">http://libpulsecommon-3.0.so</A>&gt;(0x00007f82a4f50000)
+</I>&gt;<i>     libdbus-1.so.3 =&gt; /lib/x86_64-linux-gnu/libdbus-**1.so.3
+</I>&gt;<i> (0x00007f82a4d0b000)
+</I>&gt;<i>     libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/**libpthread.so.0
+</I>&gt;<i> (0x00007f82a4aee000)
+</I>&gt;<i>     libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.**6 (0x00007f82a47e9000)
+</I>&gt;<i>     libpng12.so.0 =&gt; /lib/x86_64-linux-gnu/**libpng12.so.0
+</I>&gt;<i> (0x00007f82a45c2000)
+</I>&gt;<i>     libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.**1 (0x00007f82a43ab000)
+</I>&gt;<i>     libGL.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**mesa/libGL.so.1
+</I>&gt;<i> (0x00007f82a414d000)
+</I>&gt;<i>     libicui18n.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicui18n.so.48
+</I>&gt;<i> (0x00007f82a3d86000)
+</I>&gt;<i>     libicuuc.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicuuc.so.48
+</I>&gt;<i> (0x00007f82a3a1b000)
+</I>&gt;<i>     libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.**so.2 (0x00007f82a3817000)
+</I>&gt;<i>     libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-**2.0.so.0
+</I>&gt;<i> (0x00007f82a351a000)
+</I>&gt;<i>     librt.so.1 =&gt; /lib/x86_64-linux-gnu/librt.**so.1 (0x00007f82a3312000)
+</I>&gt;<i>     libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_**s.so.1
+</I>&gt;<i> (0x00007f82a30fc000)
+</I>&gt;<i>     /lib64/ld-linux-x86-64.so.2 (0x00007f82a6eda000)
+</I>&gt;<i>     libxcb.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb.so.1
+</I>&gt;<i> (0x00007f82a2edd000)
+</I>&gt;<i>     libwrap.so.0 =&gt; /lib/x86_64-linux-gnu/libwrap.**so.0
+</I>&gt;<i> (0x00007f82a2cd3000)
+</I>&gt;<i>     libsndfile.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libsndfile.so.1
+</I>&gt;<i> (0x00007f82a2a6d000)
+</I>&gt;<i>     libasyncns.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libasyncns.so.0
+</I>&gt;<i> (0x00007f82a2866000)
+</I>&gt;<i>     libglapi.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libglapi.so.0
+</I>&gt;<i> (0x00007f82a2640000)
+</I>&gt;<i>     libXext.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXext.so.6
+</I>&gt;<i> (0x00007f82a242d000)
+</I>&gt;<i>     libXdamage.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libXdamage.so.1
+</I>&gt;<i> (0x00007f82a222a000)
+</I>&gt;<i>     libXfixes.so.3 =&gt; /usr/lib/x86_64-linux-gnu/**libXfixes.so.3
+</I>&gt;<i> (0x00007f82a2024000)
+</I>&gt;<i>     libX11-xcb.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libX11-xcb.so.1
+</I>&gt;<i> (0x00007f82a1e21000)
+</I>&gt;<i>     libX11.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libX11.so.6
+</I>&gt;<i> (0x00007f82a1ae7000)
+</I>&gt;<i>     libxcb-glx.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb-glx.so.0
+</I>&gt;<i> (0x00007f82a18d0000)
+</I>&gt;<i>     libxcb-dri2.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb-dri2.so.0
+</I>&gt;<i> (0x00007f82a16ca000)
+</I>&gt;<i>     libXxf86vm.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libXxf86vm.so.1
+</I>&gt;<i> (0x00007f82a14c4000)
+</I>&gt;<i>     libdrm.so.2 =&gt; /usr/lib/x86_64-linux-gnu/**libdrm.so.2
+</I>&gt;<i> (0x00007f82a12b9000)
+</I>&gt;<i>     libicudata.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicudata.so.48
+</I>&gt;<i> (0x00007f829ff48000)
+</I>&gt;<i>     libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.**so.3
+</I>&gt;<i> (0x00007f829fd09000)
+</I>&gt;<i>     libXau.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXau.so.6
+</I>&gt;<i> (0x00007f829fb04000)
+</I>&gt;<i>     libXdmcp.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXdmcp.so.6
+</I>&gt;<i> (0x00007f829f8fe000)
+</I>&gt;<i>     libnsl.so.1 =&gt; /lib/x86_64-linux-gnu/libnsl.**so.1
+</I>&gt;<i> (0x00007f829f6e4000)
+</I>&gt;<i>     libFLAC.so.8 =&gt; /usr/lib/x86_64-linux-gnu/**libFLAC.so.8
+</I>&gt;<i> (0x00007f829f497000)
+</I>&gt;<i>     libvorbisenc.so.2 =&gt; /usr/lib/x86_64-linux-gnu/**libvorbisenc.so.2
+</I>&gt;<i> (0x00007f829efc8000)
+</I>&gt;<i>     libvorbis.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libvorbis.so.0
+</I>&gt;<i> (0x00007f829ed9b000)
+</I>&gt;<i>     libogg.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libogg.so.0
+</I>&gt;<i> (0x00007f829eb93000)
+</I>&gt;<i>     libresolv.so.2 =&gt; /lib/x86_64-linux-gnu/**libresolv.so.2
+</I>&gt;<i> (0x00007f829e979000)
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-**install/bin$
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i>   Available audio devices appear in the list and seem to work as expected.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> OK, I will not argue with success!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -John AC6SL
+</I>&gt;&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: &quot;Edson W. R. Pereira&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;
+</I>&gt;<i> To: WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 12 Aug 2013 17:19:56 -0300
+</I>&gt;<i> Subject: Re: [Wsjt-devel] while trying to compile revision 3546
+</I>&gt;<i>
+</I>&gt;<i> Hi John,
+</I>&gt;<i>
+</I>&gt;<i> Many distributions, Ubuntu included, tend to split libraries in separate
+</I>&gt;<i> packages and sometimes things get messy. QtMultimedia for quite some time
+</I>&gt;<i> has suffered from packaging problems (files scattered on separate
+</I>&gt;<i> directories, inconsistent builds, etc.). I tried to get away from the
+</I>&gt;<i> issues by compiling Qt from sources and putting the binaries under one
+</I>&gt;<i> directory tree per version. This has an additional benefit to allow
+</I>&gt;<i> multiple Qt versions installed on my system concurrent;y without files
+</I>&gt;<i> being scattered all over the place.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Aug 12, 2013 at 3:20 PM, John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Mon, Aug 12, 2013 at 6:19 AM, Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; wrote:...
+</I>&gt;&gt;<i> &gt; I think I've narrowed this down to a missing package. ...
+</I>&gt;&gt;<i> libqt5multimedia5-plugins ....
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Yes! Good work, Greg. Even though wsjtx builds correctly, ldd does not
+</I>&gt;&gt;<i> show any missing libraries, and there are no runtime error messages,
+</I>&gt;&gt;<i> without that additional package no audio devices are listed. The small
+</I>&gt;&gt;<i> &quot;test&quot; program does demonstrate the same behavior.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I believe this is specific to Ubuntu 12.04 and 12.10. In 13.04, the Qt
+</I>&gt;&gt;<i> packages appear to have different names, and I am unsure which
+</I>&gt;&gt;<i> supplies that functionality, but it just happened to be already
+</I>&gt;&gt;<i> installed on my 13.04 system.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Now that it is working, I see the names of the audio devices are not
+</I>&gt;&gt;<i> as recognizable as they used to be, e.g.
+</I>&gt;&gt;<i> &quot;alsa_output.pci-0000_06_00.0.analog-stereo&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I also noted that Decode was taking way too long, looked at process
+</I>&gt;&gt;<i> activity with &quot;top&quot;, and saw that Xorg was hogging the CPU. It was
+</I>&gt;&gt;<i> because I had left pavucontrol running and its realtime updating of
+</I>&gt;&gt;<i> its VU meters is extremely X-intensive!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; ...
+</I>&gt;&gt;<i> &gt; I went to <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A> and downloaded from the link
+</I>&gt;&gt;<i> &gt; labeled &quot;Qt 5.1.0 for Linux 32-bit (417 MB)&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> That site looks like a good resource, but it does not specify what
+</I>&gt;&gt;<i> version of linux it is built for, i.e. if libc and other libraries
+</I>&gt;&gt;<i> installed on your system are compatible.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; I was unsure of the &quot;proper&quot; place to install in linux (it's Ubuntu
+</I>&gt;&gt;<i> 12.04), so I installed in my home directory.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> That is another advantage of the &quot;apt-get install&quot; methodology.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt;  Available audio devices appear in the list and seem to work as
+</I>&gt;&gt;<i> expected.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> OK, I will not argue with success!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -John AC6SL
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130814/bc4918fc/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130814/bc4918fc/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001850.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001829.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1831">[ date ]</a>
+              <a href="thread.html#1831">[ thread ]</a>
+              <a href="subject.html#1831">[ subject ]</a>
+              <a href="author.html#1831">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

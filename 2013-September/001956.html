@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Bug to fix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Bug%20to%20fix&In-Reply-To=%3C524493D9.5070803%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001938.html">
+   <LINK REL="Next"  HREF="001939.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Bug to fix</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Bug%20to%20fix&In-Reply-To=%3C524493D9.5070803%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Bug to fix">joe at princeton.edu
+       </A><BR>
+    <I>Thu Sep 26 22:06:49 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001938.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001939.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1956">[ date ]</a>
+              <a href="thread.html#1956">[ thread ]</a>
+              <a href="subject.html#1956">[ subject ]</a>
+              <a href="author.html#1956">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Murray,
+
+KC2WUF reported to me that when he double-clicked on the received 
+message &quot;CQ TI3/AB4AW EJ89&quot; in the left text window, it was copied into 
+the right window as &quot;CQ TI3/AB4AW EJ&quot;.  The culprit appears to be line 
+1929 in mainwindow.cpp:
+
+   decodedtext = decodedtext.left(36);
+
+Increasing the value 36 (to 38 or more) would take care of the problem, 
+but would that mess up the way you're attempting to remove DXCC entity 
+and worked B4 status ??
+
+As you noted in your &quot;TODO&quot; flag, we need a better way to do this.
+
+	-- Joe, K1JT
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001938.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001939.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1956">[ date ]</a>
+              <a href="thread.html#1956">[ thread ]</a>
+              <a href="subject.html#1956">[ subject ]</a>
+              <a href="author.html#1956">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

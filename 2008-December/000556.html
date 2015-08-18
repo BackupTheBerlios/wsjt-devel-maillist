@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT Linux GUI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Linux%20GUI&In-Reply-To=%3C4947D366.1040209%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000555.html">
+   <LINK REL="Next"  HREF="000557.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT Linux GUI</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Linux%20GUI&In-Reply-To=%3C4947D366.1040209%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT Linux GUI">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Dec 16 17:12:22 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000555.html">[Wsjt-devel] WSJT Linux GUI
+</A></li>
+        <LI>Next message: <A HREF="000557.html">[Wsjt-devel] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#556">[ date ]</a>
+              <a href="thread.html#556">[ thread ]</a>
+              <a href="subject.html#556">[ subject ]</a>
+              <a href="author.html#556">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Eddie,
+
+&gt;<i> There appears to be a GUI anomaly when compiling WSPR on Linux. The UTC dB
+</I>&gt;<i> DT Freq Drift &#8211; Label is nomadic. It is miss positioned and moves depending
+</I>&gt;<i> upon Screen Resolution. Probably due to the way Linux deals with the
+</I>&gt;<i> positioning as opposed to Microsoft Windows.
+</I>
+There are many opportunities for &quot;GUI anomalies&quot; depending 
+on options you have chosen (or accepted as defaults) in your 
+installed version of Linux.
+
+Geometry of a Python user-interface window depends on things 
+selected under system &quot;Look and Feel&quot;, on the fonts you're 
+using, and probably on other parameters I'm not recalling at 
+the moment.
+
+Fonts used by WSPR are controlled by a file &quot;wsprrc&quot;.  If 
+you don't already have such a file in your WSPR directory, 
+copy &quot;wsprrc.win&quot; to &quot;wsprrc&quot; and then edit it as desired. 
+Changes (or even making no changes) will most likely require 
+edits to lines 943-944 of wspr.py, to make column headings 
+line up properly.
+
+&gt;<i> The Label &#8211; lab2 is actually outside iframe2, although it appears to be and
+</I>&gt;<i> is intended to be inside. 
+</I>
+Hmmm, I don't know what you mean here.  On my Linux screen 
+the label is certainly inside iframe2, but it needs to be 
+moved slightly to the left (line 944) and the spacing 
+between column headings needs tweaking (line 943).
+
+I don't know of any reasonable way to make these things 
+fully platform- and font-independent.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000555.html">[Wsjt-devel] WSJT Linux GUI
+</A></li>
+	<LI>Next message: <A HREF="000557.html">[Wsjt-devel] (no subject)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#556">[ date ]</a>
+              <a href="thread.html#556">[ thread ]</a>
+              <a href="subject.html#556">[ subject ]</a>
+              <a href="author.html#556">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

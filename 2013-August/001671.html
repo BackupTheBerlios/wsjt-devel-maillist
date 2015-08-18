@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48EkGus2rfsKFwyf1ZD-vQw0%3DbYjj7uu03fNthfykPv-g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001727.html">
+   <LINK REL="Next"  HREF="001674.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48EkGus2rfsKFwyf1ZD-vQw0%3DbYjj7uu03fNthfykPv-g%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Aug  4 13:28:14 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001727.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001674.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1671">[ date ]</a>
+              <a href="thread.html#1671">[ thread ]</a>
+              <a href="subject.html#1671">[ subject ]</a>
+              <a href="author.html#1671">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Bill,
+
+Compilation fails on Linux (Ubuntu 12.04). Error message follows.
+...
+Detector.cpp: In member function &#8216;virtual qint64 Detector::writeData(const
+char*, qint64)&#8217;:
+Detector.cpp:42:86: error: no matching function for call to &#8216;min(long long
+unsigned int, qint64&amp;)&#8217;
+Detector.cpp:42:86: note: candidates are:
+/usr/include/c++/4.6/bits/stl_algobase.h:187:5: note: template&lt;class _Tp&gt;
+const _Tp&amp; std::min(const _Tp&amp;, const _Tp&amp;)
+/usr/include/c++/4.6/bits/stl_algobase.h:233:5: note: template&lt;class _Tp,
+class _Compare&gt; const _Tp&amp; std::min(const _Tp&amp;, const _Tp&amp;, _Compare)
+Detector.cpp:44:55: warning: comparison between signed and unsigned integer
+expressions [-Wsign-compare]
+make: *** [Detector.o] Error 1
+
+
+On Sat, Aug 3, 2013 at 8:59 PM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I have a working version of WSJT-X that uses the Qt audio input and output
+</I>&gt;<i> streams. Qt5 is required to build this, PortAudio is not required.
+</I>&gt;<i>
+</I>&gt;<i> If anyone wants to test this (I have only tested on Windows so far) I
+</I>&gt;<i> would appreciate any feedback on building or running.
+</I>&gt;<i>
+</I>&gt;<i> Attached is a patch which you can apply to the r3522 codebase, there are
+</I>&gt;<i> four new files which all go in the top directory with the other main C++
+</I>&gt;<i> sources, I believe the patch program will create these.
+</I>&gt;<i>
+</I>&gt;<i> To apply the patch use the standard *nix patch command in the root
+</I>&gt;<i> directory of the project as follows:
+</I>&gt;<i>
+</I>&gt;<i> patch -p0 -i &lt;patch-file-path&gt;
+</I>&gt;<i>
+</I>&gt;<i> As the changes are quite extensive I think a build and test on *nix and
+</I>&gt;<i> OS-X might be better before any checkin.
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/749a212b/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/749a212b/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001727.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001674.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1671">[ date ]</a>
+              <a href="thread.html#1671">[ thread ]</a>
+              <a href="subject.html#1671">[ subject ]</a>
+              <a href="author.html#1671">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

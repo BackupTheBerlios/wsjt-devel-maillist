@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3C517FD27F.5050204%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001255.html">
+   <LINK REL="Next"  HREF="001257.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3C517FD27F.5050204%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Apr 30 16:17:35 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001255.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+        <LI>Next message: <A HREF="001257.html">[Wsjt-devel] WSJT-X 0.95 r3243 Just FYI - Had App Closed Issue Again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1256">[ date ]</a>
+              <a href="thread.html#1256">[ thread ]</a>
+              <a href="subject.html#1256">[ subject ]</a>
+              <a href="author.html#1256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson,
+
+I was aware that Qt has traditionally discouraged the use of exceptions, 
+but
+
+&gt;<i> To get exceptions to work, it seems it needs to be enabled at compile time
+</I>&gt;<i> (Qt compile time).
+</I>
+I did NOT know this.  Clearly, we should go back to using error-code 
+returns from hamlib functions.
+
+&gt;<i> It is indeed a bummer the callback doesn't work. I want to take a look at
+</I>&gt;<i> the guts of hamlib to see how it is implemented and see if there is any
+</I>&gt;<i> workaround. Meanwhile, we could check the radio QRG every minute before TX
+</I>&gt;<i> goes on. Any change to the dial frequency will not be immediately reflected
+</I>&gt;<i> on the wsprx display, but this should prevent TXing on the wrong and should
+</I>&gt;<i> alleviate the issues with some rigs that don't like frequent CAT commands.
+</I>&gt;<i> What do you think?
+</I>
+How about a spinner control labeled &quot;Polling interval&quot; in the CAT 
+control group?  It could specify polling at any interval up to, say, 60 
+seconds, with &quot;0&quot; to indicate &quot;never&quot; (i.e., one-way CAT control, from 
+program to radio only).
+
+	-- Joe
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001255.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+	<LI>Next message: <A HREF="001257.html">[Wsjt-devel] WSJT-X 0.95 r3243 Just FYI - Had App Closed Issue Again
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1256">[ date ]</a>
+              <a href="thread.html#1256">[ thread ]</a>
+              <a href="subject.html#1256">[ subject ]</a>
+              <a href="author.html#1256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

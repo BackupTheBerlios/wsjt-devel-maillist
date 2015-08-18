@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] CFLAGS ... -mno-stack-arg-probe
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CFLAGS%20...%20-mno-stack-arg-probe&In-Reply-To=%3CCADTTAayv29nPMUTWc5gv0L1sgQqRwBdwM%3DjEQ9KJLNUYKegu0w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001927.html">
+   <LINK REL="Next"  HREF="001926.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CFLAGS%20...%20-mno-stack-arg-probe&In-Reply-To=%3CCADTTAayv29nPMUTWc5gv0L1sgQqRwBdwM%3DjEQ9KJLNUYKegu0w%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe">jnogatch at gmail.com
+       </A><BR>
+    <I>Tue Sep 10 01:17:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001927.html">[Wsjt-devel] Crash in CPlotter::DrawOverlay()
+</A></li>
+        <LI>Next message: <A HREF="001926.html">[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1925">[ date ]</a>
+              <a href="thread.html#1925">[ thread ]</a>
+              <a href="subject.html#1925">[ subject ]</a>
+              <a href="author.html#1925">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>wsjtx_1.1.r3496 has finally been accepted as a debian package.
+
+It failed to build on some of the platforms, because
+lib/Makefile.linux specified &quot;CFLAGS ... -mno-stack-arg-probe&quot;  This
+-mno-stack-arg-probe option is not recognized on several platforms.
+
+Google search showed that it has to do with alloca(), but I do not see
+that used anywhere. I suspect that this was originally in
+lib/Makefile.mingw, and was then copied into lib/Makefile.linux
+
+I removed this option, rebuilt, reinstalled, and I am still able to
+decode the sample .wav file. This change is included in what was
+checked in to debian.
+
+I propose to remove this option from lib/Makefile.linux in the most
+current source. Does anyone have any objection? Does anyone remember
+why this option was present?
+
+-John AC6SL
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001927.html">[Wsjt-devel] Crash in CPlotter::DrawOverlay()
+</A></li>
+	<LI>Next message: <A HREF="001926.html">[Wsjt-devel] CFLAGS ... -mno-stack-arg-probe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1925">[ date ]</a>
+              <a href="thread.html#1925">[ thread ]</a>
+              <a href="subject.html#1925">[ subject ]</a>
+              <a href="author.html#1925">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

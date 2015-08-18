@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Debian Lenny
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C48613220.9%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000375.html">
+   <LINK REL="Next"  HREF="000379.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Debian Lenny</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C48613220.9%40charter.net%3E"
+       TITLE="[Wsjt-devel] WSJT and Debian Lenny">k9ao at charter.net
+       </A><BR>
+    <I>Tue Jun 24 19:42:56 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000375.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+        <LI>Next message: <A HREF="000379.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry Popov wrote:
+&gt;<i> BTW Linux is in process
+</I>&gt;<i> of major upgrade right now. Especially Python. I do alarm developers
+</I>&gt;<i> team that WSJT is no more usable on Linux systems. I am not guilty about
+</I>&gt;<i> this Linux upgrade process. I do not complain, just send my report. IMHO
+</I>&gt;<i> the WSJT code is really working on developers machines only right now.
+</I>&gt;<i> Please update your Linux systems! You will have another point of
+</I>&gt;<i> view. :)
+</I>
+I have the SVN code of WSPR and WSJT working here on Mandriva 2008.1. I 
+did have an issue with FTW and the Fortran shims not being correctly 
+built in the stock rpms for fftw (thank you Diane), and still haven't 
+got any insight about the exact right way to do this from the FFTW 
+folks, but both apps run fine here now.
+
+I'd still love to know the correct procedure to build float and double 
+precision fftw libs with the type-prefix option, so that default double 
+precision can't be reverse affected in any way (maybe it isn't?) The 
+original rpms were built without the type-prefix option for either the 
+float or the double precision libs. They were built with the Fortran option.
+
+Both WSJT and WSPR were built with gfortran.
+
+Don't know about other distros and any other versions of python. 
+Mandriva 2008.1 uses 8.5.
+
+Incidentally, I also security update Linux almost every day, and can 
+easily roll back any changes that updating process makes under Linux, 
+something I can't easily do under Windows. I'm not seeing any 
+deleterious effects from the Mandriva security updates. However, unlike 
+some distros, Mandriva only ships security updates to a released distro. 
+There are no inline OS or application updates to later versions of code 
+than originally shipped, these occur twice a year. (Or can be forced at 
+your own risk via a backports repository from the devel version of the 
+OS code.)
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000375.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+	<LI>Next message: <A HREF="000379.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#377">[ date ]</a>
+              <a href="thread.html#377">[ thread ]</a>
+              <a href="subject.html#377">[ subject ]</a>
+              <a href="author.html#377">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

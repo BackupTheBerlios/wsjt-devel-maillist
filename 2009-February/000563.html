@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Core WSJT functionality implemented in a shared	library.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Core%20WSJT%20functionality%20implemented%20in%20a%20shared%0A%09library.&In-Reply-To=%3C252f4a900902051816j248dc220kd7051283364c3d60%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Core WSJT functionality implemented in a shared	library.</H1>
+    <B>Joe Large</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Core%20WSJT%20functionality%20implemented%20in%20a%20shared%0A%09library.&In-Reply-To=%3C252f4a900902051816j248dc220kd7051283364c3d60%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Core WSJT functionality implemented in a shared	library.">w6cqz at w6cqz.org
+       </A><BR>
+    <I>Fri Feb  6 03:16:01 CET 2009</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all.
+
+I've been working for quite some time to come to an understanding of WSJT at
+a source code level.  It's been a long-long difficult process for me, but I
+have finally made some progress and would like to share some of my hard
+earned knowledge in case it might be of any interest to the group.  I also
+want to provide a trail to my source tree where I hold the modified files
+from WSJT which I have worked into a (very) crude DLL which I am using in my
+own implementation of software to receive/transmit JT65A and support my RB
+system.  Details can be found at <A HREF="http://www.w6cqz.org/">http://www.w6cqz.org/</A> in reference to the
+program I'm working on and why I feel it may have some use to a very
+specific segment of WSJT users, namely those of us who operate on HF and
+contribute data to/use data from the RB spotting network.
+
+In reference to the shared library.  I have built and successfully used a
+dll containing the routines necessary for decoding/encoding JT65.  The
+library as implemented is exceedingly crude and will need much cleanup to
+represent anything other than a hack, but, it works. :)  I have attempted to
+extract only the functions necessary to process signals leaving display,
+timing and other necessary tasks to be implemented in the library's calling
+program.  As an example, the program I'm currently working on implements
+everything possible in its native code only using (what I call) libWSJT.dll
+for the actual encoding/decoding of JT65 messages.  As of this writing I
+have been running my program for several weeks to validate not only its
+function, but also the library function and the results have been most
+encouraging.  I have also built the shared library under Linux using an
+Ubuntu 8 series base and it seems to be workable there, but I have yet to do
+any extensive testing beyond a simple compile, link and ability to call a
+routine test.  The program I'm creating is written in Free Pascal + Lazarus
+GUI RAD and was picked due to my fondness for Pascal and FPC+Lazarus's
+support for Windows, Linux and Mac OS X with minimal modifications between
+specific platforms.
+
+In any case, if anyone has interest in what I've done the source is
+available at;
+
+<A HREF="http://code.google.com/p/w6cqz-hf-wsjt/source/browse/#svn/JT65-HF">http://code.google.com/p/w6cqz-hf-wsjt/source/browse/#svn/JT65-HF</A>
+
+The shared library code is in, obviously enough, the libWSJT folder.
+
+73 - Joe - W6CQZ
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090205/73b98e2b/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090205/73b98e2b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

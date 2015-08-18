@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency shift v1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20shift%20v1.1&In-Reply-To=%3C51D2EF13.2000301%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001441.html">
+   <LINK REL="Next"  HREF="001442.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency shift v1.1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20shift%20v1.1&In-Reply-To=%3C51D2EF13.2000301%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Frequency shift v1.1">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  2 17:17:39 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001441.html">[Wsjt-devel] Frequency shift v1.1
+</A></li>
+        <LI>Next message: <A HREF="001442.html">[Wsjt-devel] PTT port in OSX and Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1443">[ date ]</a>
+              <a href="thread.html#1443">[ thread ]</a>
+              <a href="subject.html#1443">[ subject ]</a>
+              <a href="author.html#1443">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You'll find the explanation in item 1, page 4 of
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJT-X_1.1_Quick_Start.pdf">http://www.physics.princeton.edu/pulsar/K1JT/WSJT-X_1.1_Quick_Start.pdf</A>
+
+If you're using the wideband capability of WSJT-X v1.1 -- more bandwidth 
+than a standard SSB filter -- your transceiver should be in Split mode. 
+  Then, suppose the Rx dial frequency (VFO_A) is 14.076.
+
+To transmit at a frequency below 1000 Hz on the waterfall, VFO_B will be
+set to 14.075.
+
+To transmit between 1000 and 2000 Hz on the waterfall, VFO_B = 14.076.
+To transmit between 2000 and 3000 Hz on the waterfall, VFO_B = 14.077.
+To transmit between 3000 and 4000 Hz on the waterfall, VFO_B = 14.078.
+
+	-- Joe, K1JT
+
+On 7/2/2013 10:01 AM, Claude Frantz wrote:
+&gt;<i> Please explain me the following behavior.
+</I>&gt;<i>
+</I>&gt;<i> When double clicking in the last field of &quot;Band activity&quot;, the second
+</I>&gt;<i> callsign and the gridsqare are copied to &quot;DX call&quot; and &quot;DX grid&quot; as
+</I>&gt;<i> expected. The TX and RX markers of the waterfall are displaced to the
+</I>&gt;<i> corresponding the audio frequency, the frequencies in &quot;TX ... Hz&quot; and
+</I>&gt;<i> &quot;TX ... Hz&quot; are changed too. This behavior is as expected. But the XCVR
+</I>&gt;<i> dial frequency is decreased by 1 kHz. I do not understand why.
+</I>&gt;<i>
+</I>&gt;<i> I'm using r3448, CAT control via rigctld. XCVR is FT2000. Bandwidth is
+</I>&gt;<i> 2600 Hz. Mode is JT65 + JT9. Tx JT65.
+</I>&gt;<i>
+</I>&gt;<i> Why does this dial frequency shift occurs ?
+</I>&gt;<i>
+</I>&gt;<i> Best 88 de Claude
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001441.html">[Wsjt-devel] Frequency shift v1.1
+</A></li>
+	<LI>Next message: <A HREF="001442.html">[Wsjt-devel] PTT port in OSX and Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1443">[ date ]</a>
+              <a href="thread.html#1443">[ thread ]</a>
+              <a href="subject.html#1443">[ subject ]</a>
+              <a href="author.html#1443">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

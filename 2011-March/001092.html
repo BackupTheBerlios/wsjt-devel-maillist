@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Error when building WSJT on Archlinux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Error%20when%20building%20WSJT%20on%20Archlinux&In-Reply-To=%3C4D7FF38F.2030506%40sportscliche.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001091.html">
+   <LINK REL="Next"  HREF="001093.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Error when building WSJT on Archlinux</H1>
+    <B>Mike H</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Error%20when%20building%20WSJT%20on%20Archlinux&In-Reply-To=%3C4D7FF38F.2030506%40sportscliche.com%3E"
+       TITLE="[Wsjt-devel] Error when building WSJT on Archlinux">mph at sportscliche.com
+       </A><BR>
+    <I>Wed Mar 16 00:17:35 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001091.html">[Wsjt-devel] WSJT-5.9.7-r386 source code
+</A></li>
+        <LI>Next message: <A HREF="001093.html">[Wsjt-devel] Question to WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1092">[ date ]</a>
+              <a href="thread.html#1092">[ thread ]</a>
+              <a href="subject.html#1092">[ subject ]</a>
+              <a href="author.html#1092">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Alex,
+
+I have been able to build both WSJT and WSPR from source on ArchLinux.  
+Your suggestions about overriding Arch's default python3 setup are 
+correct, but I can't be certain why this worked for me and not you.  
+Perhaps because I have a 32-bit system?  I have generated two packages: 
+wsjt-svn and wspr-svn and uploaded them to the Arch User Repository 
+(AUR).  The programs can be automatically installed from the AUR; any 
+dependency problems will be immediately flagged for easy fix.   The 
+manual builds were straightforward, but there were some problems I had 
+to solve to get the Arch PKGBUILD working.   I'm generating working GUIs 
+from the current svn, but at present I don't have access to any hardware 
+aside from a 32-bit laptop for testing.  I did observe that if WSJT is 
+configured with gfortran, it crashes when the included sample .wav file 
+is opened.  Building with g95 fixes that problem.  If there are any 
+other ArchLinux users out there, I'd be interested to know if these 
+package-builds work with real interfaces and radios.
+
+ArchLinux uses the `pacman' package management system, but has a 
+mechanism for converting and installing debian files.  I have also added 
+packages to the AUR that build WSJT7, WSJT9, and WSPR from K1JT's most 
+current debian binaries.
+
+Mike WB2FKO/DL
+
+&gt;<i> Hello Joe,
+</I>&gt;<i>
+</I>&gt;<i> I'll try more detailed explanation.
+</I>&gt;<i>
+</I>&gt;<i> Archlinux is rolling-release, so it doesn't have old python 2.5, only new
+</I>&gt;<i> python 2.7. Plus distro maintainers linked /usr/bin/python to python 3,
+</I>&gt;<i> not 2, as in other distros, so I needed to put &quot;PYTHON='/usr/bin/python2'
+</I>&gt;<i> F2PY='/usr/bin/python2 f2py.py'&quot; to adjust make variables. Also replaced
+</I>&gt;<i> 'python' with 'python2' in respective files with sed.
+</I>&gt;<i>
+</I>&gt;<i> Also relatively new numpy requires mentioned patch to work (code taken from
+</I>&gt;<i> numpy forums).
+</I>&gt;<i>
+</I>&gt;<i> Apart from these points, all other dependencies are satisfied. Also tried
+</I>&gt;<i> using gfortran and g95, makes no difference.
+</I>&gt;<i>
+</I>&gt;<i> Just wanting to build default WSJT on 64bit Linux system. Any ideas?
+</I>&gt;<i>
+</I>&gt;<i> 73! de Alex YL3DY
+</I>&gt;<i>
+</I>&gt;<i> P.S. Sorry for delay.
+</I>&gt;<i>
+</I>&gt;<i> On Fri, 17 Dec 2010 00:13:07 +0200, Joe Taylor&lt;joe at princeton.edu  &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;/  Hi Alex,
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/  I am not sure that I understand just what you have done, and why.  The
+</I>&gt;<i> /&gt;/  normal commands to compile WSJT in Linux, after checking out source code
+</I>&gt;<i> /&gt;/  from the SVN repository, are
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/  $ ./configure --enable-gfortran              (or &quot;--enable-g95&quot;)
+</I>&gt;<i> /&gt;/  $ make
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/  This assumes that you have already installed the following
+</I>&gt;<i> /&gt;/  pre-requisites:
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/    python2.5-dev
+</I>&gt;<i> /&gt;/    python-numpy
+</I>&gt;<i> /&gt;/    python-imaging-tk
+</I>&gt;<i> /&gt;/    python-pmw
+</I>&gt;<i> /&gt;/    libportaudio2
+</I>&gt;<i> /&gt;/    libportaudio-dev
+</I>&gt;<i> /&gt;/    libsamplerate0-dev
+</I>&gt;<i> /&gt;/    libfftw3-dev
+</I>&gt;<i> /&gt;/    g95                      (optional)
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/  	-- 73, Joe, K1JT
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/
+</I>&gt;<i> /&gt;/  On 12/16/2010 11:06 AM, Alex YL3DY wrote:
+</I>&gt;<i> /&gt;&gt;/  Hello WSJT developers!
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  I'm now trying to build WSJT beta from SVN on Arch GNU/Linux, and
+</I>&gt;<i> /&gt;&gt;/  getting strange error when making target &quot;WsjtMod/Audio.so&quot;:
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  ....
+</I>&gt;<i> /&gt;&gt;/  error: unknown file type '' (from '-Wl,--hash-style=gnu')
+</I>&gt;<i> /&gt;&gt;/  make: *** [WsjtMod/Audio.so] Error 1
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  Used the following command line to build: ./configure
+</I>&gt;<i> /&gt;&gt;/  PYTHON='/usr/bin/python2' F2PY='/usr/bin/python2 f2py.py' ; make
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  Full make output for this target here:
+</I>&gt;<i> /&gt;&gt;/  <A HREF="http://archlinux.pastebin.com/Sz8MwSbh">http://archlinux.pastebin.com/Sz8MwSbh</A>
+</I>&gt;<i> /&gt;&gt;/  Also applied the following patch to get f2py.py working with new numpy:
+</I>&gt;<i> /&gt;&gt;/  <A HREF="http://archlinux.pastebin.com/XQYGHk1x">http://archlinux.pastebin.com/XQYGHk1x</A>
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  Googling about such sort of linker error gave nothing. Downgrading
+</I>&gt;<i> /&gt;&gt;/  python libs is not a solution, because it'll also pull many dependent
+</I>&gt;<i> /&gt;&gt;/  packages. Can this kind of behaviour be corrected?
+</I>&gt;<i> /&gt;&gt;/
+</I>&gt;<i> /&gt;&gt;/  Alex YL3DY.
+</I>&gt;<i> /
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110316/4899ba86/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110316/4899ba86/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001091.html">[Wsjt-devel] WSJT-5.9.7-r386 source code
+</A></li>
+	<LI>Next message: <A HREF="001093.html">[Wsjt-devel] Question to WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1092">[ date ]</a>
+              <a href="thread.html#1092">[ thread ]</a>
+              <a href="subject.html#1092">[ subject ]</a>
+              <a href="author.html#1092">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

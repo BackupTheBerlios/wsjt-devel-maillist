@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3C482D9189.6020903%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Continued development of WSJT, MAP65, WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3C482D9189.6020903%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Continued development of WSJT, MAP65, WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri May 16 15:52:09 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000258.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Wsjt-devel] wspr configure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diane,
+
+Thanks for your message.  I know you have been planning to 
+work on the autoconf/automake scripts, as well as the PBI 
+package.  Those will be nice to have, when you can get to them.
+
+
+&gt;&gt;<i>Thanks for catching the pthread memory leak on Linux.
+</I>&gt;<i> 
+</I>&gt;<i> This will also have affected BSD.
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Should this have been a problem in Win32/MinGW, which also
+</I>&gt;&gt;<i>uses pthreads and start_threads.c.  I haven't noticed that
+</I>&gt;&gt;<i>it's a problem in that environment.  Should it also be a
+</I>&gt;&gt;<i>problem in WJST?  I haven't noticed any problems there, either.
+</I>&gt;<i> 
+</I>&gt;<i> It probably should be backported.
+</I>
+Almost certainly the reason it's a problem in WSPR, but has 
+not been a problem in WSJT or MAP65, is that in WSJT and 
+MAP65 the several threads are started just once.  They 
+remain running thereafter, using idle loops when they have 
+nothing to do.  In WSPR, on the other hand, threads are 
+started as needed to do something (i.e., decode a block of 
+received data), and they exit when done.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000258.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Wsjt-devel] wspr configure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

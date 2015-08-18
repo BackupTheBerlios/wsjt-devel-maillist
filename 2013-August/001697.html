@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FFD458.2090302%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001696.html">
+   <LINK REL="Next"  HREF="001702.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FFD458.2090302%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Aug  5 18:35:36 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001696.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001702.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1697">[ date ]</a>
+              <a href="thread.html#1697">[ thread ]</a>
+              <a href="subject.html#1697">[ subject ]</a>
+              <a href="author.html#1697">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 05/08/2013 16:35, Joe Taylor wrote:
+Hi Joe,
+&gt;&gt;<i> If you see any show-stoppers or have other
+</I>&gt;&gt;<i> reservations, please make them known!
+</I>&gt;<i>
+</I>&gt;<i> As it happens, I found an issue just minutes after sending the 
+</I>&gt;<i> previous email.  I was in a JT65 QSO and transmitting (as I always do) 
+</I>&gt;<i> with the audio monitor on my transceiver turned ON.
+</I>&gt;<i>
+</I>&gt;<i> Opening the Configuration screen during a transmission causes an brief 
+</I>&gt;<i> audio interruption.  This is bad!  Maybe it's the reason that audio 
+</I>&gt;<i> needs to be done in its own thread rather than the GUI thread?  Bill, 
+</I>&gt;<i> please investigate...
+</I>This is due to the way we use a separate process to run the hamlib 
+utility rigctl to get the list of supported radios. The config dialog 
+blocks waiting for it to finish for up to 1s.
+
+There are a few of options:
+
+1) reduce the wait delay - not good since we shouldn't be blocking the 
+GUI thread anyway,
+
+2) don't wait and let the combo box of radios fill asynchronously (it is 
+already using a signal so this is trivial). Currently we put the 9998 &amp; 
+9999 entries in after the wait, but we could hook the QProcess 
+finished() signal to do that.
+
+3) use the hamlib API to lookup the supported radios assuming it can do 
+it fast enough - if it can't then a QFuture might be ideal as it could 
+return the full list on completion.
+
+4) Build the setup dialog at program startup and use show()/hide() to 
+present it. This has the downside that it wouldn't  pickup new audio 
+devices, but that could be fixed pretty easily.
+
+I think (2) is probably best value for the work although (3) is worth 
+investigating at some point. The consequence of (2) is that the user 
+might see the combobox of radios filling but that isn't serious IMHO.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001696.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001702.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1697">[ date ]</a>
+              <a href="thread.html#1697">[ thread ]</a>
+              <a href="subject.html#1697">[ subject ]</a>
+              <a href="author.html#1697">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

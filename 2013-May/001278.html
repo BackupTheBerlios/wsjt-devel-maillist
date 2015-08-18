@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Blocking calls to hamlib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Blocking%20calls%20to%20hamlib&In-Reply-To=%3C5182FCB6.8020104%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001277.html">
+   <LINK REL="Next"  HREF="001279.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Blocking calls to hamlib</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Blocking%20calls%20to%20hamlib&In-Reply-To=%3C5182FCB6.8020104%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Blocking calls to hamlib">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri May  3 01:54:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001277.html">[Wsjt-devel] F4 in setup
+</A></li>
+        <LI>Next message: <A HREF="001279.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1278">[ date ]</a>
+              <a href="thread.html#1278">[ thread ]</a>
+              <a href="subject.html#1278">[ subject ]</a>
+              <a href="author.html#1278">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Lada,
+
+I have confirmed that hamlib's failure to timeout on an attempted 
+serial-port read to a turned-off radio is dependent on the serial port.
+
+My test machine has one hardware serial port -- a standard PC card in a 
+PCI slot.  When I use that one, the attempted read hangs &quot;forever&quot;.
+
+I also tested two USB-to-serial adapters.  One (&quot;Prolific UST-to-Serial 
+Comm Port&quot;) also fails to return the necessary status information.  But 
+the second one (&quot;Gigaware USB-to-Serial Cable&quot;) does what it's supposed 
+to do.  Program rigctl returns the expected &quot;Timed out&quot; error message.
+
+Many thanks for your help.  Our problem was apparently bad hardware, not 
+bad software.
+
+	-- 73, Joe, K1JT
+
+On 5/2/2013 4:19 PM, <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ok1zia at nagano.cz</A> wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i> tested it under wine and Win7-64 (FT232R USB port without radio) with same
+</I>&gt;<i> result - it works:
+</I>&gt;<i>
+</I>&gt;<i> c:\hamlib\bin&gt;rigctl -m 214 -r COM5 -s 4800 -C data_bits=8 -C stop_bits=2 -C
+</I>&gt;<i>   serial_handshake=Hardware
+</I>&gt;<i>
+</I>&gt;<i> Rig command: q
+</I>&gt;<i>
+</I>&gt;<i> c:\hamlib\bin&gt;rigctl -vvvvv -m 214 -r COM5 -s 4800 -C data_bits=8 -C stop_bi
+</I>&gt;<i> ts=2 -C serial_handshake=Hardware
+</I>&gt;<i> rigctl, Hamlib 1.2.14
+</I>&gt;<i> Report bugs to&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamlib-developer at lists.sourceforge.net</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> rig:rig_init called
+</I>&gt;<i> rig: loading backend kenwood
+</I>&gt;<i> initrigs2_kenwood called
+</I>&gt;<i> rig_register (213)
+</I>&gt;<i> rig_register (201)
+</I>&gt;<i> rig_register (225)
+</I>&gt;<i> rig_register (203)
+</I>&gt;<i> rig_register (204)
+</I>&gt;<i> rig_register (216)
+</I>&gt;<i> rig_register (224)
+</I>&gt;<i> rig_register (205)
+</I>&gt;<i> rig_register (207)
+</I>&gt;<i> rig_register (209)
+</I>&gt;<i> rig_register (210)
+</I>&gt;<i> rig_register (222)
+</I>&gt;<i> rig_register (214)
+</I>&gt;<i> rig_register (230)
+</I>&gt;<i> rig_register (221)
+</I>&gt;<i> rig_register (229)
+</I>&gt;<i> rig_register (202)
+</I>&gt;<i> rig_register (211)
+</I>&gt;<i> rig_register (206)
+</I>&gt;<i> rig_register (208)
+</I>&gt;<i> rig_register (215)
+</I>&gt;<i> rig_register (226)
+</I>&gt;<i> rig_register (217)
+</I>&gt;<i> rig_register (233)
+</I>&gt;<i> rig_register (220)
+</I>&gt;<i> rig_register (223)
+</I>&gt;<i> rig_register (227)
+</I>&gt;<i> rig_register (231)
+</I>&gt;<i> rig_register (231)
+</I>&gt;<i> rig_register (228)
+</I>&gt;<i> rig_register (219)
+</I>&gt;<i> rig_register (232)
+</I>&gt;<i> kenwood_init called
+</I>&gt;<i> kenwood_init: if_len = 38
+</I>&gt;<i> rig_set_conf: data_bits='8'
+</I>&gt;<i> rig_set_conf: stop_bits='2'
+</I>&gt;<i> rig_set_conf: serial_handshake='Hardware'
+</I>&gt;<i> rig:rig_open called
+</I>&gt;<i> kenwood_get_vfo_if called
+</I>&gt;<i> kenwood_get_if called
+</I>&gt;<i> kenwood_safe_transaction called
+</I>&gt;<i> kenwood_transaction called
+</I>&gt;<i> kenwood_transaction: cmdstr = IF
+</I>&gt;<i> TX 3 bytes
+</I>&gt;<i> 0000    49 46 3b                                            IF;
+</I>&gt;<i> read_string: timedout without reading a character
+</I>&gt;<i> TX 3 bytes
+</I>&gt;<i> 0000    49 46 3b                                            IF;
+</I>&gt;<i> read_string: timedout without reading a character
+</I>&gt;<i> TX 3 bytes
+</I>&gt;<i> 0000    49 46 3b                                            IF;
+</I>&gt;<i> read_string: timedout without reading a character
+</I>&gt;<i> TX 3 bytes
+</I>&gt;<i> 0000    49 46 3b                                            IF;
+</I>&gt;<i> read_string: timedout without reading a character
+</I>&gt;<i> Opened rig model 214, 'TS-2000'
+</I>&gt;<i> Backend version: 0.8.3, Status: Beta
+</I>&gt;<i>
+</I>&gt;<i> Rig command:
+</I>&gt;<i>
+</I>&gt;<i> Also with actual hamlib 1.2.15.3 binaries from sourceforge.
+</I>&gt;<i>
+</I>&gt;<i> Can you add -vvvvv switch? Or use other serial port? I don't know what
+</I>&gt;<i> device is your COM1 but some cheap USB-COM converters are buggy.
+</I>&gt;<i>
+</I>&gt;<i> 73 Lada
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Lada,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Many thanks for your help.  Apparently the problem is in the Windows
+</I>&gt;&gt;<i> code for hamlib.  As far as I can tell, the read() command on the serial
+</I>&gt;&gt;<i> line used for rig control is a blocking call.  An attempt to open a rig,
+</I>&gt;&gt;<i> when the rig is turned off, never returns from the rig_open() call.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Likewise when Windows rigctl.exe is run:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> With the radio turned on:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> C:\Users\joe\wsjt\wsjtx_install&gt;rigctl -m 214 -r COM1 -s 4800 \
+</I>&gt;&gt;<i>     -C data_bits=8 -C stop_bits=2 -C serial_handshake=Hardware f
+</I>&gt;&gt;<i> 14078000
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> With radio turned off:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> C:\Users\joe\wsjt\wsjtx_install&gt;rigctl -m 214 -r COM1 -s 4800 \
+</I>&gt;&gt;<i>     -C data_bits=8 -C stop_bits=2 -C serial_handshake=Hardware f
+</I>&gt;&gt;<i> (... does not return)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Also with radio turned off:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> C:\Users\joe\wsjt\wsjtx_install&gt;rigctl -m 214 -r COM1 -s 4800 \
+</I>&gt;&gt;<i>     -C data_bits=8 -C stop_bits=2 -C serial_handshake=Hardware \
+</I>&gt;&gt;<i>     -C timeout=1000 f
+</I>&gt;&gt;<i> (... does not return)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> With my own C code I have used &quot;timeout=2000&quot; in setConf() and also
+</I>&gt;&gt;<i> rig-&gt;state.rigport.timeout = 2000;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Nothing seems to make the Windows code time out as expected.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001277.html">[Wsjt-devel] F4 in setup
+</A></li>
+	<LI>Next message: <A HREF="001279.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1278">[ date ]</a>
+              <a href="thread.html#1278">[ thread ]</a>
+              <a href="subject.html#1278">[ subject ]</a>
+              <a href="author.html#1278">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

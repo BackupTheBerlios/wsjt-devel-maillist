@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Query re WSJT9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Query%20re%20WSJT9&In-Reply-To=%3C8CAEB913C8A64B379A889CD5EE19C722%40PeterPC%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001182.html">
+   <LINK REL="Next"  HREF="001183.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Query re WSJT9</H1>
+    <B>Peter Berrett</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Query%20re%20WSJT9&In-Reply-To=%3C8CAEB913C8A64B379A889CD5EE19C722%40PeterPC%3E"
+       TITLE="[Wsjt-devel] Query re WSJT9">p.berrett at optusnet.com.au
+       </A><BR>
+    <I>Thu Mar 21 22:41:27 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001182.html">[Wsjt-devel] compiling wsjt
+</A></li>
+        <LI>Next message: <A HREF="001183.html">[Wsjt-devel] MAP65 Compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1184">[ date ]</a>
+              <a href="thread.html#1184">[ thread ]</a>
+              <a href="subject.html#1184">[ subject ]</a>
+              <a href="author.html#1184">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all
+
+I have an application where prior to starting WSJT or WSJT9 I want to predefine a message so that on starting the 13 character message is automatically sent.
+
+I tried editing WSJT.ini and editing the following fields
+
+
+Template1 RASPBERRYPI
+Template2 %T_%M_%R
+Template3 R%R
+Template4 RRR
+Template5 1234567
+Template6 CQ_%M
+
+with a  view that the system could automatically send template 1 on start. What I found was that the program didn&#8217;t pick up the changes when starting. 
+
+The application is essentially a python 2.7 program running in the background and, at a given point in time, I want to pass 13 characters of text to WSJT to be automatically sent at the first minute after the python program starts WSJT. After sending the text the python program will close down WSJT.
+
+The application is a remote robot whereby WSJT is used as a long distance communication mechanism to send short instruction to the robot and also for the robot to send short pieces of data back. This is required as the intention is that the robot will be in a remote region.
+
+As discussed above is there an alternate way of achieving this goal? Perhaps a predefined python library of functions for transmitting data?
+
+Regards
+
+Peter VK3PB
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130322/921a9a20/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130322/921a9a20/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001182.html">[Wsjt-devel] compiling wsjt
+</A></li>
+	<LI>Next message: <A HREF="001183.html">[Wsjt-devel] MAP65 Compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1184">[ date ]</a>
+              <a href="thread.html#1184">[ thread ]</a>
+              <a href="subject.html#1184">[ subject ]</a>
+              <a href="author.html#1184">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

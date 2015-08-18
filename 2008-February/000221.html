@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Broken code
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Broken%20code&In-Reply-To=%3C47B6EFB0.7040401%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000220.html">
+   <LINK REL="Next"  HREF="000222.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Broken code</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Broken%20code&In-Reply-To=%3C47B6EFB0.7040401%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Broken code">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Feb 16 15:14:08 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000220.html">[Wsjt-devel] Short messages bug
+</A></li>
+        <LI>Next message: <A HREF="000222.html">[Wsjt-devel] Broken code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+I have not yet tried to run down the problems, but changes submitted by 
+Chris in r627 and r628 have seriously broken WSJT, at least on my system.
+
+I just did an update.  A trivial syntax error had been introduced into 
+chkmsg.f, so I fixed that.  The program then compiled, but on startup it 
+produces the output appended below.
+
+After doing &quot;svn -r626 update&quot; and then make, all is well again.
+
+This test is on Windows with the MinGW/g95 compile tools.
+
+It is difficult to follow the rationale for the revisions made in r627 
+and r628, because the diff files are so long and many (most?) of the 
+changes seem to be trivial formatting changes that do not actually 
+change the code.  In general, such changes should be avoided.  When you 
+change a line of code, the reason for the change should be clear.  If 
+there is no reason, don't change it.
+
+Insofar as possible, when you think large changes should be made, it's 
+important to do what you can to be sure that they don't break the code 
+on systems different from yours.  WSJT is now compiled and run on 
+Windows, FreeBSD, many flavors of Linux, and OS/X.
+
+Chris, perhaps you can explain better what you trying to do in r627, and 
+why you considered it necessary.
+
+	-- 73, Joe, K1JT
+
+
+C:\k1jt\svn\wsjt\trunk&gt;wsjt6
+******************************************************************
+WSJT Version 5.9.8 r625 , by K1JT
+Revision date: 2008-02-02 17:21:51 -0500 (Sat, 02 Feb 2008)
+Run date:   Sat Feb 16 13:51:44 2008 UTC
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+    0        2         0       Microsoft Sound Mapper - Input
+    1        2         0       SoundMAX HD Audio
+    2        0         2       Microsoft Sound Mapper - Output
+    3        0         2       SoundMAX HD Audio
+
+Default   Input:***   Output:  2
+Requested Input:  0   Output:  0
+Opening device 1628986080 for input, 2 for output...
+Error opening input audio stream!
+         Errortext: Invalid device
+         Number: -9996
+Successfully opened audio output!
+Error  1 in JTaudio, you will only be able to work offline!
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000220.html">[Wsjt-devel] Short messages bug
+</A></li>
+	<LI>Next message: <A HREF="000222.html">[Wsjt-devel] Broken code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

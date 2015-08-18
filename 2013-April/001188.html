@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Shared memory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Shared%20memory&In-Reply-To=%3C51697E54.3080803%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001187.html">
+   <LINK REL="Next"  HREF="001189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Shared memory</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Shared%20memory&In-Reply-To=%3C51697E54.3080803%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Shared memory">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Apr 13 17:48:36 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001187.html">[Wsjt-devel] [wsjtgroup] WSJTX v0.9 r3161
+</A></li>
+        <LI>Next message: <A HREF="001189.html">[Wsjt-devel] Hamlib calls compiled into WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1188">[ date ]</a>
+              <a href="thread.html#1188">[ thread ]</a>
+              <a href="subject.html#1188">[ subject ]</a>
+              <a href="author.html#1188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson,
+
+Thanks for working on the initialization code for shared memory and 
+PortAudio.  Your changes seem to be working fine here.
+
+One thought we might keep in mind: in the present code the size of the 
+shared memory segment is dictated by the long T/R sequences of the slow 
+JT9 submodes, in particular JT9-30.  Almost nobody is using those modes, 
+as far as I know.  We might think about revising the code so that this 
+memory is allocated on an &quot;as needed&quot; basis.
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001187.html">[Wsjt-devel] [wsjtgroup] WSJTX v0.9 r3161
+</A></li>
+	<LI>Next message: <A HREF="001189.html">[Wsjt-devel] Hamlib calls compiled into WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1188">[ date ]</a>
+              <a href="thread.html#1188">[ thread ]</a>
+              <a href="subject.html#1188">[ subject ]</a>
+              <a href="author.html#1188">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

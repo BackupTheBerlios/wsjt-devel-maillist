@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20changes&In-Reply-To=%3C476445A3.6070900%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000198.html">
+   <LINK REL="Next"  HREF="000200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT changes</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20changes&In-Reply-To=%3C476445A3.6070900%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT changes">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Dec 15 22:22:43 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000198.html">[Wsjt-devel] portaudio v19
+</A></li>
+        <LI>Next message: <A HREF="000200.html">[Wsjt-devel] WSJT changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Diane's recent note about the coming official release of PortAudio v19 
+prompts me to bring everyone up to date on what I've been doing.
+
+My thoughts can be broken down
+
+1. As you know, I have put a lot of work recently into MAP65, a sort -f 
+&quot;big brother&quot; to WSJT specifically aimed at using JT65B for EME with the 
+aid of a wideband SDR-style receiver.  MAP65 got a very thorough workout 
+at K1JT during the recent ARRL EME Contest.  Although the program can 
+still be improved in certain areas, it performed extremely well during 
+the contest.  Although it originated as a branch from the WSJT &quot;trunk&quot;, 
+and its source code is stored in a branch from the WSJT repository, 
+MAP65 is really an independent program.
+
+Although certain developments in the MAP65 code should be ported back 
+into WSJT, there will never be a true &quot;merge&quot; of this branch back into 
+the trunk.
+
+Question: Should MAP65 be given its own repository at some point, 
+terminating its &quot;branch&quot; in the WSJT tree?
+
+2. My most recent changes to WSJT have been made in order to make it 
+compile using free, open-source tools.  The most recent revision, r587, 
+compiles under Windows using g95, gcc, and the MinGW tools -- as well as 
+with the Compaq Visual Fortran and VC6.  I suspect that in doing this I 
+have broken something so that it won't compile under Linux; I'll look 
+into this soon, and fix whatever needs fixing.
+
+As usual, comments and suggestions are welcome!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000198.html">[Wsjt-devel] portaudio v19
+</A></li>
+	<LI>Next message: <A HREF="000200.html">[Wsjt-devel] WSJT changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

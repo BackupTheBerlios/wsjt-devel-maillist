@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F39EDE.8070007%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001574.html">
+   <LINK REL="Next"  HREF="001576.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F39EDE.8070007%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Jul 27 12:20:14 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001574.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001576.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1575">[ date ]</a>
+              <a href="thread.html#1575">[ thread ]</a>
+              <a href="subject.html#1575">[ subject ]</a>
+              <a href="author.html#1575">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 27/07/2013 01:41, Joe Taylor wrote:
+&gt;<i> Hi Bill and all,
+</I>Thanks for the quick and detailed reply Joe, some comments below.
+&gt;<i>
+</I>&gt;<i> G4WJS wrote:
+</I>&gt;&gt;<i> I'm still familiarizing myself with the code base and have a couple of
+</I>&gt;&gt;<i> questions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The decoding is done by a separate process. I think I know why but just
+</I>&gt;&gt;<i> in case I've missed some obvious reason why it can't be a simple fortran
+</I>&gt;&gt;<i> procedure call from C++ passing a pointer to a struct with the samples
+</I>&gt;&gt;<i> and callbacks to update the GUI, I thought I'd ask here?
+</I>&gt;<i>
+</I>&gt;<i> I'll list several reasons that I did it this way, without trying to 
+</I>&gt;<i> assign relative weights.
+</I>&gt;<i>
+</I>&gt;<i> 1. When developing the decoder algorithms it was handy to compile them 
+</I>&gt;<i> as stand-alone programs.  They can be run from the command line with 
+</I>&gt;<i> *.wav files as input, or as a sub-process invoked by the GUI parts of 
+</I>&gt;<i> MAP65, WSPR-X, or WSJT-X, with raw data and decoder parameters in a 
+</I>&gt;<i> shared memory block.
+</I>OK, but this is not a good reason. For example the JT9(JT65) decoder is 
+already wrapped several times over and a decoder library of functions 
+could easily be given an interface that could be used in both GUI and 
+stand alone varieties. There would be a little complexity in providing 
+results during the decoding process(es) via a callback mechanism rather 
+than writing to an output stream. Once such a mechanism is designed it 
+would be pretty easy to write a file reading wrapper, a GUI, or even a 
+background service type decoder.
+&gt;<i>
+</I>&gt;<i> 2. Alternatively, the decoder could be compiled as part of a single 
+</I>&gt;<i> executable and executed in a separate thread.  This could be a 
+</I>&gt;<i> perfectly reasonable approach, and indeed is the one taken in the 
+</I>&gt;<i> Python-GUI programs WSPR, WSJT, and the original MAP65. Having already 
+</I>&gt;<i> tried that method, I wanted to try the other one. For me, much of this 
+</I>&gt;<i> effort is about learning.
+</I>OK learning is a valid reason, as is doing things in a way you are 
+comfortable with when you have other priorities. OK on the other 
+programs in the suite, I haven't looked at them yet but intend to. For a 
+while I have thought the different modes have a quite different internal 
+implementation, here I don't mean the decoder so much as all the 
+ancillary parts like CAT, waterfall displays, UI etc.. It might be 
+better to build a library of decoders, displays and services that could 
+be reused both in different modes and different programs (GUI, batch, 
+background, external applications, ...).
+&gt;<i>
+</I>&gt;<i> 3. Decoding speed is indeed important, but experimentally I determined 
+</I>&gt;<i> that the added cost of shared memory synchronization contributes 
+</I>&gt;<i> negligibly to decode times.
+</I>Ok, I agree the cost is small given the time available ~10s but the 
+complexity added might be expensive later on in terms of the rigidity of 
+the interface.
+&gt;<i>
+</I>&gt;<i> 4. I have zero training and zero experience doing any of these things, 
+</I>&gt;<i> and I don't necessarily know the best procedures.  MAP65, WSPR-X, and 
+</I>&gt;<i> WSJT-X are the only programs I've ever written that use C++ or Qt.  No 
+</I>&gt;<i> real experience with multi-threading, either, except for that gained 
+</I>&gt;<i> with the older WSJT-related programs.
+</I>Again a very good reason, C++ and GUI development must have been a steep 
+learning curve when also developing and optimising the decoder 
+algorithms at the same time. Quite a daunting undertaking and you have 
+done really well.
+&gt;<i>
+</I>&gt;<i> I'm happy to learn, and to change, when shown that there are better 
+</I>&gt;<i> ways of doing things.
+</I>This is the main reason for my questions. I would like to contribute and 
+as a professional software engineer I think my most helpful 
+contributions might be in refactoring some of the structural design to 
+reflect best practice. It would be great as a user with s/w development 
+experience to be able to contribute to this project since I feel it will 
+be very successful. I doubt if I could contribute much to the math and 
+DSP side even though I have worked on embedded audio and video 
+applications :(
+&gt;<i>
+</I>&gt;&gt;<i> I understand the complications of fortran common or module data with
+</I>&gt;&gt;<i> threads but as I see it, at the moment at least, there is a one to one
+</I>&gt;&gt;<i> relationship of decoders to GUI programs.
+</I>&gt;<i>
+</I>&gt;<i> Not sure I understand what's meant or implied by your one to one 
+</I>&gt;<i> relationship ...  In WSJT-X we have one GUI program and one decoding 
+</I>&gt;<i> process, but of course the latter has two decoders (JT9 and JT65).
+</I>What I meant was that if you were, for example, to call two decoder 
+procedures in two concurrent threads (I'm perhaps thinking JT9 and JT65 
+for example) in an attempt to divide and conquer the workload; then the 
+common block data would be shared by both function calls. Whereas two 
+separate processes would have different address spaces and hence local 
+copies of the common data. The former is a thread safety nightmare!
+&gt;<i>
+</I>&gt;&gt;<i> The sound input processing looks distinctly thread unsafe to me with
+</I>&gt;&gt;<i> unguarded (not even volatile for what it's worth) variables being used
+</I>&gt;&gt;<i> for inter-thread signalling. Is this a known issue?
+</I>&gt;<i>
+</I>&gt;<i> Although arguably &quot;it ain't broke&quot;, so doesn;t need fixing, this might 
+</I>&gt;<i> be considered another good reason to rewrite the audio I/O using tools 
+</I>&gt;<i> in the QAudio class.
+</I>The &quot;It ain't broke&quot; approach has bee proven broken for concurrency in 
+software. It is so hard to test that it's working as expected. The only 
+proven approach is to code defensively and very carefully.
+
+Here's a common example:
+++++++
+Many programmers assume a boolean variable or integer word can be used 
+to signal between threads of control (threads or interrupt handlers for 
+example). They assume word changes are atomic and cannot be &quot;torn&quot; by 
+context switches and therefore &quot;what can go wrong?&quot;.
+
+Some programmers make the boolean variable &quot;volatile&quot; (a C/C++ keyword 
+that &quot;hints&quot; to the compiler that the variable must be read from memory 
+every time it is needed and written to memory as soon as it is changed) 
+and assume that is sufficient. These programmers throw scorn at the one 
+who don't use &quot;volatile&quot; because they know that the compiler may cache 
+the variable in different registers in each thread and it won't work as 
+intended.
+
+A smaller group of programmers know that &quot;volatile&quot; is only a hint to 
+the compiler so they use thread synchronisation primitives for inter 
+thread signalling like counting semaphores, mutexes and, condition 
+variables. These programmers throw scorn at the programmers that use 
+&quot;volatile&quot; variables because they also know that on multi-core systems 
+even if the compiler does the right thing, the hardware will defeat it 
+by allowing each thread to have a memory cache which might have 
+different representations of the same variable!! BTW this group 
+sometimes bring out the secondary argument that processors can reorder 
+instructions in the pipeline which can break the assumptions even when 
+&quot;volatile&quot; is honoured by the compiler.
+
+An even smaller group of programmers realise that all those thread 
+synchronisation primitives are very expensive to use and impact the very 
+latency that threading is used to combat so they get the compiler 
+writers to fix their memory model so they can implement lock free atomic 
+operations on simple variables that use &quot;memory barriers&quot; that ensure 
+all caches are in sync at a known point in the process. These 
+programmers don't scorn the ones that use thread synchronization 
+primitives because they know that using them correctly is hard enough 
+already and bringing out the lock free atomics for ultimate concurrency 
+is not a task taken on lightly. But they do know that using the thread 
+synchronisation primitives is often done badly with results like 
+deadlocks, livelocks and, race conditions leading to unexplained lockups 
+and corrupted data. The best of this group also try to use asynchronous 
+techniques wherever possible as that can be done in a single thread 
+letting the o/s deal with the concurrency issues which is what it does best.
++++++++
+
+Threads are difficult and should only be used when absolutely necessary, 
+and then only very carefully.
+
+
+I had a quick look at the Qt multimedia library and I'm not sure it fits 
+the required model very well. I see a way of recording audio to a file 
+(QAudioRecorder) and a way of probing the samples as they are recorded 
+(QAudioProbe). These might work within a framework that records each 
+period to a file with QAudioRecorder and uses QAudioProbe to collect the 
+samples for FFT and eventual decoding. Alternatively I suppose that 
+QAudioRecorder might be usable by recording continuously to a null 
+device and QAudioProbe used to extract the samples soon after they are 
+captured. Overall I'm not so sure that the Qt audio classes are really 
+designed to work at the level and latency required, but I'm not a Qt 
+expert and definitely not a Qt multimedia expert so there may be a 
+better way.
+
+I am currently implementing a few ideas in a test framework to try and 
+develop a framework for WS type programs. I am looking a cleaner cross 
+platform building, better GUI state handling, better fortran integration 
+and, use of modern C++ programming techniques. I will try and plug in 
+existing functionality as I go along to see how I can minimize the 
+disruptive effect of any structural changes I propose.
+
+Expect more questions along these lines as I dig deeper into the 
+functionality.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001574.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001576.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1575">[ date ]</a>
+              <a href="thread.html#1575">[ thread ]</a>
+              <a href="subject.html#1575">[ subject ]</a>
+              <a href="author.html#1575">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAUDIO_INPUT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F90799.70006%40lavabit.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001624.html">
+   <LINK REL="Next"  HREF="001630.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAUDIO_INPUT</H1>
+    <B>Claude Frantz</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F90799.70006%40lavabit.com%3E"
+       TITLE="[Wsjt-devel] QAUDIO_INPUT">ClaudeFrantzX665 at lavabit.com
+       </A><BR>
+    <I>Wed Jul 31 14:48:25 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001624.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+        <LI>Next message: <A HREF="001630.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1626">[ date ]</a>
+              <a href="thread.html#1626">[ thread ]</a>
+              <a href="subject.html#1626">[ subject ]</a>
+              <a href="author.html#1626">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/31/2013 01:54 PM, Bill Somerville wrote:
+
+&gt;&gt;<i> While updating to r3511 I got a seg fault in SoundIn, line 341 if
+</I>&gt;&gt;<i> (m_monitoring).   With QAUDIO_INPUT defined the constructor for
+</I>&gt;&gt;<i> SoundInput that initializes m_monitoring (and others) is not called.
+</I>
+This is probably the same error as at my site:
+
+ALSA lib pcm_dmix.c:1022:(snd_pcm_dmix_open) unable to open slave
+
+Program received signal SIGSEGV, Segmentation fault.
+0x08094a29 in SoundInput::intervalNotify() ()
+
+Best 88 de Claude
+
+
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001624.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+	<LI>Next message: <A HREF="001630.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1626">[ date ]</a>
+              <a href="thread.html#1626">[ thread ]</a>
+              <a href="subject.html#1626">[ subject ]</a>
+              <a href="author.html#1626">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

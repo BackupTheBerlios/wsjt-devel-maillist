@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re:  r873]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20r873%5D&In-Reply-To=%3C486E284A.80405%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000395.html">
+   <LINK REL="Next"  HREF="000406.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re:  r873]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20r873%5D&In-Reply-To=%3C486E284A.80405%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re:  r873]">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul  4 15:40:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000395.html">[Wsjt-devel] wsjt in ubuntu
+</A></li>
+        <LI>Next message: <A HREF="000406.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry --
+
+Never mind, I thought perhaps you understood Python syntax.  Someone
+else will have to identify your problem, in due course.
+
+	-- Joe, K1JT
+
+Harry Popov wrote:
+&gt;<i> On Thu, 2008-07-03 at 19:46 -0400, Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Try replacing the line
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>       Audio.gcom2.hiscall=(ToRadio.get()+'            ')[:12]
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> with something like
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>       try:
+</I>&gt;&gt;<i>           Audio.gcom2.hiscall=(ToRadio.get()+'            ')[:12]
+</I>&gt;&gt;<i>       except:
+</I>&gt;&gt;<i>           pass
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> just to see what happens.  As a diagnostic, try
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>           print ToRadio.get()
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> , ... etc., in place of &quot;pass&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Did you do any of these things?  If so, with what result?
+</I>&gt;<i> 
+</I>&gt;<i> IndentationError: unexpected indent
+</I>&gt;<i> 	
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000395.html">[Wsjt-devel] wsjt in ubuntu
+</A></li>
+	<LI>Next message: <A HREF="000406.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

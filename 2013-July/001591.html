@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio supported in Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F67281.7070609%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001590.html">
+   <LINK REL="Next"  HREF="001592.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio supported in Qt5</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F67281.7070609%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Audio supported in Qt5">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Jul 29 15:47:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001590.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+        <LI>Next message: <A HREF="001592.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1591">[ date ]</a>
+              <a href="thread.html#1591">[ thread ]</a>
+              <a href="subject.html#1591">[ subject ]</a>
+              <a href="author.html#1591">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29/07/2013 13:59, Edson W. R. Pereira wrote:
+&gt;<i>
+</I>&gt;<i> Hi Bill,
+</I>Hi Edson,
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Sun, Jul 28, 2013 at 10:27 PM, Bill Somerville 
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Actually thinking this through properly; the sound in class
+</I>&gt;<i>     probably doesn't need a separate thread at all. I wonder if anyone
+</I>&gt;<i>     has tried an implementation that uses a timer to mark out the FFT
+</I>&gt;<i>     samples rather than the blocking sleep?
+</I>&gt;<i>
+</I>&gt;<i>     The atomic operations or some other lock free mechanism like a
+</I>&gt;<i>     counting semaphore would still be needed to synchronise access to
+</I>&gt;<i>     the samples buffer between the GUI thread and the interrupt
+</I>&gt;<i>     callback, but I don't see any obvious need for a thread here. Am I
+</I>&gt;<i>     missing something?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> If we let the main event loop take care of the notifications for when 
+</I>&gt;<i> a sample buffer is ready, it may provide the necessary sync without 
+</I>&gt;<i> the need of semaphores. Using only one event loop will (I think) 
+</I>&gt;<i> guarantee that only one function will have access to the sample buffer.
+</I>
+Unfortunately not so. The streaming callback is called from some other 
+context like a signal handler or a thread within the audio package. It 
+has to access the same buffer as wsjtx itself needs.
+
+I am currently hacking on soundin to make a single threaded version. I 
+will post a patch if it works and those who are interested could test it 
+on some different architectures and o/s'es.
+&gt;<i>
+</I>&gt;<i> In Qt4, there were some serious issues with QAudioInput/QAudioOutput 
+</I>&gt;<i> and threads. The issues were supposed to be fixed in Qt5, but I 
+</I>&gt;<i> haven't looked closely into this yet.
+</I>
+I've only looked at QAudioInput in detail, there's no need for threads 
+if the &quot;push&quot; model of operation is used (just like the &quot;push&quot; model 
+wsjt-x currently uses with portaudio). The class emits a signal when a 
+period of samples is available. There is no blocking or lengthy 
+processing unless the &quot;pull&quot; model is used which uses read() calls to 
+get data.
+&gt;<i>
+</I>&gt;<i> Joe, what do you think restoring the recording to a wave file instead 
+</I>&gt;<i> of shared memory? Since the longer JT9 modes have been retired, the 
+</I>&gt;<i> size of the file should not be too large. This could, in principle, 
+</I>&gt;<i> simplify the audio handling and testing.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130729/21e4df2e/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130729/21e4df2e/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001590.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+	<LI>Next message: <A HREF="001592.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1591">[ date ]</a>
+              <a href="thread.html#1591">[ thread ]</a>
+              <a href="subject.html#1591">[ subject ]</a>
+              <a href="author.html#1591">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

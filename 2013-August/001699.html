@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 12
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2069%2C%20Issue%2012&In-Reply-To=%3CCAD%2BDZ5htP1vt5PUuHa%2Bd-FNXLL6UHov%3D4Q_8L-Qgvx2T-YUJ3g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001692.html">
+   <LINK REL="Next"  HREF="001700.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 12</H1>
+    <B>David Birnbaum</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2069%2C%20Issue%2012&In-Reply-To=%3CCAD%2BDZ5htP1vt5PUuHa%2Bd-FNXLL6UHov%3D4Q_8L-Qgvx2T-YUJ3g%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 12">dbirnbau at gmail.com
+       </A><BR>
+    <I>Mon Aug  5 19:28:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001692.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+        <LI>Next message: <A HREF="001700.html">[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 12
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1699">[ date ]</a>
+              <a href="thread.html#1699">[ thread ]</a>
+              <a href="subject.html#1699">[ subject ]</a>
+              <a href="author.html#1699">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have upgraded my linux (Ubuntu 12.10) system to Qr5, applied the patch
+and the new Detector.cpp.  The system now compiles without complaint.
+ However when I try to run the resulting executable I get a message:
+
+Error in Soundinput:
+
+An error opening the audio device has occurred.
+
+Closing the error box lets the program start, but when I go to the
+Configuration menu, I can set my call and grid square, but the selections
+for audio in/out devices have no options available, and as soon as I close
+the menu, the programs segfaults.  Message at the shell is:
+
+read_input() timed out 2.2252 seconds without reading a character
+
+13 QSOs and 0 countries in file wsjtx_log.adi
+
+seg fault.
+
+Hope this is useful.
+
+dave k2lyv
+
+
+On Mon, Aug 5, 2013 at 6:00 AM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> Send Wsjt-devel mailing list submissions to
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Wsjt-devel digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. Re: compiling make -f makefile.linux under Qt5.1.0 (Joe Taylor)
+</I>&gt;<i>    2. Re: WSJT-X: QtMultimedia replacement for PortAudio. (Joe Taylor)
+</I>&gt;<i>    3. Re: compiling make -f makefile.linux under Qt5.1.0 (David)
+</I>&gt;<i>    4. Re: WSJT-X: QtMultimedia replacement for PortAudio.
+</I>&gt;<i>       (Bill Somerville)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+</I>&gt;<i> To: WSJT Devel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Sun, 04 Aug 2013 19:27:23 -0400
+</I>&gt;<i> Subject: Re: [Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</I>&gt;<i> Hi John,
+</I>&gt;<i>
+</I>&gt;<i> AC6SL wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> No, you have not done anything wrong. It is unfortunate that
+</I>&gt;&gt;<i> lib/Makefile.linux is not sensitive to the QT5 setting in the
+</I>&gt;&gt;<i> directory above.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> An improved Makefile.linux would be a welcome addition to the repository.
+</I>&gt;<i>  I tend to write these things to work in my system, and quit when it works.
+</I>&gt;<i>  It can certainly be improved.
+</I>&gt;<i>
+</I>&gt;<i> Maybe someone would even be interested in writing a ./configure script?  I
+</I>&gt;<i> don't know how to do this.
+</I>&gt;<i>
+</I>&gt;<i> So, with the changes you describe below, does the program compile in Qt4
+</I>&gt;<i> with Bill's QAudio patch installed?
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i>  I found it necessary to make the changes below, in order to compile
+</I>&gt;&gt;<i> ipcomm with Qt5.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is it necessary to build ipcomm with Qt5 ? I do not know. However, on
+</I>&gt;&gt;<i> ubuntu 13.04, with only Qt5 installed, I want to be able to build
+</I>&gt;&gt;<i> ipcomm. Similarly, on older ubuntu 12.10, I want to build wsjtx using
+</I>&gt;&gt;<i> only Qt4, but found it was necessary to put an additional ifdef in
+</I>&gt;&gt;<i> mainwindow.cpp:
+</I>&gt;&gt;<i> #ifdef QT5
+</I>&gt;&gt;<i> #include&lt;QtConcurrent/**QtConcurrentMap&gt;
+</I>&gt;&gt;<i> #include&lt;QtConcurrent/**QtConcurrentRun&gt;
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -John AC6SL
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ diff lib/Makefile.linux old/lib/Makefile.linux
+</I>&gt;&gt;<i> 3c3
+</I>&gt;&gt;<i> &lt;  INCPATH =  -I'/usr/include/qt5' -I'/usr/include/qt5/QtCore'
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> INCPATH =  -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 6c6
+</I>&gt;&gt;<i> &lt;  CXX = g++ -fPIE
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> CXX = g++
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 9,10c9,10
+</I>&gt;&gt;<i> &lt;  FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion
+</I>&gt;&gt;<i> -fno-second-underscore -fPIE
+</I>&gt;&gt;<i> &lt;  CFLAGS = -I. -fbounds-check -mno-stack-arg-probe -fPIE
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore
+</I>&gt;&gt;&gt;<i> CFLAGS = -I. -fbounds-check -mno-stack-arg-probe
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 52c52
+</I>&gt;&gt;<i> &lt;  $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQt5Core
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQtCore
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Sun, 04 Aug 2013 19:41:59 -0400
+</I>&gt;<i> Subject: Re: [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</I>&gt;<i> Bill --
+</I>&gt;<i>
+</I>&gt;<i>  I am still working on Linux crash issues and Qt4 compatibility testing.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Are you still seeing crashes in Linux after removing the #ifdef UNIX
+</I>&gt;<i> blocks and setting ChannelCount to 1 ?  That fixed everything here.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 05 Aug 2013 11:48:47 +1000
+</I>&gt;<i> Subject: Re: [Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</I>&gt;<i> Hi John...now got it working patches,replacement files and all
+</I>&gt;<i>
+</I>&gt;<i> looking very good ....thanks for the help
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 05/08/13 08:39, John Nogatch wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Sun, Aug 4, 2013 at 2:56 PM, David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Joe .....my Qt5.1.0 .is in /opt/Qt5.1.0 so i changed the
+</I>&gt;&gt;&gt;<i> Makefile.linux
+</I>&gt;&gt;&gt;<i> to reflect that
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> this is the error im now getting
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> g++ -c -I'/opt/Qt5.1.0/5.1.0/gcc/**include'
+</I>&gt;&gt;&gt;<i> -I'/opt/Qt5.1.0./5.1.0/gcc/**include/QtCore
+</I>&gt;&gt;&gt;<i> ipcomm.cpp
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> In File included from /opt/Qt5.1.0/5.1.0gcc/include/**
+</I>&gt;&gt;&gt;<i> QtCore/qalgorithams:
+</I>&gt;&gt;&gt;<i> 4:45:0
+</I>&gt;&gt;&gt;<i> /qdebug.h:45
+</I>&gt;&gt;&gt;<i> /QDebug:1
+</I>&gt;&gt;&gt;<i> /qglobal.h:975:4:error
+</I>&gt;&gt;&gt;<i> #error  &quot;You must build your with position independant code if Qt was
+</I>&gt;&gt;&gt;<i> built
+</I>&gt;&gt;&gt;<i> with
+</I>&gt;&gt;&gt;<i> -reduce-relocations&quot;  Compile your code with  -fPIC or _fPIE &quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> make *** [ipcomm] error 1
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> what have i done wrong
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> No, you have not done anything wrong. It is unfortunate that
+</I>&gt;&gt;<i> lib/Makefile.linux is not sensitive to the QT5 setting in the
+</I>&gt;&gt;<i> directory above.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I found it necessary to make the changes below, in order to compile
+</I>&gt;&gt;<i> ipcomm with Qt5.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is it necessary to build ipcomm with Qt5 ? I do not know. However, on
+</I>&gt;&gt;<i> ubuntu 13.04, with only Qt5 installed, I want to be able to build
+</I>&gt;&gt;<i> ipcomm. Similarly, on older ubuntu 12.10, I want to build wsjtx using
+</I>&gt;&gt;<i> only Qt4, but found it was necessary to put an additional ifdef in
+</I>&gt;&gt;<i> mainwindow.cpp:
+</I>&gt;&gt;<i> #ifdef QT5
+</I>&gt;&gt;<i> #include &lt;QtConcurrent/QtConcurrentMap&gt;
+</I>&gt;&gt;<i> #include &lt;QtConcurrent/QtConcurrentRun&gt;
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -John AC6SL
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ diff lib/Makefile.linux old/lib/Makefile.linux
+</I>&gt;&gt;<i> 3c3
+</I>&gt;&gt;<i> &lt; INCPATH =  -I'/usr/include/qt5' -I'/usr/include/qt5/QtCore'
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> INCPATH =  -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 6c6
+</I>&gt;&gt;<i> &lt; CXX = g++ -fPIE
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> CXX = g++
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 9,10c9,10
+</I>&gt;&gt;<i> &lt; FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion
+</I>&gt;&gt;<i> -fno-second-underscore -fPIE
+</I>&gt;&gt;<i> &lt; CFLAGS = -I. -fbounds-check -mno-stack-arg-probe -fPIE
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore
+</I>&gt;&gt;&gt;<i> CFLAGS = -I. -fbounds-check -mno-stack-arg-probe
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 52c52
+</I>&gt;&gt;<i> &lt; $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQt5Core
+</I>&gt;&gt;<i> ---
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQtCore
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Cc:
+</I>&gt;<i> Date: Mon, 05 Aug 2013 03:21:43 +0100
+</I>&gt;<i> Subject: Re: [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</I>&gt;<i> On 04/08/2013 14:02, Edson W. R. Pereira wrote:
+</I>&gt;<i> Hi Edson and All,
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If I edit wsprx.ini and change the audio devices there, wsprx starts and
+</I>&gt;&gt;<i> I can decode signals. However TX fails with a SIGSEGV.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Info follows.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> *** glibc detected *** ./wsjtx: free(): corrupted unsorted chunks:
+</I>&gt;&gt;<i> 0x0000000002aa1ac0 ***
+</I>&gt;&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> I have built a 64-bit Linux wsjtx on my Ubuntu 13.04 dev system. It seems
+</I>&gt;<i> ok on transmit. Unfortunately I cannot test receive because VirtualBox
+</I>&gt;<i> which hosts my Ubuntu system doesn't seem to pass audio input to the
+</I>&gt;<i> virtual sound driver.
+</I>&gt;<i>
+</I>&gt;<i> So if someone can test the binary on Linux it would be appreciated very
+</I>&gt;<i> much.
+</I>&gt;<i>
+</I>&gt;<i> I built with g++ 4.8.1, gfortran 4.7.3, the hamlib-dev and libfftw3-dev
+</I>&gt;<i> from the repo.
+</I>&gt;<i>
+</I>&gt;<i> You can download the binary here:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://dl.dropboxusercontent.**com/u/4192709/wsjtx&lt;https://dl.dropboxusercontent.com/u/4192709/wsjtx">https://dl.dropboxusercontent.**com/u/4192709/wsjtx&lt;https://dl.dropboxusercontent.com/u/4192709/wsjtx</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> this is using stereo audio and sending the same output to left and right
+</I>&gt;<i> channels.
+</I>&gt;<i>
+</I>&gt;<i> Try an 'ldd' command on it to see if you have all the required libraries
+</I>&gt;<i> in place; if they are it should run.
+</I>&gt;<i>
+</I>&gt;<i> I get this from 'ldd':
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/src/**wsjtx_1.1.0/wsjtx_install$ ldd wsjtx
+</I>&gt;<i>     linux-vdso.so.1 =&gt;  (0x00007fff33bfe000)
+</I>&gt;<i>     libhamlib.so.2 =&gt; /usr/lib/libhamlib.so.2 (0x00007f392b188000)
+</I>&gt;<i>     libfftw3f.so.3 =&gt; /usr/lib/x86_64-linux-gnu/**libfftw3f.so.3
+</I>&gt;<i> (0x00007f392ad8f000)
+</I>&gt;<i>     libgfortran.so.3 =&gt; /usr/lib/x86_64-linux-gnu/**libgfortran.so.3
+</I>&gt;<i> (0x00007f392aa76000)
+</I>&gt;<i>     libQt5Multimedia.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Multimedia.so.5
+</I>&gt;<i> (0x00007f392a7ae000)
+</I>&gt;<i>     libQt5Widgets.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Widgets.so.5
+</I>&gt;<i> (0x00007f3929fbc000)
+</I>&gt;<i>     libQt5Network.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Network.so.5
+</I>&gt;<i> (0x00007f3929c84000)
+</I>&gt;<i>     libQt5Gui.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Gui.so.5
+</I>&gt;<i> (0x00007f39296a8000)
+</I>&gt;<i>     libQt5Core.so.5 =&gt; /usr/lib/x86_64-linux-gnu/**libQt5Core.so.5
+</I>&gt;<i> (0x00007f3929094000)
+</I>&gt;<i>     libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/**libpthread.so.0
+</I>&gt;<i> (0x00007f3928e76000)
+</I>&gt;<i>     libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libstdc++.so.6
+</I>&gt;<i> (0x00007f3928b72000)
+</I>&gt;<i>     libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.**6 (0x00007f392886d000)
+</I>&gt;<i>     libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_**s.so.1
+</I>&gt;<i> (0x00007f3928656000)
+</I>&gt;<i>     libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.**6 (0x00007f392828e000)
+</I>&gt;<i>     libltdl.so.7 =&gt; /usr/lib/x86_64-linux-gnu/**libltdl.so.7
+</I>&gt;<i> (0x00007f3928084000)
+</I>&gt;<i>     libusb-0.1.so.4 =&gt; /lib/x86_64-linux-gnu/libusb-**0.1.so.4
+</I>&gt;<i> (0x00007f3927e7a000)
+</I>&gt;<i>     libquadmath.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libquadmath.so.0
+</I>&gt;<i> (0x00007f3927c3e000)
+</I>&gt;<i>     libpulse.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libpulse.so.0
+</I>&gt;<i> (0x00007f39279f6000)
+</I>&gt;<i>     libgobject-2.0.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libgobject-2.0.so.0
+</I>&gt;<i> (0x00007f39277a6000)
+</I>&gt;<i>     libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-**2.0.so.0
+</I>&gt;<i> (0x00007f39274aa000)
+</I>&gt;<i>     libX11.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libX11.so.6
+</I>&gt;<i> (0x00007f3927170000)
+</I>&gt;<i>     libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.**1 (0x00007f3926f58000)
+</I>&gt;<i>     libpng12.so.0 =&gt; /lib/x86_64-linux-gnu/**libpng12.so.0
+</I>&gt;<i> (0x00007f3926d32000)
+</I>&gt;<i>     libGL.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**mesa/libGL.so.1
+</I>&gt;<i> (0x00007f3926ad4000)
+</I>&gt;<i>     libicui18n.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicui18n.so.48
+</I>&gt;<i> (0x00007f392670d000)
+</I>&gt;<i>     libicuuc.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicuuc.so.48
+</I>&gt;<i> (0x00007f39263a2000)
+</I>&gt;<i>     libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.**so.2 (0x00007f392619e000)
+</I>&gt;<i>     librt.so.1 =&gt; /lib/x86_64-linux-gnu/librt.**so.1 (0x00007f3925f95000)
+</I>&gt;<i>     /lib64/ld-linux-x86-64.so.2 (0x00007f392b3bf000)
+</I>&gt;<i>     libjson.so.0 =&gt; /lib/x86_64-linux-gnu/libjson.**so.0
+</I>&gt;<i> (0x00007f3925d8c000)
+</I>&gt;<i>     libpulsecommon-3.0.so =&gt; /usr/lib/x86_64-linux-gnu/**pulseaudio/
+</I>&gt;<i> libpulsecommon-3.0.**so &lt;<A HREF="http://libpulsecommon-3.0.so">http://libpulsecommon-3.0.so</A>&gt;(0x00007f3925b28000)
+</I>&gt;<i>     libdbus-1.so.3 =&gt; /lib/x86_64-linux-gnu/libdbus-**1.so.3
+</I>&gt;<i> (0x00007f39258e4000)
+</I>&gt;<i>     libffi.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libffi.so.6
+</I>&gt;<i> (0x00007f39256dc000)
+</I>&gt;<i>     libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.**so.3
+</I>&gt;<i> (0x00007f392549c000)
+</I>&gt;<i>     libxcb.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb.so.1
+</I>&gt;<i> (0x00007f392527e000)
+</I>&gt;<i>     libglapi.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libglapi.so.0
+</I>&gt;<i> (0x00007f3925058000)
+</I>&gt;<i>     libXext.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXext.so.6
+</I>&gt;<i> (0x00007f3924e45000)
+</I>&gt;<i>     libXdamage.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libXdamage.so.1
+</I>&gt;<i> (0x00007f3924c42000)
+</I>&gt;<i>     libXfixes.so.3 =&gt; /usr/lib/x86_64-linux-gnu/**libXfixes.so.3
+</I>&gt;<i> (0x00007f3924a3c000)
+</I>&gt;<i>     libX11-xcb.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libX11-xcb.so.1
+</I>&gt;<i> (0x00007f3924839000)
+</I>&gt;<i>     libxcb-glx.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb-glx.so.0
+</I>&gt;<i> (0x00007f3924622000)
+</I>&gt;<i>     libxcb-dri2.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libxcb-dri2.so.0
+</I>&gt;<i> (0x00007f392441d000)
+</I>&gt;<i>     libXxf86vm.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libXxf86vm.so.1
+</I>&gt;<i> (0x00007f3924216000)
+</I>&gt;<i>     libdrm.so.2 =&gt; /usr/lib/x86_64-linux-gnu/**libdrm.so.2
+</I>&gt;<i> (0x00007f392400b000)
+</I>&gt;<i>     libicudata.so.48 =&gt; /usr/lib/x86_64-linux-gnu/**libicudata.so.48
+</I>&gt;<i> (0x00007f3922c9a000)
+</I>&gt;<i>     libwrap.so.0 =&gt; /lib/x86_64-linux-gnu/libwrap.**so.0
+</I>&gt;<i> (0x00007f3922a90000)
+</I>&gt;<i>     libsndfile.so.1 =&gt; /usr/lib/x86_64-linux-gnu/**libsndfile.so.1
+</I>&gt;<i> (0x00007f392282a000)
+</I>&gt;<i>     libasyncns.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libasyncns.so.0
+</I>&gt;<i> (0x00007f3922623000)
+</I>&gt;<i>     libXau.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXau.so.6
+</I>&gt;<i> (0x00007f392241f000)
+</I>&gt;<i>     libXdmcp.so.6 =&gt; /usr/lib/x86_64-linux-gnu/**libXdmcp.so.6
+</I>&gt;<i> (0x00007f3922219000)
+</I>&gt;<i>     libnsl.so.1 =&gt; /lib/x86_64-linux-gnu/libnsl.**so.1
+</I>&gt;<i> (0x00007f3921ffe000)
+</I>&gt;<i>     libFLAC.so.8 =&gt; /usr/lib/x86_64-linux-gnu/**libFLAC.so.8
+</I>&gt;<i> (0x00007f3921db2000)
+</I>&gt;<i>     libvorbisenc.so.2 =&gt; /usr/lib/x86_64-linux-gnu/**libvorbisenc.so.2
+</I>&gt;<i> (0x00007f39218e3000)
+</I>&gt;<i>     libvorbis.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libvorbis.so.0
+</I>&gt;<i> (0x00007f39216b5000)
+</I>&gt;<i>     libogg.so.0 =&gt; /usr/lib/x86_64-linux-gnu/**libogg.so.0
+</I>&gt;<i> (0x00007f39214ae000)
+</I>&gt;<i>     libresolv.so.2 =&gt; /lib/x86_64-linux-gnu/**libresolv.so.2
+</I>&gt;<i> (0x00007f3921294000)
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/src/**wsjtx_1.1.0/wsjtx_install$
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/c3a189e8/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/c3a189e8/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001692.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+	<LI>Next message: <A HREF="001700.html">[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 12
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1699">[ date ]</a>
+              <a href="thread.html#1699">[ thread ]</a>
+              <a href="subject.html#1699">[ subject ]</a>
+              <a href="author.html#1699">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

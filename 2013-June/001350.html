@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx dupe check
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20dupe%20check&In-Reply-To=%3CCADTTAazhyNRmYs8YZDX%2BVcA0Ba0rvgkqvRD2H7WK346Vg_rZUw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001389.html">
+   <LINK REL="Next"  HREF="001352.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx dupe check</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20dupe%20check&In-Reply-To=%3CCADTTAazhyNRmYs8YZDX%2BVcA0Ba0rvgkqvRD2H7WK346Vg_rZUw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] wsjtx dupe check">jnogatch at gmail.com
+       </A><BR>
+    <I>Sun Jun  9 01:10:26 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001389.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+        <LI>Next message: <A HREF="001352.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1350">[ date ]</a>
+              <a href="thread.html#1350">[ thread ]</a>
+              <a href="subject.html#1350">[ subject ]</a>
+              <a href="author.html#1350">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have made enough JT9 QSOs that I now want to avoid working the same
+callsign again, on a per band basis, i.e. &quot;dupe checking&quot;.
+
+1. I created a directory tree to hold the calls worked, divided per band:
+mkdir ~/.wsjtx/log_tree
+mkdir ~/.wsjtx/log_tree/{160,80,40,30,20,17,15,12,10}m
+
+2. I created an empty file for each call that was already in wsjtx_log.adi:
+gawk '/^&lt;call:/{call=$1; sub(/&lt;call:[0-9]+&gt;/,&quot;&quot;,call); system(&quot;touch
+log_tree/20m/&quot;call)}' wsjtx_log.adi
+(All my QSOs have been on 20m!)
+
+3. I modified logqso.cpp, so that it does a similar touch command,
+each time a QSO is logged. (see diff below).
+
+4. I modified mainwindow.cpp, so that when I 2-click on a callsign,
+after it checks for &quot;CQ&quot; to color it green, it then checks to see if
+that call was already worked, if so, it colors it yellow. It then checks
+for my own call, and if found, colors it red. (see diff below)
+
+This change works for the most common case, where I 2-click on the
+callsign of a CQ message in the Band Activity subwindow. It copies it
+to the QSO Frequency window, but colors it yellow, if it is a
+duplicate.
+
+There are some issues to overcome:
+It only checks 20m (because band name is not available as a global var).
+The log_tree/20m/ et al. directories must exist
+I do not know how to &quot;touch&quot; on Windows.
+
+Do you find this dupe checking interesting?
+Is there already a better way to do it?
+
+-John AC6SL
+
+Index: logqso.cpp
+===================================================================
+--- logqso.cpp (revision 3350)
++++ logqso.cpp (working copy)
+@@ -133,6 +133,13 @@
+     f2.close();
+   }
+
++#ifdef unix
++// log call for dupe check
++  QProcess touch;
++  touch.start(&quot;touch log_tree/&quot; + band + &quot;/&quot; + hisCall);
++  touch.waitForFinished(500);
++#endif
++
+ //Log this QSO to file &quot;wsjtx.log&quot;
+   QFile f(&quot;wsjtx.log&quot;);
+   if(!f.open(QIODevice::Text | QIODevice::Append)) {
+Index: mainwindow.cpp
+===================================================================
+--- mainwindow.cpp (revision 3350)
++++ mainwindow.cpp (working copy)
+@@ -1959,6 +1959,10 @@
+   if(i9&lt;0) {
+     QString bg=&quot;white&quot;;
+     if(t2.indexOf(&quot; CQ &quot;)&gt;0) bg=&quot;#66ff66&quot;;                           //green
++
++    QString hiscall=t4.at(5);
++    if (QFile::exists( m_appDir+&quot;/log_tree/20m/&quot;+hiscall))
+bg=&quot;#ffff66&quot;; //yellow
++
+     if(m_myCall!=&quot;&quot; and t2.indexOf(&quot; &quot;+m_myCall+&quot; &quot;)&gt;0) bg=&quot;#ff6666&quot;; //red
+     QTextBlockFormat bf;
+     QString s = &quot;&lt;table border=0 cellspacing=0 width=100%&gt;&lt;tr&gt;&lt;td bgcolor=\&quot;&quot; +
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001389.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+	<LI>Next message: <A HREF="001352.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1350">[ date ]</a>
+              <a href="thread.html#1350">[ thread ]</a>
+              <a href="subject.html#1350">[ subject ]</a>
+              <a href="author.html#1350">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

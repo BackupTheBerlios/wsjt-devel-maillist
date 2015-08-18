@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails with a	segfault upon launch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Running%20wsjt-5.9.7.r386%20on%20openSuSE%2011%20fails%20with%20a%0A%09segfault%20upon%20launch&In-Reply-To=%3C200811041324.24999.dg6man%40pjconsult.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails with a	segfault upon launch</H1>
+    <B>Peter Junker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Running%20wsjt-5.9.7.r386%20on%20openSuSE%2011%20fails%20with%20a%0A%09segfault%20upon%20launch&In-Reply-To=%3C200811041324.24999.dg6man%40pjconsult.de%3E"
+       TITLE="[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails with a	segfault upon launch">dg6man at pjconsult.de
+       </A><BR>
+    <I>Tue Nov  4 13:24:24 CET 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000525.html">[Wsjt-devel] Welcome GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+I built wsjt-5.9.7.r386 on my openSuSE 11 system.
+
+The versions of the tools are as follows:
+
+gcc-fortran-4.3-39.1
+gcc43-fortran-4.3.1_20080507-6.1
+gcc-c++-4.3-39.1
+libgcc43-4.3.1_20080507-6.1
+gcc-4.3-39.1
+gcc43-4.3.1_20080507-6.1
+gcc43-c++-4.3.1_20080507-6.1
+
+python-2.5.2
+python-numpy-1.1.1
+python-tk-2.5.2
+
+The build itself went through without error messages.
+
+The output of configure is as follows:
+
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking for g77... no
+checking for f77... no
+checking for xlf... no
+checking for frt... no
+checking for pgf77... no
+checking for fort77... no
+checking for fl32... no
+checking for af77... no
+checking for f90... no
+checking for xlf90... no
+checking for pgf90... no
+checking for epcf90... no
+checking for f95... no
+checking for fort... no
+checking for xlf95... no
+checking for ifc... no
+checking for efc... no
+checking for pgf95... no
+checking for lf95... no
+checking for gfortran... gfortran
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether gfortran accepts -g... yes
+checking uname -s for Cygwin, Solaris or HPUX... no
+checking if gcc is Apple GCC... no
+checking for library containing strerror... none required
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for egrep... grep -E
+checking whether gcc needs -traditional... no
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for rm... /bin/rm
+checking for cp... /bin/cp
+checking for mv... /bin/mv
+checking for ln... /bin/ln
+checking for sed... /usr/bin/sed
+checking for ar... /usr/bin/ar
+checking for ld... /usr/bin/ld
+checking for test... /usr/bin/test
+checking for python... /usr/bin/python
+checking for f2py... /usr/local/bin/f2py
+checking for g95... no
+checking g95 lib path... ./configure: line 3623: -print-file-name=: command 
+not found
+
+checking for gfortran... /usr/bin/gfortran
+checking for gfortran42... (cached) /usr/bin/gfortran
+checking gfortran lib path... /usr/lib/gcc/i586-suse-linux/4.3/
+checking OS... checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking sys/syslog.h usability... yes
+checking sys/syslog.h presence... yes
+checking for sys/syslog.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking libgen.h usability... yes
+checking libgen.h presence... yes
+checking for libgen.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking wait.h usability... yes
+checking wait.h presence... yes
+checking for wait.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for sys/resource.h... (cached) yes
+checking linux/ppdev.h usability... yes
+checking linux/ppdev.h presence... yes
+checking for linux/ppdev.h... yes
+checking dev/ppbus/ppi.h usability... no
+checking dev/ppbus/ppi.h presence... no
+checking for dev/ppbus/ppi.h... no
+checking for sys/stat.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking sys/soundcard.h usability... yes
+checking sys/soundcard.h presence... yes
+checking for sys/soundcard.h... yes
+checking alsa/asoundlib.h usability... yes
+checking alsa/asoundlib.h presence... yes
+checking for alsa/asoundlib.h... yes
+checking jack/jack.h usability... yes
+checking jack/jack.h presence... yes
+checking for jack/jack.h... yes
+checking samplerate.h usability... yes
+checking samplerate.h presence... yes
+checking for samplerate.h... yes
+checking whether string.h and strings.h may both be included... yes
+checking for clock_gettime in -lrt... yes
+checking for snd_pcm_open in -lasound... yes
+checking for int64_t... yes
+checking size of int64_t... 8
+checking for long long... yes
+checking size of long long... 8
+checking for uint64_t... yes
+checking for int64_t... (cached) yes
+checking for u_int32_t... yes
+checking for u_int16_t... yes
+checking whether byte ordering is bigendian... no
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+./configure: line 6846: CPPFLAGS: command not found
+configure: creating ./config.status
+config.status: creating Makefile
+
+
+Using gfortran as fortran compiler.
+
+Using built in portaudio distribution
+
+Compiling wsjt 5.9.6
+
+The output of make can be found under: <A HREF="http://nopaste.com/p/aMMXAQPqM">http://nopaste.com/p/aMMXAQPqM</A>
+
+The output of strace wsjt can be found under: <A HREF="http://nopaste.com/p/aTGZRpabnb">http://nopaste.com/p/aTGZRpabnb</A>
+
+Upon launching the application I briefly get the GUI and then it crashes with 
+a segfault. The problem can be reproduced.
+
+Help is greatly appreciated. ;)
+
+
+_____________ 
+73 de DG6MAN
+
+Peter
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000525.html">[Wsjt-devel] Welcome GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

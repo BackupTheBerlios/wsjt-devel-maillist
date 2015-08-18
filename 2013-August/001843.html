@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D1EAA.8010902%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001837.html">
+   <LINK REL="Next"  HREF="001850.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D1EAA.8010902%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Aug 15 20:32:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001837.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001850.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1843">[ date ]</a>
+              <a href="thread.html#1843">[ thread ]</a>
+              <a href="subject.html#1843">[ subject ]</a>
+              <a href="author.html#1843">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/08/2013 18:04, Joe Taylor wrote:
+&gt;<i> Hi Bill,
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;<i> I've been away for three days, now trying to catch up on the progress 
+</I>&gt;<i> you and others have been making.  I have cmake installed on my Windows 
+</I>&gt;<i> 7 development machine, but I'm now stuck when cmake spits out the 
+</I>&gt;<i> following error:
+</I>&gt;<i>
+</I>&gt;<i> ###################################################################
+</I>&gt;<i> CMake Error at 
+</I>&gt;<i> C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfigExtra
+</I>&gt;<i> s.cmake:16 (message):
+</I>&gt;<i>   Failed to find &quot;glu32&quot; in &quot;&quot;.
+</I>&gt;<i> Call Stack (most recent call first):
+</I>&gt;<i>
+</I>&gt;<i> C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake:50 
+</I>&gt;<i> (_
+</I>&gt;<i> qt5gui_find_extra_libs)
+</I>&gt;<i>
+</I>&gt;<i> C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake:127 
+</I>&gt;<i> (includ
+</I>&gt;<i> e)
+</I>&gt;<i>
+</I>&gt;<i> C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake:83 
+</I>&gt;<i>
+</I>&gt;<i> (find_package)
+</I>&gt;<i>   CMakeLists.txt:92 (find_package)
+</I>&gt;<i> ###################################################################
+</I>&gt;<i>
+</I>&gt;<i> So, I guess this means it can't find libglu32.a ?  Such a file is 
+</I>&gt;<i> present in this machine at
+</I>&gt;<i>
+</I>&gt;<i> C:/QT/Qt5.1.0/Tools/mingw48_32/i686-w64-mingw32/lib/libglu32.a
+</I>&gt;<i>
+</I>&gt;<i> Should cmake find that, or should it be looking elsewhere?
+</I>&gt;<i>
+</I>&gt;<i> Quite possibly the problem is that I don't have the required Microsoft 
+</I>&gt;<i> SDK installed.  So, I tried to install it; the Windows installer quits 
+</I>&gt;<i> with this message:
+</I>&gt;<i>
+</I>&gt;<i> ########################################################################## 
+</I>&gt;<i>
+</I>&gt;<i> Setup could not find the file WinSDKTools\WinSDKTools_x86.msi at any 
+</I>&gt;<i> of the specified source locations 
+</I>&gt;<i> <A HREF="http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup">http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup</A>
+</I>&gt;<i>
+</I>&gt;<i> Please attempt to resolve the problem and then start Windows SDK setup 
+</I>&gt;<i> again. If you continue to have problems with this issue, please visit 
+</I>&gt;<i> the SDK team support page at 
+</I>&gt;<i> <A HREF="http://go.microsoft.com/fwlink/?LinkId=130245.">http://go.microsoft.com/fwlink/?LinkId=130245.</A>
+</I>&gt;<i> ########################################################################## 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ... and I find a ton of complaints about the same problem at
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://blogs.msdn.com/b/windowssdk/archive/2009/02/12/troubleshooting-windows-sdk-server-2008-download-install.aspx">http://blogs.msdn.com/b/windowssdk/archive/2009/02/12/troubleshooting-windows-sdk-server-2008-download-install.aspx</A> 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> and no suggested solution (that I have found).
+</I>&gt;<i>
+</I>&gt;<i> Without this SDK installed (which I guess is necessary because of 
+</I>&gt;<i> dependence on DirectX audio drivers?), I don't know what to do next.
+</I>Ok, you are right on track. Qt 5.1 seems to ship with the ANGLE library 
+(glu32) in the package. I assume they do this to avoid users having to 
+download the Windows or DirectX9 SDK. I didn't hit this problem because 
+I already have the Windows SDK installed. CMake doesn't know about this 
+location but we can probably provide it a hint to help finding it. I'll 
+see if I can persuade CMake to stop finding it in my SDK directories and 
+find a way to get it to look inside the Qt tree.
+
+Also unfortunately the link to DirectX9 is quite tenuous Qt can either 
+use OpenGL for comprehensive desktop 2D and 3D graphics or it can use a 
+small library called ANGLE on Windows that translate a subset of OpenGL 
+calls into DirectX9 graphics calls. The pre built Windows Qt kits have a 
+dependency on the ANGLE library whether you use OpenGL in your 
+application or not. They do this because the full OpenGL version has 
+many complex dependencies on graphics drivers and hardware. Using ANGLE 
+gives the best general portability for Qt.
+
+I cannot seem to dissuade CMake from finding it in the Windows SDKs I 
+have installed. As an alternative you could try installing the DirectX 
+SDK from here <A HREF="http://www.microsoft.com/en-US/download/details.aspx?id=6812">http://www.microsoft.com/en-US/download/details.aspx?id=6812</A> .
+
+Sorry this is a bit complex, I've no idea why the Qt developers haven't 
+included hints in their own cmake macros to find the library in their 
+own package.
+&gt;<i>
+</I>&gt;<i> Since Qt5.1 builds WSJT-X correctly on this machine without help from 
+</I>&gt;<i> cmake, it seems that all necessary pre-requisites are here. (But maybe 
+</I>&gt;<i> not, to build the program it the way you have prescribed.)
+</I>&gt;<i>
+</I>&gt;<i> Anyway, that's as far as UI have got, so far, in Windows.
+</I>&gt;<i>
+</I>&gt;<i> I've also had a shot at using cmake in Linux (Ubuntu 12.04). Things 
+</I>&gt;<i> ground to a halt there right away because cmake is rev 2.8.7, and we 
+</I>&gt;<i> need 2.8.9.  I guess I should upgrade to Ubuntu 12.10 or 13.04?
+</I>Yes Edson hit the same issue. The Qt developers revised their cmake 
+macros to take advantage of new features in CMake-2.8.8. These new 
+macros are much easier to use than the prior ones. Unfortunately the 
+CMake package in the current production Ubuntu/Debian distributions is 
+2.8.7.
+
+I would suggest installing the current CMake binary package in your home 
+directory. Create ~/opt, download the Linux package from 
+<A HREF="http://www.cmake.org/cmake/resources/software.html">http://www.cmake.org/cmake/resources/software.html</A> and extract it into 
+~/opt. Then add the path to the 'bin' directory of the extracted archive 
+to the front of your PATH environment variable. You will then have the 
+latest CMake.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001837.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001850.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1843">[ date ]</a>
+              <a href="thread.html#1843">[ thread ]</a>
+              <a href="subject.html#1843">[ subject ]</a>
+              <a href="author.html#1843">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Hamlib calls compiled into WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Hamlib%20calls%20compiled%20into%20WSJT-X&In-Reply-To=%3CCALNQy49QreQhzqVL6So5pN_i-mtPDZQTCHykTER5Xz3f4Bt5zQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001189.html">
+   <LINK REL="Next"  HREF="001191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Hamlib calls compiled into WSJT-X</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Hamlib%20calls%20compiled%20into%20WSJT-X&In-Reply-To=%3CCALNQy49QreQhzqVL6So5pN_i-mtPDZQTCHykTER5Xz3f4Bt5zQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Hamlib calls compiled into WSJT-X">ewpereira at gmail.com
+       </A><BR>
+    <I>Mon Apr 15 02:53:52 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001189.html">[Wsjt-devel] Hamlib calls compiled into WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="001191.html">[Wsjt-devel] Hamlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1190">[ date ]</a>
+              <a href="thread.html#1190">[ thread ]</a>
+              <a href="subject.html#1190">[ subject ]</a>
+              <a href="author.html#1190">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe and David,
+
+Understood. This weekend I was just looking at the hamlib C++ API after I
+saw the rig frequency info being updated. I will checkout the new code and
+will try getting it to work under Linux.
+
+I've started to tackle the PSK Reporter interface. Holy cow... I feel like
+writing machine code for an 8-bit processor using a hex keyboard! Why on
+earth would someone use IPFIX for this is beyond my wildest guess. I think
+I got it nailed down though. I now need to implement an UDP interface and
+do some tests.
+
+I have tried subscribing to the wsjt-devel list and was reminded that I was
+already subscribed. I am not sure I am receiving messages through the list
+though. I haven't received a message for a long time.
+
+73,
+
+-- Edson PY2SDR
+
+On Sun, Apr 14, 2013 at 9:35 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> Special note to Edson and David -- and anyone else who is compiling WSJT-X
+</I>&gt;<i> for *nix.  I have started moving the simple WSJT-X CAT functions from an
+</I>&gt;<i> external process running &quot;rigctl&quot; to internal calls to hamlib functions.
+</I>&gt;<i>  This will require some changes to wsjtx.pro, in the &quot;unix&quot; sections, and
+</I>&gt;<i> will require having hamlib installed.  Maybe I'll have time to try the code
+</I>&gt;<i> in Linux tomorrow...
+</I>&gt;<i>
+</I>&gt;<i> Just to be sure you're both reading the wsjt-devel list, I am copying this
+</I>&gt;<i> to each of you individually.  In future, let's use wsjt-devel for all
+</I>&gt;<i> communications about WSJT, WSPR, etc., coding.
+</I>&gt;<i>
+</I>&gt;<i>         -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130414/f04df772/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130414/f04df772/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001189.html">[Wsjt-devel] Hamlib calls compiled into WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="001191.html">[Wsjt-devel] Hamlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1190">[ date ]</a>
+              <a href="thread.html#1190">[ thread ]</a>
+              <a href="subject.html#1190">[ subject ]</a>
+              <a href="author.html#1190">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

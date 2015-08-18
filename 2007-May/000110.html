@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20WSJT%20compile%20on%20Fedora%20Core%206%0A%09%28Audio.so%3A%20undefined%20symbol%3A%20gmtime_%29&In-Reply-To=%3C20070504055959.GB89288%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20WSJT%20compile%20on%20Fedora%20Core%206%0A%09%28Audio.so%3A%20undefined%20symbol%3A%20gmtime_%29&In-Reply-To=%3C20070504055959.GB89288%40night.db.net%3E"
+       TITLE="[Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)">db at db.net
+       </A><BR>
+    <I>Fri May  4 08:00:00 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Wsjt-devel] Problem with WSJT compile on Fedora	Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+        <LI>Next message: <A HREF="000114.html">[Wsjt-devel] WSJT 5.9.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, May 03, 2007 at 09:39:30PM -0700, Naylor Jonathan wrote:
+&gt;<i> gmtime_r is a POSIX standard library call, and asyou rightly point out
+</I>&gt;<i> is thread safe by virtue of taking two parameters. On a HP-UX system,
+</I>&gt;<i> its definition is only available when the -DREENTRANT flag is set for
+</I>&gt;<i> the compile, which is also done with the -mt compiler flag. It's
+</I>&gt;<i> possible that similar flags/defines are needed with gcc.
+</I>
+gmtime_r() is in libc on FreeBSD, absolutely no problems with linking
+on FreeBSD and with gcc. I don't know linux at all much anymore as
+I have not used it in years. In fact, I haven't used HP-UX in years
+either. ;-)
+
+...
+&gt;<i> its statically defined buffer, then I suggest that the original problem
+</I>&gt;<i> in getting gmtime_r() linking should be looked at.
+</I>
+gmtime_r() should have been used all along, not gmtime() as I pointed out.
+gmtime() was incorrectly being called assuming it has two parameters
+instead of one.
+
+&gt;<i> Jonathan  ON/G4KLX
+</I>
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Wsjt-devel] Problem with WSJT compile on Fedora	Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+	<LI>Next message: <A HREF="000114.html">[Wsjt-devel] WSJT 5.9.6
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

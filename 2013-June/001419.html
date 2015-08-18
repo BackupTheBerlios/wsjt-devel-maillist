@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3C51CF144F.4080607%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001418.html">
+   <LINK REL="Next"  HREF="001420.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3C51CF144F.4080607%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Jun 29 19:07:27 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001418.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+        <LI>Next message: <A HREF="001420.html">[Wsjt-devel] GUI cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1419">[ date ]</a>
+              <a href="thread.html#1419">[ thread ]</a>
+              <a href="subject.html#1419">[ subject ]</a>
+              <a href="author.html#1419">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson,
+
+Sorry to cause confusion.  I think you'll find that jt9 works correctly 
+if you open your test file from within WSJT-X (File | Open).
+
+I've treated command-line usage of jt9 as something mostly for me, in 
+testing the decoders.  I don't always keep the small command-line-only 
+part of the program -- lines 31 onward in jt9.f90 -- up to date.  I'll 
+fix it soon.
+
+	-- Joe, K1JT
+
+On 06/29/2013 12:23 PM, Edson W. R. Pereira wrote:
+&gt;<i> A related question:
+</I>&gt;<i>
+</I>&gt;<i> Is the KS decoder being used for JT9 as well? I thought it was for JT65
+</I>&gt;<i> only.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson
+</I>&gt;<i>
+</I>&gt;<i> On Sat, Jun 29, 2013 at 1:11 PM, Edson W. R. Pereira &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hello Joe et al,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Today I hooked the latest wxjtx_k1jt branch to my radio and found that it
+</I>&gt;&gt;<i> does not decode any JT9 signals. In order to test, I saved the wav file and
+</I>&gt;&gt;<i> tried decoding using r3348 which could decode the signal just fine. I then
+</I>&gt;&gt;<i> tried decoding using jt9 directly on the command line. Thise are the
+</I>&gt;&gt;<i> results:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> # r3348
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">edson at station1</A>:~/Projects/wsjtx_k1jt_install$ ../wsjtx_install/jt9 1 4
+</I>&gt;&gt;<i> save/130629_1553.wav
+</I>&gt;&gt;<i> 1553  10   -9   0.4   1244.  -1   CQ ON2AJ JO11
+</I>&gt;&gt;<i> &lt;DecodeFinished&gt;   1   1
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> # r3421
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">edson at station1</A>:~/Projects/wsjtx_k1jt_install$ ./jt9 1 4
+</I>&gt;&gt;<i> save/130629_1553.wav
+</I>&gt;&gt;<i> Segmentation fault (core dumped)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The jt9 decoder gets a segmentation violation.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The compilation of jt9 went clean and fine without issues.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> My system:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">edson at station1</A>:~/Projects/wsjtx_k1jt_install$ uname -a
+</I>&gt;&gt;<i> Linux station1 3.2.0-48-generic #74-Ubuntu SMP Thu Jun 6 19:43:26 UTC 2013
+</I>&gt;&gt;<i> x86_64 x86_64 x86_64 GNU/Linux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">edson at station1</A>:~/Projects/wsjtx_k1jt_install$ cat /etc/issue
+</I>&gt;&gt;<i> Ubuntu 12.04.2 LTS \n \l
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">edson at station1</A>:~/Projects/wsjtx_k1jt_install$ ldd jt9
+</I>&gt;&gt;<i>   linux-vdso.so.1 =&gt;  (0x00007ffff9b4e000)
+</I>&gt;&gt;<i> libfftw3f.so.3 =&gt; /usr/lib/libfftw3f.so.3 (0x00007f7a50815000)
+</I>&gt;&gt;<i>   libgfortran.so.3 =&gt; /usr/lib/x86_64-linux-gnu/libgfortran.so.3
+</I>&gt;&gt;<i> (0x00007f7a504fe000)
+</I>&gt;&gt;<i> libQtCore.so.4 =&gt; /usr/lib/x86_64-linux-gnu/libQtCore.so.4
+</I>&gt;&gt;<i> (0x00007f7a5002b000)
+</I>&gt;&gt;<i>   libstdc++.so.6 =&gt; /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+</I>&gt;&gt;<i> (0x00007f7a4fd2b000)
+</I>&gt;&gt;<i> libm.so.6 =&gt; /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7a4fa2f000)
+</I>&gt;&gt;<i>   libgcc_s.so.1 =&gt; /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f7a4f818000)
+</I>&gt;&gt;<i> libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f7a4f459000)
+</I>&gt;&gt;<i>   libquadmath.so.0 =&gt; /usr/lib/x86_64-linux-gnu/libquadmath.so.0
+</I>&gt;&gt;<i> (0x00007f7a4f223000)
+</I>&gt;&gt;<i> libpthread.so.0 =&gt; /lib/x86_64-linux-gnu/libpthread.so.0
+</I>&gt;&gt;<i> (0x00007f7a4f005000)
+</I>&gt;&gt;<i>   libz.so.1 =&gt; /lib/x86_64-linux-gnu/libz.so.1 (0x00007f7a4edee000)
+</I>&gt;&gt;<i> libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f7a4ebea000)
+</I>&gt;&gt;<i>   librt.so.1 =&gt; /lib/x86_64-linux-gnu/librt.so.1 (0x00007f7a4e9e1000)
+</I>&gt;&gt;<i> libglib-2.0.so.0 =&gt; /lib/x86_64-linux-gnu/libglib-2.0.so.0
+</I>&gt;&gt;<i> (0x00007f7a4e6ec000)
+</I>&gt;&gt;<i>   /lib64/ld-linux-x86-64.so.2 (0x00007f7a50bac000)
+</I>&gt;&gt;<i> libpcre.so.3 =&gt; /lib/x86_64-linux-gnu/libpcre.so.3 (0x00007f7a4e4ae000)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> strace reveals that:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> stat(&quot;decoded.txt&quot;, {st_mode=S_IFREG|0664, st_size=57, ...}) = 0
+</I>&gt;&gt;<i> open(&quot;decoded.txt&quot;, O_RDWR|O_CREAT, 0666) = 3
+</I>&gt;&gt;<i> fstat(3, {st_mode=S_IFREG|0664, st_size=57, ...}) = 0
+</I>&gt;&gt;<i> ioctl(3, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff2ac4a0a8) = -1 ENOTTY
+</I>&gt;&gt;<i> (Inappropriate ioctl for device)
+</I>&gt;&gt;<i> stat(&quot;kvasd.dat&quot;, {st_mode=S_IFREG|0664, st_size=1024, ...}) = 0
+</I>&gt;&gt;<i> open(&quot;kvasd.dat&quot;, O_RDWR|O_CREAT, 0666) = 5
+</I>&gt;&gt;<i> fstat(5, {st_mode=S_IFREG|0664, st_size=1024, ...}) = 0
+</I>&gt;&gt;<i> ioctl(5, SNDCTL_TMR_TIMEBASE or TCGETS, 0x7fff2ac4a0a8) = -1 ENOTTY
+</I>&gt;&gt;<i> (Inappropriate ioctl for device)
+</I>&gt;&gt;<i> --- SIGSEGV (Segmentation fault) @ 0 (0) ---
+</I>&gt;&gt;<i> +++ killed by SIGSEGV (core dumped) +++
+</I>&gt;&gt;<i> Segmentation fault (core dumped)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I do not have kvasd installed on my system. I tried downloading the binary
+</I>&gt;&gt;<i> available on the link
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.physics.princeton.**edu/pulsar/K1JT/kvasd&lt;http://www.physics.princeton.edu/pulsar/K1JT/kvasd">http://www.physics.princeton.**edu/pulsar/K1JT/kvasd&lt;http://www.physics.princeton.edu/pulsar/K1JT/kvasd</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> but, unfortunately, it did not work on my system. Probrably because I am
+</I>&gt;&gt;<i> running on 64-bits.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Could the segmentation violation be related to the missing kvsad?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Edson PY2SDR
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001418.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+	<LI>Next message: <A HREF="001420.html">[Wsjt-devel] GUI cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1419">[ date ]</a>
+              <a href="thread.html#1419">[ thread ]</a>
+              <a href="subject.html#1419">[ subject ]</a>
+              <a href="author.html#1419">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

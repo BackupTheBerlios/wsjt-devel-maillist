@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR about ready for release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C487A28DC.9030800%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000442.html">
+   <LINK REL="Next"  HREF="000445.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR about ready for release?</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C487A28DC.9030800%40charter.net%3E"
+       TITLE="[Wsjt-devel] WSPR about ready for release?">k9ao at charter.net
+       </A><BR>
+    <I>Sun Jul 13 18:10:04 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000442.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+        <LI>Next message: <A HREF="000445.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#444">[ date ]</a>
+              <a href="thread.html#444">[ thread ]</a>
+              <a href="subject.html#444">[ subject ]</a>
+              <a href="author.html#444">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Taylor wrote:
+&gt;<i> After much recent work (and testing) by VA3DB, G4KLA, W1BW, W6CQZ, 
+</I>&gt;<i> DL3LST, and K1JT (I hope I didn't forget anyone!), the WSPR program is 
+</I>&gt;<i> nearly ready for a new release.  Since I do not foresee a need for 
+</I>&gt;<i> additional features in the near future, I propose that we call it 
+</I>&gt;<i> Version 1.0.
+</I>
+Fresh checkout this morning, with the (I think) properly built short and 
+long fftw libs,and built with:
+
+./configure --enable-g95 --with-portaudio-include-dir=/usr/include 
+--with-portaudio-lib-dir=/usr/lib
+
+Get the below errors.
+
+Rick Kunath, k9ao
+
+-----------------------
+
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+buildmodule: Could not found the body of interfaced routine &quot;filbig2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;abc441&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;blanker&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode1&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode3&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;get_fname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;check_endian&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;iswap_int&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;iswap_short&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;horizspec&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hscroll&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d65&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;rfile&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;savedata&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wsjtgen&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;runqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;flushqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;sleepqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehz&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehztx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;addnoise&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gran&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;msgparms&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;genwspr&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqencode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqdecode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;unpackpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpackname&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packtext2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpacktext2&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packprop&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpackprop&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hash&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wsjtwspr&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gen64&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;. Skipping.
+Found executable /usr/bin/g95
+Found executable /usr/share/colorgcc/gfortran
+warning: build_ext: f77_compiler=gnu95 is not available.
+error: extension 'Audio' has Fortran sources but no Fortran compiler found
+make: *** [WsjtMod/Audio.so] Error 1
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000442.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+	<LI>Next message: <A HREF="000445.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#444">[ date ]</a>
+              <a href="thread.html#444">[ thread ]</a>
+              <a href="subject.html#444">[ subject ]</a>
+              <a href="author.html#444">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

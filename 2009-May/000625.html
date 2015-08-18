@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090512223420.49f51a3a%40bugs.xride.dk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000624.html">
+   <LINK REL="Next"  HREF="000629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Soeren Straarup</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090512223420.49f51a3a%40bugs.xride.dk%3E"
+       TITLE="[Wsjt-devel] gfortran">xride at x12.dk
+       </A><BR>
+    <I>Tue May 12 22:34:20 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000624.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000629.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe Taylor and list,
+
+On Tue, 12 May 2009 14:44:38 -0400
+Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+
+&gt;<i> Hi Diane,
+</I>&gt;<i> 
+</I>&gt;<i> On a Xubuintu 9.04 system:
+</I>&gt;<i> 
+</I>&gt;<i> pulsar23% gfortran -print-file-name=
+</I>&gt;<i> /usr/lib/gcc/i486-linux-gnu/4.3.3/
+</I>&gt;<i> pulsar23% g95 -print-file-name=
+</I>&gt;<i> /usr/local/g95-install/bin/../lib/gcc-lib/i686-suse-linux-gnu/4.0.3//
+</I>
+I have seen cases where the '//' instead of '/' has caused trouble.
+Haven't followed this thread that closely.
+Just letting out my 20 mW. (After all money is power and power can be
+measured in Watts (; ).
+
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On Win/XP with MinGW:
+</I>&gt;<i> 
+</I>&gt;<i> C:\temp&gt;gfortran -print-file-name=
+</I>&gt;<i> c:/gfortran/bin/../lib/gcc/i386-pc-mingw32/4.3.0/
+</I>&gt;<i> 
+</I>&gt;<i> C:\temp&gt;g95 -print-file-name=
+</I>&gt;<i> c:/mingw/bin/../lib/gcc-lib/i686-pc-mingw32/4.0.3//
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 	-- Joe
+</I>&gt;<i> 
+</I>&gt;<i> Diane Bruce wrote:
+</I>&gt;<i> &gt; On Tue, May 12, 2009 at 09:47:58AM +1000, Hamish Moffatt wrote:
+</I>&gt;<i> &gt;&gt; On Tue, May 12, 2009 at 12:11:41AM +0300, Karza wrote:
+</I>&gt;<i> &gt;&gt;&gt;&gt; 3. Installed g95 from the g95 web page
+</I>&gt;<i> &gt;&gt;&gt; I did not install g95 since the problem only occurs
+</I>&gt;<i> &gt;&gt;&gt; with gfortran.
+</I>&gt;<i> &gt;&gt; Could this be relevant? gfortran supplies libgfortran, could g95 be
+</I>&gt;<i> &gt;&gt; supplying something which conflicts and therefore having both
+</I>&gt;<i> &gt;&gt; installed is the cause?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; gfortran -print-file-name=
+</I>&gt;<i> &gt; g95 -print-file-name=
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; What do you get for each?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; - 73 Diane VA3DB
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> &gt; _______________________________________________
+</I>
+vy 73 de OZ2DAK, Soeren
+
+-- 
+Soeren Straarup   | aka OZ2DAK aka Xride
+FreeBSD committer | FreeBSD since 2.2.6-R
+  If a program is not working right, then send a patch
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000624.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000629.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

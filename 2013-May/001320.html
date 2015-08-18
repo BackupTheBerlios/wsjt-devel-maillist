@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio I/O on the *nix platform
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20I/O%20on%20the%20%2Anix%20platform&In-Reply-To=%3CCALNQy4-hLvVEnzg1Y3C-ft%3DxUmsXjjDFEkEq3DpGrH9%2B%3DVtVPQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001319.html">
+   <LINK REL="Next"  HREF="001317.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio I/O on the *nix platform</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20I/O%20on%20the%20%2Anix%20platform&In-Reply-To=%3CCALNQy4-hLvVEnzg1Y3C-ft%3DxUmsXjjDFEkEq3DpGrH9%2B%3DVtVPQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Audio I/O on the *nix platform">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed May 29 15:38:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001319.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+        <LI>Next message: <A HREF="001317.html">[Wsjt-devel] Mac OSX News
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1320">[ date ]</a>
+              <a href="thread.html#1320">[ thread ]</a>
+              <a href="subject.html#1320">[ subject ]</a>
+              <a href="author.html#1320">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe, John, et al,
+
+I suspect the root of the different behaviors could reside in the different
+device drivers. Some recent cards do not support mono and PortAudio (via
+ALSA) may silently ignore the port configuration for mono. On my system I
+have two sound interfaces, an internal one using an Intel chipset and an
+USB one (Edirol). Both work correctly only if I add the code for the second
+channel. Without filling the buffer with the sample for the second channel,
+audio is chopped.
+
+Joe's solution seems adequate since we can configure the audio output to
+use 2 channels. Effectively avoiding the issue.
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, May 28, 2013 at 4:51 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> It would be nice if we understood exactly what's happening with WSJT-X's
+</I>&gt;<i> audio output under Linux.  It works, but a few details of exactly how it
+</I>&gt;<i> works are presently obscure at best.
+</I>&gt;<i>
+</I>&gt;<i> In particular: Some time ago, Edson (PY2SDR) found that although the code
+</I>&gt;<i> in soundout.cpp explicitly sets the number of output channels to 1 in the
+</I>&gt;<i> statement &quot;outParam.channelCount=1&quot; (line #145 in revision 3318), some
+</I>&gt;<i> audio devices act as though they are expecting dual-channel (&quot;stereo&quot;) data
+</I>&gt;<i> anyway.  To deal with this we inserted two &quot;#ifdef unix&quot; conditionals so
+</I>&gt;<i> that we would send the same audio data to each of the two channels.
+</I>&gt;<i>
+</I>&gt;<i> More recently, John (AC6SL) and I have determined that other audio devices
+</I>&gt;<i> behave as we originally thought all should behave -- i.e., they act like
+</I>&gt;<i> single-channel (&quot;mono&quot;) devices when told to do so.
+</I>&gt;<i>
+</I>&gt;<i> I don't yet understand why this is so, or how to fix it properly. Perhaps
+</I>&gt;<i> it will be taken care of when/if we move from portAudio to QAudio.  In the
+</I>&gt;<i> meantime, as a temporary work-around, in revisions 3317/3318 I have
+</I>&gt;<i> inserted code that makes all audio output on unix-like platforms use two
+</I>&gt;<i> channels.  On my test Linux system, at least, this makes all relevant audio
+</I>&gt;<i> devices (and pseudo-devices invoked with an &quot;.asoundrc&quot; file) work properly.
+</I>&gt;<i>
+</I>&gt;<i> Please check to see if this works OK on your Linux system.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/e83aa9db/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/e83aa9db/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001319.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+	<LI>Next message: <A HREF="001317.html">[Wsjt-devel] Mac OSX News
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1320">[ date ]</a>
+              <a href="thread.html#1320">[ thread ]</a>
+              <a href="subject.html#1320">[ subject ]</a>
+              <a href="author.html#1320">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

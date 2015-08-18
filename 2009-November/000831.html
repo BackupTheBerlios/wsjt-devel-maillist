@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Still working through WSPR on Mandriva 2010
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C4B018CD5.1050300%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000830.html">
+   <LINK REL="Next"  HREF="000832.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Still working through WSPR on Mandriva 2010</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C4B018CD5.1050300%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] Still working through WSPR on Mandriva 2010">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Mon Nov 16 18:33:09 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000830.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+        <LI>Next message: <A HREF="000832.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Rick,
+
+Crash on decode is from thnix.f90
+
+comment line 33 in this file and put just before it n=0 and re-compile, 
+it works for me, as I said it has been running for 2 days now.
+
+73
+de Mike, VE2EXB
+P.S. I did update to rev 1695 and did this mods. it works ok.
+
+Rick Kunath wrote:
+&gt;<i> On Monday 16 November 2009 11:56:37 am Michel, VE2ExB wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hello Rick,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You might be using /dev/dsp*, for me it does the same thing as your
+</I>&gt;&gt;<i> report, in the setup window, try something like
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i> 0 HDA NVidia: CONEXANT Analog (hw:0,0)
+</I>&gt;&gt;<i> from the dropdown box ( of course your card will differ from mine )
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Yes, I found that too, /dev/dsp crashes here, though oss emulation is working 
+</I>&gt;<i> on the machine.
+</I>&gt;<i>
+</I>&gt;<i> I'm using:
+</I>&gt;<i>
+</I>&gt;<i> 3 SB Audigy 2 Value [SB0400]: Multichannel Capture/PT Playback (hw:0,2) - 
+</I>&gt;<i> (Audio In)
+</I>&gt;<i>
+</I>&gt;<i> and
+</I>&gt;<i>
+</I>&gt;<i> 4 SB Audigy 2 Value [SB0400]: Multichannel Playback (hw:0,3) - (Audio Out)
+</I>&gt;<i>
+</I>&gt;<i> And get the crash on decode.
+</I>&gt;<i>
+</I>&gt;<i> Selection 16 (Pulse), does not work though it does in WSJT.
+</I>&gt;<i>
+</I>&gt;<i> Rick Kunath, k9ao
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000830.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+	<LI>Next message: <A HREF="000832.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

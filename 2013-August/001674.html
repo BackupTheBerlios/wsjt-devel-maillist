@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FE975C.8040402%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001671.html">
+   <LINK REL="Next"  HREF="001675.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FE975C.8040402%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">joe at princeton.edu
+       </A><BR>
+    <I>Sun Aug  4 20:03:08 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001671.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001675.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1674">[ date ]</a>
+              <a href="thread.html#1674">[ thread ]</a>
+              <a href="subject.html#1674">[ subject ]</a>
+              <a href="author.html#1674">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill and all,
+
+I have WSJT-X running well on both Windows and Linux, using r3522 plus 
+Bill's patch.  It's QAudio all the way, no PortAudio.  To make it work 
+in Linux I had to remove the &quot;#ifdef UNIX&quot; blocks in both Modulator.cpp 
+and soundout.cpp that dealt withe the PortAudio quirk of insisting on 
+sending audio output to both Left and Right channels.
+
+I did have some hassles getting it to run in Linux.  With the exception 
+noted above, they all had to do with (a) having several versions of Qt 
+(4.7, 5.0.2, 5.1.0) installed and not having set some environment 
+variables properly.  I'm learning Qt's behavior and requirements, albeit 
+rather slowly.  I will gradually move everything in my development 
+machines (two for Windows, two more for Linux) to Qt 5.1.
+
+Bill, your code appears to be solid, and I'm starting to learn my way 
+around it.
+
+Many of your changes make me feel like a student who just had his paper 
+returned with lots of red ink provided by his conscientious teacher.  I 
+will study, and learn.
+
+I'm looking forward to reports from others!
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001671.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001675.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1674">[ date ]</a>
+              <a href="thread.html#1674">[ thread ]</a>
+              <a href="subject.html#1674">[ subject ]</a>
+              <a href="author.html#1674">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

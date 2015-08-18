@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [lausts at acm.org: Fortran Runtime Error]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Blausts%40acm.org%3A%20Fortran%20Runtime%20Error%5D&In-Reply-To=%3C20091118191733.GA59564%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000857.html">
+   <LINK REL="Next"  HREF="000859.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [lausts at acm.org: Fortran Runtime Error]</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Blausts%40acm.org%3A%20Fortran%20Runtime%20Error%5D&In-Reply-To=%3C20091118191733.GA59564%40night.db.net%3E"
+       TITLE="[Wsjt-devel] [lausts at acm.org: Fortran Runtime Error]">db at db.net
+       </A><BR>
+    <I>Wed Nov 18 20:17:33 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000857.html">[Wsjt-devel] four2a.f
+</A></li>
+        <LI>Next message: <A HREF="000859.html">[Wsjt-devel] [lausts at acm.org: Fortran Runtime Error]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I have a bug report sent to me directly from the wspr version in FreeBSD ports.
+
+----- Forwarded message from Thomas Laus &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">lausts at acm.org</A>&gt; -----
+
+X-Original-To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>
+Delivered-To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>
+Date: Wed, 18 Nov 2009 11:21:14 -0500
+From: Thomas Laus &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">lausts at acm.org</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>
+Subject: Fortran Runtime Error
+Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">lausts at acm.org</A>
+User-Agent: Mutt/1.4.2.3i
+X-Operating-System: FreeBSD 7.2-STABLE on an i386
+X-UIDL: ^/f&quot;!96*&quot;!@e+!!SIk!!
+X-Bogosity: Ham, tests=bogofilter, spamicity=0.000000, version=1.2.0
+
+Diane:
+
+I got a Fortran runtime error at line 116 of file decode162.f.  It said
+that the array reference for 'c4', upper bound of dimention 1 exceeded
+(45001 &gt; 45000).  I was attempting to open a previously saved .wav file.
+The wspr program aborted.
+
+Tom KH6ILT
+
+-- 
+Public Keys:
+PGP KeyID = 0x5F22FDC1
+GnuPG KeyID = 0x620836CF
+
+
+----- End forwarded message -----
+
+I've invited him to join this list btw.
+
+Potential diff for this. Is this diff reasonable?
+
+
+Index: decode162.f
+===================================================================
+--- decode162.f	(revision 1691)
++++ decode162.f	(working copy)
+@@ -112,8 +112,10 @@
+             k=k+1
+             w0=w0*ws0
+             w1=w1*ws1
+-            c0=c0 + w0*c4(k)
+-            c1=c1 + w1*c4(k)
++            if(k.le.ntps) then
++               c0=c0 + w0*c4(k)
++               c1=c1 + w1*c4(k)
++            endif
+          enddo
+ 
+          sq0=fac2*(real(c0)**2 + aimag(c0)**2)
+-- 
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000857.html">[Wsjt-devel] four2a.f
+</A></li>
+	<LI>Next message: <A HREF="000859.html">[Wsjt-devel] [lausts at acm.org: Fortran Runtime Error]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

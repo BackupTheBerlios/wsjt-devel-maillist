@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.3%20r3673%20terminates%20without%20notice&In-Reply-To=%3C52EEBDEA.1040105%40msteiner.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002202.html">
+   <LINK REL="Next"  HREF="002216.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice</H1>
+    <B>Michael Steiner</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.3%20r3673%20terminates%20without%20notice&In-Reply-To=%3C52EEBDEA.1040105%40msteiner.at%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice">michael at msteiner.at
+       </A><BR>
+    <I>Sun Feb  2 22:51:38 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002202.html">[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice
+</A></li>
+        <LI>Next message: <A HREF="002216.html">[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2203">[ date ]</a>
+              <a href="thread.html#2203">[ thread ]</a>
+              <a href="subject.html#2203">[ subject ]</a>
+              <a href="author.html#2203">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+Concerning modemmanager I think different, because if you do not have a 
+landline and you need an internet connection via a mobile-network, it 
+seems modemmanager is necessary to control GSM, CDMA and UMTS cards.
+
+73
+Michael
+
+On 2014-02-02 21:56, Chuck Forsberg WA7KGX wrote:
+&gt;<i> I ran wsjtx 3680 for a few hours and it did not exit by itself.
+</I>&gt;<i>
+</I>&gt;<i> I then noticed the transmit audio was gone.
+</I>&gt;<i> This appears to be caused by the Nvidia graphics driver.
+</I>&gt;<i>
+</I>&gt;<i> Sooo... I reinstalled Heisenbug this time WITHOUT the Nvidia driver.
+</I>&gt;<i> At first I was having problems with the serial port until I realized
+</I>&gt;<i> I had not uninstalled Fedora's ModemManager.  ModemManager
+</I>&gt;<i> is an undocumented fascist bagbiter that assumes serial ports are
+</I>&gt;<i> connected to - you guessed - modems.  How quaint. I uninstalled 
+</I>&gt;<i> ModemManager
+</I>&gt;<i> and wsjtx is happier.   Other Linux distros may have a similar port 
+</I>&gt;<i> minder
+</I>&gt;<i> which can throw a spanner in the works.  Dialup modems are so yesterday.
+</I>&gt;<i>
+</I>&gt;<i> I plan on leaving wsjtx running as much as possible (modulo Super Bowl)
+</I>&gt;<i> for the next day or so.
+</I>&gt;<i>
+</I>&gt;<i> On 02/02/2014 06:42 AM, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi Uli,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Many thanks for your report.  We are well aware that some CAT control 
+</I>&gt;&gt;<i> issues remain in WSJT-X v1.3.  They can be traced to the hamlib 
+</I>&gt;&gt;<i> library functions for certain rigs, and we are working to get them 
+</I>&gt;&gt;<i> fixed.  The next release of WSJT-X will have some major changes in 
+</I>&gt;&gt;<i> the rig-control code.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In the meantime, you will need to run with the polling interval set 
+</I>&gt;&gt;<i> to 0.
+</I>&gt;&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On 2/2/2014 9:32 AM, Ulrich Gaiser wrote:
+</I>&gt;&gt;&gt;<i> I did again some tests with WSJT-X V1.3r3673. The problem I had with 
+</I>&gt;&gt;&gt;<i> cat
+</I>&gt;&gt;&gt;<i> control in older versions is still present. When polling interval is 
+</I>&gt;&gt;&gt;<i> not
+</I>&gt;&gt;&gt;<i> set to zero then sometimes WSJT-X terminates without any notice. This
+</I>&gt;&gt;&gt;<i> happens often a short time after I change the frequency (in WSJTX or at
+</I>&gt;&gt;&gt;<i> the rig). When polling interval is set to zero there is no problem. My
+</I>&gt;&gt;&gt;<i> system is Windows 7 64bit and the rig is a FT-847 (cat rate set to 
+</I>&gt;&gt;&gt;<i> 57600).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Uli  DF7SC
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002202.html">[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice
+</A></li>
+	<LI>Next message: <A HREF="002216.html">[Wsjt-devel] WSJT-X v1.3 r3673 terminates without notice
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2203">[ date ]</a>
+              <a href="thread.html#2203">[ thread ]</a>
+              <a href="subject.html#2203">[ subject ]</a>
+              <a href="author.html#2203">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

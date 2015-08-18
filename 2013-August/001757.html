@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Version 1.2 beta release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCALNQy4_Vpi%2BGS_hVEvjPuuuh%3DLskReQN3_YYoWfwQc%3D510w%3DkA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001753.html">
+   <LINK REL="Next"  HREF="001759.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Version 1.2 beta release?</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCALNQy4_Vpi%2BGS_hVEvjPuuuh%3DLskReQN3_YYoWfwQc%3D510w%3DkA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Version 1.2 beta release?">ewpereira at gmail.com
+       </A><BR>
+    <I>Thu Aug  8 22:42:57 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001753.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+        <LI>Next message: <A HREF="001759.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1757">[ date ]</a>
+              <a href="thread.html#1757">[ thread ]</a>
+              <a href="subject.html#1757">[ subject ]</a>
+              <a href="author.html#1757">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+Can you try running pavucontrol on Ubuntu 12.10 to see if your sound card
+is listed? How did you get Qt5 inslalled? If from sources, do you have
+libpulse-dev installed?
+
+For testing, I like to have my own Qt compiled from sources. This
+simplifies testing since it enables me to have multiple versions of Qt
+installed concurrently. I like to compile Qt using the
+--prefix=/usr/local/qt-x.x.x. This way all Qt files are organized in their
+own directory tree (as opposed to scattering files all over the place).
+Running the appropriate /usr/local/qt-x.x.x/bin/qmake is enough to select
+the Qt version to test.
+
+73,
+
+-- Edson PY2SDR
+
+On Thu, Aug 8, 2013 at 5:08 PM, John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt; wrote:
+
+&gt;<i> &gt; ... WSJT-X Version 1.2, r3537 ...
+</I>&gt;<i> &gt; If it's convenient for you to install this and give it a try, please do
+</I>&gt;<i> so,
+</I>&gt;<i> &gt; and let me know if you find any installation or startup issues.
+</I>&gt;<i> &gt; ... Audio I/O now uses Qt's built-in multimedia library inatead of
+</I>&gt;<i> PortAudio....
+</I>&gt;<i>
+</I>&gt;<i> On Ubuntu 13.04, QtAudio appears to be working.
+</I>&gt;<i>
+</I>&gt;<i> On Ubuntu 12.10 using Qt5, no audio devices appear in the
+</I>&gt;<i> Configuration-&gt;Station-&gt;Audio_In/Out lists.
+</I>&gt;<i>
+</I>&gt;<i> Also, I was unsuccessful trying to build using Qt4 on Ubuntu 12.10,
+</I>&gt;<i> because the multimedia headers cause type mismatch errors.
+</I>&gt;<i>
+</I>&gt;<i> -John AC6SL
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130808/16c40bae/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130808/16c40bae/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001753.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+	<LI>Next message: <A HREF="001759.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1757">[ date ]</a>
+              <a href="thread.html#1757">[ thread ]</a>
+              <a href="subject.html#1757">[ subject ]</a>
+              <a href="author.html#1757">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

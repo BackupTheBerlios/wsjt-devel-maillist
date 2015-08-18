@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3CCALNQy48ynAjg4e0vNTLaYBiYBu8ohh3AwdsuFYOPyDVr1diS4Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001831.html">
+   <LINK REL="Next"  HREF="001830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3CCALNQy48ynAjg4e0vNTLaYBiYBu8ohh3AwdsuFYOPyDVr1diS4Q%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed Aug 14 17:11:51 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001831.html">[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 31
+</A></li>
+        <LI>Next message: <A HREF="001830.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1829">[ date ]</a>
+              <a href="thread.html#1829">[ thread ]</a>
+              <a href="subject.html#1829">[ subject ]</a>
+              <a href="author.html#1829">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill,
+
+I've compiled the latest cmake from sources and with the new cmake
+compilation of wsjtx is clean with the command
+
+/usr/local/cmake-2.8.11.2/bin/cmake -DCMAKE_PREFIX_PATH=/usr/local/qt-5.1.0
+../
+make
+
+It is running!
+
+I just noticed that the revison number is still r3547.
+
+73,
+
+-- Edson PY2SDR
+
+
+
+On Wed, Aug 14, 2013 at 11:53 AM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+
+&gt;<i> On 14/08/2013 15:50, Edson W. R. Pereira wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Bill,
+</I>&gt;&gt;<i>
+</I>&gt;<i> Hi Edson,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> Already did that! :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Many errors. Most likely due to not having the Qt libs in the default
+</I>&gt;&gt;<i> locations. I am looking at that and will report shortly. If the minimum
+</I>&gt;&gt;<i> version is indeed 2.8.9, we may have a problem since it will also require
+</I>&gt;&gt;<i> installation of a non standard CMake for the distrubution. Ubuntu 12.04 is
+</I>&gt;&gt;<i> the most recent production Ubuntu available (reason why I use it). 11.04 is
+</I>&gt;&gt;<i> testing. 11.10 is beta.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Try adding -DCMAKE_PREFIX_PATH=&lt;path-to-**your-Qt5-installation&gt; to the
+</I>&gt;<i> cmake command line.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> 73,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Edson PY2SDR
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130814/bfc3b6c5/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130814/bfc3b6c5/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001831.html">[Wsjt-devel] Wsjt-devel Digest, Vol 69, Issue 31
+</A></li>
+	<LI>Next message: <A HREF="001830.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1829">[ date ]</a>
+              <a href="thread.html#1829">[ thread ]</a>
+              <a href="subject.html#1829">[ subject ]</a>
+              <a href="author.html#1829">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

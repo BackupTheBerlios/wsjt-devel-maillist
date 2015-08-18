@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Debian Lenny
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C1211736577.3944.10.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000271.html">
+   <LINK REL="Next"  HREF="000273.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Debian Lenny</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C1211736577.3944.10.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT and Debian Lenny">lz1bb at mail.bg
+       </A><BR>
+    <I>Sun May 25 19:29:36 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000271.html">[Wsjt-devel] [Fwd: [wsjtgroup] WSPR QSO Mode]
+</A></li>
+        <LI>Next message: <A HREF="000273.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#272">[ date ]</a>
+              <a href="thread.html#272">[ thread ]</a>
+              <a href="subject.html#272">[ subject ]</a>
+              <a href="author.html#272">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To the attention of Hamish,
+
+Some time ago after some updates file instalation wsjt stopped to work
+on my Debian lenny box. Now after wsjt 5.97.r386-1.2 is ready I tryed to
+install it. First I got this error:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~$ wsjt
+ImportError: No module named numpy.core.multiarray
+Traceback (most recent call last):
+  File &quot;/usr/share/wsjt/wsjt.py&quot;, line 10, in &lt;module&gt;
+    import Audio
+ImportError: numpy.core.multiarray failed to import
+
+Well I installed python-numpy. During instalation python-f2py was
+removed by installer. Then when I try to start wsjt I get the interface
+window and at this point the program stops with this error:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~$ wsjt
+******************************************************************
+WSJT Version 5.9.7 r383 , by K1JT
+Revision date: 2007-05-04 23:17:52 +1000 (Fri, 04 May 2007) 
+Run date:   Sun May 25 17:13:32 2008 UTC
+Using PortAudio.
+/usr/bin/wsjt: line 32:  6570 Illegal instruction     env
+PYTHONPATH=/usr/lib/wsjt python /usr/share/wsjt/wsjt.py
+
+BTW I am using the case to report that I received many (more than 10)
+reports that WSJT is not working with Ubuntu 7.10 and 8.04 also.
+
+Hamish could you look at the deb packages for Debian and Ubuntu? I must
+report that my rpm package which I converted with alien into deb works
+fine on the same Debian Lenny here.
+
+73, Harry LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000271.html">[Wsjt-devel] [Fwd: [wsjtgroup] WSPR QSO Mode]
+</A></li>
+	<LI>Next message: <A HREF="000273.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#272">[ date ]</a>
+              <a href="thread.html#272">[ thread ]</a>
+              <a href="subject.html#272">[ subject ]</a>
+              <a href="author.html#272">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

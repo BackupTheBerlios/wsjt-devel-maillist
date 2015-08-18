@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] User's Guide
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20User%27s%20Guide&In-Reply-To=%3C52EAECB4.1060504%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002164.html">
+   <LINK REL="Next"  HREF="002165.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] User's Guide</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20User%27s%20Guide&In-Reply-To=%3C52EAECB4.1060504%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] User's Guide">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Jan 31 01:22:12 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002164.html">[Wsjt-devel] User's Guide
+</A></li>
+        <LI>Next message: <A HREF="002165.html">[Wsjt-devel] User's Guide
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2169">[ date ]</a>
+              <a href="thread.html#2169">[ thread ]</a>
+              <a href="subject.html#2169">[ subject ]</a>
+              <a href="author.html#2169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Joe,
+
+On 01/30/2014 01:19 PM, Joe Taylor wrote:
+&gt;<i> Hi Greg,
+</I>&gt;<i> 
+</I>&gt;&gt;<i> What editor are you using in Windows? There's a couple of
+</I>&gt;&gt;<i> different GtK files for Notepadd++ and Sublime I think it is, has
+</I>&gt;&gt;<i> a full set of AsciiDoc schema pages too.
+</I>&gt;<i> 
+</I>&gt;<i> My problem isn't the editor.  (I generally use Emacs, and it's all
+</I>&gt;<i> OK with appropriate highlighting.)
+</I>&gt;<i> 
+</I>&gt;<i> The problem is a that asciidoc uses source-highighter when building
+</I>&gt;<i> the html pages from .adoc sources.  This prevents me from building
+</I>&gt;<i> them properly on Windows, when [source,bash] blocks are present.
+</I>
+Ok, now I understand where and what the issue is. After working
+through several options on my desktop, I installed Cygwin up front on
+my WinXP laptop, and built the html inside.
+
+After install, Cygwin has a small footprint ~260 MB or so, and does
+not interfere with any HOST OS development package, e.g. Perl, Python
+Qt etc, which was the primary reason for using it over a native
+package install method.
+
+When selecting source-highlight in the Cygwin pkg manager, I did not
+notice an excessive number of packages being installed, then again,
+this was an installation, so I wasn't watching that closely.
+
+&gt;<i> 
+</I>&gt;<i> If we move compiling instructions to a separate manual, which I
+</I>&gt;<i> think is desirable, I can live with it.  Or I can build source
+</I>&gt;<i> highlighter from source, on Windows; but that requires installing
+</I>&gt;<i> &quot;boost&quot;.  I can do that, too...
+</I>
+Or another solution is to &quot;not&quot; use source code highlighting, but I
+find is useful as a reader.
+
+The whole idea was to make it easy for folks to get started with
+document contributions (another reason why Cygwin was an easy choice).
+Installing from source doesn't seem the best way, but certainly a
+workable solution. I spend the majority of my time in a Linux
+environment, admittedly I'm not up to speed on all the porting issues.
+
+&gt;<i> -- Joe
+</I>&gt;<i> 
+</I>&gt;&gt;<i> The GNU maintainer said he's no longer building binaries for
+</I>&gt;&gt;<i> Win32, as they can be built with MinGW or Cygwin. I downloaded
+</I>&gt;&gt;<i> the tar file, will have a read and see what the Info says about
+</I>&gt;&gt;<i> Win32.
+</I>&gt;&gt;<i> 
+</I>
+73's
+Greg
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+&gt;&gt;<i> 
+</I>&gt;&gt;<i> On 01/30/2014 12:43 PM, Joe Taylor wrote:
+</I>&gt;&gt;&gt;<i> A couple of additional points.
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> 1. Let's use the &quot;TIP:&quot; and &quot;IMPORTANT:&quot; rather than &quot;NOTES:&quot;
+</I>&gt;&gt;&gt;<i> in the User's Guide.  I think the &quot;NOTES:&quot; icon is ugly (and
+</I>&gt;&gt;&gt;<i> hard to read).
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> 2. Has anyone figured out how to install source-highlight in 
+</I>&gt;&gt;&gt;<i> Windows?  I haven't -- and not having will be a pain with
+</I>&gt;&gt;&gt;<i> Greg's nice-looking [source,bash] blocks.
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> -- Joe _______________________________________________
+</I>&gt;&gt;&gt;<i> Wsjt-devel mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i> -----BEGIN PGP SIGNATURE----- Version: GnuPG v1 Comment: Using
+</I>&gt;&gt;<i> GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> iQEcBAEBAgAGBQJS6rESAAoJEAmfcyeKlj0xMucIAK4orUUFmcgQ7M8WWncq0g6u 
+</I>&gt;&gt;<i> /t1ZvSbBpRdnBdvKrdtWGN6ycTpwyom9NZ7yOr6V9YqRDL/Yr1H6j7Eq7lhuOLIq 
+</I>&gt;&gt;<i> d0p08hwiTwn3j0/Ms0ANVNvlocKnaajRT8FxBaqE760l2O6OZloWTASRdaSCZ9dj 
+</I>&gt;&gt;<i> WMrSEoll6DOvmGNwMsVJI7dAUAY4LuHBgzsY1guWB2JdTUO2+jonvEyGhxulzr6/ 
+</I>&gt;&gt;<i> bCs091mI1KcEcF8QvMaU4KG+iwlYEPgKuyyKs/ima97g8AQKmOb7oQB72mBwz1L1 
+</I>&gt;&gt;<i> LLZaKmKTD1zW4StAyEk/5czfZtL22WP8u94KxF+ZuOhz+v/adx4iAGvNnVeb+L4= 
+</I>&gt;&gt;<i> =2LRR -----END PGP SIGNATURE----- 
+</I>&gt;&gt;<i> _______________________________________________ Wsjt-devel
+</I>&gt;&gt;<i> mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> _______________________________________________ Wsjt-devel mailing
+</I>&gt;<i> list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS6uytAAoJEAmfcyeKlj0xm/UH/1jXdMcfeBfaAjmj0E33Oesm
+8jHe7UaicvysntZz3ahzEjAa9IlUouuDlc3Vt3q0iex8wbs0FBRyiBG9URH3OWCj
+mbZO+5PR6VHK+iVcBFnf1MTnUZcS5p8PqLFro+2o1zNXd/AptE6zYemley1gnPBV
+3/2l4WP3KR10VQYrrORuUm7o0LIEokyVkv4TISetLQXNryGTEAthbo/JzYqk6vkd
+8D1Cn0fQPcFtYEjqk/OgwHGnhxPRRp3eE6xwjR6oMRwKSacYmC7UnuDYEHJYXPj0
+qzzVrvsZ+FjjavWCMr0llj32xag+LIbyY5rZcRsT2b8ClhAEEXw0seHvhDmIm7E=
+=6vHg
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002164.html">[Wsjt-devel] User's Guide
+</A></li>
+	<LI>Next message: <A HREF="002165.html">[Wsjt-devel] User's Guide
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2169">[ date ]</a>
+              <a href="thread.html#2169">[ thread ]</a>
+              <a href="subject.html#2169">[ subject ]</a>
+              <a href="author.html#2169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

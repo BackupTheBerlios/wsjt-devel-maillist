@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Configuration dialog proposal.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C52359A7D.6080405%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001939.html">
+   <LINK REL="Next"  HREF="001942.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Configuration dialog proposal.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C52359A7D.6080405%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Configuration dialog proposal.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sun Sep 15 13:31:09 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001939.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001942.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1940">[ date ]</a>
+              <a href="thread.html#1940">[ thread ]</a>
+              <a href="subject.html#1940">[ subject ]</a>
+              <a href="author.html#1940">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/09/2013 12:00, John Nelson wrote:
+Hi John,
+&gt;<i> Bill,
+</I>Thanks for taking a look at this. I have made the dialog fully 
+resizeable so hopefully it displays correctly on OS-X too.
+&gt;<i>
+</I>&gt;<i> I like the general layout in that it merges the various Configuration/Setup options into a coherent set of panels.   One useful change is removing the confusion (that has been reported to me) over the difference between CAT Port and PTT Port.   Renaming Cat Port -&gt; Serial Port  and PTT port -&gt; CAT port  is more logical.
+</I>I'm not sure I follow here. CAT port and serial port may be different or 
+the same with my current configuration code. The actual working 
+configuration screen uses stricter widget disables than before to 
+restrict the available options to the ones that make sense, so that may 
+help with any confusion. Also I have tried to write more extensive tool 
+tips as reminders of the functionality.
+&gt;<i>
+</I>&gt;<i> However, this means changing naming conventions in  wsjtx.ini   .   What do you propose here?    It means that an older wsjtx.ini cannot be imported to overwrite the new one.
+</I>I've made a couple of changes recently that cause keys in the .INI file 
+to be renamed. Obsolete keys are not really a problem and writing code 
+to do automatic upgrades is hardly worth the effort since it gets 
+complicated very quickly and leaves historical baggage in the code base. 
+IMHO just announcing in the release note for a version that certain 
+configuration options will need resetting after an upgrade is probably 
+the best overall solution.
+&gt;<i>
+</I>&gt;<i> At present,  CAT ports (later Serial Port) list a lot of COM or USB options, but until I added &quot;User&quot; this list was not user-extensible.   (&quot;User&quot; can be replaced by an addition in wsjtx.ini - see page 5 footnote in User Guide.)   Something like this needs to be added to PTT port (later CAT port).
+</I>&gt;<i>
+</I>&gt;<i> I would prefer that instead of having to edit wsjtx.ini to add a user specific driver to the serial list, there should be a panel/box where additions can be made.  Same for the PTT/CAT box.    Ideally, users should not have to edit wsjtx.ini at all.   User definable options/additions should be on the configuration panel
+</I>I think the best route here is the one taken by hamlib. They simple 
+allow '/dev/rig' as the CAT device and the user is expected to make a 
+symlink to the actual device. This is the Posix way of handling custom 
+device names and I don't see any real problems with it (apart from on 
+Windows but that is another story). Hamlib has a default device of 
+'/dev/rig' which we don't currently allow but could easily do so. We 
+could do the same with '/dev/ptt' for example.
+&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001939.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001942.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1940">[ date ]</a>
+              <a href="thread.html#1940">[ thread ]</a>
+              <a href="subject.html#1940">[ subject ]</a>
+              <a href="author.html#1940">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

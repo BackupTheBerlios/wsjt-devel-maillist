@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on MacOSX 10.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C20080621204814.GB24477%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000368.html">
+   <LINK REL="Next"  HREF="000385.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on MacOSX 10.4</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C20080621204814.GB24477%40night.db.net%3E"
+       TITLE="[Wsjt-devel] WSJT on MacOSX 10.4">db at db.net
+       </A><BR>
+    <I>Sat Jun 21 22:48:14 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000368.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+        <LI>Next message: <A HREF="000385.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jun 21, 2008 at 06:50:57PM +0100, John Nelson wrote:
+&gt;<i> I wrote this on 18 June - but it may have been lost.
+</I>&gt;<i>
+</I>&gt;<i> I am following in the footsteps of Joe Large (W6CQZ; lists 27 Dec
+</I>&gt;<i> 2007) in trying to get WSJT running on MacOSX 10.4 (PowerPC).   I am
+</I>&gt;<i> using source from release 386.    His recipe for compiling was most
+</I>&gt;<i> helpful in getting started.   Only minor changes had to be added.
+</I>&gt;<i> In addition Nick Repin (VK2ZTY) provided additional help to change
+</I>&gt;<i> menus from PC to Mac format.
+</I>
+Excellent!
+
+&gt;<i> (386) on a PC running XP.    So far FSK441 mode works.
+</I>
+Cool ;-)
+
+&gt;<i>
+</I>&gt;<i> But JTxx does not.    The KVASD.EXE package is not compiled for a
+</I>&gt;<i> PowerPC and therefore the version using the Berlekamp-Massey
+</I>&gt;<i> algorithm is automatically selected - see extract.f line 61.   This
+</I>&gt;<i> does not decode correctly in that the call signs are not presented.
+</I>&gt;<i> Routine decode_rs returns ncount = -1 on every call.
+</I>
+*ugh*
+
+&gt;<i>
+</I>&gt;<i> However, if the KVASD.EXE file on the PC is disabled (by renaming the
+</I>&gt;<i> file), the official release does not decode properly either.   While
+</I>&gt;<i> I understand the development team is running Windows/Linux and
+</I>
+I do not run Windows or Linux! BSD only here, FreeBSD for wsjt. ;-)
+
+&gt;<i> therefore has the KVASD package running, it would be very helpful if
+</I>
+I have been wanting a FreeBSD verison of KVASD for a while.
+
+&gt;<i> the experts could tell me how the official release can be made to
+</I>&gt;<i> operate correctly without this package.   It seems to me that it is
+</I>&gt;<i> supposed to work.   I might then be able to transfer your solution to
+</I>&gt;<i> the Mac version.
+</I>
+I suspect it's something to do with byte ordering still. I'll be happy
+to look at it as I also have an OSX box sitting next to me.
+(OSX is just another BSD box after all)
+
+&gt;<i> Or is the code in extract.f which calls decode_rs now obsolete?   Or,
+</I>&gt;<i> another possibility:   is KVASD available compiled for a PowerPC??
+</I>
+I want it for FreeBSD :-)
+
+To dig into this, could you e-mail me directly any diffs you had to make?
+I'd like to play with this as well. I can commit these.
+
+&gt;<i>
+</I>&gt;<i> John  G4KLA
+</I>&gt;<i>
+</I>
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000368.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+	<LI>Next message: <A HREF="000385.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#369">[ date ]</a>
+              <a href="thread.html#369">[ thread ]</a>
+              <a href="subject.html#369">[ subject ]</a>
+              <a href="author.html#369">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

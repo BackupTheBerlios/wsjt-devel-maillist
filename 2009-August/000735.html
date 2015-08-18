@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] WSJT r1316
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20WSJT%20r1316&In-Reply-To=%3C4A7AE5FE.2030303%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000728.html">
+   <LINK REL="Next"  HREF="000736.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] WSJT r1316</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20WSJT%20r1316&In-Reply-To=%3C4A7AE5FE.2030303%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] WSJT r1316">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Aug  6 16:17:34 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000728.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+        <LI>Next message: <A HREF="000736.html">[Wsjt-devel] [WSJT-SVN] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+Thanks for the info.  I guess one size does not fit all; as 
+we've seen in other ways, some combinations of 
+python/numpy/f2py/gfortran behave differently from others.
+
+I think there's no reason to keep the --debug flag, anyway. 
+    As for &quot;--noopt&quot;, that's exactly what was needed to make 
+it all fly on Ubuntu 9.04.  For now, I guess, on your system 
+you should edit it back to &quot;--opt=&quot;-O&quot;.
+
+I believe that if f2py calls f2py2e.py it implies that an 
+earlier version of f2py is being used.  See
+<A HREF="http://www.f2py.org/">http://www.f2py.org/</A> and 
+<A HREF="http://cens.ioc.ee/projects/f2py2e/usersguide/index.html">http://cens.ioc.ee/projects/f2py2e/usersguide/index.html</A> .
+
+	-- Joe, K1JT
+
+&gt;<i> The change in the Makefile from success to failure is this line
+</I>&gt;<i> 
+</I>&gt;<i> Success (Makefile from r1301)
+</I>&gt;<i> &lt;        ${F2PY} -c --quiet --opt=&quot;-O ${CFLAGS} \
+</I>&gt;<i> &lt;       ${FFLAGS}&quot;      $(OBJS2C) $(OBJS2F77) -m Audio \
+</I>&gt;<i> Failure:  (Makefile from r1316)
+</I>&gt;<i>  &gt;       ${F2PY} -c --quiet --noopt --debug \
+</I>&gt;<i>  &gt;       --f77flags=&quot;${FFLAGS}&quot; --f90flags=&quot;${FFLAGS}&quot; \
+</I>&gt;<i>  &gt;       $(OBJS2C) $(OBJS2F77) -m Audio \
+</I>&gt;<i> 
+</I>&gt;<i> The problem lies in these two options:    --noopt --debug.  If both  
+</I>&gt;<i> are removed then compilation succeeds (as does program execution).
+</I>&gt;<i> 
+</I>&gt;<i> Q1:   I am not familiar with f2py.    Why is --noopt needed?   What  
+</I>&gt;<i> is --debug?
+</I>&gt;<i> 
+</I>&gt;<i> --John  G4KLA
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> wsjt-svn mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-svn">https://lists.berlios.de/mailman/listinfo/wsjt-svn</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000728.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+	<LI>Next message: <A HREF="000736.html">[Wsjt-devel] [WSJT-SVN] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

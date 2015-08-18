@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Question about dynamic range of Map65
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20about%20dynamic%20range%20of%20Map65&In-Reply-To=%3C4AD8B372.1090806%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000748.html">
+   <LINK REL="Next"  HREF="000750.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Question about dynamic range of Map65</H1>
+    <B>jeff millar</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20about%20dynamic%20range%20of%20Map65&In-Reply-To=%3C4AD8B372.1090806%40gmail.com%3E"
+       TITLE="[Wsjt-devel] Question about dynamic range of Map65">wa1hco at gmail.com
+       </A><BR>
+    <I>Fri Oct 16 19:54:58 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000748.html">[Wsjt-devel] Question about dynamic range of Map65
+</A></li>
+        <LI>Next message: <A HREF="000750.html">[Wsjt-devel] Question about dynamic range of Map65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#749">[ date ]</a>
+              <a href="thread.html#749">[ thread ]</a>
+              <a href="subject.html#749">[ subject ]</a>
+              <a href="author.html#749">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>thanks for the quick response
+
+I was bit reluctant to turn down the Delta 44 gain sliders 
+(envy24control under linux) because I didn't know if they tracked 
+perfectly and also because running them wide open might provide the best 
+dynamic range.
+
+After turning them down, the waterfall display looks different in the 
+sidebands around loud spurious...maybe because the very loud spurious 
+stopped clipping, don't know.
+
+I _should_ turn down the receiver converter gain, but before doing that, 
+what's the right parameter within linrad to adjust level in the network 
+packets?   In the past, I've tweaked &quot;First FFT amplitude&quot; but without 
+being totally comfortable, not knowing the side effects.
+
+jeff, wa1hco
+
+Joe Taylor wrote:
+&gt;<i> Hi Jeff,
+</I>&gt;<i>
+</I>&gt;<i> As I think you know, setting &quot;Rx noise&quot; to 0 dB nominally gives you 
+</I>&gt;<i> the ideal level.
+</I>&gt;<i>
+</I>&gt;<i> Under most conditions you have considerable leeway.  I think I set 
+</I>&gt;<i> things so that 0 db corresponds to an rms level of 100 in the 16-bit 
+</I>&gt;<i> data coming into MAP65 from Linrad.  A level of +20 dB would mean 
+</I>&gt;<i> rms=1000, which is still OK but reduces your &quot;headroom&quot; for handling 
+</I>&gt;<i> very strong signals.
+</I>&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> jeff millar wrote:
+</I>&gt;&gt;<i> Does anyone know what range of reported Rx levels work with Map65 
+</I>&gt;&gt;<i> (not IQ)? For example, without my receive converter and softrock, 
+</I>&gt;&gt;<i> Map65 reports a level of about -1.5 dB. With the audio input from the 
+</I>&gt;&gt;<i> receiver connected the level becomes 26.5 dB (too high, I know...but 
+</I>&gt;&gt;<i> that's a different problem). What does the internal data paths 
+</I>&gt;&gt;<i> provide for dynamic range?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> jeff, wa1hco
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000748.html">[Wsjt-devel] Question about dynamic range of Map65
+</A></li>
+	<LI>Next message: <A HREF="000750.html">[Wsjt-devel] Question about dynamic range of Map65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#749">[ date ]</a>
+              <a href="thread.html#749">[ thread ]</a>
+              <a href="subject.html#749">[ subject ]</a>
+              <a href="author.html#749">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

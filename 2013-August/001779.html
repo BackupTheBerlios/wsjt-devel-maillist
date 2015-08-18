@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: commited r3542.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3C52065D71.4000408%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001778.html">
+   <LINK REL="Next"  HREF="001780.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: commited r3542.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3C52065D71.4000408%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: commited r3542.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Aug 10 17:34:09 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001778.html">[Wsjt-devel] WSJTX v1.2 r3537 Crash with Windows 7
+</A></li>
+        <LI>Next message: <A HREF="001780.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1779">[ date ]</a>
+              <a href="thread.html#1779">[ thread ]</a>
+              <a href="subject.html#1779">[ subject ]</a>
+              <a href="author.html#1779">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+some more changes. Highlights include audio channel selection and tx 
+audio level control.
+
+
+===================================================================================
+------------------------------------------------------------------------
+r3542 | bsomervi | 2013-08-10 16:29:55 +0100 (Sat, 10 Aug 2013) | 100 lines
+
+Added audio channel support.
+
+Audio input can be mono, left of stereo pair or, right of stereo
+pair. Audio output can be mono, left of stereo pair, right of stereo
+pair or, both of stereo pair (the same output goes to both channels in
+both mode). Settings are remembered between sessions.
+
+Stream channel suport is implemented mainly in the new AudioDevice
+class which is now the base class of Modulator and Detector.
+
+Audio channels are selected on the configuration screen. Only
+supported channel configurations per device can be selected.
+
+Audio output volume (actually attenuation) is now possible from the
+GUI. I have added a slider control to the main window; I don't
+necessarily propose this as a final release location for the widget as
+I understand that changes to the main screen are sensitive. This
+location is just a starting suggestion for a trial. The volume
+(attenuation) setting is remembered between sessions and is not device
+dependent. This addresses all issues of volume setting on *nix
+versions since there is no need to use pavucontrol to set audio
+levels. The volume (attenuation) action is logarithmic.
+
+Shaped CW keying has been implemented in Modulator although it is
+currently disabled as I am not 100% happy wth the implementation. If
+you want to try it define the C++ preprocessor macro WSJT_SOFT_KEYING
+in your build.
+
+The Modulator instance has been moved to the same thread as the
+SoundOutput instance as it should have been since the output callback
+already operates in that thread. Cross thread slots are now correctly
+called in a thread safe way as a result.
+
+A number of files where in the SVN repository with DOS line endings
+which I have removed. SVN users on Windows need set the config for
+native line endings so that DOS line endings are automatically
+stripped on checkin.
+
+The DevSetup class now holds it's UI o the heap to reduce imapact on
+build dependencies.
+
+The application settings are now passed to objects from the main.cpp
+file. Management of settings are moved to the responsible classes (top
+level windows). This has involved a few settings moving groups so
+users will see some settings reverting to default values on the first
+run of an update.
+
+Persistance of top level windows geometry and position is now handled
+in the recommened manner (constructor for load, closeEvent for store
+in modal windows and, hideEvent for store in modeless dialogs).
+
+The MainWindow class now holds its children as members rather than
+global variables.
+
+The LogQSO class now hides its implementation and takes responsibility
+for its own settings and widows rendering parameters. A new settings
+file group is implemented to persist the LogQSO class settings.
+
+The WideGraph class now hides its implementation and manages its own
+settings and window rendering parameters.
+==================================================================
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001778.html">[Wsjt-devel] WSJTX v1.2 r3537 Crash with Windows 7
+</A></li>
+	<LI>Next message: <A HREF="001780.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1779">[ date ]</a>
+              <a href="thread.html#1779">[ thread ]</a>
+              <a href="subject.html#1779">[ subject ]</a>
+              <a href="author.html#1779">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A56F614.4010703%40superbug.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000685.html">
+   <LINK REL="Next"  HREF="000689.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>James Courtier-Dutton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A56F614.4010703%40superbug.co.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">James at superbug.co.uk
+       </A><BR>
+    <I>Fri Jul 10 10:04:36 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000685.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000689.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Taylor wrote:
+&gt;<i> Hi James,
+</I>&gt;<i>
+</I>&gt;<i> Nice to hear from you!
+</I>&gt;<i>
+</I>&gt;<i> James Courtier-Dutton wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> I think the problems could be due to fortran problems with
+</I>&gt;&gt;<i> multi-threaded applications.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Yes, the problem has to do with multi-threading.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> I read somewhere that a majority of fortran functions are not re-entrant.
+</I>&gt;&gt;<i> I am not sure how one would go about resolving this sort of issue, apart
+</I>&gt;&gt;<i> from removing all fortran code from the application and replacing it
+</I>&gt;&gt;<i> with code that is re-entrant.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have found something that might be useful.
+</I>&gt;&gt;<i> <A HREF="http://velveeta.che.wisc.edu/octave/lists/help-octave/2004/1828">http://velveeta.che.wisc.edu/octave/lists/help-octave/2004/1828</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Note the keyword &quot;recursive&quot; and &quot;end subroutine&quot;
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> We don't need recursion, in the sense of a routine being 
+</I>&gt;<i> able to safely call itself.
+</I>&gt;<i>
+</I>&gt;<i> We *do* need much of the WSJT code (and the underlying 
+</I>&gt;<i> Fortran runtime) to be re-entrant in the sense of being 
+</I>&gt;<i> &quot;thread safe&quot;.
+</I>&gt;<i>
+</I>&gt;<i> The runtime &quot;libgfortran&quot; was upgraded to thread-safe status 
+</I>&gt;<i> as of gfortran 4.1, in November 2005.  I haven't found a 
+</I>&gt;<i> definitive statement about g95.  There is nothing intrinsic 
+</I>&gt;<i> about Fortran that makes it less capable of being 
+</I>&gt;<i> thread-safe than other languages.
+</I>&gt;<i>
+</I>&gt;<i> I believe the problem we've been trying to isolate can be 
+</I>&gt;<i> ascribed to not using mutex lockouts around some critical 
+</I>&gt;<i> sections of code where different threads may try to access 
+</I>&gt;<i> the same resource.
+</I>&gt;<i>
+</I>&gt;<i> In revision 1271 of the WSJT repository (under 
+</I>&gt;<i> .../branches/wsjt8) I have added a file fthread.c that 
+</I>&gt;<i> provides Fortran wrappers for basic functions in the Posix 
+</I>&gt;<i> pthreads library, and a simple Fortran program that tests 
+</I>&gt;<i> multi-threading with and without mutex lockouts.  I also 
+</I>&gt;<i> placed a tarfile of this stuff at
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/test_threads.tgz">http://physics.princeton.edu/pulsar/K1JT/test_threads.tgz</A>
+</I>&gt;<i>
+</I>&gt;<i> If interested, you might want to play with this simple 
+</I>&gt;<i> program.  I found it very instructive.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>After work yesterday I had a more detailed look. I am running ubuntu
+karmic and I get the same segfault on start.
+I use:
+gdb python
+run wsjt.py
+
+It then tells me the line of the code that is crashing.
+It is crashing inside a read statement.
+When it crashes I can do a
+thread apply all bt
+
+This tells me what every thread was doing at the time of the crash. This
+also tells me that it is not a re-entrant problem because no other
+threads were calling read or write at the same time.
+Simply adding a print * line above the crashing read statement stops it
+crashing at that point.
+When exiting the program, it crashes at another point that is a write
+statement.
+write(*,1006)
+1006 format('Audio streams terminated normally.')
+
+Using gdb I find that the parameter passed is not actually a pointer to
+the &quot;Audio streams...&quot; string, but instead a pointer to an empty string!
+I am starting to think that this is not a multi-thread problem at all.
+I think it is a memory or stack corruption problem.
+The problems where the crash happens are in:
+a2d.f90:line 22
+astro0.F90:line 22
+
+Unfortunately, I have not found the actual cause yet.
+
+Kind Regards
+
+James
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000685.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000689.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

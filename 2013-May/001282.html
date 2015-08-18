@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Building WSJT-X on OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3C1368391023.30973.YahooMailNeo%40web125502.mail.ne1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001281.html">
+   <LINK REL="Next"  HREF="001283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Building WSJT-X on OS X</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3C1368391023.30973.YahooMailNeo%40web125502.mail.ne1.yahoo.com%3E"
+       TITLE="[Wsjt-devel] Building WSJT-X on OS X">ki7mt at yahoo.com
+       </A><BR>
+    <I>Sun May 12 22:37:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001281.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+        <LI>Next message: <A HREF="001283.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1282">[ date ]</a>
+              <a href="thread.html#1282">[ thread ]</a>
+              <a href="subject.html#1282">[ subject ]</a>
+              <a href="author.html#1282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dave,
+
+I don't have a Mac in the shack :-) but the the XYL does development on a MacBook Pro with the latest SDK, Qt, etc etc with OS, 10.7. I did some poking around on to see where things were located.
+
+Couple Things:
+
+First, for the the Makfile.linux (make -f Makefile.linux) you need to edit the INCPATH:
+
+INCPATH = &#160;-I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'&#160;
+
+
+For me, Qwt-qt4 Libs were installed here:
+
+INCPATH = &#160;-I'/lib/qt4-mac/include/qwt -I'/lib/qt4-mac/include/qwt/QtCore'&#160;
+
+You'll need to check on your box where the libs are located and adjust accordingly.
+
+Same thing for wsjtx.pro:
+
+Adjust the qwt/include and LIBS+= statement&#160;according to your system:
+
+unix {
+INCLUDEPATH += $$quote(/lib/qt4-mac/include/qwt)
+LIBS += ../wsjtx/lib/libjt9.a
+LIBS += -lhamlib
+LIBS += -lportaudio -lgfortran -lfftw3f -lqwt
+}
+
+echo $PATH showed the /libs dir in the path, so you could try excluding the INCLUDEPATH directive. If you know where they are, probably best to include it.
+
+One last thing. When you run make -f Makefile.linux the first time, you need to ensure the install directory wsjt_install actually exists, otherwise, jt9 will be copied to &quot;wsjt_install&quot; as a file, v.s. being placed in the directory of ../wsjt_install. It should be at the root level of the svn co ../wsjtx and ../wsjtx_install
+
+Good Luck,
+
+
+73's Greg, KI7MT
+.
+
+-----------------------
+
+
+[Dave Wrote]
+I made a bit of progress working my way through the Makefile.linux, but am going to call it a night.  WIll pick it back up tomorrow, but would appreciate any guidance anyone may have on overall requirements for building for OS X 10.8.  Will share any developments I get tomorrow.  73 Dave  -- 
+Dave Wright
+K3DCW
+www.k3dcw.net &quot;Real radio bounces off of the sky&quot;
+[/Dave Wrote]
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/70e8b0a0/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/70e8b0a0/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001281.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+	<LI>Next message: <A HREF="001283.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1282">[ date ]</a>
+              <a href="thread.html#1282">[ thread ]</a>
+              <a href="subject.html#1282">[ subject ]</a>
+              <a href="author.html#1282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

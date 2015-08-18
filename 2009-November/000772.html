@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT Packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Packages&In-Reply-To=%3C4AF18776.5070205%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000769.html">
+   <LINK REL="Next"  HREF="000773.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT Packages</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Packages&In-Reply-To=%3C4AF18776.5070205%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT Packages">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Nov  4 14:53:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000769.html">[Wsjt-devel] WSJT Packages
+</A></li>
+        <LI>Next message: <A HREF="000773.html">[Wsjt-devel] WSJT Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#772">[ date ]</a>
+              <a href="thread.html#772">[ thread ]</a>
+              <a href="subject.html#772">[ subject ]</a>
+              <a href="author.html#772">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John and all,
+
+&gt;<i> I am looking at making a WSJT package that can be downloaded to a  
+</I>&gt;<i> Mac.    There isn't a pyinstaller for a Mac so the best would be to  
+</I>&gt;<i> encapsulate parts of WsjtMod/* together with some relevant  
+</I>&gt;<i> libraries.   The question is the definition of &quot;some&quot;.
+</I>
+You're approaching this the same way I did.  As far as I 
+know this makes sense, but I am anything but experienced at 
+making software packages on *nix.
+
+The .deb packages I made for wsjt and wspr assume that these
+packages are already installed:
+
+    python-numpy
+    python-tk
+    python-imaging-tk
+    libsamplerate0
+
+I'm sure it's possible to have this dependence built into 
+the package, so that these things will be installed 
+automatically, if necessary.  I had not figured out how to 
+do this step, so I left it up to the user.
+
+&gt;<i> In the DEB package, what basic infrastructure is assumed to be in  
+</I>&gt;<i> place on the host system?   Fortran and POSIX thread libraries?    
+</I>&gt;<i> Complete python/numpy/tk infrastructure?   Anything else?    If this  
+</I>&gt;<i> is the full list, then I could include appropriate advice to Mac  
+</I>&gt;<i> users that at least these should be present and the rest will be  
+</I>&gt;<i> provided as part of the package.
+</I>
+Yes, that's exactly what I did.
+
+&gt;<i> I assume that specific libraries (portaudio, samplerate, fftw) will  
+</I>&gt;<i> be provided as part of the package and, on a Mac, will be downloaded  
+</I>&gt;<i> to the appropriate directory.
+</I>
+There are probably more polished ways of doing this, but it 
+should work.
+
+I have now retrieved the .deb package made for WSJT 5.9.7 
+r383 by VK3SB.  Maybe I can build on what Hamish did way 
+back then, and end up with a better package than my simple one.
+
+Finally: thanks for the EME QSO on 2m, a couple of evenings 
+ago!  As far as I can recall, it's a milestone: the first 
+EME QSO using WSJT tools, between active WSJT development 
+group members.  :-)
+
+	-- Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000769.html">[Wsjt-devel] WSJT Packages
+</A></li>
+	<LI>Next message: <A HREF="000773.html">[Wsjt-devel] WSJT Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#772">[ date ]</a>
+              <a href="thread.html#772">[ thread ]</a>
+              <a href="subject.html#772">[ subject ]</a>
+              <a href="author.html#772">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

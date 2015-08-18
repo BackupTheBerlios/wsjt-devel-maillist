@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Why --enable-alsa
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Why%20--enable-alsa&In-Reply-To=%3C20070402194526.GA36680%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000054.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Why --enable-alsa</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Why%20--enable-alsa&In-Reply-To=%3C20070402194526.GA36680%40night.db.net%3E"
+       TITLE="[Wsjt-devel] Why --enable-alsa">db at db.net
+       </A><BR>
+    <I>Mon Apr  2 21:45:26 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000047.html">[Wsjt-devel] Why --enable-alsa
+</A></li>
+        <LI>Next message: <A HREF="000054.html">[Wsjt-devel] Why --enable-alsa
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Apr 02, 2007 at 02:19:03PM -0400, Joe Taylor wrote:
+&gt;<i> Come to think of it, why is the &quot;--enable-alsa&quot; feature in
+</I>&gt;<i> the configure script now, anyway?
+</I>
+or the --enable-oss
+
+&gt;<i>
+</I>&gt;<i> Isn't it true that portaudio itself uses the alsa sound
+</I>&gt;<i> system, if that's what is installed in a *nix computer?
+</I>
+portaudio would be our quickest route to getting a full port
+to OSX going.
+&gt;<i>
+</I>&gt;<i> Shouldn't we eliminate --enable-alsa entirely?  What benefit
+</I>&gt;<i> does it bring?
+</I>
+And --enable-oss
+
+That being said, I have been meaning to ask why in wsjt1.F we have:
+
+#if (USE_PORTAUDIO==1)  || defined(Win32)
+           ierr=resample(dat2,dat,samratio,jz)
+           if(ierr.ne.0) print*,'Resample error.',samratio
+#endif
+
+Perhaps resample should be enabled for OSS and ALSA as well?
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000047.html">[Wsjt-devel] Why --enable-alsa
+</A></li>
+	<LI>Next message: <A HREF="000054.html">[Wsjt-devel] Why --enable-alsa
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#49">[ date ]</a>
+              <a href="thread.html#49">[ thread ]</a>
+              <a href="subject.html#49">[ subject ]</a>
+              <a href="author.html#49">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

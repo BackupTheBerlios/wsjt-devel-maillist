@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] four2a.f
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20four2a.f&In-Reply-To=%3C20091118013542.GA43723%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000851.html">
+   <LINK REL="Next"  HREF="000853.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] four2a.f</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20four2a.f&In-Reply-To=%3C20091118013542.GA43723%40night.db.net%3E"
+       TITLE="[Wsjt-devel] four2a.f">db at db.net
+       </A><BR>
+    <I>Wed Nov 18 02:35:42 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000851.html">[Wsjt-devel] four2a.f
+</A></li>
+        <LI>Next message: <A HREF="000853.html">[Wsjt-devel] four2a.f
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#852">[ date ]</a>
+              <a href="thread.html#852">[ thread ]</a>
+              <a href="subject.html#852">[ subject ]</a>
+              <a href="author.html#852">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Nov 17, 2009 at 08:17:52PM -0500, Joe Taylor wrote:
+&gt;<i> Hi Diane,
+</I>&gt;<i> 
+</I>&gt;<i> Sorry to be slow in getting back to you about this.
+</I>
+No problem whatsoever.
+
+&gt;<i> Surely we should rationalize the calls to fftw.  If you don't mind 
+</I>&gt;<i> waiting a few days, though, I'd like to get WSPR 2.0 released before I 
+</I>&gt;<i> look at it again.  In the meantime, I assume you can use your own 
+</I>
+Which I am doing.
+
+I have spotted another problem, I'm surprised no one else has run into it.
+Basically it appears that all the start_thread calls are returning the
+wrong value to the fortran callers resulting in a false error of threads
+not working. What I see is a 2 minute (or so wait) then an error exit
+with a very large integer. I suspect an integer*4 vs. integer*8 or similar
+problem due to an updated gfortran. I'm investigating this tonight.
+
+I'm including the workaround I am using for now.
+
+- 73 Diane VA3DB
+-- 
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: files.tgz
+Type: application/x-gtar
+Size: 776 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20091117/83da74d6/attachment.tgz">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20091117/83da74d6/attachment.tgz</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000851.html">[Wsjt-devel] four2a.f
+</A></li>
+	<LI>Next message: <A HREF="000853.html">[Wsjt-devel] four2a.f
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#852">[ date ]</a>
+              <a href="thread.html#852">[ thread ]</a>
+              <a href="subject.html#852">[ subject ]</a>
+              <a href="author.html#852">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

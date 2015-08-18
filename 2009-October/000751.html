@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR v2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C6AB1EE3B-B36D-4EEB-8F2F-5B5510E09294%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000746.html">
+   <LINK REL="Next"  HREF="000752.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR v2.0</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C6AB1EE3B-B36D-4EEB-8F2F-5B5510E09294%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSPR v2.0">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Tue Oct 27 17:24:43 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000746.html">[Wsjt-devel] Debian Testing System
+</A></li>
+        <LI>Next message: <A HREF="000752.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#751">[ date ]</a>
+              <a href="thread.html#751">[ thread ]</a>
+              <a href="subject.html#751">[ subject ]</a>
+              <a href="author.html#751">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Joe,
+
+I have noticed a lot of activity from you on V2.0 of WSPR.   Today I  
+thought it would be a good idea to download r1574 and test  
+compilation on my Mac.
+
+Apart from the (previously reported) change I have to make to the  
+f2py call:
+
+WsprMod/w.so:   ${OBJS2C} $(SRCS2F90) $(SRCS2F77) acom1.f90
+         ${F2PY} -c --opt=&quot;-O ${CFLAGS} ${FFLAGS}&quot; \
+         --fcompiler=${FCV} --f77exec=${FC} --f90exec=${FC} \
+         --opt=&quot;-fbounds-check ${FFLAGS}&quot; \
+         ${CPPFLAGS} ${LDFLAGS} ${LIBS} \
+         -m w \
+         only: $(F2PYONLY) : \
+
+instead of:
+
+WsprMod/w.so:   ${OBJS2C} $(SRCS2F90) $(SRCS2F77) acom1.f90
+         ${F2PY} -c --quiet --noopt --debug -m w \
+         --f77flags=&quot;${FFLAGS}&quot; --f90flags=&quot;${FFLAGS}&quot; \
+         --fcompiler=${FCV} --f77exec=${FC} --f90exec=${FC} \
+         --opt=&quot;-fbounds-check ${FFLAGS}&quot; \
+         ${CPPFLAGS} ${LDFLAGS} ${LIBS} \
+
+compilation works.   However, execution does not.
+
+In the (WSPR) version of four2a.f, all the calls to sfftw have an  
+underscore post_fixed.   Whereas in the (WSJT) version, the post- 
+fixed underscore is absent.  (I think this is correct.)   The dynamic  
+load fails since the fortran compiler post-fixes an underscore to a C  
+call so that the loader fails:
+
+    Symbol not found: _sfftw_execute__
+
+Note the double underscore.   If I remove the trailing _ in four2a.f,  
+everything works OK.    I am using fftw-3.1.2  compiled into /usr/ 
+local/lib
+
+So, question:   why do the calls to sfftw_xxx  carry a post_fixed  
+underscore?
+
+---   John    G4KLA
+
+PS:  I notice that (WSPR) four2a.f is not the same as (WSJT) four2a.f
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000746.html">[Wsjt-devel] Debian Testing System
+</A></li>
+	<LI>Next message: <A HREF="000752.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#751">[ date ]</a>
+              <a href="thread.html#751">[ thread ]</a>
+              <a href="subject.html#751">[ subject ]</a>
+              <a href="author.html#751">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

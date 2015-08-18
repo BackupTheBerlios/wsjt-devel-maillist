@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Beta release of WSJT8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Beta%20release%20of%20WSJT8&In-Reply-To=%3C4C1FDCE6.7040306%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000932.html">
+   <LINK REL="Next"  HREF="000933.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Beta release of WSJT8</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Beta%20release%20of%20WSJT8&In-Reply-To=%3C4C1FDCE6.7040306%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Beta release of WSJT8">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jun 21 23:43:02 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000932.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+        <LI>Next message: <A HREF="000933.html">[Wsjt-devel] WSJT8 on Debian 5.01
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#935">[ date ]</a>
+              <a href="thread.html#935">[ thread ]</a>
+              <a href="subject.html#935">[ subject ]</a>
+              <a href="author.html#935">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+Many new reports on the WSJT8 modes over the past 24 hours.  Thanks to 
+all for the helpful comments, suggestions, and wave files!
+
+JTMS and ISCAT:
+---------------
+
+Most reports on ISCAT say it works well.  Decoder is too slow, perhaps. 
+  That can (and will) be improved -- probably by a lot.  More examples 
+of wave files are needed, examples of both good and poor performance.
+
+Reports on JTMS are more variable.  Some say it works great, seems to 
+decode well, produces few junk messages.  Others say that they prefer 
+FSK441's ability to decode partial messages, especially very short ones, 
+and that they could complete a QSO more quickly with the older mode. 
+This is exactly the sort of information that's needed.
+
+EU users: please take note that the message templates can be edited to 
+whatever you like; and yes, of course it will be possible to turn off 
+the shorthand message feature.
+
+JT64 and JT8:
+-------------
+
+Today I established that in WSJT8r1944 the JT8 decoder, like the JT64 
+decoder, does not search over enough range in DT to synchronize EME 
+signals.  My fault; all of the tests before last weekend had been on 
+terrestrial paths.
+
+This was easily fixed.  All JT64 and JT8 EME-path files sent to me now 
+decode as they should.
+
+I might package another release tomorrow, so that people can make a few 
+more EME tests.  If you do this, please:
+
+1. Send me a few more example wave files.
+
+2. Do not be surprised if JT64 or JT8 still fails to decode, when you're 
+pretty sure that JT65B would have been OK.  As I've mentioned before, 
+the decoders for these experimental modes are certainly not in final 
+form.  They may be slow, they don't compensate for frequency drift, ... 
+etc.  It's necessary to walk before we can run.
+
+Again: the main purposes of these very early tests of the experimental 
+modes in WSJT8 are two-fold:
+
+1. To generate some real-world wave files, to be used for optimizing the 
+decoders.
+
+2. To gather evidence on whether each new experimental mode has the 
+potential to be better than the one it might replace.  I have no 
+particular stake in a YES or NO answer in each case.  If the answer 
+turns out to be no, well and good: future effort can be shifted over to 
+further performance enhancements for the existing modes.
+
+If we knew the answers to experiments in advance, there would be no 
+point in doing the experiments!
+
+Please keep the reports and wave files coming...
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000932.html">[Wsjt-devel] Beta release of WSJT8
+</A></li>
+	<LI>Next message: <A HREF="000933.html">[Wsjt-devel] WSJT8 on Debian 5.01
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#935">[ date ]</a>
+              <a href="thread.html#935">[ thread ]</a>
+              <a href="subject.html#935">[ subject ]</a>
+              <a href="author.html#935">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

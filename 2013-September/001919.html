@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Uniform Sampling rate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Uniform%20Sampling%20rate&In-Reply-To=%3C5228E090.80803%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001918.html">
+   <LINK REL="Next"  HREF="001920.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Uniform Sampling rate</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Uniform%20Sampling%20rate&In-Reply-To=%3C5228E090.80803%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Uniform Sampling rate">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Sep  5 21:50:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001918.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+        <LI>Next message: <A HREF="001920.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1919">[ date ]</a>
+              <a href="thread.html#1919">[ thread ]</a>
+              <a href="subject.html#1919">[ subject ]</a>
+              <a href="author.html#1919">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 05/09/2013 20:24, Joe Taylor wrote:
+Hi Joe,
+&gt;<i> Bill, John --
+</I>&gt;<i>
+</I>&gt;<i> Bill, in answer to your question: yes, summing groups of 4 samples is 
+</I>&gt;<i> a low-pass filter of sorts.  It's just not a very good one. Voltage 
+</I>&gt;<i> attenuation for it goes as sin(x)/x (x is frequency) -- so in-band 
+</I>&gt;<i> ripple is rather large and the aliased high-frequency components are 
+</I>&gt;<i> not attenuated by very much.
+</I>OK I need to work my way through the math of that, thanks.
+&gt;<i>
+</I>&gt;<i> I'll make a new LPF-and-downsample routine similar to fil1() but with 
+</I>&gt;<i> a higher f_cutoff and somewhat smaller stopband attenuation. I'll keep 
+</I>&gt;<i> it simple for now, just a single channel.  (It will be easy to 
+</I>&gt;<i> generalize it if/when we need to use it for two or more channels.)
+</I>&gt;<i>
+</I>&gt;<i> Incidental question: what is the store() function, line 52 in 
+</I>&gt;<i> Detector.cpp?  I can't see where it is defined.
+</I>AudioDevice.hpp is a base class of Modulator and Detector, it knows 
+about channels and interleaving and abstracts that concept away from the 
+sub classes.
+&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001918.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+	<LI>Next message: <A HREF="001920.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1919">[ date ]</a>
+              <a href="thread.html#1919">[ thread ]</a>
+              <a href="subject.html#1919">[ subject ]</a>
+              <a href="author.html#1919">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

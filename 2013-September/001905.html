@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20%5Bwsjtgroup%5D%20V1.2%20r3563%20crashes&In-Reply-To=%3C52279AE7.3030501%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001903.html">
+   <LINK REL="Next"  HREF="001898.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20%5Bwsjtgroup%5D%20V1.2%20r3563%20crashes&In-Reply-To=%3C52279AE7.3030501%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes">djmunn at bigpond.com
+       </A><BR>
+    <I>Wed Sep  4 22:41:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001903.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+        <LI>Next message: <A HREF="001898.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1905">[ date ]</a>
+              <a href="thread.html#1905">[ thread ]</a>
+              <a href="subject.html#1905">[ subject ]</a>
+              <a href="author.html#1905">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson...d/l you latest revisions and compiled them on my Linux box
+disconnected the ethernet and ran with no internet connection for 30 minutes
+with PSKreporter box on....
+i can report no crashes..yesterday was crashing after 6 minutes
+
+looks like you fixed it
+
+David VK4BDJ
+
+
+
+
+
+
+On 05/09/13 03:18, Edson W. R. Pereira wrote:
+&gt;<i>
+</I>&gt;<i> Hello everyone,
+</I>&gt;<i>
+</I>&gt;<i> I've took a look at the code and it may be possible that a DNS loopkup 
+</I>&gt;<i> failure could cause problems due to an returned empty list of IP 
+</I>&gt;<i> addresses. This could very well explain the random crashes some users 
+</I>&gt;<i> have been having. I have inserted some error check code to prevent the 
+</I>&gt;<i> issue. Apologies for the oversight.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Sep 3, 2013 at 5:31 PM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     On 03/09/2013 21:11, John Nelson wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Hi John, Joe, ...
+</I>&gt;<i>
+</I>&gt;<i>         Joe writes;
+</I>&gt;<i>
+</I>&gt;<i>             Could this be another case of dodgy behavior when internet
+</I>&gt;<i>             connectivity is lost?
+</I>&gt;<i>
+</I>&gt;<i>         In reference go Jean-Marc's query.
+</I>&gt;<i>
+</I>&gt;<i>         Is it not the case that the only use of internet connectivity
+</I>&gt;<i>         is PSK Reporter.  But this just opens a socket and puts out
+</I>&gt;<i>         UDP datagrams which just fall on the floor if there is no
+</I>&gt;<i>         internet.   How does this cause a crash?
+</I>&gt;<i>
+</I>&gt;<i>     The problem usually lies with the DNS lookups rather than the
+</I>&gt;<i>     socket connection. If connections are being re-established then an
+</I>&gt;<i>     absence of a DNS server might be causing the crash.
+</I>&gt;<i>
+</I>&gt;<i>     Best test is to use a raw ip address for a test and see if that
+</I>&gt;<i>     behaves better.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         As a test, I disconnected my MacBook from the LAN here and it
+</I>&gt;<i>         continues happily decoding on 20m as I would expect.
+</I>&gt;<i>
+</I>&gt;<i>         Does WIndows raise an interrupt if UDP datagrams don;t get
+</I>&gt;<i>         transmitted?
+</I>&gt;<i>
+</I>&gt;<i>         John
+</I>&gt;<i>
+</I>&gt;<i>     73
+</I>&gt;<i>     Bill
+</I>&gt;<i>     G4WJS.
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Wsjt-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130905/4a248bcb/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130905/4a248bcb/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001903.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+	<LI>Next message: <A HREF="001898.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1905">[ date ]</a>
+              <a href="thread.html#1905">[ thread ]</a>
+              <a href="subject.html#1905">[ subject ]</a>
+              <a href="author.html#1905">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

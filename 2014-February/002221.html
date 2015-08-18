@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux and OS X Packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EFF0F9.2020502%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002220.html">
+   <LINK REL="Next"  HREF="002222.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux and OS X Packages</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EFF0F9.2020502%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Linux and OS X Packages">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Feb  3 20:41:45 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002220.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+        <LI>Next message: <A HREF="002222.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2221">[ date ]</a>
+              <a href="thread.html#2221">[ thread ]</a>
+              <a href="subject.html#2221">[ subject ]</a>
+              <a href="author.html#2221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/02/2014 19:32, Joe Taylor wrote:
+&gt;<i> Hi Bill,
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;&gt;&gt;<i> If necessary, any bug fix or minor tweak to v1.3 should be done in the
+</I>&gt;&gt;&gt;<i> newly created .../tags/wsjtx-1.3 branch. (But this should be resisted,
+</I>&gt;&gt;&gt;<i> if possible.) New work should definitely go into .../branches/wsjtx.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Normally .../tags/... should not be committed to. Instead make a new
+</I>&gt;&gt;<i> branch ../branches/... by copying the tag to something like
+</I>&gt;&gt;<i> .../branches/wsjtx-1.3.1/... and then commit fixes to there with merges
+</I>&gt;&gt;<i> into .../branches/wsjtx/... if appropriate.
+</I>&gt;<i>
+</I>&gt;<i> I checked in the SVN &quot;bible&quot; before making the tag this morning and 
+</I>&gt;<i> found this text:
+</I>&gt;<i>
+</I>&gt;<i> &quot;Both [tags and branches] are just ordinary directories that are 
+</I>&gt;<i> created by copying. Just as with branches, the only reason a copied 
+</I>&gt;<i> directory is a &#8220;tag&#8221; is because humans have decided to treat it that 
+</I>&gt;<i> way: as long as nobody ever commits to the directory, it forever 
+</I>&gt;<i> remains a snapshot. If people start committing to it, it becomes a 
+</I>&gt;<i> branch.&quot;
+</I>Their intent, I believe, is that tags should not be branches (despite 
+the fact that tags and branches in SVN are implemented the same way). 
+They would become so if commits were allowed to tags. They do go on to 
+say that some sites use commit hooks to physically ban commits to 
+anything under tags, we don't need that but the concept is important 
+because it allows a tag to be named the same as the branch it snapshots. 
+That way you can create a branch called, say wsjtx-1.3.1, and commit 
+away to it while developing; but the tag wsjtx-1.3.1 is a snapshot of 
+what actually went out of the door after development was completed and 
+should not change.
+
+So summarising:
+
+A branch represents a future release.
+A tag represents what was actually released (other minor milestones can 
+be tagged too like release candidates).
+&gt;<i>
+</I>&gt;<i> But of course: Yes, we can do it the way you suggest, if everyone 
+</I>&gt;<i> prefers.
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002220.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+	<LI>Next message: <A HREF="002222.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2221">[ date ]</a>
+              <a href="thread.html#2221">[ thread ]</a>
+              <a href="subject.html#2221">[ subject ]</a>
+              <a href="author.html#2221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

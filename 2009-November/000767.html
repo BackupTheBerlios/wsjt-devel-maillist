@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Alsa messages; Debian packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C20091102143506.GA2058%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000766.html">
+   <LINK REL="Next"  HREF="000768.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Alsa messages; Debian packages</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C20091102143506.GA2058%40night.db.net%3E"
+       TITLE="[Wsjt-devel] Alsa messages; Debian packages">db at db.net
+       </A><BR>
+    <I>Mon Nov  2 15:35:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000766.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+        <LI>Next message: <A HREF="000768.html">[Wsjt-devel] [Fwd: Re:  Alsa messages; Debian packages]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Nov 02, 2009 at 03:43:58PM +0200, Harry Popov wrote:
+&gt;<i> Joe Taylor wrote:
+</I>&gt;<i>
+</I>...
+&gt;<i>
+</I>&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> It is not a good idea to install all files of any Linux programs in one
+</I>&gt;<i> and the same folder. This is fine in Windows but in Linux the developers
+</I>&gt;<i> have created strict rules which file where to be installed.
+</I>
+This is of course also true in FreeBSD!
+
+&gt;<i>
+</I>&gt;<i> Here is an example where I install each of the files of WSJT in the rpms
+</I>&gt;<i> which I prepared ago. The Linux rules are the same for both deb and rpm
+</I>&gt;<i> development. Actually they are the same rules used in the original
+</I>&gt;<i> Ubuntu WSJT deb file.
+</I>
+&gt;<i> /usr/bin/wsjt
+</I>&gt;<i> /usr/lib/wsjt/Audio.so
+</I>
+On FreeBSD it is /usr/local/bin/wsjt etc. This way the user programs
+installed do not interfere with the *base* operating system.
+
+&gt;<i> /usr/share/doc/wsjt/WSJT_User_600.pdf
+</I>
+/usr/local/share/doc/wsjt for FreeBSD
+
+&gt;<i> I do start the program by a wrapper named wsjt. It check and if not
+</I>&gt;<i> existing creates ~/.wsjt folder and populate it with some necessory
+</I>
+That wrapper is identical to the one I committed for the project and in
+fact is used on the FreeBSD package.
+
+You will note the wrapper already checks for a FreeBSD vs. Linux
+directory layout.
+
+In fact, the standard Makefile installs according to the prefix given.
+
+Note that python prefers to do its own compiling and linking for the
+.so needed. We obviously have a hybrid system. In the end all that
+should be necessary is a &quot;python setup.py install&quot;.
+
+
+&gt;<i> I hope this helps.
+</I>&gt;<i>
+</I>&gt;<i> 73, Harry LZ1BB
+</I>
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+A: Because it fouls the order in which people normally read text.
+Q: Why is top-posting such a bad thing?
+A: Top-posting.
+Q: What is the most annoying thing in e-mail?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000766.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+	<LI>Next message: <A HREF="000768.html">[Wsjt-devel] [Fwd: Re:  Alsa messages; Debian packages]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3CCALNQy4_1NrN1NWLrvd_KssXgCUOUvHyE5J31_NNinLebDog5sg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001315.html">
+   <LINK REL="Next"  HREF="001321.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3CCALNQy4_1NrN1NWLrvd_KssXgCUOUvHyE5J31_NNinLebDog5sg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed May 29 14:28:13 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001315.html">[Wsjt-devel] Sound questions
+</A></li>
+        <LI>Next message: <A HREF="001321.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1318">[ date ]</a>
+              <a href="thread.html#1318">[ thread ]</a>
+              <a href="subject.html#1318">[ subject ]</a>
+              <a href="author.html#1318">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Joe, et al,
+
+On Tue, May 28, 2013 at 11:15 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Dear colleagues,
+</I>&gt;<i>
+</I>&gt;<i> I suggest that we are essentially ready to make a release of WSJT-X
+</I>&gt;<i> Version 1.0.
+</I>&gt;<i>
+</I>&gt;<i> Here's an organizational proposal for our subsequent development efforts:
+</I>&gt;<i>
+</I>&gt;<i> 1. We should release Version 1.0 very soon -- it will be something close
+</I>&gt;<i> to revision 3316.  We would tag this as &quot;WSJT-X-Revision-1.0&quot; and copy it
+</I>&gt;<i> to the SVN &quot;tags&quot; area for archiving purposes.  We should make a tar file
+</I>&gt;<i> of the complete V1.0 code and post it on the Berlios site.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Ok!
+
+
+&gt;<i> 2. The present code branch -- the one we have been using for WSJT-X
+</I>&gt;<i> development -- would henceforth be reserved for bug fixes (leading to
+</I>&gt;<i> versions 1.0.1, 1.0.2, etc...) and possibly some relatively minor feature
+</I>&gt;<i> additions (versions 1.1.0, 1.2.0, whatever).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Sure. This makes a lot of sense. This way we can have a stable release and
+a development branch. We can incentive users that are not willing to use
+experimental code to stay with the stable release.
+
+
+&gt;<i> 3. A number of other development ideas have been discussed:
+</I>&gt;<i>     - Moving from Qt4 to Qt5, and eliminating dependence on Qwt
+</I>&gt;<i>
+</I>
+Ok.
+
+
+&gt;<i>     - Adding rig control through DxLab Commander
+</I>&gt;<i>
+</I>
+Ok. I have a small concern with the inflow of requests for adding support
+for OS-specific external programs. My rationale is that it is VERY
+difficult to satisfy all the requests and we could find ourselves
+distracted with fixing issues with the interfaces and dealing with a number
+of issues related to different setups. A suggestion I have is for  WSJT-X
+to provide a communication mechanism (could be a file or a socket) that
+some program could listen to and then communicate with other programs. With
+this approach, the WSJT-X code base could be kept clean (without the
+variuos #ifdefs for OS-specifi code). It would also allow and foster
+interest for other programmers to participate in developing the interfaces.
+Thus preserving the modularity of the system.
+
+
+&gt;<i>     - Migrating from PortAudio to Qt's built-in QAudio handlers
+</I>&gt;<i>
+</I>
+Ok. I think this will be a positive step. Although I haven't yet
+effectivelly used QAudio on Qt5, from what I have been reading, some of the
+earlier issues with audio (mainly related to threads) have been remediated
+or resolved. Removing the dependency on Portaudio is also positive since it
+makes it easier to compile WSJT-X from sources on different systems. Thus
+potentially increasing the user base on the various flavors of Linux
+systems.
+
+
+&gt;<i>     - Adding other WSJT modes: JT65, FSK441, ISCAT, JT4 ...
+</I>&gt;<i>
+</I>
+This will be excellent. I have a few ideas about how to deal with the
+particularities for the user interface for each of the modes.
+
+
+&gt;<i> I suggest that these developments would best be pursued in new, separate
+</I>&gt;<i> branches of our SVN tree.  When any one of them matures to the point where
+</I>&gt;<i> it would clearly provide desirable new capability for WSJT-X, code from
+</I>&gt;<i> that branch can be merged back into the main development branch.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Agreed. This will also give us more freedom to experiment with new code.
+
+
+&gt;<i> Does this plan make sense to everyone?  Other suggestions?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>One item I would like to suggest is the native support for IQ transceivers
+like the SoftRock. I think that the JT modes are a perfect match for QRP
+equipment like the SoftRock and this could attract more technical
+experimenters.
+
+73,
+
+-- Edson PY2SDR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/38513f3e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/38513f3e/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001315.html">[Wsjt-devel] Sound questions
+</A></li>
+	<LI>Next message: <A HREF="001321.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1318">[ date ]</a>
+              <a href="thread.html#1318">[ thread ]</a>
+              <a href="subject.html#1318">[ subject ]</a>
+              <a href="author.html#1318">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

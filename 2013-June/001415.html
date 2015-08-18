@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Problems with device table:  wsjtx-r3415
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problems%20with%20device%20table%3A%20%20wsjtx-r3415&In-Reply-To=%3CD41D78D8-116E-4FEA-99A0-29140822FCB1%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001414.html">
+   <LINK REL="Next"  HREF="001417.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Problems with device table:  wsjtx-r3415</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problems%20with%20device%20table%3A%20%20wsjtx-r3415&In-Reply-To=%3CD41D78D8-116E-4FEA-99A0-29140822FCB1%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] Problems with device table:  wsjtx-r3415">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Sat Jun 29 13:41:54 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001414.html">[Wsjt-devel] [WSJT-SVN] r3420 - branches/wsjtx_k1jt_p1
+</A></li>
+        <LI>Next message: <A HREF="001417.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1415">[ date ]</a>
+              <a href="thread.html#1415">[ thread ]</a>
+              <a href="subject.html#1415">[ subject ]</a>
+              <a href="author.html#1415">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+The new additions you added to mainwindow.cpp for r3415
+
+   2nd attempt to save SoundInName SoundOutName, instead of indices into unstable device table.
+   Both host_API &amp; device name are saved.
+   No attempt is made to interpret old saved index variables, so users must set sound device in xiSetup-&gt;Configuration dialog.
+
+almost work.  However, there is no particular reason why the API device names  should be different for input and output.   The code now requires that these names *must* be different.
+
+In mainwindow.cpp there are these two loops
+
+  for (m_paInDevice = Pa_GetDeviceCount() - 1; m_paInDevice &gt;= 0; m_paInDevice--) {
+    snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+      Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paInDevice)-&gt;hostApi)-&gt;name,
+      Pa_GetDeviceInfo( m_paInDevice)-&gt;name);
+    if (savedName == soundName)
+      break;
+  }
+
+and another for m_paOutDevice.
+
+In my case, when the loop counts down from the Pa_GetDeviceCount, it hits on the device name and, as it happens, does the 'break' with the correct m_paInDevice (4 in my case).
+
+However, when the count down loop next runs for m_paOutDevice, it will also hit on the &lt;same&gt; device name, does the 'break' and exits with the same index (4) as before and uses this for m_paOutDevice instead of 3.
+
+devsetup.cpp then fails at this if statement:
+
+    if(nchout&gt;0) {
+      m_outDevList[k]=id;
+      if (id == m_paOutDevice)                  &lt;&lt; since m_paOutDevice is actually the id of an input device.
+        m_nDevOut = k;
+
+In this way, the panel for Audio Out: is not filled and the device is not opened.
+
+Can I suggest the following solutions to these two loops in mainwindow.cpp which add an additional check?
+
+     snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+       Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paInDevice)-&gt;hostApi)-&gt;name,
+       Pa_GetDeviceInfo( m_paInDevice)-&gt;name);
+-    if (savedName == soundName)
++    if (savedName == soundName &amp;&amp; Pa_GetDeviceInfo(m_paInDevice)-&gt;maxInputChannels &gt; 0)
+       break;
+   }
+   if (m_paInDevice &lt; 0) { // no match for device name?
+@@ -493,7 +493,7 @@
+     snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+       Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paOutDevice)-&gt;hostApi)-&gt;name,
+       Pa_GetDeviceInfo( m_paOutDevice)-&gt;name);
+-    if (savedName == soundName)
++    if (savedName == soundName &amp;&amp; Pa_GetDeviceInfo(m_paOutDevice)-&gt;maxOutputChannels &gt; 0)
+       break;
+   }
+
+--- John G4KLA
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001414.html">[Wsjt-devel] [WSJT-SVN] r3420 - branches/wsjtx_k1jt_p1
+</A></li>
+	<LI>Next message: <A HREF="001417.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1415">[ date ]</a>
+              <a href="thread.html#1415">[ thread ]</a>
+              <a href="subject.html#1415">[ subject ]</a>
+              <a href="author.html#1415">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

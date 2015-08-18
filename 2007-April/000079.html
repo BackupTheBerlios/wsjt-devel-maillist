@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r366
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070425221643.GA627%40cloud.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000078.html">
+   <LINK REL="Next"  HREF="000080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r366</H1>
+    <B>Hamish Moffatt</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070425221643.GA627%40cloud.net.au%3E"
+       TITLE="[Wsjt-devel] r366">hamish at debian.org
+       </A><BR>
+    <I>Thu Apr 26 00:16:43 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000078.html">[Wsjt-devel] r366
+</A></li>
+        <LI>Next message: <A HREF="000080.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Apr 25, 2007 at 02:27:28PM -0400, Diane Bruce wrote:
+&gt;<i> The question I want to ask, is what distributions already
+</I>&gt;<i> have portaudio v19 and where are they installing them? I am
+</I>&gt;<i> wondering if it might be worth while checking for portaudio
+</I>&gt;<i> in /usr/include/portaudio2 and /usr/local/include/portaudio2 etc.
+</I>&gt;<i> e.g. FreeBSD has portaudiov19 in /usr/local/include/portauio2 and
+</I>&gt;<i> /usr/local/lib/portaudio2; I'd like to search for those directories
+</I>&gt;<i> if they are apparently where distributions are sticking them.
+</I>
+On Debian, we have /usr/include/portaudio.h, and
+/usr/lib/libportaudio.so.*.
+
+&gt;<i> As for linking our own version of portaudio. It can be easily done
+</I>&gt;<i> by linking in a static lib which is easily done for x86 386, the difficulty
+</I>&gt;<i> is getting the compile flags right for 64 bit platforms. Linking
+</I>
+Indeed, the static library needs to be compiled with -fPIC. This applies
+to most platforms other than i386.
+
+
+Hamish
+-- 
+Hamish Moffatt VK3SB &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000078.html">[Wsjt-devel] r366
+</A></li>
+	<LI>Next message: <A HREF="000080.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

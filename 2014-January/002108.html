@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20hang&In-Reply-To=%3C000001cf1abe%24ebe278f0%24c3a76ad0%24%40W1QA.COM%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002107.html">
+   <LINK REL="Next"  HREF="002114.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.2.2 r3659 hang</H1>
+    <B>Bob McCormick W1QA</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20hang&In-Reply-To=%3C000001cf1abe%24ebe278f0%24c3a76ad0%24%40W1QA.COM%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.2.2 r3659 hang">EME at W1QA.COM
+       </A><BR>
+    <I>Sun Jan 26 18:49:07 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002107.html">[Wsjt-devel] Missing kvasd msg - More
+</A></li>
+        <LI>Next message: <A HREF="002114.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2108">[ date ]</a>
+              <a href="thread.html#2108">[ thread ]</a>
+              <a href="subject.html#2108">[ subject ]</a>
+              <a href="author.html#2108">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>WSJT-X v1.2.2 r3659 on 64-bit Windows 7
+
+ 
+
+Left the application open / running on my system overnight with rig tuned to
+7.076 MHz.  Found it hung / Not Responding this morning when I looked at the
+system.  No other applications (other than what normally runs in the
+background) were open at the time.
+
+ 
+
+The last decode was 05:02Z and the waterfall shows probably the full 48
+seconds of 05:03Z (but no decodes) when it hung.  It created a
+140126_0503.wav file but size is zero.
+
+ 
+
+Task manager shows:
+
+ 
+
+wsjt.exe 39,216 K
+
+jt9.exe 3,176 K
+
+ 
+
+Killed the JT9 process - main program still hung.  Attempting to close (red
+X window control) either the main WSJT-X or Wide Graph window didn't end the
+program - had to choose &quot;close the program&quot;.
+
+ 
+
+Restarted the program and works just fine.
+
+ 
+
+Bob W1QA
+
+ 
+
+NB
+
+Not sure if attachments are allowed on this list - I have a couple of screen
+shots - I'll try to attach them as a reply to this message to keep it in the
+same thread once this makes it to the list.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/71f6a9bf/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/71f6a9bf/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002107.html">[Wsjt-devel] Missing kvasd msg - More
+</A></li>
+	<LI>Next message: <A HREF="002114.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2108">[ date ]</a>
+              <a href="thread.html#2108">[ thread ]</a>
+              <a href="subject.html#2108">[ subject ]</a>
+              <a href="author.html#2108">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Static linking of kvasd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Static%20linking%20of%20kvasd&In-Reply-To=%3C52F270A1.204%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002237.html">
+   <LINK REL="Next"  HREF="002242.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Static linking of kvasd</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Static%20linking%20of%20kvasd&In-Reply-To=%3C52F270A1.204%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Static linking of kvasd">joe at princeton.edu
+       </A><BR>
+    <I>Wed Feb  5 18:10:57 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002237.html">[Wsjt-devel] Static linking of kvasd
+</A></li>
+        <LI>Next message: <A HREF="002242.html">[Wsjt-devel] Static linking of kvasd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2241">[ date ]</a>
+              <a href="thread.html#2241">[ thread ]</a>
+              <a href="subject.html#2241">[ subject ]</a>
+              <a href="author.html#2241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bonjour Edouard,
+
+Many thanks for your message, and for drawing my attention to your 
+well-documented work on Reed-Solomon soft-decision decoding and 
+weak-signal communication in general.  I had no idea that another ham 
+was working on these things.  I have look at your web site and done a 
+quick read of several of the papers there, bit I will need more time to 
+fully appreciate what you have done.
+
+I would definitely be interested in trying your open-source decoder for 
+the (63,12) code in place of the one I implemented in KVASD.  If you are 
+interested in helping with this, I will be happy to describe for you the 
+I/O mechanism used to interface with our executable kvasd.
+
+Please note that things may be slow for me today, and possibly (I hope 
+not) for a few days.  We have had a rather severe ice storm and are 
+without power at home.  I'm now in my Princeton University office.
+
+     -- 73, Joe, K1JT
+
+On 2/5/2014 9:28 AM, <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">f4exb at free.fr</A> wrote:
+&gt;<i> Hello All,
+</I>&gt;<i>
+</I>&gt;<i> if this is of interest to any of you I have committed an open source library in
+</I>&gt;<i> C++ for Reed-Solomon soft decoding: <A HREF="https://code.google.com/p/rssoft/">https://code.google.com/p/rssoft/</A>
+</I>&gt;<i>
+</I>&gt;<i> It has been dormant for a while and I haven't investigated the possibility to
+</I>&gt;<i> replace kvasd executable with a clone of it using my library instead. I lack the
+</I>&gt;<i> knowledge of the I/O protocol to kvasd and didn't want to invest time in reverse
+</I>&gt;<i> engineering it. Also an important divergence is that my library cannot work with
+</I>&gt;<i> systematic codes.
+</I>&gt;<i>
+</I>&gt;<i> Yet I have tried to make a comparison with the kvasd engine by building a
+</I>&gt;<i> minimal clone of JT65 (as an offspring of another project also dormant) and
+</I>&gt;<i> using figures given by Joe in his paper. I have found that my library has a 0.5
+</I>&gt;<i> dB disadvantage vs kvasd.
+</I>&gt;<i>
+</I>&gt;<i> But if this can be of some use... at least understanding what's behind the scene
+</I>&gt;<i> and possibly improving the basic algorithm I have tried to put in place that
+</I>&gt;<i> would be all the better.
+</I>&gt;<i>
+</I>&gt;<i> Please feel free to use and contribute!
+</I>&gt;<i>
+</I>&gt;<i> 73s!
+</I>&gt;<i> Edouard, F4EXB.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Quoting Bill Somerville&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 04/02/2014 18:45, Joe Taylor wrote:
+</I>&gt;&gt;&gt;<i> Bill --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Having said that it does appear to be portable! I suspect that the libc
+</I>&gt;&gt;&gt;&gt;<i> dependencies from libgfortran were not pulled in because they weren't
+</I>&gt;&gt;&gt;&gt;<i> referenced.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Nearly all of kvasd is written in C -- there's just a fortran wrapper
+</I>&gt;&gt;&gt;<i> that calls the C code.  There must be plenty of references to things
+</I>&gt;&gt;&gt;<i> in libc.
+</I>&gt;&gt;<i> Obviously they have improved the granularity of libc since I last did
+</I>&gt;&gt;<i> this sort of thing.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> There is another issue, in theory you may be breaking the terms of the
+</I>&gt;&gt;<i> LGPL licence. If you static link LGPL code I believe you may need to
+</I>&gt;&gt;<i> publish your object code (possibly source code). I believe the issue is
+</I>&gt;&gt;<i> that you are distributing a &quot;derivative work&quot; rather than linking to
+</I>&gt;&gt;<i> something that the end user can freely obtain from an official source
+</I>&gt;&gt;<i> unmodified. Clearly a show stopper in this case if that is the case.
+</I>&gt;&gt;<i> Having said that IANAL and this particular consequence of the LGPL
+</I>&gt;&gt;<i> licence is often argued either way.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      -- Joe
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002237.html">[Wsjt-devel] Static linking of kvasd
+</A></li>
+	<LI>Next message: <A HREF="002242.html">[Wsjt-devel] Static linking of kvasd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2241">[ date ]</a>
+              <a href="thread.html#2241">[ thread ]</a>
+              <a href="subject.html#2241">[ subject ]</a>
+              <a href="author.html#2241">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

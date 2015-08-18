@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 5.9.7 r383 rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C46406CE9.90802%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000132.html">
+   <LINK REL="Next"  HREF="000136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 5.9.7 r383 rpm</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C46406CE9.90802%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT 5.9.7 r383 rpm">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May  8 14:28:25 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000132.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+        <LI>Next message: <A HREF="000136.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry, Diane, and all --
+
+For what it's worth, for me WSJT 5.9.7 r383 compiles without 
+problems on my Debian Linux machine, using the portaudio-v19 
+code included with WSJT.  I use the following commands:
+
+./configure --enable-portaudio \
+--with-portaudio-include-dir=portaudio-v19/include \
+--with-portaudio-lib-dir=/home/joe/wsjt/trunk/portaudio-v19/lib/.libs
+make clean
+make
+
+Surely we can figure out what is going wrong in your case.
+
+	-- Joe, K1JT
+
+Harry Popov wrote:
+&gt;<i> I am giving up. I can not compile wsjt any more. After doing this more
+</I>&gt;<i> than 100 times I must be at least experienced user. So what happened?
+</I>&gt;<i> 
+</I>&gt;<i> Is the wsjt Linux code degrading or back to the stage of working on
+</I>&gt;<i> developer's machine only?
+</I>&gt;<i> 
+</I>&gt;<i> I must admit I try without success to compile with buildin portaudio. I
+</I>&gt;<i> refuse to use outsource portaudio 0.19 code as it is not yet official
+</I>&gt;<i> release for the most number of Linux distributions.
+</I>&gt;<i> 
+</I>&gt;<i> So will wait until wsjt is back using buildin portaudio. Actually even
+</I>&gt;<i> if portaudio0.19 becomes official to all distributions it will be still
+</I>&gt;<i> problem for all those using bit older ones. No one is happy if he must
+</I>&gt;<i> upgrade his distribution only to be able to install the newest wsjt rpm.
+</I>&gt;<i> 
+</I>&gt;<i> Diane, sorry to say that but Linux world is much more complex due to
+</I>&gt;<i> those many distros. I will not be surprised if the number of Linux
+</I>&gt;<i> distributions is higher than the number of Linux users already. You are
+</I>&gt;<i> happy to have only one FreeBSD. :)
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000132.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+	<LI>Next message: <A HREF="000136.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

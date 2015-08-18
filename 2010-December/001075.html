@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3C4D18B333.2070602%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001074.html">
+   <LINK REL="Next"  HREF="001078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Another approach to command-line WSPR (weak	computers)</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3C4D18B333.2070602%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Another approach to command-line WSPR (weak	computers)">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Dec 27 16:39:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001074.html">[Wsjt-devel] Another approach to command-line WSPR (weak computers)
+</A></li>
+        <LI>Next message: <A HREF="001078.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1075">[ date ]</a>
+              <a href="thread.html#1075">[ thread ]</a>
+              <a href="subject.html#1075">[ subject ]</a>
+              <a href="author.html#1075">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan and all,
+
+Thanks for describing what you did for a command-line WSPR.  Very 
+interesting approach!  Here are just a few initial comments...
+
+&gt;<i> I'll appreciate any comments on this. I realize that not many people will
+</I>&gt;<i> want it, and that if the group supports this mode, it will add maintenance
+</I>&gt;<i> overhead whether we stick to separate files (which will need to be modified
+</I>&gt;<i> when the main ones are) or integrate the no-hopping option into wspr.py.
+</I>
+I don't understand the last sentence.  Did you mean to write &quot;no-GUI 
+option&quot;, rather than &quot;no-hopping option&quot;?
+
+&gt;<i> The other thing I discovered is that the IQ decoding takes a minute and a
+</I>&gt;<i> half on this machine, and the mept162 takes more than 30 seconds (I am not
+</I>&gt;<i> sure how long, but more than 30 seconds). So it clearly can't receive and
+</I>&gt;<i> decode all the 2-minute slots. I think that wspr2 is waiting for the decode
+</I>&gt;<i> to end before the next cycle begins, but I assume that this is not something
+</I>&gt;<i> that Joe planned for. Do you guys think that I'll simply get every second or
+</I>&gt;<i> every third slot processed and the rest will not be received, or will I get
+</I>&gt;<i> some garbage? I guess the reasonable thing is to get a machine that's a bit
+</I>&gt;<i> faster.
+</I>
+The Fano (or &quot;sequential&quot;) algorithm used to decode WSPR's 
+long-constraint convolutional code has the somewhat unusual behavior 
+that decoding time is essentially unbounded.  If S/N is good and the 
+number of &quot;raw&quot; errors small, decoding is very fast.  At low S/N the 
+decoding can take almost &quot;forever&quot;, so the loop is configured to time 
+out after a specified number of tries.  The timeout limit is defined by 
+the statement
+
+   l;imit=10000
+
+in decode162.f.  You can make failures-to-decode ten times faster by 
+setting limit=1000.  The cost will be that a few decodes that would have 
+been successful with the longer limit will be lost.
+
+You can see how many decoding cycles were required for each line of 
+decoded text in ALL_WSPR.TXT.  After the decoded message there are three 
+numbers; the second one is the number of decopding cycles.  You'll 
+notice that a rather small fraction ate larger than 1000.
+
+One further thought.  A significant motivation for wspr0, on my part, 
+was to make the program easy to understand and modify.  In a sense, it 
+serves as a documentation for the WSPR protocol.  For this reason I 
+considered it important that it be written in one dominant language, in 
+this case Fortran.  If there is significant demand for having IQ 
+capability in wspr0, that would not be very hard to add.  The iqdemod 
+and dual-channel sample routines are already present in the main wspr 
+code base.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001074.html">[Wsjt-devel] Another approach to command-line WSPR (weak computers)
+</A></li>
+	<LI>Next message: <A HREF="001078.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1075">[ date ]</a>
+              <a href="thread.html#1075">[ thread ]</a>
+              <a href="subject.html#1075">[ subject ]</a>
+              <a href="author.html#1075">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

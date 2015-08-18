@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X---r3648 - Win version ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X---r3648%20-%20Win%20version%20%3F&In-Reply-To=%3CD07F30AE0B904BFD801BE75F2606B445%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002094.html">
+   <LINK REL="Next"  HREF="002042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X---r3648 - Win version ?</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X---r3648%20-%20Win%20version%20%3F&In-Reply-To=%3CD07F30AE0B904BFD801BE75F2606B445%40shack2%3E"
+       TITLE="[Wsjt-devel] WSJT-X---r3648 - Win version ?">freevil at tiscali.co.uk
+       </A><BR>
+    <I>Sat Jan 18 17:29:58 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002094.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+        <LI>Next message: <A HREF="002042.html">[Wsjt-devel] WSJT-X---r3648 - Win version ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2041">[ date ]</a>
+              <a href="thread.html#2041">[ thread ]</a>
+              <a href="subject.html#2041">[ subject ]</a>
+              <a href="author.html#2041">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+Joe, is there a compiled win version for testing after this bug fix ?
+
+r3644 waterfall did not work for me with Flatten ticked in WinXP - just a 
+solid orange waterfall.
+
+Cheers David GM6BIG
+
+----- Original Message ----- 
+From: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">k1jt at berlios.de</A>&gt;
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>&gt;
+Sent: Saturday, January 18, 2014 1:59 PM
+Subject: [WSJT-SVN] r3648 - in branches/wsjtx: . lib
+
+
+&gt;<i> Author: k1jt
+</I>&gt;<i> Date: 2014-01-18 14:59:19 +0100 (Sat, 18 Jan 2014)
+</I>&gt;<i> New Revision: 3648
+</I>&gt;<i>
+</I>&gt;<i> Modified:
+</I>&gt;<i>   branches/wsjtx/lib/Makefile.MinGW
+</I>&gt;<i>   branches/wsjtx/lib/Makefile.linux
+</I>&gt;<i>   branches/wsjtx/lib/flat3.f90
+</I>&gt;<i>   branches/wsjtx/lib/getpfx1.f90
+</I>&gt;<i>   branches/wsjtx/lib/packmsg.f90
+</I>&gt;<i>   branches/wsjtx/mainwindow.cpp
+</I>&gt;<i> Log:
+</I>&gt;<i> 1. Corrected handling of compound callsigns: use JT65v1 encoding if
+</I>&gt;<i>   applicable, JT65v2 otherwise.  Thanks to DL9RDZ!
+</I>&gt;<i>
+</I>&gt;<i> 2. Fix a bug in flat3.f90, evident on OSX systems.  Thanks to G4KLA!
+</I>&gt;<i>
+</I>&gt;<i> 3. The Makefile now copy the jt9code executable into the destination
+</I>&gt;<i>   directory for to-be-packaged executables.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/lib/Makefile.MinGW
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/lib/Makefile.MinGW 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/lib/Makefile.MinGW 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -72,6 +72,7 @@
+</I>&gt;<i> OBJS4 = jt9code.o
+</I>&gt;<i> jt9code.exe: $(OBJS4) libjt9.a
+</I>&gt;<i>  $(FC) -o jt9code.exe $(OBJS4) libjt9.a
+</I>&gt;<i> + cp jt9code.exe $(EXE_DIR)
+</I>&gt;<i>
+</I>&gt;<i> OBJS5 = jt65.o
+</I>&gt;<i> jt65.exe: $(OBJS5) libjt9.a
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/lib/Makefile.linux
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/lib/Makefile.linux 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/lib/Makefile.linux 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -62,6 +62,7 @@
+</I>&gt;<i> OBJS4 = jt9code.o
+</I>&gt;<i> jt9code: $(OBJS4) libjt9.a
+</I>&gt;<i>  $(FC) -o jt9code $(OBJS4) -L. -ljt9
+</I>&gt;<i> + cp jt9code $(EXE_DIR)
+</I>&gt;<i>
+</I>&gt;<i> sync9.o: sync9.f90 jt9sync.f90
+</I>&gt;<i>  $(FC) $(FFLAGS) -c sync9.f90
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/lib/flat3.f90
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/lib/flat3.f90 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/lib/flat3.f90 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -4,7 +4,7 @@
+</I>&gt;<i>   parameter (NSMAX=6827)
+</I>&gt;<i>   real*4 s0(iz)
+</I>&gt;<i>   real*4 s(iz)
+</I>&gt;<i> -  real*4 ynoise,y4
+</I>&gt;<i> +  real*4 ynoise,y4,db
+</I>&gt;<i>
+</I>&gt;<i>   real*8 x(NSMAX)
+</I>&gt;<i>   real*8 y(NSMAX)
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/lib/getpfx1.f90
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/lib/getpfx1.f90 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/lib/getpfx1.f90 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -13,7 +13,7 @@
+</I>&gt;<i>   if(iz.lt.0) iz=12
+</I>&gt;<i>   islash=index(callsign(1:iz),'/')
+</I>&gt;<i>   k=0
+</I>&gt;<i> -  if(k.eq.0) go to 10                             !### Always use JT65v2 
+</I>&gt;<i> ###
+</I>&gt;<i> +!  if(k.eq.0) go to 10     !Tnx to DL9RDZ for reminder:this was for tests 
+</I>&gt;<i> only!
+</I>&gt;<i>   c='   '
+</I>&gt;<i>   if(islash.gt.0 .and. islash.le.(iz-4)) then
+</I>&gt;<i> ! Add-on prefix
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/lib/packmsg.f90
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/lib/packmsg.f90 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/lib/packmsg.f90 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -60,7 +60,8 @@
+</I>&gt;<i>   c3='    '
+</I>&gt;<i>   if(ic.ge.ib+1) c3=msg(ib+1:ic)
+</I>&gt;<i>   if(c3.eq.'OOO ') c3='    '           !Strip out the OOO flag
+</I>&gt;<i> -  call getpfx1(c1,k1,junk)
+</I>&gt;<i> +  call getpfx1(c1,k1,kk)
+</I>&gt;<i> +  if(kk.ne.0) go to 10                 !Tnx to DL9RDZ for reminding me!
+</I>&gt;<i>   call packcall(c1,nc1,text1)
+</I>&gt;<i>   call getpfx1(c2,k2,nv2)
+</I>&gt;<i>   call packcall(c2,nc2,text2)
+</I>&gt;<i>
+</I>&gt;<i> Modified: branches/wsjtx/mainwindow.cpp
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- branches/wsjtx/mainwindow.cpp 2014-01-18 12:42:21 UTC (rev 3647)
+</I>&gt;<i> +++ branches/wsjtx/mainwindow.cpp 2014-01-18 13:59:19 UTC (rev 3648)
+</I>&gt;<i> @@ -1,4 +1,4 @@
+</I>&gt;<i> -//--------------------------------------------------------------  
+</I>&gt;<i> MainWindow
+</I>&gt;<i> +//-------------------------------------------------------------  
+</I>&gt;<i> MainWindow
+</I>&gt;<i> #include &quot;mainwindow.h&quot;
+</I>&gt;<i> #include &quot;ui_mainwindow.h&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> wsjt-svn mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-svn">https://lists.berlios.de/mailman/listinfo/wsjt-svn</A> 
+</I>
+
+---
+This email is free from viruses and malware because avast! Antivirus protection is active.
+<A HREF="http://www.avast.com">http://www.avast.com</A>
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002094.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+	<LI>Next message: <A HREF="002042.html">[Wsjt-devel] WSJT-X---r3648 - Win version ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2041">[ date ]</a>
+              <a href="thread.html#2041">[ thread ]</a>
+              <a href="subject.html#2041">[ subject ]</a>
+              <a href="author.html#2041">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

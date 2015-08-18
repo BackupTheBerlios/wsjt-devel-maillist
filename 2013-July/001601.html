@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio supported in Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F6DD35.6010500%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001600.html">
+   <LINK REL="Next"  HREF="001602.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio supported in Qt5</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F6DD35.6010500%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Audio supported in Qt5">joe at princeton.edu
+       </A><BR>
+    <I>Mon Jul 29 23:23:01 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001600.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+        <LI>Next message: <A HREF="001602.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1601">[ date ]</a>
+              <a href="thread.html#1601">[ thread ]</a>
+              <a href="subject.html#1601">[ subject ]</a>
+              <a href="author.html#1601">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill --
+
+The code you're working with could use some cleaning up, to be sure.  At 
+the moment I can't argue with any conviction that it should be
+
+	emit readyForFFT(k-1);
+
+rather than
+
+	emit readyForFFT(k);
+
+which I think it was, in the past.  Or even
+
+	emit readyForFFT(k+1);
+
+since the Fortran the corresponding index array index starts at 1 rather 
+than 0.
+
+I think none of this will make any noticeable difference, though.  And 
+line #38 in symspec.f90 shows that when k&lt;2048 symspec() does nothing 
+more that resetting the halh-symbol index to zero.  No mayhem will ensue.
+
+	-- Joe, K1JT
+
+On 7/29/2013 4:52 PM, Bill Somerville wrote:
+&gt;<i> On 29/07/2013 21:14, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi Bill,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Yes: ncalls, m_SamFacIn, m_nBusy, and m_dataSinkBusy are vestigial
+</I>&gt;&gt;<i> remains of previous testing. They can safely be removed.
+</I>&gt;<i> OK thanks for that info, that nicely reduces safety hazards.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As for index k=-1: I'm not sure where you thought that might arise,
+</I>&gt;&gt;<i> but it doesn't sound right. I think it should always be &gt;=0...
+</I>&gt;&gt;<i> although symspec() would probably not much care if it saw a -1.
+</I>&gt;<i>
+</I>&gt;<i> I think it goes like this:
+</I>&gt;<i>
+</I>&gt;<i> // Reset buffer pointer and symbol number at start of minute
+</I>&gt;<i> if(ntr &lt; m_ntr0 or !m_monitoring or m_nsps!=m_nsps0) {
+</I>&gt;<i> m_nstep0=0;
+</I>&gt;<i> m_nsps0=m_nsps;
+</I>&gt;<i> m_callbackData.bzero=true;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> &lt;--- Callback starts between these statements in another context
+</I>&gt;<i> clears m_callbackData.kin due to code above when ntr is zero
+</I>&gt;<i> next line reads back k=0 which leads to readyForFFT(-1)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> int k=m_callbackData.kin;
+</I>&gt;<i> if(m_monitoring) {
+</I>&gt;<i> int kstep=m_nsps/2;
+</I>&gt;<i> // m_step=k/kstep;
+</I>&gt;<i> m_step=(k-1)/kstep;
+</I>&gt;<i> if(m_step != m_nstep0) {
+</I>&gt;<i> if(m_dataSinkBusy) {
+</I>&gt;<i> m_nBusy++;
+</I>&gt;<i> } else {
+</I>&gt;<i> // m_dataSinkBusy=true;
+</I>&gt;<i> // emit readyForFFT(k); //Signal to compute new FFTs
+</I>&gt;<i> emit readyForFFT(k-1); //Signal to compute new FFTs
+</I>&gt;<i> }
+</I>&gt;<i> m_nstep0=m_step;
+</I>&gt;<i> }
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> Even though the callback writes kin again before it finishes, the
+</I>&gt;<i> interleaving of the code is a race condition for the value of kin. At
+</I>&gt;<i> least on a uni-processor machine it won't happen, but a multi processor
+</I>&gt;<i> machine could read back kin before that second update, so it's still a
+</I>&gt;<i> hazard on an implementation that processes the callback on a different
+</I>&gt;<i> core.
+</I>&gt;<i>
+</I>&gt;<i> It's unlikely to happen but is definitely possible. Like I said in a
+</I>&gt;<i> previous post shared variables across thread/contexts are very difficult
+</I>&gt;<i> to get right.
+</I>&gt;<i>
+</I>&gt;<i> I might be wrong here, just thinking about this stuff makes my brain ache.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Joe
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001600.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+	<LI>Next message: <A HREF="001602.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1601">[ date ]</a>
+              <a href="thread.html#1601">[ thread ]</a>
+              <a href="subject.html#1601">[ subject ]</a>
+              <a href="author.html#1601">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

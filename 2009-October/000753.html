@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR v2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C4D732ED9-6B46-4B75-A454-50509074AF55%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000752.html">
+   <LINK REL="Next"  HREF="000754.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR v2.0</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20v2.0&In-Reply-To=%3C4D732ED9-6B46-4B75-A454-50509074AF55%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSPR v2.0">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Oct 28 15:05:59 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000752.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+        <LI>Next message: <A HREF="000754.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#753">[ date ]</a>
+              <a href="thread.html#753">[ thread ]</a>
+              <a href="subject.html#753">[ subject ]</a>
+              <a href="author.html#753">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Thanks for the clarification about post-fix underscores in four2a.f
+
+I suspect the requirement for post-fix underscores in four2a.f is not  
+a problem with the compilers but with the way the fftw3f library is  
+constructed.
+
+We know that when fortran calls a routine which is part of a C  
+program, the C routine *must* have a post_fix underscore in the  
+routine definition.
+
+Eg.   audiodev.f90 calls     padevsub(...)   and  the entry point in  
+padevsub.c is, of course,   int padevsub_(...)
+and so with gmtime2_()  in gmtime2.c  called from getutc.f90;     
+nhash_()  called from hash.f90  etc. etc. for all fortran calls to C  
+routines with the single exception of four2a.f
+
+So in four2a.f when  it executes:   call sfftw_execute_(plan(i))    
+the corresponding routine in the fftw library must be defined as   
+sfftw_execute_plan__  with *two* post_fixed underscores.
+
+Big question is:   why does the construction of the library do this?
+
+A favour:  could you list the contents of your version of  
+libfftw3f.a  using the nm  command and tell me what you see?
+
+Mine shows all the sfftw calls with a single post_fix underscore.   I  
+bet yours shows two....
+
+0000009c T _sfftw_cleanup_
+00000094 T _sfftw_destroy_plan_
+00000078 T _sfftw_execute_
+....
+
+Just curious.
+
+      73,  John    G4KLA
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000752.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+	<LI>Next message: <A HREF="000754.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#753">[ date ]</a>
+              <a href="thread.html#753">[ thread ]</a>
+              <a href="subject.html#753">[ subject ]</a>
+              <a href="author.html#753">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

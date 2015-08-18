@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20%26%20gfortran%2C%20WSPR%20vs%20WSJT&In-Reply-To=%3C48483575.9030305%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000306.html">
+   <LINK REL="Next"  HREF="000311.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20%26%20gfortran%2C%20WSPR%20vs%20WSJT&In-Reply-To=%3C48483575.9030305%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jun  5 20:50:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000306.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+        <LI>Next message: <A HREF="000311.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bruce --
+
+I suggest doing it the way it's done in MAP65.  Write a 
+simple C routine that's callable from Fortran and uses 
+normal C library routines fopen, fwrite, etc., to do the 
+I/O.  In MAP65 the file name is wfile.c.
+
+	-- 73, Joe, K1JT
+
+Bruce Walker wrote:
+&gt;<i> Does anyone have WSPR working compiled with gfortran?  It compiles  
+</I>&gt;<i> after fixing the configure.ac to remove the -ftrace=full, which isn't  
+</I>&gt;<i> an option on gfortran (just g95 AFAIK).
+</I>&gt;<i> 
+</I>&gt;<i> However, the spectrum display doesn't work, as gfortran doesn't seem  
+</I>&gt;<i> to support either form='binary' or access='stream' used by spec162.f.   
+</I>&gt;<i> I'm not a fortran expert, so rather than flail around trying things, I  
+</I>&gt;<i> figured I would ask here.  In my sandbox, I've also changed  
+</I>&gt;<i> configure.ac to prefer g95 if available rather than preferring  
+</I>&gt;<i> gfortran; I decided to wait to check in those changes until resolving  
+</I>&gt;<i> this.
+</I>&gt;<i> 
+</I>&gt;<i> Meanwhile, speaking of flailing, I have been trying to get it to work  
+</I>&gt;<i> under Mac OS X, and failing miserably.  I can get it to compile using  
+</I>&gt;<i> python25, but I get nasty messages about python trying to free memory  
+</I>&gt;<i> blocks with unaligned pointers while in Pmw code.  f2py for python24  
+</I>&gt;<i> in macports doesn't work correctly.  But that's another problem for  
+</I>&gt;<i> another day.
+</I>&gt;<i> 
+</I>&gt;<i> Joe, what's your direction here?  You seem to be mostly working to  
+</I>&gt;<i> incorporate the WSPR mode into mainline WSJT for QSO purposes.  WIll  
+</I>&gt;<i> WPSR standalone also have the QSO features (partially implemented, at  
+</I>&gt;<i> least in terms of UI), or will it be just for the current beacon model  
+</I>&gt;<i> + best DX, or folded entirely into WSJT?  Just trying to set my  
+</I>&gt;<i> priorities...some things like web uploading are broken in the latest  
+</I>&gt;<i> branches/wspr, as you are putting a subset of fields into  
+</I>&gt;<i> decoded.txt.  Easy to fix if that is heading toward release, but it  
+</I>&gt;<i> wasn't clear with the QSO stuff going into WSJT.
+</I>&gt;<i> 
+</I>&gt;<i> --bruce W1BW
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000306.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+	<LI>Next message: <A HREF="000311.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

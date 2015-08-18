@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Packaging for Fedora Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Packaging%20for%20Fedora%20Linux&In-Reply-To=%3CCAN3TeO1-rxWNO2euvtOYm4%2BQABDHvWpyUT%3DM-9LxprjOz8sZ0Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002233.html">
+   <LINK REL="Next"  HREF="002235.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Packaging for Fedora Linux</H1>
+    <B>Richard Shaw</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Packaging%20for%20Fedora%20Linux&In-Reply-To=%3CCAN3TeO1-rxWNO2euvtOYm4%2BQABDHvWpyUT%3DM-9LxprjOz8sZ0Q%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Packaging for Fedora Linux">hobbes1069 at gmail.com
+       </A><BR>
+    <I>Tue Feb  4 20:38:26 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002233.html">[Wsjt-devel] asciidoc included in wsjt/branches/doc
+</A></li>
+        <LI>Next message: <A HREF="002235.html">[Wsjt-devel] wsjtx  r3680
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2234">[ date ]</a>
+              <a href="thread.html#2234">[ thread ]</a>
+              <a href="subject.html#2234">[ subject ]</a>
+              <a href="author.html#2234">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I just joined the list so let me introduce myself. My name is Richard Shaw
+(KF5OIM) and I've been a Fedora (and RPM Fusion) packager for a few years
+now. I'm also the current maintainer for other ham related packages such as
+FLDIgi and QSSTV for Fedora.
+
+I would like to package wsjtx for Fedora and I'm sure this is nothing new
+to those here, but the current install is incompatible with the Fedora
+packaging guidelines.
+
+I started with version 1.2 some time ago and gave up as I'm not much of a
+programmer and ran into some issues I couldn't rectify. I see with the
+proposed 1.3 release that the cmake build now at least has an install
+target even if most everything is dumped in /usr/bin, which is the main
+reason for my post.
+
+In an attempt to get 1.2 to play nice with linux, I tried doing some QT/c++
+hacking to the code and although what I have should NOT be checked in, but
+there may be some useful bits in it, most notably changing from doing
+everything relative to the wsjtx binary location to a home directory
+approach.
+
+Some questions I still have is about the function of the Palettes and save
+directories? Are they intended to be writable? Or static? Are they arch
+independent?
+
+The answers to those questions would help me to understand the most
+appropriate location for those files in a the linux/FHS world.
+
+Here is a link to my patch attempt if it helps:
+<A HREF="https://dl.dropboxusercontent.com/u/34775202/wsjtx-homedir.patch">https://dl.dropboxusercontent.com/u/34775202/wsjtx-homedir.patch</A>
+
+Thanks,
+Richard
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140204/5e5164b9/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140204/5e5164b9/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002233.html">[Wsjt-devel] asciidoc included in wsjt/branches/doc
+</A></li>
+	<LI>Next message: <A HREF="002235.html">[Wsjt-devel] wsjtx  r3680
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2234">[ date ]</a>
+              <a href="thread.html#2234">[ thread ]</a>
+              <a href="subject.html#2234">[ subject ]</a>
+              <a href="author.html#2234">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

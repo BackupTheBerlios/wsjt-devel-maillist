@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090718181020.GA26242%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000692.html">
+   <LINK REL="Next"  HREF="000694.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090718181020.GA26242%40night.db.net%3E"
+       TITLE="[Wsjt-devel] gfortran">db at db.net
+       </A><BR>
+    <I>Sat Jul 18 20:10:20 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000692.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000694.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#693">[ date ]</a>
+              <a href="thread.html#693">[ thread ]</a>
+              <a href="subject.html#693">[ subject ]</a>
+              <a href="author.html#693">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jul 18, 2009 at 06:26:30PM +0100, James Courtier-Dutton wrote:
+&gt;<i> James Courtier-Dutton wrote:
+</I>&gt;<i> &gt; Joe Taylor wrote:
+</I>&gt;<i> &gt;
+</I>...
+&gt;<i> I have found something that might be interesting.
+</I>&gt;<i> <A HREF="http://cens.ioc.ee/pipermail/f2py-users/2007-September/001458.html">http://cens.ioc.ee/pipermail/f2py-users/2007-September/001458.html</A>
+</I>&gt;<i>
+</I>
+I've been meaning to concur with James for sometime, I had done
+some tests earlier.
+
+&gt;<i> This highlights problems with f2py and data consistency between fortran
+</I>&gt;<i> and python.
+</I>&gt;<i> After some diagnosis, I have concluded that the format statements are
+</I>&gt;<i> getting corrupted.
+</I>&gt;<i> This only seems to happen to the parts of the code that make calls
+</I>&gt;<i> between python and the fortran.
+</I>
+This completely agrees with my analysis. If you replace all the
+printing code with output statements, the code runs fine.
+
+However, I am not convinced it is due to python calling fortran,
+but I do have a thought as to what it could be.
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000692.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000694.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#693">[ date ]</a>
+              <a href="thread.html#693">[ thread ]</a>
+              <a href="subject.html#693">[ subject ]</a>
+              <a href="author.html#693">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

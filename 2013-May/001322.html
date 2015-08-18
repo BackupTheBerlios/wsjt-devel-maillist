@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3CCALNQy49dnDHh9PLN%3D4U%3DeicR6gaEv5j9LnbJjHTd5Q4DreiZRQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001321.html">
+   <LINK REL="Next"  HREF="001316.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3CCALNQy49dnDHh9PLN%3D4U%3DeicR6gaEv5j9LnbJjHTd5Q4DreiZRQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed May 29 18:08:09 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001321.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+        <LI>Next message: <A HREF="001316.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1322">[ date ]</a>
+              <a href="thread.html#1322">[ thread ]</a>
+              <a href="subject.html#1322">[ subject ]</a>
+              <a href="author.html#1322">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Regarding the PSK Reporter interface, I think we could try using the code I
+have implemented also on Windows. I see no reason why it would not work. I
+have not done so because I do not have a windows machine available for
+testing at the moment. Could you remove the &quot;#ifdef UNIX&quot; for the new PSK
+Reporter calls, include some &quot;#if 0&quot;, and perform some testing? If things
+work, we could also remove the dependency on the PSK Reporter DLL.
+
+73,
+
+-- Edson PY2SDR
+
+On Wed, May 29, 2013 at 12:48 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Thanks for the comments on my organizational proposal for subsequent
+</I>&gt;<i> development efforts.  We seem to be in good agreement.
+</I>&gt;<i>
+</I>&gt;<i> Following gentle reminders from AC6SL and G4KLA, I've cleaned up all
+</I>&gt;<i> remaining compiler warnings produced on my systems (both Windows and
+</I>&gt;<i> Linux), and I've made a few other minor tweaks to the code.  I am hereby
+</I>&gt;<i> proposing that SVN revision 3320 is a candidate for release as WSJT-X
+</I>&gt;<i> Version 1.0, possibly tomorrow?  Please let me know if you foresee any
+</I>&gt;<i> problems.
+</I>&gt;<i>
+</I>&gt;<i> Looking ahead:
+</I>&gt;<i>
+</I>&gt;<i> I agree with Edson that support for many OS-specific external programs
+</I>&gt;<i> could rapidly become problematic.  I see this as a conflict between the
+</I>&gt;<i> worthwhile goals of keeping the program &quot;pure&quot; (reasonably free of
+</I>&gt;<i> OS-dependent #ifdef's etc.), and having it widely adopted on the most
+</I>&gt;<i> popular platforms and with the most popular companion software.  At present
+</I>&gt;<i> we are providing some support for JT-Alert, Ham Radio Deluxe (Windows only)
+</I>&gt;<i> and PSK Reporter (Windows and Linux, but with separate code).  (Possibly
+</I>&gt;<i> Edson's code for PSK Reporter can also be used on Windows; I haven't
+</I>&gt;<i> tried.)  I suggested that we should support DxLab Commander at about the
+</I>&gt;<i> same level that we do HRD.  This would also be Windows only, and quite
+</I>&gt;<i> possibly it should be the last such effort we make.
+</I>&gt;<i>
+</I>&gt;<i> It would be good to look further at Edson's suggestion that we could
+</I>&gt;<i> develop a generalized inter-program interface -- a file or socket with the
+</I>&gt;<i> necessary hooks so that a separate, OS-dependent program could act as a
+</I>&gt;<i> link to other software.
+</I>&gt;<i>
+</I>&gt;<i> I also agree that native support for IQ transceivers like the SoftRock
+</I>&gt;<i> would be a good development goal.  My experience doing this with WSPR
+</I>&gt;<i> suggests that the number of users might be a modest fraction of the total,
+</I>&gt;<i> but the level of user enthusiasm would be high.
+</I>&gt;<i>
+</I>&gt;<i> One final thought.  The present usage of JT9 is such that there is little
+</I>&gt;<i> reason to restrict the decoding frequency range (and that displayed in the
+</I>&gt;<i> waterfall) to 1000 Hz.  When adding other modes -- probably JT65 first --
+</I>&gt;<i> my current plan is to increase the maximum displayed bandwidth to more like
+</I>&gt;<i> 4 or 5 kHz.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/01515385/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130529/01515385/attachment-0001.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001321.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+	<LI>Next message: <A HREF="001316.html">[Wsjt-devel] Audio I/O on the *nix platform
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1322">[ date ]</a>
+              <a href="thread.html#1322">[ thread ]</a>
+              <a href="subject.html#1322">[ subject ]</a>
+              <a href="author.html#1322">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

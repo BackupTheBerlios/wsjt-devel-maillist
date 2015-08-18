@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.2.2 r3659 flatten
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20flatten&In-Reply-To=%3C000501cf1ac0%24edf43000%24c9dc9000%24%40W1QA.COM%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002126.html">
+   <LINK REL="Next"  HREF="002110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.2.2 r3659 flatten</H1>
+    <B>Bob McCormick W1QA</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20flatten&In-Reply-To=%3C000501cf1ac0%24edf43000%24c9dc9000%24%40W1QA.COM%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.2.2 r3659 flatten">EME at W1QA.COM
+       </A><BR>
+    <I>Sun Jan 26 19:03:31 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002126.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+        <LI>Next message: <A HREF="002110.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73 functionality
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2109">[ date ]</a>
+              <a href="thread.html#2109">[ thread ]</a>
+              <a href="subject.html#2109">[ subject ]</a>
+              <a href="author.html#2109">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Joe for the new build that fixed the red waterfall problem.
+
+ 
+
+Not sure how the flatten is supposed to work - here's what I see with my
+configuration:
+
+ 
+
+Yaesu FTDX-5000MP
+
+USB mode with FLT = 6k and WID = 4.00 kHz
+
+receiver audio to computer via microHAM MicroKeyer II interface
+
+ 
+
+Wide Graph settings:
+
+[WideGraph]
+
+geometry=@ByteArray(\x1\xd9\xd0\xcb\0\x1\0\0\0\0\x5\x82\0\0\0\x65\0\0\t\\\0\
+0\x3\xf8\0\0\x5\x8a\0\0\0\x81\0\0\tT\0\0\x3\xf0\0\0\0\x1\0\0)
+
+PlotZero=-1
+
+PlotGain=0
+
+PlotWidth=949
+
+FreqSpan=6
+
+WaterfallAvg=5
+
+Current=false
+
+Cumulative=true
+
+BinsPerPixel=6
+
+Slope=1.1
+
+StartFreq=0
+
+WaterfallPalette=Default
+
+Fmin=2400
+
+Flatten=false
+
+ 
+
+When the box is unchecked:
+
+I have a green line that ramps up at 100 Hz peaking around 250 Hz and
+staying pretty flat . with a very slight downward tilt from 3000 Hz to 3600
+Hz or so where it tails off fairly quickly.
+
+ 
+
+In previous versions I was able to adjust the slope ever so slightly such
+that the green line practically sat on one of the horizontal graph lines.
+
+
+If I check the Flatten box in r3659:
+
+ 
+
+The entire green line is brought up one horizontal line . and there's a
+significant ramp from about 3000 Hz up to the roll off point.
+
+ 
+
+This probably is not indicative of what should be (ideally) happening?
+
+ 
+
+Bob W1QA
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/25c62585/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/25c62585/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002126.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+	<LI>Next message: <A HREF="002110.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73 functionality
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2109">[ date ]</a>
+              <a href="thread.html#2109">[ thread ]</a>
+              <a href="subject.html#2109">[ subject ]</a>
+              <a href="author.html#2109">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

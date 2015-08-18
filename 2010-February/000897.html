@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT65b bug in Linux code?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT65b%20bug%20in%20Linux%20code%3F&In-Reply-To=%3Ca193eb4d1002080851y19b1e363x15717ab21d5df105%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000896.html">
+   <LINK REL="Next"  HREF="000898.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT65b bug in Linux code?</H1>
+    <B>Steve Meuse</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT65b%20bug%20in%20Linux%20code%3F&In-Reply-To=%3Ca193eb4d1002080851y19b1e363x15717ab21d5df105%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] JT65b bug in Linux code?">smeuse at gmail.com
+       </A><BR>
+    <I>Mon Feb  8 17:51:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000896.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+        <LI>Next message: <A HREF="000898.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#897">[ date ]</a>
+              <a href="thread.html#897">[ thread ]</a>
+              <a href="subject.html#897">[ subject ]</a>
+              <a href="author.html#897">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, thanks Joe, I appreciate the help. I'll check out that version later and
+see if it helps.
+
+WRT to starting the program, I think by simply installing from source and
+doing a &quot;make install&quot; on Ubuntu that something is missing. I haven't had
+time to track it down, but I'm guessing it's an evironment variable or
+something, I don't think phython is figuring out where to look for the
+modules?
+
+That's less important :) I've also read somewhere that people have had luck
+running the window binary under wine, so I may try that as another approach.
+I actually have VMware Workstation installed, but wouldn't you know it,
+there is a bug that affects USB audio devices on the guest OS! I'm using a
+Signalink USB.
+
+I've been using Linux since kernel 0.98pl12, I love it more than any other
+OS, but sometimes it can be a love/hate relationship :)
+
+-Steve
+N1JFU
+
+P.S. I made my first JT65b contact this weekend on 2m, 15w and 285 miles
+between FN42la and FN35hs! Gotta love it!
+
+
+
+
+On Mon, Feb 8, 2010 at 11:22 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Steve,
+</I>&gt;<i>
+</I>&gt;<i> As far as I know, nobody in the development group is regularly testing
+</I>&gt;<i> WSPR or WSJT on a 64-bit Linux system.  However, we did find and fix a
+</I>&gt;<i> bug, some months ago, that made the nhash.c function fail when compiled
+</I>&gt;<i> on 64-bit systems.  That function is also used in WSJT (although only in
+</I>&gt;<i> the its little-used WSPR mode), so this morning I put the simple fix
+</I>&gt;<i> into the WSJT trunk (t1794) as well.
+</I>&gt;<i>
+</I>&gt;<i> It's possible that some similar flaw (for 64-bit systems) exists
+</I>&gt;<i> elsewhere in the WSJT code.  If you can trace where the program is dying
+</I>&gt;<i> on your system, you might help to discover the source.
+</I>&gt;<i>
+</I>&gt;<i> There's nothing wrong with starting the program by typing
+</I>&gt;<i> &quot;python wsjt.py&quot; in a command prompt window.  That's what I usually do.
+</I>&gt;<i>
+</I>&gt;<i>        -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> On 2/6/2010 2:20 PM, Steve Meuse wrote:
+</I>&gt;<i> &gt; New to the list, I looked in the archive but didn't see this covered.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm running Ubuntu 9.04 64 bit.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I had installed 5.9.7 r383 from .deb, I think. And I'm now running 7.05
+</I>&gt;<i> &gt; r1759 that I just pulled out of svn.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The problem is that WSJT will crash when I go to transmit in JT65b mode.
+</I>&gt;<i> I
+</I>&gt;<i> &gt; think I've discovered the trigger. It only seems to crash when monitor is
+</I>&gt;<i> &gt; active. If I disable monitor it doesn't dump out on me.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm also having an issue with the startup of the program. If I use the
+</I>&gt;<i> wsjt
+</I>&gt;<i> &gt; script that gets installed in /usr/local/bin, I get the following error
+</I>&gt;<i> &gt; message:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~/.wsjt$ /usr/local/bin/wsjt
+</I>&gt;<i> &gt; Traceback (most recent call last):
+</I>&gt;<i> &gt;    File &quot;/usr/local/bin/wsjt.py&quot;, line 11, in&lt;module&gt;
+</I>&gt;<i> &gt;      from WsjtMod import Audio
+</I>&gt;<i> &gt; ImportError: cannot import name Audio
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Which I'm guessing is an environment variable issie of some sort.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Here is the output from both versions:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; (both examples in monitor mode, TX3 selected on transmit)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~$ wsjt&lt;--- script insalled in /usr/bin
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; WSJT Version 5.9.7 r383 , by K1JT
+</I>&gt;<i> &gt; Revision date: 2007-05-04 23:17:52 +1000 (Fri, 04 May 2007)
+</I>&gt;<i> &gt; Run date:   Sat Feb  6 18:55:13 2010 UTC
+</I>&gt;<i> &gt; Using PortAudio.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Audio     Input    Output     Device Name
+</I>&gt;<i> &gt; Device  Channels  Channels
+</I>&gt;<i> &gt; ------------------------------------------------------------------
+</I>&gt;<i> &gt;     0       16        16       /dev/dsp
+</I>&gt;<i> &gt;     1       16        16       /dev/dsp1
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Default   Input:  0   Output:  0
+</I>&gt;<i> &gt; Requested Input:  1   Output:  1
+</I>&gt;<i> &gt; Opening device 1 for input, 1 for output.
+</I>&gt;<i> &gt; Audio streams running normally.
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; At line 14 of file chkmsg.f
+</I>&gt;<i> &gt; Fortran runtime error: Substring out of bounds: lower bound (-1) of
+</I>&gt;<i> &gt; 'message' is less than one
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~/wsjt/trunk$ python wsjt.py&lt;-- Running it out of the
+</I>&gt;<i> source
+</I>&gt;<i> &gt; directory....
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; WSJT Version 7.05 r1759 , by K1JT
+</I>&gt;<i> &gt; Revision date: 2010-01-15 15:42:29 -0500 (Fri, 15 Jan 2010)
+</I>&gt;<i> &gt; Run date:   Sat Feb  6 19:08:13 2010 UTC
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Audio     Input    Output     Device Name
+</I>&gt;<i> &gt; Device  Channels  Channels
+</I>&gt;<i> &gt; ------------------------------------------------------------------
+</I>&gt;<i> &gt;     0       16        16       /dev/dsp
+</I>&gt;<i> &gt;     1       16        16       /dev/dsp1
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; User requested devices:   Input =  1   Output =  1
+</I>&gt;<i> &gt; Default devices:          Input =  0   Output =  0
+</I>&gt;<i> &gt; Will open devices:        Input =  1   Output =  1
+</I>&gt;<i> &gt; Audio streams running normally.
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; Segmentation fault
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Does this simply have to do with how I'm launching the program? (I hope)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Wsjt-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+
+-Steve
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100208/371e0842/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100208/371e0842/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000896.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+	<LI>Next message: <A HREF="000898.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#897">[ date ]</a>
+              <a href="thread.html#897">[ thread ]</a>
+              <a href="subject.html#897">[ subject ]</a>
+              <a href="author.html#897">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

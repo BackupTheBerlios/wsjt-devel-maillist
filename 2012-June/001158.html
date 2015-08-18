@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Problem with MAP65 r2471
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2012-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20MAP65%20r2471&In-Reply-To=%3C4FE9A803.5040606%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001157.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Problem with MAP65 r2471</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20MAP65%20r2471&In-Reply-To=%3C4FE9A803.5040606%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Problem with MAP65 r2471">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 26 14:16:03 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001157.html">[Wsjt-devel] Problem with MAP65 r2471
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1158">[ date ]</a>
+              <a href="thread.html#1158">[ thread ]</a>
+              <a href="subject.html#1158">[ subject ]</a>
+              <a href="author.html#1158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guy,
+
+MAP65 probably thinks you are operating on 28 MHz, or whatever your IF 
+is, because Linrad sends frequency information to MAP65 along with the 
+baseband data.
+
+Try putting &quot;144.125&quot; (your center frequency) in the box at lower right 
+of the Wide Graph, and check the box &quot;Force Center Freq (MHz)&quot;.
+
+	-- 73, Joe, K1JT
+
+On 06/25/2012 10:49 PM, Guy VK2KU wrote:
+&gt;<i> Now this is curious!
+</I>&gt;<i>
+</I>&gt;<i> I am running Linrad into MAP65 r2471 on the same machine,
+</I>&gt;<i> with integer TIMF2 signals.
+</I>&gt;<i> Input into Linrad is from my SDR-IQ.
+</I>&gt;<i>
+</I>&gt;<i> Suppose I start up MAP65 r2471 first.
+</I>&gt;<i> Then I start Linrad up.
+</I>&gt;<i> As soon as I select the mode in Linrad
+</I>&gt;<i> to bring up the main Linrad screen,
+</I>&gt;<i> the 2 Doppler values (MyDop and DXDop) in MAP65 change from
+</I>&gt;<i> sensible and correct (same as WSJT) values
+</I>&gt;<i> to obviously implausible values!
+</I>&gt;<i>
+</I>&gt;<i> Stop Linrad and the Doppler values remain bad.
+</I>&gt;<i> Restart MAP65 and all is well - until I start Linrad again.
+</I>&gt;<i>
+</I>&gt;<i> I have tried Linrad versions 3.37, 3.38 and 3.39, same problem.
+</I>&gt;<i> But MAP65 r2465 is ok.
+</I>&gt;<i> It looks as if something in MAP65 r2471 is being overwritten
+</I>&gt;<i> by the data stream from Linrad.
+</I>&gt;<i>
+</I>&gt;<i> Does anyone else have this problem?
+</I>&gt;<i>
+</I>&gt;<i> Guy VK2KU
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001157.html">[Wsjt-devel] Problem with MAP65 r2471
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1158">[ date ]</a>
+              <a href="thread.html#1158">[ thread ]</a>
+              <a href="subject.html#1158">[ subject ]</a>
+              <a href="author.html#1158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

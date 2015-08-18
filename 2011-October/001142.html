@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] oss problem ????
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C20111007193048.2a9ec1ae%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001141.html">
+   <LINK REL="Next"  HREF="001143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] oss problem ????</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C20111007193048.2a9ec1ae%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] oss problem ????">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Oct  7 20:30:48 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001141.html">[Wsjt-devel] oss problem ????
+</A></li>
+        <LI>Next message: <A HREF="001143.html">[Wsjt-devel] oss problem ????
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1142">[ date ]</a>
+              <a href="thread.html#1142">[ thread ]</a>
+              <a href="subject.html#1142">[ subject ]</a>
+              <a href="author.html#1142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 07 Oct 2011 14:06:53 -0400
+Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+
+
+Hi Joe I think you may have misunderstood what I was asking, or I didn't make it clear Sorry.
+
+What I have found is a dependent file on kernel 3, and I haven't out which yet, is causing the M-Audio
+D66 and series that use the ICE1712 module is causing the card to report as only half duplex at 48000.
+instead of it full range. hat series of card is widely use by Hams as it has a high dynamic range and a
+good sampling range.
+
+
+I'm aware its going to bork as the sampling rate is incorrect, are the errors that I have prefixed with
+&quot;XXX&quot; caused by the 11025 sampling rate not being available or is there something else its not happy
+with.
+Unfortunately changing anything in .asoundrc wont help .
+I don't think its a kernel module at fault, as if I go back to kernel 2.6.35 with the current lib
+configuration I get the same. I think its one of the sound related libs or maybe something with
+libsamplerate that is causing the problem. Hence wondering if OSS support has been depreciated in the
+latest kernel series.
+I hope that clarifies it a bit better.
+thanks
+&gt;<i> Richard wrote:
+</I>&gt;<i> &gt; Hi Joe
+</I>&gt;<i> &gt; I thought I'd give kernel 3.0.1 on Debian 6.5 a try, on Debian 6.0 with kernel 2.6.35 there are no
+</I>&gt;<i> &gt; problems I've found.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; However, the seems to be a problem possible with OSS, see below, One thing I did notice and I'll be
+</I>&gt;<i> &gt; flagging on the debian list is when K3.0.1 is loaded with its dependencies most of the audio modules
+</I>&gt;<i> &gt; get blacklisted .
+</I>&gt;<i> &gt; could you point me in the direction to find whats missing please.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; WSJT Version 9.1 r2442 , by K1JT
+</I>&gt;<i> &gt; Revision date: 2011-09-13 20:56:36 +0100 (Tue, 13 Sep 2011)
+</I>&gt;<i> &gt; Run date:   Fri Oct  7 13:58:34 2011 UTC
+</I>XXX Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS,&amp;temp )' failed in
+&gt;<i> &gt; 'src/hostapi/oss/pa_unix_oss.c', line: 397
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Audio     Input    Output     Device Name
+</I>&gt;<i> &gt; Device  Channels  Channels
+</I>&gt;<i> &gt; ------------------------------------------------------------------
+</I>&gt;<i> &gt;     0       16         0       /dev/dsp1
+</I>&gt;<i> &gt;     1        0        10       M Audio Delta 66: ICE1712 multi (hw:0,0)
+</I>&gt;<i> &gt;     2        2         0       Conexant CX8801: CX88 Digital (hw:1,0)
+</I>&gt;<i> &gt;     3        0        128       front
+</I>&gt;<i> &gt;     4        0        128       surround40
+</I>&gt;<i> &gt;     5        0        128       surround41
+</I>&gt;<i> &gt;     6        0        128       surround50
+</I>&gt;<i> &gt;     7        0        128       surround51
+</I>&gt;<i> &gt;     8        0        128       iec958
+</I>&gt;<i> &gt;     9        0        128       spdif
+</I>&gt;<i> &gt;    10       128        128       default
+</I>&gt;<i> &gt;    11        0        10       dmix
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; User requested devices:   Input =  5   Output =  5
+</I>&gt;<i> &gt; Default devices:          Input =  0   Output =  0
+</I>&gt;<i> &gt; Will open devices:        Input =  5   Output =  5
+</I>XXX Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS,&amp;temp )' failed in
+XXX 'src/hostapi/oss/pa_unix_oss.c', line: 397 Expression 'parameters-&gt;channelCount&lt;= maxChans' failed
+XXX in 'src/hostapi/alsa/pa_linux_alsa.c', line: 926 Expression 'ValidateParameters( inputParameters,
+XXX hostApi, StreamDirection_In )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1136 Error
+XXX opening input audio stream. Errortext: Invalid number of channels
+&gt;<i> &gt; 	Number: -9998
+</I>&gt;<i> &gt; Error opening output audio stream.
+</I>&gt;<i> &gt; 	Errortext: Invalid sample rate
+</I>&gt;<i> &gt; 	Number: -9997
+</I>&gt;<i> &gt; Error  3 in JTaudio, you will only be able to work offline.
+</I>&gt;<i> 
+</I>&gt;<i> Your screen dump says that you tried to open device 5 for both input and 
+</I>&gt;<i> output.
+</I>&gt;<i> 
+</I>&gt;<i> As stated in the first error message (and in the table of devices 
+</I>&gt;<i> above), device 5 is not an input device.
+</I>&gt;<i> 
+</I>&gt;<i> As stated in the second error message, device 5 reports that it does not 
+</I>&gt;<i> offer a sample rate of 11025 Hz.
+</I>&gt;<i> 
+</I>&gt;<i> Most likely, you can use the &quot;.asoundrc&quot; work-around described in the 
+</I>&gt;<i> WSJT 9.0 Supplement to the User's Guide.  See page 8 of
+</I>&gt;<i> <A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJT_9.0_Supplement.pdf">http://www.physics.princeton.edu/pulsar/K1JT/WSJT_9.0_Supplement.pdf</A> .
+</I>&gt;<i> 
+</I>&gt;<i> For details, you're on your own.
+</I>&gt;<i> 
+</I>&gt;<i> 	-- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+
+
+-- 
+Best wishes / 73
+
+e-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+Richard Bown
+nil carborundum a illegitemis
+##################################################################################
+Ham Call G8JVM . OS Fedora FC15 x86_64 on a Dual core AMD Athlon 4400, 4 GB RAM
+Maidenhead QRA: IO82SP38, LAT. 52 39.720' N LONG. 2 28.171 W ( degs mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+################################################################################## 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001141.html">[Wsjt-devel] oss problem ????
+</A></li>
+	<LI>Next message: <A HREF="001143.html">[Wsjt-devel] oss problem ????
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1142">[ date ]</a>
+              <a href="thread.html#1142">[ thread ]</a>
+              <a href="subject.html#1142">[ subject ]</a>
+              <a href="author.html#1142">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

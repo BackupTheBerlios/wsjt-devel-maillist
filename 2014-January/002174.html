@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Need help with nagging problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Need%20help%20with%20nagging%20problem&In-Reply-To=%3C52EBB573.1000507%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002171.html">
+   <LINK REL="Next"  HREF="002172.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Need help with nagging problem</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Need%20help%20with%20nagging%20problem&In-Reply-To=%3C52EBB573.1000507%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Need help with nagging problem">joe at princeton.edu
+       </A><BR>
+    <I>Fri Jan 31 15:38:43 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002171.html">[Wsjt-devel] Need help with nagging problem
+</A></li>
+        <LI>Next message: <A HREF="002172.html">[Wsjt-devel] New documentation branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2174">[ date ]</a>
+              <a href="thread.html#2174">[ thread ]</a>
+              <a href="subject.html#2174">[ subject ]</a>
+              <a href="author.html#2174">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+Thanks for sending (off list) the screen shot and wav file.  I'm sorry 
+to say that I presently have no idea what may be causing your occasional 
+glitch-ridden Tx audio.
+
+I suppose you must be sending Tx and Rx audio back and forth between 
+WSJT-X and PowerSDR (or OpenHPSDR mRX) by means of VAC lines, right? 
+It's hard to say where the problem might be, in that chain.  It's clear 
+that something is causing interruptions (and therefore abrupt phase 
+jumps) in the audio stream.  Have you tried sending the Tx audio to the 
+ANAN 100D through a real audio device and a physical cable, rather that 
+through VAC?
+
+	-- 73, Joe, K1JT
+
+On 1/30/2014 8:35 PM, john clark wrote:
+&gt;<i> Joe&amp;  friends
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> For many months I have had an intermittent (1 in 20 QSO) problem using wsjtx.
+</I>&gt;<i>  From time-to-time the signal transmitted is significantly distorted.I tried to attach a GIF and wav file of a bad TX but the moderator rejected the email over 40k. So -- If you would like a copy of the GIF and wav files please send me a direct email request.
+</I>&gt;<i>
+</I>&gt;<i> I used VAC ver 4.13 Audio Repeater to record the wav file so I know that the distortion is not in the radio.
+</I>&gt;<i> I worked with Eugene Muzychenko for a couple of weeks but we were not able to find any configuration that would eliminate the problem.
+</I>&gt;<i> I am now working with Neal Campbell  to do everything we can to ensure that the new i7 16G machine is correct.
+</I>&gt;<i>
+</I>&gt;<i> I've come here to ask for any ideas as to the cause and fix to my problem.
+</I>&gt;<i> Does anyone recognize the sound and wave forms in error?
+</I>&gt;<i> Is this a common DSP error pattern?
+</I>&gt;<i>
+</I>&gt;<i> Environment:
+</I>&gt;<i>
+</I>&gt;<i> i7 3930K 16 GB  ASUS P9X79LE motherboard
+</I>&gt;<i> Windows 7 Home Premium
+</I>&gt;<i> Display AMD Radeon 7800
+</I>&gt;<i> Radio Apache-Labs 100D
+</I>&gt;<i> OpenHPSDR mRX PS v3.2.7
+</I>&gt;<i> WSJT-X v 1.3, r3673
+</I>&gt;<i> JTAlert 2.4.13
+</I>&gt;<i> DDUtil_V3
+</I>&gt;<i> HRD 6.1.4
+</I>&gt;<i>
+</I>&gt;<i> When this problem occurs I immediately HALT Tx and
+</I>&gt;<i> then Enable Tx again. Most times this corrects the problem, but some
+</I>&gt;<i> times it will occur for three cycles in a row.
+</I>&gt;<i>
+</I>&gt;<i> Only as a guess, as I have not read the code, I wonder if this caused by a
+</I>&gt;<i> 'hard slam' of signal at the start of the Tx between WSJT-X and VAC.
+</I>&gt;<i> Could WSJT-X be modified to Tx a idle silent tone ( 1K -140dbm ) always, even when CAT Tx is not active, thus keeping all of the buffers in the
+</I>&gt;<i> VAC chain full with something valid. I am assuming that zero is not a
+</I>&gt;<i> good PCM value.
+</I>&gt;<i>
+</I>&gt;<i> As I am at &quot;wits end&quot;, all ideas will be appreciated.
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> John
+</I>&gt;<i> TI4/N0URE
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002171.html">[Wsjt-devel] Need help with nagging problem
+</A></li>
+	<LI>Next message: <A HREF="002172.html">[Wsjt-devel] New documentation branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2174">[ date ]</a>
+              <a href="thread.html#2174">[ thread ]</a>
+              <a href="subject.html#2174">[ subject ]</a>
+              <a href="author.html#2174">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

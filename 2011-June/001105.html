@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] USB to serial issue ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C4DF62719.709%40f8arr.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001106.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] USB to serial issue ?</H1>
+    <B>f8arr</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C4DF62719.709%40f8arr.org%3E"
+       TITLE="[Wsjt-devel] USB to serial issue ?">f8arr at f8arr.org
+       </A><BR>
+    <I>Mon Jun 13 17:04:57 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001106.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1105">[ date ]</a>
+              <a href="thread.html#1105">[ thread ]</a>
+              <a href="subject.html#1105">[ subject ]</a>
+              <a href="author.html#1105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello moonbouncers.
+
+Apologies for the bandwich, this is a Linux issue. But perhaps someone 
+has allready faced it ...
+
+
+Here is the case :
+In order to have a TX port on WSJT I use /dev/ttyUSB0 from prolific pl2303.
+At boot, the serial comes up to TX.
+On messages I have only this message :
+
+/Jun 13 17:00:08 f8arr2-station kernel: [ 3574.706035] usb 3-1: new full 
+speed USB device using uhci_hcd and address 8
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852805] usb 3-1: New USB 
+device found, idVendor=067b, idProduct=2303
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852814] usb 3-1: New USB 
+device strings: Mfr=1, Product=2, SerialNumber=0
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852819] usb 3-1: Product: 
+USB-Serial Controller
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852823] usb 3-1: 
+Manufacturer: Prolific Technology Inc.
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.855943] pl2303 3-1:1.0: 
+pl2303 converter detected
+Jun 13 17:00:08 f8arr2-station kernel: [ 3574.868109] usb 3-1: pl2303 
+converter now attached to ttyUSB0
+Jun 13 17:00:08 f8arr2-station mtp-probe: checking bus 3, device 8: 
+&quot;/sys/devices/pci0000:00/0000:00:1d.1/usb3/3-1&quot;
+Jun 13 17:00:08 f8arr2-station mtp-probe: bus: 3, device: 8 was not an 
+MTP device/
+
+Of course, If I run WSJT it can't commute the TX with an error message 
+&quot;Can't connect to /dev/ttyUSB0&quot;
+
+My user is on the &quot;dialout&quot; and &quot;uucp&quot; group.
+
+I tried exactly the same manipulation with my only real RS232 port and 
+it works like a charm.. (but dedicated to an other action).
+Of course, same configuration was ok under my ubuntu 10.04. but I 
+switched to Fedora 15...
+
+If someone had a idea.. it would be great. My freind google didn't came 
+with something looking good...
+
+regards
+F8ARR - Guillaume
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110613/a1418655/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110613/a1418655/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001106.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1105">[ date ]</a>
+              <a href="thread.html#1105">[ thread ]</a>
+              <a href="subject.html#1105">[ subject ]</a>
+              <a href="author.html#1105">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

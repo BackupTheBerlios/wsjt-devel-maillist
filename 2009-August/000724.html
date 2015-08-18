@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt r1313
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3C4A77F17D.6040508%40blueyonder.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000722.html">
+   <LINK REL="Next"  HREF="000726.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt r1313</H1>
+    <B>richard.bown at blueyonder.co.uk</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3C4A77F17D.6040508%40blueyonder.co.uk%3E"
+       TITLE="[Wsjt-devel] wsjt r1313">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Tue Aug  4 10:29:49 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000722.html">[Wsjt-devel] wsjt r1313
+</A></li>
+        <LI>Next message: <A HREF="000726.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#724">[ date ]</a>
+              <a href="thread.html#724">[ thread ]</a>
+              <a href="subject.html#724">[ subject ]</a>
+              <a href="author.html#724">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>John Nelson wrote:
+&gt;<i> Hi Richard,
+</I>&gt;<i> 
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+</I>&gt;<i> ...
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine  
+</I>&gt;<i> &quot;cs_lock&quot;. Skipping.
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine  
+</I>&gt;<i> &quot;cs_unlock&quot;. Skipping.
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;.  
+</I>&gt;<i> Skipping.
+</I>&gt;<i> 
+</I>&gt;<i> etc. are not gfortran errors but f2py comments because it uses  
+</I>&gt;<i> certain keywords eg &quot;len&quot; and doesn't need these modules.   These  
+</I>&gt;<i> warnings do not produce segmentation errors.
+</I>&gt;<i> 
+</I>&gt;<i> ---
+</I>&gt;<i> Found executable /usr/bin/gfortran packpfx.f90:26.37:
+</I>&gt;<i> 
+</I>&gt;<i>       if(pfx(3:3).eq.' ') pfx=' '//pfx
+</I>&gt;<i>                                      1
+</I>&gt;<i> Warning: CHARACTER expression will be truncated in assignment (3/4) at
+</I>&gt;<i>       (1) packpfx.f90:27.37:
+</I>&gt;<i> 
+</I>&gt;<i> But I bet the comment will be &quot; we've never seen that before&quot;
+</I>&gt;<i> ---
+</I>&gt;<i> 
+</I>&gt;<i> Correct:   here is my version:
+</I>&gt;<i> 
+</I>&gt;<i> wsjt-v7.04-r1313]  jmn% gfortran -c -Wall packpfx.f90
+</I>&gt;<i> wsjt-v7.04-r1313]  jmn% gfortran -c - Wall unpackpfx.f90
+</I>&gt;<i> 
+</I>&gt;<i> No errors reported.
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> I suspect that if some time was spent cleaning up, so sections of builds
+</I>&gt;<i> were not missed, that perhaps some of the causes would also go away.
+</I>&gt;<i> --
+</I>&gt;<i> 
+</I>&gt;<i> We have spent some time looking at all fortran and C errors produced  
+</I>&gt;<i> during the make phase.   Warnings about the use of variables which  
+</I>&gt;<i> may not have been initialized before use have been investigated and  
+</I>&gt;<i> fixed.    Warnings that remain refer only to variables that have been  
+</I>&gt;<i> defined but have not been used.     In my make phase, there are only  
+</I>&gt;<i> 5 routines which generate this warning.    At the moment, there is no  
+</I>&gt;<i> particular need or urgency to fix these.   There are no other warning  
+</I>&gt;<i> messages.
+</I>&gt;<i> 
+</I>&gt;<i> John  G4KLA
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+Thanks for the explanation John
+
+-- 
+Best wishes
+
+Richard Bown
+
+#####################################################################
+Registered Linux User 36561
+OS: Mandriva 2009.1 x86_64, on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+####################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000722.html">[Wsjt-devel] wsjt r1313
+</A></li>
+	<LI>Next message: <A HREF="000726.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#724">[ date ]</a>
+              <a href="thread.html#724">[ thread ]</a>
+              <a href="subject.html#724">[ subject ]</a>
+              <a href="author.html#724">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

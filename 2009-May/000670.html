@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A15525F.4070806%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000669.html">
+   <LINK REL="Next"  HREF="000674.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A15525F.4070806%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu May 21 15:08:47 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000669.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000674.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#670">[ date ]</a>
+              <a href="thread.html#670">[ thread ]</a>
+              <a href="subject.html#670">[ subject ]</a>
+              <a href="author.html#670">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Harry and all,
+
+Thanks for reminding us that you found a combination of 
+gfortran/gcc versions that produced a working WSJT, some 
+time ago.  So have several others, including myself.
+
+My recent goal has been to find out exactly what's wrong 
+with code produced by current revisions of these compilers, 
+and whether any of the problem can be traced to the 
+architecture and implementation of WSJT itself.
+
+An added impetus is that some *nix users -- yourself 
+included -- like always to upgrade to the latest versions of 
+available software.  If WSJT does not compile and run 
+correctly with the latest revisions in popular *nix 
+distributions, I'd like to understand why, and either fix it 
+or submit a concise bug report to the GNU folks.
+
+Unfortunately, I haven't succeeded in identifying the 
+problem.  My statement on this reflector a couple of days 
+ago, to the effect that &quot;the gfortran problem has been 
+solved&quot; -- was premature.  When I tried the same things on 
+WSPR that had worked with WSJT, they failed.  The problem 
+definitely has to do with multi-threaded code and with 
+Fortran read/write statements, perhaps especially internal 
+formatted read/write statements.
+
+Other than that general statement, I am still in the dark: 
+gfortran versions of WSJT and WSPR can be compiled and run 
+correctly on some Linux systems, but not all.  I believe 
+they are always OK on FreeBSD, and compiling with g95 always 
+seems to work.  On windows, MinGW/g95 and CVF are both OK.
+
+We still have not found the root cause of the gfortran problem.
+
+	-- 73, Joe, K1JT	
+
+Harry Popov wrote:
+&gt;<i> On Tue, 19 May 2009 13:23:39 -0400
+</I>&gt;<i> Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> You may have noticed that in message [WSJT-SVN]r1248 I 
+</I>&gt;&gt;<i> stated that the &quot;gfortran problem&quot; has been solved. 
+</I>&gt;<i> 
+</I>&gt;<i> I tested to compile using gfortran. The problem still exists until the
+</I>&gt;<i> last rev.1257. WSJT compiles fine. On startup I see the main window and
+</I>&gt;<i> it crashes with segmentation fault.
+</I>&gt;<i> 
+</I>&gt;<i> As I reported earlier the problem
+</I>&gt;<i> began since we upgraded to the last gcc. If we
+</I>&gt;<i> downgrade gcc it is still no problem to compile with gfortran and to
+</I>&gt;<i> run the program. This was proved by another Linux user on SuSe system.
+</I>&gt;<i> I already forwarded his letter to this list.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000669.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000674.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#670">[ date ]</a>
+              <a href="thread.html#670">[ thread ]</a>
+              <a href="subject.html#670">[ subject ]</a>
+              <a href="author.html#670">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

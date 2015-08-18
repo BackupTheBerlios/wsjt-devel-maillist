@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re:  qt-audio.patch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20qt-audio.patch&In-Reply-To=%3C51FEC1EC.5050707%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001681.html">
+   <LINK REL="Next"  HREF="001685.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re:  qt-audio.patch</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20qt-audio.patch&In-Reply-To=%3C51FEC1EC.5050707%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] Fwd: Re:  qt-audio.patch">djmunn at bigpond.com
+       </A><BR>
+    <I>Sun Aug  4 23:04:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001681.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001685.html">[Wsjt-devel] compiling make -f makefile.linux  under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1683">[ date ]</a>
+              <a href="thread.html#1683">[ thread ]</a>
+              <a href="subject.html#1683">[ subject ]</a>
+              <a href="author.html#1683">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+
+-------- Original Message --------
+Subject: 	Re: [Wsjt-devel] qt-audio.patch
+Date: 	Mon, 05 Aug 2013 06:59:20 +1000
+From: 	David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt;
+To: 	Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+
+
+
+Hi Bill ...d/l a fresh install of r3522 and it patched correctly
+
+the problem im having now is the wsjtx/lib/Makefile.linux is set for qt4
+and when i change it to finde the QT5.1.0 files it grinds to a halt
+at ipcomm.cpp
+
+Joe may know a way around this
+
+David VK4BDJ
+
+
+
+On 04/08/13 17:17, Bill Somerville wrote:
+&gt;<i> On 04/08/2013 04:39, David wrote:
+</I>&gt;<i> Hi David,
+</I>&gt;&gt;<i> Hi Bill..... tried to patch my Linux wsjtx
+</I>&gt;&gt;<i> got 2 errors
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> wsjtx.pro
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hunk #2 failed at 14
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> soundin.cpp
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hunk #1 failed at 1
+</I>&gt;<i> That sounds as if you didn't start with r2522 sources. Maybe you had
+</I>&gt;<i> local edits in your working copies?
+</I>&gt;<i>
+</I>&gt;<i> A patch (failed or otherwise) can be reversed out by using the same
+</I>&gt;<i> command you applied it with an additional '-R' argument, for example:
+</I>&gt;<i>
+</I>&gt;<i> patch -p0 -R -i &lt;patch-file-path&gt;
+</I>&gt;<i>
+</I>&gt;<i> If you have work in progress and want to try the patch I would suggest
+</I>&gt;<i> checking out a fresh source directory from r3522 rather than applying
+</I>&gt;<i> the patch to your current working set.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/ab1150dc/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/ab1150dc/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001681.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001685.html">[Wsjt-devel] compiling make -f makefile.linux  under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1683">[ date ]</a>
+              <a href="thread.html#1683">[ thread ]</a>
+              <a href="subject.html#1683">[ subject ]</a>
+              <a href="author.html#1683">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

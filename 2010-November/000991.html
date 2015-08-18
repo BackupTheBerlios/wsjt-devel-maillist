@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CA60920D0-03FC-476E-8224-08F34585789D%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000990.html">
+   <LINK REL="Next"  HREF="000992.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CA60920D0-03FC-476E-8224-08F34585789D%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Nov 25 20:41:15 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000990.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="000992.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#991">[ date ]</a>
+              <a href="thread.html#991">[ thread ]</a>
+              <a href="subject.html#991">[ subject ]</a>
+              <a href="author.html#991">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe and Sivan and others,
+
+1.  On-screen indicator?    Yes
+
+2.   Ability to save/restore setups?    Yes
+
+3.   Do we need separate Tx sliders?  Yes, definitely.  See (5) below.
+
+4.   Write freq change to ALL_MEPT.TXT?     Ok
+
+5.    Full random?     No.
+        I don't think this is necessary.    I would cycle through  
+each band-plan in turn.     The time for this complete cycle is  
+unlikely to be more than 10 to 14 minutes.    What is the advantage  
+in randomizing this?     For a given band-selection, I don't see the  
+need for a random decision to transmit or not.    I would select the  
+TX slider to 50% and then expect that at every alternate selection of  
+this band, transmit would be selected.    If 25% then every 4th time  
+round; 100% then every time the band was selected, transmit would be  
+enabled.   This gives the user full control of how often transmission  
+would take place on any given band.    I found the randomize scheme  
+meant that I could never know when a transmission would occur.
+
+6.   Automatic ATUs?    My Kenwood TS870  has a memory for each band  
+and ATU selection takes a fraction of a second on a band change.    
+When this is not available, then I agree that it would be difficult  
+(impossible) to incorporate every possibility of ATU in the program  
+and the user_hardware scheme would have to be used.
+
+7.   Labels on the waterfall?  Yes please.   I agree with Sivan.   At  
+the top rather than above the time stamp.
+
+8.   Band map?    Hmmmm.    This is not easy - I don't have a useful  
+suggestion.  All the information is, in any case, in the text box.
+
+--- John  G4KLA
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000990.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="000992.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#991">[ date ]</a>
+              <a href="thread.html#991">[ thread ]</a>
+              <a href="subject.html#991">[ subject ]</a>
+              <a href="author.html#991">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

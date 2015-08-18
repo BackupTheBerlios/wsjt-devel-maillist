@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency Hopping
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20Hopping&In-Reply-To=%3CAANLkTinw2nE1NVDdUrgwK%2BUn90Rqqt_fpYSyy5LponSA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001039.html">
+   <LINK REL="Next"  HREF="001041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency Hopping</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20Hopping&In-Reply-To=%3CAANLkTinw2nE1NVDdUrgwK%2BUn90Rqqt_fpYSyy5LponSA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Frequency Hopping">stoledo at tau.ac.il
+       </A><BR>
+    <I>Fri Dec 10 06:51:22 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001039.html">[Wsjt-devel] Frequency Hopping
+</A></li>
+        <LI>Next message: <A HREF="001041.html">[Wsjt-devel] WSPR Rev2287
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1040">[ date ]</a>
+              <a href="thread.html#1040">[ thread ]</a>
+              <a href="subject.html#1040">[ subject ]</a>
+              <a href="author.html#1040">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Dec 9, 2010 at 10:59 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi John, Sivan, and all,
+</I>&gt;<i>
+</I>&gt;<i> We now seem to have a dozen or more WSPR users using frequency hopping.
+</I>&gt;<i>  Probably we'll attract more by the weekend.  Perhaps by next week we'll
+</I>&gt;<i> know enough about how it is working to make an informed decision about what
+</I>&gt;<i> to keep in the new code, and what to drop.
+</I>&gt;<i>
+</I>&gt;<i> For example, if coordinated hopping seems best under all (or nearly all)
+</I>&gt;<i> situations, we could make it always effective and remove the code that
+</I>&gt;<i> selects bands at random.  Your opinions?
+</I>&gt;<i>
+</I>
+I think that the only problem with coordinated hopping is that it will lead
+to saturation of the 200Hz bands faster than with random hopping. If many
+stations take up hopping, this crowd will move together from band to band,
+so we'll see congestion as it gets larger. If stations hop randomly, the
+bands will able to sustain a much larger number of transmitting stations.
+
+I don't think it's an important issue for now, and I am not sure if it's
+worth keeping the checkbox for it. But I think that this is the fundamental
+issue that we need to think about.
+
+
+&gt;<i>
+</I>&gt;<i> Also: should we stop calling this a &quot;beta&quot; and make a new full release?  If
+</I>&gt;<i> so, what to call it?  There are now quite a number of enhancements over WSPR
+</I>&gt;<i> 2.0.  Should it be called WSPR 2.5?  3.0?
+</I>&gt;<i>
+</I>&gt;<i> Alas, there should probably be a new manual, too -- with some instructions
+</I>&gt;<i> about band hopping, I/Q mode, etc., all in one document.
+</I>&gt;<i>
+</I>&gt;<i> Other thoughts?
+</I>&gt;<i>
+</I>&gt;<i>        -- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101210/5b10fb1a/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101210/5b10fb1a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001039.html">[Wsjt-devel] Frequency Hopping
+</A></li>
+	<LI>Next message: <A HREF="001041.html">[Wsjt-devel] WSPR Rev2287
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1040">[ date ]</a>
+              <a href="thread.html#1040">[ thread ]</a>
+              <a href="subject.html#1040">[ subject ]</a>
+              <a href="author.html#1040">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

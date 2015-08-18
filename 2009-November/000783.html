@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Jack and WSPR and Linrad
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C4AF304CF.9080501%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000782.html">
+   <LINK REL="Next"  HREF="000785.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Jack and WSPR and Linrad</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C4AF304CF.9080501%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Jack and WSPR and Linrad">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Nov  5 18:01:03 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000782.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+        <LI>Next message: <A HREF="000785.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Pierre,
+
+Pierre Vanhoucke wrote:
+
+&gt;<i> I compiled WSPR on my Ubuntu system which has portaudio with Jack
+</I>&gt;<i> installed.
+</I>&gt;<i> When I start Jack and WSPR I can indeed select jack as an input or
+</I>&gt;<i> output device for WSPR (if the jack server is started with the right
+</I>&gt;<i> sample-rate=12000 and frames-per-period=2048 ). 
+</I>&gt;<i> However there is no WSPR client visible in the &quot;connect&quot; box of
+</I>&gt;<i> qjackctl. As a consequence, I cannot connect the output of Linrad to the
+</I>&gt;<i> input of WSPR.
+</I>&gt;<i> 
+</I>&gt;<i> I think that the reason is that the sound.c module in WSPR is using
+</I>&gt;<i> portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode.
+</I>
+This sounds plausible to me.  WSPR does use blocking I/O for 
+its calls to PortAudio; WSJT, MAP65, and MPA65-IQ use 
+callback mode.  There is no particularly good reason for 
+this distinction.  It came about when I was first writing 
+WSPR; I wanted to try the &quot;other&quot; PortAudio method, to see 
+what advantages/disadvantages there might be.
+
+If there turns out to be a good reason to convert WSPR to 
+using the callback method, this could certainly be done.
+
+Do take note of the fact that starting with r1628, WSPR is 
+using 48 kHz sampling instead of 12 kHz.
+
+Most of the WSPR code assumes a 12 kHz sample rate. I had 
+thought that this would be a good match to nearly all of 
+today's sound cards, which could use their 48 kHz native 
+sample rate and do an easy filter/decimation stage to 
+produce the 12 kHz samples requested by WSPR.  I was 
+astonished to learn from G3ZOD that when WSPR is started on 
+a machine with a Delta44 sound card, Windows (or the Delta44 
+driver?) sets its hardware sample rate to 44100 Hz (not 
+48000 Hz!) and then does a relative poor sample-rate 
+conversion to produce the 12000 Hz samples.  Aarrgghh!
+
+So maybe it will be more reliable to have WSPR (and 
+eventually WSJT?) sample at 48 kHz, and do any rate 
+conversions myself.
+
+&gt;<i> I will drop this question on the portaudio mailinglist to get it
+</I>&gt;<i> confirmed, unless someone else from this list can do it.
+</I>
+Good idea.  I will look forward to hearing what you learn.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000782.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+	<LI>Next message: <A HREF="000785.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

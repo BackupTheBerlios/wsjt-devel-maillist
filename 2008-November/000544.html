@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 1.1 and suggestions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%201.1%20and%20suggestions&In-Reply-To=%3C492846F5.4000107%40free.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000543.html">
+   <LINK REL="Next"  HREF="000545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 1.1 and suggestions</H1>
+    <B>Patrick F6IRF</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%201.1%20and%20suggestions&In-Reply-To=%3C492846F5.4000107%40free.fr%3E"
+       TITLE="[Wsjt-devel] WSPR 1.1 and suggestions">f6irf2 at free.fr
+       </A><BR>
+    <I>Sat Nov 22 18:52:53 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000543.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+        <LI>Next message: <A HREF="000545.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+re sampling rate-correction, a little addendum:
+Something I noticed, is that feeding the same RX audio to 2 PC's I could 
+see differences
+I made a post about it, some time ago on the WSPRnet forum 
+<A HREF="http://wsprnet.org/drupal/node/139">http://wsprnet.org/drupal/node/139</A>
+for example:
+PC1: 080924 1018 16 -19 1.5 10.140110 OK1DST JN79 33 0 2 0
+PC2: 080924 1018 11 -23 1.4 10.140110 OK1DST JN79 33 0 1 0
+PC1 080924 1032 29 -4 1.1 10.140147 EB1APK IN73 40 0 1 0
+PC2 080924 1032 24 -8 1.1 10.140147 EB1APK IN73 40 0 1 0
+
+The PC1 uses a microham USB-sound device, while the PC2 is an IBM 
+&quot;thinkpad&quot; laptop
+Last but not least: As already mentionned, I cannot get WSPR working on 
+my desktop soundcard (while I' ve been using WSJT on it successfully at 
+the beginning of JT6 )
+
+Another point I forgot to mention:
+The WSPR displayed DT, seems to have 1s offset:
+- using my 2 stations sync on the same clock through dimension4 I see a 
+constant DT+1 (or 0.9 to 1.1)
+- I see the same DT +1 on a large majority of stations
+I see the same, when time synchronized manually using a DCF77 clock or a 
+GPS (when I don't have Internet access)
+When I operate JT65, I see DT 0, most of the time...
+But I am sure you  noticed it...
+
+73's Patrick
+<A HREF="http://f6irf.blogspot.com/">http://f6irf.blogspot.com/</A>
+
+PS There are a few new things on my blog: The last one is an experience 
+I did this morning on your 80m signal using 2 antennas; a K9AY in your 
+direction, and my magnetic-loop turned 90 degrees away from you... Just 
+after sunrise, despite the loop orientation, you got a few dB's stronger 
+on the mag-loop, which seems to validate the hypothesis of a high-angle 
+propagation mode  ( 60 degrees or higher) on the grayline. I just saw 
+the same thing at sunset on T61AA signal...
+
+
+
+
+
+
+
+
+
+
+
+
+
+Joe Taylor a &#233;crit :
+
+&gt;<i> Hi Pat,
+</I>&gt;<i>
+</I>&gt;<i> Thanks for your input.
+</I>&gt;<i>
+</I>&gt;<i> Patrick F6IRF wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> - WSPR 1.1 now running for quite some time here. Did not see any 
+</I>&gt;&gt;<i> problem...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Experience here is the same. I will prepare an open release, probably 
+</I>&gt;<i> next week.
+</I>&gt;<i>
+</I>&gt;&gt;<i> The following are suggestions for future improvements
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1- Personaly I would like to have a &quot;sked&quot; mode (50% transmit rate, 
+</I>&gt;&gt;<i> with the choice of the period 1st/2nd). That would allow to better 
+</I>&gt;&gt;<i> analyze short openings, such as 80/160 antipodal grayline openings...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Sounds like a reasonable idea.  I'll think about it for a future release.
+</I>&gt;<i>
+</I>&gt;&gt;<i> 2- I still feel that some soundcard &quot;sample rate&quot; correction should 
+</I>&gt;&gt;<i> be made possible to get the optimum decoding capability. This feature 
+</I>&gt;&gt;<i> exists on digital terminals such as mixW and MMTTY. On a few 
+</I>&gt;&gt;<i> digi-modes like Olivia, a careful adjustement makes a big difference 
+</I>&gt;&gt;<i> (but even on PSK31 and TTY it makes a diffrence on signals near the 
+</I>&gt;&gt;<i> decoding threshold).
+</I>&gt;&gt;<i> The a/m software use a visual method (the SSTV terminal for mixW). 
+</I>&gt;&gt;<i> You just tune on a &quot;time signal&quot; and you get the lines produced by 
+</I>&gt;&gt;<i> the time signal as vertical as possible...  once the lines are 
+</I>&gt;&gt;<i> perfectly vertical, you just press record and that's it...
+</I>&gt;&gt;<i> Actualy WSPR does not need to include such visual terminal, but just 
+</I>&gt;&gt;<i> a way of setting the &quot;sample rate correction&quot; once measured with 
+</I>&gt;&gt;<i> another software.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> My experience is that WSJT needs sample-rate correction on some 
+</I>&gt;<i> computers because their sound hardware always samples at 48 kHz, and 
+</I>&gt;<i> the software driver does a poor job of resampling to yield the 11025 
+</I>&gt;<i> Hz samples required by WSJT.  To get around this problem, WSPR asks 
+</I>&gt;<i> for samples at 12000 Hz.  I have yet to see a computer that produces 
+</I>&gt;<i> significant (say, 0.1% or larger) sample-rate errors when the 
+</I>&gt;<i> requested rate is 12000 Hz.  If you (or anyone else) can document 
+</I>&gt;<i> otherwise, I would like to hear more about it.
+</I>&gt;<i>
+</I>&gt;&gt;<i> 3- I feel that many WSPR users are overdriving their soundcard input, 
+</I>&gt;&gt;<i> which generates &quot;false decodes&quot;  . I think than a  &quot;optimum audio 
+</I>&gt;&gt;<i> level&quot;  indicator should  be made available  within WSPR software  
+</I>&gt;&gt;<i> (something similar  to the WSJT audio indicator)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Obviously this would be a nice feature.  It has been on my &quot;to do&quot; 
+</I>&gt;<i> list,  and still is.  In the meantime, just start up WSJT, hit 
+</I>&gt;<i> &quot;Monitor&quot;, and set the audio level level to &quot;0 dB&quot; there.
+</I>&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000543.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+	<LI>Next message: <A HREF="000545.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

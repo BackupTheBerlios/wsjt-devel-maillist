@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR about ready for release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C4879FC1B.7050805%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000463.html">
+   <LINK REL="Next"  HREF="000444.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR about ready for release?</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C4879FC1B.7050805%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] WSPR about ready for release?">bruce at quidnet.com
+       </A><BR>
+    <I>Sun Jul 13 14:59:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000463.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+        <LI>Next message: <A HREF="000444.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've been running WSPR r944 for about 10 hours on osx; so far, so good.  
+I might not have time (*maybe* tonight) to do any code work before I 
+leave town , so here are a few thoughts:
+
+1) &quot;Badmsg: ...&quot; appears in the WSPR bandmap when such messages are 
+received...probably shouldn't.
+
+2) I changed WSPR long ago to have pttport be a char*80, but WSJT still 
+has it as char*12...that just doesn't work for some of the dynamic 
+device names which are generated on linux/osx; e.g., even /dev/ttyUSB0 
+is 12 chars, and thus doesn't have a termination (e.g., my interface on 
+osx shows up as &quot;/dev/tty.WMRRIGblasterPP&quot;).
+
+3) What is the plan for WSPR reception of QSO messages?  If it decodes 
+them, then we need to figure out what to do about uploading them.    
+What records received, besides beaconing, do we want to upload? Code to 
+handle that will need to be both in wspr.py and the web site.   The 
+current wspr.py assumes a fixed structure of whitespace-delimited fields 
+from decoded.txt (e.g., drift comes right after call, grid, dbm), so 
+that might need to be changed.  I could see uploading just beacons, 
+beacons + CQs, or everything.
+
+It will be interesting to see how this develops...will WSPR QSOs 
+congregate around traditional WSJT frequencies, or will they co-exist in 
+the traditional WSPR locations?  I guess it's pretty much the same on 
+30m.  Also, there's really no reason that I see to &quot;match&quot; DF on WSPR, 
+as long as people are using a common passband, and everything in that 
+passband is decoded.
+
+--bruce
+
+
+
+
+
+Joe Taylor wrote:
+&gt;<i> After much recent work (and testing) by VA3DB, G4KLA, W1BW, W6CQZ, 
+</I>&gt;<i> DL3LST, and K1JT (I hope I didn't forget anyone!), the WSPR program is 
+</I>&gt;<i> nearly ready for a new release.  Since I do not foresee a need for 
+</I>&gt;<i> additional features in the near future, I propose that we call it 
+</I>&gt;<i> Version 1.0.
+</I>&gt;<i>
+</I>&gt;<i> Today I merged some changes that I had made last week with Bruce's 
+</I>&gt;<i> recent changes.  If I have not introduced errors in this process, I 
+</I>&gt;<i> think version 1.0 is about done (as of r944).  If you are able to 
+</I>&gt;<i> compile and run the program yourself, please give it a thorough 
+</I>&gt;<i> exercising on your system in the next few days.  When we release it, I 
+</I>&gt;<i> would like to be able to say that it is known to run well on Windows, 
+</I>&gt;<i> Linux, FreeBSD, and Macintosh.  (Any others??)
+</I>&gt;<i>
+</I>&gt;<i> Of course, if you find any problems on your platform, let me know!
+</I>&gt;<i>
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000463.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+	<LI>Next message: <A HREF="000444.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

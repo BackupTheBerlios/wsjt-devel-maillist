@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wspr configure
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%20configure&In-Reply-To=%3C20080521130840.GA17328%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000270.html">
+   <LINK REL="Next"  HREF="000266.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wspr configure</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%20configure&In-Reply-To=%3C20080521130840.GA17328%40night.db.net%3E"
+       TITLE="[Wsjt-devel] wspr configure">db at db.net
+       </A><BR>
+    <I>Wed May 21 15:08:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000270.html">[Wsjt-devel] wspr configure
+</A></li>
+        <LI>Next message: <A HREF="000266.html">[Wsjt-devel] wspr configure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#265">[ date ]</a>
+              <a href="thread.html#265">[ thread ]</a>
+              <a href="subject.html#265">[ subject ]</a>
+              <a href="author.html#265">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, May 21, 2008 at 08:27:10AM -0400, Joe Taylor wrote:
+&gt;<i> Hi Diane,
+</I>&gt;<i>
+</I>&gt;<i> Many thanks for tackling the configure/makefile problem for
+</I>&gt;<i> WSPR!
+</I>&gt;<i>
+</I>&gt;<i> &gt;Let me know if it works for anyone else.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;./configure --enable-g95 --with-portaudio-include-dir=/usr/local/include/\
+</I>&gt;<i> &gt;portaudio2 --with-portaudio-lib-dir=/usr/local/lib/portaudio2
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Produces a w.so for me on FreeBSD 7.0 YMMWV
+</I>&gt;<i>
+</I>&gt;<i> I hope to try it out soon.
+</I>&gt;<i>
+</I>&gt;<i> BTW: When I was first compiling WSPR under Windows with
+</I>&gt;<i> MinGW, I got it to work with g95 but not with gfortran.  I
+</I>&gt;<i> did not determine what the problem with gfortran was, and
+</I>&gt;<i> have not returned to try to solve that mystery.
+</I>
+I know roughly what the problem with gfortran is, but we can tackle that
+later. It's to do with at least mept162.f
+gfortran does not like the continuation characters in column 6
+and the 'C' in the first line. (Reminds me of my punched card days...)
+This should be easy to fix.
+
+&gt;<i>
+</I>&gt;<i> If/when portaudio ever becomes something that users can
+</I>&gt;<i> update with &quot;apt-get&quot; or an equivalent package manager, we
+</I>&gt;<i> won't need its source code in the WSJT tree any more.  I
+</I>&gt;<i> haven't paid that much attention; are we there yet?
+</I>
+Well, portaudio v18 and portaudio v19 have both been available as
+packages on FreeBSD, debian/ubuntu etc.  for quite a while.
+The difficulty is two fold. A lot of packages that use portaudio are
+still using v18. The ABI i.e. the format of structures and function
+call parameters changed between v18 and v19; thus they are incompatible.
+If you include v18 include files instead of v19 include files the wspr/wsjt
+compile will break badly. Secondly, v19 has never been formally released,
+though they are finally working on that.
+
+Since every distribution is free to install v19 portaudio wherever it
+wants to, it could be installed in /usr/include/portaudio which then
+promptly breaks applications expecting to see v18 portaudio there.
+FreeBSD sticks the v19 headers and libs in /usr/local/include/portaudio2
+and /usr/local/lib/portaudio2; I do not know where other distributions
+stick it unless I am told. It might be a horrible mess to hard code
+paths depending on distribution and version. If our end users stick
+to FreeBSD ports/packages, Debian .deb, redhat/fedora  or even PC-BSD PBIs
+then there isn't a problem. Each distribution can set up wsjt/wspr
+to work.
+
+The other problem is known release compabilities. It is always possible
+that a user could install the latest and greatest portaudio v19 straight
+from the portaudio site and wsjt/wspr stop working or core, then they
+bug us about it. This was the motivation for me including a snapshot
+of portaudio with wsjt originally. I hate the additional baggage it adds,
+but portaudio v19 is a moving target. When portaudio v19 is released,
+we can tell users to make sure they have a v19 portaudio installed
+and go from there.
+
+As I know the portaudio folks have a release of v19 pending, I'm just
+as happy to wait a little longer before importing a known working
+portaudio v19 into the wspr tree.
+
+&gt;<i>
+</I>&gt;<i> 	-- Joe, K1JT
+</I>&gt;<i>
+</I>
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000270.html">[Wsjt-devel] wspr configure
+</A></li>
+	<LI>Next message: <A HREF="000266.html">[Wsjt-devel] wspr configure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#265">[ date ]</a>
+              <a href="thread.html#265">[ thread ]</a>
+              <a href="subject.html#265">[ subject ]</a>
+              <a href="author.html#265">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

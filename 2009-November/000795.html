@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3CC14DB64E-55BE-409E-8770-F3DA0A9CD2A7%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000794.html">
+   <LINK REL="Next"  HREF="000796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 2.0</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3CC14DB64E-55BE-409E-8770-F3DA0A9CD2A7%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSPR 2.0">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Nov 11 22:03:07 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000794.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+        <LI>Next message: <A HREF="000796.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#795">[ date ]</a>
+              <a href="thread.html#795">[ thread ]</a>
+              <a href="subject.html#795">[ subject ]</a>
+              <a href="author.html#795">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+I have been tracking changing versions and so far I have no problems  
+compiling and executing.  However, I am sure I am only using the  
+system in its most basic mode and have not been able to test all the  
+latest additions.    New, improved, messages are useful, e.g. when  
+upload spots fails because of internet interruptions; selection of  
+transmit frequency is good; tune is great; ..
+
+Suggestions:
+a)   WSPR.INI should contain defaults.   My version complains (for  
+instance):
+WSPR Version 2.0_r1660 , by K1JT
+Run date:   Wed Nov 11 20:28:15 2009 UTC
+Error reading WSPR.INI, while processing
+key= Handshake    value= None
+Continuing with defaults.
+
+when the line following the reported error line is missing  
+something.   In this case, the line after &quot;Handshake None&quot; is  &quot;Rig&quot;  
+with no default.   Editing WSPR.INI to insert &quot;Rig 123&quot;  will fix  
+it.   Similarly, earlier versions failed with key=dBm when the  
+culprit was not, in fact, the dBm line but the next one &quot;PttPort&quot;  
+which did not have None as the argument.    Is this just my version  
+of python that is objecting?    I suggest play safe and ensure that  
+all variables that require a second argument should have some default  
+set.
+
+b)  I notice that:
+-rw-r--r--   1 jmn  jmn   3587 Nov  5 14:09 WSPR_Announcement.TXT
+-rw-r--r--   1 jmn  jmn  11867 Nov  5 14:09 WSPR_Instructions.TXT
+-rw-r--r--   1 jmn  jmn   4576 Nov  5 14:09 WSPR_Quick_Start.TXT
+
+remain unchanged from wspr-v1.0-r914, for instance (March 2008).     
+If the package is about to go public, would it be useful to update  
+these?
+
+c)   wspr2.F90 has a warning which might be important:   nrxnormal  
+may be used uninitialized (line 61)
+
+d)  Diane managed to figure out how to generate the fftw library so  
+that it uses conventional Fortran entry point names.   Can this be  
+done so that four2a.f doesn't have to be a unique exception in the  
+way it calls routines?   That is, with a trailing underscore?
+
+e)  I am working on the problem of creating a package for Mac OSX -  
+but this will take time as other thing are on my plate at the  
+moment.  However, given minimal infrastructure, downloading source  
+from the repository and compiling is straightfoward.   I could modify  
+my WSJT HowTo for WSPR  if you wish to include HowTo's in the WSPR  
+branch for different OS's.
+
+---   73 John  G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000794.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+	<LI>Next message: <A HREF="000796.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#795">[ date ]</a>
+              <a href="thread.html#795">[ thread ]</a>
+              <a href="subject.html#795">[ subject ]</a>
+              <a href="author.html#795">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

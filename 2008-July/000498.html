@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR Crash
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20Crash&In-Reply-To=%3C4884E9E4.3030300%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000497.html">
+   <LINK REL="Next"  HREF="000499.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR Crash</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20Crash&In-Reply-To=%3C4884E9E4.3030300%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR Crash">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul 21 21:56:20 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000497.html">[Wsjt-devel] WSPR Crash
+</A></li>
+        <LI>Next message: <A HREF="000499.html">[Wsjt-devel] WSPR Crash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#498">[ date ]</a>
+              <a href="thread.html#498">[ thread ]</a>
+              <a href="subject.html#498">[ subject ]</a>
+              <a href="author.html#498">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yes, several people have seen this.  It is related to the 
+parsing into fields of decoded WSPR lines.  Bruce introduced 
+this a week or so ago.  It worked fine for fixed format 
+beacon-mode messages, but not for all of the QSO-mode 
+messages.  Some of those changes need to be backed out.
+
+	-- Joe
+
+John Nelson wrote:
+&gt;<i> A report on a WSPR crash after running successfully for several days:
+</I>&gt;<i> 
+</I>&gt;<i> Exception in Tkinter callback
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>    File &quot;/Library/Frameworks/Python.framework/Versions/2.5/lib/ 
+</I>&gt;<i> python2.5/lib-tk/Tkinter.py&quot;, line 1403, in __call__
+</I>&gt;<i>      return self.func(*args)
+</I>&gt;<i>    File &quot;/Library/Frameworks/Python.framework/Versions/2.5/lib/ 
+</I>&gt;<i> python2.5/lib-tk/Tkinter.py&quot;, line 498, in callit
+</I>&gt;<i>      func(*args)
+</I>&gt;<i>    File &quot;wspr.py&quot;, line 664, in update
+</I>&gt;<i>      get_decoded()
+</I>&gt;<i>    File &quot;wspr.py&quot;, line 429, in get_decoded
+</I>&gt;<i>      if not fields[9].isdigit(): fields[9]='0'
+</I>&gt;<i> IndexError: list index out of range
+</I>&gt;<i> 
+</I>&gt;<i> The decoding at that point was:
+</I>&gt;<i> 
+</I>&gt;<i> 0846 -13  1.7  10.140143   0  IQ3AZ JN65 37
+</I>&gt;<i> 0846  -2 -1.4  10.140219   0  HB9CZF JN47 30
+</I>&gt;<i> 0850 -20 -0.1  10.140133   0  DL6NL JO50 20
+</I>&gt;<i> 0854 -19 -0.2  10.140138   0  DL6NL JO50 20
+</I>&gt;<i> 0856 -13  1.7  10.140142   0  IQ3AZ JN65 37
+</I>&gt;<i> 0858 -21  0.0  10.140133   0  DL6NL JO50 20
+</I>&gt;<i> 0900  -9 -1.3  10.140215   0  HB9CZF JN47 30
+</I>&gt;<i> 0906 -19 -0.2  10.140135   0  DL6NL JO50 20
+</I>&gt;<i> 0908 -19  1.5  10.140140   0  IQ3AZ JN65 37
+</I>&gt;<i> 0914  -7  0.9  10.140161   1  OE5MPL (BadMsg) -1
+</I>&gt;<i> 0920  -7  1.6  10.140146   0  IQ3AZ JN65 37
+</I>&gt;<i> 
+</I>&gt;<i> The 'BadMsg' is loaded in wqdecode as:
+</I>&gt;<i> 
+</I>&gt;<i> !     message='&lt;Unknown message type&gt;'
+</I>&gt;<i> 700 i1=index(callsign,' ')
+</I>&gt;<i>    if(i1.lt.1) i1=12
+</I>&gt;<i>    message=callsign(:i1)//' (BadMsg)'
+</I>&gt;<i> 
+</I>&gt;<i> Was this the cause of the problem?
+</I>&gt;<i> 
+</I>&gt;<i> John   G4KLA
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000497.html">[Wsjt-devel] WSPR Crash
+</A></li>
+	<LI>Next message: <A HREF="000499.html">[Wsjt-devel] WSPR Crash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#498">[ date ]</a>
+              <a href="thread.html#498">[ thread ]</a>
+              <a href="subject.html#498">[ subject ]</a>
+              <a href="author.html#498">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

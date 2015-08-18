@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy48eKjyXOPNCsy%2BsR3wuRGEEJkd--O-WwUoGApRWT-TJ0Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001588.html">
+   <LINK REL="Next"  HREF="001585.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy48eKjyXOPNCsy%2BsR3wuRGEEJkd--O-WwUoGApRWT-TJ0Q%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">ewpereira at gmail.com
+       </A><BR>
+    <I>Mon Jul 29 14:34:46 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001588.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001585.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1589">[ date ]</a>
+              <a href="thread.html#1589">[ thread ]</a>
+              <a href="subject.html#1589">[ subject ]</a>
+              <a href="author.html#1589">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Claude,
+
+I think is will be worthwhile trying pulseaudio then. I will let pulseaudio
+grab the sound card I use for wsjt-x and see how things go.
+
+73,
+
+-- Edson PY2SDR
+
+On Mon, Jul 29, 2013 at 7:31 AM, Claude Frantz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ClaudeFrantzX665 at lavabit.com</A>
+&gt;<i> wrote:
+</I>
+&gt;<i> On 07/28/2013 05:57 PM, Edson W. R. Pereira wrote:
+</I>&gt;<i>
+</I>&gt;<i> Edson,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>      The idea behind pulseaudio is to liberate the application from the
+</I>&gt;&gt;<i>     need to deal with the hardware. The application, as client, requests
+</I>&gt;&gt;<i>     streams from the pulseaudio server. The selection of devices, the
+</I>&gt;&gt;<i>     mixer, the volume control are now a matter which pulseaudio has to
+</I>&gt;&gt;<i>     manage. There are tools available to the user. pulseaudio is now the
+</I>&gt;&gt;<i>     standard sound system of most modern Linux distributions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I thought that was the purpose for ALSA! ;-)
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Yes, you are right. It was the idea behind  portaudio too.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  I understand the idea behind pulseaudio as a sound server. However, I
+</I>&gt;&gt;<i> had some bad experience with it in the past while trying to use it with
+</I>&gt;&gt;<i> fldigi and with SDR software. It added unnecessary latency, complexity
+</I>&gt;&gt;<i> and, at the time, it did not work well with jackd.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Early releases of pulseaudio have made many problems. pulseaudio is a
+</I>&gt;<i> piece of software that has been released at a too early state. Myself, I
+</I>&gt;<i> have never seen problems when using pulseaudio with fldigi. Of course, the
+</I>&gt;<i> latency is lower if we use less software between the application program
+</I>&gt;<i> and the hardware. But the complexity of the user interface increases. I my
+</I>&gt;<i> own opinion, the pulseaudio interface to the classical application is
+</I>&gt;<i> rather simple. At this level we are considering audio streams and not more
+</I>&gt;<i> sound cards.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  Also, there is the
+</I>&gt;&gt;<i> risk of some application injecting undesirable audio samples on a stream
+</I>&gt;&gt;<i> that is being transmitted.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> This risk exists also when using the ALSA interface on pulseaudio. This is
+</I>&gt;<i> the classical case when using portaudio on a modern Linux distribution
+</I>&gt;<i> based on pulseaudio. Requesting to stop pulseaudio in order to be able to
+</I>&gt;<i> run a specific application would not be a real practical solution.
+</I>&gt;<i>
+</I>&gt;<i>  As far as I know, pulseaudio is (was) _*not*_
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> designed for real-time audio. This is fine for using the computer to
+</I>&gt;&gt;<i> play music, but undesirable for low latency audio applications. Jackd
+</I>&gt;&gt;<i> shines in this respect.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As far as I know, pulseaudio was designed to be the standard sound system
+</I>&gt;<i> on modern Linux systems. This the the case here, on Fedora. Jackd was
+</I>&gt;<i> designed for another environment. There exists a jackd interface to
+</I>&gt;<i> pulseaudio. I have never seen a classical Linux distribution based on the
+</I>&gt;<i> native jackd.
+</I>&gt;<i>
+</I>&gt;<i> I'm using fldigi on pulseaudio without problems. I have used wsjt using
+</I>&gt;<i> portaudio -&gt; ALSA -&gt; pulseaudio without problems. I have used wsjtx in the
+</I>&gt;<i> same manner. pulseaudio's problem is the limited documentation available
+</I>&gt;<i> and the lack of really useful error messages in the software. The software
+</I>&gt;<i> we are speaking about here is not really critical at this level, as I known.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Best 88 de Claude
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130729/be85ddfe/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130729/be85ddfe/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001588.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001585.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1589">[ date ]</a>
+              <a href="thread.html#1589">[ thread ]</a>
+              <a href="subject.html#1589">[ subject ]</a>
+              <a href="author.html#1589">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

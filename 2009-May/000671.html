@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR revision 1257
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20revision%201257&In-Reply-To=%3C4A15549E.90601%40st-andrews.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000666.html">
+   <LINK REL="Next"  HREF="000672.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR revision 1257</H1>
+    <B>Johannes Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20revision%201257&In-Reply-To=%3C4A15549E.90601%40st-andrews.ac.uk%3E"
+       TITLE="[Wsjt-devel] WSPR revision 1257">jem74 at st-andrews.ac.uk
+       </A><BR>
+    <I>Thu May 21 15:18:22 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000666.html">[Wsjt-devel] compile on Ubuntu 9.04
+</A></li>
+        <LI>Next message: <A HREF="000672.html">[Wsjt-devel] WSPR revision 1257
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#671">[ date ]</a>
+              <a href="thread.html#671">[ thread ]</a>
+              <a href="subject.html#671">[ subject ]</a>
+              <a href="author.html#671">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have been testing out the rev 1257 compiled with gfortran.
+
+All seems fine , been testing with wav and audibly listening to the 
+generated output on various modes.
+
+I note that on trying to transmit with the WSPR mode I get a segfault as 
+shown below.
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0x7f8f92ffb950 (LWP 24934)]
+0x00007f8fa6b4f019 in nhash_ (key=0x7f8f92ffa6a0, length0=0x7f8f92ffa8f4,
+     initval0=0x7f8fa6b8eb90) at nhash.c:202
+202	      b += k[1];
+(gdb) bt
+#0  0x00007f8fa6b4f019 in nhash_ (key=0x7f8f92ffa6a0, 
+length0=0x7f8f92ffa8f4,
+     initval0=0x7f8fa6b8eb90) at nhash.c:202
+#1  0x00007f8fa6b4bda5 in hash (string=&lt;value optimized out&gt;,
+     len=@0x7f8f92ffa8f4, ihash=@0x7f8f92ffa92c, _string=12) at hash.f90:10
+#2  0x00007f8fa6b463a3 in wqencode (msg=@0x7f8f92ffadb0,
+     ntype=@0x7f8fa71c6894, data0=0x7f8fa71c68f0, _msg=&lt;value optimized 
+out&gt;)
+     at wqencode.f90:92
+#3  0x00007f8fa6b44155 in genwspr (message=@0x7f8f92ffadb0,
+     samfacout=@0x7f8faacb9460, ntxdf=@0x7f8faa719a94, 
+iwave=0x7f8fab4b947c,
+     nwave=@0x7f8fab7e0c68, nbad=@0x7f8faa719a9c, msgsent=@0x7f8f92ffae10,
+     _message=28, _msgsent=22) at genwspr.f90:37
+#4  0x00007f8fa6b41f92 in wsjtgen () at wsjtgen.F90:132
+#5  0x00007f8fa6b4371e in fivehz () at fivehz.F90:132
+#6  0x00007f8fa6b33dad in SoundIn (inputBuffer=0x27d4a70,
+     outputBuffer=&lt;value optimized out&gt;, framesPerBuffer=2048,
+     timeInfo=&lt;value optimized out&gt;, statusFlags=0,
+     userData=&lt;value optimized out&gt;) at jtaudio.c:128
+#7  0x00007f8fa690b9cd in ?? () from /usr/lib/libportaudio.so.2
+#8  0x00007f8fa690c85c in ?? () from /usr/lib/libportaudio.so.2
+#9  0x00007f8fa6912696 in ?? () from /usr/lib/libportaudio.so.2
+#10 0x00007f8fb094a3ba in start_thread () from /lib/libpthread.so.0
+#11 0x00007f8fafe12fcd in clone () from /lib/libc.so.6
+#12 0x0000000000000000 in ?? ()
+
+I hope this bug report may help
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000666.html">[Wsjt-devel] compile on Ubuntu 9.04
+</A></li>
+	<LI>Next message: <A HREF="000672.html">[Wsjt-devel] WSPR revision 1257
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#671">[ date ]</a>
+              <a href="thread.html#671">[ thread ]</a>
+              <a href="subject.html#671">[ subject ]</a>
+              <a href="author.html#671">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

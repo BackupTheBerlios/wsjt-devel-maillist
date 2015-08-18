@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Still working through WSPR on Mandriva 2010
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C4B006F9A.6010206%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000820.html">
+   <LINK REL="Next"  HREF="000822.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Still working through WSPR on Mandriva 2010</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Still%20working%20through%20WSPR%20on%20Mandriva%202010&In-Reply-To=%3C4B006F9A.6010206%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] Still working through WSPR on Mandriva 2010">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Sun Nov 15 22:16:10 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000820.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+        <LI>Next message: <A HREF="000822.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Rick,
+
+I am using Ubuntu 9.10 64 bit, at compile time I do have those messages, 
+disregard, except warning for wspr2.F90, these could be your problem 
+with audio and aborting.
+
+I am using svn 1682, you could try;
+
+svn update -r 1682
+
+and then;
+
+configure &amp;&amp; make clean &amp;&amp; make
+
+Hope this helps,
+
+73
+de Mike, VE2EXB
+P.S. I do configure wihtout any parameters and it is fine, maybe 
+Mandriva is a little different.
+
+Rick Kunath wrote:
+&gt;<i> I noticed a few errors reported during the compile of WSPR SVN.
+</I>&gt;<i>
+</I>&gt;<i> I did a make clean and configured with:
+</I>&gt;<i>
+</I>&gt;<i> ./configure --enable-g95 --with-portaudio-include-dir=/usr/include --with-
+</I>&gt;<i> portaudio-lib-dir=/usr/lib
+</I>&gt;<i>
+</I>&gt;<i> This resulted in a working WSPR under Mandriva 2009.1.
+</I>&gt;<i>
+</I>&gt;<i> --------------------------------
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.                                 
+</I>&gt;<i> rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.                           
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.                                 
+</I>&gt;<i> rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.                           
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.                                 
+</I>&gt;<i> rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.                                 
+</I>&gt;<i> analyzeline: Failed to evaluate '512)             !length of fft'. Ignoring: 
+</I>&gt;<i> invalid syntax (&lt;string&gt;, line 1)                                        
+</I>&gt;<i> analyzeline: Failed to evaluate 'nfft/2)            !length of power spectr'. 
+</I>&gt;<i> Ignoring: invalid syntax (&lt;string&gt;, line 1)                             
+</I>&gt;<i> analyzeline: Failed to evaluate '351)            !number of half-symbol step'. 
+</I>&gt;<i> Ignoring: invalid syntax (&lt;string&gt;, line 1)                            
+</I>&gt;<i> rmbadname1: Replacing &quot;for&quot; with &quot;for_bn&quot;.                                 
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;wspr2&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;decode&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;getutc&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;gran&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;rx&quot;. Skipping.
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;startdec&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;startrx&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;starttx&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;tx&quot;. Skipping.
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;wqencode&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;chklevel&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;genwspr&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;wqdecode&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;hash&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packname&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packtext2&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpackname&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpacktext2&quot;. 
+</I>&gt;<i> Skipping.                                                                  
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;fil1&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packpfx&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packprop&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpackpfx&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpackprop&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;msgtrim&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;cs_init&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;cs_destroy&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;th_create&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;th_exit&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;cs_lock&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;cs_unlock&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;mept162&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;getrms&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;wfile5&quot;. Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;change_endian&quot;. 
+</I>&gt;<i> Skipping.                                                                
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;iswap_int&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;iswap_short&quot;. 
+</I>&gt;<i> Skipping.                                                                  
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;mix162&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;sync162&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;decode162&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;spec162&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;set&quot;. Skipping.                                                                          
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;move&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;zero&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;add&quot;. Skipping.                                                                          
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;xfft&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;ps162&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;pctile&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;xcor162&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;peakup&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;db&quot;. Skipping.
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;inter_mept&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;fano232&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpack50&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpackcall&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;unpackgrid&quot;. 
+</I>&gt;<i> Skipping.                                                                   
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;four2a&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;flat3&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;sort&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;deg2grid&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;ssort&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;gencwid&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;morse&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packcall&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;packgrid&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;pack50&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;encode232&quot;. 
+</I>&gt;<i> Skipping.                                                                    
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;nchar&quot;. Skipping.                                                                        
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;grid2deg&quot;. 
+</I>&gt;<i> Skipping.                                                                     
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;fchisq&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;ccf2&quot;. Skipping.                                                                         
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;twkfreq&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;azdist&quot;. 
+</I>&gt;<i> Skipping.                                                                       
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;geodist&quot;. 
+</I>&gt;<i> Skipping.                                                                      
+</I>&gt;<i> Found executable /usr/bin/g95                                              
+</I>&gt;<i> wspr2.F90: In function &#8216;wspr2_&#8217;:                                           
+</I>&gt;<i> wspr2.F90:1: warning: &#8216;nrxnormal&#8217; may be used uninitialized in this function
+</I>&gt;<i> In file paterminate.f90:3
+</I>&gt;<i>
+</I>&gt;<i>   ierr=soundexit()
+</I>&gt;<i>   1
+</I>&gt;<i> Warning (112): Variable 'ierr' at (1) is set but never used
+</I>&gt;<i> In file sync162.f:187
+</I>&gt;<i>
+</I>&gt;<i>          ccf=-fchisq(c2,jz,375.0,a,lag1,lag2,ccfbest,dtbest)
+</I>&gt;<i>          1
+</I>&gt;<i> Warning (112): Variable 'ccf' at (1) is set but never used
+</I>&gt;<i> In file spec162.F:51
+</I>&gt;<i>
+</I>&gt;<i>          call zero(ss,256)
+</I>&gt;<i>                    1
+</I>&gt;<i> In file spec162.F:35
+</I>&gt;<i>
+</I>&gt;<i>  1    call zero(a,NX*NY/2)
+</I>&gt;<i>                 2
+</I>&gt;<i> Warning (155): Inconsistent types (REAL(4)/INTEGER(2)) in actual argument 
+</I>&gt;<i> lists at (1) and (2)
+</I>&gt;<i> mkdir -p build/lib/WsprMod
+</I>&gt;<i> mv w.so WsprMod/w.so
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------
+</I>&gt;<i>
+</I>&gt;<i> I'm not sure if these are significant or merely annoyances.
+</I>&gt;<i>
+</I>&gt;<i> Running the WSPR executable produces a series of errors that appear to be 
+</I>&gt;<i> regarding sound. It will start up, but selecting pulse causes an immediate 
+</I>&gt;<i> error (the Aborted at the end of the paste below) with no other error messages 
+</I>&gt;<i> if I click Tune. OSS seems to fail reporting an invalid input device, but OSS 
+</I>&gt;<i> emulation is working on the machine, so do a few of the ALSA devices. Though I 
+</I>&gt;<i> need to test more. Some of the ALSA Devices do appear to work.
+</I>&gt;<i>
+</I>&gt;<i> The errors using pulse and the startup errors are below. Any ideas what might 
+</I>&gt;<i> be going on? WSJT builds and works fine, pulse included.
+</I>&gt;<i>
+</I>&gt;<i> Rick Kunath, k9ao
+</I>&gt;<i>
+</I>&gt;<i> -----------------------
+</I>&gt;<i>
+</I>&gt;<i> SPR Version 2.0_r1660 , by K1JT                                  
+</I>&gt;<i> Run date:   Sun Nov 15 19:32:37 2009 UTC                          
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057                                
+</I>&gt;<i> Error reading WSPR.INI, while processing                                   
+</I>&gt;<i> key= Handshake    value= None                                              
+</I>&gt;<i> Continuing with defaults.                                                  
+</I>&gt;<i> Expression 'tempDevHandle = open( deviceInfo-&gt;name, flags )' failed in 
+</I>&gt;<i> 'src/hostapi/oss/pa_unix_oss.c', line: 690
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Expression 'tempDevHandle = open( deviceInfo-&gt;name, flags )' failed in 
+</I>&gt;<i> 'src/hostapi/oss/pa_unix_oss.c', line: 690
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+</I>&gt;<i> Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+</I>&gt;<i> 'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+</I>&gt;<i> Aborted
+</I>&gt;<i>
+</I>&gt;<i> -----------
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000820.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+	<LI>Next message: <A HREF="000822.html">[Wsjt-devel] Still working through WSPR on Mandriva 2010
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

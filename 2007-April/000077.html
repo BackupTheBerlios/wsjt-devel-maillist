@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r366
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070425182728.GA38048%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000076.html">
+   <LINK REL="Next"  HREF="000078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r366</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070425182728.GA38048%40night.db.net%3E"
+       TITLE="[Wsjt-devel] r366">db at db.net
+       </A><BR>
+    <I>Wed Apr 25 20:27:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000076.html">[Wsjt-devel] r366
+</A></li>
+        <LI>Next message: <A HREF="000078.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Apr 25, 2007 at 08:47:02PM +0300, Harry Popov wrote:
+&gt;<i> Joe,
+</I>&gt;<i>
+</I>&gt;<i> Exactly the same here. I already send message to the list with the same
+</I>&gt;<i> problem. Diane responded and said she will turn back the old default
+</I>&gt;<i> compila option plus the new ./configure options which are definately
+</I>&gt;<i> useful for distributions which already have portaudio v.0.19.
+</I>
+It appears berlios was experiencing problems over the weekend.
+
+The question I want to ask, is what distributions already
+have portaudio v19 and where are they installing them? I am
+wondering if it might be worth while checking for portaudio
+in /usr/include/portaudio2 and /usr/local/include/portaudio2 etc.
+e.g. FreeBSD has portaudiov19 in /usr/local/include/portauio2 and
+/usr/local/lib/portaudio2; I'd like to search for those directories
+if they are apparently where distributions are sticking them.
+
+As for linking our own version of portaudio. It can be easily done
+by linking in a static lib which is easily done for x86 386, the difficulty
+is getting the compile flags right for 64 bit platforms. Linking
+against the dynamic lib is harder because the library must be
+placed into LD_LIBRARY_PATH so it can be found. Where should the
+library be placed? Into /usr/local/lib/portaudio2 /usr/lib/portaudio2?
+Where it might conflict with a distribution version of portaudio v19?
+
+I'll get back to looking at the static linking in a short bit. It
+has been taking some thinking and I have had other projects as well.
+
+BTW, David Quental &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ct1drb at iol.pt</A>&gt; solved his problem by installing
+his distributions version of portaudio v19, apparently it was
+installed in /usr/lib/portaudio2 with include files in
+/usr/include/portaudio2. As I said, I'd like to know how common this is.
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000076.html">[Wsjt-devel] r366
+</A></li>
+	<LI>Next message: <A HREF="000078.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#77">[ date ]</a>
+              <a href="thread.html#77">[ thread ]</a>
+              <a href="subject.html#77">[ subject ]</a>
+              <a href="author.html#77">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

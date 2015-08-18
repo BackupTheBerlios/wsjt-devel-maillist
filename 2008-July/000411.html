@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] r890 - trunk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r890%20-%20trunk&In-Reply-To=%3C48726266.6020700%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000410.html">
+   <LINK REL="Next"  HREF="000412.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] r890 - trunk</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r890%20-%20trunk&In-Reply-To=%3C48726266.6020700%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] r890 - trunk">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul  7 20:37:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000410.html">[Wsjt-devel] MACOS
+</A></li>
+        <LI>Next message: <A HREF="000412.html">[Wsjt-devel] pointers please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#411">[ date ]</a>
+              <a href="thread.html#411">[ thread ]</a>
+              <a href="subject.html#411">[ subject ]</a>
+              <a href="author.html#411">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+When I ran your code with &quot;if(nfmt2.eq.16) ...&quot; on Intel, I 
+discovered that it was byte-swapping all the sample files 
+for me.  They are little-endian already, so that's NOT what 
+is wanted.
+
+The code as I have changed it runs correctly on 
+little-endian.  I believe it shouls also be correct for 
+big-endian, no?
+
+	-- Joe
+
+John Nelson wrote:
+&gt;<i> Hullo Joe,
+</I>&gt;<i> 
+</I>&gt;<i> You wrote:
+</I>&gt;<i>  &gt; Corrected test for big-endian CPU in getfile.F90.
+</I>&gt;<i> 
+</I>&gt;<i> If I look at the changes you made, the important one is a test of nfmt2.
+</I>&gt;<i> 
+</I>&gt;<i> The original tested nfmt2=1 being the correct endianess.   nfmt2=1  
+</I>&gt;<i> refers to AudioFormat.
+</I>&gt;<i> 
+</I>&gt;<i> &quot;PCM=1 means Linear quantization.  values other than 1 indicate some  
+</I>&gt;<i> form of compression.&quot;
+</I>&gt;<i> 
+</I>&gt;<i> All the WAV files in your examples have nfmt2=1 and therefore, with  
+</I>&gt;<i> this change, which tests nfmt2=16, anyone using the sample files on  
+</I>&gt;<i> an Intel CPU will find them byte-swapped.   I don't think this is  
+</I>&gt;<i> what you mean....
+</I>&gt;<i> 
+</I>&gt;<i> (Thanks for adding  integer*2 iswap_short.  This was missing)
+</I>&gt;<i> 
+</I>&gt;<i> John
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> wsjt-svn mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-svn">https://lists.berlios.de/mailman/listinfo/wsjt-svn</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000410.html">[Wsjt-devel] MACOS
+</A></li>
+	<LI>Next message: <A HREF="000412.html">[Wsjt-devel] pointers please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#411">[ date ]</a>
+              <a href="thread.html#411">[ thread ]</a>
+              <a href="subject.html#411">[ subject ]</a>
+              <a href="author.html#411">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

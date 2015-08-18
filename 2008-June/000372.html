@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on MacOSX 10.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C356157.9137.qm%40web51702.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000371.html">
+   <LINK REL="Next"  HREF="000384.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on MacOSX 10.4</H1>
+    <B>Naylor Jonathan</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20MacOSX%2010.4&In-Reply-To=%3C356157.9137.qm%40web51702.mail.re2.yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJT on MacOSX 10.4">naylorjs at yahoo.com
+       </A><BR>
+    <I>Mon Jun 23 13:08:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000371.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+        <LI>Next message: <A HREF="000384.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Secondly, there is the matter of .WAV files.    I converted these to  
+</I>&gt;<i> pure big-endian outside the WSJT code.    However, if others want to  
+</I>&gt;<i> use the Mac (PowerPC) version, then it would be better to have a  
+</I>&gt;<i> switch in the code to test whether the CPU is big or little endian,  
+</I>&gt;<i> and then convert in-line as necessary.   I will do this and then send  
+</I>&gt;<i> the diff's to you, as well.    Since you have an OSX box, I will send  
+</I>&gt;<i> the conversion code to you, as well.
+</I>
+Writing endian neutral code isn't difficult. It's a matter of reading/writing at the byte level and doing bit shifts, which is a low performance hit for simplified code.
+
+Just a thought, but shouldn't you be aiming at Mac OS 5.x nowadays, it's been out a fair while, and I can recommend it wholeheartedly.
+
+BTW The performance difference between the old Power PC and Intel boxes is huge, I can see why Apple changed, at least from the performance POV.
+
+&gt;<i> Give me a few days....
+</I>&gt;<i> 
+</I>&gt;<i> 73 John   G4KLA
+</I>
+Jonathan  ON/G4KLX
+
+PS This could get very confusing, similar names, similar calls.
+
+
+
+      
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000371.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+	<LI>Next message: <A HREF="000384.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#372">[ date ]</a>
+              <a href="thread.html#372">[ thread ]</a>
+              <a href="subject.html#372">[ subject ]</a>
+              <a href="author.html#372">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

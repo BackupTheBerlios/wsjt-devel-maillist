@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAUDIO_INPUT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F8F99E.506%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001627.html">
+   <LINK REL="Next"  HREF="001624.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAUDIO_INPUT</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F8F99E.506%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] QAUDIO_INPUT">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Wed Jul 31 13:48:46 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001627.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+        <LI>Next message: <A HREF="001624.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1623">[ date ]</a>
+              <a href="thread.html#1623">[ thread ]</a>
+              <a href="subject.html#1623">[ subject ]</a>
+              <a href="author.html#1623">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill
+
+I assume this is code you're working on.
+
+While updating to r3511 I got a seg fault in SoundIn, line 341 if 
+(m_monitoring).   With QAUDIO_INPUT defined the constructor for 
+SoundInput that initializes m_monitoring (and others) is not called.
+
+I've left QAUDIO_INPUT undefined in wsjtx.pro in my update, r3512
+
+Cheers
+Murray
+VK3ACF
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001627.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+	<LI>Next message: <A HREF="001624.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1623">[ date ]</a>
+              <a href="thread.html#1623">[ thread ]</a>
+              <a href="subject.html#1623">[ subject ]</a>
+              <a href="author.html#1623">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

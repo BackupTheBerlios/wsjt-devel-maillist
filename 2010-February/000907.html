@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B84421F.90306%40trinnet.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000906.html">
+   <LINK REL="Next"  HREF="000908.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;</H1>
+    <B>David A. Ranch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B84421F.90306%40trinnet.net%3E"
+       TITLE="[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;">wsjt-devel at trinnet.net
+       </A><BR>
+    <I>Tue Feb 23 22:01:19 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000906.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+        <LI>Next message: <A HREF="000908.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hey Joe,
+
+
+&gt;<i> OK, this looks reasonable.  I don't know where those lines of
+</I>&gt;<i> &quot;JACK tmpdir identified as [/dev/shm]&quot; come from, but then I have not 
+</I>&gt;<i> played with JACK.
+</I>
+I think that comes from the PortAudio support.
+
+
+&gt;&gt;<i> Exception in Tkinter callback
+</I>&gt;&gt;<i> Traceback (most recent call last):
+</I>&gt;&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 1345, in __call__
+</I>&gt;&gt;<i>       return self.func(*args)
+</I>&gt;&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 456, in callit
+</I>&gt;&gt;<i>       func(*args)
+</I>&gt;&gt;<i>     File &quot;/usr//bin/wsjt.py&quot;, line 1687, in update
+</I>&gt;&gt;<i>       graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+</I>&gt;&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2102, in create_text
+</I>&gt;&gt;<i>       return self._create('text', args, kw)
+</I>&gt;&gt;<i>     File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2076, in _create
+</I>&gt;&gt;<i>       return getint(self.tk.call(
+</I>&gt;&gt;<i> TclError: font &quot;&quot; doesn't exist
+</I>&gt;<i> 
+</I>&gt;<i> It would appear that something is broken in your Python.  For a similar 
+</I>&gt;<i> problem, see email from Richard Bown, wsjt-devel 7/3/2008.  I do not 
+</I>&gt;<i> recall how he fixed his problem; it was not a problem in the source code.
+</I>
+Ok, notice that I'm using Python2.4 though I think you're website cites 
+that 2.5 is a requirement.  I DID install 2.5.1 (an out of band release 
+from:
+
+<A HREF="http://www.geekymedia.com/uncategorized/rhel5-centos5-rpms-for-python-2-5-and-2-6/">http://www.geekymedia.com/uncategorized/rhel5-centos5-rpms-for-python-2-5-and-2-6/</A>
+
+Centos requires 2.4 to properly function, I didn't replace the default 
+python binary.  Just tried that via a symlink (ln -s /usr/bin/python2.5 
+/usr/bin/python) and now I see:
+--
+$ wsjt
+Traceback (most recent call last):
+   File &quot;/usr//bin/wsjt.py&quot;, line 5, in &lt;module&gt;
+     from Tkinter import *
+ImportError: No module named Tkinter
+--
+
+It's interesting to me that Python2.4 would find all of the other 
+libraries, etc. but this new 2.5.1 version won't.  Any ideas?   I'm not 
+that familiar with Python.  Maybe I can update Pthyon's library path?
+Tk and it's related dependencies are install but via RPMs:
+--
+tk-8.4.13-5.el5_1.1
+python-imaging-tk-1.1.6-4.el5.kb
+tkinter-2.4.3-27.el5
+tk-devel-8.4.13-5.el5_1.1
+--
+
+If I can't use the Python2.4 libraries, maybe I can install these 
+modules in a similar fashion to say how Perl does it with CPAN?
+
+
+&gt;<i> As far as I know, none of us in the &quot;devel&quot; group has used the Centos 
+</I>&gt;<i> distribution, so you're likely to be on your own for finding this bug.
+</I>
+Yeah.. that's not surprising.  A stock Centos distribution is not  HAM 
+friendly.  It's taken me some serious amount of time to get all of the 
+dependencies built up but it's working reliably now for the most part. 
+I must admit, your toolset has has been the most challenging of all the 
+programs I've compiled for the HAM side of things.
+
+
+&gt;<i> The program restarts in the mode you were in when you terminated it. 
+</I>&gt;<i> You are therefore starting in JT65 mode, and you will see the same error 
+</I>&gt;<i> as before.
+</I>
+Actually, that's not true for my setup.  I will re-select FSK144 and 
+then exit.  Upon restarting, I'll be back in say JT65.
+
+
+&gt;&gt;<i> Ps. I had unicasted an email to you about compiling issues with WSJT a
+</I>&gt;&gt;<i> week or so ago.  I'm beyond that point now but I'm curious if you
+</I>&gt;&gt;<i> received it?
+</I>&gt;<i> 
+</I>&gt;<i> No.
+</I>
+Hmmmm.. that's not good.  It ultimately came down to an issue with G95. 
+  It's installer seems to be broken and can't properly install itself 
+from sources.  I had to ultimately use their binaries and use them via a 
+symlink.  I hate non-native binaries but it seems to work.
+
+
+Few related questions if I may:
+
+- Curious, is there any plan to make your tools compatible with gfortran 
+(GCC 4.1.2)?  The configure script gives it as an option but your 
+website says one must use G95.
+
+- In several respects, it seems like WSPR v2.0 has some very nice 
+features.  It has rig control (doesn't properly set USB/LSB btw), 
+support for sound cards that don't do 11025 sampling, etc.  Do you have 
+any plans to update WSJT to have these features?
+
+- I really do like WSPR but as I understand it, your WSPR app is only 
+for the beaconing effort.  To get 2way WSPR, you can only do that in 
+WSJT today.  Any plans to add 2way WSPR to the &quot;wspr&quot; program?
+
+--David
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000906.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+	<LI>Next message: <A HREF="000908.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

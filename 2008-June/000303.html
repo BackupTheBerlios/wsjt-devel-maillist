@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT no more usable on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1212676434.3814.38.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000304.html">
+   <LINK REL="Next"  HREF="000305.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT no more usable on Linux</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1212676434.3814.38.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT no more usable on Linux">lz1bb at mail.bg
+       </A><BR>
+    <I>Thu Jun  5 16:33:53 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000304.html">[Wsjt-devel] Reminder about WSJT development
+</A></li>
+        <LI>Next message: <A HREF="000305.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As I reported earlier WSJT Deb packages do not work in Debian Testing
+and Ubuntu since a long time. WSJT can not compile on Debian Testing,
+Ubuntu and Mandriva. So what changed so dramatically in the newest
+distribution releases? What broke so briliant working code?
+
+I solved my personal problem by converting rpm to deb using alien. It
+worked fine until the last night. As Debian rejected all compilers
+except gfortran libg2c.so.0 was removed too and my package stopped
+working.
+
+I tried to compile WSJT but always error. Next I removed python-f2py and
+installed python-numpy. After that WSJT compiles fine by gfortran. But
+always after starting the program I get crash and &quot;segmentation fault&quot;
+error. Next I tried to compile with g95. It compiled and started fine
+but Period ID Name in main interface is always 000000.
+
+This segmentation fault was reported many times by Ubuntu users too.
+Ubuntu users reported nonworking deb of WSJT also. It rare worked only
+to those who did not make fresh install but upgraded their distributions
+to the last Ubuntu release.
+
+Please can you look at the code. It is sad to have no chance to use WSJT
+on air now when a good meteor showers are comming. As WSJT is no more
+working on Ubuntu, Debian and Mandriva I think it is not usable under
+Linux any more. Except rare cases where people keeps old versions of
+some libraries  and/or compilers on their machines. But I am sure WSJT
+does not work on the mentioned distributions if they were fresh
+installed.
+
+I must say all said above concernes wsjt 5.9.7r385 the last official
+wsjt release. 
+
+73, Harry LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000304.html">[Wsjt-devel] Reminder about WSJT development
+</A></li>
+	<LI>Next message: <A HREF="000305.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

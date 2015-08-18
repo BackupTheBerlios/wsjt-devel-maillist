@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Documentation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Documentation&In-Reply-To=%3C1390350166.2548.128.camel%40srv2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002065.html">
+   <LINK REL="Next"  HREF="002068.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Documentation</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Documentation&In-Reply-To=%3C1390350166.2548.128.camel%40srv2%3E"
+       TITLE="[Wsjt-devel] WSJT-X Documentation">ki7mt at yahoo.com
+       </A><BR>
+    <I>Wed Jan 22 01:22:46 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002065.html">[Wsjt-devel] WSJT-X Documentation
+</A></li>
+        <LI>Next message: <A HREF="002068.html">[Wsjt-devel] WSJT-X Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2067">[ date ]</a>
+              <a href="thread.html#2067">[ thread ]</a>
+              <a href="subject.html#2067">[ subject ]</a>
+              <a href="author.html#2067">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Charles, 
+
+I did not sure why your getting command not 
+
+chmod +x ./build-doc.sh
+
+or
+
+chmod 755 ./build-doc.sh
+
+
+then it should run as ./build-doc.sh
+
+The coloring you refer too, in Ubuntu, is what you say, Green used when
+a file has the execute bit set, and  Blue for &quot;drw&quot; files (folders)
+
+
+See change-log below about source-highlight changes.
+
+
+Joe, 
+
+There are a number of improvements from Asciidoc 8.6.9 which is upstream
+for Ubuntu / Xubuntu / Lubuntu - 14.04, including the change fropm pig
+
+<A HREF="http://asciidoc.org/CHANGELOG.html">http://asciidoc.org/CHANGELOG.html</A>
+
+The use of pygments was deprecated in favor of Gnu source-highlighter
+attribute in 8.6.8. I should have sent some basic instruction but at the
+time, html was for example purposes.
+
+12.04-LTS EOL 2017 - Asciidoc 8.6.6
+12.10 is EOL next month - Asciidoc 8.6.7
+13.04 is EOL end of Jan.- Asciidoc 8.6.7
+13.10 is EOL in July.- Asciidoc 8.6.7
+14.04 - Not released yet, Asciidoc 8.6.9
+
+I don't recall using any tags from upstream 8.6.9 when I wrote the
+examples.
+
+I'll start working on an updated version for the script, as that was a
+quick test build script.. not ready for prime time at all :-)
+
+73's
+Greg
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+
+On Tue, 2014-01-21 at 18:31 -0500, Charles Yahrling wrote: 
+&gt;<i> ls- alc  gives me 
+</I>&gt;<i> -rwxrwxr-x 1 kb1zmx kb1zmx   1079 Jan 21 18:05 build-doc.sh
+</I>but when I run it command line (in the same directory) I still get
+&quot;command not found&quot; 
+&gt;<i> tried chmod 777 just to be thorough but no joy there either
+</I>&gt;<i> build-doc.sh is highlighted in green, as is build-doc.sh~  which I
+</I>&gt;<i> assume is Ubuntu's xterm feature for executable files . subdirs are
+</I>&gt;<i> light blue....
+</I>&gt;<i> oh well, so long as I have a way to compile the txt files if I ever
+</I>&gt;<i> need to; the gui is a workaround I'd use more anyway
+</I>&gt;<i> I think this is what you want as berlios login name:
+</I>
+&gt;<i> Wsjt-devel mailing list membership configuration for cfytech24x7 at
+</I>&gt;<i> gmail.com, chuck yahrling
+</I>
+&gt;<i> 
+</I>&gt;<i> On Tue, Jan 21, 2014 at 5:55 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+</I>&gt;<i>         Chuck --
+</I>&gt;<i>         
+</I>&gt;<i>         On 1/21/2014 5:49 PM, Charles Yahrling wrote:
+</I>&gt;<i>                 Yup, that fixed the warnings I saw. The only
+</I>&gt;<i>                 peculiarity I have now is that
+</I>&gt;<i>                 I the build-doc,sh script does not execute from the
+</I>&gt;<i>                 command line (as
+</I>&gt;<i>                 before) but will if I double click from the gui.
+</I>&gt;<i>                  12.04.3 Ubuntu
+</I>&gt;<i>         
+</I>&gt;<i>         Possibly the file build-doc.sh has lost its &quot;executable&quot;
+</I>&gt;<i>         flag?  Try
+</I>&gt;<i>         
+</I>&gt;<i>         $ chmod +x build-doc.sh
+</I>&gt;<i>         
+</I>&gt;<i>                 do you want edit candidates submitted yet,and if so,
+</I>&gt;<i>                 how should I do so?
+</I>&gt;<i>         
+</I>&gt;<i>         For now, you can email the edited file wsjtx-main.txt to me,
+</I>&gt;<i>         and I'll submit it.
+</I>&gt;<i>         
+</I>&gt;<i>         If/when you have a registered login name at Berlios, let me
+</I>&gt;<i>         know what it is and I'll add you to the list of those with SVN
+</I>&gt;<i>         commit privileges.
+</I>&gt;<i>         
+</I>&gt;<i>                 -- Joe, K1JT
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Wsjt-devel mailing list
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i>         <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> de KB1ZMX 
+</I>&gt;<i> NAQCC #6799
+</I>&gt;<i> SKCC #11270
+</I>&gt;<i> NEQRP #759
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> kb1zmx.wordpress.com
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 490 bytes
+Desc: This is a digitally signed message part
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140121/147553fd/attachment.pgp">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140121/147553fd/attachment.pgp</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002065.html">[Wsjt-devel] WSJT-X Documentation
+</A></li>
+	<LI>Next message: <A HREF="002068.html">[Wsjt-devel] WSJT-X Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2067">[ date ]</a>
+              <a href="thread.html#2067">[ thread ]</a>
+              <a href="subject.html#2067">[ subject ]</a>
+              <a href="author.html#2067">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

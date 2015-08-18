@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Tx sequencing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Tx%20sequencing&In-Reply-To=%3C52012801.3070309%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001716.html">
+   <LINK REL="Next"  HREF="001718.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Tx sequencing</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Tx%20sequencing&In-Reply-To=%3C52012801.3070309%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Tx sequencing">g4wjs at classdesign.com
+       </A><BR>
+    <I>Tue Aug  6 18:44:49 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001716.html">[Wsjt-devel] WSJT-X: Tx sequencing
+</A></li>
+        <LI>Next message: <A HREF="001718.html">[Wsjt-devel] WSJT-X: Tx sequencing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1717">[ date ]</a>
+              <a href="thread.html#1717">[ thread ]</a>
+              <a href="subject.html#1717">[ subject ]</a>
+              <a href="author.html#1717">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 06/08/2013 17:13, Joe Taylor wrote:
+&gt;<i> Bill --
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;<i> I think your proposal could be workable.  What to do when we want to 
+</I>&gt;<i> terminate a transmission early, for some reason?  I guess you can 
+</I>&gt;<i> force a change to idle state, as needed?
+</I>Yes, it's just as simple as telling the modulator go to idle and signal 
+that change. This is easy now it runs in the GUI thread.
+&gt;<i>
+</I>&gt;<i> One concern: this seems like rather a lot of changes just to solve a 
+</I>&gt;<i> problem that I think (a) appears only in Linux, and (b) has other 
+</I>&gt;<i> possible solutions.
+</I>I agree in principle, but I see a lot of code in the MainWindow that 
+wouldn't be necessary (or would be hidden away in the implementation of 
+some cooperating classes) if we had some signals coming back from the 
+transmit process to drive the GUI state.
+
+I do have an ulterior motive. I'd like to see the GUI state handling 
+move to a more event driven model. I find it very hard to understand the 
+flow where there is a mix of a lot of sequential code intermingled with 
+event handling code. Qt has a nice state machine implementation which 
+integrates very well with signals and properties and seems absolutely 
+suited to the JT modes which are strict state machines themselves. By 
+implementing or re-factoring functionality slowly towards object classes 
+that are driven by slot and signal events with properties to parametrize 
+their behaviour; we wouldn't be pushing uphill so much against Qt.
+
+I am testing some minor changes the new Modulator to test this 
+sequencing approach without actually changing the tx logic in the 
+mainwindow code.
+&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001716.html">[Wsjt-devel] WSJT-X: Tx sequencing
+</A></li>
+	<LI>Next message: <A HREF="001718.html">[Wsjt-devel] WSJT-X: Tx sequencing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1717">[ date ]</a>
+              <a href="thread.html#1717">[ thread ]</a>
+              <a href="subject.html#1717">[ subject ]</a>
+              <a href="author.html#1717">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

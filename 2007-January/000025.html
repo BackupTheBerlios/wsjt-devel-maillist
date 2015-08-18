@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Using OSS -- WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Using%20OSS%20--%20WSJT&In-Reply-To=%3C14faef240701070524iabb4f7bi1d4f8ab277b479f8%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000024.html">
+   <LINK REL="Next"  HREF="000026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Using OSS -- WSJT</H1>
+    <B>Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Using%20OSS%20--%20WSJT&In-Reply-To=%3C14faef240701070524iabb4f7bi1d4f8ab277b479f8%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Fwd: Using OSS -- WSJT">mm0dqp at gmail.com
+       </A><BR>
+    <I>Sun Jan  7 14:24:54 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000024.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+        <LI>Next message: <A HREF="000026.html">[Wsjt-devel] Fwd: Using OSS -- WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Anyone got any ideas regarding the issues in the email below? I am
+going to rewrite the ptt code specific to my hardware and see if I can
+figure whats happening. I tried the suggestion of using /dev/lp but
+nothing just the same. Also getting a few segmentation errors now and
+again , I would say randomly :-/ .
+
+Anyway
+All the best , Erik MM0DQP
+
+---------- Forwarded message ----------
+From: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+Date: 07-Jan-2007 00:36
+Subject: Re: Using OSS -- WSJT
+To: Erik McKay &lt;&gt;
+Cc: Diane Bruce &lt;&gt;
+
+
+On Sun, Jan 07, 2007 at 12:00:21AM +0000, Erik McKay wrote:
+&gt;<i> You'll be wondering whats happening by email 3 :))))
+</I>&gt;<i>
+</I>&gt;<i> Another thing I have found , In monitor mode in JT6M (havent tried the
+</I>&gt;<i> other modes) there seems to be a lag of 4 periods between the actual
+</I>&gt;<i> current period and what is displayed on the main window and decoded.
+</I>
+I've noticed that I think as well and just assumed that was normal.
+
+&gt;<i> The SpecJT window however remains current. Maybe related to the TX'ing
+</I>&gt;<i> issue ? Also the FileID displayed in the decoded text seems random ,
+</I>&gt;<i> isnt it meant to be taken from the time ? None the less its midnight
+</I>
+Yes, there was a bug in the code I fixed a few weeks ago, this
+might be the same one. I'll look at it tomorrow.
+
+
+&gt;<i> and I aint daring to look at the source at this time :P
+</I>&gt;<i>
+</I>&gt;<i> Also i looked into the TX thing a little , I wanted to see if wsjt had
+</I>&gt;<i> write access to /dev/cuad0 , so running
+</I>&gt;<i> $ fstat | grep cuad
+</I>&gt;<i> which returns
+</I>&gt;<i> erik     python     58094    5 /dev         42 crwxrwxrwx   cuad0 rw
+</I>&gt;<i> erik     python     58094    5 /dev         42 crwxrwxrwx   cuad0 rw
+</I>&gt;<i> erik     python     58094    5 /dev         42 crwxrwxrwx   cuad0 rw
+</I>&gt;<i> it seems it does!
+</I>&gt;<i>
+</I>&gt;<i> Will have a better look later.
+</I>
+Try lashing up a /dev/lp or something, perhaps I got the code wrong
+for the serial on fbsd. I do remember being very pleased to hear
+sounds out of the headset when I put mine into transmit months ago!
+So I will double check it still works tomorrow.
+
+&gt;<i>
+</I>&gt;<i> Very sorry for sending so many emails about this in a run, you'll be
+</I>&gt;<i> sick of seeing my emails!
+</I>
+Not at all! It's nice to see people slowly coming to hamradio on FreeBSD!
+
+- 73 Diane VA3DB
+
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000024.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+	<LI>Next message: <A HREF="000026.html">[Wsjt-devel] Fwd: Using OSS -- WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

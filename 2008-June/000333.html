@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re:  revision 844]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20revision%20844%5D&In-Reply-To=%3C589FD0DA-8E5A-4015-B306-9E6930C363DA%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000332.html">
+   <LINK REL="Next"  HREF="000334.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re:  revision 844]</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20revision%20844%5D&In-Reply-To=%3C589FD0DA-8E5A-4015-B306-9E6930C363DA%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re:  revision 844]">bruce at quidnet.com
+       </A><BR>
+    <I>Sat Jun  7 16:30:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000332.html">[Wsjt-devel] [Fwd: Re:  revision 844]
+</A></li>
+        <LI>Next message: <A HREF="000334.html">[Wsjt-devel] [Fwd: Re:  revision 844]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#333">[ date ]</a>
+              <a href="thread.html#333">[ thread ]</a>
+              <a href="subject.html#333">[ subject ]</a>
+              <a href="author.html#333">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry et al.,
+
+Don't worry, there is a commitment by some of us to make sure it works  
+on linux (and I would really like to get it building and working on OS  
+X as well).  As as approach a new release, it's important to me to  
+make sure it's works in these environments.  As we approach a release,  
+I will try to make sure it builds and runs successfully on at least  
+one modern linux (ubuntu 8 is what I run).
+
+IIRC, though it got the segfaults out of the box, I was able to get  
+the stock version to build and run correctly by doing an &quot;apt-get  
+source wsjt&quot; and dpkg-buildpackage and re-installing it.  I'll verify  
+that next week when I get back home.  It's been a month or two since  
+I've done that, as I've been working in the dev world.
+
+Hammish may know more about the debian/ubuntu status.
+
+--bruce W1BW
+
+
+
+On Jun 7, 2008, at 4:44 AM, Harry Popov wrote:
+
+&gt;<i> On Fri, 2008-06-06 at 17:54 -0400, Joe Taylor wrote:
+</I>&gt;&gt;<i> Anyone running code at the head of the tree is on his/her own.  Yes,
+</I>&gt;<i> you
+</I>&gt;&gt;<i> should report problems; just don't complain.
+</I>&gt;<i>
+</I>&gt;<i> Dear friends,
+</I>&gt;<i>
+</I>&gt;<i> Let me explain. I do not complain. I joined the team as beta tester  
+</I>&gt;<i> and
+</I>&gt;<i> active operator. So I just report what I find wrong. So will repeat.
+</I>&gt;<i> Several fortran libraries were rejected from all last GNU/Linux
+</I>&gt;<i> distribution releases. WSJT does not work any more. I agree Linux  
+</I>&gt;<i> users
+</I>&gt;<i> are minority compared with Windows users. But majority Linux users use
+</I>&gt;<i> Ubuntu, Debian, Mandriva, Fedora. After fortran library rejection the
+</I>&gt;<i> ready made deb and rpm binarys do not work any more. That why I said
+</I>&gt;<i> WSJT is no more usable under Linux. I was talking for the last stable
+</I>&gt;<i> release r385 (the same as 383 just a dummy).
+</I>&gt;<i>
+</I>&gt;<i> Which is the worst. New compilation is succesfull but WSJT crashes  
+</I>&gt;<i> with
+</I>&gt;<i> segmentation fault when compiled with gfortran. Little success with  
+</I>&gt;<i> g95.
+</I>&gt;<i> And this is reproduced with all revisions since the last stable  
+</I>&gt;<i> r385. We
+</I>&gt;<i> can not make new binaryes until segmentation fault disappear.
+</I>&gt;<i>
+</I>&gt;<i> In the last r845 ./configure was changed, perhaps, and g95 was  
+</I>&gt;<i> unusable
+</I>&gt;<i> any more. Diane asked a question about r844 and I tryed to answer. It
+</I>&gt;<i> was a report, not complain.
+</I>&gt;<i>
+</I>&gt;<i> I see. WSJT is working on developers machines under Linux. But it is  
+</I>&gt;<i> not
+</I>&gt;<i> working on the users machines. This is what I reported. I do not
+</I>&gt;<i> complain. Just a question. How should you know that there is a problem
+</I>&gt;<i> in this case if we do not report?
+</I>&gt;<i>
+</I>&gt;<i> Yes I need Linux WSJT but I can always install older Linux  
+</I>&gt;<i> distribution
+</I>&gt;<i> just to use WSJT during my next MS expedition. But I think modern
+</I>&gt;<i> distributions are dhe feature and WSJT code should be adapted. At the
+</I>&gt;<i> present time WSJT simply does not work on them. Again I do not  
+</I>&gt;<i> complain.
+</I>&gt;<i> I just report willing to help in some way.
+</I>&gt;<i>
+</I>&gt;<i> I express my deap respect to all the team for their effort and time
+</I>&gt;<i> spent toward WSJT development. Yes it was sad to hear that Linux users
+</I>&gt;<i> are minority and do not pay the effort. It hurts but is the reality.  
+</I>&gt;<i> We
+</I>&gt;<i> have been accustomed to hear this already.
+</I>&gt;<i>
+</I>&gt;<i> As you see my English is quite spare and limited. Perhaps this is the
+</I>&gt;<i> reason I can not express my reports in the best way.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for reading and understanding.
+</I>&gt;<i>
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000332.html">[Wsjt-devel] [Fwd: Re:  revision 844]
+</A></li>
+	<LI>Next message: <A HREF="000334.html">[Wsjt-devel] [Fwd: Re:  revision 844]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#333">[ date ]</a>
+              <a href="thread.html#333">[ thread ]</a>
+              <a href="subject.html#333">[ subject ]</a>
+              <a href="author.html#333">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

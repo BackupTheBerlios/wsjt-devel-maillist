@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] ./configure doesn't generate makefile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20./configure%20doesn%27t%20generate%20makefile&In-Reply-To=%3C49b2c47e0905191629j7173bf00qa02515e4f60fdf6f%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000663.html">
+   <LINK REL="Next"  HREF="000665.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] ./configure doesn't generate makefile</H1>
+    <B>jeff millar</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20./configure%20doesn%27t%20generate%20makefile&In-Reply-To=%3C49b2c47e0905191629j7173bf00qa02515e4f60fdf6f%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] ./configure doesn't generate makefile">wa1hco at gmail.com
+       </A><BR>
+    <I>Wed May 20 01:29:32 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000663.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+        <LI>Next message: <A HREF="000665.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That fixed the Makefile part, thanks.
+
+map65.py croaks if it doesn't have a WSJT.LOG file
+
+MAP65 Version 0.9 r1238, by K1JT
+Revision date: 2009-05-17 11:07:04 -0400 (Sun, 17 May 2009)
+Run date:   Tue May 19 23:03:28 2009 UTC
+Error opening WSJT.LOG
+Traceback (most recent call last):
+  File &quot;map65.py&quot;, line 1764, in &lt;module&gt;
+    f.close()
+NameError: name 'f' is not defined
+
+Testing g95 produced a running map65.  Why does the last stage take so long,
+several minutes!?
+
+Testing gfortran showed crashes.  Printf shows that it occurs after the
+first thread creation.  This snippet from start_portaudio.c never prints the
+&quot;after 1st...&quot; message.
+{
+  pthread_t thread1,thread2,thread3;
+  int iret1,iret2,iret3;
+  int iarg1=1, iarg2=2, iarg3=3;
+  printf(&quot;start_portaudio: before 1st pthread_create()\n&quot;);
+  sleep(3);
+  iret1 = pthread_create(&amp;thread1,NULL,
+             (void *)a2d_,&amp;iarg1);
+  printf(&quot;start_portaudio: after 1st pthread_create()\n&quot;);
+  iret2 = pthread_create(&amp;thread2,NULL,
+             (void *)decode1_,&amp;iarg2);
+
+On Tue, May 19, 2009 at 6:51 PM, Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt; wrote:
+
+&gt;<i> On Tue, May 19, 2009 at 05:47:22PM -0400, jeff millar wrote:
+</I>&gt;<i> &gt; While working on map65, patching various things for testing, I decided
+</I>&gt;<i> that
+</I>&gt;<i> &gt; I'd better start over. A lot of stuff just wasn't working right.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I just did a fresh checkout of the whole r1250 tree and confirmed that
+</I>&gt;<i> &gt; map65/configure doesn't generate a Makefile, but that wsjt8 and wsjt do
+</I>&gt;<i> &gt; generate Makefiles.  This started about r1236 for me.
+</I>&gt;<i>
+</I>&gt;<i> Yes, this was my fault. I cleaned them all up over the weekend and
+</I>&gt;<i> missed a few lines. Fixed.
+</I>&gt;<i>
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A> &lt;<A HREF="http://www.db.net/%7Edb">http://www.db.net/%7Edb</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090519/3a48f594/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090519/3a48f594/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000663.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+	<LI>Next message: <A HREF="000665.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

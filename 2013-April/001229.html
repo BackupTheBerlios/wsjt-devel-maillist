@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v0.95  and v1.0 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20%20and%20v1.0%20%3F&In-Reply-To=%3C51783827.7080607%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001226.html">
+   <LINK REL="Next"  HREF="001230.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v0.95  and v1.0 ?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20%20and%20v1.0%20%3F&In-Reply-To=%3C51783827.7080607%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X v0.95  and v1.0 ?">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Apr 24 21:53:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001226.html">[Wsjt-devel] WSJT-X on OS X
+</A></li>
+        <LI>Next message: <A HREF="001230.html">[Wsjt-devel] WSJT-X v0.95 and v1.0 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1229">[ date ]</a>
+              <a href="thread.html#1229">[ thread ]</a>
+              <a href="subject.html#1229">[ subject ]</a>
+              <a href="author.html#1229">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Progress today on WSJT-X:
+
+1. Found and corrected a bug that could cause seemingly erratic crashes 
+of the GUI -- probably the bug that has been reported a number of times 
+recently.  It occurred when a message containing a compound callsign was 
+decoded, e.g., &quot;DE R2DD/3 KO97&quot;.
+
+2. Fixed several other minor bugs and annoyances, added two small 
+buttons that set TxFreq=RxFreq and RxFreq=TxFreq, respectively, and 
+added an option to &quot;Allow multiple instances&quot;.
+
+I'd like to have a stable release of WSJT-X that we can call Version 1.0 
+in the near future.  To that end, I'm thinking to release something 
+close to revision 3209 as &quot;v0.95&quot;, with the understanding that we and 
+our present user community would exercise it thoroughly for a short 
+while (a week? two weeks?).  We would fix any reported bugs and then, if 
+all is well, release the program (including a newly written manual) as 
+Version 1.0.
+
+Does this sound right to everyone here?  Any suggestions for last-minute 
+additions?  Let us know how r3209 works for you.
+
+One peculiarity is bugging me, right now.  Compiling WSJT-X in MinGW 
+under Windows, if I uncomment the seemingly harmless declaration at line 
+258 of mainwindow.h (r3209), the program then crashes on startup with an 
+access violation.  Anybody have an idea what's going on???
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001226.html">[Wsjt-devel] WSJT-X on OS X
+</A></li>
+	<LI>Next message: <A HREF="001230.html">[Wsjt-devel] WSJT-X v0.95 and v1.0 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1229">[ date ]</a>
+              <a href="thread.html#1229">[ thread ]</a>
+              <a href="subject.html#1229">[ subject ]</a>
+              <a href="author.html#1229">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

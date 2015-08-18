@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Status of WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3C52308AFC.1090600%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001911.html">
+   <LINK REL="Next"  HREF="001894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Status of WSJT-X</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3C52308AFC.1090600%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Status of WSJT-X">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Sep 11 17:23:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001911.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="001894.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1929">[ date ]</a>
+              <a href="thread.html#1929">[ thread ]</a>
+              <a href="subject.html#1929">[ subject ]</a>
+              <a href="author.html#1929">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/09/2013 18:42, Joe Taylor wrote:
+&gt;<i> Hi all,
+</I>Hi Joe and All,
+
+I've been a bit bogged down with other issues and have only just got 
+around to looking at what I can do to reduce this issue list. A couple 
+of updates below.
+&gt;<i>
+</I>&gt;<i> I'm happy to be back in the fold, after two weeks of relaxation on the 
+</I>&gt;<i> beach, sailing on tidal ponds, etc., etc., in beautiful Rhode Island.
+</I>&gt;<i>
+</I>&gt;<i> I'm still getting caught up on email traffic, but here's what I've 
+</I>&gt;<i> isolated as potentially important issues for WSJT-X:
+</I>&gt;<i>
+</I>&gt;<i> 1. Several users report that Tx audio &quot;stutters&quot; when a window is 
+</I>&gt;<i> minimized or maximized.  When using PortAudio, this problem was 
+</I>&gt;<i> addressed (and solved) by increasing the size of low-level buffers in 
+</I>&gt;<i> soundout.  Something similar probably needs to be done in the present 
+</I>&gt;<i> code.
+</I>I'll have a go at putting a buffer size control into the main code. I'm 
+not sure if it will help as the o/p buffers are pretty large already but 
+it's worth a try. My pending configuration changes will definitely help 
+because I don't create a new configuration dialog every time it is 
+invoked, instead it is created at startup and shown/hidden by the normal 
+exec() - accept()|reject() mechanism.
+&gt;<i>
+</I>&gt;<i> 2. Qt setVoloume() has a bug that reduces the Tx audio level by (I 
+</I>&gt;<i> think) 6 dB.  I suggest that we obviate this issue for now by using 
+</I>&gt;<i> &quot;#ifdef Win32&quot; blocks to make the Tx Pwr slider act as
+</I>&gt;<i> a digital gain control when compiled for Windows.  I think this means 
+</I>&gt;<i> replacing the factor 32767 in line 137 of Modulator.cpp with a 
+</I>&gt;<i> variable whose value is controlled by the Tx Pwr slider.  Max value 
+</I>&gt;<i> would be 32767, 3277 would be -20 dB, etc.
+</I>I got right through implementing this only to find that QtAudioOutput 
+sets the Windows volume in QAudioOutput::open() - D'Oh! - , it uses its 
+own setVolume() method which is where the bug is and therefore sets the 
+volume to 50% (Windows slider scale) when it should be 100%. So we have 
+no way around this unless we build Qt from source with my fix in for 
+production releases. The only worry I have about this issue remaining 
+unsolved for now is the wave of over driven signals when the Qt fix 
+comes through and everyone gets louder after our subsequent release.
+&gt;<i>
+</I>&gt;<i> 3. Stuck in decode?  I never see this problem, but several users say 
+</I>&gt;<i> they do.  What's causing it?  Something to do with the ./.lock file 
+</I>&gt;<i> shared by wsjtx.exe and jt9.exe ?
+</I>As we have discussed before Joe, I suffer a jt9 hang on Linux with whole 
+periods of silence, this incarnation is not a deadlock issue, it is a 
+tight never ending loop in jt9 somewhere that I usually spot first from 
+the hot air and fan noise from my laptop when it happens. Maybe a 
+similar problem is happening on Windows even with data in the sample 
+buffer. Is it worth asking if anyone who suffers this sees accompanying 
+high CPU usage?
+&gt;<i>
+</I>&gt;<i> 4. Tx at &#177; 1 kHz from desired frequency?  Is this a bug, or operator 
+</I>&gt;<i> mistakes?
+</I>&gt;<i>
+</I>&gt;<i> 5. Failure to decode first transmission in response to a CQ?  I've had 
+</I>&gt;<i> a low-level concern about these reports for some time. Possibly I've 
+</I>&gt;<i> seen such an issue myself, a few times, though I can't be sure.  (I 
+</I>&gt;<i> certainly don't see it 70% of the time, as KB3MOW reports.)
+</I>Am I correct in thinking that decoding is done on the RX DF only or in 
+preference under some circumstances like double clicking the waterfall 
+to decode. I would start by looking at that code to make sure it is 
+benign in general decoding cycles.
+&gt;<i>
+</I>&gt;<i> 6. LY2CG reports that if computer has no connection to internet. 
+</I>&gt;<i> program stops working after 5 minutes, even if PSK Reporter is not 
+</I>&gt;<i> checked. Edson, is something timing out after failing to connect with 
+</I>&gt;<i> the PSK Reporter site?
+</I>Looking at the code, it seems that we are sending local station details 
+to pskreporter.info even when spotting is disabled. If so, some users 
+might be surprised that they are broadcasting on the internet every five 
+minutes when the pskreporter check box is not checked. I note this after 
+the fixes Edson has put in to deal with DNS lookup failures causing crashes.
+&gt;<i>
+</I>&gt;<i> I didn't list the &quot;Fortran traceback error message bug&quot; on program 
+</I>&gt;<i> exit, because there really isn't one.  It's the result of some extra 
+</I>&gt;<i> diagnostic code that I had put into timer.f90, and forgot to remove 
+</I>&gt;<i> before building the Windows distribution package for r3563.
+</I>&gt;<i>
+</I>&gt;<i> I haven't yet looked at the issue concerning jt9com_.nagain, but will 
+</I>&gt;<i> do so.
+</I>&gt;<i>
+</I>&gt;<i> Are there other outstanding issues in WSJT-X v1.2 r3563 that need our 
+</I>&gt;<i> attention?
+</I>&gt;<i>
+</I>&gt;<i> The User's Guide should have more information on some configuration 
+</I>&gt;<i> options.  Murray, would you be willing to draft some suitable text 
+</I>&gt;<i> about the &quot;Show DXCC entity and worked B4 status&quot; option?  Where should
+</I>&gt;<i> such things go?  It would also be good to have a section in the manual 
+</I>&gt;<i> on &quot;Troubleshooting&quot;, perhaps modeled after Appendix D in the WSPR 2.0 
+</I>&gt;<i> manual, starting on page 18 of
+</I>&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf">http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf</A> .
+</I>&gt;<i> Does anyone want to try drafting something similar for WSJT-X, 
+</I>&gt;<i> addressing the most common user problem areas ?
+</I>&gt;<i>
+</I>&gt;<i> Finally: does anyone have an opinion on whether we should improve the 
+</I>&gt;<i> organizational structure of our WSJT Developers Group?  Should we make 
+</I>&gt;<i> better use of the facilities of the Berlios repository -- for example, 
+</I>&gt;<i> bug tracking, posting of repository snapshots, etc? Other suggestions??
+</I>&gt;<i> The present arrangements work, but they were never really planned... 
+</I>&gt;<i> they just grew, as the several programs were being developed.
+</I>Bug tracking is nice, but it the trade off is the extra maintenance of 
+triage and dealing with issues that can't/won't be fixed. It might 
+reduce some of the multiple reporting of issues on the mailing list if 
+it were open to all (I don't know if that is an option).
+
+I've never really understood the snapshot release mechanism, it is 
+trivial, quick and, cheap to tag the repo tree for each milestone 
+(release, release candidate, beta, alpha, ...). That way anyone can 
+check out a prior milestone. Obviously having svn then becomes a 
+requirement whereas snapshots as a zip/gzip don't but given the largish 
+number of other pre-requisites for building installing subversion seems 
+easy.
+
+I would like to see a process for publishing larger scale more 
+disruptive changes to the developer community. For example we are 
+currently in a release phase with 1.2 hopefully nearing release. I have 
+many changes that I would like to have the developer community running 
+for testing purposes but am reluctant to check in because of the 
+likelihood of issues that would delay 1.2. Subversion branching is the 
+obvious answer but it does bring with it a whole mess of issues about 
+merging changes across branches. One option is to have optional 
+individual developer feature branches so any developer (or group of 
+developers) could branch the main line and then would be responsible for 
+merging all main line changes into their branch before merging their 
+completed and approved changes back into the main line. This way any 
+developer could checkout the branch and build locally to see what is 
+happening. IMHO feature branches like this work well if their life span 
+is reasonably short.
+&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001911.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="001894.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1929">[ date ]</a>
+              <a href="thread.html#1929">[ thread ]</a>
+              <a href="subject.html#1929">[ subject ]</a>
+              <a href="author.html#1929">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT r1316
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20r1316&In-Reply-To=%3C4A79D6A4.3020908%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000727.html">
+   <LINK REL="Next"  HREF="000730.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT r1316</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20r1316&In-Reply-To=%3C4A79D6A4.3020908%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT r1316">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Aug  5 20:59:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000727.html">[Wsjt-devel] wsjt r1313
+</A></li>
+        <LI>Next message: <A HREF="000730.html">[Wsjt-devel] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#729">[ date ]</a>
+              <a href="thread.html#729">[ thread ]</a>
+              <a href="subject.html#729">[ subject ]</a>
+              <a href="author.html#729">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>What's the best way to say it?  Wonders never cease?? Eureka???
+
+It seems that as of r1316 WSJT, WSPR, and MAP65 all compile and run 
+properly using gfortran running in xubuntu 9.04.
+
+Because of the nature of the &quot;fix&quot;, I'm optimistic that this will be 
+true in other *nix distributions where gfortran has been failing, as well.
+
+The crucial change was in the f2py command.  The latest version of 
+Makefile.in splits the several compiler flags into three groups:
+
+   --opt
+   --f77flags
+   --f90 flags
+
+The second and third of these are set to ${FFLAGS}, with
+
+FFLAGS = -g -O2 -fno-range-check -ffixed-line-length-none \
+   -Wall -fbounds-check -fno-second-underscore -fPIC
+
+To produce a working Audio.so with gfortran, the first one must be 
+specified as
+
+   --noopt
+
+Interesting point: it does *NOT* work to use
+
+   --opt=&quot;-O0&quot;
+
+Note that &quot;--opt&quot; is supposed to mean stand for &quot;optimizations&quot;, not 
+&quot;options&quot;.
+
+As test cases I measured execution times to decode a fixed list or JT65B 
+files: I wanted to make sure that using &quot;--noopt&quot; was not costing much 
+(if anything) in program speed.  Here are the results:
+
+Compiler  --opt setting    Execution time (s)
+----------------------------------------------
+g95       --noopt          52
+g95       --opt=&quot;O0&quot;       52
+g95       --opt=&quot;O2&quot;       52
+gfortran  --noopt          42
+gfortran  --opt=&quot;O0&quot;       42
+gfortran  --opt=&quot;O1&quot;       segfault on startup
+gfortran  --opt=&quot;O2&quot;       segfault on startup
+
+As you can see, the optimization level set with &quot;--opt&quot; or &quot;--noopt&quot; has 
+no measurable effect on speed.
+
+If you look at the output from &quot;make clean; make&quot; for each case, it 
+turns out that the Fortran is all compiled with &quot;-O2&quot; anyway, as 
+specified in FFLAGS.  It's the C routines that are compiled with &quot;-O0&quot; 
+when you specify &quot;--noopt&quot;, and apparently that is what makes it work. 
+At least, that's how I read things at present.
+
+F2PY is a strange and wondrous tool (with some emphasis on strange)... 
+but we could not live without it.
+
+Comments, corrections, and reports on whether it works on *your* 
+installation will be most welcome!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000727.html">[Wsjt-devel] wsjt r1313
+</A></li>
+	<LI>Next message: <A HREF="000730.html">[Wsjt-devel] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#729">[ date ]</a>
+              <a href="thread.html#729">[ thread ]</a>
+              <a href="subject.html#729">[ subject ]</a>
+              <a href="author.html#729">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

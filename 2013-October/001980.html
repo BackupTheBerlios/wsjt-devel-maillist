@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Windows Vista Audio Input Stream Problems at 48kHz
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Windows%20Vista%20Audio%20Input%20Stream%20Problems%20at%2048kHz&In-Reply-To=%3C524F1206.8010004%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001979.html">
+   <LINK REL="Next"  HREF="001981.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Windows Vista Audio Input Stream Problems at 48kHz</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Windows%20Vista%20Audio%20Input%20Stream%20Problems%20at%2048kHz&In-Reply-To=%3C524F1206.8010004%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Windows Vista Audio Input Stream Problems at 48kHz">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Oct  4 21:07:50 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001979.html">[Wsjt-devel] Japanese 12m freq restriction
+</A></li>
+        <LI>Next message: <A HREF="001981.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1980">[ date ]</a>
+              <a href="thread.html#1980">[ thread ]</a>
+              <a href="subject.html#1980">[ subject ]</a>
+              <a href="author.html#1980">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+after discussion with Joe we have decided to tackle this issue by not 
+using the new input resampler on Windows Vista since Windows Vista seems 
+broken at 48kHz nd delivers a distorted audio input stream. Instead on 
+Vista we now request a 12kHz stream and process it directly.
+
+Rather than a hard compile time decision, I have implemented a default 
+that can be overridden if desired. This will allow easy testing if a 
+Vista fix  is discovered. Also it allows us to compare our resampling 
+process with that of Windows and hardware CODECs relatively easily.
+
+Note that the settings parameter described below need only be used if 
+the fix needs to be overridden.
+
+$ svn log -r 3588
+------------------------------------------------------------------------
+r3588 | bsomervi | 2013-10-04 20:00:29 +0100 (Fri, 04 Oct 2013) | 21 lines
+
+Fix audio input rate issue on Windows Vista
+
+Windows Vista has a broken rate converter which gets invoked when an
+input audio stream at 48kHz sampel rate is requested. I've no idea why
+our application can't get exclusive access to the audio input device
+and have a unconverted stream direct at 48kHz.
+
+To get around this our down sampling filter for audio input from 48kHz
+to 12kHz is disaabled by default on Windows Vista, instead we request
+a 12kHz stream and process it directly.
+
+This default behviour can be overriden by specifying the following
+settings value:
+
+[Tune]
+Audio\DisableInputResampling=false
+
+This settings value defaults to true on Windows Vista and false
+everywhere else so normally needn't be present.
+
+
+------------------------------------------------------------------------
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001979.html">[Wsjt-devel] Japanese 12m freq restriction
+</A></li>
+	<LI>Next message: <A HREF="001981.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1980">[ date ]</a>
+              <a href="thread.html#1980">[ thread ]</a>
+              <a href="subject.html#1980">[ subject ]</a>
+              <a href="author.html#1980">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

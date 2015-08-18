@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] In the works for WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20In%20the%20works%20for%20WSJT-X&In-Reply-To=%3C51B3D363.80207%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001352.html">
+   <LINK REL="Next"  HREF="001356.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] In the works for WSJT-X</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20In%20the%20works%20for%20WSJT-X&In-Reply-To=%3C51B3D363.80207%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] In the works for WSJT-X">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun Jun  9 02:59:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001352.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+        <LI>Next message: <A HREF="001356.html">[Wsjt-devel] In the works for WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1351">[ date ]</a>
+              <a href="thread.html#1351">[ thread ]</a>
+              <a href="subject.html#1351">[ subject ]</a>
+              <a href="author.html#1351">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To:   Users and potential users of WSJT-X
+From: Joe Taylor, K1JT
+
+You may be interested in what's coming in a yet-to-be-released version 
+of WSJT-X.
+
+For those with transceivers that can support it, the maximum displayed 
+bandwidth has been increased from 1 kHz to 5 kHz.  My TS-2000 is a good 
+example of this capability: it works well at 4 kHz bandwidth.  That's 
+enough so that I can set the dial frequency to 14.076 and see 
+essentially all the 20m activity on both JT65 and JT9.
+
+An example of the resulting waterfall display is posted at
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/wsjtx_1.1a.png">http://www.physics.princeton.edu/pulsar/K1JT/wsjtx_1.1a.png</A> .
+On the scale shown, JT65 activity is found in the approximate range 300 
+to 2300 Hz, JT9 activity from 3000 to 4000 Hz.  The JT65 decoder has 
+been ported from MAP65 and is working well as a stand-alone program, 
+using data recorded by WSJT-X.  The JT65 decoder is ready to be 
+integrated into WSJT-X.
+
+My plan is to allow the operator to choose JT9 or JT65 decoding, or 
+both.  If you choose both, all messages will appear on screen.  The mode 
+will be indicated with a single-character flag, or perhaps a distinct 
+color, or some such scheme.  If you double-click on a JT9 message, 
+you'll transmit JT9.  If it's a JT65 message, you'll transmit JT65.
+
+One advantage of the dual-mode scheme is that more operators can start 
+to get a feel for the relative merits of the two modes.  In particular, 
+it will be very obvious that JT9 has essentially the same (actually 
+about 2 dB better) sensitivity, while requiring less than 10% of the 
+bandwidth.  That means ten times as many stations will fit into each kHz 
+of spectrum!
+
+Many details of the implementation are yet to be worked out. 
+Suggestions and comments on these plans will be welcome.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001352.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+	<LI>Next message: <A HREF="001356.html">[Wsjt-devel] In the works for WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1351">[ date ]</a>
+              <a href="thread.html#1351">[ thread ]</a>
+              <a href="subject.html#1351">[ subject ]</a>
+              <a href="author.html#1351">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

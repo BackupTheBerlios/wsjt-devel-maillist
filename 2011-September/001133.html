@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] call to use obsolte font
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C4E84CED8.3030108%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001132.html">
+   <LINK REL="Next"  HREF="001134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] call to use obsolte font</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C4E84CED8.3030108%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] call to use obsolte font">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Sep 29 22:02:32 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001132.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+        <LI>Next message: <A HREF="001134.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1133">[ date ]</a>
+              <a href="thread.html#1133">[ thread ]</a>
+              <a href="subject.html#1133">[ subject ]</a>
+              <a href="author.html#1133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Richard --
+
+&gt;<i> I do have a major problem with kernel 3.0.1 as its causing problems with
+</I>&gt;<i> alsa and the effect is that it skips the requested card and jumps to the
+</I>&gt;<i> default
+</I>&gt;<i> ie.
+</I>&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;<i> Device  Channels  Channels
+</I>&gt;<i> ------------------------------------------------------------------
+</I>&gt;<i>     0        2         8       HDA ATI SB: ALC892 Analog (hw:0,0)
+</I>&gt;<i>     1        2         2       HDA ATI SB: ALC892 Digital (hw:0,1)
+</I>&gt;<i>     2        0         2       HDA ATI HDMI: HDMI 0 (hw:1,3)
+</I>&gt;<i>     3        0         8       front
+</I>&gt;<i>     4        0         8       surround40
+</I>&gt;<i>     5        0        128       surround41
+</I>&gt;<i>     6        0        128       surround50
+</I>&gt;<i>     7        0         8       surround51
+</I>&gt;<i>     8        0         8       surround71
+</I>&gt;<i>     9        0         2       iec958
+</I>&gt;<i>    10        2         2       spdif
+</I>&gt;<i>    11       32        32       pulse
+</I>&gt;<i>    12        0         2       dmix
+</I>&gt;<i>    13       32        32       default
+</I>&gt;<i>
+</I>&gt;<i> User requested devices:   Input =  0   Output =  0
+</I>&gt;<i> Default devices:          Input = 13   Output = 13
+</I>&gt;<i> Will open devices:        Input = 13   Output = 13
+</I>
+The device you asked for evidently reported that it does not support the 
+required native sample rate (11025 Hz for WSJT).
+
+
+&gt;<i> bash-4.2$ aplay -l
+</I>&gt;<i> **** List of PLAYBACK Hardware Devices ****
+</I>&gt;<i> card 0: SB [HDA ATI SB], device 0: ALC892 Analog [ALC892 Analog]
+</I>&gt;<i>    Subdevices: 1/1
+</I>&gt;<i>    Subdevice #0: subdevice #0
+</I>&gt;<i> card 0: SB [HDA ATI SB], device 1: ALC892 Digital [ALC892 Digital]
+</I>&gt;<i>    Subdevices: 1/1
+</I>&gt;<i>    Subdevice #0: subdevice #0
+</I>&gt;<i> card 1: HDMI [HDA ATI HDMI], device 3: HDMI 0 [HDMI 0]
+</I>&gt;<i>    Subdevices: 0/1
+</I>&gt;<i>    Subdevice #0: subdevice #0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> What's even worse is the card alsa should be using is a M-audio D66,
+</I>&gt;<i> which aplay doesn't list, but it might if you reboot.. very random
+</I>&gt;<i> results :)
+</I>&gt;<i>
+</I>&gt;<i> lspci shows
+</I>&gt;<i> 01:05.1 Audio device: ATI Technologies Inc RS880 Audio Device [Radeon HD
+</I>&gt;<i> 4200]
+</I>&gt;<i> 02:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
+</I>&gt;<i> RTL8111/8168B PCI Express Gigabit Ethernet controller (rev 06)
+</I>&gt;<i> 03:07.0 Multimedia audio controller: VIA Technologies Inc. ICE1712
+</I>&gt;<i> [Envy24] PCI Multi-Channel I/O Controller (rev 02)
+</I>&gt;<i>
+</I>&gt;<i> The cards there and the modules loaded, this has all occurred after
+</I>&gt;<i> kernel 2.6.40, which is also kernel 3.0.0.
+</I>&gt;<i> It doesn't seem to matter if pulseaudio is loaded either.
+</I>
+Can't help you here ...
+
+	-- Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001132.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+	<LI>Next message: <A HREF="001134.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1133">[ date ]</a>
+              <a href="thread.html#1133">[ thread ]</a>
+              <a href="subject.html#1133">[ subject ]</a>
+              <a href="author.html#1133">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

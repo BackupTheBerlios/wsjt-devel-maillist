@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT r1316
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20r1316&In-Reply-To=%3C37239.62.194.134.114.1249499721.squirrel%40customer.itr-datanet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000729.html">
+   <LINK REL="Next"  HREF="000731.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT r1316</H1>
+    <B>Rob Hardenberg PE1ITR</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20r1316&In-Reply-To=%3C37239.62.194.134.114.1249499721.squirrel%40customer.itr-datanet.com%3E"
+       TITLE="[Wsjt-devel] WSJT r1316">rob at itr-datanet.com
+       </A><BR>
+    <I>Wed Aug  5 21:15:21 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000729.html">[Wsjt-devel] WSJT r1316
+</A></li>
+        <LI>Next message: <A HREF="000731.html">[Wsjt-devel] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#730">[ date ]</a>
+              <a href="thread.html#730">[ thread ]</a>
+              <a href="subject.html#730">[ subject ]</a>
+              <a href="author.html#730">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Compiled WSJT r1317. Works here both on gfortran and g95.
+Using Fedora 10.
+
+73 Rob PE1ITR
+
+
+Joe Taylor schreef:
+&gt;<i> What's the best way to say it?  Wonders never cease?? Eureka???
+</I>&gt;<i>
+</I>&gt;<i> It seems that as of r1316 WSJT, WSPR, and MAP65 all compile and run
+</I>&gt;<i> properly using gfortran running in xubuntu 9.04.
+</I>&gt;<i>
+</I>&gt;<i> Because of the nature of the &quot;fix&quot;, I'm optimistic that this will be
+</I>&gt;<i> true in other *nix distributions where gfortran has been failing, as well.
+</I>&gt;<i>
+</I>&gt;<i> The crucial change was in the f2py command.  The latest version of
+</I>&gt;<i> Makefile.in splits the several compiler flags into three groups:
+</I>&gt;<i>
+</I>&gt;<i>    --opt
+</I>&gt;<i>    --f77flags
+</I>&gt;<i>    --f90 flags
+</I>&gt;<i>
+</I>&gt;<i> The second and third of these are set to ${FFLAGS}, with
+</I>&gt;<i>
+</I>&gt;<i> FFLAGS = -g -O2 -fno-range-check -ffixed-line-length-none \
+</I>&gt;<i>    -Wall -fbounds-check -fno-second-underscore -fPIC
+</I>&gt;<i>
+</I>&gt;<i> To produce a working Audio.so with gfortran, the first one must be
+</I>&gt;<i> specified as
+</I>&gt;<i>
+</I>&gt;<i>    --noopt
+</I>&gt;<i>
+</I>&gt;<i> Interesting point: it does *NOT* work to use
+</I>&gt;<i>
+</I>&gt;<i>    --opt=&quot;-O0&quot;
+</I>&gt;<i>
+</I>&gt;<i> Note that &quot;--opt&quot; is supposed to mean stand for &quot;optimizations&quot;, not
+</I>&gt;<i> &quot;options&quot;.
+</I>&gt;<i>
+</I>&gt;<i> As test cases I measured execution times to decode a fixed list or JT65B
+</I>&gt;<i> files: I wanted to make sure that using &quot;--noopt&quot; was not costing much
+</I>&gt;<i> (if anything) in program speed.  Here are the results:
+</I>&gt;<i>
+</I>&gt;<i> Compiler  --opt setting    Execution time (s)
+</I>&gt;<i> ----------------------------------------------
+</I>&gt;<i> g95       --noopt          52
+</I>&gt;<i> g95       --opt=&quot;O0&quot;       52
+</I>&gt;<i> g95       --opt=&quot;O2&quot;       52
+</I>&gt;<i> gfortran  --noopt          42
+</I>&gt;<i> gfortran  --opt=&quot;O0&quot;       42
+</I>&gt;<i> gfortran  --opt=&quot;O1&quot;       segfault on startup
+</I>&gt;<i> gfortran  --opt=&quot;O2&quot;       segfault on startup
+</I>&gt;<i>
+</I>&gt;<i> As you can see, the optimization level set with &quot;--opt&quot; or &quot;--noopt&quot; has
+</I>&gt;<i> no measurable effect on speed.
+</I>&gt;<i>
+</I>&gt;<i> If you look at the output from &quot;make clean; make&quot; for each case, it
+</I>&gt;<i> turns out that the Fortran is all compiled with &quot;-O2&quot; anyway, as
+</I>&gt;<i> specified in FFLAGS.  It's the C routines that are compiled with &quot;-O0&quot;
+</I>&gt;<i> when you specify &quot;--noopt&quot;, and apparently that is what makes it work.
+</I>&gt;<i> At least, that's how I read things at present.
+</I>&gt;<i>
+</I>&gt;<i> F2PY is a strange and wondrous tool (with some emphasis on strange)...
+</I>&gt;<i> but we could not live without it.
+</I>&gt;<i>
+</I>&gt;<i> Comments, corrections, and reports on whether it works on *your*
+</I>&gt;<i> installation will be most welcome!
+</I>&gt;<i>
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+73 Rob PE1ITR
+<A HREF="http://www.pe1itr.com">http://www.pe1itr.com</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000729.html">[Wsjt-devel] WSJT r1316
+</A></li>
+	<LI>Next message: <A HREF="000731.html">[Wsjt-devel] WSJT r1316
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#730">[ date ]</a>
+              <a href="thread.html#730">[ thread ]</a>
+              <a href="subject.html#730">[ subject ]</a>
+              <a href="author.html#730">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

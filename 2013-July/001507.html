@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Band settings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51E1DC1D.6060900%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001508.html">
+   <LINK REL="Next"  HREF="001509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Band settings</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51E1DC1D.6060900%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] Band settings">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Sun Jul 14 01:00:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001508.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+        <LI>Next message: <A HREF="001509.html">[Wsjt-devel] Multiple Instances --
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1507">[ date ]</a>
+              <a href="thread.html#1507">[ thread ]</a>
+              <a href="subject.html#1507">[ subject ]</a>
+              <a href="author.html#1507">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+
+My username at Berlios is VK3ACF and I've just subscribed to the 
+wsjt-svn list.
+
+Yes, I think having a stable and beta release is a good idea.  By all 
+means wait until after the release of 1.1. In the mean time I might look 
+at some basic input validation on those fields.  I still can't find any 
+string length restriction for PSK Reporter's antenna description field 
+other than the datagram format he's using has a data field length limit 
+of 254 bytes. Thats quite some description!  I might just make it some 
+arbitrary but realistic length, say 64 characters.
+
+Cheers
+Murray
+VK3ACF
+
+
+
+
+On 13/07/13 23:35, Joe Taylor wrote:
+&gt;<i> Hi Murray,
+</I>&gt;<i>
+</I>&gt;<i> Thanks for the update!  I will look forward to trying your code.
+</I>&gt;<i>
+</I>&gt;<i> Right now, you won't be able to do an &quot;svn commit&quot; with your code 
+</I>&gt;<i> changes.  I'll be happy to add you to the list of &quot;developers&quot; with 
+</I>&gt;<i> write permission to the SVN repository.  Are you already subscribed to 
+</I>&gt;<i> the mailing lists WSJT-SVN and WSJT-devel ?  You will need to register 
+</I>&gt;<i> on the Berlios site with a unix username (e.g., your callsign, or 
+</I>&gt;<i> whatever you want to use).  Then let me know your login name, and I 
+</I>&gt;<i> can add you to the list of WSJT developers.
+</I>&gt;<i>
+</I>&gt;<i> No doubt you will have gathered that a release of &quot;Version 1.1&quot; is 
+</I>&gt;<i> imminent.  I suggest that we add your code to the SVN tree just after 
+</I>&gt;<i> that release.  Yours can then be one of the first feature additions in 
+</I>&gt;<i> a line of continuing development -- v1.1.1, or v1.2, or whatever. 
+</I>&gt;<i> Probably I should start posting on the WSJT web site both a &quot;stable&quot; 
+</I>&gt;<i> release and (when appropriate) a later, beta-level release.  The betas 
+</I>&gt;<i> can be promoted to &quot;stable&quot; status when they've been used and 
+</I>&gt;<i> validated for some appropriate time.  Does this make sense to you?
+</I>&gt;<i>
+</I>&gt;<i> Let's move any further communication about yout proposed changes to 
+</I>&gt;<i> the wsjt-devel reflector, so that everyone else will know what's up.
+</I>&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 7/13/2013 1:46 AM, Murray Curtis wrote:
+</I>&gt;&gt;<i> Hi Joe
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have a 3 column implementation working based on r3484 which I think
+</I>&gt;&gt;<i> addresses the multiple antenna request. It may be a little cumbersome
+</I>&gt;&gt;<i> for those who work many bands with the same antenna but its easy enough
+</I>&gt;&gt;<i> to copy and paste between bands and they only need to do it once.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Changes are:
+</I>&gt;&gt;<i> * The third tab of the DevSetup window I've labelled &quot;Band Settings&quot;
+</I>&gt;&gt;<i> (was &quot;Default frequencies&quot;)
+</I>&gt;&gt;<i> * This tab now contains a scrolled window with 3 columns: band
+</I>&gt;&gt;<i> description, frequency and antenna description.
+</I>&gt;&gt;<i> * These are all QLineEdit to allow each to be edited.
+</I>&gt;&gt;<i> * The band combo box on the main window is now populated from the band
+</I>&gt;&gt;<i> descriptions.
+</I>&gt;&gt;<i> * PSKReporter gets its antenna description from the appropriate band.
+</I>&gt;&gt;<i> * The three columns (of 16 rows) are read/written to the ini file.
+</I>&gt;&gt;<i> * The original PSKAntenna entry has been removed from the first tab
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I renamed the frequencies in the ini file to force a default frequencies
+</I>&gt;&gt;<i> update for those with an existing ini file. That may or may not be a
+</I>&gt;&gt;<i> good idea!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Things yet to do:
+</I>&gt;&gt;<i> The band combo box could be usefully made a little wider to allow for
+</I>&gt;&gt;<i> the any extra text at some stage. I've left it for the moment.
+</I>&gt;&gt;<i> I've not put any input validation on the entered text - couldn't find
+</I>&gt;&gt;<i> any reference to text string limits for PSK Reporter. I notice too that
+</I>&gt;&gt;<i> theres no validation on the frequency input either.
+</I>&gt;&gt;<i> Perhaps I should put a checkbox somewhere: Use same antenna for all,
+</I>&gt;&gt;<i> either with another QLineEdit for the default or perhaps just use the
+</I>&gt;&gt;<i> first band's entry.
+</I>&gt;&gt;<i> The number of bands is currently hard coded at 16. These could usefully
+</I>&gt;&gt;<i> be converted to dynamic lists with a 'Add' button at the bottom of the
+</I>&gt;&gt;<i> Band Settings tab for those power users who may want more than 16 
+</I>&gt;&gt;<i> entries.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I can email the changed files to you for review, or push them to the SVN
+</I>&gt;&gt;<i> repository - whatever suits.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cheers
+</I>&gt;&gt;<i> Murray
+</I>&gt;&gt;<i> VK3ACF
+</I>&gt;&gt;<i>
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001508.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+	<LI>Next message: <A HREF="001509.html">[Wsjt-devel] Multiple Instances --
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1507">[ date ]</a>
+              <a href="thread.html#1507">[ thread ]</a>
+              <a href="subject.html#1507">[ subject ]</a>
+              <a href="author.html#1507">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

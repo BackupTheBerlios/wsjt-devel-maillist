@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%202.0_r1612%20serial%20port%20TX%20not%20working&In-Reply-To=%3C4AEE26ED.4070601%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000763.html">
+   <LINK REL="Next"  HREF="000765.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wspr 2.0_r1612 serial port TX not working</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%202.0_r1612%20serial%20port%20TX%20not%20working&In-Reply-To=%3C4AEE26ED.4070601%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] wspr 2.0_r1612 serial port TX not working">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Mon Nov  2 01:25:17 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000763.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+        <LI>Next message: <A HREF="000765.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+Updated to revision 1616, compiled, et voila! perfect ( if that is 
+possible to be....).
+
+Now I will have to homebrew a dedicated transceiver, so I can leave 
+running 24/24 ... hi
+
+Many thanks,
+
+73
+de Mike, VE2ExB
+
+Joe Taylor a &#233;crit :
+&gt;<i> Hi Mike,
+</I>&gt;<i>
+</I>&gt;<i> Perhaps you will have noticed that a fix was committed a couple of 
+</I>&gt;<i> hours ago, in revision 1616.
+</I>&gt;<i>
+</I>&gt;<i>    -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> Michel, VE2ExB wrote:
+</I>&gt;&gt;<i> Hello,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> OK, I did find where to make it work, it is in tx.F90 file,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> in 2 places, just before the  lines;
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i> if(nport.gt.0) ierr=ptt(nport,pttport,1,iptt)    I have added
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i> nport=1
+</I>&gt;&gt;<i> if(nport.gt.0) ierr=ptt(nport,pttport,1,iptt)
+</I>&gt;&gt;<i> ...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This line is for the case where ptt_unix.c is used, the nport 
+</I>&gt;&gt;<i> variable is not used in the case of compiling for unix, so that is 
+</I>&gt;&gt;<i> probably why....
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hope that helps, everything works like a charm on an Ubuntu 64 
+</I>&gt;&gt;<i> system, aparts from little quirks but easily worked around, I can do 
+</I>&gt;&gt;<i> some stuff in the shack while &lt;weak beaconing&gt;!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Many thanks,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Mike, VE2ExB
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Joe Taylor a &#233;crit :
+</I>&gt;&gt;&gt;<i> Hi Mike,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Thanks for your kind words about WSJT and WSPR.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Of course you are most welcome to obtain code from the SVN 
+</I>&gt;&gt;&gt;<i> repositories and to share your experiences with it here.  Be 
+</I>&gt;&gt;&gt;<i> forewarned, however, that WSPR is presently in a state of evolution 
+</I>&gt;&gt;&gt;<i> leading to a version 2.0, probably not very far off.  It is NOT yet 
+</I>&gt;&gt;&gt;<i> ready for routine use, however; and depending on just exactly which 
+</I>&gt;&gt;&gt;<i> revision you check out, you may find some features broken or only 
+</I>&gt;&gt;&gt;<i> partially implemented.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If I find time to work on it next week, the remaining necessities 
+</I>&gt;&gt;&gt;<i> for proper serial-port use in WSPR will likely be completed.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Michel, VE2ExB wrote:
+</I>&gt;&gt;&gt;&gt;<i> Hello,
+</I>&gt;&gt;&gt;&gt;<i> Many thanks for an enormous contribution to amateur radio with weak 
+</I>&gt;&gt;&gt;&gt;<i> signal softwares you are providing us.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I successfully compiled WSPR 2.0 fresh from svn ( 30 oct 2009 ) on 
+</I>&gt;&gt;&gt;&gt;<i> ubuntu 9.04 amd64.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> It decodes perfectly, but tx does not work, I am using a usb serial 
+</I>&gt;&gt;&gt;&gt;<i> converter based on an FT232RL ( from the same repo. I compiled WSJT 
+</I>&gt;&gt;&gt;&gt;<i> and it does work with the usb serial port).
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I am going trough the code, but since it is my first try at it, it 
+</I>&gt;&gt;&gt;&gt;<i> is a long learning process hi hi.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Could you suggest where to look, I would like to give a try to fix 
+</I>&gt;&gt;&gt;&gt;<i> that issue.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Many thanks again,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 73 de Mike, VE2ExB
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000763.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+	<LI>Next message: <A HREF="000765.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

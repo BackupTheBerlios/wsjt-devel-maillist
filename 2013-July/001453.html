@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Wsjt-x Ver 1.1 TX audio frequency with no rig control	suggestion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-x%20Ver%201.1%20TX%20audio%20frequency%20with%20no%20rig%20control%0A%09suggestion&In-Reply-To=%3C51D5599A.4040006%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001452.html">
+   <LINK REL="Next"  HREF="001454.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Wsjt-x Ver 1.1 TX audio frequency with no rig control	suggestion</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-x%20Ver%201.1%20TX%20audio%20frequency%20with%20no%20rig%20control%0A%09suggestion&In-Reply-To=%3C51D5599A.4040006%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] Wsjt-x Ver 1.1 TX audio frequency with no rig control	suggestion">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Thu Jul  4 13:16:42 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001452.html">[Wsjt-devel] wsjt-x v1.1 r3459
+</A></li>
+        <LI>Next message: <A HREF="001454.html">[Wsjt-devel] Wsjt-x Ver 1.1 TX audio frequency with no rig control suggestion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1453">[ date ]</a>
+              <a href="thread.html#1453">[ thread ]</a>
+              <a href="subject.html#1453">[ subject ]</a>
+              <a href="author.html#1453">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+
+R3459 is working well under Linux and I've even managed a QSO.
+
+My rig is homebrew, it can receive and transmit audio to over 4khz. I 
+had to disable the code setting xit in d2aCallback() in soundout.cpp and 
+just initialize xit to 0 so I could get audio tones at the required 
+frequency.  I'm not using (and don't have) rig control.  Could 
+m_bRigOpen (or whatever flag might be appropriatate) be made available 
+to that routine to do this when there is no rig control enabled?  Or 
+maybe it should be an option on the rig control setup window?
+
+As I typed this I watched a jt9 signal decode correctly even though it 
+was being stamped on by RTTY - good stuff!
+
+Cheers
+Murray
+VK3ACF
+
+
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001452.html">[Wsjt-devel] wsjt-x v1.1 r3459
+</A></li>
+	<LI>Next message: <A HREF="001454.html">[Wsjt-devel] Wsjt-x Ver 1.1 TX audio frequency with no rig control suggestion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1453">[ date ]</a>
+              <a href="thread.html#1453">[ thread ]</a>
+              <a href="subject.html#1453">[ subject ]</a>
+              <a href="author.html#1453">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

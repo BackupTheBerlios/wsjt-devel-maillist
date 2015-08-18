@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed v1.1.1 beta release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3C51FA4843.7000203%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001649.html">
+   <LINK REL="Next"  HREF="001653.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed v1.1.1 beta release</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3C51FA4843.7000203%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Proposed v1.1.1 beta release">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Aug  1 13:36:35 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001649.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+        <LI>Next message: <A HREF="001653.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1651">[ date ]</a>
+              <a href="thread.html#1651">[ thread ]</a>
+              <a href="subject.html#1651">[ subject ]</a>
+              <a href="author.html#1651">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 01/08/2013 11:05, John Nelson wrote:
+
+Hi John,
+&gt;<i> Joe,
+</I>&gt;<i>
+</I>&gt;<i> Downloaded r3417.  Only change to wsjtx.pro is to use Qt4 and not Qt5 in the defines.   Everything compiles OK.
+</I>&gt;<i>
+</I>&gt;<i> But:   on execution, Decode Busy goes true and never releases.
+</I>&gt;<i>
+</I>&gt;<i> Comments:
+</I>&gt;<i>
+</I>&gt;<i> a) changes to jt9 are inconsequential  (one line removed from jt9.f90)
+</I>&gt;<i> b) changes to rigclass and devsetup seem minor
+</I>&gt;<i> c) changes to sound routines seem major &lt;&lt;&lt;&lt;
+</I>&gt;<i>
+</I>&gt;<i> Conclusion:  something about sound changes may have broken the system for MacOS.   Stable release for MacOS is probably still r3496.
+</I>If it is due to the audio changes then it's probably my fault.
+
+If you start the program on a busy frequency just before a minute ticks 
+over; do you get any decodes before the button freezes?
+
+Alternatively, try playing back a WAV file that has any valid messages 
+and see if any decodes come through.
+
+This will determine if the problem is at the beginning or the end of the 
+decode process.
+&gt;<i>
+</I>&gt;<i> I will try earlier versions to find out where the problem seems to have been introduced...unless someone tells me that r3517 will only work with Qt5
+</I>&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001649.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+	<LI>Next message: <A HREF="001653.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1651">[ date ]</a>
+              <a href="thread.html#1651">[ thread ]</a>
+              <a href="subject.html#1651">[ subject ]</a>
+              <a href="author.html#1651">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

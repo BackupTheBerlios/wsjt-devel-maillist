@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] while trying to compile revision 3546
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCALNQy4_9-o07%2Bm6rqLYKDzhbt%2B_TYmDEAbbfPRUdcLO55e3O9A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001808.html">
+   <LINK REL="Next"  HREF="001810.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] while trying to compile revision 3546</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCALNQy4_9-o07%2Bm6rqLYKDzhbt%2B_TYmDEAbbfPRUdcLO55e3O9A%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] while trying to compile revision 3546">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Aug 11 17:39:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001808.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+        <LI>Next message: <A HREF="001810.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1809">[ date ]</a>
+              <a href="thread.html#1809">[ thread ]</a>
+              <a href="subject.html#1809">[ subject ]</a>
+              <a href="author.html#1809">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>John,
+
+I suspect the issue you are experiencing is related to pulseaudio or
+Qt+pulseaudio since Qr depends by default on pulseaudio working. Can you
+play audio suing some other application? If yes, one test I would like to
+suggest is compiling Qt5 from sources and compile one the the examples for
+the Qt5 multimedia that comes with Qt5? This will helps verify is it is
+something related to the Qt binary package on your system or a Qt issue.
+
+Here I also had to tweak the Makefile.linux to have jt9 compiled. The
+default include path assumes /usr/include for the Qt headers and this is
+not was not my case. I have Qt installed in /use/local/qt-5.1.0. Changing
+the search directive in the Makefile solved the issue. Perhaps we can have
+the default location and an additional one (commented out) in the Makefile.
+But all of this is moot with a cmake script for jt9.
+
+I have been running r3543 for several hours. Have make a couple of contacts
+and it seems working smoothly. My only issue is that if a play with the Pwr
+slider while transmitting, the GUI freezes. I am not sure what could cause
+this since audio is in its own thread.
+
+73,
+
+-- Edson PY2SDR
+
+On Sun, Aug 11, 2013 at 12:16 PM, John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt; wrote:
+
+&gt;<i> On Sun, Aug 11, 2013 at 7:32 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+</I>&gt;<i> &gt; ... in Linux.  After a tweak to
+</I>&gt;<i> &gt; the makefile to accommodate the way I installed Qt5, I found no
+</I>&gt;<i> problems....
+</I>&gt;<i>
+</I>&gt;<i> Joe, could you elaborate on how you installed Qt5? What version of ubuntu
+</I>&gt;<i> linux?
+</I>&gt;<i>
+</I>&gt;<i> Since the QtAudio changes were added, Greg KI7MT and I are both
+</I>&gt;<i> experiencing failure to see any audio devices.
+</I>&gt;<i>
+</I>&gt;<i> He is on a fresh install of ubuntu 13.04. I do not see the problem on
+</I>&gt;<i> 13.04, but I do see it on a recent install of 12.10.
+</I>&gt;<i>
+</I>&gt;<i> Google search shows that this bad behavior of
+</I>&gt;<i> QAudioDeviceInfo::availableDevices has been reported by others in
+</I>&gt;<i> various versions of linux and Qt, but none of those sites have led me
+</I>&gt;<i> to a solution.
+</I>&gt;<i>
+</I>&gt;<i> I found a small test program that lists the audio devices at:
+</I>&gt;<i>  <A HREF="https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688">https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688</A>
+</I>&gt;<i>
+</I>&gt;<i> On my Ubuntu 13.04 system:
+</I>&gt;<i> $ ./test y
+</I>&gt;<i> l: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+</I>&gt;<i> l: &quot;alsa_output.pci-0000_00_01.1.hdmi-stereo&quot;
+</I>&gt;<i> res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+</I>&gt;<i> $ ./test n
+</I>&gt;<i> res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+</I>&gt;<i>
+</I>&gt;<i> On a 12.10 system, using Qt5:
+</I>&gt;<i> $ ./test y
+</I>&gt;<i> res: &quot;&quot;
+</I>&gt;<i> $ ./test n
+</I>&gt;<i> res: &quot;&quot;
+</I>&gt;<i>
+</I>&gt;<i> I believe that this simple test program is demonstrating the same
+</I>&gt;<i> behavior as wsjtx failing to find any audio devices.
+</I>&gt;<i>
+</I>&gt;<i> Last night I made a careful comparison of the &quot;ldd wsjtx&quot; and &quot;dpkg
+</I>&gt;<i> -l&quot; output, but I was not able to see any big difference between the
+</I>&gt;<i> working and non-working situation. I will continue looking.
+</I>&gt;<i>
+</I>&gt;<i> -John AC6SL
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130811/8b5a994f/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130811/8b5a994f/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001808.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+	<LI>Next message: <A HREF="001810.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1809">[ date ]</a>
+              <a href="thread.html#1809">[ thread ]</a>
+              <a href="subject.html#1809">[ subject ]</a>
+              <a href="author.html#1809">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

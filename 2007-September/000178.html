@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT2 and JT4 tests
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT2%20and%20JT4%20tests&In-Reply-To=%3C46F91604.5010406%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000177.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT2 and JT4 tests</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT2%20and%20JT4%20tests&In-Reply-To=%3C46F91604.5010406%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] JT2 and JT4 tests">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Sep 25 16:07:00 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000177.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+        <LI>Next message: <A HREF="000179.html">[Wsjt-devel] Experimental modes JT2 and JT4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here's a brief update on the state of the experimental modes 
+JT2 and JT4.
+
+The first JT2 QSO was made last Saturday evening, between 
+K1JT and W6CQZ on 10.139 MHz.
+
+Last night I ran tests on 144 MHz EME with DF2ZC.  We copied 
+about half of the relevant JT2 transmissions in each 
+direction, and we also recorded a number of transmissions in 
+the JT4A and JT4B modes.  (A decoder has not yet been 
+written for the JT4 modes, so there was no real-time copy of 
+these.)  Synchronization performance was very good in both 
+JT2 and JT4 modes.
+
+JT65B provides perfect copy at signal levels well below 
+those between DF2ZC and K1JT last night, so in S/N terms the 
+JT2 performance was not very good.  However, the test 
+establishes that PSK modulation is not out of the question 
+for use on the EME path at 2 meters.  It will be necessary 
+now to carefully examine the causes of all the decoding 
+failures.  The present JT2 decoder is unsophisticated in 
+many ways, and it may be possible to improve its performance 
+significantly.
+
+A decoder has still to be written for JT4 signals.  These 
+modes may be useful additions to WSJT even if JT2 is not, 
+because they may perform well on paths where Doppler 
+spreading is larger than the JT65C tone spacing -- for 
+example, EME and rain scatter at 10 GHz.
+
+I have some very busy weeks coming up, so progress will 
+necessarily slow down a bit.
+
+     -- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000177.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+	<LI>Next message: <A HREF="000179.html">[Wsjt-devel] Experimental modes JT2 and JT4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#178">[ date ]</a>
+              <a href="thread.html#178">[ thread ]</a>
+              <a href="subject.html#178">[ subject ]</a>
+              <a href="author.html#178">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

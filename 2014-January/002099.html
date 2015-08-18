@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X User's Guide -- Present Status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20User%27s%20Guide%20--%20Present%20Status&In-Reply-To=%3C52E35505.4070704%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002097.html">
+   <LINK REL="Next"  HREF="002100.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X User's Guide -- Present Status</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20User%27s%20Guide%20--%20Present%20Status&In-Reply-To=%3C52E35505.4070704%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X User's Guide -- Present Status">ki7mt at yahoo.com
+       </A><BR>
+    <I>Sat Jan 25 07:09:09 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002097.html">[Wsjt-devel] WSJT-X User's Guide -- Present Status
+</A></li>
+        <LI>Next message: <A HREF="002100.html">[Wsjt-devel] WSJT-X User's Guide -- Present Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2099">[ date ]</a>
+              <a href="thread.html#2099">[ thread ]</a>
+              <a href="subject.html#2099">[ subject ]</a>
+              <a href="author.html#2099">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hello All,
+
+Based on Joe's latest commit, SVN r3659, I've made the following
+changes, outside the source tree. The changes have &quot;not&quot; been
+committed to svn yet.
+
+** build-doc.sh
+- - Updated for rig-config* file changes
+- - Updated wsjtx-main include::&lt;file-name&gt;.adoc[] links.
+
+** &lt;file-name&gt;.adoc update
+- - Changed .txt file extension to .adoc
+
+** Appendix B - Rig Configuration
+- - Reworked / renamed all pages
+- - Updated wsjtx-main to reflect name changes
+- - Added the following pages:
+rig-config-{adat,alinco,aor,drake,electro,flexrad,kenwood,icom,softrock,tentec}.adoc
+- - Updated all pages / templates + rig-config-main.adoc
+
+** Quick Reference Guide
+- - Started working on a toc2 style quick reference guide, focused on
+&lt;blocks&gt;, &lt;lists&gt;, &lt;notes&gt;, &lt;texts&gt; and &lt;tables&gt; currently being used
+in the User Guide.
+
+The old file / link for docs.tar.gz has been removed.
+
+New Download Link: <A HREF="http://ubuntuone.com/0YzW1iuM5FbE1qMBzmpy2S">http://ubuntuone.com/0YzW1iuM5FbE1qMBzmpy2S</A>
+md5sum: 53fae0978f769ad568304013eca39000
+shasum: e9a8e5746684718ca98b74a0204da1b3f9f1974c
+
+To Build:
+cd to download dir &amp;&amp; tar -xzvf doc-2014-01-24.tar.gz
+cd doc-2014-01-24
+./build-doc.sh all
+
+Then, open wsjtx-main-toc2.html in your browser.
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+
+On 01/24/2014 01:32 PM, Joe Taylor wrote:
+&gt;<i> Here's a brief update on the WSJT-X User's Guide.
+</I>&gt;<i> 
+</I>&gt;<i> The SVN repository presently has the sources for a version that,
+</I>&gt;<i> when processed by asciidoc, yield an html file that in most
+</I>&gt;<i> respects is accurate, looks good, and reads well.
+</I>&gt;<i> 
+</I>&gt;<i> Here's a list (not necessarily complete) of things that I know
+</I>&gt;<i> still need to be done:
+</I>&gt;<i> 
+</I>&gt;<i> 1. Section 6.2 (on the use of Compound Callsigns) is incomplete and
+</I>&gt;<i> in some respects inaccurate.  I will rework it.
+</I>&gt;<i> 
+</I>&gt;<i> 2. The lists of installed and runtime files, sections 10.1 and
+</I>&gt;<i> 10.2, need updating.
+</I>&gt;<i> 
+</I>&gt;<i> 3. All links need to be tested.
+</I>&gt;<i> 
+</I>&gt;<i> 4. All steps in the Tutorial need testing (preferable by someone
+</I>&gt;<i> other than me).
+</I>&gt;<i> 
+</I>&gt;<i> 5. Text written by Murray on &quot;DXCC and Worked B4&quot; needs to be
+</I>&gt;<i> integrated somewhere.
+</I>&gt;<i> 
+</I>&gt;<i> And finally, several new sections should probably be written:
+</I>&gt;<i> 
+</I>&gt;<i> 1. Cooperative Programs: basic description of the way WSJT-X works 
+</I>&gt;<i> together with JT-Alertm, Commander, and HRD.
+</I>&gt;<i> 
+</I>&gt;<i> 2. Frequenctly Asked Questions
+</I>&gt;<i> 
+</I>&gt;<i> 3. Troubleshooting
+</I>&gt;<i> 
+</I>&gt;<i> I'm very open to critiques of the User's Guide as it now stands,
+</I>&gt;<i> and to all suggestions on things that would improve it.
+</I>&gt;<i> 
+</I>&gt;<i> My next efforts will be on sections 6.2 (Compound Callsigns) and
+</I>&gt;<i> 10 (Appendix A).  If you would like to work on another one of the
+</I>&gt;<i> above items, or something else that you think desirable, please
+</I>&gt;<i> make your intentions known!
+</I>&gt;<i> 
+</I>&gt;<i> -- 73, Joe, K1JT _______________________________________________ 
+</I>&gt;<i> Wsjt-devel mailing list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS41T+AAoJEAmfcyeKlj0x3Y0IAKYoOD4yWJiJzGf5WbT6JBUr
+vLvhYc3arowfjFzF/0piQz34rdXBscsz1TES12BSZIzG+5DRvoZJ4V2lA2k09eYR
+08dbqvWqmt4AVURtMw4NAtYUJadmNJ/v2mjEwezhvyGyaJif2Xao6B0HdtqlRzNL
+X/C28kBtBZdIx2M9vcLPppf7C71deYs07XLx6JQp1eGl1ExSUTc2y4Cw9BxUyYGg
+fjx62SeFjSn2wQ6T/WevVJ3phvFnriyJqIGg2z3Df3SW3HfCtP7Nd0k5ENl8HwzF
+LDD3ph5NLsc2E8jG6Pi3QkB9iHpjBHd2nt2gyYpbF0hSxNuN1xTbCkDvLXEAZOM=
+=iPlW
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002097.html">[Wsjt-devel] WSJT-X User's Guide -- Present Status
+</A></li>
+	<LI>Next message: <A HREF="002100.html">[Wsjt-devel] WSJT-X User's Guide -- Present Status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2099">[ date ]</a>
+              <a href="thread.html#2099">[ thread ]</a>
+              <a href="subject.html#2099">[ subject ]</a>
+              <a href="author.html#2099">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

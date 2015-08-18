@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20%26%20gfortran%2C%20WSPR%20vs%20WSJT&In-Reply-To=%3C8F03F485-0F1E-4EC3-805F-A4F7540E66AB%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000364.html">
+   <LINK REL="Next"  HREF="000309.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20%26%20gfortran%2C%20WSPR%20vs%20WSJT&In-Reply-To=%3C8F03F485-0F1E-4EC3-805F-A4F7540E66AB%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT">bruce at quidnet.com
+       </A><BR>
+    <I>Thu Jun  5 17:57:46 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000364.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+        <LI>Next message: <A HREF="000309.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Does anyone have WSPR working compiled with gfortran?  It compiles  
+after fixing the configure.ac to remove the -ftrace=full, which isn't  
+an option on gfortran (just g95 AFAIK).
+
+However, the spectrum display doesn't work, as gfortran doesn't seem  
+to support either form='binary' or access='stream' used by spec162.f.   
+I'm not a fortran expert, so rather than flail around trying things, I  
+figured I would ask here.  In my sandbox, I've also changed  
+configure.ac to prefer g95 if available rather than preferring  
+gfortran; I decided to wait to check in those changes until resolving  
+this.
+
+Meanwhile, speaking of flailing, I have been trying to get it to work  
+under Mac OS X, and failing miserably.  I can get it to compile using  
+python25, but I get nasty messages about python trying to free memory  
+blocks with unaligned pointers while in Pmw code.  f2py for python24  
+in macports doesn't work correctly.  But that's another problem for  
+another day.
+
+Joe, what's your direction here?  You seem to be mostly working to  
+incorporate the WSPR mode into mainline WSJT for QSO purposes.  WIll  
+WPSR standalone also have the QSO features (partially implemented, at  
+least in terms of UI), or will it be just for the current beacon model  
++ best DX, or folded entirely into WSJT?  Just trying to set my  
+priorities...some things like web uploading are broken in the latest  
+branches/wspr, as you are putting a subset of fields into  
+decoded.txt.  Easy to fix if that is heading toward release, but it  
+wasn't clear with the QSO stuff going into WSJT.
+
+--bruce W1BW
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000364.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+	<LI>Next message: <A HREF="000309.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

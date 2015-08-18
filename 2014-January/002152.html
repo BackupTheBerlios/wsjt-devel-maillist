@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E99F0F.1040004%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002151.html">
+   <LINK REL="Next"  HREF="002107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E99F0F.1040004%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Jan 30 01:38:39 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002151.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+        <LI>Next message: <A HREF="002107.html">[Wsjt-devel] Missing kvasd msg - More
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2152">[ date ]</a>
+              <a href="thread.html#2152">[ thread ]</a>
+              <a href="subject.html#2152">[ subject ]</a>
+              <a href="author.html#2152">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29/01/2014 23:52, Chuck Forsberg WA7KGX wrote:
+Hi Chuck,
+&gt;<i> I now have r3669 running on Fedora 20, the released version.
+</I>&gt;<i> As with Rawhide, I had to load a 32 bit libgfortran so the 32 bit
+</I>&gt;<i> kvasd would run.
+</I>Glad you are getting the required dependencies sorted out. Clearly a 
+x86_64 build of kvasd for Linux would be beneficial at some point for 
+64-bit packages of wsjtx.
+&gt;<i>
+</I>&gt;<i> I have tried two versions of Ubuntu and wsjtx could not select
+</I>&gt;<i> the ASUS Xonar DX sound card I use for wsjt/wspr et al.
+</I>&gt;<i> So in this case Fedora beats Ubuntu.
+</I>I am no expert in Linux/Pulseadio audio configuration but I doubt this 
+is an unsolvable problem on Ubuntu. Have you checked 'dmesg' for any 
+pertinent error messages about the sound subsystems?
+
+Some users have reported recently that upgrading Ubuntu has allowed some 
+soundcards to be used that weren't visible before. Have you tried 13.10? 
+If not, give the liveCD a try and see if the pavucontrol application can 
+see all the input and output devices on your system.
+&gt;<i>
+</I>&gt;<i> It would be nice if the configuration for audio would list something
+</I>&gt;<i> more understandable than &quot;alsa_input.pci.0000_00_1b.0.analog stereo&quot;
+</I>&gt;<i> which (I think) refers to the motherboard sound chip which is not
+</I>&gt;<i> on a PCI card at all.
+</I>PCI and PCIe are bus technologies which are implemented within the 
+motherboard chipset as well as the physical card slots. The onboard 
+sound chip is almost certainly a PCIe device connected directly to the 
+chipset (SouthBridge if it is Intel).
+
+The name of the device is presented to us by the Qt audio device 
+enumeration class which in turn uses Pulseaudio to hide the Unix 
+implementation details, we don't choose it or parse it, we just list the 
+names we are given in the hope that you the user can match them to 
+physical connections. Any attempt to parse the name and convert it to 
+names like &quot;Motherboard&quot; or &quot;Manufacturer name card in slot X&quot; would be 
+a major project with many platform dependent implementation details. 
+Since we use Qt to hide all these platform dependencies allowing us to 
+focus our programming efforts to the communications and GUI core 
+application it would be counter productive to start reverse engineering 
+the internals.
+
+73
+Bill
+G4WJS.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 01/29/2014 01:11 PM, Joe Taylor wrote:
+</I>&gt;&gt;<i> On 1/29/2014 2:44 PM, Chuck Forsberg WA7KGX wrote:
+</I>&gt;&gt;&gt;<i> If the 64 bit  kvasd  Joe compiled at omen.com is present, there are
+</I>&gt;&gt;&gt;<i> no decodes after the first minute's batch.
+</I>&gt;&gt;&gt;<i> CPU utilization goes to 100 per cent and stays there.  Kvasd continues
+</I>&gt;&gt;&gt;<i> at 100 per cent CPU utilization even if wsjtx is terminated. Rather 
+</I>&gt;&gt;&gt;<i> than
+</I>&gt;&gt;&gt;<i> improving sensitivity by 2 db it makes wsjtx deaf.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The downloadable kvasd is a 32 bit version.  Hardly anyone runs 32 bit
+</I>&gt;&gt;&gt;<i> Linux anymore.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I finally got the 32 bit KVASD running. I had to poke, prod and cajole
+</I>&gt;&gt;&gt;<i> Rawhide (very unstable cutting edge developmental Linux) to install
+</I>&gt;&gt;&gt;<i> the required 32 bit libs.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks for putting in such heroic efforts to make the pre-compiled 
+</I>&gt;&gt;<i> 32-bit kvasd run on your very unstable cutting edge developmental Linux.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> We're not necessarily set up to support such systems with 
+</I>&gt;&gt;<i> click-to-install packages.  Please feel free to volunteer your help, 
+</I>&gt;&gt;<i> if you think there is a need.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The KVASD decoder is necessarily an extra nuisance because of its 
+</I>&gt;&gt;<i> patented algorithm and non-open source code.  However, since 99% of 
+</I>&gt;&gt;<i> our users run Windows, the nuisance is well contained in practice.
+</I>&gt;&gt;<i> Moreover, the improved sensitivity of soft-decision decoding makes 
+</I>&gt;&gt;<i> KVASD well worth the extra effort -- especially for EME, the original 
+</I>&gt;&gt;<i> target purpose for JT65.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002151.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+	<LI>Next message: <A HREF="002107.html">[Wsjt-devel] Missing kvasd msg - More
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2152">[ date ]</a>
+              <a href="thread.html#2152">[ thread ]</a>
+              <a href="subject.html#2152">[ subject ]</a>
+              <a href="author.html#2152">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Band settings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DC0AA1.9040003%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001477.html">
+   <LINK REL="Next"  HREF="001466.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Band settings</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DC0AA1.9040003%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Band settings">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  9 15:05:37 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001477.html">[Wsjt-devel] Band settings
+</A></li>
+        <LI>Next message: <A HREF="001466.html">[Wsjt-devel] WSJTX 1.1 r3460
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1480">[ date ]</a>
+              <a href="thread.html#1480">[ thread ]</a>
+              <a href="subject.html#1480">[ subject ]</a>
+              <a href="author.html#1480">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Murray,
+
+My recommendation: let's see how it works with your 3-column table 
+(Label, Frequency, Antenna).
+
+I'm not presently inclined to think that another drop-down list is 
+warranted (for Ant 1, Ant 2, etc., as in your second example).
+
+	-- Joe, K1JT
+
+On 7/8/2013 7:11 PM, Murray Curtis wrote:
+&gt;<i> Hi Joe
+</I>&gt;<i>
+</I>&gt;<i> How about a 3 column table: label, frequency, antenna. The label appears
+</I>&gt;<i> in the drop down menu and by default would be &quot;20M&quot;, &quot;30M&quot; etc as we
+</I>&gt;<i> currently have. We could give the drop down menu a few more characters
+</I>&gt;<i> and make it editable. The user could assign any combination that he may
+</I>&gt;<i> want eg:
+</I>&gt;<i>
+</I>&gt;<i> 20M V 14076000 GP vertical
+</I>&gt;<i> 20M V 14078000 GP vertical
+</I>&gt;<i> 20M L 14078000 Delta loop at 15M
+</I>&gt;<i> 30M L 10139000 Delta loop at 15M
+</I>&gt;<i> etc
+</I>&gt;<i>
+</I>&gt;<i> The display on the main window remains much as it is, perhaps the label
+</I>&gt;<i> (the drop down menu) will need a little extra room. This is versatile
+</I>&gt;<i> and the label can reveal the currently selected antenna without needing
+</I>&gt;<i> to display the entire antenna description text on the main window.
+</I>&gt;<i>
+</I>&gt;<i> It also allows for other bands, a point that was raised in another email.
+</I>&gt;<i>
+</I>&gt;<i> Then again, given that many antennas are multiband, perhaps we shouldn't
+</I>&gt;<i> tie the antenna to the frequency selector at all. Another drop down menu
+</I>&gt;<i> with editable label and associated text field:
+</I>&gt;<i>
+</I>&gt;<i> Ant 1 GP Vertical
+</I>&gt;<i> Ant 2 Delta loop at 15M
+</I>&gt;<i> etc
+</I>&gt;<i>
+</I>&gt;<i> It just means we need to find room for another small drop down menu on
+</I>&gt;<i> the main window, assuming we think that its important enough to warrant
+</I>&gt;<i> that exposure?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hmm, sorry, in trying to keep this simple it seems to have become more
+</I>&gt;<i> complex!
+</I>&gt;<i>
+</I>&gt;<i> Cheers
+</I>&gt;<i> Murray
+</I>&gt;<i> VK3ACF
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 08/07/13 23:59, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi Murray,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks for sharing your initial ideas on improvements to the &quot;Default
+</I>&gt;&gt;<i> Frequancies&quot; tab. A few reactions follow:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> VK3ACF wrote:
+</I>&gt;&gt;&gt;<i> OK, I'm on it. Thinking about this: Is it always the case that you'd
+</I>&gt;&gt;&gt;<i> want JT9 2kHz above the JT65 frequency?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It would be nice if we could count on it being so simple. At present
+</I>&gt;&gt;<i> this rule is nominally followed on 80, 40, 20, 17, 15, and 10m. I
+</I>&gt;&gt;<i> think 160m and 12m could also follow the +2 kHz rule. (They don't now,
+</I>&gt;&gt;<i> but arguably this hardly matters since there hasn't much JT9 activity
+</I>&gt;&gt;<i> there yet.) 60m is a special case with its fixed channels, so I guess
+</I>&gt;&gt;<i> the two modes should have the same default frequency. On 30 m we have
+</I>&gt;&gt;<i> a problem: already JT65 and WSPR are very close together. Maybe we
+</I>&gt;&gt;<i> should advocate moving JT65 down by 2 or 3 kHz... but I hesitate to
+</I>&gt;&gt;<i> try to &quot;legislate&quot; such things without asking for community input.
+</I>&gt;&gt;<i> the same frequency
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> What if you needed an extra
+</I>&gt;&gt;&gt;<i> 500Hz on the base frequency to work split say? What if you wanted a
+</I>&gt;&gt;&gt;<i> frequency for split that was different to JT65? That would require 3
+</I>&gt;&gt;&gt;<i> frequencies per band but if we're going to alter the layout of that page
+</I>&gt;&gt;&gt;<i> (the setup page), might as well try to make it work as well as we can.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Sounds like it'll need to be 4 column table (4th column for antenna
+</I>&gt;&gt;&gt;<i> description) which I'm guessing will need to be in a scrolled window to
+</I>&gt;&gt;&gt;<i> cover all the bands.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It seems to me that a 3-column table is best: a JT65 frequency, a JT9
+</I>&gt;&gt;<i> frequency, and a column for antenna type. We'll need to think about
+</I>&gt;&gt;<i> how to implement which column is selected for use when a band
+</I>&gt;&gt;<i> selection is executed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I would welcome any thoughts from others...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001477.html">[Wsjt-devel] Band settings
+</A></li>
+	<LI>Next message: <A HREF="001466.html">[Wsjt-devel] WSJTX 1.1 r3460
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1480">[ date ]</a>
+              <a href="thread.html#1480">[ thread ]</a>
+              <a href="subject.html#1480">[ subject ]</a>
+              <a href="author.html#1480">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

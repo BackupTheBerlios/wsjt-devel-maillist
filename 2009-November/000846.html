@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re:  WSPR 2.0 is coming]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20WSPR%202.0%20is%20coming%5D&In-Reply-To=%3C4B02C123.6060802%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000845.html">
+   <LINK REL="Next"  HREF="000847.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re:  WSPR 2.0 is coming]</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20WSPR%202.0%20is%20coming%5D&In-Reply-To=%3C4B02C123.6060802%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re:  WSPR 2.0 is coming]">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Tue Nov 17 16:28:35 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000845.html">[Wsjt-devel] [Fwd: Re:  WSPR 2.0 is coming]
+</A></li>
+        <LI>Next message: <A HREF="000847.html">[Wsjt-devel] Help - compiled wspr, starts ok, but no sound decode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#846">[ date ]</a>
+              <a href="thread.html#846">[ thread ]</a>
+              <a href="subject.html#846">[ subject ]</a>
+              <a href="author.html#846">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello David,
+
+for the messages
+bt_audio_sevice_open...
+
+Remove with Synaptic all bluetooth , stuff  (unless you need it, then 
+you will have to live with it!:) )
+
+For the rest, play around, do not use oss, use alsa by not selecting 
+/dev/dsp, instead use
+for example
+0 'your sound card' (hw:0,0) something like that in the drop down box.
+
+before your re-start wspr, check with
+arecord -d 2 test.rec
+if it does not come back after 2 sec, then ..... reboot .... seems like 
+alsa device is busy and I did not find any other way to 'unlock' the 
+input device,
+
+Good  luck,
+
+73
+de Mike, VE2EXB
+
+
+
+David wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Subject:
+</I>&gt;<i> Re: [Wsjt-devel] WSPR 2.0 is coming
+</I>&gt;<i> From:
+</I>&gt;<i> David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt;
+</I>&gt;<i> Date:
+</I>&gt;<i> Tue, 17 Nov 2009 09:26:07 +1000
+</I>&gt;<i> To:
+</I>&gt;<i> Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> To:
+</I>&gt;<i> Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Joe.......d/l and setup the .deb file on my Ubuntu 9.10 32 bit system
+</I>&gt;<i> goes from &quot;waiting to start&quot; to &quot;Recieving&quot; then &quot;TX VK4BDJ QH30&quot;
+</I>&gt;<i> then crashes.....just leaves the terminal with the messages
+</I>&gt;<i> i have taken a Screen shot of the message that comes up with the crash 
+</I>&gt;<i> and attached it to this e-mail....
+</I>&gt;<i> on Ubuntu 9.10 portaudio is libportaudio v19+svn20090620 and alsa is v 
+</I>&gt;<i> 1.0.20+dfsg
+</I>&gt;<i>
+</I>&gt;<i> hope this info helps
+</I>&gt;<i>
+</I>&gt;<i> 73 David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Joe Taylor wrote:
+</I>&gt;&gt;<i> As you know, a public release of WSPR 2.0 is coming soon.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Candidate public-release packages of r1697 have been placed at these 
+</I>&gt;&gt;<i> URLs:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Windows:
+</I>&gt;&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR2_r1697.EXE">http://physics.princeton.edu/pulsar/K1JT/WSPR2_r1697.EXE</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ubuntu and other Debian-based Linux:
+</I>&gt;&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/wspr_2.00_r1697_i386.deb">http://physics.princeton.edu/pulsar/K1JT/wspr_2.00_r1697_i386.deb</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I call your attention also to the online User's Guide:
+</I>&gt;&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf">http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If you have a WSPR setup and can run r1697 under either Windows or 
+</I>&gt;&gt;<i> Linux tonight or tomorrow -- and if you should discover any problems 
+</I>&gt;&gt;<i> when doing so -- please let me know ASAP!
+</I>&gt;&gt;<i>     -- Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000845.html">[Wsjt-devel] [Fwd: Re:  WSPR 2.0 is coming]
+</A></li>
+	<LI>Next message: <A HREF="000847.html">[Wsjt-devel] Help - compiled wspr, starts ok, but no sound decode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#846">[ date ]</a>
+              <a href="thread.html#846">[ thread ]</a>
+              <a href="subject.html#846">[ subject ]</a>
+              <a href="author.html#846">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

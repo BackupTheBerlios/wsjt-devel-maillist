@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] AsciiDoc Install &amp;&amp; Setup on Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20AsciiDoc%20Install%20%26%26%20Setup%20on%20Windows&In-Reply-To=%3C52E90B08.2070101%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002136.html">
+   <LINK REL="Next"  HREF="002138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup on Windows</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20AsciiDoc%20Install%20%26%26%20Setup%20on%20Windows&In-Reply-To=%3C52E90B08.2070101%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup on Windows">ki7mt at yahoo.com
+       </A><BR>
+    <I>Wed Jan 29 15:07:04 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002136.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+        <LI>Next message: <A HREF="002138.html">[Wsjt-devel] Manual v1.1.2 some initial findings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2137">[ date ]</a>
+              <a href="thread.html#2137">[ thread ]</a>
+              <a href="subject.html#2137">[ subject ]</a>
+              <a href="author.html#2137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hello All,
+
+This is a Windows How-To for installing AsciiDoc without affecting the
+Host OS WSJT-X Development environment. Setup time on my hardware was
+=&lt; 20 minutes, including download time. I used the oldest HW / SW
+combination I have. This works on Windows 32 &amp;&amp; 64 bit.
+
+User Guide build time was right at 1.5 minutes running completely
+(including Cygwin itself) from the USB Key, and about 22.3 seconds
+from HD.
+
+
+## TESTING HARDWARE - 5+ yrs old
+Dell-400 Laptop
+OS: WinXP 32-bit
+CPU: 1x Core 1.6Ghz Pentium-M
+RAM: 768 MB
+GPU: 14&quot; i915 Xga
+HD: 512MB USB key 5+ yrs old also
+Note: Final set up came in at ~262MB with AsciiDoc installed.
+
+
+## INSTALL Notepad++
+* <A HREF="http://download.tuxfamily.org/notepadplus/6.5.3/npp.6.5.3.Installer.exe">http://download.tuxfamily.org/notepadplus/6.5.3/npp.6.5.3.Installer.exe</A>
+* After install, Go-To: Setting &gt;&gt; Preferences &gt;&gt; New Documents
+* Select: Format = Unix/OSx, Encoding = ANSI and Def Language = Normal
+Test.
+
+
+## INSTALL Cygwin
+* <A HREF="http://cygwin.com/install.html">http://cygwin.com/install.html</A> and select 32 or 64 bit.
+* Saving the Installer to Desktop makes updating quick &amp; easy.
+* Run the installer
+* Select Install from Internet, then next
+* Root Directory, C:\cygwin .. select All Users, then next
+* Local Package Dir: I used c:\cydownloads
+* Direct Connection, then next
+* I use <A HREF="ftp://mirrors.kernel.org">ftp://mirrors.kernel.org</A>  .. select your fastest DL, then next
+
+* Search, then set to install, just main packages not modules:
+- - python &gt;&gt; Interpreters: Python Language interpreter
+- - mercurical &gt;&gt; Devel &gt;&gt; Python based DVCS
+- - subversion &gt;&gt; Devel &gt;&gt; A Version Control System
+- - source-highlight &gt;&gt; Text &gt;&gt; Syntax highlighting utilities
+- - openssh &gt;&gt; Net &gt;&gt; The OpenSSH server and client programs
+- - nano &gt;&gt; Editors &gt;&gt; Enhanced clone of Pico editor
+- - ncurses &gt;&gt; Utils &gt;&gt; Utilities for terminal handling
+
+* Then, next to start installation
+* At Create Icons, I select desktop only.
+
+
+## CHECK INSTALLED PACKAGES
+* Open Cygwin Terminal Short cut.
+* If &quot;clear&quot; works, ncurses is installed:
+clear
+python -V
+svn --version |head -n1
+hg --version |head -n1
+ssh -V
+source-highlight --version |head -n1
+nano --version |head -n1
+
+* If any errors are reported, Do Not Continue Until Resolved!!
+
+
+## CONFIGURE BASH &amp;&amp; MAKE DIRECTORIES
+* Edit ./.bash_profile, uncomment if statement:
+nano ./.bash_profile
+
+* Change too:
+if [ -d &quot;$HOME/bin&quot; ] ; then
+   PATH=&quot;$HOME/bin:$PATH&quot;
+fi
+
+* Ctrl+X to exit, Y, then Enter to save
+* Create directories, source .bash_profile, check $PATH:
+mkdir -p $HOME/bin $HOME/Projects/documentation/wsjtx
+source ./.bash_profile
+echo $PATH
+
+* You should see /home/$USER/bin at the beginning of the string.
+
+
+## CONFIGURE NOTEPAD++ ALIAS
+* Add alias, ( all on one line, or edit manually )
+
+echo alias npp='cygstart /cygdrive/c/Program\
+Files/Notepad++/notepad++.exe' &gt;&gt; ~/.bashrc
+
+* To test, type: npp &lt;enter&gt;  should open up Notepad++, close and
+continue in the terminal.
+
+
+## INSTALL ASCIIDOC
+cd $HOME/bin
+hg clone -r 8.6.9 <A HREF="https://asciidoc.googlecode.com/hg/">https://asciidoc.googlecode.com/hg/</A> asciidoc-8.6.9
+cd asciidoc-8.6.9 &amp;&amp; hg pull &amp;&amp; hg update &amp;&amp; cd ..
+ln -s ~/bin/asciidoc-8.6.9/asciidoc.py ~/bin/asciidoc
+asciidoc --version
+
+Should Return: asciidoc 8.6.9
+
+
+## POST INSTALL WSJT-X DOCS BUILD
+cd ~/Projects/documentation/wsjtx
+
+* Note: This pulls &quot;just&quot; the Documentation Tree, without History
+svn export <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx/doc">svn://svn.berlios.de/wsjt/branches/wsjtx/doc</A>
+cd ./doc
+./build-doc.sh toc2
+
+* Open wsjtx-main-toc.html, command line, or browse to the folder, then:
+cygstart chrome wsjtx-main-toc2.html
+cygstart firefox wsjtx-main-toc2.html
+
+If you have any problems, send me a note, I'm sure we can sort it out.
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS6QsAAAoJEAmfcyeKlj0x2G0H/jlhT1Sn2L0lLN36V6i0Bses
+9FyjTU1lWYxm9P1b0PeY5YorUcp6wypaMI8NDxDht3iryO59ko9gItiVEpIkCUq2
+27+Cb3I5k3GR85hxc6ajMl5Dhg+O2SDxUdDQD8kpry6WBSrixOqXkhkUK+83IFDn
+1kaOc412hKjZ+20iga5PkzgfP3bwEMt2eRKrdPjygBMOzj4CiAxKqLm2bxwECliu
+LXUb+6GPTCL2vF8WEZ8ACT1qdD9IQg7kVLZGu6fS47yB+sWfNZaiIX/oCQ4c3/v8
+1wQkbGSxnj9ZUupn5bL8e/tkthQk4HqWPxY7ueMurmHsbbLDvyzVGH/dLbYGO1M=
+=Wqnk
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002136.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+	<LI>Next message: <A HREF="002138.html">[Wsjt-devel] Manual v1.1.2 some initial findings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2137">[ date ]</a>
+              <a href="thread.html#2137">[ thread ]</a>
+              <a href="subject.html#2137">[ subject ]</a>
+              <a href="author.html#2137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

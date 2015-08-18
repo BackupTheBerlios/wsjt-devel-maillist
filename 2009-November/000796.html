@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 2.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3C4AFB2F41.7040800%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000795.html">
+   <LINK REL="Next"  HREF="000797.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 2.0</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0&In-Reply-To=%3C4AFB2F41.7040800%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR 2.0">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Nov 11 22:40:17 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000795.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+        <LI>Next message: <A HREF="000797.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#796">[ date ]</a>
+              <a href="thread.html#796">[ thread ]</a>
+              <a href="subject.html#796">[ subject ]</a>
+              <a href="author.html#796">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+Thanks for your quick response.  Maybe the problem with a blank rig 
+number is a result of the missing file I just commented on.  I will 
+check into this tomorrow.
+
+Those old *.TXT files are indeed outdated.  They should be replaced by 
+some form of the User's Guide (source?  pdf?), and probably a ChangeLog 
+should be introduced.
+
+OK on the other items, too.  Rationalizing the calls to fftw is a good idea.
+
+	-- Joe
+
+John Nelson wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i> 
+</I>&gt;<i> I have been tracking changing versions and so far I have no problems 
+</I>&gt;<i> compiling and executing.  However, I am sure I am only using the system 
+</I>&gt;<i> in its most basic mode and have not been able to test all the latest 
+</I>&gt;<i> additions.    New, improved, messages are useful, e.g. when upload spots 
+</I>&gt;<i> fails because of internet interruptions; selection of transmit frequency 
+</I>&gt;<i> is good; tune is great; ..
+</I>&gt;<i> 
+</I>&gt;<i> Suggestions:
+</I>&gt;<i> a)   WSPR.INI should contain defaults.   My version complains (for 
+</I>&gt;<i> instance):
+</I>&gt;<i> WSPR Version 2.0_r1660 , by K1JT
+</I>&gt;<i> Run date:   Wed Nov 11 20:28:15 2009 UTC
+</I>&gt;<i> Error reading WSPR.INI, while processing
+</I>&gt;<i> key= Handshake    value= None
+</I>&gt;<i> Continuing with defaults.
+</I>&gt;<i> 
+</I>&gt;<i> when the line following the reported error line is missing something.   
+</I>&gt;<i> In this case, the line after &quot;Handshake None&quot; is  &quot;Rig&quot; with no 
+</I>&gt;<i> default.   Editing WSPR.INI to insert &quot;Rig 123&quot;  will fix it.   
+</I>&gt;<i> Similarly, earlier versions failed with key=dBm when the culprit was 
+</I>&gt;<i> not, in fact, the dBm line but the next one &quot;PttPort&quot; which did not have 
+</I>&gt;<i> None as the argument.    Is this just my version of python that is 
+</I>&gt;<i> objecting?    I suggest play safe and ensure that all variables that 
+</I>&gt;<i> require a second argument should have some default set.
+</I>&gt;<i> 
+</I>&gt;<i> b)  I notice that:
+</I>&gt;<i> -rw-r--r--   1 jmn  jmn   3587 Nov  5 14:09 WSPR_Announcement.TXT
+</I>&gt;<i> -rw-r--r--   1 jmn  jmn  11867 Nov  5 14:09 WSPR_Instructions.TXT
+</I>&gt;<i> -rw-r--r--   1 jmn  jmn   4576 Nov  5 14:09 WSPR_Quick_Start.TXT
+</I>&gt;<i> 
+</I>&gt;<i> remain unchanged from wspr-v1.0-r914, for instance (March 2008).    If 
+</I>&gt;<i> the package is about to go public, would it be useful to update these?
+</I>&gt;<i> 
+</I>&gt;<i> c)   wspr2.F90 has a warning which might be important:   nrxnormal may 
+</I>&gt;<i> be used uninitialized (line 61)
+</I>&gt;<i> 
+</I>&gt;<i> d)  Diane managed to figure out how to generate the fftw library so that 
+</I>&gt;<i> it uses conventional Fortran entry point names.   Can this be done so 
+</I>&gt;<i> that four2a.f doesn't have to be a unique exception in the way it calls 
+</I>&gt;<i> routines?   That is, with a trailing underscore?
+</I>&gt;<i> 
+</I>&gt;<i> e)  I am working on the problem of creating a package for Mac OSX - but 
+</I>&gt;<i> this will take time as other thing are on my plate at the moment.  
+</I>&gt;<i> However, given minimal infrastructure, downloading source from the 
+</I>&gt;<i> repository and compiling is straightfoward.   I could modify my WSJT 
+</I>&gt;<i> HowTo for WSPR  if you wish to include HowTo's in the WSPR branch for 
+</I>&gt;<i> different OS's.
+</I>&gt;<i> 
+</I>&gt;<i> ---   73 John  G4KLA
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000795.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+	<LI>Next message: <A HREF="000797.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#796">[ date ]</a>
+              <a href="thread.html#796">[ thread ]</a>
+              <a href="subject.html#796">[ subject ]</a>
+              <a href="author.html#796">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

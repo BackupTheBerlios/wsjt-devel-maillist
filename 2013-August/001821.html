@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] while trying to compile revision 3546
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCADTTAaxQhNis41BG9KvfXow8OqT__Yv%2BM199253B8Kg5bvJCAg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001819.html">
+   <LINK REL="Next"  HREF="001822.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] while trying to compile revision 3546</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCADTTAaxQhNis41BG9KvfXow8OqT__Yv%2BM199253B8Kg5bvJCAg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] while trying to compile revision 3546">jnogatch at gmail.com
+       </A><BR>
+    <I>Mon Aug 12 20:20:50 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001819.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+        <LI>Next message: <A HREF="001822.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1821">[ date ]</a>
+              <a href="thread.html#1821">[ thread ]</a>
+              <a href="subject.html#1821">[ subject ]</a>
+              <a href="author.html#1821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Aug 12, 2013 at 6:19 AM, Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; wrote:...
+&gt;<i> I think I've narrowed this down to a missing package. ... libqt5multimedia5-plugins ....
+</I>
+Yes! Good work, Greg. Even though wsjtx builds correctly, ldd does not
+show any missing libraries, and there are no runtime error messages,
+without that additional package no audio devices are listed. The small
+&quot;test&quot; program does demonstrate the same behavior.
+
+I believe this is specific to Ubuntu 12.04 and 12.10. In 13.04, the Qt
+packages appear to have different names, and I am unsure which
+supplies that functionality, but it just happened to be already
+installed on my 13.04 system.
+
+Now that it is working, I see the names of the audio devices are not
+as recognizable as they used to be, e.g.
+&quot;alsa_output.pci-0000_06_00.0.analog-stereo&quot;.
+
+I also noted that Decode was taking way too long, looked at process
+activity with &quot;top&quot;, and saw that Xorg was hogging the CPU. It was
+because I had left pavucontrol running and its realtime updating of
+its VU meters is extremely X-intensive!
+
+
+&gt;<i> From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; ...
+</I>&gt;<i> I went to <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A> and downloaded from the link
+</I>&gt;<i> labeled &quot;Qt 5.1.0 for Linux 32-bit (417 MB)&quot;.
+</I>
+That site looks like a good resource, but it does not specify what
+version of linux it is built for, i.e. if libc and other libraries
+installed on your system are compatible.
+
+
+&gt;<i> I was unsure of the &quot;proper&quot; place to install in linux (it's Ubuntu 12.04), so I installed in my home directory.
+</I>
+That is another advantage of the &quot;apt-get install&quot; methodology.
+
+
+&gt;<i>  Available audio devices appear in the list and seem to work as expected.
+</I>
+OK, I will not argue with success!
+
+
+-John AC6SL
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001819.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+	<LI>Next message: <A HREF="001822.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1821">[ date ]</a>
+              <a href="thread.html#1821">[ thread ]</a>
+              <a href="subject.html#1821">[ subject ]</a>
+              <a href="author.html#1821">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

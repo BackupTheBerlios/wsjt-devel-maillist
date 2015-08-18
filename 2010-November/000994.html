@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTinYj8f4_%3Dao1kaDqi4xYe8WDTDVgx3SntTz7Wf7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000993.html">
+   <LINK REL="Next"  HREF="000995.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTinYj8f4_%3Dao1kaDqi4xYe8WDTDVgx3SntTz7Wf7%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">stoledo at tau.ac.il
+       </A><BR>
+    <I>Sat Nov 27 07:58:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000993.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="000995.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#994">[ date ]</a>
+              <a href="thread.html#994">[ thread ]</a>
+              <a href="subject.html#994">[ subject ]</a>
+              <a href="author.html#994">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I came up with the following idea for addressing the randomness vs. control
+issue.
+
+While hopping, we could treat the band menu as a &quot;hop there next&quot; command.
+If you choose 20m on that menu, the current cycle continues normally, but at
+the next hop opportunitie (the end of the current cycle) it will hop to 20m.
+If you also click on Tx next, it will transmit there.
+
+In fact, I think that this is a good behavior even when not hopping; there
+is no reason to switch frequencies in the middle of a cycle.
+
+If we do this, I think that the UI will need to change a bit, to indicate
+that the user told the program where to go next, like the Tx Next button
+shows that.
+
+Sivan
+
+On Fri, Nov 26, 2010 at 1:33 PM, John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt; wrote:
+
+&gt;<i> Hi Silvan,
+</I>&gt;<i>
+</I>&gt;<i> Having thought a bit more about this, I agree that &quot;some randomization is
+</I>&gt;<i> necessary&quot; to avoid collisions in band-space.    But how to do this given
+</I>&gt;<i> the dual, and separate, responsibilities of wspr.py (band choice) and
+</I>&gt;<i> wspr2.f90 (tx/rx choice) needs some thought.    Some communication between
+</I>&gt;<i> wspr and wspr2 (via a common block) might help in decision making.   (In an
+</I>&gt;<i> earlier test I found that TX on 15m was avoided to such an extent
+</I>&gt;<i> (combination of band choice and wspr2 rx) that I began to think there was a
+</I>&gt;<i> bug somewhere.    A poor choice of sliders, perhaps.)
+</I>&gt;<i>
+</I>&gt;<i> Getting more feedback from wspr'eres is needed.    The system as it is
+</I>&gt;<i> provides a very useful additional feature.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101127/d0895995/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101127/d0895995/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000993.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="000995.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#994">[ date ]</a>
+              <a href="thread.html#994">[ thread ]</a>
+              <a href="subject.html#994">[ subject ]</a>
+              <a href="author.html#994">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

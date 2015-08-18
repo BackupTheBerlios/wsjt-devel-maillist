@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519A3A2E.6050900%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001286.html">
+   <LINK REL="Next"  HREF="001288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X developments</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519A3A2E.6050900%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X developments">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon May 20 16:58:54 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001286.html">[Wsjt-devel] WSJTX v0.95 r3274
+</A></li>
+        <LI>Next message: <A HREF="001288.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1287">[ date ]</a>
+              <a href="thread.html#1287">[ thread ]</a>
+              <a href="subject.html#1287">[ subject ]</a>
+              <a href="author.html#1287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all -- and especially users of WSJT-X under Linux,
+
+A few words about recent evolution of the WSJT-X code, and some upcoming 
+plans.
+
+Up to now, all of my JT9 operating has been done under Windows.  Over 
+the past weekend I installed Ubuntu 12.04 LTS on my main hamshack 
+computer, so I could play with WSJT-X under a current distribution of 
+Linux.  Getting it to work in my setup involved some necessary changes 
+to ptt_unix.c and the way it is called from the GUI.  This effort drew 
+my attention to some weaknesses in the way we allow users to specify 
+such things as &quot;PTT Port&quot;.
+
+Is it true that everyone using WSJT-X under Linux has selected either 
+CAT of VOX for PTT Method?  It seems this must be the case, since we 
+have provided no way to select a device such as /dev/ttyS0 for PTT 
+control via the DTR or RTS line of a serial port.  Since that's what I 
+normally use in my station setup, I implemented it that way, temporarily 
+&quot;hard-wiring&quot; the code to use my device /dev/ttyS0.  (This code has not 
+been committed to the SVN repository, as yet.)
+
+My present plan is to change the QComboBox now offering a list of PTT 
+Port options to a QLineEdit, instead.  Then one can type in a value such 
+as &quot;COM1&quot; in Windows, or &quot;/dev/ttyS0&quot; in *nix.
+
+Does this make sense to everyone?
+
+In making these tests I also became aware of a fact that should have 
+been obvious -- details of the GUI appearance are not just different on 
+Windows and Linux, but different on Linux distributions using different 
+window managers.  The default Ubuntu distribution even removes the menu 
+bar from the main window, displaying it instead at the top of screen. 
+(Yes, I learned how to disable this feature.)
+
+Another change, this time already committed to the SVN repository: for 
+the present, at least, I disabled submodes JT9-5, JT9-10, and JT9-30, 
+(which are not being used, as far as I know).  The program's memory 
+requirements are now smaller by some 150 MB.
+
+Comments and other proposals are welcome, as always.
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001286.html">[Wsjt-devel] WSJTX v0.95 r3274
+</A></li>
+	<LI>Next message: <A HREF="001288.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1287">[ date ]</a>
+              <a href="thread.html#1287">[ thread ]</a>
+              <a href="subject.html#1287">[ subject ]</a>
+              <a href="author.html#1287">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

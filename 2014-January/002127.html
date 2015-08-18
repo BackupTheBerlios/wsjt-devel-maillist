@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling latest manual version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20latest%20manual%20version&In-Reply-To=%3C52E70E76.1070007%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002124.html">
+   <LINK REL="Next"  HREF="002128.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling latest manual version</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20latest%20manual%20version&In-Reply-To=%3C52E70E76.1070007%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] compiling latest manual version">ki7mt at yahoo.com
+       </A><BR>
+    <I>Tue Jan 28 02:57:10 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002124.html">[Wsjt-devel] wsjtx r3663 and kvasd
+</A></li>
+        <LI>Next message: <A HREF="002128.html">[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2127">[ date ]</a>
+              <a href="thread.html#2127">[ thread ]</a>
+              <a href="subject.html#2127">[ subject ]</a>
+              <a href="author.html#2127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Greg,
+
+I've not seen that site be for, looks pretty interesting.
+
+Building the docs is a quick 1 minute task. I build a number of projects
+every night with cron jobs.
+
+With a few script lines, anyone could build the html. Could also add
+commit hooks directly too the BerliOS repo.
+
+However, transferring the docs to physics.princeton.edu/pulsar/K1JT
+requires web-server access, which most of us don't have.
+
+A simple solution, create a workstation daily task (cron);
+
+Add cron job, use whatever time ya like (say, nightly @ 0115 local);
+15 1 * * * /path/to/build/sync-script.sh
+
+In the script:
+* svn export .. .. /wsjtx/doc   # only need wsjtx/doc/
+* cd ./wsjtx/doc &amp;&amp; ./build-doc.sh toc2
+* rm -rf source/
+
+Then, I'd use rsync between workstation and the web-server:
+
+* rsync -azvr wsjtx/doc/ /path/to/web-server/wjtx/doc/
+
+You could use scp, sftp or any number of alternatives, but rsync keeps
+the file count down, and only transfers incremental diffs. The whole
+process would not take more than a couple minutes tops.
+
+
+73's
+Greg
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+On 01/27/2014 05:36 PM, Greg Troxel wrote:
+&gt;<i>   I'm sure Joe can explain how he manages things now, but there is a long
+</I>&gt;<i>   list of tasks that happens at the upstream developer level in preparing
+</I>&gt;<i>   source code for distribution. Writing and building the documentation is
+</I>&gt;<i>   just one of those steps. Unless Joe as a hook of some kind to build and
+</I>&gt;<i>   push the docs to the web-server, I'd imagine this is a manual task after
+</I>&gt;<i>   he tags a revision for public release.
+</I>&gt;<i> 
+</I>&gt;<i> I am not super familiar with this site, but it appears intended to ease
+</I>&gt;<i> the work of having a hosted version of built documentation by having
+</I>&gt;<i> their site watch a public VCS and do triggered builds:
+</I>&gt;<i> 
+</I>&gt;<i>   <A HREF="https://readthedocs.org/">https://readthedocs.org/</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 73 de n1dam
+</I>&gt;<i> 
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002124.html">[Wsjt-devel] wsjtx r3663 and kvasd
+</A></li>
+	<LI>Next message: <A HREF="002128.html">[Wsjt-devel] AsciiDoc Install &amp;&amp; Setup for *Nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2127">[ date ]</a>
+              <a href="thread.html#2127">[ thread ]</a>
+              <a href="subject.html#2127">[ subject ]</a>
+              <a href="author.html#2127">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

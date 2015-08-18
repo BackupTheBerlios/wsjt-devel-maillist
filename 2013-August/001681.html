@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy49FBVOUD5axG2N7UH%2B_1feLPYQXGYDiQ4Jy%3DyCavLPvMg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001670.html">
+   <LINK REL="Next"  HREF="001683.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy49FBVOUD5axG2N7UH%2B_1feLPYQXGYDiQ4Jy%3DyCavLPvMg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Aug  4 22:34:33 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001670.html">[Wsjt-devel] qt-audio.patch
+</A></li>
+        <LI>Next message: <A HREF="001683.html">[Wsjt-devel] Fwd: Re:  qt-audio.patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1681">[ date ]</a>
+              <a href="thread.html#1681">[ thread ]</a>
+              <a href="subject.html#1681">[ subject ]</a>
+              <a href="author.html#1681">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill,
+
+I ended up replying only to you. I am adding doing to the list now.
+
+The stack and thread info I sent you earlier is when I open the config
+window, select a new audio device, and click ok. The following info is when
+I edit wsjtx.ini by hand, change the device names, run wsjtx and wait for a
+TX cycle. The application crashes at the top of the minute at the start of
+a TX cycle.
+
+(gdb) backtrace
+#0  0x00007fffebcf87c8 in ?? ()
+   from /usr/local/qt-5.1.0/plugins/platforms/libqxcb.so
+#1  0x00007fffebcf3ffb in
+QFontEngineFT::loadGlyph(QFontEngineFT::QGlyphSet*, unsigned int, QFixed,
+QFontEngine::GlyphFormat, bool) const ()
+   from /usr/local/qt-5.1.0/plugins/platforms/libqxcb.so
+#2  0x00007fffebcf7fc9 in QFontEngineFT::lockedAlphaMapForGlyph(unsigned
+int, QFixed, QFontEngine::GlyphFormat, QTransform const&amp;, QPoint*) ()
+   from /usr/local/qt-5.1.0/plugins/platforms/libqxcb.so
+#3  0x00007ffff632c0d9 in QRasterPaintEngine::drawCachedGlyphs(int,
+unsigned int const*, QFixedPoint const*, QFontEngine*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#4  0x00007ffff6330823 in ?? () from /usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#5  0x00007ffff6346356 in ?? () from /usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#6  0x00007ffff622dc72 in QTextLine::draw(QPainter*, QPointF const&amp;,
+QTextLayout::FormatRange const*) const () from
+/usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#7  0x00007ffff634a8ae in ?? () from /usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#8  0x00007ffff634b2e6 in QPainter::drawText(QRect const&amp;, int, QString
+const&amp;, QRect*) () from /usr/local/qt-5.1.0/lib/libQt5Gui.so.5
+#9  0x00007ffff6bcef83 in QStyle::drawItemText(QPainter*, QRect const&amp;,
+int, QPalette const&amp;, bool, QString const&amp;, QPalette::ColorRole) const ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#10 0x00007ffff6cb6fec in QLabel::paintEvent(QPaintEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+#11 0x00007ffff6ba8360 in QWidget::event(QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#12 0x00007ffff6cb0f76 in QFrame::event(QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#13 0x00007ffff6b71a64 in QApplicationPrivate::notify_helper(QObject*,
+QEvent*)
+    () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#14 0x00007ffff6b74db6 in QApplication::notify(QObject*, QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#15 0x00007ffff5c80fa4 in QCoreApplication::notifyInternal(QObject*,
+QEvent*)
+    () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#16 0x00007ffff6ba523b in ?? () from
+/usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#17 0x00007ffff6ba5f84 in
+QWidgetPrivate::paintSiblingsRecursive(QPaintDevice*, QList&lt;QObject*&gt;
+const&amp;, int, QRegion const&amp;, QPoint const&amp;, int, QPainter*,
+QWidgetBackingStore*) () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#18 0x00007ffff6ba503e in ?? () from
+/usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#19 0x00007ffff6ba5f84 in
+QWidgetPrivate::paintSiblingsRecursive(QPaintDevice*, QList&lt;QObject*&gt;
+const&amp;, int, QRegion const&amp;, QPoint const&amp;, int, QPainter*,
+QWidgetBackingStore*) () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#20 0x00007ffff6ba5d1f in
+QWidgetPrivate::paintSiblingsRecursive(QPaintDevice*, QList&lt;QObject*&gt;
+const&amp;, int, QRegion const&amp;, QPoint const&amp;, int, QPainter*,
+QWidgetBackingStore*) () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#21 0x00007ffff6ba503e in ?? () from
+/usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#22 0x00007ffff6b7d999 in ?? () from
+/usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+#23 0x00007ffff6b9d32e in QWidgetPrivate::syncBackingStore() ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#24 0x00007ffff6ba872f in QWidget::event(QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#25 0x00007ffff6cc4ddb in QMainWindow::event(QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#26 0x00007ffff6b71a64 in QApplicationPrivate::notify_helper(QObject*,
+QEvent*)
+    () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#27 0x00007ffff6b74db6 in QApplication::notify(QObject*, QEvent*) ()
+   from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+#28 0x00007ffff5c80fa4 in QCoreApplication::notifyInternal(QObject*,
+QEvent*)
+    () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#29 0x00007ffff5c83870 in
+QCoreApplicationPrivate::sendPostedEvents(QObject*, int, QThreadData*) ()
+from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#30 0x00007ffff5ccaef3 in ?? () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#31 0x00007ffff3eb9d53 in g_main_context_dispatch ()
+   from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+#32 0x00007ffff3eba0a0 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+#33 0x00007ffff3eba164 in g_main_context_iteration ()
+   from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+#34 0x00007ffff5ccb334 in
+QEventDispatcherGlib::processEvents(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;)
+() from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#35 0x00007ffff5c7fd3b in
+QEventLoop::exec(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;---Type &lt;return&gt; to
+continue, or q &lt;return&gt; to quit---
+) () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#36 0x00007ffff5c83e00 in QCoreApplication::exec() ()
+   from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+#37 0x0000000000485075 in main (argc=1, argv=0x7fffffffe108) at main.cpp:55
+(gdb)
+(gdb) info threads
+  Id   Target Id         Frame
+  6    Thread 0x7fffcd544700 (LWP 6624) &quot;QProcessManager&quot;
+0x00007ffff4d34033 in select () at ../sysdeps/unix/syscall-template.S:82
+  5    Thread 0x7fffd1d46700 (LWP 6623) &quot;threaded-ml&quot; 0x00007ffff4d2f313 in
+__GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;, timeout=&lt;optimized
+out&gt;)
+    at ../sysdeps/unix/sysv/linux/poll.c:87
+  4    Thread 0x7fffe0800700 (LWP 6622) &quot;gdbus&quot; 0x00007ffff4d2f313 in
+__GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;, timeout=&lt;optimized
+out&gt;)
+    at ../sysdeps/unix/sysv/linux/poll.c:87
+  3    Thread 0x7fffe1001700 (LWP 6621) &quot;dconf worker&quot; 0x00007ffff4d2f313
+in __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;,
+timeout=&lt;optimized out&gt;)
+    at ../sysdeps/unix/sysv/linux/poll.c:87
+  2    Thread 0x7fffe945b700 (LWP 6620) &quot;QXcbEventReader&quot;
+0x00007ffff4d2f313 in __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized
+out&gt;,
+    timeout=&lt;optimized out&gt;) at ../sysdeps/unix/sysv/linux/poll.c:87
+* 1    Thread 0x7ffff7fbe780 (LWP 6617) &quot;wsjtx&quot; 0x00007fffebcf87c8 in ?? ()
+   from /usr/local/qt-5.1.0/plugins/platforms/libqxcb.so
+(gdb)
+
+73,
+
+-- Edson
+
+On Sun, Aug 4, 2013 at 5:22 PM, Edson W. R. Pereira &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+
+&gt;<i>
+</I>&gt;<i> Hi Bill,
+</I>&gt;<i>
+</I>&gt;<i> On Sun, Aug 4, 2013 at 4:49 PM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 04/08/2013 14:02, Edson W. R. Pereira wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Edson,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> thanks for the feedback.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If I edit wsprx.ini and change the audio devices there, wsprx starts and
+</I>&gt;&gt;&gt;<i> I can decode signals. However TX fails with a SIGSEGV.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> I think you saying that the configuration screen to select the audio
+</I>&gt;&gt;<i> devices is not working in your build?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This I don't understand as that code is pretty straightforward. Maybe you
+</I>&gt;&gt;<i> are not managing to exit the program cleanly after setting the
+</I>&gt;&gt;<i> configuration? The updated settings are only written to the .ini file right
+</I>&gt;&gt;<i> at the end of the program exit.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Perhaps you could try setting the audio devices then exit immediately to
+</I>&gt;&gt;<i> get an updated .ini file.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> The config window is working. The issue happens when I press &quot;ok&quot; at the
+</I>&gt;<i> config window. I suspect the problem is at the (re)initialization code for
+</I>&gt;<i> the audio device. But, if I start the program with the correct device in
+</I>&gt;<i> the .ini file, RX works.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> As for the TX crash, I will make a Linux build and do some testing here.
+</I>&gt;&gt;<i> The error looks like something has scribbled over the heap storage or a
+</I>&gt;&gt;<i> double free () call  which is being picked up by the standard glibc debug
+</I>&gt;&gt;<i> heap checking.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If that is a debug executable; can you run it to the SEGV under gdb and
+</I>&gt;&gt;<i> do a stack backtrace (bt) please?
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> (gdb) backtrace
+</I>&gt;<i> #0  0x00007ffff4c7d425 in __GI_raise (sig=&lt;optimized out&gt;)
+</I>&gt;<i>     at ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+</I>&gt;<i> #1  0x00007ffff4c80b8b in __GI_abort () at abort.c:91
+</I>&gt;<i> #2  0x00007ffff4cbb39e in __libc_message (do_abort=2,
+</I>&gt;<i>     fmt=0x7ffff4dc5008 &quot;*** glibc detected *** %s: %s: 0x%s ***\n&quot;)
+</I>&gt;<i>     at ../sysdeps/unix/sysv/linux/libc_fatal.c:201
+</I>&gt;<i> #3  0x00007ffff4cc5b96 in malloc_printerr (action=3,
+</I>&gt;<i>     str=0x7ffff4dc5188 &quot;free(): corrupted unsorted chunks&quot;,
+</I>&gt;<i>     ptr=&lt;optimized out&gt;) at malloc.c:5018
+</I>&gt;<i> #4  0x00007ffff5cae548 in QObject::~QObject() ()
+</I>&gt;<i>    from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #5  0x00007ffff5aadb59 in QPropertyAnimation::~QPropertyAnimation() ()
+</I>&gt;<i>    from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #6  0x00007ffff5ca9ac0 in QObject::event(QEvent*) ()
+</I>&gt;<i>    from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #7  0x00007ffff6b71a64 in QApplicationPrivate::notify_helper(QObject*,
+</I>&gt;<i> QEvent*)
+</I>&gt;<i>     () from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+</I>&gt;<i> #8  0x00007ffff6b74db6 in QApplication::notify(QObject*, QEvent*) ()
+</I>&gt;<i>    from /usr/local/qt-5.1.0/lib/libQt5Widgets.so.5
+</I>&gt;<i> #9  0x00007ffff5c80fa4 in QCoreApplication::notifyInternal(QObject*,
+</I>&gt;<i> QEvent*)
+</I>&gt;<i>     () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #10 0x00007ffff5c83870 in
+</I>&gt;<i> QCoreApplicationPrivate::sendPostedEvents(QObject*, int, QThreadData*) ()
+</I>&gt;<i> from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> ---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+</I>&gt;<i> #11 0x00007ffff5ccaef3 in ?? () from
+</I>&gt;<i> /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #12 0x00007ffff3eb9d53 in g_main_context_dispatch ()
+</I>&gt;<i>    from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+</I>&gt;<i> #13 0x00007ffff3eba0a0 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+</I>&gt;<i> #14 0x00007ffff3eba164 in g_main_context_iteration ()
+</I>&gt;<i>    from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+</I>&gt;<i> #15 0x00007ffff5ccb334 in
+</I>&gt;<i> QEventDispatcherGlib::processEvents(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;)
+</I>&gt;<i> () from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #16 0x00007ffff5c7fd3b in
+</I>&gt;<i> QEventLoop::exec(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;) () from
+</I>&gt;<i> /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #17 0x00007ffff5c83e00 in QCoreApplication::exec() ()
+</I>&gt;<i>    from /usr/local/qt-5.1.0/lib/libQt5Core.so.5
+</I>&gt;<i> #18 0x0000000000485075 in main (argc=1, argv=0x7fffffffe108) at main.cpp:55
+</I>&gt;<i> (gdb)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It might be failing in a different thread from the main program thread.
+</I>&gt;&gt;<i> An &quot;info threads&quot; helps, if the active thread is not thread 1, then switch
+</I>&gt;&gt;<i> to thread 1 and do the backtrace there.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> (gdb) info threads
+</I>&gt;<i>   Id   Target Id         Frame
+</I>&gt;<i>   6    Thread 0x7fffcd544700 (LWP 6581) &quot;QProcessManager&quot;
+</I>&gt;<i> 0x00007ffff4d34033 in select () at ../sysdeps/unix/syscall-template.S:82
+</I>&gt;<i>   5    Thread 0x7fffd1d46700 (LWP 6580) &quot;threaded-ml&quot; 0x00007ffff4d2f313
+</I>&gt;<i> in __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;,
+</I>&gt;<i> timeout=&lt;optimized out&gt;)
+</I>&gt;<i>     at ../sysdeps/unix/sysv/linux/poll.c:87
+</I>&gt;<i>   4    Thread 0x7fffe0800700 (LWP 6579) &quot;gdbus&quot; 0x00007ffff4d2f313 in
+</I>&gt;<i> __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;, timeout=&lt;optimized
+</I>&gt;<i> out&gt;)
+</I>&gt;<i>     at ../sysdeps/unix/sysv/linux/poll.c:87
+</I>&gt;<i>   3    Thread 0x7fffe1001700 (LWP 6578) &quot;dconf worker&quot; 0x00007ffff4d2f313
+</I>&gt;<i> in __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized out&gt;,
+</I>&gt;<i> timeout=&lt;optimized out&gt;)
+</I>&gt;<i>     at ../sysdeps/unix/sysv/linux/poll.c:87
+</I>&gt;<i>   2    Thread 0x7fffe945b700 (LWP 6577) &quot;QXcbEventReader&quot;
+</I>&gt;<i> 0x00007ffff4d2f313 in __GI___poll (fds=&lt;optimized out&gt;, nfds=&lt;optimized
+</I>&gt;<i> out&gt;,
+</I>&gt;<i>     timeout=&lt;optimized out&gt;) at ../sysdeps/unix/sysv/linux/poll.c:87
+</I>&gt;<i> * 1    Thread 0x7ffff7fbe780 (LWP 6574) &quot;wsjtx&quot; 0x00007ffff4c7d425 in
+</I>&gt;<i> __GI_raise (sig=&lt;optimized out&gt;) at
+</I>&gt;<i> ../nptl/sysdeps/unix/sysv/linux/raise.c:64
+</I>&gt;<i> (gdb)
+</I>&gt;<i>
+</I>&gt;<i> It does look to be related to threads.
+</I>&gt;<i>
+</I>&gt;<i> I am on Unbuntu 12.04 64 bits.
+</I>&gt;<i>
+</I>&gt;<i> Please let me know if if you need any additional checks.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/a8ed847a/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/a8ed847a/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001670.html">[Wsjt-devel] qt-audio.patch
+</A></li>
+	<LI>Next message: <A HREF="001683.html">[Wsjt-devel] Fwd: Re:  qt-audio.patch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1681">[ date ]</a>
+              <a href="thread.html#1681">[ thread ]</a>
+              <a href="subject.html#1681">[ subject ]</a>
+              <a href="author.html#1681">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

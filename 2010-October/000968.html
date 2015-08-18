@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt.py 9 for DBLog
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt.py%209%20for%20DBLog&In-Reply-To=%3C201010211539.44054.pinozollo%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000967.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt.py 9 for DBLog</H1>
+    <B>Pino Zollo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt.py%209%20for%20DBLog&In-Reply-To=%3C201010211539.44054.pinozollo%40gmail.com%3E"
+       TITLE="[Wsjt-devel] wsjt.py 9 for DBLog">pinozollo at gmail.com
+       </A><BR>
+    <I>Thu Oct 21 20:39:43 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000967.html">[Wsjt-devel] WSPR: Seg fault on call to wspr.py
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#968">[ date ]</a>
+              <a href="thread.html#968">[ thread ]</a>
+              <a href="subject.html#968">[ subject ]</a>
+              <a href="author.html#968">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>HI de Pino ZP4KFX,
+here follows the .diff file to patch wsjt.py ver. 9 to interact with DBLog on 
+Linux systems.
+
+The use is as follows:
+
+When you see a CQ, or the answer to your CQ, a Double-right-click on the call
+will send to DBLog the call, the locator and the level of reception (sent 
+report); besides DBLog is set in &quot;start QSO&quot; mode and WSJT will start to 
+transmit.
+
+DBLog will show the list of QSO with that station if Worked Before and will 
+show its &#160;position on the map.
+Also Name and QTH will appear into the main window if available. 
+
+When the other station sends you the report Control-right-click on it: it will 
+be copied into the received report box of DBLog
+
+At the end of the QSO push &quot;Log QSO&quot; on WSJT main window to log the QSO both 
+on DBLog and on WSJT.
+
+On  <A HREF="http://www.qsl.net/zp4kfx/Linux/WSJT">http://www.qsl.net/zp4kfx/Linux/WSJT</A> you can find a patched version named 
+wsjt.py. Rename first your original version, then put the new wsjt.py into 
+the wsjt directory.
+
+
+Please  Joe, K1JT, would you mind to insert these changes into the main stream 
+of WSJY for  Linux ?
+
+Best 73
+Pino ZP4KFX 
+
+----------------------------------CUT HERE-----------------------------------
+5d4
+&lt; import asyncore, socket		# For connecting to  DBLog
+33d31
+&lt; print &quot;    Modified by ZP4KFX to enable logging into DBLog&quot;
+53,65d50
+&lt; #------------------------------------------------------  For DBLog
+&lt; dblog=0					# &lt;&gt; 0 if connected to DBLog
+&lt; locator=&quot;&quot;
+&lt; HOST = '127.0.0.1'			# Change this if on another computer
+&lt; PORT = 3164				# DBLog server on the same computer
+&lt; s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+&lt; try:
+&lt; 	s.connect((HOST, PORT))
+&lt; 	print &quot;Connected to DBLog &quot;
+&lt; 	dblog=1
+&lt; except:
+&lt; 	print &quot;DBlog not found&quot;	
+&lt; # 
+67d51
+&lt; recrpt=&quot;&quot;				# Received Report to be sent to DBLog
+197,198d180
+&lt;     if dblog ==1 :
+&lt;     	s.close()			# connection to DBLog
+237,240c219
+&lt;     if dblog ==1 :					# Logit to DBLog
+&lt;                 s.send('L:')
+&lt;                 dblog_risp = s.recv(1024)
+&lt; 		print 'For LogIt received ', repr(dblog_risp)
+---
+&gt;<i>     
+</I>252,281c231
+&lt; #---------------------
+&lt; def report_event(event):     ### From TT
+&lt; 	&quot;&quot;&quot;Print a description of an event, based on its attributes.
+&lt; 	&quot;&quot;&quot;
+&lt; 	event_name = {&quot;2&quot;: &quot;KeyPress&quot;, &quot;4&quot;: &quot;ButtonPress&quot;}
+&lt; 	print &quot;Time:&quot;, str(event.time)   
+&lt; 	print &quot;EventType=&quot; + str(event.type), \
+&lt; 		event_name[str(event.type)],\
+&lt; 		&quot;EventWidgetId=&quot; + str(event.widget), \
+&lt; 		&quot;EventKeySymbol=&quot; + str(event.keysym)
+&lt; #---------------
+&lt; def single_click_text(event):      # single right click
+&lt;     report_event(event)		   # called also by the double click !!! is it a 
+BUG ?
+&lt; 		
+&lt; #------------------------------Control-Right-click_text   for catching 
+Received Report for DBLog
+&lt; def click_text(event):
+&lt; # check if is single click or double-click ...how ?
+&lt;     report_event(event)
+&lt;     global recrpt
+&lt;     t=text.get('1.0',END)           #Entire contents of text box
+&lt;     t1=text.get('1.0',CURRENT)      #Contents from start to mouse pointer
+&lt;     i1=t1.rfind(' ')+1              #index of preceding space
+&lt;     i2=i1+t[i1:].find(' ')          #index of next space
+&lt;     recrpt= t[i1:i2].lstrip('R')                #selected word, assumed as 
+callsign
+&lt;     print &quot;click-text&quot;,recrpt
+&lt;     if dblog ==1 :
+&lt;     	s.send('R:'+recrpt) 				# Received Report to DBLog
+&lt;     	dblog_risp = s.recv(1024)
+&lt;     	print 'For ReceivedReport received ', repr(dblog_risp)
+&lt; #
+---
+&gt;<i> 
+</I>284d233
+&lt;     report_event(event)
+294,295d242
+&lt;     report_event(event)
+&lt;     global rpt
+330d276
+&lt;     report_event(event)
+334,335c280
+&lt; 
+&lt; #------------------------------------------------------ dbl_click_call 
+&lt;----CALL
+---
+&gt;<i> #------------------------------------------------------ dbl_click_call
+</I>337d281
+&lt;     report_event(event)
+343,349d286
+&lt; # Here can extract the GRID Locator ... Added by ZP4KFX
+&lt;     global locator
+&lt;     locator=t[i2+1:i2+5]	    
+&lt;     print &quot;Locator :&quot;,locator
+&lt;   #  HisGrid.delete(0,END)	    # Does not work here....maybe overwritten 
+later
+&lt;   #  HisGrid.insert(0,locator)
+&lt; #
+380,401c317
+&lt;         if event.num==3 and not lauto: 
+&lt;                            toggleauto()      # Start transmission on double 
+Right Click
+&lt; 
+&lt;         print &quot;HisCal : &quot;+ hiscall      # sent hiscall to DBLog
+&lt;         if dblog ==1 :
+&lt;        	  s.send('C:'+ hiscall)
+&lt;     	  dblog_risp = s.recv(1024)
+&lt;     	  print 'For Call received ', repr(dblog_risp)	# Mame, QTH and Grid if 
+available to be
+&lt; 	  s.send('M:'+mode.get())				#  displayed on the WSJT window
+&lt; 	  dblog_risp = s.recv(1024)			# maybe write them to labAz.configure ?
+&lt;     	  print 'For Mode received ', repr(dblog_risp)
+&lt; 	  s.send('LO:'+ locator)			
+&lt; 	  dblog_risp = s.recv(1024)
+&lt;     	  print 'For Locator received ', repr(dblog_risp)
+&lt;           print &quot;Sent Report :&quot;,rpt
+&lt;           s.send('S:'+rpt) 				# Sent Report
+&lt; 	  dblog_risp = s.recv(1024)
+&lt;     	  print 'For SentReport received ', repr(dblog_risp)
+&lt;           s.send('IN:') 				
+&lt; 	  dblog_risp = s.recv(1024)
+&lt;     	  print 'For StartQSO received ', repr(dblog_risp)
+&lt; #
+---
+&gt;<i>         if event.num==3 and not lauto: toggleauto()
+</I>547,550d462
+&lt;     if dblog ==1 and hisgrid==&quot;&quot; :		    # For DBLog  # and hisgrid==&quot;&quot;  ???
+&lt;        HisGrid.delete(0,END)	    # write locator from the received call or 
+CQ
+&lt;        HisGrid.insert(0,locator)
+&lt; 
+1771d1682
+&lt; # endif isec != isec0: 
+1825d1735
+&lt; #endif mode
+2332,2333d2241
+&lt; text.bind('&lt;Control-Button-3&gt;',click_text)                  # By ZP4KFX for 
+DBLog
+&lt; text.bind('&lt;Button-3&gt;',single_click_text) 	            # experimeting
+----------------------------------
+-- 
+
+&quot;In the universe there is no time existing as a physical reality,
+ there is no past, no present and no future&quot;
+&quot;Time is a mind construction into which one experiences motion&quot;
+&quot;Time is a flow of irreversible material changes&quot;
+-Davide Fiscaletti
+
+Key ID: 0xF6768208 
+Key fingerprint = B16D 0A7C 5B29 A334 CE6A  71F6 EAF8 3D88 F676 8208
+Key server: <A HREF="hkp://wwwkeys.eu.pgp.net">hkp://wwwkeys.eu.pgp.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000967.html">[Wsjt-devel] WSPR: Seg fault on call to wspr.py
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#968">[ date ]</a>
+              <a href="thread.html#968">[ thread ]</a>
+              <a href="subject.html#968">[ subject ]</a>
+              <a href="author.html#968">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

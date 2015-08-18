@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.1 r3471
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3471&In-Reply-To=%3C51DC61D8.5030901%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001479.html">
+   <LINK REL="Next"  HREF="001496.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.1 r3471</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3471&In-Reply-To=%3C51DC61D8.5030901%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.1 r3471">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  9 21:17:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001479.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+        <LI>Next message: <A HREF="001496.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1482">[ date ]</a>
+              <a href="thread.html#1482">[ thread ]</a>
+              <a href="subject.html#1482">[ subject ]</a>
+              <a href="author.html#1482">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+I think WSJT-X r3471, now integrated back into branches/wsjtx, is 
+approaching a good state for release as Version 1.1.
+
+I posted a Windows package of r3471 earliet today so that Laurie, 
+VK3AMA, could use it to test his new version of JT-Alert.
+
+It has a number of minor improvements and bug fixes relative to r3459. 
+The Windows package and can be downloaded from
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3471.exe">http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3471.exe</A> ,
+and of course you are more than welcome to try it on OS X and Linux, as 
+well.
+
+Here's a quick list of differences from r3459:
+
+1. Operating in &quot;Split Tx&quot; mode is now optional (but of course is 
+required if you will transmit above 2.7 kHz.)
+2. Correct TxMode label now appears on program startup.
+3. &quot;Transmitting...&quot; message in ALL.TXT now has the correct TxMode.
+4. File wsjt_status.txt includes the TxMode.
+5. F4 clears Az, Dist, and the Tx message boxes.
+6. You can decode JT9 signals in the JT65 frequency range, and 
+ice-versa, by double-clicking the signal in the waterfall.
+7. Better logic for enabling/disabling the TestPTT button.
+8. Do not call getFreq() when the TestPTT button is clicked and 
+PTTmethod is via CAT control.
+9. New cold-start default frequencies, set at reasonable values for JT65.
+10. Default macros as simple examples.
+
+This revision (or something close to it) will likely be released 
+publicly soon.
+
+Please report any compilation or operational problems!
+
+     -- 73, Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001479.html">[Wsjt-devel] WSJTX 1.1 in /branches/wsjtx
+</A></li>
+	<LI>Next message: <A HREF="001496.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1482">[ date ]</a>
+              <a href="thread.html#1482">[ thread ]</a>
+              <a href="subject.html#1482">[ subject ]</a>
+              <a href="author.html#1482">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

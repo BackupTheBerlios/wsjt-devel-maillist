@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 5.9.7 r383 rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C1178490812.4257.19.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000125.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 5.9.7 r383 rpm</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C1178490812.4257.19.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT 5.9.7 r383 rpm">lz1bb at mail.bg
+       </A><BR>
+    <I>Mon May  7 00:33:32 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000125.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+        <LI>Next message: <A HREF="000130.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#126">[ date ]</a>
+              <a href="thread.html#126">[ thread ]</a>
+              <a href="subject.html#126">[ subject ]</a>
+              <a href="author.html#126">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2007-05-06 at 17:09 -0400, Diane Bruce wrote:
+&gt;<i> &gt; ./configure --enable-portaudio
+</I>&gt;<i> &gt; make clean; make
+</I>&gt;<i> 
+</I>&gt;<i> You also need:
+</I>&gt;<i> 
+</I>&gt;<i>   --with-portaudio-include-dir=&lt;path&gt;
+</I>&gt;<i>                           path to portaudio include files
+</I>&gt;<i>   --with-portaudio-lib-dir=&lt;path&gt;
+</I>&gt;<i>                           path to portaudio lib files
+</I>&gt;<i> 
+</I>Yes I know but I want to strictly use builtin portaudio code. Portaudio
+v0.19 is not yet official in many distributions. There wil be
+distribution problems with the rpm. I saw you turned back this compile
+way. BTW with path to buildin portaudio it compiles and works fine but
+need to have portaudio0.19 instalewd which I want to avoid.
+
+&gt;<i> If you have a locally installed portaudio v19 instance.
+</I>&gt;<i> 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; All goes fine and compiles without mistake. But when I try to start wsjt
+</I>&gt;<i> &gt; I got this error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; [<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A> WSJTSVN]$ python -O wsjt.py
+</I>&gt;<i> &gt; Traceback (most recent call last):
+</I>&gt;<i> &gt;   File &quot;wsjt.py&quot;, line 10, in ?
+</I>&gt;<i> &gt;     import Audio
+</I>&gt;<i> &gt; ImportError: /home/harry/WSJTSVN/Audio.so: undefined symbol:
+</I>&gt;<i> &gt; snd_pcm_close
+</I>&gt;<i> 
+</I>&gt;<i> That's from start_alsa.c
+</I>
+Nothing changed with my alsa configuration since a long time. Never had
+this problem before you changed the code. So I beleave it is a bug now.
+
+&gt;<i> &gt; Could you help please.
+</I>&gt;<i> 
+</I>&gt;<i> Send me the configure log I'll have a look.
+</I>
+[<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A> WSJTSVN]$ ./configure --enable-portaudio
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking for g77... no
+checking for f77... no
+checking for xlf... no
+checking for frt... no
+checking for pgf77... no
+checking for fort77... no
+checking for fl32... no
+checking for af77... no
+checking for f90... no
+checking for xlf90... no
+checking for pgf90... no
+checking for epcf90... no
+checking for f95... f95
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether f95 accepts -g... yes
+checking uname -s for Cygwin, Solaris or HPUX... no
+checking if gcc is Apple GCC... no
+checking for library containing strerror... none required
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for egrep... grep -E
+checking whether gcc needs -traditional... no
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for rm... /bin/rm
+checking for cp... /bin/cp
+checking for mv... /bin/mv
+checking for ln... /bin/ln
+checking for sed... /bin/sed
+checking for ar... /usr/bin/ar
+checking for ld... /usr/bin/ld
+checking for test... /usr/bin/test
+checking for python... /usr/bin/python
+checking for f2py... /usr/bin/f2py
+checking for g95... /usr/bin/g95
+checking g95 lib
+path... /usr/bin/../lib/g95/i586-mandriva-linux-gnu/4.0.3//
+checking for gfortran... /usr/bin/gfortran
+checking for gfortran42... (cached) /usr/bin/gfortran
+checking gfortran lib
+path... /usr/lib/gcc/i586-mandriva-linux-gnu/4.1.1/
+checking OS... checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking sys/syslog.h usability... yes
+checking sys/syslog.h presence... yes
+checking for sys/syslog.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking libgen.h usability... yes
+checking libgen.h presence... yes
+checking for libgen.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking wait.h usability... yes
+checking wait.h presence... yes
+checking for wait.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for sys/resource.h... (cached) yes
+checking linux/ppdev.h usability... yes
+checking linux/ppdev.h presence... yes
+checking for linux/ppdev.h... yes
+checking dev/ppbus/ppi.h usability... no
+checking dev/ppbus/ppi.h presence... no
+checking for dev/ppbus/ppi.h... no
+checking for sys/stat.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking sys/soundcard.h usability... yes
+checking sys/soundcard.h presence... yes
+checking for sys/soundcard.h... yes
+checking alsa/asoundlib.h usability... yes
+checking alsa/asoundlib.h presence... yes
+checking for alsa/asoundlib.h... yes
+checking jack/jack.h usability... yes
+checking jack/jack.h presence... yes
+checking for jack/jack.h... yes
+checking samplerate.h usability... yes
+checking samplerate.h presence... yes
+checking for samplerate.h... yes
+checking whether string.h and strings.h may both be included... yes
+checking for clock_gettime in -lrt... yes
+checking for snd_pcm_open in -lasound... yes
+checking for int64_t... yes
+checking size of int64_t... 8
+checking for long long... yes
+checking size of long long... 8
+checking for uint64_t... yes
+checking for int64_t... (cached) yes
+checking for u_int32_t... yes
+checking for u_int16_t... yes
+checking whether byte ordering is bigendian... no
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+
+Using portaudio provided
+
+configure: creating ./config.status
+config.status: creating Makefile
+
+
+Using gfortran as fortran compiler.
+Using portaudio.
+
+Compiling wsjt 5.9.6
+
+Installing into: /usr/local/
+
+
+73, Harry LZ1BB
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000125.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+	<LI>Next message: <A HREF="000130.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#126">[ date ]</a>
+              <a href="thread.html#126">[ thread ]</a>
+              <a href="subject.html#126">[ subject ]</a>
+              <a href="author.html#126">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

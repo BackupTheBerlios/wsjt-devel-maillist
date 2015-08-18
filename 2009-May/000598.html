@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A004D78.4020706%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000602.html">
+   <LINK REL="Next"  HREF="000599.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A004D78.4020706%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May  5 16:30:16 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000602.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000599.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here's an update on my tests with gfortran and (K)ubuntu 9.04.
+
+1. I executed the automatic update procedures from Kubuntu 
+8.04 to 8.10 and then 8.10 to 9.04. Kubuntu 9.04 looks very 
+nice, and it runs as expected.  It is certainly not a 
+&quot;disaster&quot;.
+
+2. I had to make just two manual package additions: 
+tcl8.5-dev and tk8.5-dev.
+
+3. WSJT and WPSR compile and run properly with g95, and they 
+look nice.  (K)ubuntu 9.04 has apparently done something 
+good with the appearance of standard fonts.
+
+4. Both WSJT and WSPR crash on startup if compiled with 
+gfortran, just as they did in 8.04.
+
+5. I spent about 8 hours trying to isolate the problem with 
+gfortran, without much success.  I am left with a strong 
+suspicion that it has to do with Fortran I/O in a 
+multi-threaded environment, perhaps especially with internal 
+read/write statements.  (These are the ones that involve 
+formatted transfers to/from a character variable, but no I/O 
+to a physical device.)  I could certainly be wrong about 
+this... I haven't isolated a real &quot;smoking gun&quot;.
+
+I am putting the problem aside for now.
+
+As far as I know, there is no reason that a .deb package 
+can't be made using the g95 compiler.  Maybe someone want to 
+do this?  Or, maybe *nix users of these programs will need 
+to compile their own from source code.  It's really not that 
+hard -- Harry and others have spelled out all the necessary 
+steps.
+
+Comments?
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000602.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000599.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520B9FC2.4010002%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001829.html">
+   <LINK REL="Next"  HREF="001832.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520B9FC2.4010002%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Aug 14 17:18:26 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001829.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001832.html">[Wsjt-devel] Cmake test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1830">[ date ]</a>
+              <a href="thread.html#1830">[ thread ]</a>
+              <a href="subject.html#1830">[ subject ]</a>
+              <a href="author.html#1830">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 14/08/2013 16:11, Edson W. R. Pereira wrote:
+&gt;<i> Bill,
+</I>Hi Edson,
+&gt;<i>
+</I>&gt;<i> I've compiled the latest cmake from sources and with the new cmake 
+</I>&gt;<i> compilation of wsjtx is clean with the command
+</I>&gt;<i>
+</I>&gt;<i> /usr/local/cmake-2.8.11.2/bin/cmake 
+</I>&gt;<i> -DCMAKE_PREFIX_PATH=/usr/local/qt-5.1.0 ../
+</I>&gt;<i> make
+</I>&gt;<i>
+</I>&gt;<i> It is running!
+</I>Good news.
+&gt;<i>
+</I>&gt;<i> I just noticed that the revison number is still r3547.
+</I>Ah, well that might have been deliberate ;) Since the cmake scripts 
+don't directly change the product I didn't bother changing 
+mainwindow.cpp. But in return the cmake scrips generate a configuration 
+header and an SVN version header which is generated at build time. 
+Currently I am forcing the compiler to inject the headers into every 
+source compile. That is not portable but will do for now until any 
+decision is made about CMake. So WSJTX_VERSION_MAJOR WSJTX_VERSION_MINOR 
+(defined in the cmake script) and SVNVERSION are defined in all 
+compilations.
+
+So using CMake this way there will not be any need to remember to update 
+mainwindow.cpp for no reason.
+&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i>
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001829.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001832.html">[Wsjt-devel] Cmake test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1830">[ date ]</a>
+              <a href="thread.html#1830">[ thread ]</a>
+              <a href="subject.html#1830">[ subject ]</a>
+              <a href="author.html#1830">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

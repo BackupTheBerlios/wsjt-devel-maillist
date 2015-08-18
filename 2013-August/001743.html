@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20r3533%20Qt%20Audio%20%2B%20other%20odds%20and%20ends.&In-Reply-To=%3C5202DB57.3040908%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001742.html">
+   <LINK REL="Next"  HREF="001744.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20r3533%20Qt%20Audio%20%2B%20other%20odds%20and%20ends.&In-Reply-To=%3C5202DB57.3040908%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.">djmunn at bigpond.com
+       </A><BR>
+    <I>Thu Aug  8 01:42:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001742.html">[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.
+</A></li>
+        <LI>Next message: <A HREF="001744.html">[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1743">[ date ]</a>
+              <a href="thread.html#1743">[ thread ]</a>
+              <a href="subject.html#1743">[ subject ]</a>
+              <a href="author.html#1743">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill....mine only shows r3532
+and ive just done full re install
+
+for Joe ...the palette chosen does not hold in config ..it goes back to 
+default on restart
+
+David VK4BDJ
+
+
+
+
+On 08/08/13 09:17, Bill Somerville wrote:
+&gt;<i> On 08/08/2013 00:12, Bill Somerville wrote:
+</I>&gt;&gt;<i> Hi All,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Requires Qt5  (at least only tested on against Qt5 so far):
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hopefully I haven't broken too many things with my first checkin.
+</I>&gt;<i> Make that r3533. Rouge line crept in.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> =============================================================
+</I>&gt;&gt;<i> Qt 5 Audio replaces PortAudio.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Currently only Qt5 or above is known to work with this code. It may be
+</I>&gt;&gt;<i> possible to backport it to Qt4 if required.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Audio output goes back to a separate thread to try and minimize
+</I>&gt;&gt;<i> stutters in streaming on Windows particularly.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A crash on Linux due to mishandling of stereo audio output has been
+</I>&gt;&gt;<i> fixed and both left and right channels are now correctly synthesised
+</I>&gt;&gt;<i> with identical contents.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Rigs are enumerated directly from hamlib API rather than running a sub
+</I>&gt;&gt;<i> process reading output of rigctl -l. This was initially done to get
+</I>&gt;&gt;<i> rid of some GUI thread blocking in the configuration dialog, but is
+</I>&gt;&gt;<i> generally a better way of doing it anyway.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Some refactoring in MainWindow to accomodate the audio streaming,
+</I>&gt;&gt;<i> modulation and detecting classes.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Exit handling for application refactored to use signals rather than
+</I>&gt;&gt;<i> brute force event loop exit. This was required to get correct thread
+</I>&gt;&gt;<i> shutdown semantics.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The GUI update timer is now stopped during application shutdown which
+</I>&gt;&gt;<i> is necessary to stop crashes when shutting down gracefully with
+</I>&gt;&gt;<i> signals and window close() calls.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> There is an outstanding issue with Linux audio streams; the QAudio
+</I>&gt;&gt;<i> Input/Output classes create a new stream name each time a stream is
+</I>&gt;&gt;<i> started. This doesn't play well with PulseAudio utilities such as
+</I>&gt;&gt;<i> pavucontrol to set stream volume as settings are lost every tx
+</I>&gt;&gt;<i> period. I have tried to keep a single stream for all output but there
+</I>&gt;&gt;<i> are problems restarting it that haven't been resolved yet.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The QtCreator project file has been rearranged a little because it
+</I>&gt;&gt;<i> passes all the object files to the linker rather than using an archive
+</I>&gt;&gt;<i> library. Since the GNU linker is single pass; the object files need to
+</I>&gt;&gt;<i> be in a logical order with definitions appearing afer references to
+</I>&gt;&gt;<i> them. This was required to avoid a linking error.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The lib/Makefile.linux has been enhanced to use the fortran compiler
+</I>&gt;&gt;<i> to locate the correct version of the Fortran library to use. This is
+</I>&gt;&gt;<i> necessary on the latest Linux distros because the unversioned symlink
+</I>&gt;&gt;<i> to compiler support libraries is no longer provided. This only an
+</I>&gt;&gt;<i> issue with mixed programming language links where the linker driver
+</I>&gt;&gt;<i> for one language has to link support libraraies for another language.
+</I>&gt;&gt;<i> ===============================================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001742.html">[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.
+</A></li>
+	<LI>Next message: <A HREF="001744.html">[Wsjt-devel] WSJT-X: r3533 Qt Audio + other odds and ends.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1743">[ date ]</a>
+              <a href="thread.html#1743">[ thread ]</a>
+              <a href="subject.html#1743">[ subject ]</a>
+              <a href="author.html#1743">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

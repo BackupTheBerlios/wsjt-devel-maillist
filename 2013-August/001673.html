@@ -1,0 +1,417 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48gr2Hzf4nfHh9zXiz7DP64ozO3EqxU3vXJ3fQpANnuQw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001672.html">
+   <LINK REL="Next"  HREF="001679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy48gr2Hzf4nfHh9zXiz7DP64ozO3EqxU3vXJ3fQpANnuQw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Aug  4 15:02:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001672.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001679.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1673">[ date ]</a>
+              <a href="thread.html#1673">[ thread ]</a>
+              <a href="subject.html#1673">[ subject ]</a>
+              <a href="author.html#1673">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If I edit wsprx.ini and change the audio devices there, wsprx starts and I
+can decode signals. However TX fails with a SIGSEGV.
+
+Info follows.
+
+*** glibc detected *** ./wsjtx: free(): corrupted unsorted chunks:
+0x0000000002aa1ac0 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x7eb96)[0x7f3ba7835b96]
+/usr/lib/nvidia-current/tls/libnvidia-tls.so.304.88(+0x1cc1)[0x7f3ba4504cc1]
+======= Memory map: ========
+00400000-004a4000 r-xp 00000000 08:01 15408330
+/home/edson/Projects/wsjtx-tmp/wsjtx_install/wsjtx
+006a3000-006a6000 r--p 000a3000 08:01 15408330
+/home/edson/Projects/wsjtx-tmp/wsjtx_install/wsjtx
+006a6000-006a8000 rw-p 000a6000 08:01 15408330
+/home/edson/Projects/wsjtx-tmp/wsjtx_install/wsjtx
+006a8000-00e98000 rw-p 00000000 00:00 0
+024b3000-02bf4000 rw-p 00000000 00:00 0
+ [heap]
+7f3b6ffff000-7f3b74000000 r--s 00000000 00:12 12703
+ /run/shm/pulse-shm-1999542487
+7f3b74000000-7f3b74021000 rw-p 00000000 00:00 0
+7f3b74021000-7f3b78000000 ---p 00000000 00:00 0
+7f3b7b053000-7f3b7b454000 rw-p 00000000 00:00 0
+7f3b7b454000-7f3b7b46e000 r-xp 00000000 08:01 6820194
+ /usr/lib/hamlib/hamlib-icom.so
+7f3b7b46e000-7f3b7b66d000 ---p 0001a000 08:01 6820194
+ /usr/lib/hamlib/hamlib-icom.so
+7f3b7b66d000-7f3b7b6f4000 r--p 00019000 08:01 6820194
+ /usr/lib/hamlib/hamlib-icom.so
+7f3b7b6f4000-7f3b7b6f5000 rw-p 000a0000 08:01 6820194
+ /usr/lib/hamlib/hamlib-icom.so
+7f3b7b6f5000-7f3b7b7dc000 rw-s 00000000 00:04 14483494
+/SYSV00000000 (deleted)
+7f3b7b7dc000-7f3b7b7fe000 r--p 00000000 08:01 7736752
+ /usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf
+7f3b7b7fe000-7f3b7b7ff000 ---p 00000000 00:00 0
+7f3b7b7ff000-7f3b7bfff000 rw-p 00000000 00:00 0
+7f3b7bfff000-7f3b80000000 rw-s 00000000 00:12 280930
+/run/shm/pulse-shm-1156091107
+7f3b80000000-7f3b80021000 rw-p 00000000 00:00 0
+7f3b80021000-7f3b84000000 ---p 00000000 00:00 0
+7f3b84000000-7f3b84021000 rw-p 00000000 00:00 0
+7f3b84021000-7f3b88000000 ---p 00000000 00:00 0
+7f3b8803a000-7f3b881d4000 rw-s 00000000 00:04 14516263
+/SYSV00000000 (deleted)
+7f3b881d4000-7f3b881d5000 ---p 00000000 00:00 0
+7f3b881d5000-7f3b889d5000 rw-p 00000000 00:00 0
+7f3b889d5000-7f3b889e9000 r-xp 00000000 08:01 6880258
+ /usr/local/qt-5.1.0/plugins/audio/libqtmedia_pulse.so
+7f3b889e9000-7f3b88be9000 ---p 00014000 08:01 6880258
+ /usr/local/qt-5.1.0/plugins/audio/libqtmedia_pulse.so
+7f3b88be9000-7f3b88bea000 r--p 00014000 08:01 6880258
+ /usr/local/qt-5.1.0/plugins/audio/libqtmedia_pulse.so
+7f3b88bea000-7f3b88beb000 rw-p 00015000 08:01 6880258
+ /usr/local/qt-5.1.0/plugins/audio/libqtmedia_pulse.so
+7f3b88beb000-7f3b8937c000 rw-s 00000000 00:04 14450716
+/SYSV51010107 (deleted)
+7f3b8937c000-7f3b89388000 r-xp 00000000 08:01 17826074
+/lib/x86_64-linux-gnu/libudev.so.0.13.0
+7f3b89388000-7f3b89587000 ---p 0000c000 08:01 17826074
+/lib/x86_64-linux-gnu/libudev.so.0.13.0
+7f3b89587000-7f3b89588000 r--p 0000b000 08:01 17826074
+/lib/x86_64-linux-gnu/libudev.so.0.13.0
+7f3b89588000-7f3b89589000 rw-p 0000c000 08:01 17826074
+/lib/x86_64-linux-gnu/libudev.so.0.13.0
+7f3b89589000-7f3b8959f000 r-xp 00000000 08:01 7079765
+ /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+7f3b8959f000-7f3b8979e000 ---p 00016000 08:01 7079765
+ /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+7f3b8979e000-7f3b8979f000 r--p 00015000 08:01 7079765
+ /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+7f3b8979f000-7f3b897a0000 rw-p 00016000 08:01 7079765
+ /usr/lib/x86_64-linux-gnu/gvfs/libgvfscommon.so
+7f3b897a0000-7f3b897c8000 r-xp 00000000 08:01 7079767
+ /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+7f3b897c8000-7f3b899c7000 ---p 00028000 08:01 7079767
+ /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+7f3b899c7000-7f3b899c8000 r--p 00027000 08:01 7079767
+ /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+7f3b899c8000-7f3b899c9000 rw-p 00028000 08:01 7079767
+ /usr/lib/x86_64-linux-gnu/gio/modules/libgvfsdbus.so
+7f3b899c9000-7f3b89a0d000 r-xp 00000000 08:01 6823080
+ /usr/lib/x86_64-linux-gnu/libibus-1.0.so.0.401.0
+7f3b89a0d000-7f3b89c0c000 ---p 00044000 08:01 6823080
+ /usr/lib/x86_64-linux-gnu/libibus-1.0.so.0.401.0
+7f3b89c0c000-7f3b89c0e000 r--p 00043000 08:01 6823080
+ /usr/lib/x86_64-linux-gnu/libibus-1.0.so.0.401.0
+7f3b89c0e000-7f3b89c0f000 rw-p 00045000 08:01 6823080
+ /usr/lib/x86_64-linux-gnu/libibus-1.0.so.0.401.0
+7f3b89c0f000-7f3b89c10000 rw-p 00000000 00:00 0
+7f3b89c10000-7f3b89c16000 r-xp 00000000 08:01 7080146
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/immodules/im-ibus.so
+7f3b89c16000-7f3b89e15000 ---p 00006000 08:01 7080146
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/immodules/im-ibus.so
+7f3b89e15000-7f3b89e16000 r--p 00005000 08:01 7080146
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/immodules/im-ibus.so
+7f3b89e16000-7f3b89e17000 rw-p 00006000 08:01 7080146
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/immodules/im-ibus.so
+7f3b89e17000-7f3b89e19000 r-xp 00000000 08:01 7081824
+ /usr/lib/x86_64-linux-gnu/pango/1.6.0/modules/pango-basic-fc.so
+7f3b89e19000-7f3b8a018000 ---p 00002000 08:01 7081824
+ /usr/lib/x86_64-linux-gnu/pango/1.6.0/modules/pango-basic-fc.so
+7f3b8a018000-7f3b8a019000 r--p 00001000 08:01 7081824
+ /usr/lib/x86_64-linux-gnu/pango/1.6.0/modules/pango-basic-fc.so
+7f3b8a019000-7f3b8a01a000 rw-p 00002000 08:01 7081824
+ /usr/lib/x86_64-linux-gnu/pango/1.6.0/modules/pango-basic-fc.so
+7f3b8a01a000-7f3b8a023000 r-xp 00000000 08:01 7090379
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so
+7f3b8a023000-7f3b8a223000 ---p 00009000 08:01 7090379
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so
+7f3b8a223000-7f3b8a224000 r--p 00009000 08:01 7090379
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so
+7f3b8a224000-7f3b8a225000 rw-p 0000a000 08:01 7090379
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so
+7f3b8a225000-7f3b8a254000 r-xp 00000000 08:01 7080139
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libmurrine.so
+7f3b8a254000-7f3b8a454000 ---p 0002f000 08:01 7080139
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libmurrine.so
+7f3b8a454000-7f3b8a455000 r--p 0002f000 08:01 7080139
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libmurrine.so
+7f3b8a455000-7f3b8a456000 rw-p 00030000 08:01 7080139
+ /usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libmurrine.so
+7f3b8a456000-7f3b8a459000 r-xp 00000000 08:01 17829391
+/lib/x86_64-linux-gnu/libgpg-error.so.0.8.0
+7f3b8a459000-7f3b8a658000 ---p 00003000 08:01 17829391
+/lib/x86_64-linux-gnu/libgpg-error.so.0.8.0
+7f3b8a658000-7f3b8a659000 r--p 00002000 08:01 17829391
+/lib/x86_64-linux-gnu/libgpg-error.so.0.8.0
+7f3b8a659000-7f3b8a65a000 rw-p 00003000 08:01 17829391
+/lib/x86_64-linux-gnu/libgpg-error.so.0.8.0
+7f3b8a65a000-7f3b8a66b000 r-xp 00000000 08:01 6823171
+ /usr/lib/x86_64-linux-gnu/libp11-kit.so.0.0.0
+7f3b8a66b000-7f3b8a86a000 ---p 00011000 08:01 6823171
+ /usr/lib/x86_64-linux-gnu/libp11-kit.so.0.0.0
+7f3b8a86a000-7f3b8a86b000 r--p 00010000 08:01 6823171
+ /usr/lib/x86_64-linux-gnu/libp11-kit.so.0.0.0
+7f3b8a86b000-7f3b8a86c000 rw-p 00011000 08:01 6823171
+ /usr/lib/x86_64-linux-gnu/libp11-kit.so.0.0.0
+7f3b8a86c000-7f3b8a87c000 r-xp 00000000 08:01 6821498
+ /usr/lib/x86_64-linux-gnu/libtasn1.so.3.1.12
+7f3b8a87c000-7f3b8aa7b000 ---p 00010000 08:01 6821498
+ /usr/lib/x86_64-linux-gnu/libtasn1.so.3.1.12
+7f3b8aa7b000-7f3b8aa7c000 r--p 0000f000 08:01 6821498
+ /usr/lib/x86_64-linux-gnu/libtasn1.so.3.1.12
+7f3b8aa7c000-7f3b8aa7d000 rw-p 00010000 08:01 6821498
+ /usr/lib/x86_64-linux-gnu/libtasn1.so.3.1.12
+7f3b8aa7d000-7f3b8aa8d000 r-xp 00000000 08:01 6823290
+ /usr/lib/x86_64-linux-gnu/libtdb.so.1.2.9
+7f3b8aa8d000-7f3b8ac8c000 ---p 00010000 08:01 6823290
+ /usr/lib/x86_64-linux-gnu/libtdb.so.1.2.9
+7f3b8ac8c000-7f3b8ac8d000 r--p 0000f000 08:01 6823290
+ /usr/lib/x86_64-linux-gnu/libtdb.so.1.2.9
+7f3b8ac8d000-7f3b8ac8e000 rw-p 00010000 08:01 6823290
+ /usr/lib/x86_64-linux-gnu/libtdb.so.1.2.9
+7f3b8ac8e000-7f3b8ac95000 r-xp 00000000 08:01 6823327
+ /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3.3.4
+7f3b8ac95000-7f3b8ae94000 ---p 00007000 08:01 6823327
+ /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3.3.4
+7f3b8ae94000-7f3b8ae95000 r--p 00006000 08:01 6823327
+ /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3.3.4
+7f3b8ae95000-7f3b8ae96000 rw-p 00007000 08:01 6823327
+ /usr/lib/x86_64-linux-gnu/libvorbisfile.so.3.3.4
+7f3b8ae96000-7f3b8ae9b000 r-xp 00000000 08:01 6821504
+ /usr/lib/x86_64-linux-gnu/libORBitCosNaming-2.so.0.1.0
+7f3b8ae9b000-7f3b8b09b000 ---p 00005000 08:01 6821504
+ /usr/lib/x86_64-linux-gnu/libORBitCosNaming-2.so.0.1.0
+7f3b8b09b000-7f3b8b09c000 r--p 00005000 08:01 6821504
+ /usr/lib/x86_64-linux-gnu/libORBitCosNaming-2.so.0.1.0
+7f3b8b09c000-7f3b8b09d000 rw-p 00006000 08:01 6821504
+ /usr/lib/x86_64-linux-gnu/libORBitCosNaming-2.so.0.1.0
+7f3b8b09d000-7f3b8b0a1000 r-xp 00000000 08:01 17829471
+/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f3b8b0a1000-7f3b8b2a0000 ---p 00004000 08:01 17829471
+/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f3b8b2a0000-7f3b8b2a1000 r--p 00003000 08:01 17829471
+/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f3b8b2a1000-7f3b8b2a2000 rw-p 00004000 08:01 17829471
+/lib/x86_64-linux-gnu/libuuid.so.1.3.0
+7f3b8b2a2000-7f3b8b31c000 r-xp 00000000 08:01 17826070
+/lib/x86_64-linux-gnu/libgcrypt.so.11.7.0
+7f3b8b31c000-7f3b8b51c000 ---p 0007a000 08:01 17826070
+/lib/x86_64-linux-gnu/libgcrypt.so.11.7.0
+7f3b8b51c000-7f3b8b51d000 r--p 0007a000 08:01 17826070
+/lib/x86_64-linux-gnu/libgcrypt.so.11.7.0
+7f3b8b51d000-7f3b8b520000 rw-p 0007b000 08:01 17826070
+/lib/x86_64-linux-gnu/libgcrypt.so.11.7.0
+7f3b8b520000-7f3b8b522000 r-xp 00000000 08:01 17855751
+/lib/x86_64-linux-gnu/libutil-2.15.so
+7f3b8b522000-7f3b8b721000 ---p 00002000 08:01 17855751
+/lib/x86_64-linux-gnu/libutil-2.15.so
+7f3b8b721000-7f3b8b722000 r--p 00001000 08:01 17855751
+/lib/x86_64-linux-gnu/libutil-2.15.so
+7f3b8b722000-7f3b8b723000 rw-p 00002000 08:01 17855751
+/lib/x86_64-linux-gnu/libutil-2.15.so
+7f3b8b723000-7f3b8b733000 r-xp 00000000 08:01 6822822
+ /usr/lib/x86_64-linux-gnu/libavahi-client.so.3.2.9
+7f3b8b733000-7f3b8b932000 ---p 00010000 08:01 6822822
+ /usr/lib/x86_64-linux-gnu/libavahi-client.so.3.2.9
+7f3b8b932000-7f3b8b933000 r--p 0000f000 08:01 6822822
+ /usr/lib/x86_64-linux-gnu/libavahi-client.so.3.2.9
+7f3b8b933000-7f3b8b934000 rw-p 00010000 08:01 6822822
+ /usr/lib/x86_64-linux-gnu/libavahi-client.so.3.2.9
+7f3b8b934000-7f3b8b93f000 r-xp 00000000 08:01 6822824
+ /usr/lib/x86_64-linux-gnu/libavahi-common.so.3.5.3
+7f3b8b93f000-7f3b8bb3e000 ---p 0000b000 08:01 6822824
+ /usr/lib/x86_64-linux-gnu/libavahi-common.so.3.5.3
+7f3b8bb3e000-7f3b8bb3f000 r--p 0000a000 08:01 6822824
+ /usr/lib/x86_64-linux-gnu/libavahi-common.so.3.5.3
+7f3b8bb3f000-7f3b8bb40000 rw-p 0000b000 08:01 6822824
+ /usr/lib/x86_64-linux-gnu/libavahi-common.so.3.5.3
+7f3b8bb40000-7f3b8bb43000 r-xp 00000000 08:01 6822828
+ /usr/lib/x86_64-linux-gnu/libavahi-glib.so.1.0.2
+7f3b8bb43000-7f3b8bd42000 ---p 00003000 08:01 6822828
+ /usr/lib/x86_64-linux-gnu/libavahi-glib.so.1.0.2
+7f3b8bd42000-7f3b8bd43000 r--p 00002000 08:01 6822828
+ /usr/lib/x86_64-linux-gnu/libavahi-glib.so.1.0.2
+7f3b8bd43000-7f3b8bd44000 rw-p 00003000 08:01 6822828
+ /usr/lib/x86_64-linux-gnu/libavahi-glib.so.1.0.2
+7f3b8bd44000-7f3b8bdf8000 r-xp 00000000 08:01 6817122
+ /usr/lib/x86_64-linux-gnu/libgnutls.so.26.21.8
+7f3b8bdf8000-7f3b8bff8000 ---p 000b4000 08:01 6817122
+ /usr/lib/x86_64-linux-gnu/libgnutls.so.26.21.8
+7f3b8bff8000-7f3b8bffe000 r--p 000b4000 08:01 6817122
+ /usr/lib/x86_64-linux-gnu/libgnutls.so.26.21.8
+7f3b8bffe000-7f3b8bfff000 rw-p 000ba000 08:01 6817122
+ /usr/lib/x86_64-linux-gnu/libgnutls.so.26.21.8
+7f3b8bfff000-7f3b8c000000 rw-p 00000000 00:00 0
+7f3b8c000000-7f3b8c021000 rw-p 00000000 00:00 0
+7f3b8c021000-7f3b90000000 ---p 00000000 00:00 0
+7f3b900fd000-7f3b90122000 r-xp 00000000 08:01 6817118
+ /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f3b90122000-7f3b90321000 ---p 00025000 08:01 6817118
+ /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f3b90321000-7f3b90322000 r--p 00024000 08:01 6817118
+ /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f3b90322000-7f3b90323000 rw-p 00025000 08:01 6817118
+ /usr/lib/x86_64-linux-gnu/libdbus-glib-1.so.2.2.2
+7f3b90323000-7f3b90332000 r-xp 00000000 08:01 6822860
+ /usr/lib/x86_64-linux-gnu/libcanberra.so.0.2.5
+7f3b90332000-7f3b90531000 ---p 0000f000 08:01 6822860
+ /usr/lib/x86_64-linux-gnu/libcanberra.so.0.2.5
+7f3b90531000-7f3b90532000 r--p 0000e000 08:01 6822860
+ /usr/lib/x86_64-linux-gnu/libcanberra.so.0.2.5
+7f3b90532000-7f3b90533000 rw-p 0000f000 08:01 6822860
+ /usr/lib/x86_64-linux-gnu/libcanberra.so.0.2.5
+7f3b90533000-7f3b90534000 r-xp 00000000 08:01 6816091
+ /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.3200.3
+7f3b90534000-7f3b90733000 ---p 00001000 08:01 6816091
+ /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.3200.3
+7f3b90733000-7f3b90734000 r--p 00000000 08:01 6816091
+ /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.3200.3
+7f3b90734000-7f3b90735000 rw-p 00001000 08:01 6816091
+ /usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.3200.3
+7f3b90735000-7f3b9073c000 r-xp 00000000 08:01 6822953
+ /usr/lib/x86_64-linux-gnu/libgailutil.so.18.0.1
+7f3b9073c000-7f3b9093b000 ---p 00007000 08:01 6822953
+ /usr/lib/x86_64-linux-gnu/libgailutil.so.18.0.1
+7f3b9093b000-7f3b9093c000 r--p 00006000 08:01 6822953
+ /usr/lib/x86_64-linux-gnu/libgailutil.so.18.0.1
+7f3b9093c000-7f3b9093d000 rw-p 00007000 08:01 6822953
+ /usr/lib/x86_64-linux-gnu/libgailutil.so.18.0.1
+7f3b9093d000-7f3b90948000 r-xp 00000000 08:01 17829443
+/lib/x86_64-linux-gnu/libpopt.so.0.0.0
+7f3b90948000-7f3b90b47000 ---p 0000b000 08:01 17829443
+/lib/x86_64-linux-gnu/libpopt.so.0.0.0
+7f3b90b47000-7f3b90b48000 r--p 0000a000 08:01 17829443
+/lib/x86_64-linux-gnu/libpopt.so.0.0.0
+7f3b90b48000-7f3b90b49000 rw-p 0000b000 08:01 17829443
+/lib/x86_64-linux-gnu/libpopt.so.0.0.0Aborted (core dumped)
+
+
+
+On Sun, Aug 4, 2013 at 8:43 AM, Edson W. R. Pereira &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+
+&gt;<i>
+</I>&gt;<i> Casting the first argument for the call to std::min to qint64 allows
+</I>&gt;<i> compilation, but the program fails with a SIGSEGV when I select my audio
+</I>&gt;<i> device.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson
+</I>&gt;<i>
+</I>&gt;<i> $ ./wsjtx
+</I>&gt;<i> SoundInput active
+</I>&gt;<i>
+</I>&gt;<i> audio input buffer size =  2400  bytes
+</I>&gt;<i>
+</I>&gt;<i> 0 QSOs and 0 countries worked in file &quot;wsjtx_log.adi&quot;
+</I>&gt;<i> SoundInput stopped
+</I>&gt;<i>
+</I>&gt;<i> SoundInput active
+</I>&gt;<i>
+</I>&gt;<i> audio input buffer size =  2400  bytes
+</I>&gt;<i>
+</I>&gt;<i> Segmentation fault (core dumped)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Sat, Aug 3, 2013 at 10:56 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi Bill,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Compiled and running without problems, so far.  Have made a few QSOs on
+</I>&gt;&gt;<i> both modes.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is there a known reason that it won't compile in Qt4, or have you simply
+</I>&gt;&gt;<i> not tried?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         -- Joe, K1JT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On 8/3/2013 7:59 PM, Bill Somerville wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi all,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I have a working version of WSJT-X that uses the Qt audio input and
+</I>&gt;&gt;&gt;<i> output streams. Qt5 is required to build this, PortAudio is not required.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If anyone wants to test this (I have only tested on Windows so far) I
+</I>&gt;&gt;&gt;<i> would appreciate any feedback on building or running.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Attached is a patch which you can apply to the r3522 codebase, there are
+</I>&gt;&gt;&gt;<i> four new files which all go in the top directory with the other main C++
+</I>&gt;&gt;&gt;<i> sources, I believe the patch program will create these.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> To apply the patch use the standard *nix patch command in the root
+</I>&gt;&gt;&gt;<i> directory of the project as follows:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> patch -p0 -i &lt;patch-file-path&gt;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> As the changes are quite extensive I think a build and test on *nix and
+</I>&gt;&gt;&gt;<i> OS-X might be better before any checkin.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 73
+</I>&gt;&gt;&gt;<i> Bill
+</I>&gt;&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/3a1570a3/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130804/3a1570a3/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001672.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001679.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1673">[ date ]</a>
+              <a href="thread.html#1673">[ thread ]</a>
+              <a href="subject.html#1673">[ subject ]</a>
+              <a href="author.html#1673">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

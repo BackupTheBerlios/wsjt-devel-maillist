@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3C51E96068.8060702%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001532.html">
+   <LINK REL="Next"  HREF="001565.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3C51E96068.8060702%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.1">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul 19 17:51:04 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001532.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+        <LI>Next message: <A HREF="001565.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1533">[ date ]</a>
+              <a href="thread.html#1533">[ thread ]</a>
+              <a href="subject.html#1533">[ subject ]</a>
+              <a href="author.html#1533">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+WSJT-X r3496 has been released as Version 1.1.  I posted the Windows 
+installation package, updated User's Guide, ChangeLog, and r3496 tarball 
+on the WSJT web site.
+
+The top of the ChangeLog reads as follows:
+
+July 19, 2013: Version 1.1, r3496
+---------------------------------
+This is a full release of WSJT-X Version 1.1.  It provides an easy way
+to make QSOs in both JT65 and JT9 modes.
+
+Changes from the most recent beta release, r3487, include the
+following:
+
+1. Significant optimizations of the JT9 decoder, providing speed
+improvements up to 5 times.
+
+2. Frequency-setting through DX Lab Commander now works properly at
+non-integral kHz frequencies.
+
+3. A new meter widget has been added (thanks to PY2SDR).
+
+4. Implementation of &quot;multiple instances&quot; has been completed and
+tested (thanks to KK1D).
+
+5. Several minor bug fixes.
+
+I'll post installation packages (or links to them) for Linux and OS X as 
+soon as they are available.
+
+
+This is a good time to review progress and project goals.  When we 
+released Version 1.0 I listed the following plans and &quot;desirables&quot; for 
+future development effort:
+                                                             Done ?
+----------------------------------------------------------------------
+   - Eliminate dependence on Qwt                              YES
+   - Move from Qt4 to Qt5                                    CAN DO
+   - Add rig control through DxLab Commander                  YES
+   - Migrate from PortAudio to Qt's built-in QAudio handlers  NO
+   - Add other WSJT modes: JT65, FSK441, ISCAT, JT4 ...      JT65
+   - Support for I/Q transceivers such as SoftRock            NO
+   - Expanded frequency range, perhaps 5 kHz or so.           YES
+   - HowTo guides for compiling WSJT-X in Windows/MinGW,
+     Linux, OS X, ...                                         NO
+   - Binary installation packages for Linux and OS X          YES/NO
+
+(We could move from Qt4 to Qt5 at any time, and I think we're close to 
+being ready with an installation package for OS X.)
+
+All in all, this is excellent progress in the past six weeks!  In a 
+number of cases we've done even more than we had in mind when writing 
+this list.  Many thanks and a hearty &quot;Well Done!&quot; to everyone who has 
+contributed!
+
+So what next?  It seems to me that the more important identified tasks 
+include these:
+
+   - Add code written by Murray, VK3ACF, for band-by-band antenna info
+   - Move from Qt4 to Qt5
+   - Migrate from PortAudio to Qt's built-in QAudio handlers
+   - Support for I/Q transceivers such as SoftRock
+   - Add more WSJT modes: JT4, ISCAT, FSK441
+   - HowTo guides for compiling WSJT-X
+
+Inevitably we'll also have some bug reports to address... and there are 
+always rig-control issues for particular radios that don't quite work 
+right.  What have I forgotten?  What else should be added?
+
+If you care to tackle one of these tasks, please let us know -- and use 
+the wsjt-devel list to keep us abreast of your progress.
+
+I checked this morning to be sure that r3496 of WSJT-X compiles OK under 
+Qt5.  After changing one variable name all is well.
+(The declaration
+extern QTcpSocket* socket;
+was changed changed to
+extern QTcpSocket* rigSocket;
+to avoid conflict with a definition in winsock.h)
+Are we ready, then, to pull the plug permanently on Qt4?  One downside 
+is that the Windows package built from Qt5 is around 15 MB, as opposed 
+to 10.5 MB for Qt4.  (I guess such a tendency toward bloat is inevitable.)
+
+Your opinions?  Other suggestions?
+
+A few final thoughts, in passing:
+
+Would it be helpful if we made a serious effort to put more time into 
+reviewing one another's code changes and additions?
+
+How best to encourage more people to switch from JT65 to JT9, and to use 
+JT9 on more bands??
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001532.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+	<LI>Next message: <A HREF="001565.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1533">[ date ]</a>
+              <a href="thread.html#1533">[ thread ]</a>
+              <a href="subject.html#1533">[ subject ]</a>
+              <a href="author.html#1533">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

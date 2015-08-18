@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Building wsjt  from svn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20wsjt%20%20from%20svn&In-Reply-To=%3C4C22972E.1080400%40arrl.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000934.html">
+   <LINK REL="Next"  HREF="000938.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Building wsjt  from svn</H1>
+    <B>N9JCA Chris Matthews</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20wsjt%20%20from%20svn&In-Reply-To=%3C4C22972E.1080400%40arrl.net%3E"
+       TITLE="[Wsjt-devel] Building wsjt  from svn">n9jca at arrl.net
+       </A><BR>
+    <I>Thu Jun 24 01:22:22 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000934.html">[Wsjt-devel] Opening Samples/JT8.wav or JT64.wav
+</A></li>
+        <LI>Next message: <A HREF="000938.html">[Wsjt-devel] wsjt svn location
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#936">[ date ]</a>
+              <a href="thread.html#936">[ thread ]</a>
+              <a href="subject.html#936">[ subject ]</a>
+              <a href="author.html#936">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Need some help here Please
+I WAS using Debian Lenny Default Kernel 2.6.26-2
+I did sudo apt-get build-dep wsjt and also made sure I had the extra 
+Dependencies
+included as suggested at wsjt-development
+In order to make wsjt work from an svn build I had to UNINSTALL the 
+Default numpy 1.1.0
+and INSTALL/BUILD numpy 1.0.4
+
+Then I used these Commands:
+svn co -r 1779 <A HREF="svn://svn.berlios.de/wsjt/trunk">svn://svn.berlios.de/wsjt/trunk</A> -- you can change r xxxx 
+to what ever version you want/need
+./configure --enable-gfortran --with-portaudio-include-dir=/usr/include 
+--with-portaudio-lib-dir=/usr/lib
+sudo gedit
+go to trunk in my home folder scroll down to makefile and change
+WsjtMod/Audio.so: $(OBJS2C) $(OBJS3C) $(OBJS2F77) $(SRCS2F90) $(AUDIOSRCS)
+         ${F2PY} -c --quiet --noopt --debug \ &lt;--- put your mouse here 
+and backspace
+         --f77flags=&quot;${FFLAGS}&quot; --f90flags=&quot;${FFLAGS}&quot; \
+to read
+WsjtMod/Audio.so: $(OBJS2C) $(OBJS3C) $(OBJS2F77) $(SRCS2F90) $(AUDIOSRCS)
+         ${F2PY} -c --quiet \
+         --f77flags=&quot;${FFLAGS}&quot; --f90flags=&quot;${FFLAGS}&quot; \
+click on save
+then
+make -j2
+sudo checkinstall -D
+I change
+1) to read Summary: wsjt weak amateur radio digital signals
+2) to read: wsjt
+3) to read Version: r1779
+Type enter and the build is make into a .deb package
+
+There will be a nag file appear when you run wsjt from the terminal so 
+in order to fix it
+bring up a terminal BEFORE you run wsjt and type
+cd trunk
+cp KVASD_g95 ../.wsjt
+sudo su
+cp KVASD_g95 /usr/local/bin
+
+Bring up a terminal type in wsjt you should now have a running copy of wsjt7
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+I am NOW using Ubuntu 10.4 with the default numpy of 1.1.3.0
+Using the same procedures as with Debian Lenny
+WITHOUT changing numpy
+When I bring up a terminal and type in wsjt
+I get
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">xxxx at ubuntu</A>:~$ wsjt
+python: can't open file '/usr//bin/wsjt.py': [Errno 2] No such file or 
+directory
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">xxxx at ubuntu</A>:~$
+
+so I type wsjt.py
+and get
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">xxxx at ubuntu</A>:~$ wsjt.py
+Traceback (most recent call last):
+   File &quot;/usr/local/bin/wsjt.py&quot;, line 11, in &lt;module&gt;
+     from WsjtMod import Audio
+ImportError: cannot import name Audio
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">xxxx at ubuntu</A>:~$
+
+Question is
+What do I have to do/change to make wsjt work on Ubuntu
+
+Sorry for the long E Mail but I had to explain
+exactly what I am doing
+
+N9JCA Chris Matthews
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000934.html">[Wsjt-devel] Opening Samples/JT8.wav or JT64.wav
+</A></li>
+	<LI>Next message: <A HREF="000938.html">[Wsjt-devel] wsjt svn location
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#936">[ date ]</a>
+              <a href="thread.html#936">[ thread ]</a>
+              <a href="subject.html#936">[ subject ]</a>
+              <a href="author.html#936">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

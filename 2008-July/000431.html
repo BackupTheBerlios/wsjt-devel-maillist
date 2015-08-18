@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Mac /  WSPR developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C48779561.8040907%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000430.html">
+   <LINK REL="Next"  HREF="000432.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Mac /  WSPR developments</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C48779561.8040907%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] Mac /  WSPR developments">bruce at quidnet.com
+       </A><BR>
+    <I>Fri Jul 11 19:16:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000430.html">[Wsjt-devel] last beta r902
+</A></li>
+        <LI>Next message: <A HREF="000432.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've jumped over to Mac development for the time being, thanks to the 
+progress made by John G4KLA.  I am finally able to build and run WSPR 
+and WJST on OSX using a G5 (big-endian) Mac. 
+
+I finally punted on the macports tool chain, as I fully determined that 
+the python crashing issues I had before had nothing to do our code, as I 
+could replicate it with a relatively short Tkinter/Pmw test program.  So 
+now I'm using the stock leopard python, upgrading to numpy 1.0.4 and PIL 
+1.1.6.  I'm using gfortran built for the architecture, and the stock gcc 
+for the C pieces.
+
+WSPR:  I've backported the endian changes to the wspr branch (except for 
+getfile).  It's a pain to have diverged code like that; it would seem to 
+make sense to build wspr out of the trunk along side wsjt so that 
+algorithm improvements go into both.  Tx works perfectly fine, but Rx is 
+not decoding correctly....sync, snr, and freq identification are all 
+good, but somewhere from decode162 on isn't working, as everything comes 
+out undecodable ('*** ??? ***').  Fano seems to see the signals OK (low 
+cycle count when processing), but but that's as far as I got. My WSPRing 
+on 30m right now is from the Mac, and it's being copied well.
+
+WSJT:  I've only tried JT65A.  JT65A receives and decodes fine, and 
+seems to Tx OK.  However, I'm getting bogus DFs in some places, and 
+certainly when I click in the spectrum to try to decode something, the 
+resulting df is bogus.  I haven't looked at that at all, but probably 
+simple.  John, do you see that as well?
+
+I am heading on vacation for much of the next two weeks starting Sunday, 
+so not sure how much farther I will get.  I may check in the wspr branch 
+changes later today, but I was hoping to get decoding working again first!
+
+--bruce W1BW
+
+
+
+John Nelson wrote:
+&gt;<i> Hi Bruce,
+</I>&gt;<i>
+</I>&gt;<i> &gt;  I'm on holiday most of the next two weeks, so if I don't 
+</I>&gt;<i> &gt; make progress quickly, it will have to wait..
+</I>&gt;<i>
+</I>&gt;<i> Enjoy your holiday - I'll wait for further news when you come back.
+</I>&gt;<i>
+</I>&gt;<i> 73  John    G4KLA
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000430.html">[Wsjt-devel] last beta r902
+</A></li>
+	<LI>Next message: <A HREF="000432.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

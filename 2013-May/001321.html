@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A62351.8010701%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001318.html">
+   <LINK REL="Next"  HREF="001322.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A62351.8010701%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed May 29 17:48:33 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001318.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+        <LI>Next message: <A HREF="001322.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1321">[ date ]</a>
+              <a href="thread.html#1321">[ thread ]</a>
+              <a href="subject.html#1321">[ subject ]</a>
+              <a href="author.html#1321">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the comments on my organizational proposal for subsequent 
+development efforts.  We seem to be in good agreement.
+
+Following gentle reminders from AC6SL and G4KLA, I've cleaned up all 
+remaining compiler warnings produced on my systems (both Windows and 
+Linux), and I've made a few other minor tweaks to the code.  I am hereby 
+proposing that SVN revision 3320 is a candidate for release as WSJT-X 
+Version 1.0, possibly tomorrow?  Please let me know if you foresee any 
+problems.
+
+Looking ahead:
+
+I agree with Edson that support for many OS-specific external programs 
+could rapidly become problematic.  I see this as a conflict between the 
+worthwhile goals of keeping the program &quot;pure&quot; (reasonably free of 
+OS-dependent #ifdef's etc.), and having it widely adopted on the most 
+popular platforms and with the most popular companion software.  At 
+present we are providing some support for JT-Alert, Ham Radio Deluxe 
+(Windows only) and PSK Reporter (Windows and Linux, but with separate 
+code).  (Possibly Edson's code for PSK Reporter can also be used on 
+Windows; I haven't tried.)  I suggested that we should support DxLab 
+Commander at about the same level that we do HRD.  This would also be 
+Windows only, and quite possibly it should be the last such effort we 
+make.
+
+It would be good to look further at Edson's suggestion that we could 
+develop a generalized inter-program interface -- a file or socket with 
+the necessary hooks so that a separate, OS-dependent program could act 
+as a link to other software.
+
+I also agree that native support for IQ transceivers like the SoftRock 
+would be a good development goal.  My experience doing this with WSPR 
+suggests that the number of users might be a modest fraction of the 
+total, but the level of user enthusiasm would be high.
+
+One final thought.  The present usage of JT9 is such that there is 
+little reason to restrict the decoding frequency range (and that 
+displayed in the waterfall) to 1000 Hz.  When adding other modes -- 
+probably JT65 first -- my current plan is to increase the maximum 
+displayed bandwidth to more like 4 or 5 kHz.
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001318.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+	<LI>Next message: <A HREF="001322.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1321">[ date ]</a>
+              <a href="thread.html#1321">[ thread ]</a>
+              <a href="subject.html#1321">[ subject ]</a>
+              <a href="author.html#1321">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

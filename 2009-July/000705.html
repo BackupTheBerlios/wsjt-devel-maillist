@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Fwd: Re:  gfortran]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20gfortran%5D&In-Reply-To=%3C4A68C72F.4070103%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000697.html">
+   <LINK REL="Next"  HREF="000710.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Fwd: Re:  gfortran]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BFwd%3A%20Re%3A%20%20gfortran%5D&In-Reply-To=%3C4A68C72F.4070103%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Fwd: Re:  gfortran]">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jul 23 22:25:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000697.html">[Wsjt-devel] Fw: [wsjtgroup] Item to add to the next upgrade
+</A></li>
+        <LI>Next message: <A HREF="000710.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#705">[ date ]</a>
+              <a href="thread.html#705">[ thread ]</a>
+              <a href="subject.html#705">[ subject ]</a>
+              <a href="author.html#705">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi James,
+
+I've been traveling for the past ten days, and just back
+this week.  I'm remiss in not answering a couple of your emails.
+
+&gt;<i> Is is normal for over 1k of data to be passed on the stack when making
+</I>&gt;<i> function calls?
+</I>
+Can you give me an example of where this happens?  It sounds
+unusual (and probably undesirable), offhand.
+
+&gt;<i> I have only looked in the fortran.f90 code that ends up in the python
+</I>&gt;<i> interface lib for wsjt: Audio.so
+</I>
+All WSJT code compiled from Fortran ends up in Audio.so.
+
+&gt;<i> For re-entrant code, should you really be using the &quot;save&quot; fortran
+</I>&gt;<i> statement?
+</I>
+This is a reasonable question, and a reasonable thing to be
+looking into.  Problems could arise if &quot;save&quot; is used
+inappropriately in a routine that can be called from more
+than one thread.
+
+Most of the Fortran code is called in only one thread.  The
+few exceptions should be examined carefully, to be sure they
+are thread-safe.
+
+	-- Joe
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000697.html">[Wsjt-devel] Fw: [wsjtgroup] Item to add to the next upgrade
+</A></li>
+	<LI>Next message: <A HREF="000710.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#705">[ date ]</a>
+              <a href="thread.html#705">[ thread ]</a>
+              <a href="subject.html#705">[ subject ]</a>
+              <a href="author.html#705">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

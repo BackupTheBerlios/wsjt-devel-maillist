@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR about ready for release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C487A7F87.8030705%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000452.html">
+   <LINK REL="Next"  HREF="000454.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR about ready for release?</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C487A7F87.8030705%40charter.net%3E"
+       TITLE="[Wsjt-devel] WSPR about ready for release?">k9ao at charter.net
+       </A><BR>
+    <I>Mon Jul 14 00:19:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000452.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+        <LI>Next message: <A HREF="000454.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#453">[ date ]</a>
+              <a href="thread.html#453">[ thread ]</a>
+              <a href="subject.html#453">[ subject ]</a>
+              <a href="author.html#453">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry Popov wrote:
+&gt;&gt;<i> Those executables are not in the repository  
+</I>&gt;&gt;<i> because their code is not 
+</I>&gt;&gt;<i> open-source.  The ones for Linux are available on the WSJT web site:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/kvasd_g95">http://physics.princeton.edu/pulsar/K1JT/kvasd_g95</A>
+</I>&gt;<i> 
+</I>&gt;&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/kvasd_gfortran">http://physics.princeton.edu/pulsar/K1JT/kvasd_gfortran</A>
+</I>&gt;<i> 
+</I>&gt;&gt;<i>        -- 73, Joe, K1JT
+</I>&gt;<i> 
+</I>&gt;<i> I really do not understand why kvasd_g95 is so secret code and is not in
+</I>&gt;<i> SVN as we all already have KVASD and several variations in SVN. So
+</I>&gt;<i> download it from the link above. Change the name to KVASD_g95. One more
+</I>&gt;<i> detail. While KVASD can be started as binary: KVASD, KVASD_g95 and
+</I>&gt;<i> KVASD_gfortran (after rename) shoud be started as:
+</I>&gt;<i> ./KVASD_g95
+</I>&gt;<i> ./KVASD_gfortran
+</I>&gt;<i> so change the code in rumqqq.F90. The good news is: KVASD needs
+</I>&gt;<i> libg2f.so.0 An obsolute library in Debian at least. KVASD_g95 and
+</I>&gt;<i> KVASD_gfortran (after rename) do not need it.
+</I>
+Thanks Harry, that did the trick after capitalizing KAVSD in the file name.
+
+It's odd though because the gfortran version of KAVSD is there and the 
+g95 file version of KAVSD has an exe extension. So I'm wondering if this 
+isn't an omission or error somehow in SVN?
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000452.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+	<LI>Next message: <A HREF="000454.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#453">[ date ]</a>
+              <a href="thread.html#453">[ thread ]</a>
+              <a href="subject.html#453">[ subject ]</a>
+              <a href="author.html#453">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

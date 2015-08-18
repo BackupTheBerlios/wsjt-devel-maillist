@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r 3390
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r%203390&In-Reply-To=%3C51C97B42.1080407%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001390.html">
+   <LINK REL="Next"  HREF="001386.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r 3390</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r%203390&In-Reply-To=%3C51C97B42.1080407%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] r 3390">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 25 13:13:06 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001390.html">[Wsjt-devel] r 3390
+</A></li>
+        <LI>Next message: <A HREF="001386.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1385">[ date ]</a>
+              <a href="thread.html#1385">[ thread ]</a>
+              <a href="subject.html#1385">[ subject ]</a>
+              <a href="author.html#1385">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+VK4BDJ wrote:
+&gt;<i> Hi Joe ......this r3390 shows a error when compiling in Linux
+</I>&gt;<i>
+</I>&gt;<i> in member function 'void MainWindow::readFromStdout()': mainwindow.cpp
+</I>&gt;<i> expected '}&quot; before &quot;b&quot; mainwindow.cpp 1499
+</I>&gt;<i> unused variable 'okToPost' [-Wunused-variable] mainwindow.cpp 1460
+</I>
+Sorry about the typo in r3390.  (I made a mistake when entering several 
+changes suggested by G4LKA.)  It was fixed in r3391.
+
+AC6SL wrote:
+&gt;<i> In addition to that spurious &quot;b&quot; at mainwindow.cpp:1499, I am getting
+</I>&gt;<i> a segment fault at main.cpp:39
+</I>&gt;<i>
+</I>&gt;<i> 37:   if(jt9com_.newdat==0) {
+</I>&gt;<i> 38:     }
+</I>&gt;<i> 39:     memset(to,0,size);         //Zero all decoding params in shared memory
+</I>&gt;<i>
+</I>&gt;<i> I do not see where this changed, and I am able to examine it in gdb,
+</I>&gt;<i> but the memset() seg faults.
+</I>
+Hmmm, it's running without any problems here. in both Windoze and Linux. 
+  Are all the required files available?  Is there an issue with the size 
+of the shared memory region?
+
+&gt;<i> Also, why is the body of the &quot;if&quot; statement empty?
+</I>
+I don't remember... maybe Edson does.  Looks like a vestigial remnant of 
+some debugging effort?  Probably should be removed.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001390.html">[Wsjt-devel] r 3390
+</A></li>
+	<LI>Next message: <A HREF="001386.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1385">[ date ]</a>
+              <a href="thread.html#1385">[ thread ]</a>
+              <a href="subject.html#1385">[ subject ]</a>
+              <a href="author.html#1385">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

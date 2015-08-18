@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX - Docs Update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20-%20Docs%20Update&In-Reply-To=%3C52E0AF8C.3010406%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002086.html">
+   <LINK REL="Next"  HREF="002093.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX - Docs Update</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20-%20Docs%20Update&In-Reply-To=%3C52E0AF8C.3010406%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJTX - Docs Update">ki7mt at yahoo.com
+       </A><BR>
+    <I>Thu Jan 23 06:58:36 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002086.html">[Wsjt-devel] Asciidoc - Editor Syntax Highlight
+</A></li>
+        <LI>Next message: <A HREF="002093.html">[Wsjt-devel] WSJTX - Docs Update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2091">[ date ]</a>
+              <a href="thread.html#2091">[ thread ]</a>
+              <a href="subject.html#2091">[ subject ]</a>
+              <a href="author.html#2091">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Joe, All,
+
+If this is not a direction you'd like to go in, please let me know.
+
+Based on: WSJTX SVN 3655
+
+Download from:
+<A HREF="http://ubuntuone.com/6bEtGZlq4T7ANtgwoAkRab">http://ubuntuone.com/6bEtGZlq4T7ANtgwoAkRab</A>
+
+shasum: 7cbe019a901af7b30ef6562ebd70836d12f2ae7e
+md5sum: 5aaf5d973c28f2b4b05eeb3f48b80507
+
+To build:
+cd to where you downloaded doc.tar.gz
+tar -xzvf ./doc.tar.gz
+cd ./doc &amp;&amp; chmod +x ./build-doc.sh &amp;&amp; ./build-doc.sh all
+
+I pulled the latest SVN 3655, and re-worked wsjtx-main.txt to split
+each sub-section into it's own file. This will allow a build-check
+script to parse the files (./source/*.txt) and provide the user with
+the current status. I've edited very little content, apart from minor
+syntax items here and there. I did add a sub-section for Installation
+&gt;&gt;<i> Mac OS. For the best view of changes, toc2 seems the best.
+</I>
+The HTML files render properly for all three TOC methods, post split.
+The tar file contains all the files apart from build-check script,
+which is not finished yet. I also hard coded the doc version for
+testing outside the wsjtx source tree.
+
+The idea is, one can pull the latest SVN, run a quick status check and
+be provided with a list of files / topics which need work (added,
+updating, deleting, etc) based on the file's tag. I should have status
+check script complete tomorrow evening. Current status of the changes
+I am proposing:
+
+COMPLETED ITEMS:
+* Cleaned up a few typo's, but mostly focused on structuring the files.
+- -- To accommodate a distributed work-flow. (54+ files added to
+./source/...txt).
+
+* Turned wsjtx-main.txt into a control file, using
+include::&lt;file-name&gt; directive to pull in sub-sections. A few small
+sections remain, but they too could be be pulled into working files.
+- -- Allows folks to work on the smaller sub-sections, rather than
+everyone trying to work the same doc (wsjtx-main.txt).
+- -- It also helps keep HTML [[X??]] anchors from having to be
+re-written when a section changes, gets added or removed.
+
+* Added '// Status=.. ..' Tag to the top of each file, to enable
+build-check.sh script functions.
+- --  Tested several tags + file combinations using, CURRENT, REVIEW,
+EDIT, INPROGRESS, OBSOLETE,.
+- -- Tags can be changed, added to, reduced or whatever is needed.
+
+TO-DO ITEMS
+* Finish build-status.sh ; simple script to parse ./source/*.txt and
+return the following:
+- -- Summary Count of all Tags
+- -- Status of a single file
+- -- List files for a given tag value (basic work / to-do list)
+- -- Add List Comment function to the script.
+* Write rig_templates, and populate in the source directory.
+* Update build-doc.sh to loop through all rig_templates in ./source
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS4K+MAAoJEAmfcyeKlj0xMDEH/2W45VY7/+Upiss2tfOvGEzZ
+CKn82LP9M6TE1vOr/n6mHt0jO0Y4u+4BV01Tn7q+gUiOTHMnqWqAK+HDGycmjQ3b
+1JQcyZrfaX91ZYll8LkY6uzavuUgaXdJEiM7cqzL8fLOm6/dSkTmAux56W1hoJdS
+LnRyZclYV++3PNxJYV4V23EcaPhCm8DdcTIvPaW1eubHbap5SitJ/CZB8pFRN2xx
+YtFf4EkXgH8jF/Ex+blYvSUJddGGKmpzycnT4JWQgMwvD3jkkTi18qy5gqsgNEMX
+ySUg4onPmP1+DETVwK/Jeb274gdOL8BlwpGtNDwOYgMdJRMg8YzfBD6noToz0Zk=
+=XP47
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002086.html">[Wsjt-devel] Asciidoc - Editor Syntax Highlight
+</A></li>
+	<LI>Next message: <A HREF="002093.html">[Wsjt-devel] WSJTX - Docs Update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2091">[ date ]</a>
+              <a href="thread.html#2091">[ thread ]</a>
+              <a href="subject.html#2091">[ subject ]</a>
+              <a href="author.html#2091">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

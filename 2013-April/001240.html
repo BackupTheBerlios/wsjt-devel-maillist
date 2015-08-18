@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] pctile.o fixed, now no rule to make decode.9a
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20pctile.o%20fixed%2C%20now%20no%20rule%20to%20make%20decode.9a&In-Reply-To=%3C1366999974.37282.YahooMailNeo%40web125503.mail.ne1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001239.html">
+   <LINK REL="Next"  HREF="001241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] pctile.o fixed, now no rule to make decode.9a</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20pctile.o%20fixed%2C%20now%20no%20rule%20to%20make%20decode.9a&In-Reply-To=%3C1366999974.37282.YahooMailNeo%40web125503.mail.ne1.yahoo.com%3E"
+       TITLE="[Wsjt-devel] pctile.o fixed, now no rule to make decode.9a">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Apr 26 20:12:54 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001239.html">[Wsjt-devel] pctile.o failed to build
+</A></li>
+        <LI>Next message: <A HREF="001241.html">[Wsjt-devel] WSJT-X User's Guide
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1240">[ date ]</a>
+              <a href="thread.html#1240">[ thread ]</a>
+              <a href="subject.html#1240">[ subject ]</a>
+              <a href="author.html#1240">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Got that one sorted. I should have known this, but I needed to change everything over to mingw32-gfortran.&#160;
+
+Now I'm getting this one:
+
+mingw32-gfortran error: No rule to make target 'decode9a.o', needed by 'libjt9.a' .. Stop.
+
+??
+
+73' Greg, KI7MT
+
+...
+
+&gt;<i>I checked and pctile.f90 is in the ./libs where I think it should be &gt;&gt;pctile.o is the first object in Makefile.MinGW OBJTS1 so maybe I have a setup problem or am I doing something wrong?  Afraid I can't immediately put my finger on your problem.  I assume that 
+</I>you've verified that you can compile with g95, say from the command 
+line.  You'll need to troubleshoot your MinGW setup, environment, etc., 
+one step at a time. -- 73, Joe, K1JT
+
+
+________________________________
+ From: Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt;
+To: &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt; 
+Sent: Friday, April 26, 2013 3:34 PM
+Subject: pctile.o failed to build
+ 
+
+
+Hi Joe, All,
+
+First,&#160;apologies for leading&#160;you astray last time Joe, I was actually compiling on Linux, not Window so I'll stipulate which OS from now on, as to not confuse things.
+
+This time is on Windows, Vista-64, with:
+
+
+Qt: c:\Qt
+MinGW: c:\MinGW
+
+Unrelated but, I now have hamlibs and palir where they should be as well.
+
+I checked out the latest svn for wsjtx this morning and tried to build it, but it fails right out the gate.
+
+I checked over the wsjtx.pro and Makefiles and made sure the paths were corrected there, but when I execute make -f Makefile.MinGW in ./libs I get the following error:
+
+<A HREF="http://imagebin.org/255495">http://imagebin.org/255495</A>
+
+
+I checked and pctile.f90 is in the ./libs where I think it should be
+
+pctile.o is the first object in Makefile.MinGW OBJTS1 so maybe I have a setup problem or am I doing something wrong?
+
+
+73's Greg, KI7MT
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130426/6f202529/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130426/6f202529/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001239.html">[Wsjt-devel] pctile.o failed to build
+</A></li>
+	<LI>Next message: <A HREF="001241.html">[Wsjt-devel] WSJT-X User's Guide
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1240">[ date ]</a>
+              <a href="thread.html#1240">[ thread ]</a>
+              <a href="subject.html#1240">[ subject ]</a>
+              <a href="author.html#1240">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

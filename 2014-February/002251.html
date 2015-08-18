@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] feedback on win7 batch file install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20feedback%20on%20win7%20batch%20file%20install&In-Reply-To=%3C52F50E73.4020301%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002250.html">
+   <LINK REL="Next"  HREF="002252.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] feedback on win7 batch file install</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20feedback%20on%20win7%20batch%20file%20install&In-Reply-To=%3C52F50E73.4020301%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] feedback on win7 batch file install">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Feb  7 17:48:51 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002250.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+        <LI>Next message: <A HREF="002252.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2251">[ date ]</a>
+              <a href="thread.html#2251">[ thread ]</a>
+              <a href="subject.html#2251">[ subject ]</a>
+              <a href="author.html#2251">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Chase,,
+
+Thanks for checking checking this out. See comments below:
+
+On 2/7/2014 16:20, Charles Yahrling wrote:
+&gt;<i> Greg et al,
+</I>&gt;<i> 
+</I>&gt;<i> Here's what I found:
+</I>&gt;<i> 
+</I>&gt;<i> 1) chrome users need to disable malware and fishing protection
+</I>&gt;<i> before doing your download else it's flagged as malicious and
+</I>&gt;<i> stops
+</I>
+I also got grief from gmail about the attachment, but Norton and AVG
+both say my Win box is bug free.
+
+&gt;<i> 2)  unzip of the first file creates ..\Downloads\wsjt-doc\wsjt-doc
+</I>&gt;<i> with wsjt-setup.bat inside.
+</I>&gt;<i> 
+</I>&gt;<i> 3) on the first try, download of cygwin 64 landed in c:\cygwin.
+</I>&gt;<i> after launching that I got many popups asking what source server to
+</I>&gt;<i> use, what files I wanted, LibUSB-Win32 driver was missing but I
+</I>&gt;<i> could get it from sourceforge, and that I needed the win native
+</I>&gt;<i> version of Bonjour.
+</I>
+I'll update the instructions so they don't point to the .EXE directly,
+then use the Right-Click, Save Too option can be used.
+
+&gt;<i> 4)  I deleted it all and started over, being careful to put cygwin
+</I>&gt;<i> in ..\Downloads\wsjt-docs\wsjt-docs. setup batch file then ran as
+</I>&gt;<i> advertised.
+</I>&gt;<i> 
+</I>&gt;<i> 5) running wsjt-doc-setup ran to completion with no errors seen
+</I>&gt;<i> 
+</I>&gt;<i> 6) wsjt-doc.bat terminated with &quot;/usr/bin/svn.exe: error while
+</I>&gt;<i> loading shared libraries cannot open shared object file: no such
+</I>&gt;<i> file or directory&quot; ( I used both the corrected svn
+</I>&gt;<i> path..../wsjt/doc and the corrected-corrected path .../branches/doc
+</I>&gt;<i> ) with same result
+</I>
+I'm a little confused on this one. wsjtx-doc.bat should simplly open
+up / run a Cygwin Terminal, then you issue the svn checkout command to
+pull the ../branch/doc
+
+subversion is the 3rd element in the set PACKAGES variable, I am not
+sure if svn did not install or what the deal is there, but the
+wsjt-doc.bat should not be looking for subversion* at all.
+
+When you say you used corrected paths, can you explain that a bit
+more? There should be no path correction needed.
+
+&gt;<i> 
+</I>&gt;<i> 7)    reboot didn't help
+</I>&gt;<i> 
+</I>&gt;<i> 8) I have a very fast cable modem connection so i don't think
+</I>&gt;<i> timeouts were an issue
+</I>&gt;<i> 
+</I>&gt;<i> When I earlier queried Joe about the wsjt-x installer defaulting
+</I>&gt;<i> to c:\wsjtx his explanation was that versions of windows later than
+</I>&gt;<i> XP might not grant appropriate rights to make install go smoothly.
+</I>&gt;<i> Could this be related?  If so a rework of the batch files to make
+</I>&gt;<i> sure everything lands in c:\wsjt would be a good idea.
+</I>
+Yes, this probably the best approach, c:\wsjtc-doc \ d:\wsjt-doc and
+stay well clear of the User Authentication stuff.
+
+&gt;<i> Also, if you make and corrections to your instructions would you
+</I>&gt;<i> start over with a new post that goes step by step?   It's too easy
+</I>&gt;<i> to make a mistake flipping back and forth between diffs.
+</I>
+I'll write up an updated version for this later today, as Im
+
+&gt;<i> hope this is of some use, chuck
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________ Wsjt-devel mailing
+</I>&gt;<i> list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (MingW32)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS9Q5zAAoJEAmfcyeKlj0xNf4H/00jMmKCKXIwedIXFMVcy/vp
+H9Nsn23Gw+aZ0gSy88ztBYsFSzhrldvU+aMkjalEfJZ4n/EcX4eByUIsjWPXJ8BF
+R++966jk6Cfhl/UthL2YuuIWRVU0JTb0PNUDGmOlWNC85WpPMOagV0vbKYijgRMS
+ndn/jLFS39dx4A3p4BSc21XXcwqgXxhyD3gZLoAhk6Jp1XpN3p5NURTUBwWNPlbb
+GrzjuvI3J7mZgKbBiJ0vMEE9cc1moEcsBMFRrAWzkXcCvX4Fa1GxMiqkXOd20z6i
+SN5DkgCAd/rMXS9hVA1ErQiAlyPdNZZS/snY1mB97jq2CChzQD61mIR0pzGG5vc=
+=erbs
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002250.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+	<LI>Next message: <A HREF="002252.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2251">[ date ]</a>
+              <a href="thread.html#2251">[ thread ]</a>
+              <a href="subject.html#2251">[ subject ]</a>
+              <a href="author.html#2251">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

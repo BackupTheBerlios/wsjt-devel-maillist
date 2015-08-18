@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3C517FC186.9070706%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001252.html">
+   <LINK REL="Next"  HREF="001255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3C517FC186.9070706%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Apr 30 15:05:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001252.html">[Wsjt-devel] WSJT-X v0.95 r3243
+</A></li>
+        <LI>Next message: <A HREF="001255.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1254">[ date ]</a>
+              <a href="thread.html#1254">[ thread ]</a>
+              <a href="subject.html#1254">[ subject ]</a>
+              <a href="author.html#1254">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson and all,
+
+Thanks for responding to the comment on wsjtgroup from G8HLH.  These not 
+unexpected issues are the main reason for the comment
+
+&quot;CAT control diagnostics are presently rather rudimentary, we're still 
+working on this&quot;
+
+that I put into the ChangeLog.  As you say, we need to put some effort 
+into dealing with communication timeouts and other exceptions being 
+thrown by hamlib.
+
+It seems that having WSJT-X set the radio to USB mode was a bad idea -- 
+many people want to use a &quot;data&quot; mode instead.  And the K3, in 
+particular, seems to be a bit touchy about timing of CAT commands. 
+Possibly polling the radio for frequency every second is too fast for 
+some radios.  (It works fine on my TS-2000.)  Too bad the callback 
+method does not work.
+
+With some small changes along these lines, and sorting out the exception 
+handling, I think most people will be happy.  I'll have some time to 
+work on this later today.
+
+	-- Joe, K1JT
+
+On 4/30/2013 7:58 AM, Edson W. R. Pereira wrote:
+&gt;<i> Roger et al,
+</I>&gt;<i>
+</I>&gt;<i> It seems most of, if not all, these runtime errors are related to
+</I>&gt;<i> exceptions being thrown by hamlib. We are looking at this issues.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Apr 30, 2013 at 6:40 AM, rodger_g8hlh&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g8hlh at blueyonder.co.uk</A>&gt;wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> **
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi All,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Small glitch appeared on last revision r3243. Using FT-897&amp;  LDG
+</I>&gt;&gt;<i> AT-897Plus. Previous version no problem. Version r3243 On tuning my
+</I>&gt;&gt;<i> AT-897plus It now gives a Microsoft Visual C++ Runtime Library Message:-
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This Application has requested the runtime to terminate in an unusual way.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Please contact the Applications Support Team for more information.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Unfortunately it give no further info On the previous release I had no
+</I>&gt;&gt;<i> problem, looks like its the two way comms that did it
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Trust this is of help.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ROG.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001252.html">[Wsjt-devel] WSJT-X v0.95 r3243
+</A></li>
+	<LI>Next message: <A HREF="001255.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1254">[ date ]</a>
+              <a href="thread.html#1254">[ thread ]</a>
+              <a href="subject.html#1254">[ subject ]</a>
+              <a href="author.html#1254">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

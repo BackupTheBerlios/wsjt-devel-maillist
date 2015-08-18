@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Learning curve, samplerate.h
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Learning%20curve%2C%20samplerate.h&In-Reply-To=%3C200704271620.l3RGKBoj020033%40dill.epix.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000101.html">
+   <LINK REL="Next"  HREF="000098.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Learning curve, samplerate.h</H1>
+    <B>w3sz at epix.net</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Learning%20curve%2C%20samplerate.h&In-Reply-To=%3C200704271620.l3RGKBoj020033%40dill.epix.net%3E"
+       TITLE="[Wsjt-devel] Learning curve, samplerate.h">w3sz at epix.net
+       </A><BR>
+    <I>Fri Apr 27 18:20:11 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000101.html">[Wsjt-devel] Learning curve...
+</A></li>
+        <LI>Next message: <A HREF="000098.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core 6 (Audio.so: undefined symbol: gmtime_)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Scott,
+
+I do NOT think that you are seeing a problem due to the wsjt or its configure code.
+
+Rather, as I understand it, whenever you attempt to create a symbolic link and see:
+
+ln: creating symbolic link `/usr/include/samplerate.h' to
+`/download/wsjt596r309/samplerate.h': File exists
+
+as you did, it means there is already a file in the place to which you are attempting to write, and so the link is NOT created.  This often happens if you have another, possibly
+inappropriate, file in that directory place from a previous install.
+
+You need to remove the original item e.g. /usr/include/samplerate.h and THEN try to
+create the link again.
+
+Note that according to the listing which you supplied, you had this happen NOT ONLY FOR SAMPLERATE.H but for many other symbolic links that you were attempting to create.
+
+If you have an inappropriate version of a header or library file where the configure process expects to find an appropriate version, it has been my experience that things
+will fail in this way.  After you fix the problem with samplerate.h, you will likely find that the configure process chokes on one of your library files [.so] that has an inappropriate version due to another instance of this type of problem.  I say this based on the listing which you supplied.
+
+If you don't have the appropriate version of samplerate.h in /usr/include/ then things
+will not work for you [I believe].
+
+If you do 'updatedb' and then 'locate samplerate.h' you will see everywhere samplerate.h is on your system.  But it won't tell you if the version in each place is appropriate or not.  To ensure that, you need to remove the potentially inappropriate versions and re-do the links as noted above.
+
+Finally, if the above leads to a dead-end, you might check the following, in case your system is set up differently than mine.  samplerate.h should be in the same directory as
+the other standard header files.  So do an 'updatedb' and then a 'locate string.h' and a 'locate stdlib.h'.  Both string.h and stdlib.h are in standard header include directory for your system.  If it is the same as mine, it should be '/usr/include'.  If it is something different, like 'usr/local/include' [I would be surprised], then you will need to modify the above to reflect THAT directory.
+
+On my machine, copies of samplerate.h are in all of my various wsjt directories, as well as in /usr/include/sys and /usr/include and /usr/local/lib.
+
+It is of course possible that the 'file exists' errors are due to your retracing your steps after initially making the links correctly, and that there is another underlying
+problem.  But that can't be determined [I believe] until all of the 'file exists' errors are taken care of by removing the [possibly inappropriate] placeholders and trying again.
+
+Please keep us posted.
+
+PS I would have sent this directly to you but I did not have your email address.
+
+Hope that helps,
+
+73,
+
+W3SZ
+Roger Rehr
+<A HREF="http://www.nitehawk.com/w3sz">http://www.nitehawk.com/w3sz</A>
+
+
+Quoting Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;:
+
+[Hide Quoted Text]
+Scott --
+
+I'm copying this reply to the wsjt-devel list.  The
+configure script is the work of Diane Bruce, VA3DB
+(<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>) . She is probably the best one to help you.
+
+        -- Joe, K1JT
+
+Scott Tilley wrote:
+Hi Joe
+
+Having never seriously used Linux I'm stuck on the following issue as
+you will note from the following:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# export
+LD_LIBRARY_PATH=/usr/local/lib
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ln -s
+/download/wsjt596r309/samplerate.h /usr/include/samplerate.h
+ln: creating symbolic link `/usr/include/samplerate.h' to
+`/download/wsjt596r309/samplerate.h': File exists
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ln -s /usr/bin/f2py2.4
+/usr/bin/f2py
+ln: creating symbolic link `/usr/bin/f2py' to `/usr/bin/f2py2.4': File
+exists
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ln -s
+/usr/lib/libsamplerate.so.0
+/usr/lib/libsamplerate.so
+ln: creating symbolic link `/usr/lib/libsamplerate.so' to
+`/usr/lib/libsamplerate.so.0': File exists
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ln -s /usr/lib/libg2c.so.0
+/usr/lib/libg2c.so
+ln: creating symbolic link `/usr/lib/libg2c.so' to
+`/usr/lib/libg2c.so.0': File
+exists
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ln -s
+/download/wsjt596r309/wsjt.py
+/usr/bin/wsjt.py
+ln: creating symbolic link `/usr/bin/wsjt.py' to
+`/download/wsjt596r309/wsjt.py': File exists
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at stilley-desktop</A>:/download/wsjt596r309# ./configure --enable-portaudio
+checking for stdlib.h... yes
+checking for string.h... yes
+checking samplerate.h usability... no
+checking samplerate.h presence... no
+checking for samplerate.h... no
+
+configure: error: You need samplerate.h to use --enable-portaudio
+
+I'm following the compile instructions offered by W3SZ at:
+<A HREF="http://www.nitehawk.com/w3sz/wsjt596hints.html">http://www.nitehawk.com/w3sz/wsjt596hints.html</A>
+
+Any thoughts of where I'm missing the boat?
+
+73 Scott  VE7TIL
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000101.html">[Wsjt-devel] Learning curve...
+</A></li>
+	<LI>Next message: <A HREF="000098.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core 6 (Audio.so: undefined symbol: gmtime_)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

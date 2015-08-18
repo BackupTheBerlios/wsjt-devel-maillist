@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3C482C889D.2000100%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000256.html">
+   <LINK REL="Next"  HREF="000257.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Continued development of WSJT, MAP65, WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3C482C889D.2000100%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Continued development of WSJT, MAP65, WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu May 15 21:01:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000256.html">[Wsjt-devel] QSO mode for WSPR
+</A></li>
+        <LI>Next message: <A HREF="000257.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bruce (and other WSJT/MAP65/WSPR developers),
+
+For historical reasons (aka laziness ?), I still use Python 
+2.3 in my Windows development machine.  I have therefore put 
+a conditional import into f2py.py.
+
+We definitely need to have autoconf/automake scripts for 
+WSPR ... and also for MAP65.  I've never learned to do that 
+properly; Diane, VA3DB, is responsible for the excellent 
+ones in the WSJT trunk.  It should be possible to move these 
+over to WSPR (and MAP65), I imagine, but I haven't put any 
+effort into this.  I'm sure you can do it better than I can.
+
+Thanks for catching the pthread memory leak on Linux. 
+Should this have been a problem in Win32/MinGW, which also 
+uses pthreads and start_threads.c.  I haven't noticed that 
+it's a problem in that environment.  Should it also be a 
+problem in WJST?  I haven't noticed any problems there, either.
+
+People may be interested to know that I ran some tests of 
+WSPR several nights ago on 2m EME.  VK7MO sent me WSPR 
+transmissions for about 50 minutes, running 150 Watts.  We 
+both have 4-yagi arrays on 2 meters.  I copied nearly every 
+transmission from him.  The reported SNR values ranged from 
+-24 to -27 dB.  It seems that WSPR should be a very 
+effective mode for 2m EME.
+
+Assuming that others on this list will be interested in the 
+proposed &quot;WSPR QSO mode&quot;, after this message I will send one 
+outlining my present plans and asking for your input.  I am 
+sure the ideas can still be improved.
+
+	-- 73, Joe, K1JT
+
+Bruce Walker wrote:
+&gt;<i> I wanted to mention that I think the only change I committed which  
+</I>&gt;<i> might cause problems on the windows side is that I changed the import  
+</I>&gt;<i> statement for f2py....on all the systems I deal with (linux, mac  
+</I>&gt;<i> ports), f2py is included in numpy rather than a separate package, so I  
+</I>&gt;<i> changed the import statement in f2py.py to reflect that.  If that  
+</I>&gt;<i> doesn't work in your environment, then we can conditionalize it.
+</I>&gt;<i> 
+</I>&gt;<i> I eventually plan to write autoconf/automake scripts for wspr to be  
+</I>&gt;<i> able to generate the makefile and #defines in a more robust way on  
+</I>&gt;<i> those platforms.
+</I>&gt;<i> 
+</I>&gt;<i> --bruce
+</I>&gt;<i> 
+</I>&gt;<i> On May 12, 2008, at 11:18 PM, Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Hi Bruce,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You should explicitly join the WSJT-SVN mailing list, so that the  
+</I>&gt;&gt;<i> email generated when you commit to the repository does not require  
+</I>&gt;&gt;<i> &quot;administrative approval&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- Joe, K1JT
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000256.html">[Wsjt-devel] QSO mode for WSPR
+</A></li>
+	<LI>Next message: <A HREF="000257.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

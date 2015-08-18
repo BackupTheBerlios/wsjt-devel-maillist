@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] More fil4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20More%20fil4&In-Reply-To=%3C5246ABE5.8090601%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001969.html">
+   <LINK REL="Next"  HREF="001970.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] More fil4</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20More%20fil4&In-Reply-To=%3C5246ABE5.8090601%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] More fil4">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Sep 28 12:13:57 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001969.html">[Wsjt-devel] More fil4
+</A></li>
+        <LI>Next message: <A HREF="001970.html">[Wsjt-devel] Down-sampling Issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1968">[ date ]</a>
+              <a href="thread.html#1968">[ thread ]</a>
+              <a href="subject.html#1968">[ subject ]</a>
+              <a href="author.html#1968">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 28/09/2013 09:50, Josh Rovero wrote:
+&gt;<i> Bill, et al.,
+</I>Hi Josh &amp; All,
+&gt;<i>
+</I>&gt;<i> The &quot;spikes&quot; are every 100 Hz, and the magnitude can't be controlled 
+</I>&gt;<i> with the
+</I>&gt;<i> wsjtx volume slider *or* the external pulseaudio volume control.
+</I>I made an incorrect assumption with my quick fix. I assumed that the 
+QIODevice::writeData() method could accept less than the whole number of 
+bytes offered, I thought that the excess would be reoffered the next 
+invokation. I need to re-think, this time with an internal buffer to 
+decople the size of chunks of audio data offered from the sizes we need 
+to process.
+&gt;<i>
+</I>&gt;<i> Fedora Core 19, x86_64, r3584, configured for mono audio
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> P.J. &quot;Josh&quot; Rovero                   Ham Radio: KK1D
+</I>&gt;<i> <A HREF="http://www.roveroresearch.org">http://www.roveroresearch.org</A> <A HREF="http://www.roveroresearch.info">http://www.roveroresearch.info</A>
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001969.html">[Wsjt-devel] More fil4
+</A></li>
+	<LI>Next message: <A HREF="001970.html">[Wsjt-devel] Down-sampling Issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1968">[ date ]</a>
+              <a href="thread.html#1968">[ thread ]</a>
+              <a href="subject.html#1968">[ subject ]</a>
+              <a href="author.html#1968">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

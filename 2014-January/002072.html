@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] direct frequency transmit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20direct%20frequency%20transmit&In-Reply-To=%3C52DF31E1.8000203%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002069.html">
+   <LINK REL="Next"  HREF="002075.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] direct frequency transmit</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20direct%20frequency%20transmit&In-Reply-To=%3C52DF31E1.8000203%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] direct frequency transmit">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jan 22 03:50:09 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002069.html">[Wsjt-devel] direct frequency transmit
+</A></li>
+        <LI>Next message: <A HREF="002075.html">[Wsjt-devel] WSJT-X Docs - Updated build-docs.sh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2072">[ date ]</a>
+              <a href="thread.html#2072">[ thread ]</a>
+              <a href="subject.html#2072">[ subject ]</a>
+              <a href="author.html#2072">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Don --
+
+WSJT-X computes the sequence of Tx tone frequencies and stores them in a 
+global array itone[].  There are 126 elements in the array for JT65, 
+with values in the range 0-65.  For JT9 there are 85 values in the range 
+0-8.
+
+Of course you're welcome to make whatever use of these you may want.  To 
+make a &quot;transmission&quot; from these values, your software would need to do 
+the necessary symbol timing, etc.  To make a clean signal you would need 
+to assure phase continuity during frequency transitions.
+
+Your first task, necessarily, would be be be able to build an executable 
+for the unmodified WSJT-X.  We're not set up to be able to offer much 
+help of that sort, so you're on your own there.
+
+	-- 73, Joe, K1JT
+
+On 1/21/2014 7:28 PM, Don Latham wrote:
+&gt;<i> Sent this to the &quot;other&quot; list, probably an error. I seek a comment or
+</I>&gt;<i> two. I'm not a really great programmer, a physics model or two in the
+</I>&gt;<i> longago, but I'm willing to struggle with this.
+</I>&gt;<i> For a couple of reasons, I'd like to modify the wsjt code (hopefully the
+</I>&gt;<i> latest) to output a single rs232 character, really an 8-bit binary that
+</I>&gt;<i> has the value, somehow, of the current modulation tone frequency as the
+</I>&gt;<i> transmit signal is developed. I think that there's already an open rs232
+</I>&gt;<i> protocol to get the ptt out. So the transmit frequency followed by a
+</I>&gt;<i> sequence of tone values could be sent on that port at a whacking great
+</I>&gt;<i> baudrate. There would be no modification to any of the other code, as
+</I>&gt;<i> the soundcard line output could proceed as usual. I'd like to be able to
+</I>&gt;<i> do direct frequency output. There are a big host of sdr receive nodules
+</I>&gt;<i> out there, but almost all of them simply ignore transmit.  Doing an ssb
+</I>&gt;<i> transmit chain for an inherently simple signal when there are lots of
+</I>&gt;<i> dds modules, etc that can be directly driven , and that there has to be
+</I>&gt;<i> a t/r chain controller anyway, seems like a lot of trouble. Of course,
+</I>&gt;<i> the zero frequency may have to be independently set.
+</I>&gt;<i> I seem to remember reading that the transmit tone does change value on a
+</I>&gt;<i> zero crossing, and that may be somewhat of a problem.
+</I>&gt;<i> Completely whacky, doable easily, or in between?
+</I>&gt;<i> Don
+</I>&gt;<i>
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002069.html">[Wsjt-devel] direct frequency transmit
+</A></li>
+	<LI>Next message: <A HREF="002075.html">[Wsjt-devel] WSJT-X Docs - Updated build-docs.sh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2072">[ date ]</a>
+              <a href="thread.html#2072">[ thread ]</a>
+              <a href="subject.html#2072">[ subject ]</a>
+              <a href="author.html#2072">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

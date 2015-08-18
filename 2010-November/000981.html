@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CED856B.8060200%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000980.html">
+   <LINK REL="Next"  HREF="000983.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CED856B.8060200%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Nov 24 22:36:43 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000980.html">[Wsjt-devel] Frequency hopping progress (working with a GUI)
+</A></li>
+        <LI>Next message: <A HREF="000983.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I have been running WSPR with Sivan's enhancement to allow frequency 
+hopping.  It works very well here...
+
+I've now added another feature: whenever WSPR executes a successful 
+band-chance command to a CAT-controlled radio, it looks for a file named 
+user_hardware.bat, user_hardware.exe, or user_hardware in the working 
+directory.  If one of these is found, WSPR tries to execute the command
+
+user_hardware nnn
+
+where nnn is the band-designation wavelength in meters.
+
+My station uses a USB-interfaced device called &quot;LabJack U12&quot; to control 
+various bandswitching functions external to the radio.  In particular, 
+it connects the radio to a selected antenna for each HF band.
+
+The simple Python program &quot;user_hardware.py&quot; is an example of how my 
+station can control antenna switching through the LabJack.  To enable 
+this feature in a clean WSPR installation, I would need to add a batch 
+file user_hardware.bat containing this single line:
+
+python user_hardware.py %1
+
+Other users may write their own station control program using any 
+desired computer language.
+
+I am now running WSPR with frequency hopping among 5 bands.
+
+Comments welcome!
+
+     -- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000980.html">[Wsjt-devel] Frequency hopping progress (working with a GUI)
+</A></li>
+	<LI>Next message: <A HREF="000983.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

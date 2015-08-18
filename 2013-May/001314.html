@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A4D310.6000709%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001313.html">
+   <LINK REL="Next"  HREF="001315.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond&In-Reply-To=%3C51A4D310.6000709%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 28 17:53:52 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001313.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+        <LI>Next message: <A HREF="001315.html">[Wsjt-devel] Sound questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1314">[ date ]</a>
+              <a href="thread.html#1314">[ thread ]</a>
+              <a href="subject.html#1314">[ subject ]</a>
+              <a href="author.html#1314">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+1. There's no plan to make Qt5 a requirement for compiling WSJT-X, just 
+an option.  In fact it's possible already -- Edson (PY2SDR) and I have 
+both made it work, with very few changes to existing code.  The results 
+are still backward compatible with Qt4.
+
+2. There's no plan to relax portability requirements.  Rig control 
+through hamlib calls was first and foremost in WSJT-X, among possible 
+CAT control options.  It will remain so.  Rig control through Ham Radio 
+Deluxe was added because many people asked for it; likewise for 
+Commander, for which coding is still to be done.  HRD and Commander are 
+seen as options, not requirements.
+
+3. I haven't messed with Pulse for audio I/O, but surely it is NOT 
+platform-portable, right?  (Windows, OS X ??? ) Qt Audio runs on all 
+Qt-capable platforms.
+
+	-- Joe, K1JT
+
+On 5/28/2013 11:29 AM, David A. Ranch wrote:
+&gt;<i>
+</I>&gt;<i> Hello Joe,
+</I>&gt;<i>
+</I>&gt;<i> It's been great to see the focus and energy going into the new -X
+</I>&gt;<i> releases of your programs by the community but I do have a concern.
+</I>&gt;<i> Specifically, they seem to be issues revolving around portability:
+</I>&gt;<i>
+</I>&gt;<i> Qt: I use Centos 6 which is very stable but not exactly cutting edge
+</I>&gt;<i> either. I've also noticed that MANY HAMs out there usually run older
+</I>&gt;<i> generations of Windows machines (XP, etc) so I think this point is very
+</I>&gt;<i> valid. On the Centos6 side, it ships with Qt 3.3 by default and the
+</I>&gt;<i> stock repo offers a upgrade to qt-4.6. Qt5 is VERY new and requiring
+</I>&gt;<i> that will create a lot of difficulty for a lot of Linux users if you
+</I>&gt;<i> force this as a requirement. It's not to say that upgrades aren't
+</I>&gt;<i> possible for HAMs running older distros but installing and getting the
+</I>&gt;<i> required tool chains can be very intimidating to them.
+</I>&gt;<i>
+</I>&gt;<i> DX Labs Commander: Would this be the solution for Windows platforms or
+</I>&gt;<i> are you proposing this for all platforms? As I understand it, DX Labs
+</I>&gt;<i> software will not run natively under Linux. I've had good luck with
+</I>&gt;<i> W1HKJ's flrig and I've also had pretty decent luck with hamlib as well.
+</I>&gt;<i>
+</I>&gt;<i> Qt vs Pulse vs PortAudio: I personally prefer PortAudio's simplicity on
+</I>&gt;<i> Linux but the flexibility of PulseAudio's audio routing functionality is
+</I>&gt;<i> hard to deny. Going the Qt route for audio seems like it would only
+</I>&gt;<i> complicate things but I could be wrong here.
+</I>&gt;<i>
+</I>&gt;<i> Anyway, thanks again to you and your team of developers on the great
+</I>&gt;<i> software you've been working on.
+</I>&gt;<i>
+</I>&gt;<i> --David
+</I>&gt;<i> KI6ZHD
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001313.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond
+</A></li>
+	<LI>Next message: <A HREF="001315.html">[Wsjt-devel] Sound questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1314">[ date ]</a>
+              <a href="thread.html#1314">[ thread ]</a>
+              <a href="subject.html#1314">[ subject ]</a>
+              <a href="author.html#1314">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

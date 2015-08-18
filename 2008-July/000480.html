@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Public release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Public%20release%3F&In-Reply-To=%3C487DE192.8080807%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000478.html">
+   <LINK REL="Next"  HREF="000481.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Public release?</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Public%20release%3F&In-Reply-To=%3C487DE192.8080807%40charter.net%3E"
+       TITLE="[Wsjt-devel] Public release?">k9ao at charter.net
+       </A><BR>
+    <I>Wed Jul 16 13:54:58 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000478.html">[Wsjt-devel] Public release?
+</A></li>
+        <LI>Next message: <A HREF="000481.html">[Wsjt-devel] Public release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#480">[ date ]</a>
+              <a href="thread.html#480">[ thread ]</a>
+              <a href="subject.html#480">[ subject ]</a>
+              <a href="author.html#480">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry Popov wrote:
+&gt;<i> Rick,
+</I>&gt;<i> 
+</I>&gt;<i> My answer seems to be not compleat. I know fftw is compiled in some
+</I>&gt;<i> different way than before in Mandriva 2008.1. Richard reported. Perhaps
+</I>&gt;<i> you had to recompile. Here I use standard fftw deb of Debian repositary.
+</I>&gt;<i> I think we should always use standard distribution packages when we try
+</I>&gt;<i> to produce code which must work on all users computers.
+</I>
+Yes, a nice thought.
+
+However the Mandriva fftw libs have never, going back a lot of years, 
+ever been built correctly with the Fortran shims, so rebuilding with the 
+--enable-type-prefix option is required now (for the double and the 
+float/single versions of fftw, this is a single set of rpm packages in 
+Mandriva containing both precisions of fftw). I've brought this to the 
+attention of packagers, but no changes yet, and I'm not holding my 
+breath waiting for any.
+
+Several other Linux ham packages require the rebuilding of the FLTK libs 
+with the xft option to prevent ugly fonts in Mandriva. I've never been 
+able to get the package maintainer to make that change either, even 
+though it has no ill effects.
+
+At least on Mandriva there are a few things that need to be rebuilt from 
+source rpms.
+
+&gt;<i> Well compiled
+</I>&gt;<i> the last revision of WSPR today and it stayed solid for almost an hour.
+</I>&gt;<i> (which is personal record here :)) Then I had again the error:
+</I>&gt;<i> 
+</I>&gt;<i>  At line 56 of file mept162.F
+</I>&gt;<i> Traceback: (Innermost first)
+</I>&gt;<i>    Called from line 132 of file decode162.f
+</I>&gt;<i>    Called from line 63 of file mept162.F
+</I>&gt;<i>    Called from line 16 of file decode.F90
+</I>&gt;<i>    Called from line 86 of file wspr2.F90
+</I>&gt;<i>    Called from line -7622505 of file Segmentation fault
+</I>&gt;<i> 
+</I>&gt;<i> Can you tell me how long WSPR is running on your computer without crash
+</I>&gt;<i> in hours?
+</I>
+I had it running with the deep search option selected for 12 hours with 
+no crashes, but I'll keep testing more later on today. I did a fresh 
+checkout after deleting the SVN subdirectory for WSPR last night before 
+running the tests.
+
+Any chance you might be having memory issues? Have you run memtest or 
+some other extended memory test on the machine just to rule memory 
+issues out?
+
+Let me know if there is anything else I can try locally that might help out.
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000478.html">[Wsjt-devel] Public release?
+</A></li>
+	<LI>Next message: <A HREF="000481.html">[Wsjt-devel] Public release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#480">[ date ]</a>
+              <a href="thread.html#480">[ thread ]</a>
+              <a href="subject.html#480">[ subject ]</a>
+              <a href="author.html#480">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

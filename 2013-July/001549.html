@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 r 3500
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r%203500&In-Reply-To=%3C51EEF1DE.9060900%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001548.html">
+   <LINK REL="Next"  HREF="001550.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 r 3500</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r%203500&In-Reply-To=%3C51EEF1DE.9060900%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 r 3500">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul 23 23:13:02 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001548.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+        <LI>Next message: <A HREF="001550.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1549">[ date ]</a>
+              <a href="thread.html#1549">[ thread ]</a>
+              <a href="subject.html#1549">[ subject ]</a>
+              <a href="author.html#1549">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+Thanks for clearing this up.  Logic for the DTR and RTS boxes is not the 
+same as it was for the old combined box.
+
+	-- Joe, K1JT
+
+On 07/23/2013 05:08 PM, David wrote:
+&gt;<i> Hi Joe ....i have foud a way to get it to work ...i enabled the RTS box
+</I>&gt;<i> ...i have never had to do that before....i use a USB/serial adapter from
+</I>&gt;<i> the computer to the rig...the FT450D has RS232 port on the rear panel.
+</I>&gt;<i>
+</I>&gt;<i> +2khz is also working
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 24/07/13 06:55, Joe Taylor wrote:
+</I>&gt;&gt;<i> David --
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> VK4BDJ wrote:
+</I>&gt;&gt;&gt;<i> Hi Joe.....with this revision i have completly lost CAT control on my
+</I>&gt;&gt;&gt;<i> FT450D
+</I>&gt;&gt;&gt;<i> therefore the +2khz does not work
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CAT control in r3500 works OK here, both direct to my TS-2000 and via
+</I>&gt;&gt;<i> Commander in Windows, and direct to the TS-2000 in Linux. That's all I
+</I>&gt;&gt;<i> can easily test.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Changes were made in two areas:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  -- the DTR/RTS checkbox is now two separate checkboxes
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  -- multiple tries at polling the radio for frequency are now made in
+</I>&gt;&gt;<i> rigclass.cpp rather than mainwindow.cpp.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Can you diagnose your problem any further?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Important question: does anyone else observe a problem with CAT
+</I>&gt;&gt;<i> control in revision 3500 ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>      -- Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001548.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+	<LI>Next message: <A HREF="001550.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1549">[ date ]</a>
+              <a href="thread.html#1549">[ thread ]</a>
+              <a href="subject.html#1549">[ subject ]</a>
+              <a href="author.html#1549">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

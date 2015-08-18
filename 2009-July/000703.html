@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT7, r1277
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3C4A68C1ED.6020409%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000702.html">
+   <LINK REL="Next"  HREF="000704.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT7, r1277</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3C4A68C1ED.6020409%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT7, r1277">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jul 23 22:02:53 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000702.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+        <LI>Next message: <A HREF="000704.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+Thanks for the warning!  I have moved the &quot;call cs_unlock&quot; 
+to statement 20.
+
+I don't know why you get occasional error returns from the 
+KV decoder.  When you get such a message and have saved the 
+wave file, does it occur again if you open the file to 
+attempt decoding again?  In other words, is the error data 
+dependent, or does it depend on something more subtle like 
+system timing?
+
+	-- Joe
+
+John Nelson wrote:
+&gt;<i> Hullo Joe,
+</I>&gt;<i> 
+</I>&gt;<i> I updated to 1283 but, as in 1277, I occasionally get this error
+</I>&gt;<i> 
+</I>&gt;<i> Error in KV decoder, or no KV decoder present.
+</I>&gt;<i> Return code:   35328.  Will use BM algorithm.
+</I>&gt;<i> 
+</I>&gt;<i> which I have never had in rev.1105 or earlier.
+</I>&gt;<i> 
+</I>&gt;<i> In addition, there is a problem in extract.f
+</I>&gt;<i> 
+</I>&gt;<i>             if(first) write(*,1000) iret
+</I>&gt;<i>  1000       format('Error in KV decoder, or no KV decoder present.'/
+</I>&gt;<i>      +         'Return code:',i8,'.  Will use BM algorithm.')
+</I>&gt;<i>             ndec=0
+</I>&gt;<i>             first=.false.
+</I>&gt;<i>             go to 20
+</I>&gt;<i>          endif
+</I>&gt;<i>          read(22,rec=2) nsec2,ncount,dat4
+</I>&gt;<i>          call cs_unlock
+</I>&gt;<i> 
+</I>&gt;<i> so that when this error occurs there should be    call cs_unlock   
+</I>&gt;<i> before  the go to 20.   Otherwise jump to 20 skips the unlock and the 
+</I>&gt;<i> system hangs on a mutex forever.
+</I>&gt;<i> 
+</I>&gt;<i> That is a simple fix.  More importantly, I am puzzled as to why the 
+</I>&gt;<i> error in kvasd is generated in the first place....
+</I>&gt;<i> 
+</I>&gt;<i> What is error   35328?    Any ideas?
+</I>&gt;<i> 
+</I>&gt;<i> 73 John   G4KLA
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000702.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+	<LI>Next message: <A HREF="000704.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

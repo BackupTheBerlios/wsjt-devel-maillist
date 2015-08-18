@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Building wspr-x for Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20wspr-x%20for%20Windows&In-Reply-To=%3CCAH2z4fOqzqCz1cyT_YPgQGerT8Q-JtBY7hmWn%3DefRPmjCAGmzQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001511.html">
+   <LINK REL="Next"  HREF="001522.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Building wspr-x for Windows</H1>
+    <B>Ton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20wspr-x%20for%20Windows&In-Reply-To=%3CCAH2z4fOqzqCz1cyT_YPgQGerT8Q-JtBY7hmWn%3DefRPmjCAGmzQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Building wspr-x for Windows">pa0tbr at mubo.nl
+       </A><BR>
+    <I>Mon Jul 15 13:37:58 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001511.html">[Wsjt-devel] Multiple Instances
+</A></li>
+        <LI>Next message: <A HREF="001522.html">[Wsjt-devel] Building wspr-x for Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1512">[ date ]</a>
+              <a href="thread.html#1512">[ thread ]</a>
+              <a href="subject.html#1512">[ subject ]</a>
+              <a href="author.html#1512">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+I have some questions about building wspr-x for Windows. I checked out the
+latest revision and also r3058.
+
+1) I am stuck with the message: *cannot find -lusb*
+    Where can I find this usb.dll?
+
+2) The tools I use, the procedure and results are summarised below. Can
+someone comment if I am on the right track with this please?
+
+*I used the following tools:*
+gcc-full-4.4.0-mingw32-bin-2.tar.lzma
+w32api-3.13-mingw32-dev.tar.gz
+qt-win-opensource-4.8.5-mingw.exe
+mingw-get-inst-20120426.exe  (selected all components)
+g95-MinGW.exe  Version 0.93, October 2012
+Python 2.7.4
+qwt-6.0.1 (run qmake qwt.pro, make, make install)
+PortAudio V19
+palir-02.dll
+Copied  libf95.a  from  C:\MinGw\lib\gcc-lib\i686-pc-mingw32\4.1.2\  to
+ C:\MinGw\lib\
+
+*I tried to build as follows:*
+cd \wsprx\lib
+mingw32-make Aborts with Error
+mingw32-make Aborts with Error
+mingw32-make Completes with Nothing to be done
+Results: Created wsprd.exe and wsprcode.exe  so far so good I assume.
+
+cd\wsprx
+qmake.exe -o Makefile wsprx.pro
+mingw32-make
+
+*Result ends with:*
+g++ -mthreads -Wl,-subsystem,windows -o ..\wsprx_install\wsprx.exe
+object_script
+.wsprx.Debug  -L&quot;c:\Qt\4.8.5\lib&quot; -lmingw32 -lqtmaind debug\wsprx_res.o
+../wsprx
+/lib/libwspr.a ../wsprx/libfftw3f_win.a ../QtSupport/palir-02.dll -lwsock32
+C:/M
+inGW/lib/libf95.a C:/qwt-6.0.1/lib/qwt.dll -lusb -lQtGuid4 -lQtNetworkd4
+-lQtCored4
+c:/mingw/bin/../lib/gcc/mingw32/4.6.2/../../../../mingw32/bin/ld.exe: *cannot
+find -lusb*
+collect2: ld returned 1 exit status
+mingw32-make[1]: *** [..\wsprx_install\wsprx.exe] Error 1
+mingw32-make[1]: Leaving directory `C:/wsprx'
+mingw32-make: *** [debug] Error 2
+
+
+I hope that someone has time to help me out.
+
+73,
+Ton Bouw  PA0TBR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130715/8d997baa/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130715/8d997baa/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001511.html">[Wsjt-devel] Multiple Instances
+</A></li>
+	<LI>Next message: <A HREF="001522.html">[Wsjt-devel] Building wspr-x for Windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1512">[ date ]</a>
+              <a href="thread.html#1512">[ thread ]</a>
+              <a href="subject.html#1512">[ subject ]</a>
+              <a href="author.html#1512">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

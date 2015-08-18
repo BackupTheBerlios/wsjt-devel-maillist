@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy4_jswsj0J%3DybG1tWepR%2B%3D_JNd-uvDuC8S7N9mWLHrcveA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001701.html">
+   <LINK REL="Next"  HREF="001707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy4_jswsj0J%3DybG1tWepR%2B%3D_JNd-uvDuC8S7N9mWLHrcveA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Mon Aug  5 20:54:14 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001701.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001707.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1704">[ date ]</a>
+              <a href="thread.html#1704">[ thread ]</a>
+              <a href="subject.html#1704">[ subject ]</a>
+              <a href="author.html#1704">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>John,
+
+On Mon, Aug 5, 2013 at 3:03 PM, John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> 2. Detector.cpp:44:95: error: no matching function for call to
+</I>&gt;<i> &#8216;min(long long unsigned int, size_t)&#8217;
+</I>&gt;<i>    As a work-around, I inserted a cast, but it would be better if both
+</I>&gt;<i> expressions were of type size_t.
+</I>&gt;<i>   qint64 framesAccepted (std::min (maxSize / sizeof (jt9com_.d2[0]),
+</I>&gt;<i> (long long unsigned int) framesAcceptable));
+</I>&gt;<i>    Even after that cast is inserted on line 44, gcc warns about line 46:
+</I>&gt;<i>      if (framesAccepted &lt; maxSize / sizeof (jt9com_.d2[0]))
+</I>&gt;<i> Detector.cpp: In member function &#8216;virtual qint64
+</I>&gt;<i> Detector::writeData(const char*, qint64)&#8217;:
+</I>&gt;<i> Detector.cpp:46:55: warning: comparison between signed and unsigned
+</I>&gt;<i> integer expressions [-Wsign-compare]
+</I>&gt;<i>
+</I>
+I had to do the same change here.
+
+Bill, may I suggest we use the native Qt functions in QtGlobals (min, max,
+rand, etc) as much as possible instead of using the STL? This will help us
+keep the code tidy.
+
+<A HREF="http://qt-project.org/doc/qt-5.1/qtcore/qtglobal.html">http://qt-project.org/doc/qt-5.1/qtcore/qtglobal.html</A>
+
+73,
+
+-- Edson
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/558bb203/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/558bb203/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001701.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001707.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1704">[ date ]</a>
+              <a href="thread.html#1704">[ thread ]</a>
+              <a href="subject.html#1704">[ subject ]</a>
+              <a href="author.html#1704">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

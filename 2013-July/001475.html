@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Band settings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DAC5C2.7050804%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001469.html">
+   <LINK REL="Next"  HREF="001477.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Band settings</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DAC5C2.7050804%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Band settings">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul  8 15:59:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001469.html">[Wsjt-devel] Band settings
+</A></li>
+        <LI>Next message: <A HREF="001477.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1475">[ date ]</a>
+              <a href="thread.html#1475">[ thread ]</a>
+              <a href="subject.html#1475">[ subject ]</a>
+              <a href="author.html#1475">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Murray,
+
+Thanks for sharing your initial ideas on improvements to the &quot;Default 
+Frequancies&quot; tab.  A few reactions follow:
+
+VK3ACF wrote:
+&gt;<i> OK, I'm on it. Thinking about this: Is it always the case that you'd
+</I>&gt;<i> want JT9 2kHz above the JT65 frequency?
+</I>
+It would be nice if we could count on it being so simple.  At present 
+this rule is nominally followed on 80, 40, 20, 17, 15, and 10m.  I think 
+160m and 12m could also follow the +2 kHz rule. (They don't now, but 
+arguably this hardly matters since there hasn't much JT9 activity there 
+yet.)  60m is a special case with its fixed channels, so I guess the two 
+modes should have the same default frequency.  On 30 m we have a 
+problem: already JT65 and WSPR are very close together.  Maybe we should 
+advocate moving JT65 down by 2 or 3 kHz... but I hesitate to try to 
+&quot;legislate&quot; such things without asking for community input.
+the same frequency
+
+&gt;<i> What if you needed an extra
+</I>&gt;<i> 500Hz on the base frequency to work split say? What if you wanted a
+</I>&gt;<i> frequency for split that was different to JT65? That would require 3
+</I>&gt;<i> frequencies per band but if we're going to alter the layout of that page
+</I>&gt;<i> (the setup page), might as well try to make it work as well as we can.
+</I>&gt;<i>
+</I>&gt;<i> Sounds like it'll need to be 4 column table (4th column for antenna
+</I>&gt;<i> description) which I'm guessing will need to be in a scrolled window to
+</I>&gt;<i> cover all the bands.
+</I>
+It seems to me that a 3-column table is best: a JT65 frequency, a JT9 
+frequency, and a column for antenna type.  We'll need to think about how 
+to implement which column is selected for use when a band selection is 
+executed.
+
+I would welcome any thoughts from others...
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001469.html">[Wsjt-devel] Band settings
+</A></li>
+	<LI>Next message: <A HREF="001477.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1475">[ date ]</a>
+              <a href="thread.html#1475">[ thread ]</a>
+              <a href="subject.html#1475">[ subject ]</a>
+              <a href="author.html#1475">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

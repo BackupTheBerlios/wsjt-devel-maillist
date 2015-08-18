@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT	problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20trunk%20on%20ubuntu%2010.04%20%28amd64%29%20and%20PTT%0A%09problem&In-Reply-To=%3C87fwtjdm0p.fsf%40penny.tippete.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001077.html">
+   <LINK REL="Next"  HREF="001074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT	problem</H1>
+    <B>Pierfrancesco Caci</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20trunk%20on%20ubuntu%2010.04%20%28amd64%29%20and%20PTT%0A%09problem&In-Reply-To=%3C87fwtjdm0p.fsf%40penny.tippete.net%3E"
+       TITLE="[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT	problem">ik5pvx at tippete.net
+       </A><BR>
+    <I>Mon Dec 27 21:00:06 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001077.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem
+</A></li>
+        <LI>Next message: <A HREF="001074.html">[Wsjt-devel] Another approach to command-line WSPR (weak computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1080">[ date ]</a>
+              <a href="thread.html#1080">[ thread ]</a>
+              <a href="subject.html#1080">[ subject ]</a>
+              <a href="author.html#1080">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;&gt;&gt;&gt;&gt;<i> &quot;Joe&quot; == Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; writes:
+</I>
+
+    Joe&gt; On 12/26/2010 9:04 AM, Pierfrancesco Caci wrote:
+    Joe&gt; The file ptt.c is used when building WSJT for Windows.
+    Joe&gt; Examining your Makefile will show that you have used ptt_unix.c
+
+uhm... ok.
+
+    Joe&gt; in your build for Linux.  In ptt_unix.c you will see that by
+    Joe&gt; default PTT control via a serial port sets both DTR and RTS.
+    Joe&gt; You can easily change this to the control line you want: for
+    Joe&gt; example, in line #164 change int control = TIOCM_RTS |
+    Joe&gt; TIOCM_DTR;
+
+    Joe&gt; to
+
+    Joe&gt;   int control = TIOCM_RTS;
+
+    Joe&gt; or
+
+    Joe&gt;   int control = TIOCM_DTR;
+
+This doesn't seem to help. If that file didn't change in the last few
+months, then it must be something in my wiring. I can exclude the key
+line with a switch, that has always been there. Maybe I used to keep it
+to off back when I tried wsjt months ago. 
+What is the purpose of the PTT choice in the setup menu anyway? Does
+that work for windows only ?
+
+Thanks
+
+Pf
+
+-- 
+Pierfrancesco Caci
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001077.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT problem
+</A></li>
+	<LI>Next message: <A HREF="001074.html">[Wsjt-devel] Another approach to command-line WSPR (weak computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1080">[ date ]</a>
+              <a href="thread.html#1080">[ thread ]</a>
+              <a href="subject.html#1080">[ subject ]</a>
+              <a href="author.html#1080">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

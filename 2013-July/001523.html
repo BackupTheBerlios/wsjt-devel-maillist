@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Time for release of Version 1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Time%20for%20release%20of%20Version%201.1&In-Reply-To=%3C51E6F4E2.3050904%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001521.html">
+   <LINK REL="Next"  HREF="001531.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Time for release of Version 1.1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Time%20for%20release%20of%20Version%201.1&In-Reply-To=%3C51E6F4E2.3050904%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Time for release of Version 1.1">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jul 17 21:47:46 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001521.html">[Wsjt-devel] New meter widget
+</A></li>
+        <LI>Next message: <A HREF="001531.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1523">[ date ]</a>
+              <a href="thread.html#1523">[ thread ]</a>
+              <a href="subject.html#1523">[ subject ]</a>
+              <a href="author.html#1523">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've spent much of today working on optimizations of the JT65 and JT9 
+decoders in WSJT-X.
+
+I set up a benchmark test in which N=368 recorded *.wav files were 
+processed by different versions of WSJT-X.  (The recordings were made 
+over the past few days, mostly on 20 m, but also a few at 30m and 40m.)
+
+Revisions r3487 and r3492 were the principal test cases.  Both produced 
+744 decodes of JT9 signals and 1343 decodes of JT65 signals.  WSJT-X 
+r3487 took a total of 1659.3 seconds and r3492 300.6 seconds -- a 
+speed-up factor 5.52, from an average of 4.5 seconds per file to 0.82 s 
+per file.  I'm sure that users will appreciate the improved performance.
+
+I propose that we release SVN revision 3492 as WSJT-X Version 1.1.
+Several questions:
+
+1. Does anyone see any problem with this plan?
+
+2. For AC6SL: John, are you OK with making a Linux installation package 
+from r3492?  We'll need to include advice to Linux users to download the 
+kvasd executable from my web site, rather than making it part of the 
+.deb package.
+
+3. For G4LKA: John, what can we do about a downloadable WSJT-X for
+OS X?  I don't know anything about Mac packages.  I suppose s 
+click-to-install package would be best, but a tarfile or equivalent, 
+with a few instructions, would be much better than nothing.  Can either 
+of these be done?
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001521.html">[Wsjt-devel] New meter widget
+</A></li>
+	<LI>Next message: <A HREF="001531.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1523">[ date ]</a>
+              <a href="thread.html#1523">[ thread ]</a>
+              <a href="subject.html#1523">[ subject ]</a>
+              <a href="author.html#1523">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT no more usable on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C20080605190546.471ddaa7%40gb7tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000307.html">
+   <LINK REL="Next"  HREF="000310.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT no more usable on Linux</H1>
+    <B>Richard Bown</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C20080605190546.471ddaa7%40gb7tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] WSJT no more usable on Linux">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Thu Jun  5 20:05:46 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000307.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+        <LI>Next message: <A HREF="000310.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#308">[ date ]</a>
+              <a href="thread.html#308">[ thread ]</a>
+              <a href="subject.html#308">[ subject ]</a>
+              <a href="author.html#308">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 05 Jun 2008 12:51:55 -0400
+Rick Kunath &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">k9ao at charter.net</A>&gt; wrote:
+
+&gt;<i> Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Almost certainly, the reason for your failure to compile 
+</I>&gt;<i> &gt; WSJT on some new Linux release has to do with the way some 
+</I>&gt;<i> &gt; pre-requisite package is configured.  Since I don't have 
+</I>&gt;<i> &gt; Debian Testing installed anywhere, and since my Ubuntu 
+</I>&gt;<i> &gt; installation is 6.something, I can't say what your problem 
+</I>&gt;<i> &gt; might be.
+</I>&gt;<i> 
+</I>&gt;<i> There are WSJT issues on Mandriva 2008.1 as well. I'm almost there on 
+</I>&gt;<i> WSPR, managed to get the GUI up but still segfault on the first
+</I>&gt;<i> decode cycle.
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>&lt;snip&gt;
+
+I've had wsjt running continuously now for two hours, its still playing
+no seg faults.
+
+but no there yet with wspr, I can now get it to compile with Dianes
+help with both g95 and gfortran.
+
+But it doesn't want to run:-
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at gb7tf</A> wspr]# python wspr.py
+Traceback (most recent call last):
+  File &quot;wspr.py&quot;, line 25, in &lt;module&gt;
+    from WsprMod import w
+ImportError: /home/richard-1/Hamapps/wspr/WsprMod/w.so: undefined
+symbol: snd_config
+ strace shows 
+
+write(2, &quot;: &quot;, 2: )                       = 2
+write(2, &quot;/home/richard-1/Hamapps/wspr/Wsp&quot;...,
+71/home/richard-1/Hamapps/wspr/WsprMod/w.so: undefined symbol:
+snd_config) = 71 write(2, &quot;\n&quot;, 1 )                       = 1
+
+rt_sigaction(SIGINT, {SIG_DFL}, {0x2af936062fb0, [], SA_RESTORER,
+0x2af9362f3350}, 8) = 0 exit_group(1)    
+
+I've have as much a clue to that as to the white mices answer of 42
+
+
+
+73 Richard
+
+
+os Mandriva 2008.1 x86_64, kernel Linux version 2.6.24.4-server-3mnb
+gcc version 4.2.3 (4.2.3-6mnb1)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000307.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+	<LI>Next message: <A HREF="000310.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#308">[ date ]</a>
+              <a href="thread.html#308">[ thread ]</a>
+              <a href="subject.html#308">[ subject ]</a>
+              <a href="author.html#308">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [Moon-net]  WSJT on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BMoon-net%5D%20%20WSJT%20on%20Linux&In-Reply-To=%3C46113E63.4080108%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000048.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [Moon-net]  WSJT on Linux</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BMoon-net%5D%20%20WSJT%20on%20Linux&In-Reply-To=%3C46113E63.4080108%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [Moon-net]  WSJT on Linux">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Apr  2 19:33:23 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000044.html">[Wsjt-devel] [Fwd: Re: [Moon-net]  WSJT on Linux]
+</A></li>
+        <LI>Next message: <A HREF="000048.html">[Wsjt-devel] [Moon-net]  WSJT on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Piotr,
+
+&gt;<i> Hi Joe,
+</I>&gt;<i> 
+</I>&gt;<i> This is exactly the same problem I've experienced compiling 'with-alsa'. 
+</I>&gt;<i> Samplerate
+</I>&gt;<i> shown here is very the same. Compiling without ALSA did not work too - WSJT
+</I>&gt;<i> is not decoding sigs from-air and wav examples. I'm not a Linux geek, so 
+</I>&gt;<i> I can only
+</I>&gt;<i> beta-test.
+</I>&gt;<i> 
+</I>&gt;<i> WSJT is the last piece of software that prevents me to port my virtual 
+</I>&gt;<i> life into Linux box.
+</I>&gt;<i> 
+</I>&gt;&gt;<i>-- 
+</I>&gt;&gt;<i>Piotr
+</I>&gt;&gt;<i>SP9TTG
+</I>&gt;&gt;<i><A HREF="http://www.piotrstula.com">http://www.piotrstula.com</A>
+</I>
+Clearly we should find the cause of this problem, and fix it.
+
+As you will have gathered from the messages I sent earlier 
+today to the wsjt-devel list, it has been quite a while 
+since I used WSJT with alsa sound compiled in.
+
+It compiles and runs on my system now, but something is 
+obviously wrong with configuration of the audio input 
+stream.  James Courtier-Dutton is the author of the ALSA 
+startup code for WSJT, and he is an alsa developer.  I am 
+sure he can help us to find the problem.
+
+I have re-read your earlier message in which you say that 
+you can compile OK with portaudio, and the program appears 
+to run OK, but does not seem to decode JT65 signals 
+properly.  Can you give us further details?  Is the audio 
+level correct (i.e., around 0 dB) ? Does the waterfall look 
+normal?  Does the &quot;green line&quot; look reasonable?  Does the 
+program decode OK in FSK441 mode?
+
+Many of us have used WSJT successfully under linux, so I am 
+sure we can find the solution to your problem.
+
+     -- Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000044.html">[Wsjt-devel] [Fwd: Re: [Moon-net]  WSJT on Linux]
+</A></li>
+	<LI>Next message: <A HREF="000048.html">[Wsjt-devel] [Moon-net]  WSJT on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

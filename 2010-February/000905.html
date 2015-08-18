@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B84299B.9020805%40trinnet.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000904.html">
+   <LINK REL="Next"  HREF="000906.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;</H1>
+    <B>David A. Ranch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B84299B.9020805%40trinnet.net%3E"
+       TITLE="[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;">wsjt-devel at trinnet.net
+       </A><BR>
+    <I>Tue Feb 23 20:16:43 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000904.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+        <LI>Next message: <A HREF="000906.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#905">[ date ]</a>
+              <a href="thread.html#905">[ thread ]</a>
+              <a href="subject.html#905">[ subject ]</a>
+              <a href="author.html#905">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello Joe,
+
+Thanks for the reply and all your work on this suite of tools you've made!
+
+Anyway, to the point, if I start wsjt 7.05r1800 from the command prompt, 
+I see the following in the shell:
+--
+$ wsjt
+******************************************************************
+WSJT Version 7.05 r1800 , by K1JT
+Revision date: 2010-02-16 09:00:39 -0800 (Tue, 16 Feb 2010)
+Run date:   Tue Feb 23 19:05:45 2010 UTC
+JACK tmpdir identified as [/dev/shm]
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+    0       16        16       /dev/dsp
+    1       16        16       /dev/dsp1
+    2       16        16       /dev/dsp2
+    3        2         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 
+(hw:0,0)
+    4        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+MIC ADC (hw:0,1)
+    5        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+MIC2 ADC (hw:0,2)
+    6        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+ADC2 (hw:0,3)
+    7        0         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+IEC958 (hw:0,4)
+    8        2         2       USB Audio CODEC : USB Audio (hw:1,0)
+    9        1         1       Intel 82801DB-ICH4 Modem: Intel 
+82801DB-ICH4 Modem - Modem (hw:2,0)
+   10        0         2       front
+   11        0         2       iec958
+   12        0         2       spdif
+   13        2         2       radio
+   14        2         2       radioconv
+   15       128        128       default
+   16        0         2       dmix
+
+User requested devices:   Input = 14   Output = 14
+Default devices:          Input = 15   Output = 15
+Will open devices:        Input = 14   Output = 14
+JACK tmpdir identified as [/dev/shm]
+Audio streams running normally.
+******************************************************************
+--
+
+Now, if I shift modes to say JT65, I then see the following in the 
+shell.  It might be worth noting that when I start in FSK144 or JT6M, 
+the default SpecJT view is the horizontal H1 view.  Once I shift to any 
+of these other modes, the SpecJT view changes to &quot;speed: 3&quot; vertical 
+view.  It continues to work and I can shift back to the H1 view.
+
+--
+Exception in Tkinter callback
+Traceback (most recent call last):
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 1345, in __call__
+     return self.func(*args)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 456, in callit
+     func(*args)
+   File &quot;/usr//bin/wsjt.py&quot;, line 1687, in update
+     graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2102, in create_text
+     return self._create('text', args, kw)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2076, in _create
+     return getint(self.tk.call(
+TclError: font &quot;&quot; doesn't exist
+--
+
+If I shutdown and restart WSJT (which will now be permanently broken 
+until I manually edit the WSJT.INI file, I see the following in the
+command shell:
+--
+
+$ wsjt
+******************************************************************
+WSJT Version 7.05 r1800 , by K1JT
+Revision date: 2010-02-16 09:00:39 -0800 (Tue, 16 Feb 2010)
+Run date:   Tue Feb 23 19:12:48 2010 UTC
+JACK tmpdir identified as [/dev/shm]
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+    0       16        16       /dev/dsp
+    1       16        16       /dev/dsp1
+    2       16        16       /dev/dsp2
+    3        2         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 
+(hw:0,0)
+    4        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+MIC ADC (hw:0,1)
+    5        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+MIC2 ADC (hw:0,2)
+    6        2         0       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+ADC2 (hw:0,3)
+    7        0         2       Intel 82801DB-ICH4: Intel 82801DB-ICH4 - 
+IEC958 (hw:0,4)
+    8        2         2       USB Audio CODEC : USB Audio (hw:1,0)
+    9        1         1       Intel 82801DB-ICH4 Modem: Intel 
+82801DB-ICH4 Modem - Modem (hw:2,0)
+   10        0         2       front
+   11        0         2       iec958
+   12        0         2       spdif
+   13        2         2       radio
+   14        2         2       radioconv
+   15       128        128       default
+   16        0         2       dmix
+
+User requested devices:   Input = 14   Output = 14
+Default devices:          Input = 15   Output = 15
+Will open devices:        Input = 14   Output = 14
+JACK tmpdir identified as [/dev/shm]
+Audio streams running normally.
+******************************************************************
+Exception in Tkinter callback
+Traceback (most recent call last):
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 1345, in __call__
+     return self.func(*args)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 456, in callit
+     func(*args)
+   File &quot;/usr//bin/wsjt.py&quot;, line 1687, in update
+     graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2102, in create_text
+     return self._create('text', args, kw)
+   File &quot;/usr/lib/python2.4/lib-tk/Tkinter.py&quot;, line 2076, in _create
+     return getint(self.tk.call(
+TclError: font &quot;&quot; doesn't exist
+--
+
+
+Ps. I had unicasted an email to you about compiling issues with WSJT a 
+week or so ago.  I'm beyond that point now but I'm curious if you 
+received it?
+
+--David
+
+
+
+&gt;<i> When your compiled version of WSJT goes into a state where the UTC is 
+</I>&gt;<i> not updating, what's present in the console window?
+</I>&gt;<i> 
+</I>&gt;<i> 	-- Joe, K1JT
+</I>&gt;<i> 
+</I>&gt;<i> On 2/23/2010 2:14 AM, David A. Ranch wrote:
+</I>&gt;&gt;<i> Hello Everyone,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm posting here hoping I can get a hand with WSJT v7.03 or 7.05(trunk).
+</I>&gt;&gt;<i>    I know the WSPR forums are more active than this WSJT list but I need
+</I>&gt;&gt;<i> to try here first.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> After some major wrangling, I've been able to compile both WSPR
+</I>&gt;&gt;<i> 2.00r1714 and WSJT (both 7.03r1090 and 7.05r1800 [trunk]) on Centos 5.4.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> as an FYI, WSPR works well with my setup JACK/ALSA and Hamlib on Centos
+</I>&gt;&gt;<i> 5.4 and I've confirmed I've been heard via WSPRNet.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wspr-v2-on-centos5.png">http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wspr-v2-on-centos5.png</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>      (I have this all documented if you'd like to see it.  This doc
+</I>&gt;&gt;<i> covers packet radio, fldigi, Xastir, etc. too)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> WSJT is another matter.  If I start the program up, it comes up with
+</I>&gt;&gt;<i> it's various defaults.  When I re-configure it to use a resampled ALSA
+</I>&gt;&gt;<i> source
+</I>&gt;&gt;<i> (<A HREF="http://list-serv.davidv.net/pipermail/moon-net_list-serv.davidv.net/2008-August/013751.html">http://list-serv.davidv.net/pipermail/moon-net_list-serv.davidv.net/2008-August/013751.html</A>)
+</I>&gt;&gt;<i> and restart WSJT, it loads up fine.  The clock in the lower left updates
+</I>&gt;&gt;<i> every second, the soundcard in vs out slew constantly updates, etc. If I
+</I>&gt;&gt;<i> click on monitor, the lower right corner says &quot;receiving&quot;, things decode
+</I>&gt;&gt;<i> in the main window, and SPECJT shows the waterfall, I can transmit too!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-fsk411.png">http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-fsk411.png</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-fsk411.png">http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-fsk411.png</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I just tried and with 7.05r1800 trunk, I can also select JT6M and it
+</I>&gt;&gt;<i> seems to work.  In either 7.03 or 7.05, if I change to say mode JT65
+</I>&gt;&gt;<i> (what my goal is or any of the other offered modes), the lower left
+</I>&gt;&gt;<i> clock stops updating, the soundcard in vs out slew is no longer
+</I>&gt;&gt;<i> updating, and the bottom now only has &quot;message #2&quot;, &quot;message #4&quot;, and
+</I>&gt;&gt;<i> &quot;message #5&quot;, and the green &quot;receiving&quot; in the lower left is gone:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-jt65a.png">http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-main-jt65a.png</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> What's interesting to me is that the SPECJT waterfall continues to
+</I>&gt;&gt;<i> update though once it hits the very right of the window, it seems to
+</I>&gt;&gt;<i> overwrite itself for a period of time before it starts over again
+</I>&gt;&gt;<i> (notice how tall the scope line is.. it's even writing into the
+</I>&gt;&gt;<i> waterfall section).  .  This overwrite behavior doesn't happen with
+</I>&gt;&gt;<i> FSK411 as once it hits the very right of the window, the main WSJT
+</I>&gt;&gt;<i> window does a decode and updates it's graphics.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-specjt-jt65a.png">http://www.ecst.csuchico.edu/~dranch/HAM/WSJT-and-WSPR/wsjt-specjt-jt65a.png</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Once I shutdown WSJT and restart it, it then always defaults to whatever
+</I>&gt;&gt;<i> non-FSK144 mode and thus the program no longer works.  It's only once I
+</I>&gt;&gt;<i> edit the ~.wsjt/WSJT.INI file and change the mode line back to FSK144
+</I>&gt;&gt;<i> (or JT6M for 7.05), will the program start working again.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I also tried out WSJT8 and WSJT8a from SVN and those versions seem to be
+</I>&gt;&gt;<i> in various states of disrepair. WSJS8 won't finish compiling and WSJT8a
+</I>&gt;&gt;<i> has most of the modes ripped out (I want WSPR and JT65).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Any thoughts?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --David
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000904.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+	<LI>Next message: <A HREF="000906.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#905">[ date ]</a>
+              <a href="thread.html#905">[ thread ]</a>
+              <a href="subject.html#905">[ subject ]</a>
+              <a href="author.html#905">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

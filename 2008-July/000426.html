@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Upcoming beta release ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Upcoming%20beta%20release%20%3F&In-Reply-To=%3C48741317.4050703%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000425.html">
+   <LINK REL="Next"  HREF="000427.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Upcoming beta release ?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Upcoming%20beta%20release%20%3F&In-Reply-To=%3C48741317.4050703%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Upcoming beta release ?">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jul  9 03:23:35 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000425.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+        <LI>Next message: <A HREF="000427.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bruce --
+
+Good to hear from you!  You must have been reading my mind, as your 
+suggested actions coincide very well with what I've been planning.  So 
+much the better if you will do it.
+
+The nascent GUI features for QSO mode in the WSPR program should 
+definitely be removed.  They were there only for the purpose of some 
+brief on-the-air tests.  WSPR (the program) is to remain a tool for 
+bi-directional beacon-like activity, not for QSOs; WSPR-mode QSOs will 
+be made with WSJT.
+
+My own view is that the width measurement is not very useful, and should 
+probably be eliminated.  Drift is more useful: among other things, it 
+provides useful feedback to people with unstable rigs.  I think it 
+should be kept.  Its usefulness in your database is perhaps more open to 
+question; I could probably be convinced of either &quot;yes&quot; or &quot;no&quot;.  If you 
+need to recover space in the on-line database display, you could 
+probably eliminate power in Watts and/or miles ... or make them optional.
+
+	-- Joe, K1JT
+
+Bruce Walker wrote:
+&gt;<i> Joe et al.,
+</I>&gt;<i> 
+</I>&gt;<i> Since a several of you appear busy on the mainline wsjt trunk, I think 
+</I>&gt;<i> I'll continue to work on standalone wspr to get it ready for release, 
+</I>&gt;<i> since I would like to get everyone using a more recent version...this 
+</I>&gt;<i> version posts activity to the online database even when no signals are 
+</I>&gt;<i> received, so we can know who is active.
+</I>&gt;<i> 
+</I>&gt;<i> Do you mind if I remove the partially implemented UI for the QSO mode in 
+</I>&gt;<i> the standalone version?  I also want to decide what to do with the drift 
+</I>&gt;<i> and width parameters, which aren't being recorded in the current svn 
+</I>&gt;<i> version...shall I pass them to the decode lines, or just remove them 
+</I>&gt;<i> from the online database?
+</I>&gt;<i> 
+</I>&gt;<i> --bruce W1BW
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000425.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+	<LI>Next message: <A HREF="000427.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

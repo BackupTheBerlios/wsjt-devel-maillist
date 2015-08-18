@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QDebug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QDebug&In-Reply-To=%3C20130726081658.742d0eb5%40blueyonder.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001569.html">
+   <LINK REL="Next"  HREF="001567.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QDebug</H1>
+    <B>Richard Bown</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QDebug&In-Reply-To=%3C20130726081658.742d0eb5%40blueyonder.co.uk%3E"
+       TITLE="[Wsjt-devel] QDebug">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Jul 26 09:16:58 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001569.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+        <LI>Next message: <A HREF="001567.html">[Wsjt-devel] QT 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1564">[ date ]</a>
+              <a href="thread.html#1564">[ thread ]</a>
+              <a href="subject.html#1564">[ subject ]</a>
+              <a href="author.html#1564">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+Thought I'd have a look at wsjtx, but I'm missing a dependency to build
+the makefile
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at localhost</A> lib]$ make -f Makefile.linux
+g++ -c -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'  ipcomm.cpp
+ipcomm.cpp:1:18: fatal error: QDebug: No such file or directory
+ #include &lt;QDebug&gt;
+
+Is QDebug really required ?, I haven't found so far which QT package
+installs it in Fedora
+
+
+
+-- 
+-- 
+Best wishes / 73
+Richard Bown
+Email : <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+Email : <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.info</A>   
+HTTP  :  <A HREF="http://www.g8jvm.com">http://www.g8jvm.com</A>
+nil carborundum a illegitemis
+##################################################################################
+Ham Call G8JVM . OS Fedora FC19 x86_64 on a Dell Inspiron N5030 laptop
+Maidenhead QRA: IO82SP38, LAT. 52 39.720' N LONG. 2 28.171 W
+QRV VHF 6mtrs 200W, 4 mtrs 150W, 2mtrs 350W, 70cms 200W
+Microwave 23 cms 140W, 13 cms 100W, 6 cms 0W &amp; 3cms 5W
+################################################################################## 
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001569.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+	<LI>Next message: <A HREF="001567.html">[Wsjt-devel] QT 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1564">[ date ]</a>
+              <a href="thread.html#1564">[ thread ]</a>
+              <a href="subject.html#1564">[ subject ]</a>
+              <a href="author.html#1564">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

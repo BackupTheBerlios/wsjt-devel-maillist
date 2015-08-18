@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X, looking forward...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%2C%20looking%20forward...&In-Reply-To=%3CCALNQy49ZAysCQ12yNB9dMpgAD7PkxJ_ucw%2BmfinXngUEPEciGQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001218.html">
+   <LINK REL="Next"  HREF="001227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X, looking forward...</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%2C%20looking%20forward...&In-Reply-To=%3CCALNQy49ZAysCQ12yNB9dMpgAD7PkxJ_ucw%2BmfinXngUEPEciGQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X, looking forward...">ewpereira at gmail.com
+       </A><BR>
+    <I>Tue Apr 23 22:39:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001218.html">[Wsjt-devel] WSJT-X, looking forward...
+</A></li>
+        <LI>Next message: <A HREF="001227.html">[Wsjt-devel] WSJT-X, looking forward...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1223">[ date ]</a>
+              <a href="thread.html#1223">[ thread ]</a>
+              <a href="subject.html#1223">[ subject ]</a>
+              <a href="author.html#1223">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+I fully agree with your enumeration of tasks. One suggestion I have would
+be to elect a production release after some testing time to allow us to
+polish edges and eliminate serious bugs. We could have a list of features
+to work on and once that is complete, we could switch to polishing and bug
+hunting mode and once stability is achieved, we could promote a revision to
+production. The production code base could then be used to build packages
+and pre-compiled binaries. What do you think?
+
+As you have stated, JT9-1 is becoming popular very fast on HF bands.
+However, I am not 100% sure the other modes don't have their niche. Perhaps
+the reason that they are not popular yet is that low band experimenters are
+not yet familiar with them. I, myself, have introduced the JT9-X to a
+couple of hams that like operating QRP on 160m. They were not at all aware
+of the new modes. So... Since the current code base has all the modes
+implemented, may be we could hold onto them for a little longer. We could
+try to remediate the memory requirements issue with some programming.
+Perhaps a command line argument for which mode to run -- having JT9-1 as a
+default mode?
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, Apr 23, 2013 at 12:49 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> I'd like to consult others on the general topic of &quot;What needs to be done
+</I>&gt;<i> before a formal release of WSJT-X Version 1.0?&quot;
+</I>&gt;<i>
+</I>&gt;<i> As a bare minimum, my own short list includes the following essentials:
+</I>&gt;<i>
+</I>&gt;<i> 1. Complete recent work on rig control via calls to hamlib functions.
+</I>&gt;<i>
+</I>&gt;<i> 2. Track down and fix a recently reported bug that causes erratic crashed
+</I>&gt;<i> of the GUI.
+</I>&gt;<i>
+</I>&gt;<i> 3. Write a full User's Guide to replace the present early draft.
+</I>&gt;<i>
+</I>&gt;<i> I'm presently working on all of these.  Are there other important program
+</I>&gt;<i> features that should be added, before a more formal release?
+</I>&gt;<i>
+</I>&gt;<i> Please feel free to submit your (preferably prioritized) list!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> One more thought.  As I'm sure you are aware, 99.9% of the use of WSJT-X
+</I>&gt;<i> is with the JT9-1 mode.  The other submodes (JT9-2 through JT9-30) were
+</I>&gt;<i> included as &quot;specialty modes&quot;, possibly useful on the MF and LF bands.
+</I>&gt;<i> There is little reason to use them at HF.
+</I>&gt;<i>
+</I>&gt;<i> The WSJT-X code could be made somewhat simpler (and much smaller in memory
+</I>&gt;<i> requirements) if submodes JT9-2, ... JT9-30 were eliminated from the code
+</I>&gt;<i> going forward.  Do you have an opinion about the advisability of doing so?
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130423/b4b71fc6/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130423/b4b71fc6/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001218.html">[Wsjt-devel] WSJT-X, looking forward...
+</A></li>
+	<LI>Next message: <A HREF="001227.html">[Wsjt-devel] WSJT-X, looking forward...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1223">[ date ]</a>
+              <a href="thread.html#1223">[ thread ]</a>
+              <a href="subject.html#1223">[ subject ]</a>
+              <a href="author.html#1223">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

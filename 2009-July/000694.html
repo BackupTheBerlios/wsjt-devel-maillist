@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A6216B6.1020103%40superbug.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000693.html">
+   <LINK REL="Next"  HREF="000706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>James Courtier-Dutton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A6216B6.1020103%40superbug.co.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">James at superbug.co.uk
+       </A><BR>
+    <I>Sat Jul 18 20:38:46 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000693.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000706.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#694">[ date ]</a>
+              <a href="thread.html#694">[ thread ]</a>
+              <a href="subject.html#694">[ subject ]</a>
+              <a href="author.html#694">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Diane Bruce wrote:
+&gt;<i> I've been meaning to concur with James for sometime, I had done
+</I>&gt;<i> some tests earlier.
+</I>&gt;<i>   
+</I>&gt;<i> This completely agrees with my analysis. If you replace all the
+</I>&gt;<i> printing code with output statements, the code runs fine.
+</I>&gt;<i>
+</I>&gt;<i> However, I am not convinced it is due to python calling fortran,
+</I>&gt;<i> but I do have a thought as to what it could be.
+</I>&gt;<i>   
+</I>
+Something very strange is happening when running f2py with gfortran.
+a2d.f90 compiled with:
+gfortran -fno-range-check -ffixed-line-length-none -Wall -fbounds-check
+-fno-second-underscore -fPIC -c -O0 -g -oa2d2.o a2d.f90
+
+00000000 &lt;a2d_&gt;:
+subroutine a2d(iarg)
+0: 55 push %ebp
+1: 89 e5 mov %esp,%ebp
+3: 53 push %ebx
+4: 81 ec b4 01 00 00 sub $0x1b4,%esp
+a: e8 fc ff ff ff call b &lt;a2d_+0xb&gt;
+b: R_386_PC32 __i686.get_pc_thunk.bx
+
+a2d.f90 compiled with:
+g95 -Wall -fbounds-check -fno-second-underscore -fPIC -c -O0 -g -oa2d.o
+a2d.f90
+00000000 &lt;a2d_&gt;:
+subroutine a2d(iarg)
+0: 55 push %ebp
+1: 89 e5 mov %esp,%ebp
+3: 57 push %edi
+4: 56 push %esi
+5: 53 push %ebx
+6: 81 ec ac 00 00 00 sub $0xac,%esp
+c: e8 e6 02 00 00 call 2f7 &lt;a2d_+0x2f7&gt;
+11: 81 c3 02 00 00 00 add $0x2,%ebx
+13: R_386_GOTPC _GLOBAL_OFFSET_TABLE_
+Note that they are both very similar when compiled to a .o file. I.e.
+without f2py.
+
+But the f2py output is very different
+For G95 the output is almost identical.
+00034adc &lt;a2d_&gt;:
+subroutine a2d(iarg)
+34adc: 55 push %ebp
+34add: 89 e5 mov %esp,%ebp
+34adf: 57 push %edi
+34ae0: 56 push %esi
+34ae1: 53 push %ebx
+34ae2: 81 ec ac 00 00 00 sub $0xac,%esp
+34ae8: e8 e6 02 00 00 call 34dd3 &lt;a2d_+0x2f7&gt;
+34aed: 81 c3 77 a2 0b 00 add $0xba277,%ebx
+34af3: c7 45 e4 00 00 00 00 movl $0x0,-0x1c(%ebp)
+
+
+For gfortran the output is very strange. Note the lack of use of %ebp
+0002dbf0 &lt;a2d_&gt;:
+subroutine a2d(iarg)
+2dbf0: 53 push %ebx
+2dbf1: 81 ec c8 01 00 00 sub $0x1c8,%esp
+2dbf7: e8 9b 8d fd ff call 6997 &lt;__i686.get_pc_thunk.bx&gt;
+2dbfc: 81 c3 f8 83 08 00 add $0x883f8,%ebx
+
+
+So, this is most definitely some problem with the interaction between
+f2py and gfortran that does not exist with f2py and g95.
+In fact, I have not yet been able to find a gfortran compiler option
+that will create the code without the %ebp
+
+Is there any way to get f2py to use just .o files in it's input?
+We could then create .o files from all the .f, .f90 and .F90 input
+files, and then run f2py on the .o files.
+This might give us more consistency or at least work around a bug.
+Creating .o files first also speeds up the entire compile process.
+
+Kind Regards
+
+James
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000693.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000706.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#694">[ date ]</a>
+              <a href="thread.html#694">[ thread ]</a>
+              <a href="subject.html#694">[ subject ]</a>
+              <a href="author.html#694">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

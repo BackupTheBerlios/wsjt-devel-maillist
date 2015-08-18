@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Some debugging information about linrad communication
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Some%20debugging%20information%20about%20linrad%20communication&In-Reply-To=%3C48ACE93F.8070307%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Some debugging information about linrad communication</H1>
+    <B>jeff millar</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Some%20debugging%20information%20about%20linrad%20communication&In-Reply-To=%3C48ACE93F.8070307%40gmail.com%3E"
+       TITLE="[Wsjt-devel] Some debugging information about linrad communication">wa1hco at gmail.com
+       </A><BR>
+    <I>Thu Aug 21 06:04:15 CEST 2008</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Map65 compiles and runs here, but linrad communications doesn't work...so on to debugging.  All this 
+with wsjt/branches/map65, r1002
+
+Maybe someone knows what the following symptoms mean...
+    - Rx_noise climbs slowly to about 18 dB on startup...then never moves
+
+    - Enabled the following debug message were &quot;No Rx data&quot; goes on the screen, (map65.py, line 976)
+         t=&quot;%d  %.2f  %.2f&quot; % (Audio.datcom.kbuf,Audio.datcom.kk/(60.0*96000.0), \
+                               Audio.datcom.kxp/(60.0*96000.0))
+         msg5.configure(text=t)
+    - Disabled the red &quot;No Rx data&quot; message
+    - kxp behaves badly, I think
+       - when running for a while
+         - increments 0.00 to 0.25 and 1.00 to 1.25 over one minute
+         - Shouldn't it increment from 0.00 to 0.99 and 1.00 to 1.00???
+         - On startup, somewhat random value, like 1.68
+       - can increment past 2.00 in first minute...leading to segfault
+
+    - pctlost variable looks broken
+      - replaced it with nlost=lost_tot
+      - starts at random negative number like -6453
+      - never changes after that
+
+    - debugged a bit in recvpkt.F90
+      - &quot;time to start FFTs&quot; section never gets executed
+	! If we have not transmitted in this minute, see if it's time to start FFTs
+	     if(ntx.eq.0 .and. lauto+monitoring.ne.0) then
+	        if(ns.ge.nt1 .and. ndone1.eq.0 .and. synced) then
+		   print*,&quot;time to start FFT'
+	           nutc=mutc
+	           fcenter=center_freq
+	           kbuf=kb
+	           kk=k
+	           ndiskdat=0
+	           ndone1=1
+	        endif
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

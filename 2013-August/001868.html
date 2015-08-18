@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Should the WSJT-X decoders run as a separate process, or not?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Should%20the%20WSJT-X%20decoders%20run%20as%20a%20separate%0A%20process%2C%20or%20not%3F&In-Reply-To=%3C520E8C47.2020503%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001867.html">
+   <LINK REL="Next"  HREF="001869.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Should the WSJT-X decoders run as a separate process, or not?</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Should%20the%20WSJT-X%20decoders%20run%20as%20a%20separate%0A%20process%2C%20or%20not%3F&In-Reply-To=%3C520E8C47.2020503%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Should the WSJT-X decoders run as a separate process, or not?">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Aug 16 22:32:07 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001867.html">[Wsjt-devel] Should the WSJT-X decoders run as a separate process,	or not?
+</A></li>
+        <LI>Next message: <A HREF="001869.html">[Wsjt-devel] Should the WSJT-X decoders run as a separate process, or not?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1868">[ date ]</a>
+              <a href="thread.html#1868">[ thread ]</a>
+              <a href="subject.html#1868">[ subject ]</a>
+              <a href="author.html#1868">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 16/08/2013 21:22, Joe Taylor wrote:
+Hi Joe,
+&gt;<i> Here's a parting thought for the group to ponder while I'm at the 
+</I>&gt;<i> beach, playing with grandchildren.
+</I>&gt;<i>
+</I>&gt;<i> As you know, decoding in WSJT-X is now done in the separate program 
+</I>&gt;<i> jt9 (jt9.exe on Windows).  I could have done it in a separate thread, 
+</I>&gt;<i> but decided to try a separate process this time, with the raw data 
+</I>&gt;<i> conveyed via a shared memory region.  This works well, but brings with 
+</I>&gt;<i> it other complications.
+</I>&gt;<i>
+</I>&gt;<i> Another possibility would be to just call the decoder -- the stuff 
+</I>&gt;<i> mostly written in Fortran -- directly from the GUI, as a subroutine.  
+</I>&gt;<i> Of course we don't want the GUI to freeze while decoding is done... 
+</I>&gt;<i> but if we put a bunch of calls back to QApplication.processEvents() in 
+</I>&gt;<i> the Fortran code, so that they would be spaced in time by less than 
+</I>&gt;<i> 0.1 s or so, it might work well.  As it happens, the necessary hooks 
+</I>&gt;<i> for such a scheme are already mostly in place in the form of calls to 
+</I>&gt;<i> timer(), a simple routine I wrote to do profiling of the Fortran 
+</I>&gt;<i> code.  Nearly all of the calls to timer -- typically several thousand 
+</I>&gt;<i> of them while decoding a single Rx sequence -- are spaced by less than 
+</I>&gt;<i> 0.1 s on a modern computer.  So we could place calls to 
+</I>&gt;<i> QApplication.processEvents() inside timer(), and the job might be done.
+</I>&gt;<i>
+</I>&gt;<i> Would this possibly be a good idea?  Your thoughts?
+</I>I would wrap the call to the jt9 decoder in a QObject, implement the 
+start trigger as a slot (that way it can cross thread boundaries 
+safely), pass a &quot;C&quot; style callback function to the Fortran code along 
+with a void * pointer that would be the &quot;this&quot; ponter of the wrapper, 
+then whenever jt9 needs to send infomation back it would call the 
+callback which would then recover the this pointer and emit a Qt signal 
+with any callback parameters (probably a struct or small value type 
+class that contained an individual decode) that would be connected to 
+the GUI thread to display the decodes.
+
+This is dependant on the internal architecture of the Fortran code and 
+how easy it would be to pass around the callback and its data (the 
+pointer) to be used to return messages.
+
+The key being that because all communication is via slots and signals it 
+can easily be run in a separate thread.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001867.html">[Wsjt-devel] Should the WSJT-X decoders run as a separate process,	or not?
+</A></li>
+	<LI>Next message: <A HREF="001869.html">[Wsjt-devel] Should the WSJT-X decoders run as a separate process, or not?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1868">[ date ]</a>
+              <a href="thread.html#1868">[ thread ]</a>
+              <a href="subject.html#1868">[ subject ]</a>
+              <a href="author.html#1868">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

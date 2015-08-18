@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Improved JT4 decoder in WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Improved%20JT4%20decoder%20in%20WSJT&In-Reply-To=%3C4A5219CC.7080202%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000682.html">
+   <LINK REL="Next"  HREF="000684.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Improved JT4 decoder in WSJT</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Improved%20JT4%20decoder%20in%20WSJT&In-Reply-To=%3C4A5219CC.7080202%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Improved JT4 decoder in WSJT">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul  6 17:35:40 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000682.html">[Wsjt-devel] Performance MAP65 / Linux
+</A></li>
+        <LI>Next message: <A HREF="000684.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#683">[ date ]</a>
+              <a href="thread.html#683">[ thread ]</a>
+              <a href="subject.html#683">[ subject ]</a>
+              <a href="author.html#683">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To: Microwave users of WSJT
+
+Based on results of some fairly extensive tests of the JT4x 
+modes on terrestrial 23 cm paths, carried out by members of 
+the UK microwave group, I have implemented some improvements 
+to the JT4 decoder.
+
+If you have read the description of JT2 and JT4 modes at 
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT">http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT</A> , you 
+will have seen the following table that shows tone spacings, 
+total bandwidths, and threshold S/N limits for each of the 
+JT4 submodes:
+
+Mode  Spacing   BW  S/N limit  Possible Applications
+         (Hz)    (Hz)   (dB)
+----------------------------------------------------
+JT4A    4.375   17.5   -23     EME at VHF/UHF
+JT4B    8.75    35.0   -22
+JT4C   17.5     70.0   -21
+JT4D   39.375  157.5   -20     2.3, 3.4 GHz EME
+JT4E   78.75   315.0   -19     5.7 GHz EME
+JT4F  157.5    630.0   -18     10 GHz EME
+JT4G  315.0   1260.0   -17
+
+The seven JT4x submodes are intended to provide a range of 
+tone-spacing options so as to accommodate a variety of 
+propagation conditions -- in particular, different amounts 
+of Doppler spreading on the path.
+
+Experiments by the UK microwave gang have established that 
+on 23 cm paths of a few hundred km, submodes JT4A-C will 
+seldom decode, even with what appears to be adequate signal 
+strength.  JT4D decodes sometimes, and JT4E-G usually 
+decode.  I interpret this to mean that the frequency 
+spreading on the tested paths is typically several tens of 
+Hz, perhaps sometimes approaching 100 Hz.  If the spread 
+exceeds the tone spacing, decoding ability will be severely 
+degraded.
+
+Of course, to be safe one might always use JT4G, with its 
+315 Hz tone spacing; but as the table shows, with the old 
+decoder this can cost up to 7 dB in lost sensitivity when 
+the path spread is actually much smaller.
+
+The new JT4 decoder obviates this problem by trying each of 
+the detection bandwidths 4.375, 8.75, 17.5, 39.375, 78.75, 
+157.5, and 315 Hz, in turn, until a good decode is obtained. 
+  The effect is that for an unspread signal, JT4G is now 
+just as sensitive as JT4A.  Decoding now takes somewhat 
+longer, but the impact is small enough that with modern 
+computers you probably won't notice it.
+
+I have not yet seen many examples of *.WAV files for 1296 
+MHz troposcatter signals, so I am in a sense &quot;flying blind&quot; 
+in attempts to improve JT4 for this application.  I suspect 
+that the next important area for improvement will be to 
+implement AFC in software.  Some user input (and a 
+collection of example files) would be most helpful here!
+
+To download a trial version of WSJT with these improvements, 
+  use one of the following links:
+
+################################################################
+For Windows:
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT704r1268.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT704r1268.EXE</A>
+
+To install, simply execute the downloaded file.
+
+################################################################
+For Ubuntu Linux 9.04 (and probably other recent 
+Debian-based Linux distributions):
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/wsjt7_r1268.tgz">http://physics.princeton.edu/pulsar/K1JT/wsjt7_r1268.tgz</A>
+
+To install and run, put the downloaded file in your login 
+directory and type the following commands in a 
+command-prompt window:
+
+$ tar xzf wsjt7_r1268.tgz
+$ cd wsjt
+$ python wsjt.py
+
+################################################################
+
+I look forward to receiving some reports from users!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000682.html">[Wsjt-devel] Performance MAP65 / Linux
+</A></li>
+	<LI>Next message: <A HREF="000684.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#683">[ date ]</a>
+              <a href="thread.html#683">[ thread ]</a>
+              <a href="subject.html#683">[ subject ]</a>
+              <a href="author.html#683">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

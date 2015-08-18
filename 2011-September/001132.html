@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] call to use obsolte font
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C1317322798.1683.12.camel%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001131.html">
+   <LINK REL="Next"  HREF="001133.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] call to use obsolte font</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20call%20to%20use%20obsolte%20font&In-Reply-To=%3C1317322798.1683.12.camel%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] call to use obsolte font">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Thu Sep 29 20:59:58 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001131.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+        <LI>Next message: <A HREF="001133.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1132">[ date ]</a>
+              <a href="thread.html#1132">[ thread ]</a>
+              <a href="subject.html#1132">[ subject ]</a>
+              <a href="author.html#1132">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2011-09-29 at 11:28 -0400, Joe Taylor wrote:
+&gt;<i> Richard --
+</I>&gt;<i> 
+</I>&gt;<i> The variable name &quot;g2font&quot; has nothing to do with Gnome.  It is simply 
+</I>&gt;<i> an (arbitrary) variable name in the WSJT Python code.
+</I>&gt;<i> 
+</I>&gt;<i> Apparently you did not post the portion of the error message that 
+</I>&gt;<i> explains the nature of your error, so one cannot tell what might be 
+</I>&gt;<i> wrong in your system.
+</I>&gt;<i> 
+</I>&gt;<i> In general, WSJT fonts can be set in the file wsjtrc.
+</I>&gt;<i> 
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> 
+</I>&gt;<i> On 9/29/2011 9:38 AM, Richard wrote:
+</I>&gt;<i> &gt; Hi
+</I>&gt;<i> &gt; in the section below which appears at start up g2font is not recognised,
+</I>&gt;<i> &gt; not surprising as that's used with gnome 2, Gnome 3 has succeeded gnome
+</I>&gt;<i> &gt; 2 for a long time now.
+</I>&gt;<i> &gt; If I change the font used, which would be the most common used ?, and
+</I>&gt;<i> &gt; would it have to be declared earlier in the script?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Exception in Tkinter callback
+</I>&gt;<i> &gt; Traceback (most recent call last):
+</I>&gt;<i> &gt;    File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 1410, in __call__
+</I>&gt;<i> &gt;      return self.func(*args)
+</I>&gt;<i> &gt;    File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 495, in callit
+</I>&gt;<i> &gt;      func(*args)
+</I>&gt;<i> &gt;    File &quot;/usr//bin/wsjt.py&quot;, line 1716, in update
+</I>&gt;<i> &gt;      graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It would be nice not to see that error message all the time
+</I>&gt;<i> &gt; TIA
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+Thanks for replying
+The section above was the only bit shown on start up Joe, Its not a
+killer problem , just an annoyance.
+I do have a major problem with kernel 3.0.1 as its causing problems with
+alsa and the effect is that it skips the requested card and jumps to the
+default
+ie.
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0        2         8       HDA ATI SB: ALC892 Analog (hw:0,0)
+   1        2         2       HDA ATI SB: ALC892 Digital (hw:0,1)
+   2        0         2       HDA ATI HDMI: HDMI 0 (hw:1,3)
+   3        0         8       front
+   4        0         8       surround40
+   5        0        128       surround41
+   6        0        128       surround50
+   7        0         8       surround51
+   8        0         8       surround71
+   9        0         2       iec958
+  10        2         2       spdif
+  11       32        32       pulse
+  12        0         2       dmix
+  13       32        32       default
+
+User requested devices:   Input =  0   Output =  0
+Default devices:          Input = 13   Output = 13
+Will open devices:        Input = 13   Output = 13
+
+
+bash-4.2$ aplay -l
+**** List of PLAYBACK Hardware Devices ****
+card 0: SB [HDA ATI SB], device 0: ALC892 Analog [ALC892 Analog]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: SB [HDA ATI SB], device 1: ALC892 Digital [ALC892 Digital]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: HDMI [HDA ATI HDMI], device 3: HDMI 0 [HDMI 0]
+  Subdevices: 0/1
+  Subdevice #0: subdevice #0
+
+
+What's even worse is the card alsa should be using is a M-audio D66,
+which aplay doesn't list, but it might if you reboot.. very random
+results :)
+
+lspci shows
+01:05.1 Audio device: ATI Technologies Inc RS880 Audio Device [Radeon HD
+4200]
+02:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
+RTL8111/8168B PCI Express Gigabit Ethernet controller (rev 06)
+03:07.0 Multimedia audio controller: VIA Technologies Inc. ICE1712
+[Envy24] PCI Multi-Channel I/O Controller (rev 02)
+
+The cards there and the modules loaded, this has all occurred after
+kernel 2.6.40, which is also kernel 3.0.0.
+It doesn't seem to matter if pulseaudio is loaded either.
+
+ho hum
+
+-- 
+Best wishes / 73
+Richard Bown
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+
+nil carborundum a illegitemis
+########################################################################
+Sent by Evolution 2.32.1 on Fedora FC15 x86_64 Dual core AMD Athlon 4400
+Ham Call:G8JVM 
+Maidenhead QRA: IO82SP38:LAT. 52 39.720':N LONG. 2 28.171 W (degs,mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001131.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+	<LI>Next message: <A HREF="001133.html">[Wsjt-devel] call to use obsolte font
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1132">[ date ]</a>
+              <a href="thread.html#1132">[ thread ]</a>
+              <a href="subject.html#1132">[ subject ]</a>
+              <a href="author.html#1132">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

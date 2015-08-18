@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] lastest wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071015000748.GA27919%40cloud.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000187.html">
+   <LINK REL="Next"  HREF="000191.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] lastest wsjt</H1>
+    <B>Hamish Moffatt</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071015000748.GA27919%40cloud.net.au%3E"
+       TITLE="[Wsjt-devel] lastest wsjt">hamish at debian.org
+       </A><BR>
+    <I>Mon Oct 15 02:07:48 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000187.html">[Wsjt-devel] lastest wsjt
+</A></li>
+        <LI>Next message: <A HREF="000191.html">[Wsjt-devel] lastest wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Oct 14, 2007 at 11:41:41PM +0100, Richard wrote:
+&gt;<i> the problem is something to do with python imaging.
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">oot at gb7tf</A> wsjt-5.9.8.r558]# python wsjt.py
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 5.9.8 r558 , by K1JT
+</I>&gt;<i> Revision date: 2007-10-08 16:47:34 +0300 (Mon, 08 Oct 2007) 
+</I>&gt;<i> Run date:   Sun Oct 14 22:25:16 2007 UTC
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;wsjt.py&quot;, line 106, in &lt;module&gt;
+</I>&gt;<i>     pim=ImageTk.PhotoImage(im)
+</I>&gt;<i>   File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 116, in
+</I>&gt;<i> __init__ self.paste(image)
+</I>&gt;<i>   File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 181, in
+</I>&gt;<i> paste import _imagingtk
+</I>&gt;<i> ImportError: No module named _imagingtk
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> That is returned whether you build from the tar ball, or install from a
+</I>&gt;<i> RPM.
+</I>
+... because it's a Python library you need to install. On Debian the
+package is python-imaging-tk.
+
+
+Hamish
+-- 
+Hamish Moffatt VK3SB &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000187.html">[Wsjt-devel] lastest wsjt
+</A></li>
+	<LI>Next message: <A HREF="000191.html">[Wsjt-devel] lastest wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

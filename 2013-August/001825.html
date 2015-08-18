@@ -1,0 +1,311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520B9463.7030803%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001864.html">
+   <LINK REL="Next"  HREF="001826.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520B9463.7030803%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Aug 14 16:29:55 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001864.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+        <LI>Next message: <A HREF="001826.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1825">[ date ]</a>
+              <a href="thread.html#1825">[ thread ]</a>
+              <a href="subject.html#1825">[ subject ]</a>
+              <a href="author.html#1825">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+A long post but hopefully worth it.
+
+I have just committed r3548 which is the first phase of a demonstration 
+of using CMake to configure and build WSJT-X. This is work in progress 
+so don't expect it to make the tea for you just yet.
+
+I am able to use it to generate working makefiles to build on Linux and 
+on Windows at the moment. It may work as is on OS-X but I haven't tested 
+it there.
+
+To use it you need ensure you have the following pre-requisites 
+installed on your development system (you probably have most of them 
+there already if you are developing for wsjtx):
+
+Qt
+==
+Qt at least version 5.1. I use the standard packaged version on Linux. 
+On Ubuntu 13.04 I used
+
+sudo apt-get install qt5-default qttools5-dev-tools qtmultimedia5-dev 
+qtcreator
+
+If you distribution doesn't have these packages or equivalents then just 
+get a suitable package from this page <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A> .
+
+On Windows I used the install from 
+<A HREF="http://download.qt-project.org/official_releases/online_installers/qt-windows-opensource-1.4.0-x86-online.exe">http://download.qt-project.org/official_releases/online_installers/qt-windows-opensource-1.4.0-x86-online.exe</A> 
+and installed into C:\Tools\Qt In the component selection the defaults 
+are fine although I deselected the MinGW-4.7 part because the MinGW-4.8 
+compiler tools are better for C++.
+
+DirectX9
+========
+On MS Windows Qt has a dependency on the MS DirectX9 library, this is 
+for the ANGLE library which is shim library that maps basic OpenGL calls 
+to DirectX functions without using the OpenGL libraries. Unfortunately 
+even if you don't use OpenGL in your Qt application; the library is 
+referenced. The easiest way to get it is to install a recent Windows SDK 
+which these days have DirectX bundled. I install the Windows 8.0 SDK 
+from 
+<A HREF="http://msdn.microsoft.com/en-us/library/windows/desktop/hh852363.aspx">http://msdn.microsoft.com/en-us/library/windows/desktop/hh852363.aspx</A> . 
+You may have an older SDK or the older unbundled DirectX SDK installed, 
+that's fine CMake should find it.
+
+CMake
+======
+CMake at least version 2.8.9. I use the standard packaged version on linux.
+
+On Windows I installed the CMake binary package using the installer 
+<A HREF="http://www.cmake.org/files/v2.8/cmake-2.8.11.2-win32-x86.exe">http://www.cmake.org/files/v2.8/cmake-2.8.11.2-win32-x86.exe</A> and 
+installed it into C:\Tools (I don't let installers install into the 
+Program Files folders unless it is really necessary and in this case it 
+isn't). I make sure that the 'bin' directory in the package is on my 
+PATH environment variable. (A word of warning on the environment setup 
+for the MinGW shell that Qt project sets up; when changing the PATH 
+variable always ensure that the Qt paths are first otherwise the build 
+environment will not work).
+
+FFTW
+=====
+WSJT-X has a dependency on the FFTW version 3 package, it requires the 
+single precision variant. Current we statically link this library. I 
+have used dynamic linking in the CMake script since this library is 
+likely to be shared by several applications (this can be changed to 
+static linking if required).
+
+On Linux I ensured that the correct package was installed with:
+
+sudo apt-get install libfftw3-dev libfftw3-single3
+
+On Windows I installed the binary package from 
+<A HREF="ftp://ftp.fftw.org/pub/fftw/fftw-3.3.3-dll32.zip">ftp://ftp.fftw.org/pub/fftw/fftw-3.3.3-dll32.zip</A> into 
+C:\Tools\fftw-3.3.3-dll32 (beware; this archive doesn't have a top level 
+directory so you have to create a folder to extract into).
+
+HAMLIB
+=======
+WSJT-X has a dependency on the HAMLIB version2 package.
+
+On Linux I ensured that the correct package was installed with:
+
+sudo apt-get libhamlib-dev
+
+On Windows I installed the binary package from 
+<A HREF="https://downloads.sourceforge.net/project/hamlib/hamlib/1.2.15.3/hamlib-win32-1.2.15.3.zip">https://downloads.sourceforge.net/project/hamlib/hamlib/1.2.15.3/hamlib-win32-1.2.15.3.zip</A> 
+into C:\Tools .
+
+Advice on using CMake
+====================
+CMake is a configuration and makefile generator. The idea is that you 
+run it once for each configuration you want to build and after that you 
+use the generated makefiles to build the project.
+
+For simple native builds the only extra input you need to give CMake 
+should be about what you want to build and where you want the results to 
+go. On non-native builds (cross compiles for example, and MinGW on 
+Windows is technically a cross compile) you need to provide some 
+information about what target you are building for and where required 
+packages can be found. This is all done via the CMake command line 
+although with cross compiles it is better to capture the information in 
+a toolchain file that can be reused for other projects.
+
+I strongly recommend building outside of the source tree. CMake fully 
+supports this and it is much easier to develop if the source tree isn't 
+full of build intermediate files and products. The following 
+instructions follow this guideline.
+
+I also strongly recommend that you create a test install directory and 
+use that to test and debug the project rather than having to find the 
+executables in the build tree. I use ~/test-install .
+
+Native builds
+===========
+To run CMake on non-Windows systems for a native build I suggest you 
+create two directories for Debug and Release builds respectively, I use 
+~/objdir/wsjtx/{Debug,Release} so example to set up I would type:
+
+mkdir -p ~/objdir/wsjtx/{Debug,Release}
+
+Then cd to the Debug directory and run:
+
+cmake -D CMAKE_BUILD_TYPE=Debug -D CMAKE_INSTALL_PREFIX=~/test-install 
+~/src/wsjtx
+
+Then cd to the Release directory and repeat (note the different BUILD_TYPE):
+
+cd ../Release
+cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=~/test-install 
+~/src/wsjtx
+
+That should, if all goes well, be the last time you use CMake directly.
+
+To do a build cd into one of the build directories and run 'make install':
+
+cd ../Debug
+make install
+
+The project should build and in ~/test-install/bin you should have a 
+program you can test:
+
+cd ~/test-install
+./wsjtx
+
+If you want a release build just run the 'make install' in the Release 
+directory.
+
+Non-native Builds
+===============
+Building on Windows with MinGW is technically a cross compile so we need 
+to provide some extra information to CMake. The best way to do this is 
+to create a toolchain file somewhere away from the source tree that 
+describes the target and where to find the pre-requisite components on 
+your system. Your toolchain file will probably be different from mine, 
+but once you get it right you shouldn't need to change it. I have the 
+following file:
+(NOTE: the MinGW 4.8 32 bit toolset bundled with Qt5.1 has all the 
+required build tools so I run builds from the shell that it provides - 
+the one named &quot;Qt 5.1.0 for Desktop (MinGW 4.8 32 bit)&quot;)
+
+C:\Tools\Qt\5.1.0\mingw48_32&gt;cmake --version
+cmake version 2.8.11.2
+
+C:\Tools\Qt\5.1.0\mingw48_32&gt;type 
+\Users\bill\Documents\objdir\Toolchain-mingw48_32-Qt5.cmake
+# the name of the target operating system
+set (CMAKE_SYSTEM_NAME Windows)
+
+set (QTDIR C:/Tools/Qt/5.1.0)
+set (FFTWDIR C:/Tools/fftw-3.3.3-dll32-2)
+set (HAMLIBDIR  C:/Tools/hamlib-win32-1.2.15.3)
+
+# where to find required packages
+set (CMAKE_PREFIX_PATH ${QTDIR}/mingw48_32 ${FFTWDIR} ${HAMLIBDIR} 
+${HAMLIBDIR}/bin)
+
+# where the target environment located
+set (CMAKE_FIND_ROOT_PATH  ${QTDIR}/mingw48_32 
+$ENV{HOMEDRIVE}$ENV{HOMEPATH}/Documents/test-install)
+
+# adjust the default behaviour of the FIND_XXX() commands:
+# search headers and libraries in the target environment, search
+# programs in the host environment
+set (CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set (CMAKE_FIND_ROOT_PATH_MODE_LIBRARY BOTH)
+set (CMAKE_FIND_ROOT_PATH_MODE_INCLUDE BOTH)
+
+C:\Tools\Qt\5.1.0\mingw48_32&gt;
+
+NOTE: CMake doesn't like backslashes, if you insist on using them then 
+escape them with a backslash.
+
+CMAKE_SYSTEM_NAME tells CMake the target system is Windows.
+CMAKE_PREFIX_PATH is a list of places to start looking for packages, 
+libraries, paths and, files.
+CMAKE_FIND_ROOT_PATH is a list of places to find runtime dependencies.
+CMAKE_FIND_ROOT_PATH_MODE_PROGRAM is set to never use tools that aren't 
+designed for the target.
+CMAKE_FIND_ROOT_PATH_MODE_LIBRARY is set to allow libraries from for 
+both the target and the host.
+CMAKE_FIND_ROOT_PATH_MODE_INCLUDE is set to allow header files for both 
+the target and the host.
+
+Once the toolchain file is set up you can run CMake. As per the native 
+build instructions above I recommend building outside of the source tree 
+and use the 'install' option to generate a working result in a separate 
+test area. My SVN source tree is 
+C:\Users\bill\Documents\vbox-shares\transfer\wsjtx and I build in 
+C:\Users\bill\Documents\objdir\wsjtx\mingw48_32 with installs going to 
+C:\Users\bill\Documents\test-install .
+
+So to run CMake I do the following:
+
+cd \Users\bill\Documents\objdir\wsjtx\mingw48_32
+mkdir Debug Release
+cd Debug
+cmake -G &quot;MinGW Makefiles&quot; 
+-DCMAKE_TOOLCHAIN_FILE=..\..\..\Toolchain-mingw48_32-Qt5.cmake 
+-DCMAKE_BUILD_TYPE=Debug 
+-DCMAKE_INSTALL_PREFIX=\Users\bill\Documents\test-install 
+\Users\bill\Documents\vbox-shares\transfer\wsjtx
+
+To set up the release makefiles execute a similar command in the Release 
+directory:
+
+cd ..\Release
+cmake -G &quot;MinGW Makefiles&quot; 
+-DCMAKE_TOOLCHAIN_FILE=..\..\..\Toolchain-mingw48_32-Qt5.cmake 
+-DCMAKE_BUILD_TYPE=Debug 
+-DCMAKE_INSTALL_PREFIX=\Users\bill\Documents\test-install 
+\Users\bill\Documents\vbox-shares\transfer\wsjtx
+
+If all goes well you are ready to build the project. To build the Debug 
+target:
+
+cd ..\Debug
+mingw32-make install
+
+and you should get a result in the install prefix bin directory (in my 
+case \Users\bill\Documents\test-install\bin\ which you should be able to 
+test or debug.
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001864.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+	<LI>Next message: <A HREF="001826.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1825">[ date ]</a>
+              <a href="thread.html#1825">[ thread ]</a>
+              <a href="subject.html#1825">[ subject ]</a>
+              <a href="author.html#1825">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

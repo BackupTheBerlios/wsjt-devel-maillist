@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Some Pointers Please..-&gt; !
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Some%20Pointers%20Please..-%3E%20%21&In-Reply-To=%3C4E3F1694.50404%40justfans.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001128.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Some Pointers Please..-&gt; !</H1>
+    <B>Iain</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Some%20Pointers%20Please..-%3E%20%21&In-Reply-To=%3C4E3F1694.50404%40justfans.co.uk%3E"
+       TITLE="[Wsjt-devel] Some Pointers Please..-&gt; !">g4sgx at justfans.co.uk
+       </A><BR>
+    <I>Mon Aug  8 00:49:56 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001128.html">[Wsjt-devel] wsjt on Fedora FC15 64bit:  more info
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1129">[ date ]</a>
+              <a href="thread.html#1129">[ thread ]</a>
+              <a href="subject.html#1129">[ subject ]</a>
+              <a href="author.html#1129">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Many Thanks.
+
+Its been a huge help.
+
+I've tracked down the relevant code to synch162.f, particularly this 
+section looping through each reception, k to kz:
+
+
+
+       do k=1,kz
+          a(1)=-freq(k)
+          a(2)=-0.5*drift(k)
+          a(3)=0.
+          lagpk=nint((dtx(k)+2)/(128*dt))
+          lag1=max(-200,8*lagpk-16)
+          lag2=min(200,8*lagpk+16)
+          ccf=fchisq(c2,jz,375.0,a,lag1,lag2,ccfbest,dtbest)
+          ipk=nint(freq(k)/df)
+*snrx=db(max(psavg(ipk),0.0001)) - 26.5 *      !Empirical
+          sstf(1,k)=p1(k)
+          sstf(2,k)=snrx
+          sstf(3,k)=dtbest-2.0
+          sstf(4,k)=freq(k)
+          sstf(5,k)=drift(k)
+       enddo
+
+What I'm after achieving is to create another 2 variables, snrx1 and 
+snrx2 which I'll export later by expanding the sstf array to accommodate 
+it..
+
+snrx1 willl be the s/n for the first half of the received transmissions 
+, snrx2 the second half.
+Logically this means two different *psavg(ipk)* values but my ignorance 
+of the record structure stops me here.
+
+While I go backwards from here to try and reverse engineer the code from 
+the very useful comments throughout the code, can you give me your 
+thoughts on how I might do this, particularly getting the two 
+*psavg(ipk)* values for each half ?
+
+
+
+
+Iain G4SGX
+
+
+
+
+
+
+
+
+&gt;<i> Hi Iain,
+</I>&gt;<i>
+</I>&gt;<i> I'm not sure exactly what you want to know, but will give you a brief 
+</I>&gt;<i> overview of the WSPR program.
+</I>&gt;<i>
+</I>&gt;<i> As you will surely recognize already, the user interface for WSPR is 
+</I>&gt;<i> written in Python, while most of the T/R scheduling and band-hopping 
+</I>&gt;<i> chores and all of the decoding are done in Fortran.  A few C routines 
+</I>&gt;<i> help with system access tasks.
+</I>&gt;<i>
+</I>&gt;<i> Here's a brief map of the decoding process, by subroutine name
+</I>&gt;<i>
+</I>&gt;<i> decode
+</I>&gt;<i>    |____ mept162
+</I>&gt;<i>             |____ mix162
+</I>&gt;<i>             |____ spec162
+</I>&gt;<i>             |____ sync162
+</I>&gt;<i>             |____ twkfreq
+</I>&gt;<i>             |____ decode162
+</I>&gt;<i>                       |____ inter_mept
+</I>&gt;<i>                       |____ fano232
+</I>&gt;<i>
+</I>&gt;<i> Major functions of some of the named routines:
+</I>&gt;<i>
+</I>&gt;<i> mept162: orchestrates the whole decoding process
+</I>&gt;<i> mix162:  mix the signal to baseband, downsample by 1/32
+</I>&gt;<i> spec162: compute pixmap for display of spectrogram
+</I>&gt;<i> sync162: look for WSPR sync patterns in the noise; get DF, DT for each.
+</I>&gt;<i> twkfreq: for each sync'ed signal, make final adjustments to remove
+</I>&gt;<i>          frequency offset (DF) and linear frequency drift
+</I>&gt;<i> decode162: compute soft symbols for the encoded WSPR message
+</I>&gt;<i> inter_mept: remove interleaving
+</I>&gt;<i> fano232:  apply Fano's sequential algorithm to decode the user message
+</I>&gt;<i>
+</I>&gt;<i> I hope this helps.
+</I>&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT 
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110807/ce5f33e8/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110807/ce5f33e8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001128.html">[Wsjt-devel] wsjt on Fedora FC15 64bit:  more info
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1129">[ date ]</a>
+              <a href="thread.html#1129">[ thread ]</a>
+              <a href="subject.html#1129">[ subject ]</a>
+              <a href="author.html#1129">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

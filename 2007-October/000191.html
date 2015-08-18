@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] lastest wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071015104422.66aeeb30%40gb7tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000188.html">
+   <LINK REL="Next"  HREF="000189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] lastest wsjt</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20lastest%20wsjt&In-Reply-To=%3C20071015104422.66aeeb30%40gb7tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] lastest wsjt">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Mon Oct 15 11:44:22 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000188.html">[Wsjt-devel] lastest wsjt
+</A></li>
+        <LI>Next message: <A HREF="000189.html">[Wsjt-devel] to Harry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 15 Oct 2007 10:07:48 +1000
+Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; wrote:
+
+&gt;<i> On Sun, Oct 14, 2007 at 11:41:41PM +0100, Richard wrote:
+</I>&gt;<i> &gt; the problem is something to do with python imaging.
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">oot at gb7tf</A> wsjt-5.9.8.r558]# python wsjt.py
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; WSJT Version 5.9.8 r558 , by K1JT
+</I>&gt;<i> &gt; Revision date: 2007-10-08 16:47:34 +0300 (Mon, 08 Oct 2007) 
+</I>&gt;<i> &gt; Run date:   Sun Oct 14 22:25:16 2007 UTC
+</I>&gt;<i> &gt; Traceback (most recent call last):
+</I>&gt;<i> &gt;   File &quot;wsjt.py&quot;, line 106, in &lt;module&gt;
+</I>&gt;<i> &gt;     pim=ImageTk.PhotoImage(im)
+</I>&gt;<i> &gt;   File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 116,
+</I>&gt;<i> &gt; in __init__ self.paste(image)
+</I>&gt;<i> &gt;   File &quot;/usr/lib/python2.5/site-packages/PIL/ImageTk.py&quot;, line 181,
+</I>&gt;<i> &gt; in paste import _imagingtk
+</I>&gt;<i> &gt; ImportError: No module named _imagingtk
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; That is returned whether you build from the tar ball, or install
+</I>&gt;<i> &gt; from a RPM.
+</I>&gt;<i> 
+</I>&gt;<i> ... because it's a Python library you need to install. On Debian the
+</I>&gt;<i> package is python-imaging-tk.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hamish
+</I>Hi
+
+
+I've found out now that python-imaging has nothing to do with python,
+its python-ware, If you install Imaging it still gets a build fail from
+Tinker, and libtix needs to be installed before Imaging is built.
+
+Mandriva is one of the first distros to drop any package they consider
+to be depreciated.
+
+As the the RPM for wsjt already supplies Portaudio, it would be prudent
+to include the imaging libs, _imagingtk.so, as part of the package
+
+-- 
+
+Best Wishes
+
+Richard Bown
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Registered Linux User 365161
+OS Mandriva 2008.0 Kernel 2.6.22.9-desktop-1mdv
+HAM Callsign G8JVM : Locator IO82SP
+QRV all bands 80mtrs to 3 cms ,( non WARC )
+<A HREF="http://www.software-radio.org.uk">http://www.software-radio.org.uk</A>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000188.html">[Wsjt-devel] lastest wsjt
+</A></li>
+	<LI>Next message: <A HREF="000189.html">[Wsjt-devel] to Harry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

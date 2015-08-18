@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAUDIO_INPUT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F8FAE0.8000604%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001623.html">
+   <LINK REL="Next"  HREF="001626.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAUDIO_INPUT</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAUDIO_INPUT&In-Reply-To=%3C51F8FAE0.8000604%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] QAUDIO_INPUT">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jul 31 13:54:08 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001623.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+        <LI>Next message: <A HREF="001626.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1624">[ date ]</a>
+              <a href="thread.html#1624">[ thread ]</a>
+              <a href="subject.html#1624">[ subject ]</a>
+              <a href="author.html#1624">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/07/2013 12:48, Murray Curtis wrote:
+&gt;<i> Hi Bill
+</I>Hi Murray
+&gt;<i>
+</I>&gt;<i> I assume this is code you're working on.
+</I>It's not quite as simple as that. Joe is experimenting with QT audio and 
+I'm working on the portaudio version. Our work does overlap. Currently 
+my code is more mainstream, Joe's is more experimental.
+&gt;<i>
+</I>&gt;<i> While updating to r3511 I got a seg fault in SoundIn, line 341 if 
+</I>&gt;<i> (m_monitoring).   With QAUDIO_INPUT defined the constructor for 
+</I>&gt;<i> SoundInput that initializes m_monitoring (and others) is not called.
+</I>&gt;<i>
+</I>&gt;<i> I've left QAUDIO_INPUT undefined in wsjtx.pro in my update, r3512
+</I>That is the best solution for now unless you have a particular need to 
+build with the Qt audio library.
+&gt;<i>
+</I>&gt;<i> Cheers
+</I>&gt;<i> Murray
+</I>&gt;<i> VK3ACF
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001623.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+	<LI>Next message: <A HREF="001626.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1624">[ date ]</a>
+              <a href="thread.html#1624">[ thread ]</a>
+              <a href="subject.html#1624">[ subject ]</a>
+              <a href="author.html#1624">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

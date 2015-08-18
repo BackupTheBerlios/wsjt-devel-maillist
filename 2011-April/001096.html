@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Problem under Ubuntu, serial and compiling...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20under%20Ubuntu%2C%20serial%20and%20compiling...&In-Reply-To=%3C4D987212.60301%40f8arr.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Problem under Ubuntu, serial and compiling...</H1>
+    <B>f8arr</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20under%20Ubuntu%2C%20serial%20and%20compiling...&In-Reply-To=%3C4D987212.60301%40f8arr.org%3E"
+       TITLE="[Wsjt-devel] Problem under Ubuntu, serial and compiling...">f8arr at f8arr.org
+       </A><BR>
+    <I>Sun Apr  3 15:11:46 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001097.html">[Wsjt-devel] wsjt svn does not compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1096">[ date ]</a>
+              <a href="thread.html#1096">[ thread ]</a>
+              <a href="subject.html#1096">[ subject ]</a>
+              <a href="author.html#1096">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I have two problems ;-)
+First one is a serial one but I thnik this is more a system issue than 
+application one... but if someone add some way to resolve !! ;-)
+Second one is a compilation issue..
+
+---------------
+
+
+I'm under Ubuntu 10.04
+Kernel 2.6.32-30-generic-pae
+
+Since some days, my usb to serial converter that do my PTT is not 
+working properly.
+At boot of the pc, the device switch on my ptt and remain ptt (it wasn't 
+the case some days ago).
+In order to be sure, I changed my usb to serial and I face the same issue.
+
+If I run WSJT and do a &quot;TX&quot; then &quot;RX&quot; my serial comes down.
+If I run again a &quot;TX&quot;, it stay on TX even I click on RX button.
+If I close WSJT9 (from .deb file) and start it again, I can then do the 
+same steps described upper.
+
+
+---------------
+
+I tried to compile a new version of my wsjt using the trunk.
+I have a problem during the compilation :
+
+&quot;....                          1
+Warning: CHARACTER expression will be truncated in assignment (6/7) at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c packgrid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c packmsg.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c packtext.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c setup65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c short65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c slope.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c spec2d65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c sync65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackcall.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackgrid.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c unpackmsg.f
+unpackmsg.f:60.35:
+
+          msg=c1//'                '
+                                    1
+Warning: CHARACTER expression will be truncated in assignment (22/28) at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c unpacktext.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c xcor.f
+xcor.f:12.29:
+
+       real a(NSMAX),a2(NSMAX)
+                              1
+Warning: Unused variable 'a2' declared at (1)
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c xfft.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c xfft2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c wsjt65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c ftpeak65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c fil651.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c fil652.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c fil653.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c symsync65.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c rfile2.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c encode232.f
+gfortran -g -O2 -fno-range-check -ffixed-line-length-none            
+-Wall -fbounds-check -fno-second-underscore -fPIC -c deep65.f90
+make: *** Pas de r&#232;gle pour fabriquer la cible &#171; tweak2.f90 &#187;, 
+n&#233;cessaire pour &#171; WsjtMod/Audio.so &#187;. Arr&#234;t.&quot;
+
+
+the last line mean &quot;No rules to build tweak2.f90, necessary for 
+WsjtMod/Audio.so. STOP&quot;
+
+Regards
+f8arr, Guillaume
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110403/9dd5bb04/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110403/9dd5bb04/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001097.html">[Wsjt-devel] wsjt svn does not compile
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1096">[ date ]</a>
+              <a href="thread.html#1096">[ thread ]</a>
+              <a href="subject.html#1096">[ subject ]</a>
+              <a href="author.html#1096">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

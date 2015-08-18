@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] while trying to compile revision 3546
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCADTTAaxL%2BPh1f3M1KwzqYZuQtkCaTg-7a3fjtsw3A_CzmXhxXQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001807.html">
+   <LINK REL="Next"  HREF="001809.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] while trying to compile revision 3546</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20while%20trying%20to%20compile%20revision%203546&In-Reply-To=%3CCADTTAaxL%2BPh1f3M1KwzqYZuQtkCaTg-7a3fjtsw3A_CzmXhxXQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] while trying to compile revision 3546">jnogatch at gmail.com
+       </A><BR>
+    <I>Sun Aug 11 17:16:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001807.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+        <LI>Next message: <A HREF="001809.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1808">[ date ]</a>
+              <a href="thread.html#1808">[ thread ]</a>
+              <a href="subject.html#1808">[ subject ]</a>
+              <a href="author.html#1808">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Aug 11, 2013 at 7:32 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+&gt;<i> ... in Linux.  After a tweak to
+</I>&gt;<i> the makefile to accommodate the way I installed Qt5, I found no problems....
+</I>
+Joe, could you elaborate on how you installed Qt5? What version of ubuntu linux?
+
+Since the QtAudio changes were added, Greg KI7MT and I are both
+experiencing failure to see any audio devices.
+
+He is on a fresh install of ubuntu 13.04. I do not see the problem on
+13.04, but I do see it on a recent install of 12.10.
+
+Google search shows that this bad behavior of
+QAudioDeviceInfo::availableDevices has been reported by others in
+various versions of linux and Qt, but none of those sites have led me
+to a solution.
+
+I found a small test program that lists the audio devices at:
+ <A HREF="https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688">https://bugs.launchpad.net/ubuntu/+source/qt4-x11/+bug/624688</A>
+
+On my Ubuntu 13.04 system:
+$ ./test y
+l: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+l: &quot;alsa_output.pci-0000_00_01.1.hdmi-stereo&quot;
+res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+$ ./test n
+res: &quot;alsa_output.pci-0000_00_14.2.analog-stereo&quot;
+
+On a 12.10 system, using Qt5:
+$ ./test y
+res: &quot;&quot;
+$ ./test n
+res: &quot;&quot;
+
+I believe that this simple test program is demonstrating the same
+behavior as wsjtx failing to find any audio devices.
+
+Last night I made a careful comparison of the &quot;ldd wsjtx&quot; and &quot;dpkg
+-l&quot; output, but I was not able to see any big difference between the
+working and non-working situation. I will continue looking.
+
+-John AC6SL
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001807.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+	<LI>Next message: <A HREF="001809.html">[Wsjt-devel] while trying to compile revision 3546
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1808">[ date ]</a>
+              <a href="thread.html#1808">[ thread ]</a>
+              <a href="subject.html#1808">[ subject ]</a>
+              <a href="author.html#1808">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

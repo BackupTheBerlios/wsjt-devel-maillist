@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v0.95 and v1.0 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20and%20v1.0%20%3F&In-Reply-To=%3CCALNQy4_nZOnvOPdCYfXzLTyiE3gB%3DxMLymfGsabDVQwwFiLC6g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001230.html">
+   <LINK REL="Next"  HREF="001232.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v0.95 and v1.0 ?</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20and%20v1.0%20%3F&In-Reply-To=%3CCALNQy4_nZOnvOPdCYfXzLTyiE3gB%3DxMLymfGsabDVQwwFiLC6g%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X v0.95 and v1.0 ?">ewpereira at gmail.com
+       </A><BR>
+    <I>Thu Apr 25 13:55:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001230.html">[Wsjt-devel] WSJT-X v0.95 and v1.0 ?
+</A></li>
+        <LI>Next message: <A HREF="001232.html">[Wsjt-devel] WSJT-X release candidate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1231">[ date ]</a>
+              <a href="thread.html#1231">[ thread ]</a>
+              <a href="subject.html#1231">[ subject ]</a>
+              <a href="author.html#1231">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe,
+
+One problem I just discovered: If I try to change bands to a band the my
+radios does not have, wsjtx crashes.
+
+icom_set_freq: ack NG (0xfa), len=1
+Qt has caught an exception thrown from an event handler. Throwing
+exceptions from an event handler is not supported in Qt. You must
+reimplement QApplication::notify() and catch all exceptions there.
+
+terminate called after throwing an instance of 'RigException'
+Aborted (core dumped)
+
+I will take a look at this issue. Do you think it would be valuable to have
+a checkBox on the band config window indicating which bands are enabled and
+populate the bandCombo box with only the bands enabled?
+
+73,
+
+-- Edson PY2SDR
+
+On Thu, Apr 25, 2013 at 8:47 AM, Edson W. R. Pereira &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+
+&gt;<i>
+</I>&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> I did a small change on the GUI layout for it to work correctly on Linux.
+</I>&gt;<i>
+</I>&gt;<i> Is the revision string still causing a crash in MinGW? In the past, when I
+</I>&gt;<i> had similar issues they were caused by buffer overflows -- most of the time
+</I>&gt;<i> related to char[] and sprintf. But I am not sure this is the case here.
+</I>&gt;<i>
+</I>&gt;<i> I compiled and am running r3212 on Linux and will leave it running during
+</I>&gt;<i> the day.
+</I>&gt;<i>
+</I>&gt;<i> I still need to enable the use of the new PSK Reporter on WIndows. I
+</I>&gt;<i> couldn't dedicate much time for programming for the last few days, but this
+</I>&gt;<i> weekend I should have some time and will do some work on the code.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Wed, Apr 24, 2013 at 4:53 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Progress today on WSJT-X:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1. Found and corrected a bug that could cause seemingly erratic crashes
+</I>&gt;&gt;<i> of the GUI -- probably the bug that has been reported a number of times
+</I>&gt;&gt;<i> recently.  It occurred when a message containing a compound callsign was
+</I>&gt;&gt;<i> decoded, e.g., &quot;DE R2DD/3 KO97&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2. Fixed several other minor bugs and annoyances, added two small buttons
+</I>&gt;&gt;<i> that set TxFreq=RxFreq and RxFreq=TxFreq, respectively, and added an option
+</I>&gt;&gt;<i> to &quot;Allow multiple instances&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'd like to have a stable release of WSJT-X that we can call Version 1.0
+</I>&gt;&gt;<i> in the near future.  To that end, I'm thinking to release something close
+</I>&gt;&gt;<i> to revision 3209 as &quot;v0.95&quot;, with the understanding that we and our present
+</I>&gt;&gt;<i> user community would exercise it thoroughly for a short while (a week? two
+</I>&gt;&gt;<i> weeks?).  We would fix any reported bugs and then, if all is well, release
+</I>&gt;&gt;<i> the program (including a newly written manual) as Version 1.0.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Does this sound right to everyone here?  Any suggestions for last-minute
+</I>&gt;&gt;<i> additions?  Let us know how r3209 works for you.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> One peculiarity is bugging me, right now.  Compiling WSJT-X in MinGW
+</I>&gt;&gt;<i> under Windows, if I uncomment the seemingly harmless declaration at line
+</I>&gt;&gt;<i> 258 of mainwindow.h (r3209), the program then crashes on startup with an
+</I>&gt;&gt;<i> access violation.  Anybody have an idea what's going on???
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         -- Joe, K1JT
+</I>&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130425/ffdc93be/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130425/ffdc93be/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001230.html">[Wsjt-devel] WSJT-X v0.95 and v1.0 ?
+</A></li>
+	<LI>Next message: <A HREF="001232.html">[Wsjt-devel] WSJT-X release candidate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1231">[ date ]</a>
+              <a href="thread.html#1231">[ thread ]</a>
+              <a href="subject.html#1231">[ subject ]</a>
+              <a href="author.html#1231">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

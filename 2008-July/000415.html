@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] pointers please
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20pointers%20please&In-Reply-To=%3C48735CA7.7030400%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000414.html">
+   <LINK REL="Next"  HREF="000416.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] pointers please</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20pointers%20please&In-Reply-To=%3C48735CA7.7030400%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] pointers please">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  8 14:25:11 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000414.html">[Wsjt-devel] pointers please
+</A></li>
+        <LI>Next message: <A HREF="000416.html">[Wsjt-devel] pointers please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#415">[ date ]</a>
+              <a href="thread.html#415">[ thread ]</a>
+              <a href="subject.html#415">[ subject ]</a>
+              <a href="author.html#415">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Richard,
+
+ From the information you've provided, it's impossible to 
+tell where your attempt to compile WSJT r386 on Ubuntu 8.04 
+went astray.  As I think you know, a number of Python 
+packages and other pre-requisites need to be installed 
+before you can compile Audio.so.
+
+The file wsjtrc is part of the distribution; it is not 
+&quot;created&quot; when you run WSJT.
+
+It would be nice to have a few knowledgeable volunteers who 
+can create complete installable packages for released 
+versions of WSJT (and also WSPR and MAP65), targeted at the 
+most popular distributions/platforms of Linux, FreeBSD, and 
+Macintosh.  Right now we don't always have that luxury, and 
+the core development team is busy with other enhancement and 
+maintenance issues that we consider important.  If you want 
+to roll your own, on a *nix distribution that none of us 
+regularly uses, you're on your own ... or should ask for 
+help from others who have already succeeded.  To my 
+knowledge, there is no modern *nix distribution on which 
+WSJT cannot be made to run.
+
+	-- 73, Joe, K1JT
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard.bown at blueyonder.co.uk</A> wrote:
+&gt;<i> Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Hi Richard,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Did you compile r386 for yourself?  If so, what fortran compiler have 
+</I>&gt;&gt;<i> you used?  Have you installed a workable KVASD decoder compiled with 
+</I>&gt;&gt;<i> the same compiler?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You may need to reconfigure the statement that invokes KVASD from 
+</I>&gt;&gt;<i> within file runqqq.F90.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Finally -- so we know who we're talking with -- do you have a callsign?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- Joe, K1JT
+</I>&gt;<i> 
+</I>&gt;<i> Sorry Joe
+</I>&gt;<i> The callsign is G8JVM
+</I>&gt;<i> Yes I did complile r386, and was able to use it without  too much hassle 
+</I>&gt;<i> when I was running Mandriva 2008.1 x86_64
+</I>&gt;<i> On Ubuntu 8.04 the native package just falls over, and the svn version 
+</I>&gt;<i> about a week ago fails to compile at a very early stage.
+</I>&gt;<i> I noticed that r386 compiled nearly all the way to the end, and failed 
+</I>&gt;<i> to build Audio.so
+</I>&gt;<i> Copying Audio.so in to the wsjt directory allows wsjt to run.
+</I>&gt;<i> It was compiled on MDV2008.1 with gfortran 4.3.0-3mdv, (gcc-fortran 
+</I>&gt;<i> 4.3.0-3mdv).
+</I>&gt;<i> I'm also finding that the first time its run there are no strtup errors, 
+</I>&gt;<i> but once wsjtrc is created there are errors building the astro
+</I>&gt;<i> window( the blue one on the rifht hand side with the moon elevation &amp; 
+</I>&gt;<i> azimuth..
+</I>&gt;<i> I found on mandriva that Audio.so would not always build, and it would 
+</I>&gt;<i> only biuld with gfortran.
+</I>&gt;<i> 
+</I>&gt;<i> HTH
+</I>&gt;<i> 
+</I>&gt;<i> 73 Richard g8jvm
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000414.html">[Wsjt-devel] pointers please
+</A></li>
+	<LI>Next message: <A HREF="000416.html">[Wsjt-devel] pointers please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#415">[ date ]</a>
+              <a href="thread.html#415">[ thread ]</a>
+              <a href="subject.html#415">[ subject ]</a>
+              <a href="author.html#415">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

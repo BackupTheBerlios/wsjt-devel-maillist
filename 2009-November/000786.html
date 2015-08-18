@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Jack and WSPR and Linrad
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C87aaz0veaj.wl%40logrus.enotty.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000787.html">
+   <LINK REL="Next"  HREF="000780.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Jack and WSPR and Linrad</H1>
+    <B>Stelios Bounanos</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C87aaz0veaj.wl%40logrus.enotty.net%3E"
+       TITLE="[Wsjt-devel] Jack and WSPR and Linrad">m0gld at enotty.net
+       </A><BR>
+    <I>Thu Nov  5 22:43:00 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000787.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+        <LI>Next message: <A HREF="000780.html">[Wsjt-devel] WSPR: build problem on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Pierre and Joe,
+
+&gt;&gt;&gt;&gt;&gt;<i> On Thu, 05 Nov 2009 12:01:03 -0500, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; said:
+</I>
+&gt;<i> Hi Pierre,
+</I>&gt;<i> Pierre Vanhoucke wrote:
+</I>
+&gt;&gt;<i> I compiled WSPR on my Ubuntu system which has portaudio with Jack
+</I>&gt;&gt;<i> installed.
+</I>&gt;&gt;<i> When I start Jack and WSPR I can indeed select jack as an input or
+</I>&gt;&gt;<i> output device for WSPR (if the jack server is started with the right
+</I>&gt;&gt;<i> sample-rate=12000 and frames-per-period=2048 ). 
+</I>&gt;&gt;<i> However there is no WSPR client visible in the &quot;connect&quot; box of
+</I>&gt;&gt;<i> qjackctl. As a consequence, I cannot connect the output of Linrad to the
+</I>&gt;&gt;<i> input of WSPR.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> I think that the reason is that the sound.c module in WSPR is using
+</I>&gt;&gt;<i> portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode.
+</I>
+&gt;<i> This sounds plausible to me.  WSPR does use blocking I/O for 
+</I>&gt;<i> its calls to PortAudio; WSJT, MAP65, and MPA65-IQ use 
+</I>&gt;<i> callback mode.  There is no particularly good reason for 
+</I>&gt;<i> this distinction.  It came about when I was first writing 
+</I>&gt;<i> WSPR; I wanted to try the &quot;other&quot; PortAudio method, to see 
+</I>&gt;<i> what advantages/disadvantages there might be.
+</I>
+PortAudio is supposed to work in both callback and blocking modes even
+though JACK itself uses callbacks -- similar to how OSS can be used in
+callback mode.
+
+&gt;<i> If there turns out to be a good reason to convert WSPR to 
+</I>&gt;<i> using the callback method, this could certainly be done.
+</I>
+I remember blocking mode not working as reliably as callback mode, and
+for some reason some ALSA devices could not be opened with
+frames-per-buffer = 0 (unspecified) -- which did work in callback mode.
+That that was many months ago and may have be fixed now.  There is a
+more recent trouble report on the PortAudio mailing list:
+
+  <A HREF="http://music.columbia.edu/pipermail/portaudio/2009-August/009337.html">http://music.columbia.edu/pipermail/portaudio/2009-August/009337.html</A>
+
+This is probably not (yet) a good enough reason to convert WSPR to
+callbacks; maybe something to remember if you start getting
+audio-related bug reports...
+
+&gt;<i> Do take note of the fact that starting with r1628, WSPR is 
+</I>&gt;<i> using 48 kHz sampling instead of 12 kHz.
+</I>
+&gt;<i> Most of the WSPR code assumes a 12 kHz sample rate. I had 
+</I>&gt;<i> thought that this would be a good match to nearly all of 
+</I>&gt;<i> today's sound cards, which could use their 48 kHz native 
+</I>&gt;<i> sample rate and do an easy filter/decimation stage to 
+</I>&gt;<i> produce the 12 kHz samples requested by WSPR.  I was 
+</I>&gt;<i> astonished to learn from G3ZOD that when WSPR is started on 
+</I>&gt;<i> a machine with a Delta44 sound card, Windows (or the Delta44 
+</I>&gt;<i> driver?) sets its hardware sample rate to 44100 Hz (not 
+</I>&gt;<i> 48000 Hz!) and then does a relative poor sample-rate 
+</I>&gt;<i> conversion to produce the 12000 Hz samples.  Aarrgghh!
+</I>
+We have seen this as well with fldigi: Windows/MME uses 44100 for its
+internal mixing.  I have read, but not verified, that DirectSound does
+not do that if there is only one application accessing the sound card
+(and people say the Linux audio APIs are convoluted!).
+
+Because of this mess, we link fldigi/win32 binaries with a version of
+PortAudio that supports both WMME and (by default) DirectSound -- so at
+least there's a chance of avoiding the bad resampling :) DirectSound is
+easy to enable in PortAudio using a modified wine header (no need for
+enormous SDK downloads from MS).  There is some information in this
+message:
+
+  <A HREF="http://music.columbia.edu/pipermail/portaudio/2009-October/009546.html">http://music.columbia.edu/pipermail/portaudio/2009-October/009546.html</A>
+
+And the modified dsound.h header is here:
+
+  <A HREF="http://enotty.net/tmp/pa/">http://enotty.net/tmp/pa/</A>
+
+&gt;<i> So maybe it will be more reliable to have WSPR (and 
+</I>&gt;<i> eventually WSJT?) sample at 48 kHz, and do any rate 
+</I>&gt;<i> conversions myself.
+</I>
+This is what we try to do in fldigi: open the audio device at its native
+sample rate and resample with libsamplerate.
+
+Unfortunately it seems that both WMME and DSound will lie about the
+native sample rate.  I have seen audio devices that can only capture at
+48 and 96 KHz (when opened via a hw:x,y ALSA device), but miraculously
+support all standard rates on Windows, with the &quot;native&quot; one being 44100
+KHz.  Thanks so much MS! :)
+
+So it might be best to just assume 48K and resample.
+
+
+-- 
+
+73,
+Stelios, M0GLD.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000787.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+	<LI>Next message: <A HREF="000780.html">[Wsjt-devel] WSPR: build problem on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] GUI cleanup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20GUI%20cleanup&In-Reply-To=%3C51D141B9.2010309%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001437.html">
+   <LINK REL="Next"  HREF="001440.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] GUI cleanup</H1>
+    <B>DJ5AND</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20GUI%20cleanup&In-Reply-To=%3C51D141B9.2010309%40gmx.net%3E"
+       TITLE="[Wsjt-devel] GUI cleanup">dj5and at gmx.net
+       </A><BR>
+    <I>Mon Jul  1 10:45:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001437.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+        <LI>Next message: <A HREF="001440.html">[Wsjt-devel] GUI cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1435">[ date ]</a>
+              <a href="thread.html#1435">[ thread ]</a>
+              <a href="subject.html#1435">[ subject ]</a>
+              <a href="author.html#1435">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30/06/13 10:57, Joe Taylor wrote:
+&gt;<i> Hi all,
+</I>&gt;<i> 
+</I>&gt;<i> I have been doing some minor cleanup of the WSJT-X GUI, and a platform
+</I>&gt;<i> difference is bothering me.  The geometry of the two principal windows
+</I>&gt;<i> is saved in wsjtx.ini on program termination, and restored when the
+</I>&gt;<i> program is restarted.  In Windows the main window reappears just where
+</I>&gt;<i> it was before, as expected.  In Linux it reappears about 10 pixels lower
+</I>&gt;<i> on each restart.
+</I>&gt;<i> 
+</I>&gt;<i> Does anyone know why this happens, and what to do about it?  Is it true
+</I>&gt;<i> with all Linux window managers?  What about OS X?
+</I>&gt;<i> 
+</I>I use the window manager MATE and windows appear where they where
+before. The only difference is when you start an application several
+times. The one after will always offset the previous one by a certain
+amount of pixels.
+I reckon the idea originated when showing error messages. In MS Windows
+an error message always appears at the same koordinates. Having, lets
+say 8 of the same error message (which can happen) and trying to close
+it, one would think it can't be closed (because it re-appears). But in
+cases it only seems to re-appear because there are other ones below the
+one you just closed.
+
+In Linux, those messages appear offset by a certain amount of pixels, so
+the user knows there are more than one and not just re-appearing.
+With application where one doesn't have a taskbar, you see exactly how
+many times it was started.
+
+I hope this helps and makes sense?
+
+Sven, VK3SIX (DJ5AND)
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001437.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+	<LI>Next message: <A HREF="001440.html">[Wsjt-devel] GUI cleanup
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1435">[ date ]</a>
+              <a href="thread.html#1435">[ thread ]</a>
+              <a href="subject.html#1435">[ subject ]</a>
+              <a href="author.html#1435">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

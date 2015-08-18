@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux and OS X Packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EBFDF7.4010701%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002178.html">
+   <LINK REL="Next"  HREF="002181.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux and OS X Packages</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EBFDF7.4010701%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Linux and OS X Packages">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Jan 31 20:48:07 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002178.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+        <LI>Next message: <A HREF="002181.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2179">[ date ]</a>
+              <a href="thread.html#2179">[ thread ]</a>
+              <a href="subject.html#2179">[ subject ]</a>
+              <a href="author.html#2179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/01/2014 19:45, Bill Somerville wrote:
+Sorry lost the formatting a bit there, the Mac directory 
+[x86_64-apple-darwin] should have its own kvasd under it too. It got 
+shifted to the left for some reason.
+&gt;<i> On 31/01/2014 19:09, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi all, and especially AC6SL and G4KLA:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> When you get a chance to package WSJT-X v1.3 for Linux and OS X, 
+</I>&gt;&gt;<i> please do your build from SVN revision 3673.  The released programs 
+</I>&gt;&gt;<i> will then be the same over all platforms.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If anybody would like to volunteer to make additional packages -- 
+</I>&gt;&gt;<i> say, for FreeBSD, of orther commonly used Linux distributions, please 
+</I>&gt;&gt;<i> step forward and let us know!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Also, if you have an opinion on the best way to handle distribution 
+</I>&gt;&gt;<i> of the non-open-source kvasd, let us know that too. Any way we do it, 
+</I>&gt;&gt;<i> it's a pain -- but thankfully a rather minor one.
+</I>&gt;<i> The CMake scripts download kvasd from the SVN repo in binary form. The 
+</I>&gt;<i> CPack extensions to the CMake scripts that will eventually build full 
+</I>&gt;<i> release packages for each platofrom would also like to take advantage 
+</I>&gt;<i> of that.
+</I>&gt;<i>
+</I>&gt;<i> I suggest a tree of directories in SVN with versions of kvasd[.exe] 
+</I>&gt;<i> for each platform we support, something like:
+</I>&gt;<i>
+</I>&gt;<i>                           [kvasd-binary]
+</I>&gt;<i>                                 |
+</I>&gt;<i> +-----------------+----------+--------+---------------------+------------------------+
+</I>&gt;<i>    |                 |                   | |                        |
+</I>&gt;<i>   [i386-pc-win32]   [i386-linux-gnu]    [x86_64-linux-gnu] 
+</I>&gt;<i> [x86_64-apple-darwin]    [...]
+</I>&gt;<i>     kvasd.exe         kvasd               kvasd      kvasd
+</I>&gt;<i>
+</I>&gt;<i> That way they can all be stored, with history, in a single place, with 
+</I>&gt;<i> their correct file names.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002178.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+	<LI>Next message: <A HREF="002181.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2179">[ date ]</a>
+              <a href="thread.html#2179">[ thread ]</a>
+              <a href="subject.html#2179">[ subject ]</a>
+              <a href="author.html#2179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

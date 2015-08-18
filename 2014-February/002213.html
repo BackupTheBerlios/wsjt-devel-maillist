@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux and OS X Packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EFD501.2000501%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002212.html">
+   <LINK REL="Next"  HREF="002215.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux and OS X Packages</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EFD501.2000501%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Linux and OS X Packages">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Feb  3 18:42:25 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002212.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+        <LI>Next message: <A HREF="002215.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2213">[ date ]</a>
+              <a href="thread.html#2213">[ thread ]</a>
+              <a href="subject.html#2213">[ subject ]</a>
+              <a href="author.html#2213">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 03/02/2014 17:15, Joe Taylor wrote:
+&gt;<i> Hi all
+</I>Hi Joe &amp; All,
+&gt;<i>
+</I>&gt;<i> Thanks to Bill for the reminder and good advice about committing an 
+</I>&gt;<i> SVN Tag for our released Version 1.3, r3673.  I have now done so.
+</I>OK.
+&gt;<i>
+</I>&gt;<i> Bill, any time you're ready to do so, feel free to commit your new 
+</I>&gt;<i> setup and rig-control code.  Subsequent development (of what will be 
+</I>&gt;<i> v1.4, or 2.0, or whatever) should continue to take place in the 
+</I>&gt;<i> .../branches/wsjtx directory.
+</I>Will try and commit soon, it will be a big change. I need to go through 
+everything and tie up any loose ends first.
+&gt;<i>
+</I>&gt;<i> If necessary, any bug fix or minor tweak to v1.3 should be done in the 
+</I>&gt;<i> newly created .../tags/wsjtx-1.3 branch.  (But this should be 
+</I>&gt;<i> resisted, if possible.)  New work should definitely go into 
+</I>&gt;<i> .../branches/wsjtx.
+</I>Normally .../tags/... should not be committed to. Instead make a new 
+branch ../branches/... by copying the tag to something like 
+.../branches/wsjtx-1.3.1/... and then commit fixes to there with merges 
+into .../branches/wsjtx/... if appropriate.
+&gt;<i>
+</I>&gt;<i> How best to handle documentation revisions?  They are still very much 
+</I>&gt;<i> in progress, even for Version 1.3.
+</I>&gt;<i>
+</I>&gt;<i> I suggest that doc revisions should continue to be committed to 
+</I>&gt;<i> .../branches/wsjtx, the development branch, until version 1.4 (or 
+</I>&gt;<i> 2.0?) becomes usable as a beta release.  Then we can put a new 
+</I>&gt;<i> snapshot of docs into the .../tags/wsjtx-1.3 branch, and start making 
+</I>&gt;<i> further documentation changes -- in particular, things that will be 
+</I>&gt;<i> different in v1.3 and v1.4 -- in the development branch.
+</I>&gt;<i>
+</I>&gt;<i> Does this make sense?  Is there a better way?
+</I>I know there was some discussion on documentation and code lines before. 
+I'm not sure what the best options are. The following thoughts come to mind:
+
+1) If we are only going to publish the docs via the web site then 
+perhaps they should be treated as a separate project with milestones in 
+parallel with program releases. Then extra &quot;documentation only&quot; releases 
+could be made to fix and extend the docs.
+
+2) Despite (1) it might be nice to include the docs with a release 
+bundle, particularly for the benefit of offline users.
+
+3) (2) is an issue with me for the CMake scripts as I intend them to do 
+packaging and the pre-requisites for the docs build might be more than 
+most developers might want to fight with. This is especially true if for 
+example we choose to ship a PDF of the docs - asciidoc -&gt; PDF needs a 
+lot of packages installed. I see Cygwin is already in the mix on Windows 
+and this might be tricky to automate builds using both MinGW and Cygwin.
+
+4) We need to take care branching the docs code line. Merges of 
+documentation are not easy to check and errors can creep in. It might be 
+worth banning merges and require that documentation fixes be applied 
+manually to all relevant branches. Conversely exactly the opposite is 
+best practice for source code line branches!
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> When V1.3 users call up the online documentation, they now see the 
+</I>&gt;<i> stuff I committed this morning, r3684.  I could
+</I>&gt;<i>
+</I>&gt;<i> I think that means we should right now start committing documentation 
+</I>&gt;<i> changes to the .../tags/wsjtx-1.3 branch,
+</I>&gt;<i>
+</I>&gt;<i> As soon as the main development branch starts to have features that 
+</I>&gt;<i> conflict with the present User's Guide -- for example, a Setup | 
+</I>&gt;<i> Configuration screen that looks different -- we'
+</I>&gt;<i>
+</I>&gt;<i> On 1/31/2014 4:45 PM, Bill Somerville wrote:
+</I>&gt;&gt;<i> On 31/01/2014 20:50, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi Joe,
+</I>&gt;&gt;&gt;<i> John --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> John Nelson wrote:
+</I>&gt;&gt;&gt;&gt;<i> I have downloaded r3673 and it is running undertest - but I notice
+</I>&gt;&gt;&gt;&gt;<i> you have made improvements regarding Type 1 and 2 messages and
+</I>&gt;&gt;&gt;&gt;<i> genStdMsgs() - but this is r3677.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Do want these improvements to be excluded from the new release?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I agree it seems slightly awkward, but I decided this morning to
+</I>&gt;&gt;&gt;<i> release the well-tested code (r3673) and then make the mods for
+</I>&gt;&gt;&gt;<i> auto-generation of messages with complex callsigns. So yes, I'm
+</I>&gt;&gt;&gt;<i> recommending that the released version be 3673.
+</I>&gt;&gt;<i> It is best practice to tag milestones like releases in the repo. For
+</I>&gt;&gt;<i> example the command (assuming you use ssh access to the repo):
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> svn copy -r 3673
+</I>&gt;&gt;<i> svn+<A HREF="ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/branches/wsjtx">ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/branches/wsjtx</A>
+</I>&gt;&gt;<i> svn+<A HREF="ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/tags/wsjtx-1.3">ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/tags/wsjtx-1.3</A> -m
+</I>&gt;&gt;<i> &quot;Tagging WSJT-X release version&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> will tag r3673 for ever more as the 1.3 release of WSJT-X.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> That way there is no need to remember which revision represents a
+</I>&gt;&gt;<i> milestone and later defect fix release branches can be created by
+</I>&gt;&gt;<i> copying the tag back to 'branches'.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> svn copy is cheap in that no actual files are copied on the server, only
+</I>&gt;&gt;<i> changes to files use 'file space'.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> More complex tags can be created if required, for example the discussion
+</I>&gt;&gt;<i> on kvasd binaries is relevant in that the revisions of kvasd used for
+</I>&gt;&gt;<i> the release could also be included in the tag by using the more
+</I>&gt;&gt;<i> comprehensive &quot;build a workspace from various revisions and tag the
+</I>&gt;&gt;<i> workspace contents&quot; version of svn copy. Having said that the
+</I>&gt;&gt;<i> svn:externals property is a much better way of handling mapping of
+</I>&gt;&gt;<i> external files from elsewhere in a repo to a tree in a repo and would
+</I>&gt;&gt;<i> suit the kvasd situation where the binaries are used in multiple 
+</I>&gt;&gt;<i> projects.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -- Joe
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002212.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+	<LI>Next message: <A HREF="002215.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2213">[ date ]</a>
+              <a href="thread.html#2213">[ thread ]</a>
+              <a href="subject.html#2213">[ subject ]</a>
+              <a href="author.html#2213">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

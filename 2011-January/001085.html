@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] fmt with IQ processing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20fmt%20with%20IQ%20processing&In-Reply-To=%3CAANLkTinOZx6cbK78BPZkKMQ7V1kxxcdFHiTHWLHFCyxT%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001084.html">
+   <LINK REL="Next"  HREF="001086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] fmt with IQ processing</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20fmt%20with%20IQ%20processing&In-Reply-To=%3CAANLkTinOZx6cbK78BPZkKMQ7V1kxxcdFHiTHWLHFCyxT%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] fmt with IQ processing">stoledo at tau.ac.il
+       </A><BR>
+    <I>Sun Jan 30 16:59:51 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001084.html">[Wsjt-devel] WSPR Beacons/Receivers
+</A></li>
+        <LI>Next message: <A HREF="001086.html">[Wsjt-devel] fmt with IQ processing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1085">[ date ]</a>
+              <a href="thread.html#1085">[ thread ]</a>
+              <a href="subject.html#1085">[ subject ]</a>
+              <a href="author.html#1085">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I am trying to use fmt with a Softrock Ensemble II RX. I tried it as is and
+it seems to give very reasonable results. But from looking at the code, it
+seems that it does not do any IQ processing, which in principle could hurt
+image rejection if there was another strong carrier on the other side of the
+LO.
+
+I see that there is also a code fmtiq.f90 in the directory, but I don't
+think it's being compiled, and the CAT command is hardwired. Is this a code
+that could be used instead of fmt.f90 with IQ processing?
+
+Thanks, Sivan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110130/0ded347d/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110130/0ded347d/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001084.html">[Wsjt-devel] WSPR Beacons/Receivers
+</A></li>
+	<LI>Next message: <A HREF="001086.html">[Wsjt-devel] fmt with IQ processing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1085">[ date ]</a>
+              <a href="thread.html#1085">[ thread ]</a>
+              <a href="subject.html#1085">[ subject ]</a>
+              <a href="author.html#1085">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

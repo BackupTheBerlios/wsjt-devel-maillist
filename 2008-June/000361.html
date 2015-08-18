@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT no more usable on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1213103618.3891.12.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000354.html">
+   <LINK REL="Next"  HREF="000362.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT no more usable on Linux</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1213103618.3891.12.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT no more usable on Linux">lz1bb at mail.bg
+       </A><BR>
+    <I>Tue Jun 10 15:13:37 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000354.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+        <LI>Next message: <A HREF="000362.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Debian update servers in Bulgaria are obviously too slow. So today I
+update wsjt by hand. The last build version of deb binary wsjt
+(5.9.7.r383-1.3) suprised me as it works stable already several hours in
+modes FSK441 and JT65B. Previous package always ended with segmentation
+fault. What changed in the package?
+
+Two new bugs though:
+1. WSJT can not find KV decoder. Error message:
+Error in KV decoder, or no KV decoder present.
+Return code:   32512.  Will use BM algorithm.
+
+Is it connected with KVASD compilation and KVASD needs libg2c.so.0 which
+is not found any more in Debian. As KVASD_g95 and KVASD_gfortran do not
+need ling2c.so.0 shared library perhaps Joe could recompile KVASD too.
+
+2. Common bug in all WSJT releases compiled under Linux. I just did not
+mention it earlier as I do not use JT6M. While in mode JT6M and &quot;Auto is
+ON&quot; program crashes with this error:
+
+At line 22 of file synct.f
+Fortran runtime error: Array reference out of bounds for array 'c',
+upper bound of dimension 1 exceeded (330751 &gt; 330750)
+
+Hope this REPORT helps.
+
+73, Harry LZ1BB
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000354.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+	<LI>Next message: <A HREF="000362.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

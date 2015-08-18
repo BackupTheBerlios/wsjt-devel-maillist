@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] something new with pulseaudio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20something%20new%20with%20pulseaudio&In-Reply-To=%3C20111202093713.2fbc3d6b%40g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] something new with pulseaudio</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20something%20new%20with%20pulseaudio&In-Reply-To=%3C20111202093713.2fbc3d6b%40g8jvm.com%3E"
+       TITLE="[Wsjt-devel] something new with pulseaudio">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Dec  2 10:37:13 CET 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1146">[ date ]</a>
+              <a href="thread.html#1146">[ thread ]</a>
+              <a href="subject.html#1146">[ subject ]</a>
+              <a href="author.html#1146">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+
+I know I'm playing dangerously using Debian Sid, but After some updates I'm seeing this:-
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0       12        10       M Audio Delta 66: ICE1712 multi (hw:0,0)
+   1        2         0       Conexant CX8801: CX88 Digital (hw:1,0)
+   2        2         8       HDA ATI SB: ALC892 Analog (hw:2,0)
+   3        2         2       HDA ATI SB: ALC892 Digital (hw:2,1)
+   4        2         0       HDA ATI SB: ALC892 Analog (hw:2,2)
+   5        0         8       HDA NVidia: HDMI 0 (hw:3,3)
+   6        0         8       HDA NVidia: HDMI 1 (hw:3,7)
+   7        0        128       front
+   8        0        128       surround40
+   9        0        128       surround41
+  10        0        128       surround50
+  11        0        128       surround51
+  12        0        128       iec958
+  13       128        128       spdif
+  14       32        32       pulse
+  15        0        10       dmix
+  16       32        32       default
+  17       16        16       /dev/dsp
+  18       16         0       /dev/dsp1
+  19       16        16       /dev/dsp2
+
+User requested devices:   Input =  0   Output =  0
+Default devices:          Input = 16   Output = 16
+Will open devices:        Input = 16   Output = 16
+
+It will allow me to use 14 as well, but not the physical devices.
+
+I know lurking out there in Alsaland support was reduced to 41000 &amp; 48000
+so I checked with pa_devs:-
+
+PortAudio version text = 'PortAudio V19-devel (built Dec  2 2011 09:24:12)'
+Number of devices = 20
+--------------------------------------- device #0
+Name                        = M Audio Delta 66: ICE1712 multi (hw:0,0)
+Host API                    = ALSA
+Max inputs = 12, Max outputs = 10
+Default low input latency   =    0.012
+Default low output latency  =    0.012
+Default high input latency  =    0.046
+Default high output latency =    0.046
+Default sample rate         = 44100.00
+Supported standard sample rates
+ for half-duplex 16 bit 12 channel input = 
+	 8000.00,  9600.00, 11025.00, 12000.00,
+	16000.00, 22050.00, 24000.00, 32000.00,
+	44100.00, 48000.00, 88200.00, 96000.00
+Supported standard sample rates
+ for half-duplex 16 bit 10 channel output = 
+	 8000.00,  9600.00, 11025.00, 12000.00,
+	16000.00, 22050.00, 24000.00, 32000.00,
+	44100.00, 48000.00, 88200.00, 96000.00
+Supported standard sample rates
+ for full-duplex 16 bit 12 channel input, 10 channel output = 
+	 8000.00,  9600.00, 11025.00, 12000.00,
+	16000.00, 22050.00, 24000.00, 32000.00,
+	44100.00, 48000.00, 88200.00, 96000.00
+
+
+And the all important 11025 rate is still available.
+
+Just curious as to what has been done to cause the cards to be ignored.
+Its not a killer problem as the audio can be routed through pulseaudio, just a PIA
+
+-- 
+Best wishes / 73
+Richard Bown
+
+e-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>   or   <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard.bown at blueyonder.co.uk</A>
+
+nil carborundum a illegitemis
+##################################################################################
+Ham Call G8JVM . OS Debian Wheezy/Sid amd64 on a Dual core AMD Athlon 5200, 4 GB RAM
+Maidenhead QRA: IO82SP38, LAT. 52 39.720' N LONG. 2 28.171 W ( degs mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+################################################################################## 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1146">[ date ]</a>
+              <a href="thread.html#1146">[ thread ]</a>
+              <a href="subject.html#1146">[ subject ]</a>
+              <a href="author.html#1146">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

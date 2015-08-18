@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 2.0 is coming
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0%20is%20coming&In-Reply-To=%3C20091117103921.GA3393%40Andromeda.local.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000842.html">
+   <LINK REL="Next"  HREF="000844.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 2.0 is coming</H1>
+    <B>Thomas Beierlein</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%202.0%20is%20coming&In-Reply-To=%3C20091117103921.GA3393%40Andromeda.local.de%3E"
+       TITLE="[Wsjt-devel] WSPR 2.0 is coming">tb at forth-ev.de
+       </A><BR>
+    <I>Tue Nov 17 11:39:21 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000842.html">[Wsjt-devel] WSPR 2.0 is coming
+</A></li>
+        <LI>Next message: <A HREF="000844.html">[Wsjt-devel] WSPR 2.0 is coming
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#843">[ date ]</a>
+              <a href="thread.html#843">[ thread ]</a>
+              <a href="subject.html#843">[ subject ]</a>
+              <a href="author.html#843">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe and others,
+
+On Mon, Nov 16, 2009 at 04:01:31PM -0500, Joe Taylor wrote:
+&gt;<i> As you know, a public release of WSPR 2.0 is coming soon.
+</I>&gt;<i> 
+</I>some weeks ago I started maintining a wspr package for the Gentoo Linux
+distribution.  As you may know Gentoo is a source based distribution,
+meaning that each user builds the app according to their specific needs. 
+
+So besides testing the functionality I had also a look onto the build
+process. With some efford (more to that later) the actual version builds 
+fine and runs without problems for some time. That are the good news. 
+Well done.
+
+Now on to the build problems. The Makefile.in and configure.ac gives me
+some headaches and needs fixing.  That is because running make results
+every time in an error for me. 
+
+After some investigation it turned out that neither ./configure nor make
+like anything defined in LDFLAGS env variable. Even an defined but empty
+LDFLAG breaks compilation (try 'LDFLAGS=&quot;&quot; make'). By the way Gentoo works 
+it is normal that users have some linker commands (mostly for optimization)
+in their LDFLAGS (e.g. -Wl,-O1 ...) and that they are there for ./configure
+and for make as well.
+
+The problems come from f2py which has some (not so nice) properties:
+
+- As soon as LDFLAG is defined in env, it tries to build an application and
+  not a shareable module (w.so) from the sources. 
+- That behaviour can be overridden with LDFLAGS=-shared in the environment
+  (and only there)
+- But placing -shared in the environment thanks to the way Makefile.in is
+  written it is also presented on the command line for f2py. But that only 
+  accepts '-L/libdirpath', but no other linker
+  configurations.
+
+As it turned out, the fix was to drop the usage of the LDFLAGS variable in
+Makefile.in (which gets intermixed with the environment variable with the
+same name) and switch to an other variable name to give the user the chance
+to add additional library search path if he needs to do. A LIBDIRS variable
+should do nicely. Than the user can do an
+
+	LIBDIRS=-L/additional_path ./configure &amp;&amp; make
+
+Please see the attached patch for a fix.
+
+
+Let me give some more, but minor comments:
+- setupy.py and configure.ac still states version 1.11. That is not visible
+  in the end program but confugsing during build.
+- The online documentation should give a hint where the hamlib_rig_numbers
+  file haas to be placed. It is not installed automatically into the local
+  .wspr directory under linux. 
+- I wonder why there is that hamlib-rig-numbers file at all. You can
+  produce it at runtime from running 'rigctl --list'. So it would adapt
+  automatically to the installed hamlib version.
+
+Thats it for now.
+
+73, de Tom DL1JBE.
+
+-----------------------------------
+--- Makefile.in.orig	2009-11-17 11:14:34.000000000 +0100
++++ Makefile.in	2009-11-17 11:15:17.000000000 +0100
+@@ -3,7 +3,7 @@
+ INSTALL=	install
+ CC ?= @CC@
+ FFLAGS	= @FFLAGS@
+-LDFLAGS	= @LDFLAGS@
++LIBDIRS	= @LIBDIRS@
+ LIBS	= @LIBS@ -lfftw3f
+ CPPFLAGS = @CPPFLAGS@
+ CFLAGS	= @CFLAGS@
+@@ -39,7 +39,7 @@
+ FCV=@FCV@
+ FC_LIB_PATH	+= @FC_LIB_PATH@
+ 
+-LDFLAGS	+= -L${FC_LIB_PATH}
++LIBDIRS	+= -L${FC_LIB_PATH}
+ 
+ PYTHON	?= @PYTHON@
+ RM	?= @RM@
+@@ -78,7 +78,7 @@
+ 	--f77flags=&quot;${FFLAGS}&quot; --f90flags=&quot;${FFLAGS}&quot; \
+ 	--fcompiler=${FCV} --f77exec=${FC} --f90exec=${FC} \
+ 	--opt=&quot;-fbounds-check ${FFLAGS}&quot; \
+-	${CPPFLAGS} ${LDFLAGS} ${LIBS} \
++	${CPPFLAGS} ${LIBDIRS} ${LIBS} \
+ 	only: $(F2PYONLY) : \
+ 	$(SRCS2F90) $(SRCS2F77) $(SRCS2C)
+ 	${MKDIR} -p build/lib/WsprMod
+--- configure.ac.orig	2009-11-17 11:14:47.000000000 +0100
++++ configure.ac	2009-11-17 11:15:17.000000000 +0100
+@@ -22,7 +22,7 @@
+ 
+ dnl Lets guess at some likely places for extra libs/includes XXX -db
+ CPPFLAGS=&quot;-I/usr/local/include ${CPPFLAGS}&quot;
+-LDFLAGS=&quot;-L/usr/local/lib ${LDFLAGS}&quot;
++LIBDIRS=&quot;-L/usr/local/lib ${LIBDIRS}&quot;
+ LIBS=&quot; -lpthread ${LIBS}&quot;
+ FFLAGS_GFORTRAN=&quot;${FFLAGS} -fno-range-check -ffixed-line-length-none\
+ 			-Wall -fbounds-check -fno-second-underscore -fPIC&quot;
+@@ -160,7 +160,7 @@
+ dnl 
+ AC_SUBST(PREFIX, &quot;${prefix}&quot;)
+ AC_SUBST(CPPFLAGS, &quot;${CPPFLAGS}&quot;)
+-AC_SUBST(LDFLAGS, &quot;${LDFLAGS}&quot;)
++AC_SUBST(LIBDIRS, &quot;${LIBDIRS}&quot;)
+ AC_SUBST(LIBS, &quot;${LIBS}&quot;)
+ AC_SUBST(CFLAGS)
+ AC_SUBST(FFLAGS)
+-------------------------------------------
+ 
+
+
+
+-- 
+&quot;Do what is needful!&quot;
+Ursula LeGuin: Earthsea
+--
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000842.html">[Wsjt-devel] WSPR 2.0 is coming
+</A></li>
+	<LI>Next message: <A HREF="000844.html">[Wsjt-devel] WSPR 2.0 is coming
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#843">[ date ]</a>
+              <a href="thread.html#843">[ thread ]</a>
+              <a href="subject.html#843">[ subject ]</a>
+              <a href="author.html#843">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

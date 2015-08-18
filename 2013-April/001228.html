@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Daily Builds Results - WSPR, WSPRX, WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Daily%20Builds%20Results%20-%20WSPR%2C%20WSPRX%2C%20WSJT-X&In-Reply-To=%3C517813F6.9020304%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001225.html">
+   <LINK REL="Next"  HREF="001221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Daily Builds Results - WSPR, WSPRX, WSJT-X</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Daily%20Builds%20Results%20-%20WSPR%2C%20WSPRX%2C%20WSJT-X&In-Reply-To=%3C517813F6.9020304%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Daily Builds Results - WSPR, WSPRX, WSJT-X">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Apr 24 19:18:46 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001225.html">[Wsjt-devel] Daily Builds Results - WSPR, WSPRX, WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="001221.html">[Wsjt-devel] WSJT v0.9 r3202
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1228">[ date ]</a>
+              <a href="thread.html#1228">[ thread ]</a>
+              <a href="subject.html#1228">[ subject ]</a>
+              <a href="author.html#1228">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Greg,
+
+&gt;<i> I finished my test box today, so I checked out the latest branch.
+</I>&gt;<i> Only one of the three worked:
+</I>&gt;<i>
+</I>&gt;<i> WSPR 4.0 r3015
+</I>&gt;<i>
+</I>&gt;<i> Compiled and working TX&amp;  RX checked on wsprnet.org
+</I>&gt;<i>   See Image: -- <A HREF="http://imagebin.org/255143">http://imagebin.org/255143</A>
+</I>
+All of the active branches compile to give working programs.
+
+&gt;<i> WSPR-X v0.8 r3058
+</I>&gt;<i> Compiled and Launches, but:
+</I>&gt;<i> -- error on startup, &quot;error rigctrl-l,&quot;
+</I>
+Do you have the necessary copy of rigctl.exe (and its necessary DLLs) in 
+the runtime directory???
+
+&gt;<i> -- Waterfall working, but no decodes
+</I>&gt;<i> See Image -- <A HREF="http://imagebin.org/255145">http://imagebin.org/255145</A> and <A HREF="http://imagebin.org/255147">http://imagebin.org/255147</A>
+</I>
+WSPR-X v0.8 r3058 compiles and runs without problems.  See attached 
+screen shot.
+
+&gt;<i> WSJT-X r3203 Fails to compile;
+</I>&gt;<i> I saw a couple notes on this, so it may still be be work in progress:
+</I>&gt;<i>
+</I>&gt;<i> Error from make:
+</I>&gt;<i> In file included from main.cpp:4:0:
+</I>&gt;<i> mainwindow.h:10:29: fatal error: hamlib/rigclass.h: No such file or directory
+</I>&gt;<i> compilation terminated.
+</I>&gt;<i> make: *** [main.o] Error 1
+</I>
+WSJT-X r3203 (also 3204, 3205) compiles and runs without problems. 
+Evidently you do not have the hamlib development files installed, or you 
+need to tweak your .pro file so the compiler can find them.
+
+&gt;<i> Question. I read somewhere, but can't recall where, that WSJT requires a specific sample rate
+</I>&gt;<i> of 44100, is this true?
+</I>
+WSJT uses 11025 Hz sampling, and therefore is happiest when the 
+soundcard supports native sampling at 44100 Hz.  WSJT-X uses 12000 and 
+48000 Hz.
+
+&gt;<i> If I have .asoundrc set to 48000 is that going to cause issues for WSJT ?
+</I>
+Yes.
+
+	-- Joe, K1JT
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: WSPR-X.png
+Type: image/png
+Size: 85706 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130424/d58ce6a0/attachment-0001.png">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130424/d58ce6a0/attachment-0001.png</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001225.html">[Wsjt-devel] Daily Builds Results - WSPR, WSPRX, WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="001221.html">[Wsjt-devel] WSJT v0.9 r3202
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1228">[ date ]</a>
+              <a href="thread.html#1228">[ thread ]</a>
+              <a href="subject.html#1228">[ subject ]</a>
+              <a href="author.html#1228">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

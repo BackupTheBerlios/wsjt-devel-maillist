@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080609024939.GA29973%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000359.html">
+   <LINK REL="Next"  HREF="000312.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080609024939.GA29973%40night.db.net%3E"
+       TITLE="[Wsjt-devel] revision 844">db at db.net
+       </A><BR>
+    <I>Mon Jun  9 04:49:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000359.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000312.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#360">[ date ]</a>
+              <a href="thread.html#360">[ thread ]</a>
+              <a href="subject.html#360">[ subject ]</a>
+              <a href="author.html#360">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Jun 08, 2008 at 05:12:31PM -0400, Rick Kunath wrote:
+&gt;<i> On Sunday 08 June 2008 12:59:34 pm Diane Bruce wrote:
+</I>&gt;<i>
+</I>...
+&gt;<i> I then grabbed the source and rebuilt that, again, no fortran shims.
+</I>&gt;<i>
+</I>&gt;<i> I rebuilt the source without any configure options, but do have gfortran and
+</I>
+./configure --enable-single
+
+See what happens then.
+
+The shims should then be in .libs/libfftw3f.*
+Figuring out what the right magic is on your OS to properly install these
+is not my problem. On FreeBSD it would be
+cd /usr/ports/math/fft3w-short;make install
+
+perhaps it is similar on Mandriva.
+
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000359.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000312.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#360">[ date ]</a>
+              <a href="thread.html#360">[ thread ]</a>
+              <a href="subject.html#360">[ subject ]</a>
+              <a href="author.html#360">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

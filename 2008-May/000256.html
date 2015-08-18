@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QSO mode for WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QSO%20mode%20for%20WSPR&In-Reply-To=%3C482C8C48.6050305%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000254.html">
+   <LINK REL="Next"  HREF="000255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QSO mode for WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QSO%20mode%20for%20WSPR&In-Reply-To=%3C482C8C48.6050305%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] QSO mode for WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu May 15 21:17:28 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000254.html">[Wsjt-devel] Compiling wsjt 5.9.7 on linux
+</A></li>
+        <LI>Next message: <A HREF="000255.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear WSJT/MAP65/WSPR Colleagues,
+
+I write to bring you up to date on continuing evolution of 
+the WSPR protocol and related software.
+
+A &quot;QSO mode&quot; for this weak-signal protocol is in the works. 
+  In fact, W6CQZ and I made the first WSPR-mode QSO on May 
+6. We used simple antennas and power levels of 1 W at each 
+end of the 4000 km path.  No big deal, on the 30 m band; but 
+it nicely confirmed the capabilities of the mode for 2-way work.
+
+The WSPR protocol is designed for use with extremely weak 
+signals.  It's suitable for making basic amateur contacts 
+over any propagation path that provides S/N exceeding -29 dB 
+in reference bandwidth 2500 Hz, with Doppler spreading less 
+than about 1 Hz.  Such paths should include most LF, MF, and 
+HF paths of interest to amateurs, as well as the EME path at 
+VHF.
+
+WSPR messages are structured to permit efficient packing of 
+callsigns, grid locators, signal reports, acknowledgments, 
+and other information commonly exchanged in short QSOs. (The 
+WSPR protocol is not attractive as a ragchewing mode, 
+because its throughput is too slow.)  The protocol uses very 
+strong forward error correction (FEC) using a 
+long-constraint convolutional code (K=32, rate=1/2) and 
+sequential decoding.  As in JT65, messages are almost always 
+received exactly as transmitted, or else the decoder 
+declares &quot;no result&quot; by remaining silent.  False decodes are 
+extremely rare.
+
+Several hundred present WSPR users are already familiar with 
+its beacon-like messages formatted according to the template
+
+   call grid dBm
+
+In QSO mode WSPR messages have a much richer variety of 
+formats, as illustrated by templates and examples in the 
+following list:
+
+Template                 Example of usage
+------------------------------------------------
+CQ call grid             CQ K1JT FN20
+CQ p/call                CQ PJ4/K1JT
+
+&lt;call1&gt; call2            &lt;K1JT&gt; W6CQZ
+DE call grid             DE W6CQZ CM87
+DE p/call                DE PJ4/K1JT
+
+call1 &lt;call2&gt; rpt        W6CQZ &lt;K1JT&gt; S4
+QRZ call                 QRZ K1JT
+p/call rpt               PJ4/W6CQZ S4
+
+
+call1 &lt;call2&gt; R rpt      K1JT &lt;W6CQZ&gt; R S3
+p/call R rpt             PJ4/K1JT R S3
+
+&lt;call1&gt; call2 RRR        &lt;W6CQZ&gt; K1JT RRR
+call1 &lt;call2&gt; RRR        W6CQZ &lt;K1JT&gt; RRR
+DE p/call RRR            DE PJ4/K1JT RRR
+
+73 DE call grid          73 DE W6CQZ CM87
+73 DE p/call             73 DE PJ4/K1JT
+TNX name 73 GL           TNX VICTORIA 73 GL
+OP name 73 GL            OP HARRY 73 GL
+pwr W DIPOLE             5 W DIPOLE
+pwr W VERTICAL           10 W VERTICAL
+pwr W gain DBD           1 W 0 DBD
+pwr W gain DBD 73 GL     1500 W 21 DBD 73 GL
+PSE QSY freq KHZ         PSE QSY 1811 KHZ
+WX wx temp F/C wind      WX SUNNY 25 C CALM
+freetext                 CUL JACK
+
+Upper-case letters and numerals are conveyed exactly as 
+shown in the templates.  Lower-case items are replaced by 
+appropriate information, for example call=K1JT, grid=FN20, 
+rpt=S1 to S9, name=JOE, wx=SNOW,  freetext=&quot;CUL JACK&quot;, etc., 
+as shown in the examples.
+
+Messages may contain one full callsign and one &quot;hash-coded&quot; 
+callsign.  The transmission of hash codes is indicated by 
+angle-brackets surrounding the call, as in &lt;K1JT&gt;; the 
+brackets appear in displays of both transmitted and received 
+messages.  Since hashing is a many-to-one mapping, the 
+process is not reversible.  However, if a full callsign has 
+been decoded in a previous transmission, the decoder may 
+assume that a matching hash code usually implies matching 
+callsigns.  With a 15-bit hash code the chances of 
+mis-identification are very small, especially within the 
+confines of a particular QSO.
+
+A minimal QSO might look like this:
+
+1. CQ K1JT FN20
+2.                     &lt;K1JT&gt; W6CQZ
+3. W6CQZ &lt;K1JT&gt; S4
+4.                     K1JT &lt;W6CQZ&gt; R S3
+5. &lt;W6CQZ&gt; K1JT RRR
+6.                     TNX JOE 73 GL
+
+A third-party operator listening to this QSO from the 
+beginning would copy everything just as the participating 
+stations do.  Even if only one of the QSO partners is 
+copyable at the third station, both callsigns will be 
+copied.  If the third-party operator tunes into the middle 
+of a QSO, so that he cannot yet identify one of the hashed 
+callsigns, his decoder will produce something like
+
+    W6CQZ &lt;...&gt; S4
+
+instead of the full message.  He must stay tuned to 
+determine the identity of the missing callsign.  There will 
+be no ambiguities at all for the participating stations: 
+full callsigns are always decoded (or already available, in 
+the case of one's own call) before their hash codes are needed.
+
+Signal report S1 corresponds to &quot;-30 dB&quot; on the WSJT scale, 
+S2=-27 dB, S3=-24 dB, etc., up to S9=-6 dB.  On this scale, 
+the threshold for signal audibility is around S5 to S6.  The 
+placeholder &quot;p/&quot; stands for an add-on prefix or suffix in 
+compound callsigns like ZB2/DF2ZC or DH7FB/P.  Information 
+conveying the prefix or suffix replaces the information that 
+would otherwise convey a grid locator or hashed callsign.
+
+Items &quot;pwr&quot;, &quot;gain&quot;, &quot;temp&quot;, and &quot;freq&quot; stand for numbers. A 
+2m EME station might send
+
+   1500 W 21 DBD
+
+to inform his QSO partner about his equipment.  Similarly, a 
+QRP HF station might send
+
+   1 W 0 DBD
+
+or
+
+   5 W DIPOLE
+
+If he finishes a QSO on 80 m and wants to try 160 m next, an 
+operator might send
+
+   PSE QSY 1811 KHZ
+
+Weather reports can be conveyed by setting &quot;wx&quot; to SUNNY, 
+CLOUDY, RAIN, or SNOW; &quot;temp&quot; can be sent in degrees C or F, 
+with appropriate conversions made at the receiving end; 
+&quot;wind&quot; can be set to CALM, BREEZES, or WINDY.
+
+Names may contain up to 9 letters, and &quot;freetext&quot; may 
+contain any combination of 8 or fewer letters, numerals, 
+spaces, and the punctuation marks + . / ?.
+
+Space has been reserved in the WSPR protocol for many more 
+&quot;canned&quot; or &quot;partially canned&quot; messages like those in the 
+final group of templates.  I hereby solicit suggestions for 
+messages that might be included in this group.  Note that 
+the variable information to be inserted in a given message 
+type should be no more than one, two, or possibly three 
+numbers or words.  Please help me to populate the list
+of message types in the most useful way.
+
+The first WSPR-mode QSO was made with a special version of 
+the WSPR program, but future evolution will most likely 
+follow a different path.  It seems best to keep the WSPR 
+program relatively simple and intended for automatic, 
+beacon-like transmission and reception of propagation test 
+signals.  The next released version of WSPR will, however, 
+be capable of decoding the QSO-mode messages.  For use in 
+making QSOs, the WSPR protocol will be absorbed into a 
+future version of WSJT.  This seems desirable because WSJT 
+already has all of the necessary amenities for setting up 
+messages, controlling the Tx/Rx sequences, etc.
+
+How will WSPR compare in sensitivity with other weak signal 
+communication modes?  Under the assumption of additive white 
+gaussian noise, no QSB, and negligible Doppler spreading, 
+the following table applies:
+
+Mode   Threshold  Comments
+          S/N
+----------------------------------------------------
+CW       -18 dB   Best human operators
+JT65B    -24      KV decoder
+JT65B    -27      Avg of 4 transmissions, KV decoder
+JT65B    -28      Deep Search
+WSPR     -29
+WSPR     -32 ?    Avg of 4 synchronized transmissions
+
+It should be noted that JT65 uses 1-minute T/R sequences 
+while WSPR uses 2-minute sequences.  Averaging of multiple 
+WSPR transmissions has not yet been tested.  The occupied 
+bandwidth of a WSPR signal is about 6 Hz, 60 times smaller 
+than the JT65B bandwidth.  Dozens of WSPR signals can be fit 
+simultaneously in a 2 kHz SSB transceiver passband, with 
+only a small probability of &quot;collisions&quot;.
+
+
+More Technical Details
+
+The WSPR message &quot;payload&quot; is 50 bits of information per 
+transmission.  Most message formats use 28 bits for a 
+standard callsign and 15 bits for a hash-coded callsign or 
+grid locator.  The remaining 7 bits convey signal reports, 
+acknowledgments, power levels, and special message types. 
+Special messages may use the first 43 bits for any dedicated 
+purpose.
+
+The WSPR protocol uses continuous-phase 4-tone FSK with tone 
+spacing and keying rate equal to 12000/8192 = 1.46 Hz.  Each 
+transmission contains (50+K-1)*2 = 162 channel symbols, and 
+each symbol conveys a data bit (MSB) and a synchronizing bit 
+(LSB).  Transmissions last for 162*8192/12000 = 110.6 s. 
+The occupied bandwidth of a WSPR signal is about 6 Hz.
+
+Do let me know if you have suggestions!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000254.html">[Wsjt-devel] Compiling wsjt 5.9.7 on linux
+</A></li>
+	<LI>Next message: <A HREF="000255.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

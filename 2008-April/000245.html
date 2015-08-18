@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] X64 wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20X64%20wsjt&In-Reply-To=%3C20080406172307.30051aac%40g77tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000242.html">
+   <LINK REL="Next"  HREF="000246.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] X64 wsjt</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20X64%20wsjt&In-Reply-To=%3C20080406172307.30051aac%40g77tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] X64 wsjt">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Sun Apr  6 18:23:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000242.html">[Wsjt-devel] X64 wsjt
+</A></li>
+        <LI>Next message: <A HREF="000246.html">[Wsjt-devel] X64 wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 6 Apr 2008 21:50:17 +1000
+Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; wrote:
+
+&gt;<i> On Sun, Apr 06, 2008 at 08:00:40PM +0100, Richard wrote:
+</I>&gt;<i> &gt; Just a further note:
+</I>&gt;<i> &gt; I downloaded the snaphot portaudio which compiles without any problems.
+</I>&gt;<i> &gt; How do I get the build f wsjt to use the pa libs from the snapshot.?
+</I>&gt;<i> 
+</I>&gt;<i> ./configure [...] --with-portaudio-include-dir=/path/...  --with-portaudio-lib-dir=/path/...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hamish
+</I>Sorry Guys I'm being a bit thick.
+I've pointed the lib dir at :-
+
+--with-portaudio-lib-dir=/usr/local/portaudio/lib/.libs/
+
+ and /usr/lib64/ and /usr/lib/ and about any thing else.
+
+Is the problem I'm getting from &quot;error: Command &quot;/usr/bin/gfortran -Wall -Wall&quot;
+or at the end of the block.
+
+
+Warning: Unused variable iarg declared at (1)
+/usr/bin/ld: fourt.o: relocation R_X86_64_32 against `a local symbol' can not be used when making a shared object; recompile with
+-fPIC fourt.o: could not read symbols: Bad value
+collect2: ld returned 1 exit status
+/usr/bin/ld: fourt.o: relocation R_X86_64_32 against `a local symbol' can not be used when making a shared object; recompile with
+-fPIC fourt.o: could not read symbols: Bad value
+collect2: ld returned 1 exit status
+error: Command &quot;/usr/bin/gfortran -Wall -Wall
+-shared /root/tmp/tmp5XeX2J/ptt_unix.o /root/tmp/tmp5XeX2J/igray.o /root/tmp/tmp5XeX2J/wrapkarn.o /root/tmp/tmp5XeX2J/cutil.o /root/tmp/tmp5XeX2J/jtaudio.o /root/tmp/tmp5XeX2J/resample.o /root/tmp/tmp5XeX2J/start_portaudio.o /root/tmp/tmp5XeX2J/root/tmp/tmp5XeX2J/src.linux-x86_64-2.5/Audiomodule.o /root/tmp/tmp5XeX2J/root/tmp/tmp5XeX2J/src.linux-x86_64-2.5/fortranobject.o /root/tmp/tmp5XeX2J/abc441.o /root/tmp/tmp5XeX2J/astro0.o /root/tmp/tmp5XeX2J/audio_init.o /root/tmp/tmp5XeX2J/azdist0.o /root/tmp/tmp5XeX2J/blanker.o /root/tmp/tmp5XeX2J/decode1.o /root/tmp/tmp5XeX2J/decode2.o /root/tmp/tmp5XeX2J/decode3.o /root/tmp/tmp5XeX2J/ftn_init.o /root/tmp/tmp5XeX2J/ftn_quit.o /root/tmp/tmp5XeX2J/get_fname.o /root/tmp/tmp5XeX2J/getfile.o /root/tmp/tmp5XeX2J/horizspec.o /root/tmp/tmp5XeX2J/hscroll.o /root/tmp/tmp5XeX2J/i1tor4.o /root/tmp/tmp5XeX2J/pix2d.o /root/tmp/tmp5XeX2J/pix2d65.o /root/tmp/tmp5XeX2J/rfile.o /root/tmp/tmp5XeX2J/savedata.o /root/tmp/tmp5XeX2J/spec.o /root/tmp/tmp5XeX2J/wsjtgen.o /root/tmp/tmp5XeX2J/runqqq.o /root/tmp/tmp5XeX2J/fivehz.o /root/tmp/tmp5XeX2J/msgparms.o /root/tmp/tmp5XeX2J/a2d.o /root/tmp/tmp5XeX2J/root/tmp/tmp5XeX2J/src.linux-x86_64-2.5/Audio-f2pywrappers.o
+init_rs.o encode_rs.o decode_rs.o fano.o tab.o wsjt1.o astro.o azdist.o coord.o dcoord.o deg2grid.o dot.o ftsky.o geocentric.o
+GeoDist.o grid2deg.o moon2.o MoonDop.o sun.o toxyz.o pfxdump.o avesp2.o bzap.o spec441.o spec2d.o mtdecode.o stdecode.o indexx.o
+s2shape.o flat2.o gen65.o gen24.o entail.o genmet.o wsjt24.o sync24.o ps24.o fourt.o xcor24.o decode24.o chkmsg.o gen6m.o
+gentone.o interleave24.o syncf0.o syncf1.o synct.o decode6m.o avemsg6m.o set.o flatten.o db.o pctile.o sort.o ssort.o ps.o
+smooth.o ping.o longx.o peakup.o sync.o detect.o avemsg65.o decode65.o demod64a.o encode65.o extract.o chkhist.o flat1.o four2.o
+rfile2.o gencw.o gencwid.o msgtype.o getpfx1.o getpfx2.o getsnr.o graycode.o grid2k.o interleave63.o k2grid.o limit.o lpf1.o
+morse.o nchar.o packcall.o packgrid.o packmsg.o packtext.o setup65.o short65.o slope.o spec2d65.o sync65.o unpackcall.o
+unpackgrid.o unpackmsg.o unpacktext.o xcor.o xfft.o xfft2.o wsjt65.o ftpeak65.o fil651.o fil652.o fil653.o symsync65.o decodecw.o
+foldcw.o deep65.o -L/usr/local/portaudio/lib/.libs/ -L/usr/local/lib -L/usr/lib/gcc/x86_64-mandriva-linux-gnu/4.2.2/ -L/usr/lib64
+-lasound -lpthread -lrt -lsamplerate -lportaudio -lpython2.5 -lgfortran -o ./Audio.so&quot; failed with exit status 1 make: ***
+[Audio.so] Error 1
+
+
+Running strace make gives the last block:-
+
+[{WIFEXITED(s) &amp;&amp; WEXITSTATUS(s) == 1}], 0, NULL) = 17163
+--- SIGCHLD (Child exited) @ 0 (0) ---
+rt_sigreturn(0xffffffff)                = 17163
+open(&quot;/usr/share/locale/en_GB.UTF-8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/share/locale/en_GB.utf8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/share/locale/en_GB/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/share/locale/en.UTF-8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/share/locale/en.utf8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+open(&quot;/usr/share/locale/en/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT (No such file or directory)
+write(2, &quot;make: &quot;, 6make: )                   = 6
+write(2, &quot;*** [Audio.so] Error 1&quot;, 22*** [Audio.so] Error 1)  = 22
+write(2, &quot;\n&quot;, 1
+)                       = 1
+rt_sigprocmask(SIG_BLOCK, [HUP INT TERM XCPU XFSZ], NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+chdir(&quot;/home/richard-g8jvm/Hamapps/wsjt-5.9.8.r558&quot;) = 0
+close(1)                                = 0
+munmap(0x2b409f8c9000, 4096)            = 0
+exit_group(2)                           = ?
+Process 16812 detached
+
+
+
+
+Sorry its a bit long, and will probably get line wrapped.
+
+Any ideas???
+
+-- 
+
+Best Wishes
+
+Richard Bown
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Registered Linux User 365161
+OS Mandriva x86_64 2008.0 Kernel 2.6.22.9-1mdv
+HAM Callsign G8JVM : Locator IO82SP
+QRV all bands 80mtrs to 3 cms ,( non WARC )
+<A HREF="http://www.software-radio.org.uk">http://www.software-radio.org.uk</A>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A computer is like a Native American Indian teepee, it has no gates, no windows and has an apache inside.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000242.html">[Wsjt-devel] X64 wsjt
+</A></li>
+	<LI>Next message: <A HREF="000246.html">[Wsjt-devel] X64 wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

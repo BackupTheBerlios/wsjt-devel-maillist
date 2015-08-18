@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Mac /  WSPR developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C4877E15A.7060708%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000435.html">
+   <LINK REL="Next"  HREF="000437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Mac /  WSPR developments</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mac%20/%20%20WSPR%20developments&In-Reply-To=%3C4877E15A.7060708%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] Mac /  WSPR developments">bruce at quidnet.com
+       </A><BR>
+    <I>Sat Jul 12 00:40:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000435.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+        <LI>Next message: <A HREF="000437.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I just checked in my snapshot of the wpsr branch; still not fully 
+debugged, but I wanted to get the progress checked in if I'm not able to 
+do more.  I did verify that it still works for decode on little-endian 
+linux, so I shouldn't have broken much, if anything. 
+
+&gt;<i>
+</I>&gt;<i> 1. WSPR uses 12000 Hz sampling.  WSJT, alas, uses 11025 Hz.  It would 
+</I>&gt;<i> be better use 12000 Hz everywhere now, ... but that means a lot of 
+</I>&gt;<i> changes in WSJT.  I haven't yet felt the time was right for making 
+</I>&gt;<i> this major change.
+</I>
+Understand.
+&gt;<i>
+</I>&gt;<i> 2. For its beacon-like purposes, WSPR wants to decode all the signals 
+</I>&gt;<i> it finds in a narrow band segment, currently 200 Hz.  For making QSOs, 
+</I>&gt;<i> WSJT may want to focus on signals within &quot;Tol&quot; of the &quot;Freeze DF&quot;.
+</I>This would actually be really nice for standalone as well, as I have 
+wished I could move the passband, either to expand to catch people  out 
+of band (or the multi-mode visual/wspr mept), or to run other programs 
+to monitor other parts of the audio passband.  A tunable center and 
+width would be great....I meant to look at it sometime.
+&gt;<i>
+</I>&gt;&gt;<i> Tx works perfectly fine, but Rx is not decoding correctly....sync, 
+</I>&gt;&gt;<i> snr, and freq identification are all good, but somewhere from 
+</I>&gt;&gt;<i> decode162 on isn't working, as everything comes out undecodable ('*** 
+</I>&gt;&gt;<i> ??? ***').  Fano seems to see the signals OK (low cycle count when 
+</I>&gt;&gt;<i> processing), but but that's as far as I got. My WSPRing on 30m right 
+</I>&gt;&gt;<i> now is from the Mac, and it's being copied well.
+</I>&gt;<i>
+</I>&gt;<i> Hmmm...
+</I>&gt;<i>
+</I>&gt;<i> Present versions of wqencode.f90 and wqdecode.f90 should be copied 
+</I>&gt;<i> from trunk into the wspr branch, but I don't think that's your 
+</I>&gt;<i> problem.  If the Fano cycle count is low it has almost certainly 
+</I>&gt;<i> decoded the 50-bit binary message correctly.  It sounds like something 
+</I>&gt;<i> is amiss when unpacking those 50 bits to produce human-readable messages?
+</I>Yeah, they are clearly wrong, probably coming out of fano.  I'll look at 
+it tonight if I get a chance.
+&gt;<i>
+</I>&gt;&gt;<i> WSJT:  I've only tried JT65A.  JT65A receives and decodes fine, and 
+</I>&gt;&gt;<i> seems to Tx OK.  However, I'm getting bogus DFs in some places, and 
+</I>&gt;&gt;<i> certainly when I click in the spectrum to try to decode something, 
+</I>&gt;&gt;<i> the resulting df is bogus.  I haven't looked at that at all, but 
+</I>&gt;&gt;<i> probably simple.  John, do you see that as well?
+</I>
+I should have said &quot;when I click on the waterfall&quot;, not spectrum.  This 
+is probably another endian/architecure thing, as it seems to be fine on 
+linux/little-endian.  I still haven't looked into it.
+
+--bruce W1BW
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000435.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+	<LI>Next message: <A HREF="000437.html">[Wsjt-devel] Mac /  WSPR developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

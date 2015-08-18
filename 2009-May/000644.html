@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A0DBDA2.60104%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000675.html">
+   <LINK REL="Next"  HREF="000645.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>jeff millar</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A0DBDA2.60104%40gmail.com%3E"
+       TITLE="[Wsjt-devel] gfortran">wa1hco at gmail.com
+       </A><BR>
+    <I>Fri May 15 21:08:18 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000675.html">[Wsjt-devel] KVASD_g95 segmentation fault
+</A></li>
+        <LI>Next message: <A HREF="000645.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#644">[ date ]</a>
+              <a href="thread.html#644">[ thread ]</a>
+              <a href="subject.html#644">[ subject ]</a>
+              <a href="author.html#644">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I svn update'd the wsjt tree to rev 1220 and noted changes to 
+start_portaudio.c. Map65 now runs without segfault after startup.
+
+Thanks!!!
+
+jeff, wa1hco
+
+    Index: start_portaudio.c
+    ===================================================================
+    --- start_portaudio.c (revision 1219)
+    +++ start_portaudio.c (revision 1220)
+    @@ -20,11 +20,11 @@
+    int iret1,iret2,iret3;
+    int iarg1=1, iarg2=2, iarg3=3;
+
+    - /* snd_pcm_start */
+    - // printf(&quot;start_threads: creating thread for a2d\n&quot;);
+    - iret1 = pthread_create(&amp;thread1,NULL,a2d_,&amp;iarg1);
+    - // printf(&quot;start_threads: creating thread for decode1_\n&quot;);
+    - iret2 = pthread_create(&amp;thread2,NULL,decode1_,&amp;iarg2);
+    - // printf(&quot;start_threads: creating thread for recvpkt_\n&quot;);
+    - iret3 = pthread_create(&amp;thread3,NULL,recvpkt_,&amp;iarg3);
+    + iret1 = pthread_create(&amp;thread1,NULL,
+    + (void *)a2d_,&amp;iarg1);
+    + iret2 = pthread_create(&amp;thread2,NULL,
+    + (void *)decode1_,&amp;iarg2);
+    + iret3 = pthread_create(&amp;thread3,NULL,
+    + (void *)recvpkt_,&amp;iarg3);
+    + return(iret1 | iret2 | iret3);
+    }
+
+
+jeff millar wrote:
+&gt;<i> Using print statement to trace the problem, I get a seg fault on the 
+</I>&gt;<i> first call to pthread_create in start_portaudio.c. This occurs after 
+</I>&gt;<i> warnings during compile about...
+</I>&gt;<i>
+</I>&gt;<i> start_portaudio.c: In function &#8216;start_threads_&#8217;:
+</I>&gt;<i> start_portaudio.c:27: warning: passing argument 3 of &#8216;pthread_create&#8217; 
+</I>&gt;<i> from incompatible pointer type
+</I>&gt;<i> start_portaudio.c:29: warning: passing argument 3 of &#8216;pthread_create&#8217; 
+</I>&gt;<i> from incompatible pointer type
+</I>&gt;<i> start_portaudio.c:31: warning: passing argument 3 of &#8216;pthread_create&#8217; 
+</I>&gt;<i> from incompatible pointer type
+</I>&gt;<i> start_portaudio.c:32: warning: control reaches end of non-void function
+</I>&gt;<i>
+</I>&gt;<i> This occurs with a Ubuntu 9.04 system with
+</I>&gt;<i> gfortran 4:4.3.3-1ubuntu1
+</I>&gt;<i>
+</I>&gt;<i> Maybe there's some compatibility switch required to start fortran 
+</I>&gt;<i> programs from pthread_create()???
+</I>&gt;<i>
+</I>&gt;<i> jeff, wa1hco
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Apr 30, 2009 at 4:16 PM, Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Hi,
+</I>&gt;<i>
+</I>&gt;<i>     Joe and I would like to clear up the mystery of gfortran compiles
+</I>&gt;<i>     breaking.
+</I>&gt;<i>
+</I>&gt;<i>     From: Peter Junker &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">dg6man at pjconsult.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">dg6man at pjconsult.de</A>&gt;&gt;
+</I>&gt;<i>     Date: Tue, 4 Nov 2008 13:24:24 +0100
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     &quot;Upon launching the application I briefly get the GUI and then it
+</I>&gt;<i>     crashes with
+</I>&gt;<i>     a segfault. The problem can be reproduced.&quot;
+</I>&gt;<i>
+</I>&gt;<i>     Has this been resolved with the most current wsjt/wspr ? Anyone else
+</I>&gt;<i>     with reports?
+</I>&gt;<i>
+</I>&gt;<i>     Please report: OS, 64bit or not, version of gfortran etc.
+</I>&gt;<i>
+</I>&gt;<i>     - 73 Diane VA3DB
+</I>&gt;<i>     --
+</I>&gt;<i>     - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+</I>&gt;<i>     <A HREF="http://www.db.net/~db">http://www.db.net/~db</A> &lt;<A HREF="http://www.db.net/%7Edb">http://www.db.net/%7Edb</A>&gt;
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Wsjt-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000675.html">[Wsjt-devel] KVASD_g95 segmentation fault
+</A></li>
+	<LI>Next message: <A HREF="000645.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#644">[ date ]</a>
+              <a href="thread.html#644">[ thread ]</a>
+              <a href="subject.html#644">[ subject ]</a>
+              <a href="author.html#644">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

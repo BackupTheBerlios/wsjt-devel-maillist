@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r3632 Decode mode issue.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3632%20Decode%20mode%20issue.&In-Reply-To=%3C52D19566.9050801%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002017.html">
+   <LINK REL="Next"  HREF="002021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r3632 Decode mode issue.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3632%20Decode%20mode%20issue.&In-Reply-To=%3C52D19566.9050801%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] r3632 Decode mode issue.">joe at princeton.edu
+       </A><BR>
+    <I>Sat Jan 11 20:03:02 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002017.html">[Wsjt-devel] r3632 Decode mode issue.
+</A></li>
+        <LI>Next message: <A HREF="002021.html">[Wsjt-devel] WSJTX 1.2.2 r3621
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2018">[ date ]</a>
+              <a href="thread.html#2018">[ thread ]</a>
+              <a href="subject.html#2018">[ subject ]</a>
+              <a href="author.html#2018">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>HI Bill,
+
+That doesn't sound good -- hope I haven't screwed something up.  (It 
+wouldn't be the first time.)
+
+I will try to see if I can reproduce the problem.  In the meantime, if 
+you can make a *.wav recording that illustrates the problem, please send 
+it to me.
+
+	-- Joe, K1JT
+
+On 1/11/2014 12:33 PM, Bill Somerville wrote:
+&gt;<i> On 11/01/2014 17:29, Bill Somerville wrote:
+</I>&gt;&gt;<i> Hi All,
+</I>&gt;<i> Hi Again,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have recently merged the changes up to r3632 into my working space
+</I>&gt;&gt;<i> and during testing I am seeing JT9 signals decoded as JT65. Is anyone
+</I>&gt;&gt;<i> else seeing this or have I messed up something locally here.
+</I>&gt;<i> Looking at it more carefully it looks like a JT65 signal is being
+</I>&gt;<i> reported on the wrong DF when I double click to decode again:
+</I>&gt;<i>
+</I>&gt;<i> 1724 -1 0.2 956 # VA3MJR KA8G RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -7 0.2 1207 # CQ KF5REP EM02
+</I>&gt;<i>
+</I>&gt;<i> 1724 -1 0.8 1387 # KD5JHE K2QL FN22
+</I>&gt;<i>
+</I>&gt;<i> 1724 -2 0.1 1829 # KR4LU N8KDX EM98
+</I>&gt;<i>
+</I>&gt;<i> 1724 -25 0.8 2025 # KD5JHE K2QL FN22
+</I>&gt;<i>
+</I>&gt;<i> 1724 -15 0.2 2212 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i> 1724 -10 -3.6 3240 # N0GR OX3IO RRR
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002017.html">[Wsjt-devel] r3632 Decode mode issue.
+</A></li>
+	<LI>Next message: <A HREF="002021.html">[Wsjt-devel] WSJTX 1.2.2 r3621
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2018">[ date ]</a>
+              <a href="thread.html#2018">[ thread ]</a>
+              <a href="subject.html#2018">[ subject ]</a>
+              <a href="author.html#2018">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

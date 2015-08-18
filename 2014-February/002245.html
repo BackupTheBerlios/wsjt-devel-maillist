@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT Docs, Windows Setup, Help Needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Docs%2C%20Windows%20Setup%2C%20Help%20Needed&In-Reply-To=%3C52F2B839.1030505%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002244.html">
+   <LINK REL="Next"  HREF="002249.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT Docs, Windows Setup, Help Needed</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Docs%2C%20Windows%20Setup%2C%20Help%20Needed&In-Reply-To=%3C52F2B839.1030505%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJT Docs, Windows Setup, Help Needed">ki7mt at yahoo.com
+       </A><BR>
+    <I>Wed Feb  5 23:16:25 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002244.html">[Wsjt-devel] [wsjtgroup] WSJT Docs, Windows Setup, Help Needed
+</A></li>
+        <LI>Next message: <A HREF="002249.html">[Wsjt-devel] Fake decodes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2245">[ date ]</a>
+              <a href="thread.html#2245">[ thread ]</a>
+              <a href="subject.html#2245">[ subject ]</a>
+              <a href="author.html#2245">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+I had an issue with step 5). not once, but twice. One one box, I can
+checkout at the trunk level /wsjt/doc and on a second, it has
+be wsjt/branches/doc so I'm not sure whats going on there, I've never
+seen this before.
+
+In any case, apologies for the confusion. The branch level is where
+the checkout should happen:
+
+svn co <A HREF="svn://svn.berlios.de/wsjt/branches/doc">svn://svn.berlios.de/wsjt/branches/doc</A>
+
+then
+
+cd ./doc &amp;&amp; ./build-doc.sh help
+
+Select #4 to build WSJT-X User Guide.
+
+
+73's
+Greg, KI7MT
+
+On 2/5/2014 21:42, Greg Beam wrote:
+&gt;<i> Hello All,
+</I>&gt;<i> 
+</I>&gt;<i> First error, step 5.) :-/
+</I>&gt;<i> 
+</I>&gt;<i> svn co <A HREF="svn://svn.berlios.de/wsjt/doc">svn://svn.berlios.de/wsjt/doc</A>
+</I>&gt;<i> 
+</I>&gt;<i> not
+</I>&gt;<i> 
+</I>&gt;<i> svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>
+</I>&gt;<i> 
+</I>&gt;<i> G.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On 2/5/2014 21:24, Greg Beam wrote:
+</I>&gt;&gt;<i> Hello All,
+</I>&gt;<i> 
+</I>&gt;&gt;<i> If anyone has some spare time, I could use some help testing an 
+</I>&gt;&gt;<i> Windows batch file that Auto-Installs Cygwin + Required packages 
+</I>&gt;&gt;<i> for working on WSJT docs.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I've tested this on WinXP-32 &amp; Vista 32/64, but I do not have 
+</I>&gt;&gt;<i> access to Win7/8.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Total Install Time: ~8.5 min (including download time) on slow 
+</I>&gt;&gt;<i> internet
+</I>&gt;<i> 
+</I>&gt;&gt;<i> If interested, use the following to test:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Note(s):
+</I>&gt;<i> 
+</I>&gt;&gt;<i> a. I attached the zip file, but I'm unsure sure how the boards 
+</I>&gt;&gt;<i> handle attachments, so I'm also providing a shared link to my 
+</I>&gt;&gt;<i> Ubuntu One account:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> b. This is a local folder only install, no shortcuts or system 
+</I>&gt;&gt;<i> level integration will should happen. To remove, simply delete
+</I>&gt;&gt;<i> the wsjtx-doc folder.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 1). ** Download: <A HREF="http://ubuntuone.com/5TXl9swZpkJyBXjlbzsI8G">http://ubuntuone.com/5TXl9swZpkJyBXjlbzsI8G</A> 
+</I>&gt;&gt;<i> MD5SUM: 5f08b4759a2232ef1dbc2b0b7723b133 SHASUM: 
+</I>&gt;&gt;<i> 8a268ceb1bb90e7bd4527ee95ab7092748975977
+</I>&gt;<i> 
+</I>&gt;&gt;<i> wsjt-doc.zip contains two files: - the folder itself: wsjt-doc -
+</I>&gt;&gt;<i> the windows batch file: wsjt-doc.bat
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 2). ** Unzip the file wherever you like c:\ d:\ \Desktop 
+</I>&gt;&gt;<i> \Documents USB-Key, etc. If using USB Key, install time is a
+</I>&gt;&gt;<i> good bit slower. For the example, I'll use c:\wsjt-doc as an
+</I>&gt;&gt;<i> example here.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 3). ** Download one the following installers, saving it to the 
+</I>&gt;&gt;<i> c:\wsjt-doc folder:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> - <A HREF="http://cygwin.com/setup-x86.exe">http://cygwin.com/setup-x86.exe</A> - 
+</I>&gt;&gt;<i> <A HREF="http://cygwin.com/setup-x86_64.exe">http://cygwin.com/setup-x86_64.exe</A>
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 4). ** Browse to the c:\wsjt-doc folder, Double-Click on 
+</I>&gt;&gt;<i> wsjt-doc-setup.bat or Right-Click &gt;&gt; Open - On my slow internet,
+</I>&gt;&gt;<i> it was less than 9min to download and install.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 5). ** If the installer finishes successfully, Double-Click on 
+</I>&gt;&gt;<i> c:\wsjt-doc\wsjt-doc.bat to open the Cygwin terminal, then check 
+</I>&gt;&gt;<i> out the WSJT documentation with:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 6). ** Once downloaded, build the docs with: ./build-doc.sh
+</I>&gt;&gt;<i> wsjtx
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 7). ** If all went according to plan, you should have a copy of 
+</I>&gt;&gt;<i> the latest WSJT-X User Guide in ..doc/wsjtx/ folder
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 8). ** With your browser, open ..doc/wsjtx/wsjtx-main-toc2.html
+</I>&gt;&gt;<i> to ensure it was built correctly.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> If you run into any trouble, please send me a note with the
+</I>&gt;&gt;<i> details so I can try and make this work across most of the
+</I>&gt;&gt;<i> Windows versions.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 73's Greg, KI7MT <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________ Wsjt-devel mailing
+</I>&gt;<i> list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002244.html">[Wsjt-devel] [wsjtgroup] WSJT Docs, Windows Setup, Help Needed
+</A></li>
+	<LI>Next message: <A HREF="002249.html">[Wsjt-devel] Fake decodes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2245">[ date ]</a>
+              <a href="thread.html#2245">[ thread ]</a>
+              <a href="subject.html#2245">[ subject ]</a>
+              <a href="author.html#2245">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

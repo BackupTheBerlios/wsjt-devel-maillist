@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT24 format questions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT24%20format%20questions&In-Reply-To=%3C002301c94bb1%247fa0a9a0%24fa01a8c0%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000540.html">
+   <LINK REL="Next"  HREF="000548.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT24 format questions</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT24%20format%20questions&In-Reply-To=%3C002301c94bb1%247fa0a9a0%24fa01a8c0%40shack2%3E"
+       TITLE="[Wsjt-devel] JT24 format questions">aware at freeuk.com
+       </A><BR>
+    <I>Fri Nov 21 09:16:47 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000540.html">[Wsjt-devel] JT24 format questions
+</A></li>
+        <LI>Next message: <A HREF="000548.html">[Wsjt-devel] JT24 format questions - update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+I am working all weekend so time will be short, but will go over my findings 
+again.
+
+I used the Audio program &quot;Audacity&quot; to capture the outgoing tones generated 
+and then used Audacity to analyse the captured WAV file.
+There may well be something wrong with this method.
+So I will try it again and set up a second PC so I can seperate the 
+generation and capturing processes.
+There are a few other tests I can do to confirm the process.
+
+When I first did this, I was surprised at the short last symbol, and tried 
+it again with the same result, although I did not critically look at the 
+number or duration of the other symbols.
+
+
+Cheers, DAvid
+
+----- Original Message ----- 
+From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+Sent: Thursday, November 20, 2008 6:51 PM
+Subject: Re: [Wsjt-devel] JT24 format questions
+
+
+&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;<i> Sorry for the delay in answering your questions.
+</I>&gt;<i>
+</I>&gt;<i> David GM6BIG wrote:
+</I>&gt;&gt;<i> Hi All,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have been examining the JT4g signal and believe the symbol length to be
+</I>&gt;&gt;<i> 233.333mS (7/30?), except the last symbol.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I measure.....
+</I>&gt;&gt;<i> 204 symbols of 233.333mS = 47.60000 Seconds
+</I>&gt;&gt;<i> + 1 short symbol of 186.593mS.
+</I>&gt;&gt;<i> No of symbols 205
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is this correct ??
+</I>&gt;&gt;<i> If yes, then why the short symbol at the end ??
+</I>&gt;<i>
+</I>&gt;<i> No.  The symbol length in seconds (as defined in gen24.f) is
+</I>&gt;<i>
+</I>&gt;<i>   tsymbol = 2520.0/11025.0
+</I>&gt;<i>
+</I>&gt;<i> which works out to 0.228571... seconds.  There are 207
+</I>&gt;<i> symbols, and all should have the same duration.  If you are
+</I>&gt;<i> measuring something different, then something's amiss
+</I>&gt;<i> somewhere...  As far as I can see, the array
+</I>&gt;<i> iwave(i=1,nwave) is being generated correctly in gen24.f.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Joe, have you had a look at a JT24x equivelent of the JT65code program
+</I>&gt;&gt;<i> for me ?
+</I>&gt;&gt;<i> Its a slow job doing it by hand from a .wav file!
+</I>&gt;<i>
+</I>&gt;<i> I have started on this task.
+</I>&gt;<i>
+</I>&gt;<i> -- Joe
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000540.html">[Wsjt-devel] JT24 format questions
+</A></li>
+	<LI>Next message: <A HREF="000548.html">[Wsjt-devel] JT24 format questions - update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CEEB583.50402%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000989.html">
+   <LINK REL="Next"  HREF="000991.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3C4CEEB583.50402%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Nov 25 20:14:11 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000989.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="000991.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#990">[ date ]</a>
+              <a href="thread.html#990">[ thread ]</a>
+              <a href="subject.html#990">[ subject ]</a>
+              <a href="author.html#990">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan and all,
+
+&gt;&gt;<i> 2. Ability to save/restore hopping setups.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Yes, that's needed. My thinking was that it might be best to delay this
+</I>&gt;<i> until we decide on what the setup should include, but I can add this now.
+</I>
+I'm happy to wait for this.  Your instinct was a good one.
+
+&gt;&gt;<i> 3. To consider: do we need separate &quot;Tx %&quot; sliders for each band?  An
+</I>&gt;&gt;<i> alternative would be to use the main slider for all bands, except that some
+</I>&gt;&gt;<i> bands could be marked &quot;Rx Only&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;<i> I added a slider for each band for two reasons. One is that some users might
+</I>&gt;<i> be able to receive on bands on which they might not be able to transmit. For
+</I>&gt;<i> example, a 10/15/20m triband beam might also able to do an acceptable job at
+</I>&gt;<i> receiving on 18MHz, 24MHz, and maybe 40m, but you might not want to transmit
+</I>&gt;<i> on these bands. My own softrock RXTX can receive on 20m/30m/40m, but I can
+</I>&gt;<i> only transmit on 20m and 30m, because the output lowpass filter does not
+</I>&gt;<i> filter the second harmonic on 40m.
+</I>&gt;<i>
+</I>&gt;<i> The other reason is that on popular bands, like 20m/30m/40m, it makes sense
+</I>&gt;<i> to transmit less frequently, to let everybody a chance to be heard. But in a
+</I>&gt;<i> band that's dead most of the time (say 10m) you can transmit more, and also
+</I>&gt;<i> on bands on which there are few WSPR operators, at least in your region.
+</I>
+Understood.  I agree that there are some good reasons to set pctx by 
+band.  An &quot;Rx only&quot; checkbox addresses your first point, but not the second.
+
+&gt;&gt;<i> 6. How best to take advantage of automatic antenna tuners?  The one I've
+</I>&gt;&gt;<i> been using is truly automatic: if SNR&gt;  3 at the start of a transmission, it
+</I>&gt;&gt;<i> tunes to achieve SWR&lt;  1.5 in the first 1-4 seconds. No special &quot;tune&quot;
+</I>&gt;&gt;<i> transmission is required.  Tuners with frequency-lookup tables would be even
+</I>&gt;&gt;<i> better.
+</I>&gt;&gt;<i>
+</I>&gt;<i> Two people wrote to me to say that Elecraft radios and the FT-450 with built
+</I>&gt;<i> in ATUs apply tuner settings from memory when you switch frequencies even if
+</I>&gt;<i> you don't transmit. This is probably true for other radios with ATUs and for
+</I>&gt;<i> ATUs that are controlled digitally by the radio.
+</I>
+We could leavethis for everyone to deal with on his own, via the 
+&quot;user_hardware&quot; program or script.  However, it's likely that many 
+people won't be able to do this.
+
+&gt;&gt;<i> 7. Should we put band labels on the wsterfall, maybe just above the time
+</I>&gt;&gt;<i> stamps?
+</I>&gt;&gt;<i>
+</I>&gt;<i> I'm in favor. I constantly try to figure out which stripe on the waterfall
+</I>&gt;<i> belongs to whic band. We could also put it on the top of the strip, rather
+</I>&gt;<i> than atop the time stamp.
+</I>
+Sure, that would be OK.
+
+	-- Joe
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000989.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="000991.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#990">[ date ]</a>
+              <a href="thread.html#990">[ thread ]</a>
+              <a href="subject.html#990">[ subject ]</a>
+              <a href="author.html#990">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

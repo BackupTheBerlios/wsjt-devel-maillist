@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r366
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C4630A8DA.6010201%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000079.html">
+   <LINK REL="Next"  HREF="000083.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r366</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C4630A8DA.6010201%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] r366">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Apr 26 15:27:54 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000079.html">[Wsjt-devel] r366
+</A></li>
+        <LI>Next message: <A HREF="000083.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm back in business.  Copied 
+portaudio-v19/lib/.libs/libportaudio.so.2 to /usr/local/lib, 
+set environment variable LD_LIBRARY_PATH to /usr/local/lib, 
+and ran ldconfig.  Now all is well.
+
+	-- Joe, K1JT
+
+Harry Popov wrote:
+&gt;<i> Joe,
+</I>&gt;<i> 
+</I>&gt;<i> Exactly the same here. I already send message to the list with the same
+</I>&gt;<i> problem. Diane responded and said she will turn back the old default
+</I>&gt;<i> compila option plus the new ./configure options which are definately
+</I>&gt;<i> useful for distributions which already have portaudio v.0.19.
+</I>&gt;<i> 
+</I>&gt;<i> BTW your test message was received too.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> On Wed, 2007-04-25 at 08:25 -0400, Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Harry, Diane, and all --
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Did this problem ever get straightened out for you, Harry? 
+</I>&gt;&gt;<i>I have the same problem now:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>pulsar23% python -O wsjt.py
+</I>&gt;&gt;<i>Traceback (most recent call last):
+</I>&gt;&gt;<i>   File &quot;wsjt.py&quot;, line 10, in ?
+</I>&gt;&gt;<i>     import Audio
+</I>&gt;&gt;<i>ImportError: libportaudio.so.2: cannot open shared object 
+</I>&gt;&gt;<i>file: No such file or directory
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>My Audio.so was compiled with:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>pulsar23: ./configure \
+</I>&gt;&gt;<i>--with-portaudio-include-dir=portaudio-v19/include \
+</I>&gt;&gt;<i>--with-portaudio-lib-dir=/home/joe/wsjt/trunk/portaudio-v19/lib/.libs
+</I>&gt;&gt;<i>pulsar23: make clean; make
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Yes, there is a copy of libportaudio.so.2 in directory 
+</I>&gt;&gt;<i>/home/joe/wsjt/trunk/portaudio-v19/lib/.libs .  What am I 
+</I>&gt;&gt;<i>doing wrong?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>	-- Joe
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Harry Popov wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Today I tryed r366 /the last in SVN/. After some fight with new
+</I>&gt;&gt;&gt;<i>configure options I compiled with success. Later on start I got this
+</I>&gt;&gt;&gt;<i>error:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>[<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A> WSJTSVN]$ python -O wsjt.py
+</I>&gt;&gt;&gt;<i>Traceback (most recent call last):
+</I>&gt;&gt;&gt;<i>  File &quot;wsjt.py&quot;, line 10, in ?
+</I>&gt;&gt;&gt;<i>    import Audio
+</I>&gt;&gt;&gt;<i>ImportError: libportaudio.so.2: cannot open shared object file: No such
+</I>&gt;&gt;&gt;<i>file or directory
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Ofcourse I do not have portaudio v0.19 installed. But I did not have it
+</I>&gt;&gt;&gt;<i>before too. I think that is the purpoce of porting portaudio code in
+</I>&gt;&gt;&gt;<i>WSJT code. So some thing is broken in the last release. IMHO it should
+</I>&gt;&gt;&gt;<i>be turned back as it was because portaudio v0.19 is not yet official
+</I>&gt;&gt;&gt;<i>release for major distributions.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000079.html">[Wsjt-devel] r366
+</A></li>
+	<LI>Next message: <A HREF="000083.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

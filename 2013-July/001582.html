@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy49yRM-Eh4ih1ngAoeYP2va19uzieBViqxtsmonU06avDQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001578.html">
+   <LINK REL="Next"  HREF="001583.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3CCALNQy49yRM-Eh4ih1ngAoeYP2va19uzieBViqxtsmonU06avDQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Jul 28 16:10:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001578.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001583.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1582">[ date ]</a>
+              <a href="thread.html#1582">[ thread ]</a>
+              <a href="subject.html#1582">[ subject ]</a>
+              <a href="author.html#1582">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+Yesterday I've done a few tests with Qt5 Audio and have some observations.
+On Linux, Qt5 either uses pulseaudio or ALSA as sound input/output. Either
+one or the ohter (not both).
+
+I found this while trying to run some of the examples included with the
+sources. The behavior is defined in the file
+./qtmultimedia/src/multimedia/audio/audio.pri at the &quot;unix:!mac&quot; block. If
+pulseaudio dev is installed, Qt5 will NOT compile the ALSA plugin. For
+systems that have only one sound card or that have all soundcards driven by
+pulseaudio, there is no issue. But, if there are sound cards that are not
+driven by portaudio, Qt5 will not detect them -- which happens to be my
+case since I do not want pulseaudio to interact in any way with the sound
+cards I use for digital modes and SDR experiments.
+
+I did a further experiment and removed the pulseaudio-dev package and
+recompiled Qt5. Qt5 could then detect all sound cards on my system, but
+failed to detect the virtual audio device (slave PCM with resampling) I use
+for WSJT-X. Today I will do some further investigation. I will report my
+findings.
+
+If Qt5 can't detect the PCM slave devices, we may have some issue with
+systems that have sound cards that don't have the sampling rates needed by
+WSJT-X. Alternatively we could implement a resampling code in WSJT-X to
+avoid the issue.
+
+Any thoughs?
+
+73,
+
+-- Edson PY2SDR
+
+
+
+
+On Sat, Jul 27, 2013 at 5:58 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> G4WJS wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I was looking at the Qt 5.1 docs and the QAudioInput class is not
+</I>&gt;&gt;<i> described in the Audio overview, nor is it listed in the module class
+</I>&gt;&gt;<i> list. I suppose the docs are still a work in progress. Having found it
+</I>&gt;&gt;<i> by looking up in the full list of classes; yes it does seem to fit the
+</I>&gt;&gt;<i> requirement well.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Actually, I've found the documentation to be one of Qt's strongest
+</I>&gt;<i> features.
+</I>&gt;<i>
+</I>&gt;<i> For QAudioInput and QAudioOutput go to
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://qt-project.org/doc/qt-**5.1/qtmultimedia/qaudioinput.**html&lt;http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudioinput.html">http://qt-project.org/doc/qt-**5.1/qtmultimedia/qaudioinput.**html&lt;http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudioinput.html</A>&gt;
+</I>&gt;<i> <A HREF="http://qt-project.org/doc/qt-**5.1/qtmultimedia/qaudiooutput.**html&lt;http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudiooutput.html">http://qt-project.org/doc/qt-**5.1/qtmultimedia/qaudiooutput.**html&lt;http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudiooutput.html</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> A few hours ago I quickly cobbled together drop-in replacements for
+</I>&gt;<i> soundin.h and soundin.cpp that use QAudioInput instead of PortAudio. The
+</I>&gt;<i> code compiled and ran without problems, and within an hour WSJT-X was
+</I>&gt;<i> decoding both JT65 and JT9 signals with the nes input routines.
+</I>&gt;<i> The same approach for audio output should not be any more difficult.
+</I>&gt;<i>
+</I>&gt;<i> I'm not suggesting that others should stop thinking about the best way to
+</I>&gt;<i> do these tasks... just reporting that a baseline system (the input device
+</I>&gt;<i> selection was temporarily hard-wired, for example) was easy to get going.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130728/00e9deb5/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130728/00e9deb5/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001578.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001583.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1582">[ date ]</a>
+              <a href="thread.html#1582">[ thread ]</a>
+              <a href="subject.html#1582">[ subject ]</a>
+              <a href="author.html#1582">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

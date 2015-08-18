@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C4843F5FA.3040609%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000292.html">
+   <LINK REL="Next"  HREF="000295.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C4843F5FA.3040609%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jun  2 15:30:34 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000292.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+        <LI>Next message: <A HREF="000295.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#294">[ date ]</a>
+              <a href="thread.html#294">[ thread ]</a>
+              <a href="subject.html#294">[ subject ]</a>
+              <a href="author.html#294">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Richard,
+
+I am sure that WSPR can be built on your 64-bit machine.
+
+You will need to do some work yourself to find out what 
+needs to be done to compile within your particular 
+environment.  When you find out the reason for failure, let 
+us know what you did.
+
+     -- 73, Joe, K1JT
+
+Richard Bown wrote:
+&gt;<i> On Sat, 31 May 2008 21:00:57 -0400
+</I>&gt;<i> Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+</I>&gt;<i> The latest MAP65:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>C:\temp&gt;svn co <A HREF="svn://svn.berlios.de/wsjt/branches/map65">svn://svn.berlios.de/wsjt/branches/map65</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>... etc.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>	-- 73, Joe, K1JT
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> Thanks Joe got to the right place now. wspr is not building on this 64
+</I>&gt;<i> bit machine:-
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> --- SIGCHLD (Child exited) @ 0 (0) ---
+</I>&gt;<i> rt_sigreturn(0xffffffff)                = 27468
+</I>&gt;<i> open(&quot;/usr/share/locale/en_GB.UTF-8/LC_MESSAGES/make.mo&quot;, O_RDONLY) =
+</I>&gt;<i> -1 ENOENT (No such file or directory)
+</I>&gt;<i> open(&quot;/usr/share/locale/en_GB.utf8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1
+</I>&gt;<i> ENOENT (No such file or directory)
+</I>&gt;<i> open(&quot;/usr/share/locale/en_GB/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1
+</I>&gt;<i> ENOENT (No such file or directory)
+</I>&gt;<i> open(&quot;/usr/share/locale/en.UTF-8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1
+</I>&gt;<i> ENOENT (No such file or directory)
+</I>&gt;<i> open(&quot;/usr/share/locale/en.utf8/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1
+</I>&gt;<i> ENOENT (No such file or directory)
+</I>&gt;<i> open(&quot;/usr/share/locale/en/LC_MESSAGES/make.mo&quot;, O_RDONLY) = -1 ENOENT
+</I>&gt;<i> (No such file or directory) write(2, &quot;make: &quot;,
+</I>&gt;<i> 6make: )                   = 6 write(2, &quot;*** [w.so] Error 1&quot;, 18***
+</I>&gt;<i> [w.so] Error 1)      = 18 write(2, &quot;\n&quot;, 1 )                       = 1
+</I>&gt;<i> rt_sigprocmask(SIG_BLOCK, [HUP INT QUIT TERM XCPU XFSZ], NULL, 8) = 0
+</I>&gt;<i> rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+</I>&gt;<i> chdir(&quot;/home/richard-1/Hamapps/wspr&quot;)   = 0
+</I>&gt;<i> close(1)                                = 0 munmap(0x2b406bcfd000,
+</I>&gt;<i> 4096)            = 0 exit_group(2)                           = ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> make.mo is one of the binaries from gnu make, and I havn't found out
+</I>&gt;<i> yet how to load it, as I have make installed.
+</I>&gt;<i> Doing a bit of googling make.mo seems to cause a lot of problems on
+</I>&gt;<i> different distros. 
+</I>&gt;<i> I've tried with both g95 &amp; gfortran &amp; g77.
+</I>&gt;<i> The last thing I want to do is install make from a tarball on a system
+</I>&gt;<i> that uses rpms, I suspect the same applies to .debs as well.
+</I>&gt;<i> Can this dependency on make.mo be removed ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> TIA
+</I>&gt;<i> Richard
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000292.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+	<LI>Next message: <A HREF="000295.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#294">[ date ]</a>
+              <a href="thread.html#294">[ thread ]</a>
+              <a href="subject.html#294">[ subject ]</a>
+              <a href="author.html#294">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

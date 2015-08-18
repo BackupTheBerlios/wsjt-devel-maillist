@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping with WSPR 2.21 r2286
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20with%20WSPR%202.21%20r2286&In-Reply-To=%3C4D00FA87.1020801%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001028.html">
+   <LINK REL="Next"  HREF="001036.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping with WSPR 2.21 r2286</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20with%20WSPR%202.21%20r2286&In-Reply-To=%3C4D00FA87.1020801%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Frequency hopping with WSPR 2.21 r2286">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Dec  9 16:49:27 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001028.html">[Wsjt-devel] WSPR 2.20 r2283
+</A></li>
+        <LI>Next message: <A HREF="001036.html">[Wsjt-devel] Frequency hopping with WSPR 2.21 r2286
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1035">[ date ]</a>
+              <a href="thread.html#1035">[ thread ]</a>
+              <a href="subject.html#1035">[ subject ]</a>
+              <a href="author.html#1035">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A beta release of WSPR 2.21 r2286 has been posted at:
+
+Windows:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSPR2.20_r2286.EXE">http://www.physics.princeton.edu/pulsar/K1JT/WSPR2.20_r2286.EXE</A>
+
+Linux:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/wspr_2.20r2286_i386.deb">http://www.physics.princeton.edu/pulsar/K1JT/wspr_2.20r2286_i386.deb</A>
+
+As in r2283, this version includes a &quot;Coordinated hopping&quot; mode in which 
+the selected band is determined by the starting UTC minute:
+
+   UTC   Band
+Minute  (m)
+----------------
+00      160
+02       80
+04       60
+06       40
+08       30
+10       20
+12       17
+14       15
+16       12
+18       10
+
+20      160
+22       80
+... etc
+
+This sequence of ten possible bands repeats three times each hour.  If 
+the designated band has not been checked as an active band, a random 
+band choice is made among those that are active.
+
+In r2286 the algorithm choosing whether to Rx or Tx guarantees at least 
+one transmission on each active band every two hours.  If all ten bands 
+are active there may be up to three transmissions on any band in a two 
+hour period.  These choices will tend to maximize the number of 
+potential spots on all bands, by all frequency-hopping stations.
+
+It's not hard to discover the identities of some stations who've been 
+doing &quot;coordinated hopping&quot; over the past few days.  I have been using 
+all 10 bands (Rx only on 60 m).  Here are a few who have spotted K1JT 
+many times on different bands during the past 24 hours:
+
+Call    Dist Total  Bands
+         (km) Spots
+----------------------------------------------
+AK4DW    932   53   160 80 40 30 20 17 15
+EA1FAQ  5703   59       80 40 30 20 17 15
+G4KLA   5485   29       80 40 30 20
+G8JNJ   5480   23       80 40 30       15
+KC6KGE  3942   15       80 40 30 20
+KE7A    2160   53   160 80 40 30 20 17 15
+N4AU    1342   71   160 80 40 30 20 17 15 12
+W3PM    1240   64   160 80 40 30 20 17 15
+
+It's fascinating to watch the daily changes in ionization, causing each 
+band to open at an appropriate time.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001028.html">[Wsjt-devel] WSPR 2.20 r2283
+</A></li>
+	<LI>Next message: <A HREF="001036.html">[Wsjt-devel] Frequency hopping with WSPR 2.21 r2286
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1035">[ date ]</a>
+              <a href="thread.html#1035">[ thread ]</a>
+              <a href="subject.html#1035">[ subject ]</a>
+              <a href="author.html#1035">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Tests of Experimental Modes in WSJT8
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Tests%20of%20Experimental%20Modes%20in%20WSJT8&In-Reply-To=%3C4C2A49CE.90409%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000941.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Tests of Experimental Modes in WSJT8</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Tests%20of%20Experimental%20Modes%20in%20WSJT8&In-Reply-To=%3C4C2A49CE.90409%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Tests of Experimental Modes in WSJT8">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 29 21:30:22 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000941.html">[Wsjt-devel] WSJT v7.06
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#940">[ date ]</a>
+              <a href="thread.html#940">[ thread ]</a>
+              <a href="subject.html#940">[ subject ]</a>
+              <a href="author.html#940">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To:   Users of WSJT
+From: K1JT
+
+My sincere thanks to all who have provided feedback on the experimental 
+testing of WSJT8!
+
+The main purpose of these tests was to generate many on-the-air 
+recordings of signals using the four new experimental modes JTMS, ISCAT, 
+JT64, and JT8.  These modes use a variety of schemes for 
+synchronization, source encoding, error-control coding, and modulation 
+-- most of them quite different from the protocols in WSJT7.  The tests 
+were aimed at establishing how well each scheme performs under 
+challenging weak-signal conditions.  This goal has been accomplished 
+very effectively, and I'm grateful to all those who sent me their 
+recordings.
+
+Here are some early conclusions based on the many reports received from 
+around the world.
+
+First, some technical results:
+----------------------------------
+
+1. The synchronization, coding, and modulation schemes built into JT8 
+and JT64 are effective.  Both modes work well at HF; they also work well 
+for EME (although not with the decoders that were distributed in WSJT8 
+r1944).  The decoders for both modes are sub-optimal in a variety of 
+ways, sometimes annoyingly so.  They would need further work before they 
+could be declared suitable for a production release of WSJT8.
+
+2. The modulation and coding scheme in JTMS works well for meteor 
+scatter at VHF.  In particular, it has been clearly established that MSK 
+(&quot;minimum shift keying&quot;) is a viable modulation technique for the MS 
+path.  Phase locking of a signal can be done reliably over the duration 
+of meteor pings and bursts.  The bandwidth efficiency of MSK is very 
+attractive.  A clear disadvantage of JTMS relative to FSK441 is that 
+JTMS cannot make good use of pings shorter than about 75 ms.
+
+3. The ISCAT mode is highly effective for its intended purpose -- 
+ionospheric scatter at 50 MHz -- and also for multi-hop Es signals too 
+weak for successful SSB or CW QSOs.  I now have on hand many examples of 
+recorded ISCAT signals that decode perfectly while being essentially 
+inaudible and invisible on the waterfall display.
+
+Now, some user-level results:
+-----------------------------------
+
+4. Many successful QSOs have been made with each of the new experimental 
+modes, both on their primarily intended propagation paths and on others. 
+  The WSJT8 decoders are less polished and slower than those in WSJT7 
+(as was known to be true, even before any field tests were solicited).
+
+5. Some users in IARU Region 1 are unhappy with the structured message 
+formats of JTMS and ISCAT, even though these structures are a super-set 
+of the well accepted ones in JT65.  The reluctance seems to arise from a 
+wish to adhere strictly to procedures for MS QSOs dictated in Appendix 
+4, &quot;Revised Meteor Scatter Procedures&quot;, described in the 
+VHF/UHF/Microwaves Committee Report Interim Meeting, Vienna 2004 (see 
+www.physics.princeton.edu/pulsar/K1JT/vie04_02.rtf).
+
+On this side of the Atlantic, we consider a QSO valid when operators 
+have exchanged callsigns, signal reports, and rogers.  We do not dictate 
+the precise arrangement of information in the transmissions conveying 
+these bits of information.
+
+The Region 1 VHF Managers Handbook, updated in May 2010, adopts the same 
+approach as used here in Region 2 (see
+www.physics/princeton.edu/pulsar/K1JT/VHF_Handbook_V5_42.pdf ,
+pp. 98-105).  The WSJT8 message structures fully support the 
+requirements for valid QSOs laid out in the 2010 Handbook, which (I have 
+assumed)  supersedes the 2004 document.  If I am mistaken, I hope 
+someone will correct me.
+
+6. Apparently someone has concluded (and &quot;explained&quot; to others) that 
+hashed callsigns are not usable by a DXpedition because the operator 
+would want to decode more than one caller while a QSO is going on.  In 
+fact, there is no such problem.  Hashed callsigns can be used very 
+effectively in such a situation.  Many stations could be calling the DX 
+operator at once, and no confusion need arise over who is calling and 
+who is being worked.  No doubt if WSJT8 is to survive, its eventual 
+User's Guide will need to give more examples, in order to allay this fear.
+
+
+The Bottom Line?
+--------------------
+
+Each of the experimental modes is effective, and much has been learned 
+from their development and testing.  However, the presently available 
+results do not support a conclusion that JT64 will provide substantial 
+advantages over JT65, or JT8 over JT4, or JTMS over FSK441.  ISCAT is 
+clearly superior to JT6M in many -- perhaps most? -- circumstances, but 
+its decoder will need to be made faster if the mode is to become popular.
+
+Happily, it seems likely that a number of lessons learned while 
+developing and testing JTMS, ISCAT, JT64, and JT8 can be back-ported to 
+the traditional WSJT7 modes with good effect.  I intend to spend some 
+weeks looking into these possibilities before making a final decision on 
+whether WSJT8 merits further work.
+
+As always, the views of others will be gratefully received!
+
+    -- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000941.html">[Wsjt-devel] WSJT v7.06
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#940">[ date ]</a>
+              <a href="thread.html#940">[ thread ]</a>
+              <a href="subject.html#940">[ subject ]</a>
+              <a href="author.html#940">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

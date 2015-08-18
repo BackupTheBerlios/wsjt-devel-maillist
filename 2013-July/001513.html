@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.1 bete release, r3482
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20bete%20release%2C%20r3482&In-Reply-To=%3C51E40B18.4020406%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001522.html">
+   <LINK REL="Next"  HREF="001514.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.1 bete release, r3482</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20bete%20release%2C%20r3482&In-Reply-To=%3C51E40B18.4020406%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.1 bete release, r3482">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul 15 16:45:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001522.html">[Wsjt-devel] Building wspr-x for Windows
+</A></li>
+        <LI>Next message: <A HREF="001514.html">[Wsjt-devel] WSJT-X v1.1 bete release, r3482
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1513">[ date ]</a>
+              <a href="thread.html#1513">[ thread ]</a>
+              <a href="subject.html#1513">[ subject ]</a>
+              <a href="author.html#1513">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+An open release of WSJT-X Version 1.1 has been posted on the WSJT web 
+site: <A HREF="http://physics.princeton.edu/pulsar/K1JT/wsjtx.html">http://physics.princeton.edu/pulsar/K1JT/wsjtx.html</A>
+
+I've decided to still call this a &quot;beta&quot; release, mostly because I 
+haven't figured out how to make Ham Radio Deluxe set the frequency of a 
+radio's &quot;VFO B&quot; and use that when transmitting.  (Surely this must be 
+possible, but the available documentation is miserable.)
+
+I think a few users are still finding CAT control to be less stable than 
+it should be: possibly because a call to &quot;rig-&gt;getFreq()&quot; times out when 
+the decoder is getting nearly 100% CPU time.
+
+Otherwise, I think this is a stable, solid release.
+
+Tasks now known to be &quot;in the works&quot; (or at least being thought about) 
+include the following:
+
+1. Implement a way for CAT control to work in Split mode through HRD.
+2. Fix the bug causing occasional loss of CAT control.
+3. Substitute a more attractive Thermo control.
+4. Fix the (shared-memory overwrite?) problem with running multiple 
+instances.
+5. Further tests and optimizations of JT65 and JT9 decoders for best 
+possible speed and sensitivity.
+
+Additional suggestions for program improvements will be very welcome -- 
+as will volunteers willing to work on them, in any capacity.  Program 
+code, improvements to our documentation, and detailed testing reports 
+are all needed and welcome.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001522.html">[Wsjt-devel] Building wspr-x for Windows
+</A></li>
+	<LI>Next message: <A HREF="001514.html">[Wsjt-devel] WSJT-X v1.1 bete release, r3482
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1513">[ date ]</a>
+              <a href="thread.html#1513">[ thread ]</a>
+              <a href="subject.html#1513">[ subject ]</a>
+              <a href="author.html#1513">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3C51D0B2D3.401%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001429.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3C51D0B2D3.401%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul  1 00:36:03 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001429.html">[Wsjt-devel] WSJTX 1.1.r3433
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1428">[ date ]</a>
+              <a href="thread.html#1428">[ thread ]</a>
+              <a href="subject.html#1428">[ subject ]</a>
+              <a href="author.html#1428">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson,
+
+I was about to ask whether you had set the &quot;JT65 nnnn JT9&quot; spinner 
+correctly.  Its purpose is described in the &quot;Quick-Start Guide to WSJT-X 
+Version 1.1&quot;
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_1.1_Quick_Start.pdf">http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_1.1_Quick_Start.pdf</A>
+  which is also accessible from the Help menu.
+
+Simply put: the number specifies the audio frequency dividing the JT65 
+decoding region from the JT9 region.
+
+     -- Joe, K1JT
+
+On 6/30/2013 4:05 PM, Edson W. R. Pereira wrote:
+&gt;<i> Found the problem!
+</I>&gt;<i>
+</I>&gt;<i> There is a spin box &quot;JT65 3000 JT9&quot; on the spectrum window that needs to be
+</I>&gt;<i> set to 1000. What is the purpose for this spin box?
+</I>&gt;<i>
+</I>&gt;<i> Joe, what do you think of separating the labels for the spins from the
+</I>&gt;<i> values. Having the labels inside the spin could be confusing.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i> On Sun, Jun 30, 2013 at 4:23 PM, Edson W. R. Pereira&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Joe,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On my system, r3348 simply does not decode any JT9 signals. I've double
+</I>&gt;&gt;<i> checked the binary and did a clean make. Spectrum scrolls normally, the jt9
+</I>&gt;&gt;<i> process is loaded and is running. JT65 signals are being decoded fine
+</I>&gt;&gt;<i> (without kvasd). I've tried JT9, JT65 and JT9+JT65 mode combinations.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I am attaching the wav file I cannot decode with r3348. Could you try on
+</I>&gt;&gt;<i> your system and see if you can decode?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is there anyone on the list successfully running r3348 using Ubuntu
+</I>&gt;&gt;<i> 12.04.2 64-bits?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Edson PY2SDR
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Sat, Jun 29, 2013 at 4:15 PM, Joe Taylor&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;  wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Edson,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>   I did try running from the file menu, but the decoder silently fails. If
+</I>&gt;&gt;&gt;&gt;<i> I
+</I>&gt;&gt;&gt;&gt;<i> do the same on r3348, the decoder works.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> It's running OK here, in both Windows and Linux -- from within WSJT-X and
+</I>&gt;&gt;&gt;<i> from the command line.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Here's the output from r3424, using the command line in Windows:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> C:\Users\joe\wsjt_k1jt\wsjtx_**install&gt;jt9  1 4
+</I>&gt;&gt;&gt;<i> save/Samples/130610_2343.wav
+</I>&gt;&gt;&gt;<i> 2343  -7  0.3 3196 @ WB8QPG IZ0MIT -11
+</I>&gt;&gt;&gt;<i> 2343 -16  1.0 3372 @ KK4HEG KE0CO CN87
+</I>&gt;&gt;&gt;<i> 2343  16  0.1 3490 @ CQ AG4M EM75
+</I>&gt;&gt;&gt;<i> 2343 -18 -1.3 3567 @ CQ TA4A KM37
+</I>&gt;&gt;&gt;<i> 2343 -14  0.1 3627 @ CT1FBK IK5YZT R+02
+</I>&gt;&gt;&gt;<i> 2343 -22  0.3 3721 @ KF5SLN KB1SUA FN42
+</I>&gt;&gt;&gt;<i> 2343 -15  0.2 3774 @ CQ M0ABA JO01
+</I>&gt;&gt;&gt;<i> 2343  -1  0.2 3843 @ EI3HGB DD2EE JO31
+</I>&gt;&gt;&gt;<i> 2343 -19  0.3  718 # VE6WQ SQ2NIJ -14
+</I>&gt;&gt;&gt;<i> 2343  -7  0.3  815 # KK4DSD W7VP -16
+</I>&gt;&gt;&gt;<i> 2343 -10  0.5  975 # CQ DL7ACA JO40
+</I>&gt;&gt;&gt;<i> 2343  -9  0.8 1089 # N2SU W0JMW R-14
+</I>&gt;&gt;&gt;<i> 2343 -11  0.8 1259 # YV6BFE F6GUU R-08
+</I>&gt;&gt;&gt;<i> 2343  -9  1.6 1471 # VA3UG F1HMR 73
+</I>&gt;&gt;&gt;<i> 2343  -1  0.6 1718 # BG THX JOE 73
+</I>&gt;&gt;&gt;<i> 2343 -14  1.3 1951 # RA3Y VE3NLS 73
+</I>&gt;&gt;&gt;<i> 2343 -20  0.4 2065 # K2OI AJ4UU R-20
+</I>&gt;&gt;&gt;<i> &lt;DecodeFinished&gt;    1   1
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Here's the same thing in Linux:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Opti745% pwd
+</I>&gt;&gt;&gt;<i> /home/joe/wsjt_k1jt/wsjtx_**install
+</I>&gt;&gt;&gt;<i> Opti745% jt9 1 4 save/Samples/130610_2343.wav
+</I>&gt;&gt;&gt;<i> 2343  -7  0.3 3196 @ WB8QPG IZ0MIT -11
+</I>&gt;&gt;&gt;<i> 2343 -16  1.0 3372 @ KK4HEG KE0CO CN87
+</I>&gt;&gt;&gt;<i> 2343  16  0.1 3490 @ CQ AG4M EM75
+</I>&gt;&gt;&gt;<i> 2343 -18 -1.3 3567 @ CQ TA4A KM37
+</I>&gt;&gt;&gt;<i> 2343 -14  0.1 3627 @ CT1FBK IK5YZT R+02
+</I>&gt;&gt;&gt;<i> 2343 -22  0.3 3721 @ KF5SLN KB1SUA FN42
+</I>&gt;&gt;&gt;<i> 2343 -15  0.2 3774 @ CQ M0ABA JO01
+</I>&gt;&gt;&gt;<i> 2343  -1  0.2 3843 @ EI3HGB DD2EE JO31
+</I>&gt;&gt;&gt;<i> 2343 -19  0.3  718 # VE6WQ SQ2NIJ -14
+</I>&gt;&gt;&gt;<i> 2343  -7  0.3  815 # KK4DSD W7VP -16
+</I>&gt;&gt;&gt;<i> 2343 -10  0.5  975 # CQ DL7ACA JO40
+</I>&gt;&gt;&gt;<i> 2343  -9  0.8 1089 # N2SU W0JMW R-14
+</I>&gt;&gt;&gt;<i> 2343 -11  0.8 1259 # YV6BFE F6GUU R-08
+</I>&gt;&gt;&gt;<i> 2343  -9  1.6 1471 # VA3UG F1HMR 73
+</I>&gt;&gt;&gt;<i> 2343  -1  0.6 1718 # BG THX JOE 73
+</I>&gt;&gt;&gt;<i> 2343 -14  1.3 1951 # RA3Y VE3NLS 73
+</I>&gt;&gt;&gt;<i> 2343 -20  0.4 2065 # K2OI AJ4UU R-20
+</I>&gt;&gt;&gt;<i> &lt;DecodeFinished&gt;    1   1
+</I>&gt;&gt;&gt;<i> Opti745%
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Are you sure that you're using the version of jt9 compiled from r3424?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> BTW: You're right about kvasd: it's used only for JT65.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>          -- Joe
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001429.html">[Wsjt-devel] WSJTX 1.1.r3433
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1428">[ date ]</a>
+              <a href="thread.html#1428">[ thread ]</a>
+              <a href="subject.html#1428">[ subject ]</a>
+              <a href="author.html#1428">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

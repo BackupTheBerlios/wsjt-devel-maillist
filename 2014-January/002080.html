@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] question on section 3 of wsjt-x manual
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20question%20on%20section%203%20of%20wsjt-x%20manual&In-Reply-To=%3C52DFCC4C.7020101%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002079.html">
+   <LINK REL="Next"  HREF="002082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] question on section 3 of wsjt-x manual</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20question%20on%20section%203%20of%20wsjt-x%20manual&In-Reply-To=%3C52DFCC4C.7020101%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] question on section 3 of wsjt-x manual">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jan 22 14:49:00 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002079.html">[Wsjt-devel] question on section 3 of wsjt-x manual
+</A></li>
+        <LI>Next message: <A HREF="002082.html">[Wsjt-devel] reboot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2080">[ date ]</a>
+              <a href="thread.html#2080">[ thread ]</a>
+              <a href="subject.html#2080">[ subject ]</a>
+              <a href="author.html#2080">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 22/01/2014 13:00, Joe Taylor wrote:
+
+Further to Joe's reply, a couple more points.
+&gt;<i> Hi Chuck and all,
+</I>&gt;<i>
+</I>&gt;<i> GM from icy NJ, with temperature 8 F and a foot of new snow overnight.
+</I>&gt;<i>
+</I>&gt;<i> On 1/22/2014 7:32 AM, Charles Yahrling wrote:
+</I>&gt;&gt;<i> attached is the txt of the section 3. I'm curious to know why we suggest
+</I>&gt;&gt;<i> using the default install directory c:\wsjtx instead of the traditional
+</I>&gt;&gt;<i> c;\Program FIles\wsjtx.
+</I>&gt;<i>
+</I>&gt;<i> The program writes logs, saved *.wav files, wsjtx.ini, and other 
+</I>&gt;<i> things in the installation directory.  (Some further details can be 
+</I>&gt;<i> found at the bottom of page 25 in the online User's Guide.)  By 
+</I>&gt;<i> default, Vista and later versions of Windows don't give ordinary users 
+</I>&gt;<i> write permission in subdirectories of &quot;C:\Program Files&quot;.
+</I>Installing software into &quot;\Program Files&quot; or &quot;\Program Files (x86)&quot; that 
+is not specifically designed to be installed there usually leads to a 
+whole lot of issues. The reason is that software that resides there is 
+may not write to the install directory without elevated  privileges 
+(WSJT-X does write to its install directory), that in turn means that 
+other software cannot interact with the installed program without itself 
+having elevated privileges. This knock on effect is highly undesirable 
+as running programs with elevated privileges is inherently dangerous 
+since it introduces an opportunity for a spoof program to take over the 
+operating system and should only be done with care if the program 
+absolutely needs elevated privileges to do its work. None of the WSJT 
+group of programs, to my knowledge, require elevated privileges.
+&gt;<i>
+</I>&gt;&gt;<i> Also,
+</I>&gt;&gt;<i> since removing is a simple matter of deleting the wsjtx directory, 
+</I>&gt;&gt;<i> does it
+</I>&gt;&gt;<i> follow that no other windows config changes such as registry 
+</I>&gt;&gt;<i> manipulation
+</I>&gt;&gt;<i> are performed during the install?
+</I>&gt;<i>
+</I>&gt;<i> Yes.
+</I>This is not quite true, the installer for WSJT-X does write to the 
+registry to record the uninstall details. Although no harm will come by 
+deleting the install directory, it is best to check if there is an 
+uninstall entry available via the &quot;Control Panel&quot; and use that to remove 
+software to achieve the cleanest uninstall behaviour.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002079.html">[Wsjt-devel] question on section 3 of wsjt-x manual
+</A></li>
+	<LI>Next message: <A HREF="002082.html">[Wsjt-devel] reboot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2080">[ date ]</a>
+              <a href="thread.html#2080">[ thread ]</a>
+              <a href="subject.html#2080">[ subject ]</a>
+              <a href="author.html#2080">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] PTT port in OSX and Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20PTT%20port%20in%20OSX%20and%20Linux&In-Reply-To=%3C51D32EEB.80502%40lavabit.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001445.html">
+   <LINK REL="Next"  HREF="001446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] PTT port in OSX and Linux</H1>
+    <B>Claude Frantz</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20PTT%20port%20in%20OSX%20and%20Linux&In-Reply-To=%3C51D32EEB.80502%40lavabit.com%3E"
+       TITLE="[Wsjt-devel] PTT port in OSX and Linux">ClaudeFrantzX665 at lavabit.com
+       </A><BR>
+    <I>Tue Jul  2 21:50:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001445.html">[Wsjt-devel] PTT port in OSX and Linux
+</A></li>
+        <LI>Next message: <A HREF="001446.html">[Wsjt-devel] Revision 3452
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1447">[ date ]</a>
+              <a href="thread.html#1447">[ thread ]</a>
+              <a href="subject.html#1447">[ subject ]</a>
+              <a href="author.html#1447">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/02/2013 05:08 PM, Joe Taylor wrote:
+
+&gt;<i> If you're using WSJT-X v1.1 in OSX or Linux, what are your settings for
+</I>&gt;<i> PTT Method and PTT Port?  I'm trying to rationalize the related code.
+</I>
+I'm running Fedora Linux 17. I'm using hamlib rigctld because I'm able 
+to use it also when running fldigi. Further, I have to use additional 
+arguments when calling hamlib. When using rigcat with fldigi, these 
+additional arguments are possible too. When using rigctld instead, it's 
+the job of rigctld to manage it. The CAT communication is then only via 
+a TCP port on localhost, not more directly on the serial port. When 
+using wsjtx, I have to change the config by hand in order to tell wsjtx 
+to use a TCP, not a serial port. In this manner, the problem of passing 
+additional arguments does not occurs because rigctld is controlling the 
+serial port. Of course, the PTT control is via CAT too.
+
+Here is my starting sequence used to start rigctld:
+
+/usr/local/bin/rigctld -m129
+--set-conf=rig_pathname=/dev/ttyUSB0,
+serial_speed=4800,dcd_type=RIG,timeout=500,
+retry=2,write_delay=5,post_write_delay=50,itu_region=1 &amp;
+
+It would be fine if wsjtx would allow to select a TCP in the config, 
+instead of a serial port, when rigctld is used.
+
+Many thanks for your explanation about the frequency shift, in my other 
+message.
+
+Best 88 de Claude
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001445.html">[Wsjt-devel] PTT port in OSX and Linux
+</A></li>
+	<LI>Next message: <A HREF="001446.html">[Wsjt-devel] Revision 3452
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1447">[ date ]</a>
+              <a href="thread.html#1447">[ thread ]</a>
+              <a href="subject.html#1447">[ subject ]</a>
+              <a href="author.html#1447">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

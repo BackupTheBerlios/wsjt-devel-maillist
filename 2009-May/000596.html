@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090504204319.16d0afb5%40richard-g8jvm%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000595.html">
+   <LINK REL="Next"  HREF="000597.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090504204319.16d0afb5%40richard-g8jvm%3E"
+       TITLE="[Wsjt-devel] gfortran">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Mon May  4 21:43:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000595.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000597.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 04 May 2009 15:18:41 -0400
+Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt; wrote:
+
+&gt;<i> More on gfortran ...
+</I>&gt;<i> 
+</I>&gt;<i> I tried upgrading Ubuntu 8.04 to 8.10, and then from 8.10 to 
+</I>&gt;<i> 9.04.  I compiled wspr using both gfortran and g95 at each 
+</I>&gt;<i> step in the upgrade.  At all three Ubuntu levels the code 
+</I>&gt;<i> compiled with g95 works OK, but the code compiled with 
+</I>&gt;<i> gfortran crashes on startup.
+</I>&gt;<i> 
+</I>&gt;<i> richard wrote:
+</I>&gt;<i> &gt; I compiled wsjt svn1195 yesterday both with gfortran and g95 , both
+</I>&gt;<i> &gt; built and ran without problems, I ran the gfortran version all day
+</I>&gt;<i> &gt; monitoring weak beacons.
+</I>&gt;<i> &gt; Would you like me to build wspr ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; machine details on the footer
+</I>&gt;<i> 
+</I>&gt;<i> &gt; #########################################################################
+</I>&gt;<i> &gt; Registered Linux User 36561
+</I>&gt;<i> &gt; OS: Mandriva 2009.1 powerpack on AMD Dual Athlon 64 +4400: 8 GB RAM
+</I>&gt;<i> &gt; DDR2 Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+</I>&gt;<i> &gt; #########################################################################
+</I>&gt;<i> 
+</I>&gt;<i> So I guess we know that WSJT/gfortran is OK on Mandriva and 
+</I>&gt;<i> Athlon 64.  That's helpful.  What versions of gcc and 
+</I>&gt;<i> gfortran were used?
+</I>&gt;<i> 
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>Hi Joe
+as far as I'm concerned Ubuntu 9.04 was a disaster.
+lots of thing don't work, some very serious. 
+For example executing a binary file in the same directory its in :-
+you would type at CLI  ./&lt;binary name&gt;
+ubuntu 9.04_x64 replies with no such file or directory
+the 32 bit version may be better, I don't know.
+However, on the startup crash it may be worth checking which device
+number wsjt it trying to startup with. I found with ubuntu that it
+would crash immediately if the device number was not the default.
+I guess you can edit wsjtrc to set the audio device to the default.
+I also found that clicking on the &quot;logqso&quot; or the &quot;add&quot; button caused a
+crash. it weas only last month that a g95 deb was released for AMD64
+machines, up until then wsjt just would not compile on a 64bit machine
+running the Ubuntu_AMD64 variant.
+
+On my system:-
+
+GNU Fortran (GCC) 4.3.2
+G95 (GCC 4.0.4 (g95 0.91!) Jan  3 2008)
+gcc (GCC) 4.3.2
+
+Sorry if that's sounds a bit biased , but you know the grief I've had
+getting wsjt to build when I was running Ubuntu
+
+-- 
+Best wishes
+
+Richard Bown
+
+#########################################################################
+Registered Linux User 36561
+OS: Mandriva 2009.1 powerpack on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+#########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000595.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000597.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#596">[ date ]</a>
+              <a href="thread.html#596">[ thread ]</a>
+              <a href="subject.html#596">[ subject ]</a>
+              <a href="author.html#596">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

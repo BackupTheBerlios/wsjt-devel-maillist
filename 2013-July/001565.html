@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3CCALNQy4-39GGvgn4jLeXVtJ%2BmW%2BJT5wXvwCbDa2p8ABYCEzMnAA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001533.html">
+   <LINK REL="Next"  HREF="001566.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.1</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.1&In-Reply-To=%3CCALNQy4-39GGvgn4jLeXVtJ%2BmW%2BJT5wXvwCbDa2p8ABYCEzMnAA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.1">ewpereira at gmail.com
+       </A><BR>
+    <I>Fri Jul 26 16:27:52 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001533.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+        <LI>Next message: <A HREF="001566.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1565">[ date ]</a>
+              <a href="thread.html#1565">[ thread ]</a>
+              <a href="subject.html#1565">[ subject ]</a>
+              <a href="author.html#1565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+This message was on my back log for a few days. Sorry for the late reply.
+
+My comments in red below.
+
+
+On Fri, Jul 19, 2013 at 12:51 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> WSJT-X r3496 has been released as Version 1.1.  I posted the Windows
+</I>&gt;<i> installation package, updated User's Guide, ChangeLog, and r3496 tarball on
+</I>&gt;<i> the WSJT web site.
+</I>&gt;<i>
+</I>&gt;<i> The top of the ChangeLog reads as follows:
+</I>&gt;<i>
+</I>&gt;<i> July 19, 2013: Version 1.1, r3496
+</I>&gt;<i> ------------------------------**---
+</I>&gt;<i> This is a full release of WSJT-X Version 1.1.  It provides an easy way
+</I>&gt;<i> to make QSOs in both JT65 and JT9 modes.
+</I>&gt;<i>
+</I>&gt;<i> Changes from the most recent beta release, r3487, include the
+</I>&gt;<i> following:
+</I>&gt;<i>
+</I>&gt;<i> 1. Significant optimizations of the JT9 decoder, providing speed
+</I>&gt;<i> improvements up to 5 times.
+</I>&gt;<i>
+</I>&gt;<i> 2. Frequency-setting through DX Lab Commander now works properly at
+</I>&gt;<i> non-integral kHz frequencies.
+</I>&gt;<i>
+</I>&gt;<i> 3. A new meter widget has been added (thanks to PY2SDR).
+</I>&gt;<i>
+</I>&gt;<i> 4. Implementation of &quot;multiple instances&quot; has been completed and
+</I>&gt;<i> tested (thanks to KK1D).
+</I>&gt;<i>
+</I>&gt;<i> 5. Several minor bug fixes.
+</I>&gt;<i>
+</I>&gt;<i> I'll post installation packages (or links to them) for Linux and OS X as
+</I>&gt;<i> soon as they are available.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> This is a good time to review progress and project goals.  When we
+</I>&gt;<i> released Version 1.0 I listed the following plans and &quot;desirables&quot; for
+</I>&gt;<i> future development effort:
+</I>&gt;<i>                                                             Done ?
+</I>&gt;<i> ------------------------------**------------------------------**----------
+</I>&gt;<i>   - Eliminate dependence on Qwt                              YES
+</I>&gt;<i>   - Move from Qt4 to Qt5                                    CAN DO
+</I>&gt;<i>   - Add rig control through DxLab Commander                  YES
+</I>&gt;<i>   - Migrate from PortAudio to Qt's built-in QAudio handlers  NO
+</I>&gt;<i>   - Add other WSJT modes: JT65, FSK441, ISCAT, JT4 ...      JT65
+</I>&gt;<i>   - Support for I/Q transceivers such as SoftRock            NO
+</I>&gt;<i>   - Expanded frequency range, perhaps 5 kHz or so.           YES
+</I>&gt;<i>   - HowTo guides for compiling WSJT-X in Windows/MinGW,
+</I>&gt;<i>     Linux, OS X, ...                                         NO
+</I>&gt;<i>   - Binary installation packages for Linux and OS X          YES/NO
+</I>&gt;<i>
+</I>&gt;<i> (We could move from Qt4 to Qt5 at any time, and I think we're close to
+</I>&gt;<i> being ready with an installation package for OS X.)
+</I>&gt;<i>
+</I>&gt;<i> All in all, this is excellent progress in the past six weeks!  In a number
+</I>&gt;<i> of cases we've done even more than we had in mind when writing this list.
+</I>&gt;<i>  Many thanks and a hearty &quot;Well Done!&quot; to everyone who has contributed!
+</I>&gt;<i>
+</I>&gt;<i> So what next?  It seems to me that the more important identified tasks
+</I>&gt;<i> include these:
+</I>&gt;<i>
+</I>&gt;<i>   - Add code written by Murray, VK3ACF, for band-by-band antenna info
+</I>&gt;<i>
+</I>
+Confirmed working under Linux. I've added the antenna info to the
+PSK-Reporter class and confirmed it is working. I will next make the new
+PSK-Reporter active on all platforms. Are you ok with this?
+
+
+&gt;<i>   - Move from Qt4 to Qt5
+</I>&gt;<i>
+</I>
+I think we are ready to pull off the plug on Qt4. This will open the path
+for us to start using the native Qt audio API.
+
+  - Migrate from PortAudio to Qt's built-in QAudio handlers
+&gt;<i>
+</I>
+One thing I would like to test is the possibility of using Qt audio with
+jack using an ALSA virtual loopback interface. This is desirable to be able
+to interface WSJT-X with SDR software on Linux.
+
+
+&gt;<i>   - Support for I/Q transceivers such as SoftRock
+</I>&gt;<i>
+</I>
+This would be great and would make unnecessary what I've wrote above.
+
+
+&gt;<i>   - Add more WSJT modes: JT4, ISCAT, FSK441
+</I>&gt;<i>
+</I>
+Super super!!
+
+
+&gt;<i>   - HowTo guides for compiling WSJT-X
+</I>&gt;<i>
+</I>
+This could be very good, but I think we could put this on a low priority.
+Those really interested in compiling the sources can always find support
+here on the list.
+
+
+&gt;<i>
+</I>&gt;<i> Inevitably we'll also have some bug reports to address... and there are
+</I>&gt;<i> always rig-control issues for particular radios that don't quite work
+</I>&gt;<i> right.  What have I forgotten?  What else should be added?
+</I>&gt;<i>
+</I>&gt;<i> If you care to tackle one of these tasks, please let us know -- and use
+</I>&gt;<i> the wsjt-devel list to keep us abreast of your progress.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>I will start studying the migration path to Qt Audio and will keep you
+posted.
+
+
+&gt;<i> I checked this morning to be sure that r3496 of WSJT-X compiles OK under
+</I>&gt;<i> Qt5.  After changing one variable name all is well.
+</I>&gt;<i> (The declaration
+</I>&gt;<i> extern QTcpSocket* socket;
+</I>&gt;<i> was changed changed to
+</I>&gt;<i> extern QTcpSocket* rigSocket;
+</I>&gt;<i> to avoid conflict with a definition in winsock.h)
+</I>&gt;<i> Are we ready, then, to pull the plug permanently on Qt4?  One downside is
+</I>&gt;<i> that the Windows package built from Qt5 is around 15 MB, as opposed to 10.5
+</I>&gt;<i> MB for Qt4.  (I guess such a tendency toward bloat is inevitable.)
+</I>&gt;<i>
+</I>&gt;<i> Your opinions?  Other suggestions?
+</I>&gt;<i>
+</I>&gt;<i> A few final thoughts, in passing:
+</I>&gt;<i>
+</I>&gt;<i> Would it be helpful if we made a serious effort to put more time into
+</I>&gt;<i> reviewing one another's code changes and additions?
+</I>&gt;<i>
+</I>
+This would be good since it could help us produce better code, but it could
+also take some precious developing time. Perhaps one thing we could do is
+to work on a list of things to be tested (regression tests) and try to
+attract volunteers to assist us with the task. This way we could dig deep
+into code only when necessary.
+
+Of course, we could also take a look, review, and offer constructive
+criticism to each other codes when we see something that could be improved.
+
+
+&gt;<i>
+</I>&gt;<i> How best to encourage more people to switch from JT65 to JT9, and to use
+</I>&gt;<i> JT9 on more bands??
+</I>&gt;<i>
+</I>
+This is an excellent question. Perhaps we could start some team activity
+ourselves by announcing that the development team will be active on a given
+band on a given day. We could even publish a list of contacts from our logs
+on a blog and give public recognition for those we have worked on multiple
+bands. The team concept could also be extended to some type of special
+activity (an expedition, field day, event, etc). What do you think?
+
+73,
+
+-- Edson PY2SDR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130726/498e7895/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130726/498e7895/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001533.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+	<LI>Next message: <A HREF="001566.html">[Wsjt-devel] WSJT-X Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1565">[ date ]</a>
+              <a href="thread.html#1565">[ thread ]</a>
+              <a href="subject.html#1565">[ subject ]</a>
+              <a href="author.html#1565">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

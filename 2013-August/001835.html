@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520C8CFA.7040802%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001834.html">
+   <LINK REL="Next"  HREF="001838.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520C8CFA.7040802%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Aug 15 10:10:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001834.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001838.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1835">[ date ]</a>
+              <a href="thread.html#1835">[ thread ]</a>
+              <a href="subject.html#1835">[ subject ]</a>
+              <a href="author.html#1835">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/08/2013 08:15, Greg Beam wrote:
+&gt;<i> Hi Bill,
+</I>Hi Greg
+&gt;<i>
+</I>&gt;<i> Very Nice !!
+</I>&gt;<i>
+</I>&gt;<i> I built in on my laptop and server, both compiled without error. I 
+</I>&gt;<i> have the Laptop monitoring 20m out in the shack.
+</I>Thanks for trying out the new scripts, glad it worked ok for you.
+&gt;<i>
+</I>&gt;<i> I saw David VK4BDJ working, also picked up ZS2 and TR8 on 30m so the 
+</I>&gt;<i> rcv side of things seems normal.
+</I>&gt;<i>
+</I>&gt;<i> However, I am seeing a couple of odd events, but it's on 3547 before 
+</I>&gt;<i> and and after Cmake implementation. Luckily, I had the old version 
+</I>&gt;<i> compiled still.
+</I>&gt;<i>
+</I>&gt;<i> On the first decode after start-up I'm getting an error stating wsjtx 
+</I>&gt;<i> cannot find kvad, then everything seems fine.
+</I>There is an auxiliary program that wsjt-x used for decoding called 
+kvasd, we don't build it. The CMake scripts should download the correct 
+version from the net as part of the 'make install' target. Is the 
+message saying that 'kvasd' is missing or is it 'kvasd.dat'?
+&gt;<i>
+</I>&gt;<i> The second thing, which is more of a problem for me is, Tx power 
+</I>&gt;<i> levels seem really low. I have to have the slider all the way up and 
+</I>&gt;<i> the Navigator at about 12 O'Clock to get near 25W on JT65 .. normally, 
+</I>&gt;<i> or on my Windows box. those setting would generate stupid amounts of 
+</I>&gt;<i> TX PWR. Im not sure if this is a Linux or Wsjtx thing. Maybe others 
+</I>&gt;<i> have seen it as well, not sure.
+</I>I think you are saying that the o/p is lower on a Unix machine. It might 
+be that the main audio system levels are reduced. If you run the mixer 
+program ('pavucontrol' with PulseAudio on Linux) you can check the 
+master levels. Definitely don't worry about setting the o/p level all 
+the way up on the wsjt-x interface, it is an attenuator in the digital 
+domain so is dividing the sample values which reduces resolution. 0dB 
+attenuation is the best place to start and only reduce it if you don't 
+have analogue audio settings further down the line.
+&gt;<i>
+</I>&gt;<i> Pskreporter speed. I've not timed this, but reports to Hamspots &amp; 
+</I>&gt;<i> Pskreport seem to be &quot;much&quot; slower that the Windows versions.
+</I>I'm not sure, but I think one or both of those may have been slowed down 
+recently to cope with higher volumes of traffic.
+&gt;<i>
+</I>&gt;<i> 73's
+</I>&gt;<i> Greg
+</I>&gt;<i> KI7MT
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> **
+</I>73
+Bill
+G4WJS
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/88cf3904/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/88cf3904/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001834.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001838.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1835">[ date ]</a>
+              <a href="thread.html#1835">[ thread ]</a>
+              <a href="subject.html#1835">[ subject ]</a>
+              <a href="author.html#1835">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

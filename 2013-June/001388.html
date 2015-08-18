@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] r3393 - branches/wsjtx_k1jt_p1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3393%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CA2E45.4080800%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001387.html">
+   <LINK REL="Next"  HREF="001393.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] r3393 - branches/wsjtx_k1jt_p1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3393%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CA2E45.4080800%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] r3393 - branches/wsjtx_k1jt_p1">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jun 26 01:56:53 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001387.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+        <LI>Next message: <A HREF="001393.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1388">[ date ]</a>
+              <a href="thread.html#1388">[ thread ]</a>
+              <a href="subject.html#1388">[ subject ]</a>
+              <a href="author.html#1388">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+On 06/25/2013 06:33 PM, John Nogatch wrote:
+&gt;<i> 1. My previous problem with memset() seg fault stopped happening. I
+</I>&gt;<i> made a minor code change, it stopped happening, removed my change, &amp;
+</I>&gt;<i> it did not come back. ???
+</I>&gt;<i>
+</I>&gt;<i> 2. Many times today, after a minor code change, when I start the new
+</I>&gt;<i> wsjtx executable, the sound in/out devices are wrong. As I started to
+</I>&gt;<i> debug this, it stopped happening. ???
+</I>
+I have no idea why these non-repeatable things are happening.  Hope you 
+will be able to isolate the cause(s).
+
+&gt;<i> 3. The kvasd executable is not open source, so it is not acceptable to
+</I>&gt;<i> Debian, so I am running without it.
+</I>
+Yes.  Perhaps a Debian-approved package might include a note with brief 
+instructions on how to download the kvasd executable from my web site 
+and install it.
+
+&gt;<i> The first time lib/extract.F90
+</I>&gt;<i> calls it, there is an error message printed in the Band Activity pane,
+</I>&gt;<i> but also a series of pop-up dialogs come up, which I believe are
+</I>&gt;<i> coming from mainwindow.cpp:readFromStderr(). This was happening not
+</I>&gt;<i> just once per minute, but for every attempted decode. The following
+</I>&gt;<i> patch prevents it from happening again, after it fails the first time:
+</I>&gt;<i> $ svn diff
+</I>&gt;<i> Index: lib/extract.F90
+</I>&gt;<i> ===================================================================
+</I>&gt;<i> --- lib/extract.F90 (revision 3393)
+</I>&gt;<i> +++ lib/extract.F90 (working copy)
+</I>&gt;<i> @@ -58,6 +58,9 @@
+</I>&gt;<i>     enddo
+</I>&gt;<i>
+</I>&gt;<i>   ! Berlekamp-Massey algorithm failed, try Koetter-Vardy
+</I>&gt;<i> +  if(nokv) then      !do not try it again
+</I>&gt;<i> +     go to 900
+</I>&gt;<i> +  endif
+</I>&gt;<i>
+</I>&gt;<i>     maxe=8                             !Max KV errors in 12 most reliable symbols
+</I>&gt;<i>     xlambda=10.0
+</I>&gt;<i>
+</I>&gt;<i> I tried to check that in myself, but apparently I don't have
+</I>&gt;<i> permission. The &quot;nokv&quot; variable was already being set appropriately.
+</I>
+You have the same permissions as everyone else in the developers group, 
+so you should be able to commit to the repository.  What was the error 
+message, exactly?
+
+Meanwhile, I will insert this code.
+
+&gt;<i> 4. I am not seeing any signals in the waterfall, when I have the
+</I>&gt;<i> correct sound card selected. In the mainwindow, the slider is set so
+</I>&gt;<i> that the thermometer is mid-scale &amp; ~-30dB when no signals are
+</I>&gt;<i> present. I do see signals in the waterfall, when the wrong sound input
+</I>&gt;<i> is selected, i.e. the mic on the laptop, hearing the noise in the
+</I>&gt;<i> shack. Last week, I was seeing signals in the waterfall, with the
+</I>&gt;<i> correct sound input, although I had to set Zero=-29 (see attached
+</I>&gt;<i> picture), and even then, the background was not as bright as expected.
+</I>&gt;<i> Decoding works, even though the waterfall does not show data, and the
+</I>&gt;<i> waterfall in old version r3348 still works correctly. I note that when
+</I>&gt;<i> the correct sound input is selected, the slider must be at ~85% to get
+</I>&gt;<i> -30 dB noise level; when the wrong (mic) input is selected, the slider
+</I>&gt;<i> must be moved to ~20% to get -30 dB noise level.
+</I>
+Again, I don't understand the reason for these anomalies.  Sound input 
+seems to work as expected here, in both Win7 and Linux.
+
+I do notice that I had to turn the alsamixer gain control very low to 
+get the expected levels... I don't know the reason for this.
+
+&gt;<i> 5. Last week, I widened the width of the waterfall widgets, and I see
+</I>&gt;<i> that you also changed it to approximately what I had. Your new widths
+</I>&gt;<i> now look OK on my system.
+</I>
+Good.  They look OK here, too.
+
+&gt;<i> 6. I bought a 6 kHz wide IF filter for my Elecraft K3, but I find the
+</I>&gt;<i> bandwidth is still restricted to 4.2 kHz when the K3 is in MODE=DATA.
+</I>&gt;<i> This is a hard limit in the audio path of the K3.
+</I>
+I suspect that something similar is true of other radios.  My TS-2000 
+drops off rather quickly above 4 kHz, even when &quot;Hi Cut&quot; is set to 5 kHz.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001387.html">[Wsjt-devel] WSJTX JT65
+</A></li>
+	<LI>Next message: <A HREF="001393.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1388">[ date ]</a>
+              <a href="thread.html#1388">[ thread ]</a>
+              <a href="subject.html#1388">[ subject ]</a>
+              <a href="author.html#1388">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

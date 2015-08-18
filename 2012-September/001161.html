@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR3%20doesn%27t%20set%20correct%20model%20in%20rigctl&In-Reply-To=%3C50460926.7060609%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001159.html">
+   <LINK REL="Next"  HREF="001160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR3 doesn't set correct model in rigctl</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR3%20doesn%27t%20set%20correct%20model%20in%20rigctl&In-Reply-To=%3C50460926.7060609%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR3 doesn't set correct model in rigctl">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Sep  4 15:59:02 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001159.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+        <LI>Next message: <A HREF="001160.html">[Wsjt-devel] Crash Ver. 2.11 r2263
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1161">[ date ]</a>
+              <a href="thread.html#1161">[ thread ]</a>
+              <a href="subject.html#1161">[ subject ]</a>
+              <a href="author.html#1161">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Daniel,
+
+Thanks for the bug report.  Somehow, an incorrectly formatted copy of 
+the file &quot;hamlib_rig_numbers&quot; made its way into the repository.  (It has 
+two extra spaces at the start of each line.)
+
+Revision 2554 now has the corrected file.
+
+	-- 73, Joe, K1JT
+
+On 9/2/2012 8:16 AM, Daniel Bernhardt wrote:
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I compiled WSPR 3.0.1 for Linux using SVN revision 2551. I noticed the
+</I>&gt;<i> model setting for CAT control is not being forwarded correctly to
+</I>&gt;<i> rigctl. No matter what I select in the &quot;Rig Number&quot; setting, rigctl is
+</I>&gt;<i> always called with -m 1 instead of the selected number.
+</I>&gt;<i>
+</I>&gt;<i> Config parameter error: Invalid parameter
+</I>&gt;<i> Error executing rigctl to set Tx mode: 1 512
+</I>&gt;<i> rigctl -m 1 -r /dev/ttyUSB0 -s 38400 -C data_bits=8 -C stop_bits=2 -C
+</I>&gt;<i> serial_handshake=None T 1
+</I>&gt;<i>
+</I>&gt;<i> All other parameters from the CAT settings dialog are used by rigctl as
+</I>&gt;<i> expected.
+</I>&gt;<i>
+</I>&gt;<i> Kind Regards,
+</I>&gt;<i> Daniel
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001159.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+	<LI>Next message: <A HREF="001160.html">[Wsjt-devel] Crash Ver. 2.11 r2263
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1161">[ date ]</a>
+              <a href="thread.html#1161">[ thread ]</a>
+              <a href="subject.html#1161">[ subject ]</a>
+              <a href="author.html#1161">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

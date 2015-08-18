@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C20130814145003.GB89343%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001826.html">
+   <LINK REL="Next"  HREF="001834.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C20130814145003.GB89343%40night.db.net%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">db at db.net
+       </A><BR>
+    <I>Wed Aug 14 16:50:03 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001826.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001834.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1827">[ date ]</a>
+              <a href="thread.html#1827">[ thread ]</a>
+              <a href="subject.html#1827">[ subject ]</a>
+              <a href="author.html#1827">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, Aug 14, 2013 at 03:29:55PM +0100, Bill Somerville wrote:
+&gt;<i> Hi All,
+</I>&gt;<i> 
+</I>&gt;<i> A long post but hopefully worth it.
+</I>&gt;<i> 
+</I>&gt;<i> I have just committed r3548 which is the first phase of a demonstration 
+</I>&gt;<i> of using CMake to configure and build WSJT-X. This is work in progress 
+</I>&gt;<i> so don't expect it to make the tea for you just yet.
+</I>&gt;<i> 
+</I>&gt;<i> I am able to use it to generate working makefiles to build on Linux and 
+</I>&gt;<i> on Windows at the moment. It may work as is on OS-X but I haven't tested 
+</I>&gt;<i> it there.
+</I>&gt;<i> 
+</I>&gt;<i> To use it you need ensure you have the following pre-requisites 
+</I>&gt;<i> installed on your development system (you probably have most of them 
+</I>&gt;<i> there already if you are developing for wsjtx):
+</I>
+I love CMake. It's way better than autoconf etc.
+
+&gt;<i> 
+</I>&gt;<i> Advice on using CMake
+</I>&gt;<i> ====================
+</I>&gt;<i> CMake is a configuration and makefile generator. The idea is that you 
+</I>&gt;<i> run it once for each configuration you want to build and after that you 
+</I>&gt;<i> use the generated makefiles to build the project.
+</I>
+I'm all in favour of moving the project to CMake in fact, you have
+beaten me to the punch here as I was going to suggest the move.
+I've been very busy attending summer music festivals and just
+catching up.
+
+&gt;<i> I strongly recommend building outside of the source tree. CMake fully 
+</I>&gt;<i> supports this and it is much easier to develop if the source tree isn't 
+</I>&gt;<i> full of build intermediate files and products. The following 
+</I>&gt;<i> instructions follow this guideline.
+</I>
+I agree.
+
+I'd be happy to help in this conversion. CMake is easy on FreeBSD.
+
+
+&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>
+73 Diane VA3DB
+-- 
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001826.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001834.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1827">[ date ]</a>
+              <a href="thread.html#1827">[ thread ]</a>
+              <a href="subject.html#1827">[ subject ]</a>
+              <a href="author.html#1827">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

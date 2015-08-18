@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20make%20-f%20makefile.linux%20under%20Qt5.1.0&In-Reply-To=%3CCADTTAazOTwVotYZXNWnX1Hu_RdEF5dL-9nK08nSmScKRTB2wrA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001685.html">
+   <LINK REL="Next"  HREF="001690.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20make%20-f%20makefile.linux%20under%20Qt5.1.0&In-Reply-To=%3CCADTTAazOTwVotYZXNWnX1Hu_RdEF5dL-9nK08nSmScKRTB2wrA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0">jnogatch at gmail.com
+       </A><BR>
+    <I>Mon Aug  5 00:39:59 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001685.html">[Wsjt-devel] compiling make -f makefile.linux  under Qt5.1.0
+</A></li>
+        <LI>Next message: <A HREF="001690.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1688">[ date ]</a>
+              <a href="thread.html#1688">[ thread ]</a>
+              <a href="subject.html#1688">[ subject ]</a>
+              <a href="author.html#1688">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Aug 4, 2013 at 2:56 PM, David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt; wrote:
+&gt;<i> Hi Joe .....my Qt5.1.0 .is in /opt/Qt5.1.0 so i changed the Makefile.linux
+</I>&gt;<i> to reflect that
+</I>&gt;<i>
+</I>&gt;<i> this is the error im now getting
+</I>&gt;<i>
+</I>&gt;<i> g++ -c -I'/opt/Qt5.1.0/5.1.0/gcc/include'
+</I>&gt;<i> -I'/opt/Qt5.1.0./5.1.0/gcc/include/QtCore
+</I>&gt;<i> ipcomm.cpp
+</I>&gt;<i>
+</I>&gt;<i> In File included from /opt/Qt5.1.0/5.1.0gcc/include/QtCore/qalgorithams:
+</I>&gt;<i> 4:45:0
+</I>&gt;<i> /qdebug.h:45
+</I>&gt;<i> /QDebug:1
+</I>&gt;<i> /qglobal.h:975:4:error
+</I>&gt;<i> #error  &quot;You must build your with position independant code if Qt was built
+</I>&gt;<i> with
+</I>&gt;<i> -reduce-relocations&quot;  Compile your code with  -fPIC or _fPIE &quot;
+</I>&gt;<i>
+</I>&gt;<i> make *** [ipcomm] error 1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> what have i done wrong
+</I>
+No, you have not done anything wrong. It is unfortunate that
+lib/Makefile.linux is not sensitive to the QT5 setting in the
+directory above.
+
+I found it necessary to make the changes below, in order to compile
+ipcomm with Qt5.
+
+Is it necessary to build ipcomm with Qt5 ? I do not know. However, on
+ubuntu 13.04, with only Qt5 installed, I want to be able to build
+ipcomm. Similarly, on older ubuntu 12.10, I want to build wsjtx using
+only Qt4, but found it was necessary to put an additional ifdef in
+mainwindow.cpp:
+#ifdef QT5
+#include &lt;QtConcurrent/QtConcurrentMap&gt;
+#include &lt;QtConcurrent/QtConcurrentRun&gt;
+#endif
+
+
+-John AC6SL
+
+
+$ diff lib/Makefile.linux old/lib/Makefile.linux
+3c3
+&lt; INCPATH =  -I'/usr/include/qt5' -I'/usr/include/qt5/QtCore'
+---
+&gt;<i> INCPATH =  -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'
+</I>6c6
+&lt; CXX = g++ -fPIE
+---
+&gt;<i> CXX = g++
+</I>9,10c9,10
+&lt; FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore -fPIE
+&lt; CFLAGS = -I. -fbounds-check -mno-stack-arg-probe -fPIE
+---
+&gt;<i> FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore
+</I>&gt;<i> CFLAGS = -I. -fbounds-check -mno-stack-arg-probe
+</I>52c52
+&lt; $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQt5Core
+---
+&gt;<i> $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQtCore
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001685.html">[Wsjt-devel] compiling make -f makefile.linux  under Qt5.1.0
+</A></li>
+	<LI>Next message: <A HREF="001690.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1688">[ date ]</a>
+              <a href="thread.html#1688">[ thread ]</a>
+              <a href="subject.html#1688">[ subject ]</a>
+              <a href="author.html#1688">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

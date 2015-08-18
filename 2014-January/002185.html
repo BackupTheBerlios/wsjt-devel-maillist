@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux and OS X Packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EC1993.7060801%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002184.html">
+   <LINK REL="Next"  HREF="002186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux and OS X Packages</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20and%20OS%20X%20Packages&In-Reply-To=%3C52EC1993.7060801%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Linux and OS X Packages">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Jan 31 22:45:55 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002184.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+        <LI>Next message: <A HREF="002186.html">[Wsjt-devel] Linux Compiling Instructions - Removed from Users	Guide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2185">[ date ]</a>
+              <a href="thread.html#2185">[ thread ]</a>
+              <a href="subject.html#2185">[ subject ]</a>
+              <a href="author.html#2185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/01/2014 20:50, Joe Taylor wrote:
+Hi Joe,
+&gt;<i> John --
+</I>&gt;<i>
+</I>&gt;<i> John Nelson wrote:
+</I>&gt;&gt;<i> I have downloaded r3673 and it is running undertest - but I notice
+</I>&gt;&gt;<i> you have made improvements regarding Type 1 and 2 messages and
+</I>&gt;&gt;<i> genStdMsgs() - but this is r3677.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Do want these improvements to be excluded from the new release?
+</I>&gt;<i>
+</I>&gt;<i> I agree it seems slightly awkward, but I decided this morning to 
+</I>&gt;<i> release the well-tested code (r3673) and then make the mods for 
+</I>&gt;<i> auto-generation of messages with complex callsigns.  So yes, I'm 
+</I>&gt;<i> recommending that the released version be 3673.
+</I>It is best practice to tag milestones like releases in the repo. For 
+example the command (assuming you use ssh access to the repo):
+
+svn copy -r 3673 
+svn+<A HREF="ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/branches/wsjtx">ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/branches/wsjtx</A> 
+svn+<A HREF="ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/tags/wsjtx-1.3">ssh://k1jt@svn.berlios.de/svnroot/repos/wsjt/tags/wsjtx-1.3</A> -m 
+&quot;Tagging WSJT-X release version&quot;
+
+will tag r3673 for ever more as the 1.3 release of WSJT-X.
+
+That way there is no need to remember which revision represents a 
+milestone and later defect fix release branches can be created by 
+copying the tag back to 'branches'.
+
+svn copy is cheap in that no actual files are copied on the server, only 
+changes to files use 'file space'.
+
+More complex tags can be created if required, for example the discussion 
+on kvasd binaries is relevant in that the revisions of kvasd used for 
+the release could also be included in the tag by using the more 
+comprehensive &quot;build a workspace from various revisions and tag the 
+workspace contents&quot; version of svn copy. Having said that the 
+svn:externals property is a much better way of handling mapping of 
+external files from elsewhere in a repo to a tree in a repo and would 
+suit the kvasd situation where the binaries are used in multiple projects.
+&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002184.html">[Wsjt-devel] Linux and OS X Packages
+</A></li>
+	<LI>Next message: <A HREF="002186.html">[Wsjt-devel] Linux Compiling Instructions - Removed from Users	Guide?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2185">[ date ]</a>
+              <a href="thread.html#2185">[ thread ]</a>
+              <a href="subject.html#2185">[ subject ]</a>
+              <a href="author.html#2185">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX: Qt Audio - sample rates.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%3A%20Qt%20Audio%20-%20sample%20rates.&In-Reply-To=%3C51FABE6D.9090703%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001654.html">
+   <LINK REL="Next"  HREF="001656.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX: Qt Audio - sample rates.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%3A%20Qt%20Audio%20-%20sample%20rates.&In-Reply-To=%3C51FABE6D.9090703%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX: Qt Audio - sample rates.">joe at princeton.edu
+       </A><BR>
+    <I>Thu Aug  1 22:00:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001654.html">[Wsjt-devel] WSJTX: Qt Audio - sample rates.
+</A></li>
+        <LI>Next message: <A HREF="001656.html">[Wsjt-devel] WSJTX: Qt Audio - sample rates.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1655">[ date ]</a>
+              <a href="thread.html#1655">[ thread ]</a>
+              <a href="subject.html#1655">[ subject ]</a>
+              <a href="author.html#1655">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+My Windows system also reports that same list of supported sample rates, 
+but it doesn't seem to matter.  As you can see in my sample QAudio code, 
+I just go ahead and request sample rate 12000:
+
+   audioFormat.setSampleRate(12000);
+
+and then find that
+
+   audioFormat.isValid()
+
+returns &quot;true&quot;.
+
+The resulting stream starts without error and runs properly.
+
+	-- Joe
+
+On 8/1/2013 3:38 PM, Bill Somerville wrote:
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> it looks like the Qt audio classes don't do any re-sampling.
+</I>&gt;<i>
+</I>&gt;<i> My Windows system reports:
+</I>&gt;<i>
+</I>&gt;<i> 67 qDebug () &lt;&lt; &quot;supported sample rates = &quot; &lt;&lt;
+</I>&gt;<i> device.supportedSampleRates () &lt;&lt; &quot;\n&quot;;
+</I>&gt;<i> (gdb)
+</I>&gt;<i> warning: supported sample rates = (8000, 11025, 22050, 44100, 48000, 96000)
+</I>&gt;<i>
+</I>&gt;<i> which is not a huge issue as I assume 48000 can be used for input with
+</I>&gt;<i> trivial resampling.
+</I>&gt;<i>
+</I>&gt;<i> What is the easiest/cheapest way to use 48kHz input with the current
+</I>&gt;<i> input algorithm?
+</I>&gt;<i>
+</I>&gt;<i> Are there still any sound cards that only support up to 44.1kHz? If
+</I>&gt;<i> there are; can we assume they also support 12kHz?
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001654.html">[Wsjt-devel] WSJTX: Qt Audio - sample rates.
+</A></li>
+	<LI>Next message: <A HREF="001656.html">[Wsjt-devel] WSJTX: Qt Audio - sample rates.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1655">[ date ]</a>
+              <a href="thread.html#1655">[ thread ]</a>
+              <a href="subject.html#1655">[ subject ]</a>
+              <a href="author.html#1655">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

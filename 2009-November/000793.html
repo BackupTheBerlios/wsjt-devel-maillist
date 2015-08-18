@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] portaudio stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20portaudio%20stuff&In-Reply-To=%3C4AF87402.20505%40mikelachaine.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000792.html">
+   <LINK REL="Next"  HREF="000794.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] portaudio stuff</H1>
+    <B>Michel, VE2ExB</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20portaudio%20stuff&In-Reply-To=%3C4AF87402.20505%40mikelachaine.ca%3E"
+       TITLE="[Wsjt-devel] portaudio stuff">ve2exb at mikelachaine.ca
+       </A><BR>
+    <I>Mon Nov  9 20:56:50 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000792.html">[Wsjt-devel] [Fwd: Re: WSPR: build problem on Ubuntu 9.04]: correction
+</A></li>
+        <LI>Next message: <A HREF="000794.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello all,
+
+Don't know if that can give a hint but I did get portaudio library from 
+svn, compiled it and then run the included test program pa_devs, it 
+comes out with the same message that it is being discussed in a few 
+threads here.
+
+Also I have two machines with Unbuntu 9.04 64, one complains the other 
+not... I think I might switch to Debian 64... hi hi.
+
+73
+de Mike, VE2ExB
+
+bin/pa_devs
+
+PortAudio version number = 1899
+PortAudio version text = 'PortAudio V19-devel (built Nov  9 2009 14:04:31)'
+Number of devices = 12
+...
+... ''I removed the devices listed ok to shorten the messages''
+...
+--------------------------------------- device #9
+Name                        = dmix
+Host API                    = ALSA
+Max inputs = 0, Max outputs = 2
+Default low input latency   =   -1.000
+Default low output latency  =    0.043
+Default high input latency  =   -1.000
+Default high output latency =    0.043
+Default sample rate         = 48000.00
+Supported standard sample rates
+ for half-duplex 16 bit 2 channel output =
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1026
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1058
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1026
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1058
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1026
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1058
+Expression 'ret' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1026
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm )' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1058
+    48000.00
+--------------------------------------- device #10
+[ Default Input, Default Output ]
+Name                        = default
+Host API                    = ALSA
+Max inputs = 32, Max outputs = 32
+Default low input latency   =    0.012
+Default low output latency  =    0.012
+Default high input latency  =    0.046
+Default high output latency =    0.046
+Default sample rate         = 44100.00
+Supported standard sample rates
+ for half-duplex 16 bit 32 channel input =
+     8000.00,  9600.00, 11025.00, 12000.00,
+    16000.00, 22050.00, 24000.00, 32000.00,
+    44100.00, 48000.00, 88200.00, 96000.00,
+    192000.00
+Supported standard sample rates
+ for half-duplex 16 bit 32 channel output =
+     8000.00,  9600.00, 11025.00, 12000.00,
+    16000.00, 22050.00, 24000.00, 32000.00,
+    44100.00, 48000.00, 88200.00, 96000.00,
+    192000.00
+Supported standard sample rates
+ for full-duplex 16 bit 32 channel input, 32 channel output =
+     8000.00,  9600.00, 11025.00, 12000.00,
+    16000.00, 22050.00, 24000.00, 32000.00,
+    44100.00, 48000.00, 88200.00, 96000.00,
+    192000.00
+--------------------------------------- device #11
+[ Default OSS Input, Default OSS Output ]
+Name                        = /dev/dsp
+Host API                    = OSS
+Max inputs = 16, Max outputs = 16
+Default low input latency   =    0.012
+Default low output latency  =    0.012
+Default high input latency  =    0.046
+Default high output latency =    0.046
+Default sample rate         = 44100.00
+Supported standard sample rates
+ for half-duplex 16 bit 16 channel input =
+None
+Supported standard sample rates
+ for half-duplex 16 bit 16 channel output =
+None
+Supported standard sample rates
+ for full-duplex 16 bit 16 channel input, 16 channel output =
+None
+----------------------------------------------
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000792.html">[Wsjt-devel] [Fwd: Re: WSPR: build problem on Ubuntu 9.04]: correction
+</A></li>
+	<LI>Next message: <A HREF="000794.html">[Wsjt-devel] WSPR 2.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

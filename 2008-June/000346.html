@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C200806071634.13686.k9ao%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000345.html">
+   <LINK REL="Next"  HREF="000347.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C200806071634.13686.k9ao%40charter.net%3E"
+       TITLE="[Wsjt-devel] revision 844">k9ao at charter.net
+       </A><BR>
+    <I>Sat Jun  7 22:34:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000345.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000347.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#346">[ date ]</a>
+              <a href="thread.html#346">[ thread ]</a>
+              <a href="subject.html#346">[ subject ]</a>
+              <a href="author.html#346">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Saturday 07 June 2008 4:16:43 pm Diane Bruce wrote:
+
+&gt;<i> pkg_info -W /usr/local/lib/libfftw3.so
+</I>&gt;<i> /usr/local/lib/libfftw3.so was installed by package fftw3-3.1.2
+</I>&gt;<i>
+</I>&gt;<i> Perhaps that will help?
+</I>&gt;<i>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw.la">file:///usr/lib/libsfftw.la</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw.so">file:///usr/lib/libsfftw.so</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw.so.2">file:///usr/lib/libsfftw.so.2</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw.so.2.0.7">file:///usr/lib/libsfftw.so.2.0.7</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw_threads.a">file:///usr/lib/libsfftw_threads.a</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw_threads.la">file:///usr/lib/libsfftw_threads.la</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw_threads.so">file:///usr/lib/libsfftw_threads.so</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw_threads.so.2">file:///usr/lib/libsfftw_threads.so.2</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/lib/libsfftw_threads.so.2.0.7">file:///usr/lib/libsfftw_threads.so.2.0.7</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/include/sfftw.h">file:///usr/include/sfftw.h</A>
+</I>&gt;<i> &gt; <A HREF="file:///usr/include/sfftw_threads.h">file:///usr/include/sfftw_threads.h</A>
+</I>&gt;<i>
+</I>&gt;<i> Careful. N.B. the 3 in the name, fftw3 is not the same as fftw
+</I>&gt;<i> There are two packages of programs libfftw and libfftw3. They
+</I>&gt;<i> are different.
+</I>&gt;<i>
+</I>
+fftw3 installs:
+
+&#8206;/usr/lib/libfftw3.so.3
+&#8206;/usr/lib/libfftw3.so.3.1.2
+&#8206;/usr/lib/libfftw3_threads.so.3
+ &#8206;/usr/lib/libfftw3_threads.so.3.1.2
+ &#8206;/usr/lib/libfftw3f.so.3
+ &#8206;/usr/lib/libfftw3f.so.3.1.2
+ &#8206;/usr/lib/libfftw3f_threads.so.3
+ &#8206;/usr/lib/libfftw3f_threads.so.3.1.2
+
+fftw3-delel installs:
+
+ &#8206;/usr/include/fftw3.h
+ &#8206;/usr/lib/libfftw3.a
+&#8206;/usr/lib/libfftw3.la
+&#8206;/usr/lib/libfftw3.so
+&#8206;/usr/lib/libfftw3_threads.a
+&#8206;/usr/lib/libfftw3_threads.la
+&#8206;/usr/lib/libfftw3_threads.so
+&#8206;/usr/lib/libfftw3f.a
+&#8206;/usr/lib/libfftw3f.la
+&#8206;/usr/lib/libfftw3f.so
+&#8206;/usr/lib/libfftw3f_threads.a
+&#8206;/usr/lib/libfftw3f_threads.la
+&#8206;/usr/lib/libfftw3f_threads.so
+&#8206;/usr/lib/pkgconfig/fftw3.pc
+&#8206;/usr/lib/pkgconfig/fftw3f.pc
+
+&gt;<i> That should be it.
+</I>&gt;<i> I do a:
+</I>&gt;<i> AC_CHECK_LIB(fftw3f, fftwf_mkplan, \
+</I>&gt;<i>         [HAS_FFTW3FLIBS=1], [HAS_FFTW3FLIBS=0])
+</I>&gt;<i> in configure.
+</I>&gt;<i>
+</I>&gt;<i> % nm -na /usr/local/lib/libfftw3f.a |grep fftwf_mkplan |grep T
+</I>&gt;<i> 00000080 T fftwf_mkplan
+</I>&gt;<i>
+</I>&gt;<i> so for you
+</I>&gt;<i> % nm -na /usr/lib/libfftw3f.a |grep fftwf_mkplan |grep T
+</I>&gt;<i>
+</I>&gt;<i> See if  you get something similar.
+</I>
+nm -na /usr/lib/libfftw3f.a |grep fftwf_mkplan |grep T
+00000080 T fftwf_mkplan
+00000510 T fftwf_mkplan_d
+00000560 T fftwf_mkplan_f_d
+00000a30 T fftwf_mkplanner
+00000150 T fftwf_mkplan_dftw
+00000000 T fftwf_mkplan_dft
+00000130 T fftwf_mkplan_hc2hc
+00000000 T fftwf_mkplan_rdft
+00000000 T fftwf_mkplan_rdft2
+
+
+&gt;<i>
+</I>&gt;<i> The shim library has an extra _ added to the end so fortran can see it,
+</I>&gt;<i> it then calls the equivalent c function without the extra _
+</I>&gt;<i> i.e. fortran links with sfftw_plan_dft_1d__ then calls the c function
+</I>&gt;<i> sfftw_plan_dft_1d_
+</I>&gt;<i>
+</I>&gt;<i> % nm -na /usr/local/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+</I>&gt;<i> 00002060 T sfftw_plan_dft_1d__
+</I>&gt;<i> 000020b0 T sfftw_plan_dft_1d_
+</I>
+nm -na /usr/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+00001350 T sfftw_plan_dft_1d_
+
+&gt;<i>
+</I>&gt;<i> It is possible it is different on other systems, YMMV.
+</I>&gt;<i> I hope not. *sigh*
+</I>
+Thanks for the help Diane.
+
+I think I have everything installed, and haven't had any issues on any other 
+locally built digi apps here.
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000345.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000347.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#346">[ date ]</a>
+              <a href="thread.html#346">[ thread ]</a>
+              <a href="subject.html#346">[ subject ]</a>
+              <a href="author.html#346">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT2 and JT4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT2%20and%20JT4&In-Reply-To=%3C4705504B.6000806%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000181.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT2 and JT4</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT2%20and%20JT4&In-Reply-To=%3C4705504B.6000806%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] JT2 and JT4">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Oct  4 22:42:51 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000181.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here's another update on the status of experimental modes 
+JT2 and JT4.
+
+A number of people have downloaded the packaged Windows 
+version r550 at
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT597r550.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT597r550.EXE</A>
+
+Several people have compiled this version from the source 
+code for *nix, as well.  I have received some reports of 
+on-the-air use, and the results are generally consistent 
+with my own observations:
+
+1. JT2 works, but the decoding performance of r550 is 
+disappointing in this mode.
+
+2. JT4 works well on 144 MHz EME, but its S/N performance is 
+0.5 to 1 dB worse than JT65B.
+
+JT2 and JT4A have one significant advantage over JT65B: 
+their total occupied bandwidths are 8.75 and 17.5 Hz, 
+respectively, compared with 355 Hz fot JT65B.  The narrow 
+bandwidths could greatly facilitate random EME operation, 
+since 50 or more of the narrow signals could be scattered at 
+random within an SSB receiver's passband with at most only a 
+few collisions.
+
+##############################################################
+
+I am not willing to give up yet on the PSK-encoded data 
+scheme in JT2.  I have now made significant improvements to 
+the JT2 decoder.  It is still not optimum; I know of several 
+things that must be improved, especially for signals that 
+drift.  This will be done ... but I will probably not get to 
+it for at least two weeks.
+
+I have also made improvememts to the JT4 decoder, especially 
+for the trial submodes JT4B - JT4G.
+
+A packaged WSJT r555 for Windows has been placed at
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT597r555.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT597r555.EXE</A>
+
+and of course the new source code is in the respository.
+
+YOu will recall that for testing purposes I defined 7 
+sub-modes of JT4, namely JT4A through JT4G.  The transmitted 
+signals differ only in the spacing of tones and total 
+occupied bandwidth, as shown in the following table:
+
+JT4   Spacing   BW  S/N limit
+        (Hz)    (Hz)   (dB)
+------------------------------
+  A     4.375   17.5   -23
+  B     8.75    35.0   -22
+  C    17.5     70.0   -21
+  D    39.375  157.5   -20
+  E    78.75   315.0   -19
+  F   157.5    630.0   -18
+  G   315.0   1260.0   -17
+
+The approximate S/N limits in the table refer to conditions 
+in which frequency spreading is less than the tone 
+separation.  The wide spacings are intended for use where 
+the path spreading exceeds the narrower tone spacings.  The 
+operational goal is for the four transmitted tones to be 
+clearly separated on the waterfall and on the &quot;red curve&quot;.
+
+You will notice that the red curve has 3 &quot;side lobes&quot; of
+diminishing amplitude on either side of the main peak.  This 
+is normal, and a natural result of the embedded sync 
+mechanism used in JT4.
+
+Neither the JT2 nor the JT4 decoder is optimized at present. 
+  For best performance they will need AFC and other features 
+such as message averaging, Deep Search, etc., as well as 
+fine-tuning of some decoding parameters.  They work pretty 
+well, however, and on-the-air tests are needed in order to 
+make progress.  Both JT2 and JT4A have been used to make EME 
+QSOs on 2m, even with the r550 decoder.
+
+If you make on-the-air tests of these experimental modes, 
+please send me your results or report them on this 
+reflector.  Likewise if you have observations based on 
+&quot;bench testing&quot;, or on your examination of the source code.
+
+     -- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000181.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

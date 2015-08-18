@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux Development issues WSJTX and WSPRX
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20Development%20issues%20WSJTX%20and%20WSPRX&In-Reply-To=%3C52D6CD7A.1040506%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002025.html">
+   <LINK REL="Next"  HREF="002027.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux Development issues WSJTX and WSPRX</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20Development%20issues%20WSJTX%20and%20WSPRX&In-Reply-To=%3C52D6CD7A.1040506%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Linux Development issues WSJTX and WSPRX">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jan 15 19:03:38 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002025.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+        <LI>Next message: <A HREF="002027.html">[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2026">[ date ]</a>
+              <a href="thread.html#2026">[ thread ]</a>
+              <a href="subject.html#2026">[ subject ]</a>
+              <a href="author.html#2026">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dave,
+
+Code for WSPR-X in the SVN repository is built with Qt4 (Qt4.7.4 here), 
+not Qt5.
+
+It would not be a very big effort to bring it into line with the needs 
+of Qt5, but we haven't allocated time to do that.
+
+	-- Joe, K1JT
+
+On 1/15/2014 11:07 AM, David Birnbaum wrote:
+&gt;<i> I've been working on getting a working version of both WSJTX and WSPRX
+</I>&gt;<i> under Linux -- Ubuntu 13.10.
+</I>&gt;<i>
+</I>&gt;<i> So far I've found that the &quot;stock&quot; Qt distribution (5.0.2) doesn't give a
+</I>&gt;<i> clean compile of WSJTX, but under (separately installed) Qt 5.2.0 it does
+</I>&gt;<i> compile and run okay.
+</I>&gt;<i>
+</I>&gt;<i> However, WSPRX has problems regardless of which Qt I use.  With either I
+</I>&gt;<i> get a series of error messages in mainwindow.cpp:
+</I>&gt;<i>
+</I>&gt;<i> 1) complaining that &quot;class QString has no member named &quot;toAscii&quot;.  See for
+</I>&gt;<i> example line 1162
+</I>&gt;<i> 2) several messages that &quot;QtConcurrent&quot; has not been declared&quot;  See for
+</I>&gt;<i> example line 709.
+</I>&gt;<i>
+</I>&gt;<i> Is anybody else having this problem or has anyone solved it?
+</I>&gt;<i>
+</I>&gt;<i> dave
+</I>&gt;<i> k2lyv
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002025.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+	<LI>Next message: <A HREF="002027.html">[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2026">[ date ]</a>
+              <a href="thread.html#2026">[ thread ]</a>
+              <a href="subject.html#2026">[ subject ]</a>
+              <a href="author.html#2026">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

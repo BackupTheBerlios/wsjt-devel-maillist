@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.1 r3389
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3389&In-Reply-To=%3CE6B21CCB-29C9-4751-A368-C5D5BC829622%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001409.html">
+   <LINK REL="Next"  HREF="001383.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.1 r3389</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3389&In-Reply-To=%3CE6B21CCB-29C9-4751-A368-C5D5BC829622%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.1 r3389">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Mon Jun 24 20:09:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001409.html">[Wsjt-devel] r3415
+</A></li>
+        <LI>Next message: <A HREF="001383.html">[Wsjt-devel] r 3390
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1382">[ date ]</a>
+              <a href="thread.html#1382">[ thread ]</a>
+              <a href="subject.html#1382">[ subject ]</a>
+              <a href="author.html#1382">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>WS JT-X has been running well on Mac OSX 10.6.    It was left running for a week with reports sent to PSK Reporter logging JT65 and JT9 decodes from China/Tasmania in the east to Canada/North-/South- America in the west.   Works well.
+
+Two suggestions:    
+1) It is not practical to include every device driver in the &quot;CAT Port&quot; list.  I am using a PL2303 serial to USB adapter and the driver /dev/tty_usbserial has to be added to devsetup.cpp.   It might be better to allow the user to enter her/his favourite device driver in an open panel instead of having to rely on a fixed menu which would have to be modified from time to time.  Or allow a comma separated list in wsjtx.ini to be imported to the CAT port menu and then let users edit the .ini file as needed.
+
+2)  There is an option to enable the PSK reporter.   In Unix, PSK reporting is enabled whether or not this option is selected.   This might not be to everyone's taste.   I have made these changes to my version of mainwindow.cpp in the obvious places which enable PSK reporting only if the option is checked.
+
+ #ifdef UNIX
+-  psk_Reporter = new PSK_Reporter(this);
+-  psk_Reporter-&gt;setLocalStation(m_myCall,m_myGrid, &quot;WSJT-X r&quot; + rev.mid(6,4) );
++  if (m_pskReporter) {
++    psk_Reporter = new PSK_Reporter(this);
++    psk_Reporter-&gt;setLocalStation(m_myCall,m_myGrid, &quot;WSJT-X r&quot; + rev.mid(6,4) );
++  }
+ #endif
+.....
+ #ifdef UNIX
+-    psk_Reporter-&gt;setLocalStation(m_myCall,m_myGrid, &quot;WSJT-X r&quot; + rev.mid(6,4) );
++    if (dlg.m_pskReporter != m_pskReporter) {
++      if (dlg.m_pskReporter) {
++        psk_Reporter-&gt;setLocalStation(m_myCall,m_myGrid, &quot;WSJT-X r&quot; + rev.mid(6,4) );
++      }
++    }
+ #endif
+....
+ #else
+-      if(b and !m_diskData and okToPost) {
++      if(m_pskReporter and b and !m_diskData and okToPost) {
+         int i1=msg.indexOf(&quot; &quot;);
+
+
+---- John G4KLA
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001409.html">[Wsjt-devel] r3415
+</A></li>
+	<LI>Next message: <A HREF="001383.html">[Wsjt-devel] r 3390
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1382">[ date ]</a>
+              <a href="thread.html#1382">[ thread ]</a>
+              <a href="subject.html#1382">[ subject ]</a>
+              <a href="author.html#1382">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

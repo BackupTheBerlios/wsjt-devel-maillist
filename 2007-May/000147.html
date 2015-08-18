@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 5.9.7 r385 rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r385%20rpm&In-Reply-To=%3C1178798673.4540.18.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000146.html">
+   <LINK REL="Next"  HREF="000155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 5.9.7 r385 rpm</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r385%20rpm&In-Reply-To=%3C1178798673.4540.18.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT 5.9.7 r385 rpm">lz1bb at mail.bg
+       </A><BR>
+    <I>Thu May 10 14:04:33 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000146.html">[Wsjt-devel] WSJT 5.9.7 r385 rpm
+</A></li>
+        <LI>Next message: <A HREF="000155.html">[Wsjt-devel] WSJT 5.9.7 r385 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Richard,
+
+Link from .wsjt to KVASD was used in test rpm which I made for Mandriva
+a long time ago. In the newest rpms KVASD is copyed to .wsjt folder.
+Here is extractions from wsjt-wraper:
+
+if [ ! -f $RUNDIR/KVASD ]; then
+	cp /usr/bin/KVASD $RUNDIR/KVASD
+
+If you ever install Mandriva test rpm it provides the symbolic link to
+KVASD hence the problem now. Other posibility is that after installing
+wsjt.rpm you first started wsjt as a root being in the user home folder.
+Solution is simple in both cases. Simply delete .wsjt folder and start
+again WSJT as an user. All should be fine later on.
+
+73, Harry LZ1BB
+
+On Thu, 2007-05-10 at 12:46 +0100, richard bown wrote:
+&gt;<i> Hi all, nice to see anew release, one minor problem when running as a
+</I>&gt;<i> user, the link from the users home directory from .wsjt/KVASD gets a
+</I>&gt;<i> permission denied message, as its pointing to /usr/share/wsjt/KVASD.
+</I>&gt;<i> Quick and dirty fix is to change the ownership of that file to the user.
+</I>&gt;<i> 
+</I>&gt;<i> But Mandriva's msec will change it back unless the ownership is changed
+</I>&gt;<i> in
+</I>&gt;<i> mcc&gt;security&gt; fine tune security settings&gt;custom
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000146.html">[Wsjt-devel] WSJT 5.9.7 r385 rpm
+</A></li>
+	<LI>Next message: <A HREF="000155.html">[Wsjt-devel] WSJT 5.9.7 r385 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#147">[ date ]</a>
+              <a href="thread.html#147">[ thread ]</a>
+              <a href="subject.html#147">[ subject ]</a>
+              <a href="author.html#147">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

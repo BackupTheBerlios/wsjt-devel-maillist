@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C520E83BC.3080502%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001862.html">
+   <LINK REL="Next"  HREF="001825.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C520E83BC.3080502%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Aug 16 21:55:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001862.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+        <LI>Next message: <A HREF="001825.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1864">[ date ]</a>
+              <a href="thread.html#1864">[ thread ]</a>
+              <a href="subject.html#1864">[ subject ]</a>
+              <a href="author.html#1864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 16/08/2013 20:35, Joe Taylor wrote:
+&gt;<i> Hi all,
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;<i> Bill made some reasonable suggestions about separating the &quot;Modulator&quot; 
+</I>&gt;<i> functions for MFSK data, CW data and &quot;Tune&quot; audio.  I see no problem 
+</I>&gt;<i> with the proposed course of action.
+</I>Ok, I am moving on with that, once John G4KLA and I get the OS-X version 
+up and running with QAudioInput.
+&gt;<i>
+</I>&gt;<i> On the CMake front I made negative progress today, and I'm not sure 
+</I>&gt;<i> why.  I can't seem to build in MinGW using the CMake scripts now, even 
+</I>&gt;<i> though I succeeded (once) yesterday.  Today I'm back to having it fail 
+</I>&gt;<i> to find the &quot;glu32&quot; library.  I have no idea why it succeeded (once) 
+</I>&gt;<i> yesterday, but now fails.
+</I>That's not good. I suspect you and I may be the only ones using it on 
+Windows so hopefully I will have it sorted out before you get back from 
+your travels Joe. Because Windows is a cross compile and because there 
+are no &quot;standard places&quot; to find pre-requisites; it will take a little 
+more time to iron out the kinks. As discussed, I won't be checking 
+anything that breaks the old qmake and make process. As a secondary 
+stream I am trying to do the Windows MinGW build on Linux, this will 
+have a bonus of being able to produce a 64-bit version without having to 
+resort to the MS toolchain which will run a bit faster due to the larger 
+number of registers available to the compiler for optimization.
+&gt;<i>
+</I>&gt;<i> Anyway, I've put CMake aside for now.  I built libjt9.a and jt9.exe 
+</I>&gt;<i> using .../lib/Makefile.MinGW, and wsjtx.exe (v1.2 r3556) from within 
+</I>&gt;<i> QtCreator, as I have always done before.  I checked out the resulting 
+</I>&gt;<i> package and believe it is complete -- I hope our users will find no 
+</I>&gt;<i> installation problems.
+</I>&gt;<i>
+</I>&gt;<i> I really appreciate all the recent contributions here!  This project 
+</I>&gt;<i> has become very much a group effort, and the results provide strong 
+</I>&gt;<i> evidence of the skills and experience you bring to it.
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001862.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+	<LI>Next message: <A HREF="001825.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1864">[ date ]</a>
+              <a href="thread.html#1864">[ thread ]</a>
+              <a href="subject.html#1864">[ subject ]</a>
+              <a href="author.html#1864">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Key press event n the waterfall.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Key%20press%20event%20n%20the%20waterfall.&In-Reply-To=%3C5206B74E.30206%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001796.html">
+   <LINK REL="Next"  HREF="001802.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Key press event n the waterfall.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Key%20press%20event%20n%20the%20waterfall.&In-Reply-To=%3C5206B74E.30206%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Key press event n the waterfall.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Aug 10 23:57:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001796.html">[Wsjt-devel] WSJT-X: Key press event n the waterfall.
+</A></li>
+        <LI>Next message: <A HREF="001802.html">[Wsjt-devel] WSJT-X: r3543 Bugfix commit.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1797">[ date ]</a>
+              <a href="thread.html#1797">[ thread ]</a>
+              <a href="subject.html#1797">[ subject ]</a>
+              <a href="author.html#1797">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 10/08/2013 22:37, Bill Somerville wrote:
+&gt;<i> On 10/08/2013 22:35, Bill Somerville wrote:
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've just fixed the problem that the waterfall window title isn't 
+</I>&gt;&gt;<i> getting set which was my fault.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Related to that; it looks like at some point the key press handling 
+</I>&gt;&gt;<i> in the main window was being installed as the key press handler for 
+</I>&gt;&gt;<i> the waterfall window. _That is the case now_ because the setup is 
+</I>&gt;&gt;<i> broken.
+</I>&gt;<i> should read _&quot;That isn't the case now__&quot;_.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Should the shortcut keys for the main window be active if the GUI 
+</I>&gt;&gt;<i> focus is on the waterfall window?
+</I>OK, I think I can answer this myself having looked at the code more 
+closely; bother the main windows and the waterfall handle F11 &amp; F12 
+function keys, but the actions are different. So they can't share a 
+handler so the broken call to installEventFilter(0) in the waterfall 
+constructor is probably unnecessary.
+&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130810/50e990b0/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130810/50e990b0/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001796.html">[Wsjt-devel] WSJT-X: Key press event n the waterfall.
+</A></li>
+	<LI>Next message: <A HREF="001802.html">[Wsjt-devel] WSJT-X: r3543 Bugfix commit.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1797">[ date ]</a>
+              <a href="thread.html#1797">[ thread ]</a>
+              <a href="subject.html#1797">[ subject ]</a>
+              <a href="author.html#1797">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Illegal instruction
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Illegal%20instruction&In-Reply-To=%3C45EAB062.4000503%40superbug.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000034.html">
+   <LINK REL="Next"  HREF="000036.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Illegal instruction</H1>
+    <B>James Courtier-Dutton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Illegal%20instruction&In-Reply-To=%3C45EAB062.4000503%40superbug.co.uk%3E"
+       TITLE="[Wsjt-devel] Illegal instruction">James at superbug.co.uk
+       </A><BR>
+    <I>Sun Mar  4 12:41:22 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000034.html">[Wsjt-devel] Illegal instruction
+</A></li>
+        <LI>Next message: <A HREF="000036.html">[Wsjt-devel] wsjt rpm problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>James Courtier-Dutton wrote:
+&gt;<i> James Courtier-Dutton wrote:
+</I>&gt;&gt;<i> I have a problem with the current WSJT.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> WSJT Version 5.9.6 r365 , by K1JT
+</I>&gt;&gt;<i> Revision date: 2007-03-02 21:43:37 +0000 (Fri, 02 Mar 2007)
+</I>&gt;&gt;<i> Run date:   Sat Mar  3 23:48:20 2007 UTC
+</I>&gt;&gt;<i> Illegal instruction
+</I>&gt;&gt;<i>
+</I>
+I have found what I think is a sensible fix for this problem:
+/usr/lib/python2.4/site-packages/numpy/distutils/cpuinfo.py
+As nocona enables sse3 instructions for nocona, we should do a check for
+sse3 in the _is_Nocona test routine.
+I have posted a bug on the gentoo bug tracker, so hopefully it will go
+upstream.
+<A HREF="http://bugs.gentoo.org/show_bug.cgi?id=169262">http://bugs.gentoo.org/show_bug.cgi?id=169262</A>
+
+
+--- cpuinfo.py.old      2007-03-04 11:26:20.000000000 +0000
++++ cpuinfo.py  2007-03-04 11:25:14.000000000 +0000
+@@ -185,7 +185,7 @@
+         return self.is_PentiumIV() and self.has_sse3()
+
+     def _is_Nocona(self):
+-        return self.is_PentiumIV() and self.is_64bit()
++        return self.is_PentiumIV() and self.is_64bit() and self.has_sse3()
+
+     def _is_Itanium(self):
+         return re.match(r'.*?Itanium\b',
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000034.html">[Wsjt-devel] Illegal instruction
+</A></li>
+	<LI>Next message: <A HREF="000036.html">[Wsjt-devel] wsjt rpm problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

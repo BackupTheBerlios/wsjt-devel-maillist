@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Mutlitple Instances
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mutlitple%20Instances&In-Reply-To=%3C51E1A8B7.30808%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001505.html">
+   <LINK REL="Next"  HREF="001508.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Mutlitple Instances</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mutlitple%20Instances&In-Reply-To=%3C51E1A8B7.30808%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Mutlitple Instances">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Jul 13 21:21:27 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001505.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+        <LI>Next message: <A HREF="001508.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1506">[ date ]</a>
+              <a href="thread.html#1506">[ thread ]</a>
+              <a href="subject.html#1506">[ subject ]</a>
+              <a href="author.html#1506">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Josh --
+
+I've never spent significant time checking out &quot;Multiple Instances&quot;, and 
+in fact it was turned off (the menu item can be checked, but it does 
+nothing) in r3482.
+
+If you want to try again, I've re-enabled it for you.  Download the main 
+executable
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/wsjtx.exe">http://www.physics.princeton.edu/pulsar/K1JT/wsjtx.exe</A>
+and put copies in each of your four directories.
+
+You can think of this one as revision 3482a.  It's exactly the same as 
+r3482, except that the &quot;Multiple Instances&quot; option was reconnected.
+
+I just checked it here with two instances, and they both seem to work OK.
+
+Let me know what results you get... and maybe also, explain why anyone 
+might want to do this?
+
+	-- 73, Joe, K1JT
+
+On 7/13/2013 2:55 PM, Josh Rovero wrote:
+&gt;<i> Nothing about multiple instances is in the v1.1 user manual yet, so I was
+</I>&gt;<i> winging it.....
+</I>&gt;<i>
+</I>&gt;<i> I have installed the latest v1.1 r3482 package on
+</I>&gt;<i> Windows 7, in separate directories:
+</I>&gt;<i>
+</I>&gt;<i>    C:\wsjtx
+</I>&gt;<i>    C:\wsjtx2
+</I>&gt;<i>    C:\wsjtx3
+</I>&gt;<i>    C:\wsjtx4
+</I>&gt;<i>
+</I>&gt;<i> Each is configured to look in their own directory, and all have the
+</I>&gt;<i> Setup-&gt;Advanced-&gt;Allow multiple instances item checked.
+</I>&gt;<i> All are shut down after configuration, and all are configured one at a time.
+</I>&gt;<i>
+</I>&gt;<i> They get restarted in numeric order, and the configuration checks out.
+</I>&gt;<i>   However, when the second instance starts, the &quot;Decode&quot; button on the first
+</I>&gt;<i> instance turns on and stays on.  The spots from the first instance then get
+</I>&gt;<i> reported in the second instance.  They are not shown as decodes in the
+</I>&gt;<i> first instance.  And the spots are logged in the second instance's ALL.TXT
+</I>&gt;<i> file, which is in a different directory than the first instance's ALL.TXT
+</I>&gt;<i> file.
+</I>&gt;<i>
+</I>&gt;<i> If the spots included the manually entered window frequency offset, they'd
+</I>&gt;<i> be sorted in the destination ALL.TXT file.  But they only have the audio
+</I>&gt;<i> frequencies, so are all jumbled together.
+</I>&gt;<i>
+</I>&gt;<i> Is wsjt-x designed to merge the logging/spotting data, or keep it separate
+</I>&gt;<i> by instance?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i>
+</I>&gt;<i> A separate instance of r3482, built from source on Linux, is chugging away.
+</I>&gt;<i> Don't have more radios to throw at that machine, so haven't been able to
+</I>&gt;<i> try multiple instances on Linux.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001505.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+	<LI>Next message: <A HREF="001508.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1506">[ date ]</a>
+              <a href="thread.html#1506">[ thread ]</a>
+              <a href="subject.html#1506">[ subject ]</a>
+              <a href="author.html#1506">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

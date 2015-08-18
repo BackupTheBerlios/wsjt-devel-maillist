@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A573759.7030508%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000687.html">
+   <LINK REL="Next"  HREF="000690.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A573759.7030508%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul 10 14:43:05 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000687.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000690.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#689">[ date ]</a>
+              <a href="thread.html#689">[ thread ]</a>
+              <a href="subject.html#689">[ subject ]</a>
+              <a href="author.html#689">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi James,
+
+Thanks for the additional information.  At present I will 
+still put my money on a thread-conflict problem... but do 
+let us know if you make further progress with your 
+alternative hypothesis!
+
+	-- Joe, K1JT
+
+James Courtier-Dutton wrote:
+
+&gt;<i> After work yesterday I had a more detailed look. I am running ubuntu
+</I>&gt;<i> karmic and I get the same segfault on start.
+</I>&gt;<i> I use:
+</I>&gt;<i> gdb python
+</I>&gt;<i> run wsjt.py
+</I>&gt;<i> 
+</I>&gt;<i> It then tells me the line of the code that is crashing.
+</I>&gt;<i> It is crashing inside a read statement.
+</I>&gt;<i> When it crashes I can do a
+</I>&gt;<i> thread apply all bt
+</I>&gt;<i> 
+</I>&gt;<i> This tells me what every thread was doing at the time of the crash. This
+</I>&gt;<i> also tells me that it is not a re-entrant problem because no other
+</I>&gt;<i> threads were calling read or write at the same time.
+</I>&gt;<i> Simply adding a print * line above the crashing read statement stops it
+</I>&gt;<i> crashing at that point.
+</I>&gt;<i> When exiting the program, it crashes at another point that is a write
+</I>&gt;<i> statement.
+</I>&gt;<i> write(*,1006)
+</I>&gt;<i> 1006 format('Audio streams terminated normally.')
+</I>&gt;<i> 
+</I>&gt;<i> Using gdb I find that the parameter passed is not actually a pointer to
+</I>&gt;<i> the &quot;Audio streams...&quot; string, but instead a pointer to an empty string!
+</I>&gt;<i> I am starting to think that this is not a multi-thread problem at all.
+</I>&gt;<i> I think it is a memory or stack corruption problem.
+</I>&gt;<i> The problems where the crash happens are in:
+</I>&gt;<i> a2d.f90:line 22
+</I>&gt;<i> astro0.F90:line 22
+</I>&gt;<i> 
+</I>&gt;<i> Unfortunately, I have not found the actual cause yet.
+</I>&gt;<i> 
+</I>&gt;<i> Kind Regards
+</I>&gt;<i> 
+</I>&gt;<i> James
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000687.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000690.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#689">[ date ]</a>
+              <a href="thread.html#689">[ thread ]</a>
+              <a href="subject.html#689">[ subject ]</a>
+              <a href="author.html#689">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

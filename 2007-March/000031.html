@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] portaudio changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20portaudio%20changes&In-Reply-To=%3C20070302201959.GA13936%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000030.html">
+   <LINK REL="Next"  HREF="000032.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] portaudio changes</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20portaudio%20changes&In-Reply-To=%3C20070302201959.GA13936%40night.db.net%3E"
+       TITLE="[Wsjt-devel] portaudio changes">db at db.net
+       </A><BR>
+    <I>Fri Mar  2 21:19:59 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000030.html">[Wsjt-devel] py-numpy/py-numeric
+</A></li>
+        <LI>Next message: <A HREF="000032.html">[Wsjt-devel] wsjt now works again.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've unhooked the build of our copy of portaudio v19. There are two new
+configure arguments to point at where the headers and libs are
+for portaudio.
+
+./configure --with-portaudio-include-dir=&lt;path&gt; \
+--with-portaudio-lib-dir=&lt;path&gt; \
+--enable-portaudio
+
+As always, please check that things still build properly for you, they
+build properly here.
+
+Note, the API is different from V19 and V18 of portaudio, one such
+difference is the number of arguments in Pa_OpenStream. Where various
+OS put their variant version of portaudio v19 is highly variable.
+
+I feel there is the possibility that a &quot;snapshot&quot; from svn of a v19 portaudio
+may break the build of wsjt, so I personally feel more comfortable
+having a copy we know works with wsjt. Users building wsjt can choose
+to use our known working snapshot or not.
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000030.html">[Wsjt-devel] py-numpy/py-numeric
+</A></li>
+	<LI>Next message: <A HREF="000032.html">[Wsjt-devel] wsjt now works again.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on Mac OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Mac%20OS%20X&In-Reply-To=%3C18E4832E-AB0C-45F4-822B-330ED115E916%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000505.html">
+   <LINK REL="Next"  HREF="000507.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on Mac OS X</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Mac%20OS%20X&In-Reply-To=%3C18E4832E-AB0C-45F4-822B-330ED115E916%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT on Mac OS X">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Jul 23 21:37:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000505.html">[Wsjt-devel] WSJT on Mac OS X
+</A></li>
+        <LI>Next message: <A HREF="000507.html">[Wsjt-devel] Rev 1000
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#506">[ date ]</a>
+              <a href="thread.html#506">[ thread ]</a>
+              <a href="subject.html#506">[ subject ]</a>
+              <a href="author.html#506">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Bruce,
+
+I meant to be more specific - the WSJT window can move and not affect  
+the coordinates.  However,   do this in routine set_freezedf in  
+specjt.py
+
+     print root.geometry()
+
+and then move the SPECJT window and then click in the waterfall area  
+which activates this routine.   You will find that root.geometry()  
+has the complete coordinates (width,height,x,y) of the WSJT  
+window.    SpecJTGeometry in WSJT.INI is then updated with the x,y  
+position of the WSJT.
+
+I agree that if you put the SPECJT window back where it was before  
+you moved it, then the x-coordinate is correct.  My statement was  
+slightly misleading.   The main problem is why root.geometry is  
+linked to the WSJT window.   Since it works correctly when specjt.py  
+is launched on its own, there appears to be some dependence on the  
+way specjt is launched from within wsjt.py which causes confusion  
+between Tkinter and the Mac window manager.
+
+I have tried a variety of calls to get at coordinates (using more  
+than one manual on Tkinter and python) but the results are always the  
+same:  wrong!
+
+   73  John  G4KLA
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000505.html">[Wsjt-devel] WSJT on Mac OS X
+</A></li>
+	<LI>Next message: <A HREF="000507.html">[Wsjt-devel] Rev 1000
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#506">[ date ]</a>
+              <a href="thread.html#506">[ thread ]</a>
+              <a href="subject.html#506">[ subject ]</a>
+              <a href="author.html#506">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

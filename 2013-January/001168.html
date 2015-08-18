@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] ImportError: cannot import name Audio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ImportError%3A%20cannot%20import%20name%20Audio&In-Reply-To=%3C50EDCAB9.90504%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001165.html">
+   <LINK REL="Next"  HREF="001166.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] ImportError: cannot import name Audio</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ImportError%3A%20cannot%20import%20name%20Audio&In-Reply-To=%3C50EDCAB9.90504%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] ImportError: cannot import name Audio">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jan  9 20:53:29 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001165.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+        <LI>Next message: <A HREF="001166.html">[Wsjt-devel] ValueError: could not convert string to float W8WN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1168">[ date ]</a>
+              <a href="thread.html#1168">[ thread ]</a>
+              <a href="subject.html#1168">[ subject ]</a>
+              <a href="author.html#1168">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sven and all,
+
+DJ5AND wrote:
+
+&gt;<i> I've been trying to compile and install wsjt from trunk (version 9.3
+</I>&gt;<i> revision 2589) partly successful.
+</I>
+The following commands check out and build WSJT v9 r2589 on my Linux box:
+
+$ svn co -r2589 <A HREF="svn://svn.berlios.de/wsjt/trunk">svn://svn.berlios.de/wsjt/trunk</A>
+$ cd trunk
+$ ./configure
+$ make
+
+You can then start the program by typing
+
+$ python wsjt.py
+
+No doubt you can install the program in a standard &quot;pythonic&quot; manner, 
+but I don't bother to do this.
+
+
+&gt;<i> (x)Ubuntu 12.04 has got wsjt 5.9.7.r383-1.6 in its repositories. (Not
+</I>&gt;<i> sure why this outdated version from 2007 is still in the repo and not
+</I>&gt;<i> being updated yet.)
+</I>
+We don't presently have a volunteer willing to make the necessary .deb 
+package.
+
+&gt;<i> Unfortunately, starting wsjt only shows the GUI for ~1s and aborting with:
+</I>&gt;<i>
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i> File &quot;/usr/share/wsjt/wsjt.py&quot; line 2131, in &lt;module&gt; ModeFSK441()
+</I>&gt;<i> File &quot;/usr/share/wsjt/wsjt.py&quot; line 568, in ModeFSK441 GenStdMsgs()
+</I>&gt;<i> File &quot;/usr/share/wsjt/wsjt.py&quot; line 1144, in GenStdMsgs
+</I>&gt;<i> Audio.gcom2.hiscall=(ToRadio.get()+'        ')[:12]
+</I>&gt;<i> ValueError: could not convert string to float W8WN
+</I>&gt;<i>
+</I>&gt;<i> System is a standard Ubuntu 12.04.1LTS x86_64 for testing in a VM.
+</I>
+My compile outlined above was done on Ubuntu 10.10.  I don't presently 
+have a machine with Ubuntu 12.04.1LTS installed.  Apparently something 
+it its Python is fussier than in older versions.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001165.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+	<LI>Next message: <A HREF="001166.html">[Wsjt-devel] ValueError: could not convert string to float W8WN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1168">[ date ]</a>
+              <a href="thread.html#1168">[ thread ]</a>
+              <a href="subject.html#1168">[ subject ]</a>
+              <a href="author.html#1168">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

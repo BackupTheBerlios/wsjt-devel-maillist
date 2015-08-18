@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Wsjt-devel Digest, Vol 37, Issue 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2037%2C%20Issue%202&In-Reply-To=%3C2599.4116-32710-236442454-1260622105%40post.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000883.html">
+   <LINK REL="Next"  HREF="000885.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Wsjt-devel Digest, Vol 37, Issue 2</H1>
+    <B>Jan Karel</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Wsjt-devel%20Digest%2C%20Vol%2037%2C%20Issue%202&In-Reply-To=%3C2599.4116-32710-236442454-1260622105%40post.cz%3E"
+       TITLE="[Wsjt-devel] Wsjt-devel Digest, Vol 37, Issue 2">ok1vao at post.cz
+       </A><BR>
+    <I>Sat Dec 12 13:48:25 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000883.html">[Wsjt-devel] MAP65 make problem
+</A></li>
+        <LI>Next message: <A HREF="000885.html">[Wsjt-devel] Wsjt-devel Digest, Vol 37, Issue 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#884">[ date ]</a>
+              <a href="thread.html#884">[ thread ]</a>
+              <a href="subject.html#884">[ subject ]</a>
+              <a href="author.html#884">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Richard,
+
+python-numpy version is 1:1.2.1-1ubuntu1. There is only python-numpy package, shall I add python-numpy-dbg and python-numpy-ext?
+
+I install Ubuntu 9.04 from CD and doesn't not update nor upgrade. Do you think I should update and upgrade? Leif SM5BSZ warned about Ubuntu 10.x recently.
+
+
+
+73 Jan
+
+
+&gt;<i> ------------ P&#367;vodn&#237; zpr&#225;va ------------
+</I>&gt;<i> Od:  &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>&gt;
+</I>&gt;<i> P&#345;edm&#283;t: Wsjt-devel Digest, Vol 37, Issue 2
+</I>&gt;<i> Datum: 12.12.2009 12:01:37
+</I>&gt;<i> ----------------------------------------
+</I>&gt;<i> Send Wsjt-devel mailing list submissions to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-request at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> 	<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-owner at lists.berlios.de</A>
+</I>&gt;<i> 
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Wsjt-devel digest...&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i> 
+</I>&gt;<i>    1. MAP65 make problem (Jan Karel)
+</I>&gt;<i>    2. Re: MAP65 make problem (richard)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Fri, 11 Dec 2009 21:38:41 +0100 (CET)
+</I>&gt;<i> From: Jan Karel&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ok1vao at post.cz</A>&gt;
+</I>&gt;<i> Subject: [Wsjt-devel] MAP65 make problem
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">2763.4800-14404-1470372826-1260563921 at post.cz</A>&gt;
+</I>&gt;<i> Content-Type: text/plain;	charset=&quot;us-ascii&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I am trying to compile MAP65 on my Ubuntu 9.04 system. I should say I am not an
+</I>&gt;<i> expert in programing.
+</I>&gt;<i> 
+</I>&gt;<i> I downloaded all sources via subversion, and run configure and then make. I
+</I>&gt;<i> uploaded outputs from svn, configure and make commands to 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://www.ok1kir.cz/MAP65/MAP65_vao.zip">http://www.ok1kir.cz/MAP65/MAP65_vao.zip</A>
+</I>&gt;<i> 
+</I>&gt;<i> Can anyone help me? What I am doing wrong or is some library o package missing?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks in advance and VY 73 Jan
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Fri, 11 Dec 2009 22:20:42 +0000
+</I>&gt;<i> From: richard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard.bown at blueyonder.co.uk</A>&gt;
+</I>&gt;<i> Subject: Re: [Wsjt-devel] MAP65 make problem
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">20091211222042.74a69fd0 at blueyonder.co.uk</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=US-ASCII
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, 11 Dec 2009 21:38:41 +0100 (CET)
+</I>&gt;<i> Jan Karel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ok1vao at post.cz</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Hello,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am trying to compile MAP65 on my Ubuntu 9.04 system. I should say I
+</I>&gt;<i> &gt; am not an expert in programing.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I downloaded all sources via subversion, and run configure and then
+</I>&gt;<i> &gt; make. I uploaded outputs from svn, configure and make commands to 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; <A HREF="http://www.ok1kir.cz/MAP65/MAP65_vao.zip">http://www.ok1kir.cz/MAP65/MAP65_vao.zip</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Can anyone help me? What I am doing wrong or is some library o
+</I>&gt;<i> &gt; package missing?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thanks in advance and VY 73 Jan
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Wsjt-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hi Jan
+</I>&gt;<i> 
+</I>&gt;<i> what version of numpy are you using ?, 
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> Best wishes
+</I>&gt;<i> 
+</I>&gt;<i> Richard Bown
+</I>&gt;<i> 
+</I>&gt;<i> ###################################################################################
+</I>&gt;<i> Registered Linux User 36561
+</I>&gt;<i> OS: Mandriva 2010.0 Powerpack on an AMD Dual Athlon 64 +4400: 8 GB RAM
+</I>&gt;<i> DDR2 Ham Call: G8JVM , QRA IO82SP, Interests Microwave 1.3 GHz,2.3 GHz
+</I>&gt;<i> &amp; 5.7GHz &amp; 10 GHz
+</I>&gt;<i> ###################################################################################
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> End of Wsjt-devel Digest, Vol 37, Issue 2
+</I>&gt;<i> *****************************************
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000883.html">[Wsjt-devel] MAP65 make problem
+</A></li>
+	<LI>Next message: <A HREF="000885.html">[Wsjt-devel] Wsjt-devel Digest, Vol 37, Issue 2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#884">[ date ]</a>
+              <a href="thread.html#884">[ thread ]</a>
+              <a href="subject.html#884">[ subject ]</a>
+              <a href="author.html#884">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

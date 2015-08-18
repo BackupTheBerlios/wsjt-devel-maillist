@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Another approach to command-line WSPR (weak computers)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%20computers%29&In-Reply-To=%3CAANLkTi%3DrrS%2B6MrNEaT7k6LsVivL%2Bzrp6E6v-Xc4YNqNB%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001080.html">
+   <LINK REL="Next"  HREF="001075.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Another approach to command-line WSPR (weak computers)</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%20computers%29&In-Reply-To=%3CAANLkTi%3DrrS%2B6MrNEaT7k6LsVivL%2Bzrp6E6v-Xc4YNqNB%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Another approach to command-line WSPR (weak computers)">stoledo at tau.ac.il
+       </A><BR>
+    <I>Mon Dec 27 15:47:53 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001080.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT	problem
+</A></li>
+        <LI>Next message: <A HREF="001075.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1074">[ date ]</a>
+              <a href="thread.html#1074">[ thread ]</a>
+              <a href="subject.html#1074">[ subject ]</a>
+              <a href="author.html#1074">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I appreciate the efforts that several of you are making on the command-line
+wspr0, but I still decided to try a different approach. I need the IQ
+processing and I am not eager to try to get a separate program to do the IQ
+demodulation (and not too eager to script together everything, although if
+Edson comes up with the scripts, I'll be happy to try them).
+
+What I did this morning is to produce a version of WSPR that uses the
+existing program but has no GUI. I basically removed or commented out all
+the GUI calls from wspr.py, produced stripped down versions of the codes in
+WsprMod without the GUI (basically just with the global variables, which
+wspr.py uses), and a tiny python code that replaces IntVar, StringVar, and
+DoubleVar (which came from Tkinter which I no longer import). I replaced
+some of the GUI updates with print statements, so I know what is going on.
+Another small modification was to replace update() with a modified function
+that runs forever in a loop, sleeping for 200ms at the end of each one. I
+can make the sleeping a bit more accurate (to compensate for the time
+processing in update takes, but I don't think it matters much).
+
+It took a couple of hours and it now works. I ran it for an hour or so and
+produced normal spots.
+
+This version of WSPR uses the existing wspr.ini and hopping.ini in the
+directory, so I can set these up with the GUI version (or in a text editor)
+and then run the GUI-less version in the same directory, and it has exactly
+the same behaviors, just no visual feedback and no way to tweak the behavior
+(e.g. to change hopping or to tune).
+
+I'll appreciate any comments on this. I realize that not many people will
+want it, and that if the group supports this mode, it will add maintenance
+overhead whether we stick to separate files (which will need to be modified
+when the main ones are) or integrate the no-hopping option into wspr.py.
+
+When I ran it on my slow computer (266 Geode processor), I discovered two
+things. One is that what was taking most of the CPU in WSPR is the GUI. The
+GUI version took about 80% CPU even when it was not decoding, just
+collection sound. The non-gui version takes only 10%. This might be somewhat
+important for people leaving their laptops WSPRing overnight, because they
+are less likely to heat up and turn on their fans. This is good.
+
+The other thing I discovered is that the IQ decoding takes a minute and a
+half on this machine, and the mept162 takes more than 30 seconds (I am not
+sure how long, but more than 30 seconds). So it clearly can't receive and
+decode all the 2-minute slots. I think that wspr2 is waiting for the decode
+to end before the next cycle begins, but I assume that this is not something
+that Joe planned for. Do you guys think that I'll simply get every second or
+every third slot processed and the rest will not be received, or will I get
+some garbage? I guess the reasonable thing is to get a machine that's a bit
+faster.
+
+Regards, Sivan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101227/85a04c73/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101227/85a04c73/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001080.html">[Wsjt-devel] compiling trunk on ubuntu 10.04 (amd64) and PTT	problem
+</A></li>
+	<LI>Next message: <A HREF="001075.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1074">[ date ]</a>
+              <a href="thread.html#1074">[ thread ]</a>
+              <a href="subject.html#1074">[ subject ]</a>
+              <a href="author.html#1074">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

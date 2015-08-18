@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20async%20log%20QSO%20/%0A%0973%09functionality&In-Reply-To=%3C52E5A153.70009%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002122.html">
+   <LINK REL="Next"  HREF="002111.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20async%20log%20QSO%20/%0A%0973%09functionality&In-Reply-To=%3C52E5A153.70009%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Jan 27 00:59:15 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002122.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality
+</A></li>
+        <LI>Next message: <A HREF="002111.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 duplicate JT9 decodes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2123">[ date ]</a>
+              <a href="thread.html#2123">[ thread ]</a>
+              <a href="subject.html#2123">[ subject ]</a>
+              <a href="author.html#2123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 26/01/2014 23:51, Bob McCormick W1QA wrote:
+Hi Bob,
+&gt;<i> Bill G4WJS wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I suspect that what actually happened was that the message being sent
+</I>&gt;&gt;<i> when you first clicked the &quot;73&quot; button changed from R+dB to the 73
+</I>&gt;&gt;<i> message. Such changes of message are allowed during the TX period.
+</I>&gt;&gt;<i> The rest of your description is consistent with that i.e. as far as the
+</I>&gt;&gt;<i> program is concerned you changed your mind and switched to a 73 message
+</I>&gt;&gt;<i> mid TX period. The shutdown of auto TX and the triggering of the log
+</I>&gt;&gt;<i> window are following a valid 73 message being sent.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It is best to only select the next message after the TX of the previous
+</I>&gt;&gt;<i> message (more normally after the QSO partners decode has completed),
+</I>&gt;&gt;<i> there is no &quot;TX message pre-loading&quot; capability as you describe it.
+</I>&gt;<i> Oops - my bad.
+</I>&gt;<i>
+</I>&gt;<i> And correct me if I'm wrong - but I think in the WSJT 9 program when you
+</I>&gt;<i> change the selection it doesn't change what is being sent.  (I'm new to
+</I>&gt;<i> WSJT-X and the HF world coming from EME.)
+</I>&gt;<i>
+</I>&gt;<i> I've probably done this on quite a few QSO's - if it is changing the bits
+</I>&gt;<i> being sent I must look like quite the LID!
+</I>&gt;<i>
+</I>&gt;<i> I wonder then ... how does the decoder handle / tolerate this?  (What did
+</I>&gt;<i> the receiving stations see when I did this?)
+</I>&gt;<i>
+</I>&gt;<i> If it is OK to do in the first few seconds of the transmission (switch to a
+</I>&gt;<i> different message) and the other side gets it right - that's cool ...
+</I>&gt;<i> otherwise I think that being able to change messages in the middle of a
+</I>&gt;<i> stream &lt;sic&gt; isn't necessarily a good feature.  (I guess I'd rather have the
+</I>&gt;<i> buttons either inop or buffered until after the transmission completes.)
+</I>I'm not certain on the exact logic or decoder behaviour but I believe 
+that it is quite possible to change the outgoing message up to around 
+half way through the TX period (~+25s) and have the QSO partner decode 
+the latter message successfully.
+
+I suspect that free text messages are least likely to be decoded when 
+started late as they have the lowest level of forward error correction, 
+but nevertheless solid reception for a complete period is not required 
+for a decode.
+
+It also appears that the message being received at the end of the period 
+is most likely to be decoded.
+
+So as you can see it is quite reasonable for the program to allow you to 
+change your mind at least part way into the TX period.
+&gt;<i>
+</I>&gt;<i> Bob W1QA
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002122.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality
+</A></li>
+	<LI>Next message: <A HREF="002111.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 duplicate JT9 decodes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2123">[ date ]</a>
+              <a href="thread.html#2123">[ thread ]</a>
+              <a href="subject.html#2123">[ subject ]</a>
+              <a href="author.html#2123">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

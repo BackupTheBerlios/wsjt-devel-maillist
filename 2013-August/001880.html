@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Question - WSJT-X: CMake scrips
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20-%20WSJT-X%3A%20CMake%20scrips&In-Reply-To=%3C1376763405.69117.YahooMailNeo%40web125504.mail.ne1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001875.html">
+   <LINK REL="Next"  HREF="001881.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Question - WSJT-X: CMake scrips</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Question%20-%20WSJT-X%3A%20CMake%20scrips&In-Reply-To=%3C1376763405.69117.YahooMailNeo%40web125504.mail.ne1.yahoo.com%3E"
+       TITLE="[Wsjt-devel] Question - WSJT-X: CMake scrips">ki7mt at yahoo.com
+       </A><BR>
+    <I>Sat Aug 17 20:16:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001875.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001881.html">[Wsjt-devel] Question - WSJT-X: CMake scrips
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1880">[ date ]</a>
+              <a href="thread.html#1880">[ thread ]</a>
+              <a href="subject.html#1880">[ subject ]</a>
+              <a href="author.html#1880">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Bill,
+
+I'll be finishing a major update today to the script I sent you the other day. It now takes into account, the following ( I took your advice :-) ):
+
+UPDATE_LOCAL = YES, NO, ASK to update local repo's
+BUILD_OPTIONS = BOTH, DEBUG or RELEASE
+SRC / where you source files will be located.
+DEBUG directory / put that where ya want it
+RELEASE directory also put that where you want it
+
+Next release will allow for: getopts command line options, adding custom Qt5 Lib DIR etc etc.
+
+I'll be adding gui stuff and allot more test / failure event &#160;handling over the next few days.
+
+Questions:
+
+
+In an earlier e-mail, you said we don't need to re-run CMake after an svn update to a new wsjtx-rxxx number if we've ran it once before. How can I test against that, is there a specific file placed in the /src/wsjtx source folder or are all the CMake conf / generated files placed in the destination folders ?
+
+I just need to add the logic to the script as to when too or when not too re-run Cmake directives.
+
+Thanks
+Greg
+KI7MT
+
+
+________________________________
+ From: Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+To: Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; 
+Cc: &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt; 
+Sent: Saturday, August 17, 2013 5:35 AM
+Subject: Re: [Wsjt-devel] WSJT-X: CMake scripts
+ 
+
+
+On 15/08/2013 20:08, Greg Beam wrote:
+Hi Greg,
+
+Hi Bill,&#160;
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Indeed, my verification needed verifying :-)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>cd ~/Projects/test-install/bin
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>then
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>./wsjtx
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>without the [ ./test-install/bin ] path added, else ./wsjtx would not have run at all, as the path does not exist.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>As for the execute bits / ownership, looks good here &quot;I think&quot;:
+</I>&gt;<i>
+</I>&gt;<i>-rwxr-xr-x 1 ki7mt ki7mt 71842 Aug 14 23:22 ./kvasd
+</I>&gt;<i>
+</I>&gt;<i>-rwxr-xr-x 1 ki7mt ki7mt 889121 Aug 14 23:23 ./wsjtx
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>This must be somethign silly Im doing or not doing, 
+</I>&gt;<i>
+</I>I think I've got to the root of this issue.
+
+The kvasd URL on Joes website is a very old 32-bit Linux executable
+    which won't run on a modern 64-bit Linux without additional support
+    libraries. If you download the following version from the SVN
+    repository:
+
+<A HREF="http://svn.berlios.de/wsvn/wsjt/trunk/KVASD_g95">http://svn.berlios.de/wsvn/wsjt/trunk/KVASD_g95</A>
+
+and copy over the kvasd in you run directory.
+
+Try running it from the command line. If you get:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-install/bin$ ./kvasd
+bash: ./kvasd: No such file or directory
+
+then it is looking for a 32-bit shared library loader. To verify
+    type:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-install/bin$ readelf -l kvasd
+
+Elf file type is EXEC (Executable file)
+Entry point 0x8049090
+There are 7 program headers, starting at offset 52
+
+Program Headers:
+&#160; Type&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Offset&#160;&#160; VirtAddr&#160;&#160; PhysAddr&#160;&#160; FileSiz MemSiz&#160; Flg
+    Align
+&#160; PHDR&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x000034 0x08048034 0x08048034 0x000e0 0x000e0 R E
+    0x4
+&#160; INTERP&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x000114 0x08048114 0x08048114 0x00013 0x00013 R&#160;&#160;
+    0x1
+&#160;&#160;&#160;&#160;&#160; [Requesting program interpreter: /lib/ld-linux.so.2]
+&#160; LOAD&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x000000 0x08048000 0x08048000 0x388f0 0x388f0 R E
+    0x1000
+&#160; LOAD&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x0388f0 0x080818f0 0x080818f0 0x00bf4 0x06320 RW&#160;
+    0x1000
+&#160; DYNAMIC&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x038904 0x08081904 0x08081904 0x000d0 0x000d0 RW&#160;
+    0x4
+&#160; NOTE&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0x000128 0x08048128 0x08048128 0x00020 0x00020 R&#160;&#160;
+    0x4
+&#160; GNU_STACK&#160;&#160;&#160;&#160;&#160; 0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE
+    0x4
+
+&#160;Section to Segment mapping:
+&#160; Segment Sections...
+&#160;&#160; 00&#160;&#160;&#160;&#160; 
+&#160;&#160; 01&#160;&#160;&#160;&#160; .interp 
+&#160;&#160; 02&#160;&#160;&#160;&#160; .interp .note.ABI-tag .hash .dynsym .dynstr .gnu.version
+    .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata
+    .eh_frame 
+&#160;&#160; 03&#160;&#160;&#160;&#160; .ctors .dtors .jcr .dynamic .got .got.plt .data .bss 
+&#160;&#160; 04&#160;&#160;&#160;&#160; .dynamic 
+&#160;&#160; 05&#160;&#160;&#160;&#160; .note.ABI-tag 
+&#160;&#160; 06&#160;&#160;&#160;&#160; 
+
+Note the line: &#160;&#160;&#160; [Requesting program interpreter:
+    /lib/ld-linux.so.2]
+
+This you can fix by adding 32-bit x86 loader support to your system.
+    In my case that means installing the libc-i386 package:
+
+sudo apt-get install libc-i386
+
+as a last check run ldd on the executable to ensure all dependencies
+    are satisfied:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bill at ubuntu-x64-vbox</A>:~/test-install/bin$ ldd kvasd
+&#160;&#160;&#160; linux-gate.so.1 =&gt;&#160; (0xf7712000)
+&#160;&#160;&#160; libm.so.6 =&gt; /lib32/libm.so.6 (0xf76b5000)
+&#160;&#160;&#160; libc.so.6 =&gt; /lib32/libc.so.6 (0xf7505000)
+&#160;&#160;&#160; /lib/ld-linux.so.2 (0xf7713000)
+
+Then you should be good to go.
+
+
+&gt;<i>
+</I>&gt;<i>73's
+</I>&gt;<i>Greg
+</I>&gt;<i>KI7MT
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130817/ee641a09/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130817/ee641a09/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001875.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001881.html">[Wsjt-devel] Question - WSJT-X: CMake scrips
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1880">[ date ]</a>
+              <a href="thread.html#1880">[ thread ]</a>
+              <a href="subject.html#1880">[ subject ]</a>
+              <a href="author.html#1880">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] CMake questions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CMake%20questions&In-Reply-To=%3C520E2D5C.9060906%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001858.html">
+   <LINK REL="Next"  HREF="001861.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] CMake questions</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CMake%20questions&In-Reply-To=%3C520E2D5C.9060906%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] CMake questions">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Aug 16 15:47:08 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001858.html">[Wsjt-devel] CMake questions
+</A></li>
+        <LI>Next message: <A HREF="001861.html">[Wsjt-devel] Fwd: WSJT-X v1.2 r3556, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1859">[ date ]</a>
+              <a href="thread.html#1859">[ thread ]</a>
+              <a href="subject.html#1859">[ subject ]</a>
+              <a href="author.html#1859">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 16/08/2013 14:31, Joe Taylor wrote:
+&gt;<i> Hi all,
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;<i> I've been away for a few days, and I'm way behind on answering some 
+</I>&gt;<i> good questions about the best way forward.   I'll try to catch up 
+</I>&gt;<i> today -- this is important, because for two weeks starting Sunday I'll 
+</I>&gt;<i> be traveling and mostly out of email contact.
+</I>&gt;<i>
+</I>&gt;<i> Here's a simple CMake question for Bill, to get me started while I 
+</I>&gt;<i> compose a longer message or two.
+</I>&gt;<i>
+</I>&gt;<i> Yesterday I built WSJT-X r3551 using your CMake script in MinGW. These 
+</I>&gt;<i> were the final build steps:
+</I>&gt;<i>
+</I>&gt;<i> C:\Users\joe\build\wsjtx\Release&gt; cmake -G &quot;MinGW Makefiles&quot; 
+</I>&gt;<i> -DCMAKE_TOOLCHAIN_FILE=c:\users\joe\Toolchain.cmake 
+</I>&gt;<i> -DCMAKE_BUILD_TYPE=*Release*
+</I>&gt;<i> -DCMAKE_INSTALL_PREFIX=\Users\joe\test_install \Users\joe\wsjt\wsjtx
+</I>&gt;<i> C:\Users\joe\build\wsjtx\Release&gt; mingw32-make install
+</I>&gt;<i>
+</I>&gt;<i> This morning I updated files in the source tree to r3555, and did another
+</I>&gt;<i>
+</I>&gt;<i> C:\Users\joe\build\wsjtx\Release&gt; mingw32-make install
+</I>&gt;<i>
+</I>&gt;<i> Since a number of files in the source tree had been changed, I 
+</I>&gt;<i> expected that new versions of wsjtx.exe and jt9.exe would be produced 
+</I>&gt;<i> in the test_install directory, but they were not.
+</I>&gt;<i>
+</I>&gt;<i> What am I not understanding, here?
+</I>You don't appear to have misunderstood or done anything wrong. I assume 
+those '*' characters were not there in the real cmake command. I think 
+they may have come through via cut &amp; paste from my e-mail. I had marked 
+'Release' in bold to point out the difference in the second cmake 
+command for the release variant build. If they were there then try 
+rerunning the cmake command without the '*' characters then doing the 
+'mingw-make install' again.
+
+There are two other possibilities:
+
+1) There were build errors.
+2) I've messed up the CMake scripts :(
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001858.html">[Wsjt-devel] CMake questions
+</A></li>
+	<LI>Next message: <A HREF="001861.html">[Wsjt-devel] Fwd: WSJT-X v1.2 r3556, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1859">[ date ]</a>
+              <a href="thread.html#1859">[ thread ]</a>
+              <a href="subject.html#1859">[ subject ]</a>
+              <a href="author.html#1859">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

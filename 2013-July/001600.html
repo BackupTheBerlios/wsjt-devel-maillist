@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio supported in Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F6D60E.9050508%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001599.html">
+   <LINK REL="Next"  HREF="001601.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio supported in Qt5</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F6D60E.9050508%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Audio supported in Qt5">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Jul 29 22:52:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001599.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+        <LI>Next message: <A HREF="001601.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1600">[ date ]</a>
+              <a href="thread.html#1600">[ thread ]</a>
+              <a href="subject.html#1600">[ subject ]</a>
+              <a href="author.html#1600">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29/07/2013 21:14, Joe Taylor wrote:
+&gt;<i> Hi Bill,
+</I>&gt;<i>
+</I>&gt;<i> Yes: ncalls, m_SamFacIn, m_nBusy, and m_dataSinkBusy are vestigial 
+</I>&gt;<i> remains of previous testing.  They can safely be removed.
+</I>OK thanks for that info, that nicely reduces safety hazards.
+&gt;<i>
+</I>&gt;<i> As for index k=-1: I'm not sure where you thought that might arise, 
+</I>&gt;<i> but it doesn't sound right.  I think it should always be &gt;=0...  
+</I>&gt;<i> although symspec() would probably not much care if it saw a -1.
+</I>
+I think it goes like this:
+
+   // Reset buffer pointer and symbol number at start of minute
+   if(ntr &lt; m_ntr0 or !m_monitoring or m_nsps!=m_nsps0) {
+     m_nstep0=0;
+     m_nsps0=m_nsps;
+     m_callbackData.bzero=true;
+   }
+
+                                                         &lt;--- Callback 
+starts between these statements in another context
+clears m_callbackData.kin due to code above when ntr is zero
+                                                                 next 
+line reads back k=0 which leads to readyForFFT(-1)
+
+
+   int k=m_callbackData.kin;
+   if(m_monitoring) {
+     int kstep=m_nsps/2;
+     //      m_step=k/kstep;
+     m_step=(k-1)/kstep;
+     if(m_step != m_nstep0) {
+       if(m_dataSinkBusy) {
+     m_nBusy++;
+       } else {
+     //          m_dataSinkBusy=true;
+     //          emit readyForFFT(k);         //Signal to compute new FFTs
+     emit readyForFFT(k-1);         //Signal to compute new FFTs
+       }
+       m_nstep0=m_step;
+     }
+   }
+
+Even though the callback writes kin again before it finishes, the 
+interleaving of the code is a race condition for the value of kin. At 
+least on a uni-processor machine it won't happen, but a multi processor 
+machine could read back kin before that second update, so it's still a 
+hazard on an implementation that processes the callback on a different core.
+
+It's unlikely to happen but is definitely possible. Like I said in a 
+previous post shared variables across thread/contexts are very difficult 
+to get right.
+
+I might be wrong here, just thinking about this stuff makes my brain ache.
+&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>
+73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001599.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+	<LI>Next message: <A HREF="001601.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1600">[ date ]</a>
+              <a href="thread.html#1600">[ thread ]</a>
+              <a href="subject.html#1600">[ subject ]</a>
+              <a href="author.html#1600">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

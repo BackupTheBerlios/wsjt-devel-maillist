@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt-x 1.1 Commander Open Rig fail only for freqs less than 10000kHz
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt-x%201.1%20Commander%20Open%20Rig%20fail%20only%20for%20freqs%0A%20less%20than%2010000kHz&In-Reply-To=%3C51D6B7DA.1030400%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001463.html">
+   <LINK REL="Next"  HREF="001467.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt-x 1.1 Commander Open Rig fail only for freqs less than 10000kHz</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt-x%201.1%20Commander%20Open%20Rig%20fail%20only%20for%20freqs%0A%20less%20than%2010000kHz&In-Reply-To=%3C51D6B7DA.1030400%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] wsjt-x 1.1 Commander Open Rig fail only for freqs less than 10000kHz">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul  5 14:11:06 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001463.html">[Wsjt-devel] wsjt-x 1.1 Commander Open Rig fail only for freqs less	than 10000kHz
+</A></li>
+        <LI>Next message: <A HREF="001467.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1464">[ date ]</a>
+              <a href="thread.html#1464">[ thread ]</a>
+              <a href="subject.html#1464">[ subject ]</a>
+              <a href="author.html#1464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Laurie, Murray, and all,
+
+Oooohh, Laurie, many thanks for catching the frequency-reading error! 
+The bug is in WSJT-X, and it has been fixed already in the SVN 
+repository; but I will not be able to post a new installation package 
+until early next week.
+
+At that time I will also add Tx mode to the wsjtx_status.txt file, and 
+(as a minimum) will implement an option &quot;No split Tx frequency&quot; to use 
+when there's no CAT control and/or the Tx filter is wide enough to cover 
+the desired range of Tx frequencies.
+
+And fix any other bugs that turn up over the weekend, hi.
+
+Murray -- many thanks for your offer.  By all means, take on the task of 
+implementing Edson's idea of having an &quot;Antenna info&quot; entry for each 
+band on the &quot;Default Frequancies&quot; tab.  At the same time, here's another 
+idea for that tab: suppose we change all the default frequencies to the 
+nominal JT65 valuse, and add a checkbox next to each one.  The meaning 
+of the checkbox is &quot;add 2 kHz when running in JT9-only mode&quot;.  Does this 
+make sense?
+
+Murray, I'll be happy to add you to the WSJT developers list (but won't 
+get to it until next week).
+
+	-- 73 until Monday, Joe, K1JT
+
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001463.html">[Wsjt-devel] wsjt-x 1.1 Commander Open Rig fail only for freqs less	than 10000kHz
+</A></li>
+	<LI>Next message: <A HREF="001467.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1464">[ date ]</a>
+              <a href="thread.html#1464">[ thread ]</a>
+              <a href="subject.html#1464">[ subject ]</a>
+              <a href="author.html#1464">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] A newbie's first steps...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20A%20newbie%27s%20first%20steps...&In-Reply-To=%3C47B5BCBD.7000602%40uni-ulm.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000212.html">
+   <LINK REL="Next"  HREF="000214.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] A newbie's first steps...</H1>
+    <B>Christoph Fischer</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20A%20newbie%27s%20first%20steps...&In-Reply-To=%3C47B5BCBD.7000602%40uni-ulm.de%3E"
+       TITLE="[Wsjt-devel] A newbie's first steps...">christoph.fischer at uni-ulm.de
+       </A><BR>
+    <I>Fri Feb 15 17:24:29 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000212.html">[Wsjt-devel] Join WSJT development
+</A></li>
+        <LI>Next message: <A HREF="000214.html">[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;} the in start_portaudio.c.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everybody,
+
+I am new to WSJT development and just uploaded my first patch. I hope it
+makes sense...
+
+While working on the code i found out one strange thing:
+The programm does not compile until i outcomment {#include &quot;pthread.h&quot;}
+the in start_portaudio.c. I think it must have something to do with my
+setup as obviously nobody else is seeing this. Maybe it's the GCC 4.2.2?
+
+Another thing I noticed is that the KVASD_gfortran does't work because
+the file libgfortran.so.1 is missing. I experimented with the
+libgfortran files on my system but could not get them accepted. This
+also must have something to do with the gcc-version, i suppose.
+
+Now the most important question for me as it has to do with my own
+studies: Have there been any atempts to implement some Freeware Soft
+Decision RS decoder?
+
+73 and happy hacking
+Chris
+DC6GF
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000212.html">[Wsjt-devel] Join WSJT development
+</A></li>
+	<LI>Next message: <A HREF="000214.html">[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;} the in start_portaudio.c.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

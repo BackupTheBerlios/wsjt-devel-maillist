@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] DC6GF #include &quot;pthread.h&quot;}	the	in	start_portaudio.c.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DC6GF%20%23include%20%22pthread.h%22%7D%0A%09the%09in%09start_portaudio.c.&In-Reply-To=%3C1203189102.27838.6.camel%40enterprise.gimmel.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000219.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;}	the	in	start_portaudio.c.</H1>
+    <B>Tim Gimmel</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DC6GF%20%23include%20%22pthread.h%22%7D%0A%09the%09in%09start_portaudio.c.&In-Reply-To=%3C1203189102.27838.6.camel%40enterprise.gimmel.org%3E"
+       TITLE="[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;}	the	in	start_portaudio.c.">tjg at henderson.net
+       </A><BR>
+    <I>Sat Feb 16 20:11:42 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;} the	in	start_portaudio.c.
+</A></li>
+        <LI>Next message: <A HREF="000219.html">[Wsjt-devel] Short messages bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 2008-02-16 at 12:20 +0200, Harry Popov wrote:
+&gt;<i> Hi CHris,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; The question that prevents me from applying this patch is: Did nobody
+</I>&gt;<i> &gt; else see this or am i the first one to compile WSJT under GNULinux?
+</I>&gt;<i> 
+</I>&gt;<i> Yes some thing is broken in last revision. I can not compile too. Debian
+</I>&gt;<i> unstable here.
+</I>&gt;<i> 
+</I>&gt;<i> start_portaudio.c:27: error: expected &#8216;{&#8217; at end of input
+</I>&gt;<i> error: Command &quot;gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv
+</I>&gt;<i> -O2 -Wall -Wstrict-prototypes -fPIC -DPACKAGE_NAME=&quot;wsjt&quot;
+</I>&gt;<i> -DPACKAGE_TARNAME=&quot;wsjt&quot; -DPACKAGE_VERSION=&quot;5.9.6&quot;
+</I>&gt;<i> -DPACKAGE_STRING=&quot;wsjt 5.9.6&quot; -DPACKAGE_BUGREPORT=&quot;&quot; -DSTDC_HEADERS=1
+</I>&gt;<i> -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1
+</I>&gt;<i> -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1
+</I>&gt;<i> -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1
+</I>&gt;<i> -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1
+</I>&gt;<i> -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1
+</I>&gt;<i> -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1
+</I>&gt;<i> -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1
+</I>&gt;<i> -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1
+</I>&gt;<i> -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1
+</I>&gt;<i> -DSIZEOF_INT64_T=8 -DSIZEOF_LONG_LONG=8 -DNDEBUG=1
+</I>&gt;<i> -DPREFIX=&quot;/usr/local/&quot;
+</I>&gt;<i> -DFC_LIB_PATH=&quot;/usr/lib/gcc/i486-linux-gnu/4.3.0/&quot;
+</I>&gt;<i> -DFC=&quot;/usr/bin/gfortran&quot; -DUSE_PORTAUDIO=1 -DHAS_ASOUNDLIB_H=1
+</I>&gt;<i> -DHAS_SOUNDCARD_H=1 -DHAS_JACK_H=1 -DHAS_SAMPLERATE_H=1
+</I>&gt;<i> -Iportaudio-v19/include -I/usr/include/alsa -I/usr/local/include/alsa
+</I>&gt;<i> -I. -I/usr/include/python2.4 -I/tmp/tmpH2JVBG/src
+</I>&gt;<i> -I/usr/include/python2.4 -c start_portaudio.c
+</I>&gt;<i> -o /tmp/tmpH2JVBG/start_portaudio.o&quot; failed with exit status 1
+</I>&gt;<i> make: *** [Audio.so] Error 1
+</I>&gt;<i> 
+</I>Just a note, on my machine running Debian Etch, 630 compiles, but does
+not create the Audio.so file.  If you run make again, the Audio.so is
+created.  Here is error output from compile:
+
+In file included from src/common/pa_converters.c:54:
+src/common/pa_endianness.h:92:1: warning: &quot;PA_LITTLE_ENDIAN&quot; redefined
+&lt;command line&gt;:1:1: warning: this is the location of the previous
+definition
+error: 
+Command &quot;/usr/bin/gfortran -Wall
+-shared /tmp/tmpGQEu0C/ptt_unix.o /tmp/tmpGQEu0C/igray.o /tmp/tmpGQEu0C/wrapkarn.o /tmp/tmpGQEu0C/jtaudio.o /tmp/tmpGQEu0C/resample.o /tmp/tmpGQEu0C/start_portaudio.o /tmp/tmpGQEu0C/tmp/tmpGQEu0C/src.linux-i686-2.4/Audiomodule.o /tmp/tmpGQEu0C/tmp/tmpGQEu0C/src.linux-i686-2.4/fortranobject.o /tmp/tmpGQEu0C/abc441.o /tmp/tmpGQEu0C/astro0.o /tmp/tmpGQEu0C/audio_init.o /tmp/tmpGQEu0C/azdist0.o /tmp/tmpGQEu0C/blanker.o /tmp/tmpGQEu0C/decode1.o /tmp/tmpGQEu0C/decode2.o /tmp/tmpGQEu0C/decode3.o /tmp/tmpGQEu0C/ftn_init.o /tmp/tmpGQEu0C/ftn_quit.o /tmp/tmpGQEu0C/get_fname.o /tmp/tmpGQEu0C/getfile.o /tmp/tmpGQEu0C/horizspec.o /tmp/tmpGQEu0C/hscroll.o /tmp/tmpGQEu0C/i1tor4.o /tmp/tmpGQEu0C/pix2d.o /tmp/tmpGQEu0C/pix2d65.o /tmp/tmpGQEu0C/rfile.o /tmp/tmpGQEu0C/savedata.o /tmp/tmpGQEu0C/spec.o /tmp/tmpGQEu0C/wsjtgen.o /tmp/tmpGQEu0C/runqqq.o /tmp/tmpGQEu0C/fivehz.o /tmp/tmpGQEu0C/msgparms.o /tmp/tmpGQEu0C/a2d.o /tmp/tmpGQEu0C/tmp/tmpGQEu0C/src.linux-i686-2.4/Audio-f2pywrappers.o 
+init_rs.o encode_rs.o decode_rs.o fano.o tab.o cutil.o wsjt1.o astro.o 
+azdist.o coord.o dcoord.o deg2grid.o dot.o ftsky.o geocentric.o
+GeoDist.o 
+grid2deg.o moon2.o MoonDop.o sun.o toxyz.o pfxdump.o avesp2.o bzap.o 
+spec441.o spec2d.o mtdecode.o stdecode.o indexx.o s2shape.o flat2.o
+gen65.o 
+gen24.o entail.o genmet.o wsjt24.o sync24.o ps24.o fourt.o xcor24.o 
+decode24.o chkmsg.o gen6m.o gentone.o interleave24.o syncf0.o syncf1.o 
+synct.o decode6m.o avemsg6m.o set.o flatten.o db.o pctile.o sort.o
+ssort.o 
+ps.o smooth.o ping.o longx.o peakup.o sync.o detect.o avemsg65.o
+decode65.o 
+demod64a.o encode65.o extract.o chkhist.o flat1.o four2.o rfile2.o
+gencw.o 
+gencwid.o msgtype.o getpfx1.o getpfx2.o getsnr.o graycode.o grid2k.o 
+interleave63.o k2grid.o limit.o lpf1.o morse.o nchar.o packcall.o
+packgrid.o 
+packmsg.o packtext.o setup65.o short65.o slope.o spec2d65.o sync65.o 
+unpackcall.o unpackgrid.o unpackmsg.o unpacktext.o xcor.o xfft.o
+xfft2.o 
+wsjt65.o ftpeak65.o fil651.o fil652.o fil653.o symsync65.o decodecw.o 
+foldcw.o deep65.o 
+portaudio-v19/lib/.libs/libportaudio.a -L/usr/local/lib
+-L/usr/lib/gcc/i486-linux-gnu/4.1.2/ -lasound -lpthread -lrt
+-lsamplerate -lgfortran -o ./Audio.so&quot; 
+failed with exit status 1
+make: *** [Audio.so] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from src/common/pa_front.c:100:
+src/common/pa_endianness.h:92:1: warning: &quot;PA_LITTLE_ENDIAN&quot; redefined
+&lt;command line&gt;:1:1: warning: this is the location of the previous
+definition
+
+
+Regards,
+Tim, KB4AMA
+
+&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[Wsjt-devel] DC6GF #include &quot;pthread.h&quot;} the	in	start_portaudio.c.
+</A></li>
+	<LI>Next message: <A HREF="000219.html">[Wsjt-devel] Short messages bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#223">[ date ]</a>
+              <a href="thread.html#223">[ thread ]</a>
+              <a href="subject.html#223">[ subject ]</a>
+              <a href="author.html#223">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

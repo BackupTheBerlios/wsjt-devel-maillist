@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20%5Bwsjtgroup%5D%20V1.2%20r3563%20crashes&In-Reply-To=%3CCALNQy4-yYCEJmDL6gdgWgdtS8_QiniqebsxSs%3DA2fxh0uGUd%3DA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001897.html">
+   <LINK REL="Next"  HREF="001905.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20%5Bwsjtgroup%5D%20V1.2%20r3563%20crashes&In-Reply-To=%3CCALNQy4-yYCEJmDL6gdgWgdtS8_QiniqebsxSs%3DA2fxh0uGUd%3DA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed Sep  4 19:18:37 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001897.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+        <LI>Next message: <A HREF="001905.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1903">[ date ]</a>
+              <a href="thread.html#1903">[ thread ]</a>
+              <a href="subject.html#1903">[ subject ]</a>
+              <a href="author.html#1903">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everyone,
+
+I've took a look at the code and it may be possible that a DNS loopkup
+failure could cause problems due to an returned empty list of IP addresses.
+This could very well explain the random crashes some users have been
+having. I have inserted some error check code to prevent the issue.
+Apologies for the oversight.
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, Sep 3, 2013 at 5:31 PM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+
+&gt;<i> On 03/09/2013 21:11, John Nelson wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi John, Joe, ...
+</I>&gt;<i>
+</I>&gt;<i>  Joe writes;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Could this be another case of dodgy behavior when internet connectivity
+</I>&gt;&gt;&gt;<i> is lost?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> In reference go Jean-Marc's query.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is it not the case that the only use of internet connectivity is PSK
+</I>&gt;&gt;<i> Reporter.  But this just opens a socket and puts out UDP datagrams which
+</I>&gt;&gt;<i> just fall on the floor if there is no internet.   How does this cause a
+</I>&gt;&gt;<i> crash?
+</I>&gt;&gt;<i>
+</I>&gt;<i> The problem usually lies with the DNS lookups rather than the socket
+</I>&gt;<i> connection. If connections are being re-established then an absence of a
+</I>&gt;<i> DNS server might be causing the crash.
+</I>&gt;<i>
+</I>&gt;<i> Best test is to use a raw ip address for a test and see if that behaves
+</I>&gt;<i> better.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> As a test, I disconnected my MacBook from the LAN here and it continues
+</I>&gt;&gt;<i> happily decoding on 20m as I would expect.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Does WIndows raise an interrupt if UDP datagrams don;t get transmitted?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> John
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130904/55662759/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130904/55662759/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001897.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+	<LI>Next message: <A HREF="001905.html">[Wsjt-devel] Fwd: [wsjtgroup] V1.2 r3563 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1903">[ date ]</a>
+              <a href="thread.html#1903">[ thread ]</a>
+              <a href="subject.html#1903">[ subject ]</a>
+              <a href="author.html#1903">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

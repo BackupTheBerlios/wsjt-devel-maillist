@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C520001D9.40203%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001704.html">
+   <LINK REL="Next"  HREF="001708.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C520001D9.40203%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Aug  5 21:49:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001704.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001708.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1707">[ date ]</a>
+              <a href="thread.html#1707">[ thread ]</a>
+              <a href="subject.html#1707">[ subject ]</a>
+              <a href="author.html#1707">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 05/08/2013 19:54, Edson W. R. Pereira wrote:
+Hi Edson,
+&gt;<i> John,
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Aug 5, 2013 at 3:03 PM, John Nogatch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jnogatch at gmail.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     2. Detector.cpp:44:95: error: no matching function for call to
+</I>&gt;<i>     'min(long long unsigned int, size_t)'
+</I>&gt;<i>        As a work-around, I inserted a cast, but it would be better if both
+</I>&gt;<i>     expressions were of type size_t.
+</I>&gt;<i>       qint64 framesAccepted (std::min (maxSize / sizeof (jt9com_.d2[0]),
+</I>&gt;<i>     (long long unsigned int) framesAcceptable));
+</I>&gt;<i>        Even after that cast is inserted on line 44, gcc warns about
+</I>&gt;<i>     line 46:
+</I>&gt;<i>          if (framesAccepted &lt; maxSize / sizeof (jt9com_.d2[0]))
+</I>&gt;<i>     Detector.cpp: In member function 'virtual qint64
+</I>&gt;<i>     Detector::writeData(const char*, qint64)':
+</I>&gt;<i>     Detector.cpp:46:55: warning: comparison between signed and unsigned
+</I>&gt;<i>     integer expressions [-Wsign-compare]
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I had to do the same change here.
+</I>&gt;<i>
+</I>&gt;<i> Bill, may I suggest we use the native Qt functions in QtGlobals (min, 
+</I>&gt;<i> max, rand, etc) as much as possible instead of using the STL? This 
+</I>&gt;<i> will help us keep the code tidy.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://qt-project.org/doc/qt-5.1/qtcore/qtglobal.html">http://qt-project.org/doc/qt-5.1/qtcore/qtglobal.html</A>
+</I>
+Will do. I'm too used to using standard C++ library, on auto pilot.
+&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/ed73d771/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/ed73d771/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001704.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001708.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1707">[ date ]</a>
+              <a href="thread.html#1707">[ thread ]</a>
+              <a href="subject.html#1707">[ subject ]</a>
+              <a href="author.html#1707">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

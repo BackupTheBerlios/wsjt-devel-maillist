@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r873
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r873&In-Reply-To=%3C1215181863.3769.33.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000397.html">
+   <LINK REL="Next"  HREF="000402.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r873</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r873&In-Reply-To=%3C1215181863.3769.33.camel%40ham%3E"
+       TITLE="[Wsjt-devel] r873">lz1bb at mail.bg
+       </A><BR>
+    <I>Fri Jul  4 16:31:02 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000397.html">[Wsjt-devel] r873
+</A></li>
+        <LI>Next message: <A HREF="000402.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diane,
+
+On Thu, 2008-07-03 at 18:40 -0400, Diane Bruce wrote:
+&gt;<i> No. But no worries, I have been puzzling over it since you originally posted it.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; ******************************************************************
+</I>&gt;<i> &gt; WSJT Version 7.0 r876 , by K1JT
+</I>&gt;<i> &gt; Revision date: 2008-07-04 00:12:44 +0300 (Fri, 04 Jul 2008)
+</I>&gt;<i> &gt; Run date:   Thu Jul  3 22:01:41 2008 UTC
+</I>&gt;<i> &gt; 0-th dimension must be 12 but got 0 (not defined).
+</I>&gt;<i> 
+</I>&gt;<i> That leads me to believe there is something wrong with your f2py.
+</I>&gt;<i> The dimension 12 comes from the fortran code.
+</I>
+Right in the nose. I deinstaled python-numpy the package which instals
+f2py on my Debian Testing. Downloaded and installed F2PY and scipy from
+the original development source and all is almost fine. I do compile
+wsjt with g95. I did try python-numpy from the original development
+source (not Debian package) but the things broke again with the same
+error. I guess f2py has changed and this is the reason wsjt does not
+work on the last modern distributions. I say almost fine as gfortran is
+unusable here. But all is fine with g95. I have usable WSJT again.
+
+Now I am back on the stage when wsjt r383 (the last release) compiles
+with gfortran but crashes with segmentation fault. This was reported.
+The last SVN revision can not be compiled with gfortran. This was
+reported too. Both revisions compile and work fine with g95. But this
+seems to be another story.
+
+Thank you Diane!
+
+73, Harry LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000397.html">[Wsjt-devel] r873
+</A></li>
+	<LI>Next message: <A HREF="000402.html">[Wsjt-devel] r873
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

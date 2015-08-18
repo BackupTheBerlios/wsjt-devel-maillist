@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: WSJT-X v1.1 and Default frequencies for JT65 and	JT9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.1%20and%20Default%20frequencies%20for%20JT65%20and%0A%09JT9&In-Reply-To=%3C51E05F97.7060100%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001502.html">
+   <LINK REL="Next"  HREF="001504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: WSJT-X v1.1 and Default frequencies for JT65 and	JT9</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.1%20and%20Default%20frequencies%20for%20JT65%20and%0A%09JT9&In-Reply-To=%3C51E05F97.7060100%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Fwd: WSJT-X v1.1 and Default frequencies for JT65 and	JT9">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Jul 12 21:57:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001502.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+        <LI>Next message: <A HREF="001504.html">[Wsjt-devel] wsjt-x v1.1r3480
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1503">[ date ]</a>
+              <a href="thread.html#1503">[ thread ]</a>
+              <a href="subject.html#1503">[ subject ]</a>
+              <a href="author.html#1503">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>FYI, the message appended below was sent to the wsjtgroup reflector.
+
+	-- Joe, K1JT
+
+#########################################################################
+Subject: WSJT-X v1.1 and Default frequencies for JT65 and JT9
+Date: Fri, 12 Jul 2013 15:55:45 -0400
+From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjtgroup at yahoogroups.com</A>
+
+Hi all,
+
+Thanks for the input in response to my questions, both on this reflector
+and off-list.
+
+I've concluded that the best solutions for startup default frequencies
+in WSJT-X are these:
+
+Band  Dial Freq
+  (m)    (MHz)
+---------------
+  160    1.838
+   80    3.576
+   60    5.357
+   40    7.076
+   30   10.138
+   20   14.076
+   17   18.102
+   15   21.076
+   12   24.917
+   10   28.076
+    6   50.276
+
+With these dial frequency settings JT65 signals would be expected at
+audio frequencies 270 to 2270 Hz, JT9 signals at 2500 to 4000 Hz.
+
+For operators who cannot use the extended bandwidth capability of WSJT-X
+v1.1, the program now has a checkbox labeled &quot;+ 2 kHz&quot;, just under the
+band selector.  With that box checked, selecting 20 m will set your dial
+frequency to 14.078 rather than 14.076, with no need to edit the default
+frequency table.
+
+I believe this scheme will work well on all bands except 30 m.  On that
+band, with dial frequency 10.138 the 200 Hz &quot;WSPR band&quot; is from 2100 to
+2300 Hz.  WSJT-X will now accommodate WSPR by refusing to transmit in
+that band.  If you try to do so, the program will pop up this message:
+
+&quot;Please choose another Tx frequency.
+  WSJT-X will not knowingly transmit
+  in the WSPR sub-band on 30 m.&quot;
+
+Rather conveniently, with dial frequency 10.138 MHz the WSPR band is
+located essentially between the JT65 and JT9 segments.
+
+A full release of WSJT-X Version 1.1 will probably be made next week.
+VK3AMA tells me that a compatible release of JT-Alert will be available
+then, as well.
+
+In the meantime, if you'd like to try the latest v1.1 beta release, a
+Windows installation package for r3482 can be downloaded from
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3482.exe">http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3482.exe</A>
+
+Here's a quick list of differences between r3459 and r3482:
+
+1. Operating in &quot;Split Tx&quot; mode is now optional (but of course is
+required if you will transmit above 2.7 kHz).  See &quot;Split Tx&quot; checkbox
+on the Configuration screen.
+
+2. Correct TxMode label now appears on program startup.
+
+3. &quot;Transmitting...&quot; message in ALL.TXT now has the correct TxMode.
+
+4. File wsjt_status.txt includes the TxMode.
+
+5. F4 clears Az, Dist, and the Tx1 through Tx5 message boxes.
+
+6. You can decode JT9 signals in the JT65 frequency range, and
+vice-versa, by double-clicking the signal in the waterfall.
+
+7. Better logic for enabling/disabling the TestPTT button.
+
+8. Do not call getFreq() when the TestPTT button is clicked and
+PTTmethod is via CAT control.
+
+9. New cold-start default frequencies, set at reasonable values for
+JT65, and a &quot;+ 2 kHz&quot; checkbox.
+
+10. A few default Tx macros, as examples.
+
+11. Fixed several bugs in the interaction between WSJT-X and Commander,
+especially for frequency settings below 10 MHz and above 100 MHz.
+
+12. Display the correct UTC on decoded lines, when &quot;Shift+D&quot; has been
+used to do another wideband decode during the following Rx sequence.
+
+13. Correct a flaw in comparing Dial Frequency against a modified
+default frequency setting.
+
+14. The digital gain slider now affects waterfall signal levels.
+
+15. Radio is no longer polled when blue &quot;Decode&quot; button is lit.  On a
+few systems this was found to cause rig-communication problems.
+
+16. Disallow split Tx operation through Ham Radio Deluxe -- it doesn't
+seem to work.
+
+17. Don't knowingly allow transmissions in the WSPR sub-band on 30 m.
+
+18. Many updates to User's Guide.
+
+As always, your thoughtful feedback on the beta release will be much
+appreciated.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001502.html">[Wsjt-devel] WSJTX 1.1 r3480
+</A></li>
+	<LI>Next message: <A HREF="001504.html">[Wsjt-devel] wsjt-x v1.1r3480
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1503">[ date ]</a>
+              <a href="thread.html#1503">[ thread ]</a>
+              <a href="subject.html#1503">[ subject ]</a>
+              <a href="author.html#1503">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

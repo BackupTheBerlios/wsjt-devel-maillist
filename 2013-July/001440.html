@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] GUI cleanup
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20GUI%20cleanup&In-Reply-To=%3C51D1EB19.5080103%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001435.html">
+   <LINK REL="Next"  HREF="001438.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] GUI cleanup</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20GUI%20cleanup&In-Reply-To=%3C51D1EB19.5080103%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] GUI cleanup">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Jul  1 22:48:25 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001435.html">[Wsjt-devel] GUI cleanup
+</A></li>
+        <LI>Next message: <A HREF="001438.html">[Wsjt-devel] Distros
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1440">[ date ]</a>
+              <a href="thread.html#1440">[ thread ]</a>
+              <a href="subject.html#1440">[ subject ]</a>
+              <a href="author.html#1440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sven,
+
+Thanks for your message.  After scratching my head a bit more, I've come 
+to the conclusion that the effect I'm observing is probably the one 
+described here:
+
+<A HREF="http://qt-project.org/doc/qt-4.8/restoring-geometry.html">http://qt-project.org/doc/qt-4.8/restoring-geometry.html</A>
+
+It's not enough of an issue for me to do anything about it, right now.
+
+	-- Joe, K1JT
+
+On 07/01/2013 04:45 AM, DJ5AND wrote:
+&gt;<i> On 30/06/13 10:57, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have been doing some minor cleanup of the WSJT-X GUI, and a platform
+</I>&gt;&gt;<i> difference is bothering me.  The geometry of the two principal windows
+</I>&gt;&gt;<i> is saved in wsjtx.ini on program termination, and restored when the
+</I>&gt;&gt;<i> program is restarted.  In Windows the main window reappears just where
+</I>&gt;&gt;<i> it was before, as expected.  In Linux it reappears about 10 pixels lower
+</I>&gt;&gt;<i> on each restart.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Does anyone know why this happens, and what to do about it?  Is it true
+</I>&gt;&gt;<i> with all Linux window managers?  What about OS X?
+</I>&gt;&gt;<i>
+</I>&gt;<i> I use the window manager MATE and windows appear where they where
+</I>&gt;<i> before. The only difference is when you start an application several
+</I>&gt;<i> times. The one after will always offset the previous one by a certain
+</I>&gt;<i> amount of pixels.
+</I>&gt;<i> I reckon the idea originated when showing error messages. In MS Windows
+</I>&gt;<i> an error message always appears at the same koordinates. Having, lets
+</I>&gt;<i> say 8 of the same error message (which can happen) and trying to close
+</I>&gt;<i> it, one would think it can't be closed (because it re-appears). But in
+</I>&gt;<i> cases it only seems to re-appear because there are other ones below the
+</I>&gt;<i> one you just closed.
+</I>&gt;<i>
+</I>&gt;<i> In Linux, those messages appear offset by a certain amount of pixels, so
+</I>&gt;<i> the user knows there are more than one and not just re-appearing.
+</I>&gt;<i> With application where one doesn't have a taskbar, you see exactly how
+</I>&gt;<i> many times it was started.
+</I>&gt;<i>
+</I>&gt;<i> I hope this helps and makes sense?
+</I>&gt;<i>
+</I>&gt;<i> Sven, VK3SIX (DJ5AND)
+</I>&gt;<i>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001435.html">[Wsjt-devel] GUI cleanup
+</A></li>
+	<LI>Next message: <A HREF="001438.html">[Wsjt-devel] Distros
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1440">[ date ]</a>
+              <a href="thread.html#1440">[ thread ]</a>
+              <a href="subject.html#1440">[ subject ]</a>
+              <a href="author.html#1440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

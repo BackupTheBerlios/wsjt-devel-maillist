@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX v1.2 r3552
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20v1.2%20r3552&In-Reply-To=%3C520D8FB4.1030707%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001851.html">
+   <LINK REL="Next"  HREF="001854.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX v1.2 r3552</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20v1.2%20r3552&In-Reply-To=%3C520D8FB4.1030707%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] WSJTX v1.2 r3552">djmunn at bigpond.com
+       </A><BR>
+    <I>Fri Aug 16 04:34:28 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001851.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+        <LI>Next message: <A HREF="001854.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1852">[ date ]</a>
+              <a href="thread.html#1852">[ thread ]</a>
+              <a href="subject.html#1852">[ subject ]</a>
+              <a href="author.html#1852">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill..found the problem with the qtcreator wsjtx
+i checked the wsjtx.ini file and the SoundIn and SoundOut were not 
+showing what they should be ...deleted the .ini file and the program 
+worked then set the .ini file up again
+
+
+thats computers for you ...sent to try you hi hi
+
+David VK4BDJ
+
+
+
+On 16/08/13 12:10, David wrote:
+&gt;<i> Hi Bill......the r3551 that would not run was compiled with qtcreator
+</I>&gt;<i>
+</I>&gt;<i> i decided to try cmake with r 3552 and it compiled 100%
+</I>&gt;<i> and i running no problems....!!!!!
+</I>&gt;<i> dont know what the problem is ...ran gdb but it didnt show anything 
+</I>&gt;<i> out of the ordinary
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> at least it works
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 16/08/13 09:02, Bill Somerville wrote:
+</I>&gt;&gt;<i> On 15/08/2013 23:42, David wrote:
+</I>&gt;&gt;<i> Hi David,
+</I>&gt;&gt;&gt;<i> Hi Joe.....had r3551 running 100%
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> d/l r3552 and compiled......would not run
+</I>&gt;&gt;&gt;<i> ran in terminal and got the following error
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> SoundOut: attn = 0 , vol = 1
+</I>&gt;&gt;<i> This is just some debug trace, not an error message.
+</I>&gt;&gt;&gt;<i> Segmentation fault (core dumped)
+</I>&gt;&gt;<i> Any chance of running under gdb and getting a backtrace:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> gdb wsjtx
+</I>&gt;&gt;<i> r
+</I>&gt;&gt;<i> bt
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> have tried fresh install etc but no joy
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> David VK4BDJ
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill G4WJS.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001851.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+	<LI>Next message: <A HREF="001854.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1852">[ date ]</a>
+              <a href="thread.html#1852">[ thread ]</a>
+              <a href="subject.html#1852">[ subject ]</a>
+              <a href="author.html#1852">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed v1.1.1 beta release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3C51F950A6.1030508%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001626.html">
+   <LINK REL="Next"  HREF="001631.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed v1.1.1 beta release</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3C51F950A6.1030508%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Proposed v1.1.1 beta release">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jul 31 20:00:06 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001626.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+        <LI>Next message: <A HREF="001631.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1630">[ date ]</a>
+              <a href="thread.html#1630">[ thread ]</a>
+              <a href="subject.html#1630">[ subject ]</a>
+              <a href="author.html#1630">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As mentioned in a previous message, I'm recommending that we should soon 
+release WSJT-X version 1.1.1 as a beta.  The list of improvements since 
+v1.1 is already fairly long, and users are clamoring for some of them. 
+At this point, such a release would use the Portaudio code.
+
+Here's a more-or-less complete list of improvements since v1.1 r3496:
+
+1. New organization of the &quot;Band Settings&quot; tab on the configuration 
+screen allows settings for different antennas on different bands, and 
+these descriptions are sent to PSK Reporter.
+
+2. Full control is nor provided for DTR and RTS lines on a serial port 
+used for CAT control.
+
+3. There is now a rudimentary user control of font sizes.  If a file 
+named &quot;fonts.txt&quot; exists in the WSJT-X installation directory, it's 
+assumed to have four integer numbers on a single line.  The numbers are 
+point size and weight for labels, then point size and weight for decoded 
+text.  For example, try the line &quot;9 50 12 100&quot;.
+
+4. A user control at the bottom of Wide Graph window sets the start 
+frequency of the waterfall scale.
+
+5. There's a new optional palette &quot;gray1&quot; for the waterfall.
+
+6. The small colored button just right of the &quot;+2 kHz&quot; checkbox now 
+shows the letter &quot;S&quot; if &quot;Split Tx&quot; has been checked.
+
+7. New user option appends DXCC country name and &quot;QSO B4&quot; status to all 
+CQ messages.
+
+8. Several minor bug fixes.
+
+9. Refactoring of code to move audio input into the GUI thread.  (Should 
+be invisible to users).
+
+10. Updated credits displayed in the &quot;About&quot; window.
+
+11. Updated User's Guide.
+
+Is everyone OK with this proposal?  I suppose it will mean releasing 
+something close to r3514 (Compiled with Portaudio, not QAudio) as 
+Version 1.1.1.
+
+Comments ?
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001626.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+	<LI>Next message: <A HREF="001631.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1630">[ date ]</a>
+              <a href="thread.html#1630">[ thread ]</a>
+              <a href="subject.html#1630">[ subject ]</a>
+              <a href="author.html#1630">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

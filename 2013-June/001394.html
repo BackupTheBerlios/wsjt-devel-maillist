@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB46EB.9030507%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001393.html">
+   <LINK REL="Next"  HREF="001395.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB46EB.9030507%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jun 26 21:54:19 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001393.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+        <LI>Next message: <A HREF="001395.html">[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1394">[ date ]</a>
+              <a href="thread.html#1394">[ thread ]</a>
+              <a href="subject.html#1394">[ subject ]</a>
+              <a href="author.html#1394">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks, John.  I've made the necessary changes to silence those (benign) 
+compiler warnings.
+
+	-- Joe
+
+On 6/26/2013 3:39 PM, John Nelson wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> Code looks good.    Compiler warnings have been removed - mostly.
+</I>&gt;<i>
+</I>&gt;<i> It seems the C compiler here is more touchy than yours.
+</I>&gt;<i>
+</I>&gt;<i> 1)  in init_rs.c  and decode_rs.c this line:
+</I>&gt;<i>
+</I>&gt;<i> #define NULL ((void *)0)
+</I>&gt;<i>
+</I>&gt;<i> generates a warning about redefinition of NULL where NULL is originally defined in #include&lt;stdlib.h&gt;
+</I>&gt;<i>
+</I>&gt;<i> 2)  in setup65.f90  gfortran issues a warning in two places where:
+</I>&gt;<i>
+</I>&gt;<i>     go to 22
+</I>&gt;<i> ...
+</I>&gt;<i> 22 enddo
+</I>&gt;<i>
+</I>&gt;<i> and same again for label 122, where the goto label is on an &quot;enddo&quot; statement.
+</I>&gt;<i>
+</I>&gt;<i> Minor warnings .... can be ignored.
+</I>&gt;<i>
+</I>&gt;<i> --- John  G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001393.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+	<LI>Next message: <A HREF="001395.html">[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1394">[ date ]</a>
+              <a href="thread.html#1394">[ thread ]</a>
+              <a href="subject.html#1394">[ subject ]</a>
+              <a href="author.html#1394">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

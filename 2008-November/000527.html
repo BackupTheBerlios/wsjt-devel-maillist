@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails	with	a segfault upon launch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Running%20wsjt-5.9.7.r386%20on%20openSuSE%2011%20fails%0A%09with%09a%20segfault%20upon%20launch&In-Reply-To=%3C1225881621.5245.1.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000529.html">
+   <LINK REL="Next"  HREF="000530.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails	with	a segfault upon launch</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Running%20wsjt-5.9.7.r386%20on%20openSuSE%2011%20fails%0A%09with%09a%20segfault%20upon%20launch&In-Reply-To=%3C1225881621.5245.1.camel%40ham%3E"
+       TITLE="[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails	with	a segfault upon launch">hdpopov at gmail.com
+       </A><BR>
+    <I>Wed Nov  5 11:40:21 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000529.html">[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails	with	a segfault upon launch
+</A></li>
+        <LI>Next message: <A HREF="000530.html">[Wsjt-devel] Introduction - David GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#527">[ date ]</a>
+              <a href="thread.html#527">[ thread ]</a>
+              <a href="subject.html#527">[ subject ]</a>
+              <a href="author.html#527">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The same here on Debian Lenny. This was solved by compiling wsjt with
+g95 compiler:
+
+./configure --enable-g95
+
+Install g95 first,
+
+73, Harry LZ1BB
+
+On Tue, 2008-11-04 at 13:24 +0100, Peter Junker wrote:
+&gt;<i> Hi All,
+</I>&gt;<i> 
+</I>&gt;<i> I built wsjt-5.9.7.r386 on my openSuSE 11 system.
+</I>&gt;<i> 
+</I>&gt;<i> The versions of the tools are as follows:
+</I>&gt;<i> 
+</I>&gt;<i> gcc-fortran-4.3-39.1
+</I>&gt;<i> gcc43-fortran-4.3.1_20080507-6.1
+</I>&gt;<i> gcc-c++-4.3-39.1
+</I>&gt;<i> libgcc43-4.3.1_20080507-6.1
+</I>&gt;<i> gcc-4.3-39.1
+</I>&gt;<i> gcc43-4.3.1_20080507-6.1
+</I>&gt;<i> gcc43-c++-4.3.1_20080507-6.1
+</I>&gt;<i> 
+</I>&gt;<i> python-2.5.2
+</I>&gt;<i> python-numpy-1.1.1
+</I>&gt;<i> python-tk-2.5.2
+</I>&gt;<i> 
+</I>&gt;<i> The build itself went through without error messages.
+</I>&gt;<i> 
+</I>&gt;<i> The output of configure is as follows:
+</I>&gt;<i> 
+</I>&gt;<i> checking for gcc... gcc
+</I>&gt;<i> checking for C compiler default output file name... a.out
+</I>&gt;<i> checking whether the C compiler works... yes
+</I>&gt;<i> checking whether we are cross compiling... no
+</I>&gt;<i> checking for suffix of executables...
+</I>&gt;<i> checking for suffix of object files... o
+</I>&gt;<i> checking whether we are using the GNU C compiler... yes
+</I>&gt;<i> checking whether gcc accepts -g... yes
+</I>&gt;<i> checking for gcc option to accept ANSI C... none needed
+</I>&gt;<i> checking for g77... no
+</I>&gt;<i> checking for f77... no
+</I>&gt;<i> checking for xlf... no
+</I>&gt;<i> checking for frt... no
+</I>&gt;<i> checking for pgf77... no
+</I>&gt;<i> checking for fort77... no
+</I>&gt;<i> checking for fl32... no
+</I>&gt;<i> checking for af77... no
+</I>&gt;<i> checking for f90... no
+</I>&gt;<i> checking for xlf90... no
+</I>&gt;<i> checking for pgf90... no
+</I>&gt;<i> checking for epcf90... no
+</I>&gt;<i> checking for f95... no
+</I>&gt;<i> checking for fort... no
+</I>&gt;<i> checking for xlf95... no
+</I>&gt;<i> checking for ifc... no
+</I>&gt;<i> checking for efc... no
+</I>&gt;<i> checking for pgf95... no
+</I>&gt;<i> checking for lf95... no
+</I>&gt;<i> checking for gfortran... gfortran
+</I>&gt;<i> checking whether we are using the GNU Fortran 77 compiler... yes
+</I>&gt;<i> checking whether gfortran accepts -g... yes
+</I>&gt;<i> checking uname -s for Cygwin, Solaris or HPUX... no
+</I>&gt;<i> checking if gcc is Apple GCC... no
+</I>&gt;<i> checking for library containing strerror... none required
+</I>&gt;<i> checking for inline... inline
+</I>&gt;<i> checking how to run the C preprocessor... gcc -E
+</I>&gt;<i> checking for egrep... grep -E
+</I>&gt;<i> checking whether gcc needs -traditional... no
+</I>&gt;<i> checking whether make sets $(MAKE)... yes
+</I>&gt;<i> checking for a BSD-compatible install... /usr/bin/install -c
+</I>&gt;<i> checking for rm... /bin/rm
+</I>&gt;<i> checking for cp... /bin/cp
+</I>&gt;<i> checking for mv... /bin/mv
+</I>&gt;<i> checking for ln... /bin/ln
+</I>&gt;<i> checking for sed... /usr/bin/sed
+</I>&gt;<i> checking for ar... /usr/bin/ar
+</I>&gt;<i> checking for ld... /usr/bin/ld
+</I>&gt;<i> checking for test... /usr/bin/test
+</I>&gt;<i> checking for python... /usr/bin/python
+</I>&gt;<i> checking for f2py... /usr/local/bin/f2py
+</I>&gt;<i> checking for g95... no
+</I>&gt;<i> checking g95 lib path... ./configure: line 3623: -print-file-name=: command 
+</I>&gt;<i> not found
+</I>&gt;<i> 
+</I>&gt;<i> checking for gfortran... /usr/bin/gfortran
+</I>&gt;<i> checking for gfortran42... (cached) /usr/bin/gfortran
+</I>&gt;<i> checking gfortran lib path... /usr/lib/gcc/i586-suse-linux/4.3/
+</I>&gt;<i> checking OS... checking for ANSI C header files... yes
+</I>&gt;<i> checking for sys/types.h... yes
+</I>&gt;<i> checking for sys/stat.h... yes
+</I>&gt;<i> checking for stdlib.h... yes
+</I>&gt;<i> checking for string.h... yes
+</I>&gt;<i> checking for memory.h... yes
+</I>&gt;<i> checking for strings.h... yes
+</I>&gt;<i> checking for inttypes.h... yes
+</I>&gt;<i> checking for stdint.h... yes
+</I>&gt;<i> checking for unistd.h... yes
+</I>&gt;<i> checking for inttypes.h... (cached) yes
+</I>&gt;<i> checking for stdint.h... (cached) yes
+</I>&gt;<i> checking sys/resource.h usability... yes
+</I>&gt;<i> checking sys/resource.h presence... yes
+</I>&gt;<i> checking for sys/resource.h... yes
+</I>&gt;<i> checking sys/param.h usability... yes
+</I>&gt;<i> checking sys/param.h presence... yes
+</I>&gt;<i> checking for sys/param.h... yes
+</I>&gt;<i> checking errno.h usability... yes
+</I>&gt;<i> checking errno.h presence... yes
+</I>&gt;<i> checking for errno.h... yes
+</I>&gt;<i> checking sys/syslog.h usability... yes
+</I>&gt;<i> checking sys/syslog.h presence... yes
+</I>&gt;<i> checking for sys/syslog.h... yes
+</I>&gt;<i> checking stddef.h usability... yes
+</I>&gt;<i> checking stddef.h presence... yes
+</I>&gt;<i> checking for stddef.h... yes
+</I>&gt;<i> checking libgen.h usability... yes
+</I>&gt;<i> checking libgen.h presence... yes
+</I>&gt;<i> checking for libgen.h... yes
+</I>&gt;<i> checking sys/wait.h usability... yes
+</I>&gt;<i> checking sys/wait.h presence... yes
+</I>&gt;<i> checking for sys/wait.h... yes
+</I>&gt;<i> checking wait.h usability... yes
+</I>&gt;<i> checking wait.h presence... yes
+</I>&gt;<i> checking for wait.h... yes
+</I>&gt;<i> checking stdio.h usability... yes
+</I>&gt;<i> checking stdio.h presence... yes
+</I>&gt;<i> checking for stdio.h... yes
+</I>&gt;<i> checking termios.h usability... yes
+</I>&gt;<i> checking termios.h presence... yes
+</I>&gt;<i> checking for termios.h... yes
+</I>&gt;<i> checking for sys/resource.h... (cached) yes
+</I>&gt;<i> checking linux/ppdev.h usability... yes
+</I>&gt;<i> checking linux/ppdev.h presence... yes
+</I>&gt;<i> checking for linux/ppdev.h... yes
+</I>&gt;<i> checking dev/ppbus/ppi.h usability... no
+</I>&gt;<i> checking dev/ppbus/ppi.h presence... no
+</I>&gt;<i> checking for dev/ppbus/ppi.h... no
+</I>&gt;<i> checking for sys/stat.h... (cached) yes
+</I>&gt;<i> checking fcntl.h usability... yes
+</I>&gt;<i> checking fcntl.h presence... yes
+</I>&gt;<i> checking for fcntl.h... yes
+</I>&gt;<i> checking sys/ioctl.h usability... yes
+</I>&gt;<i> checking sys/ioctl.h presence... yes
+</I>&gt;<i> checking for sys/ioctl.h... yes
+</I>&gt;<i> checking whether time.h and sys/time.h may both be included... yes
+</I>&gt;<i> checking sys/soundcard.h usability... yes
+</I>&gt;<i> checking sys/soundcard.h presence... yes
+</I>&gt;<i> checking for sys/soundcard.h... yes
+</I>&gt;<i> checking alsa/asoundlib.h usability... yes
+</I>&gt;<i> checking alsa/asoundlib.h presence... yes
+</I>&gt;<i> checking for alsa/asoundlib.h... yes
+</I>&gt;<i> checking jack/jack.h usability... yes
+</I>&gt;<i> checking jack/jack.h presence... yes
+</I>&gt;<i> checking for jack/jack.h... yes
+</I>&gt;<i> checking samplerate.h usability... yes
+</I>&gt;<i> checking samplerate.h presence... yes
+</I>&gt;<i> checking for samplerate.h... yes
+</I>&gt;<i> checking whether string.h and strings.h may both be included... yes
+</I>&gt;<i> checking for clock_gettime in -lrt... yes
+</I>&gt;<i> checking for snd_pcm_open in -lasound... yes
+</I>&gt;<i> checking for int64_t... yes
+</I>&gt;<i> checking size of int64_t... 8
+</I>&gt;<i> checking for long long... yes
+</I>&gt;<i> checking size of long long... 8
+</I>&gt;<i> checking for uint64_t... yes
+</I>&gt;<i> checking for int64_t... (cached) yes
+</I>&gt;<i> checking for u_int32_t... yes
+</I>&gt;<i> checking for u_int16_t... yes
+</I>&gt;<i> checking whether byte ordering is bigendian... no
+</I>&gt;<i> checking stdarg.h usability... yes
+</I>&gt;<i> checking stdarg.h presence... yes
+</I>&gt;<i> checking for stdarg.h... yes
+</I>&gt;<i> ./configure: line 6846: CPPFLAGS: command not found
+</I>&gt;<i> configure: creating ./config.status
+</I>&gt;<i> config.status: creating Makefile
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Using gfortran as fortran compiler.
+</I>&gt;<i> 
+</I>&gt;<i> Using built in portaudio distribution
+</I>&gt;<i> 
+</I>&gt;<i> Compiling wsjt 5.9.6
+</I>&gt;<i> 
+</I>&gt;<i> The output of make can be found under: <A HREF="http://nopaste.com/p/aMMXAQPqM">http://nopaste.com/p/aMMXAQPqM</A>
+</I>&gt;<i> 
+</I>&gt;<i> The output of strace wsjt can be found under: <A HREF="http://nopaste.com/p/aTGZRpabnb">http://nopaste.com/p/aTGZRpabnb</A>
+</I>&gt;<i> 
+</I>&gt;<i> Upon launching the application I briefly get the GUI and then it crashes with 
+</I>&gt;<i> a segfault. The problem can be reproduced.
+</I>&gt;<i> 
+</I>&gt;<i> Help is greatly appreciated. ;)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _____________ 
+</I>&gt;<i> 73 de DG6MAN
+</I>&gt;<i> 
+</I>&gt;<i> Peter
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000529.html">[Wsjt-devel] Running wsjt-5.9.7.r386 on openSuSE 11 fails	with	a segfault upon launch
+</A></li>
+	<LI>Next message: <A HREF="000530.html">[Wsjt-devel] Introduction - David GM6BIG
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#527">[ date ]</a>
+              <a href="thread.html#527">[ thread ]</a>
+              <a href="subject.html#527">[ subject ]</a>
+              <a href="author.html#527">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

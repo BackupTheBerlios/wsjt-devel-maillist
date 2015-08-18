@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt7 build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt7%20build&In-Reply-To=%3C20090418092610.461207ce%40richard-g8jvm%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000576.html">
+   <LINK REL="Next"  HREF="000577.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt7 build</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt7%20build&In-Reply-To=%3C20090418092610.461207ce%40richard-g8jvm%3E"
+       TITLE="[Wsjt-devel] wsjt7 build">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Sat Apr 18 10:26:10 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000576.html">[Wsjt-devel] wsjt audio input not changing
+</A></li>
+        <LI>Next message: <A HREF="000577.html">[Wsjt-devel] portaudio v19
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#575">[ date ]</a>
+              <a href="thread.html#575">[ thread ]</a>
+              <a href="subject.html#575">[ subject ]</a>
+              <a href="author.html#575">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 18 Apr 2009 11:17:34 +1000
+Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt; wrote:
+
+&gt;<i> On Fri, Apr 17, 2009 at 03:56:08PM +0100, richard wrote:
+</I>&gt;<i> &gt; Hi Hamish
+</I>&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Commenting out the 2 lines in the Makefile worked :)  :)
+</I>&gt;<i> 
+</I>&gt;<i> Great. Would you like to post on the wsjt-devel list with the fixes?
+</I>I have already done so.
+&gt;<i> 
+</I>&gt;<i> &gt; Now just sort out why wsjt wont run from /usr/local/bin.
+</I>&gt;<i> &gt; Not too worried about that, as it runs OK from the directory it was
+</I>&gt;<i> &gt; compiled in by using python wsjy.py
+</I>&gt;<i> 
+</I>&gt;<i> Does it fail saying that Audio.so couldn't be found?
+</I>that was one of the things
+&gt;<i> 
+</I>&gt;<i> If so, the program is that Python doesn't look in /usr/local/bin or
+</I>&gt;<i> whatever for .so files.. you can set the environment variable
+</I>&gt;<i> PYTHONPATH to add to its search path.
+</I>&gt;<i> 
+</I>&gt;<i> On Debian we have a little shell program as /usr/bin/wsjt which sets
+</I>&gt;<i> PYTHONPATH and a few other little tasks.
+</I>
+I got the script to work, by adding a symlink for WsjtMod back to its
+directory.
+Put Call3.txt where it was looking for it, it was put in a new
+directory callled NONE.
+
+slight alteration to the start script:-
+#!/bin/sh
+if [ -e /usr/local/bin/python ] ; then
+        LOCALBASE=/usr/local/
+else
+        LOCALBASE=/usr/local
+
+Its is now starting from the menu using the wsjt start script
+in /usr/loical/bin
+
+&gt;<i> 
+</I>&gt;<i> &gt; Many thanks Hamish have a few tinnies as a reward
+</I>&gt;<i> 
+</I>&gt;<i> Shall do :-)
+</I>&gt;<i> 
+</I>&gt;<i> Have a great weekend
+</I>&gt;<i> 
+</I>&gt;<i> Hamish
+</I>
+Just this problem remaining with the device selection, if you select
+any device apart from 0,6 or 7 it crashes immediately. Selecting 0,6 or
+7 and it uses 7.very disobedient.
+It also crashes if the ADD of LOGQSO buttons are used, apart from that
+it looks like its working.
+-- 
+Best wishes
+
+Richard Bown
+
+#########################################################################
+Registered Linux User 36561
+OS: Ubuntu 9.04, Jaunty -dev, on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+#########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000576.html">[Wsjt-devel] wsjt audio input not changing
+</A></li>
+	<LI>Next message: <A HREF="000577.html">[Wsjt-devel] portaudio v19
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#575">[ date ]</a>
+              <a href="thread.html#575">[ thread ]</a>
+              <a href="subject.html#575">[ subject ]</a>
+              <a href="author.html#575">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

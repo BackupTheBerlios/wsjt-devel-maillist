@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r366
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C1177622691.4511.21.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000089.html">
+   <LINK REL="Next"  HREF="000092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r366</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C1177622691.4511.21.camel%40ham%3E"
+       TITLE="[Wsjt-devel] r366">lz1bb at mail.bg
+       </A><BR>
+    <I>Thu Apr 26 23:24:51 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000089.html">[Wsjt-devel] r366
+</A></li>
+        <LI>Next message: <A HREF="000092.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#90">[ date ]</a>
+              <a href="thread.html#90">[ thread ]</a>
+              <a href="subject.html#90">[ subject ]</a>
+              <a href="author.html#90">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I told you. Both in /usr/lib. I have installed portaudio-18,
+portaudio-18-devel and portaudio-19. Here is the output of:
+locate libpotaudio after fresh updatedb:
+
+/usr/share/doc/libportaudio0-18.1
+/usr/share/doc/libportaudio0-18.1/LICENSE.txt
+/usr/share/doc/libportaudio0-18.1/README.txt
+/usr/share/doc/libportaudio0-devel-18.1
+/usr/share/doc/libportaudio0-devel-18.1/latency.html
+/usr/share/doc/libportaudio0-devel-18.1/index.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_drivermodel.c.txt
+/usr/share/doc/libportaudio0-devel-18.1/pa_drivermodel.h.txt
+/usr/share/doc/libportaudio0-devel-18.1/pa_impl_guide.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_impl_startstop.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_asio.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_callback.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_devs.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_explore.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_init.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_mac.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_mac_osx.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_open.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_oss.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_over.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_pc.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_run.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_rw.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_term.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tut_util.html
+/usr/share/doc/libportaudio0-devel-18.1/pa_tutorial.html
+/usr/share/doc/libportaudio0-devel-18.1/portaudio_h.txt
+/usr/share/doc/libportaudio0-devel-18.1/portaudio_icmc2001.pdf
+/usr/share/doc/libportaudio0-devel-18.1/proposals.html
+/usr/share/doc/libportaudio0-devel-18.1/releases.html
+/usr/share/doc/libportaudio2-19
+/usr/share/doc/libportaudio2-19/LICENSE.txt
+/usr/share/doc/libportaudio2-19/README.txt
+/usr/lib/libportaudio.so.0.0.18
+/usr/lib/libportaudio.so.0
+/usr/lib/libportaudio.a
+/usr/lib/libportaudio.la
+/usr/lib/libportaudio.so
+/usr/lib/libportaudio.so.2
+/usr/lib/libportaudio.so.2.0.0
+/usr/include/portaudio.h
+
+
+
+
+On Thu, 2007-04-26 at 16:58 -0400, Diane Bruce wrote:
+&gt;<i> On Thu, Apr 26, 2007 at 09:43:17PM +0300, Harry Popov wrote:
+</I>&gt;<i> &gt; &gt; That is what I am arguing as well, well as much as possible. What
+</I>&gt;<i> &gt; &gt; I am looking for is where Mandriva and other distributions put
+</I>&gt;<i> &gt; &gt; portaudio 0.19 ? On FreeBSD as I have said, they do not replace
+</I>&gt;<i> &gt; &gt; portaudio 0.18 but provide it
+</I>&gt;<i> &gt; as /usr/local/lib/portaudio2/portaudio.so etc.
+</I>&gt;<i> &gt; &gt; with the include files at /usr/local/include/portaudio2.
+</I>&gt;<i> &gt; &gt; Is it similarly set up on Mandriva?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Diane,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I am afraid I can not help with this. Portaudio is no more in coocer. I
+</I>&gt;<i> &gt; downloaded src.rpm package and compilled portaudio-19 and
+</I>&gt;<i> &gt; portaudio-19-devel rpms.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; portaudio-19.rpm was installed in /usr/lib/
+</I>&gt;<i> &gt; portaudio 0.18 was not destroied.
+</I>&gt;<i> &gt; portaudio-19-devel was in conflict with version 0.18 devel package and I
+</I>&gt;<i> &gt; could not install it.
+</I>&gt;<i> 
+</I>&gt;<i> Ok, but the libs and include files for 0.19 are installed in a different
+</I>&gt;<i> location than 0.18 (&quot;portaudio 0.18 was not destroied.&quot;) Can you tell
+</I>&gt;<i> me where it was installed?
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I think for now the best solution for Mandriva is the old way of using
+</I>&gt;<i> &gt; ported code of portaudio. Perhaps it is possible to have that option in
+</I>&gt;<i> &gt; configure too.
+</I>&gt;<i> 
+</I>&gt;<i> I will work on that option too.
+</I>&gt;<i> 
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000089.html">[Wsjt-devel] r366
+</A></li>
+	<LI>Next message: <A HREF="000092.html">[Wsjt-devel] r366
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#90">[ date ]</a>
+              <a href="thread.html#90">[ thread ]</a>
+              <a href="subject.html#90">[ subject ]</a>
+              <a href="author.html#90">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

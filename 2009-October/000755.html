@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Alsa messages; Debian packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AE9938A.2000805%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000758.html">
+   <LINK REL="Next"  HREF="000757.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Alsa messages; Debian packages</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AE9938A.2000805%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Alsa messages; Debian packages">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Oct 29 14:07:22 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000758.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+        <LI>Next message: <A HREF="000757.html">[Wsjt-devel] WSPR segfaults on 64 bit machines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+You will have noticed a lot of activity in the repository 
+recently.  I continue to make progress with WSJT8, and
+WSPR 2.0 is approaching a state at which it could be released.
+
+I have two questions for the group.  Someone here almost 
+certainly knows more that I about these things:
+
+1. I have implemented a &quot;make deb&quot; command that creates a 
+*.deb package that installs easily on Ubuntu (and possible 
+other Debian-based linux distributions).  The package I made 
+yesterday is on the WSJT web site at 
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/wspr_2.00r1596_i386.deb">http://physics.princeton.edu/pulsar/K1JT/wspr_2.00r1596_i386.deb</A>
+
+If you download this file you can install and execute WSPR 
+on Ubuntu with the command
+
+% sudo dpkg --instdir=. -i wspr_2.00r1596_i386.deb
+% cd WSPR
+% ./wspr
+
+I'm told that if you use GUI methods -- download the file to 
+the Ubuntu desktop and double-click on it -- WSPR is 
+installed under the root directory, i.e., at /WSPR.  Does 
+anybody know how to change the .deb file so that it will go 
+into a better place such as $HOME ?  Is this the best place?
+
+2. I'm told that on one test machine (Ubuntu 9.04) the 
+program runs fine, but on startup produces this list of 
+(non-fatal) error messages:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">pif at Stinky-Ubuntu</A>:/WSPR$ ./wspr
+******************************************************************
+WSPR Version 2.0_r1596 , by K1JT
+Run date:   Thu Oct 29 08:13:43 2009 UTC
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'tempDevHandle = open( deviceInfo-&gt;name, flags )' 
+failed in
+'src/hostapi/oss/pa_unix_oss.c', line: 690
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'tempDevHandle = open( deviceInfo-&gt;name, flags )' 
+failed in
+'src/hostapi/oss/pa_unix_oss.c', line: 690
+Expression 'tempDevHandle = open( deviceInfo-&gt;name, flags )' 
+failed in
+'src/hostapi/oss/pa_unix_oss.c', line: 690
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+Expression 'ret' failed in 
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1025
+Expression 'AlsaOpen( hostApi, parameters, streamDir, &amp;pcm 
+)' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1057
+
+Anybody have a clue what's happening on this machine?
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000758.html">[Wsjt-devel] WSPR v2.0
+</A></li>
+	<LI>Next message: <A HREF="000757.html">[Wsjt-devel] WSPR segfaults on 64 bit machines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

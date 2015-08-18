@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20WSJT%20compile%20on%20Fedora%20Core%0A%206%09%28Audio.so%3A%20undefined%20symbol%3A%20gmtime_%29&In-Reply-To=%3C463A8C16.2040603%40WA5ZNU.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000103.html">
+   <LINK REL="Next"  HREF="000105.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)</H1>
+    <B>Leigh L. Klotz, Jr.</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Problem%20with%20WSJT%20compile%20on%20Fedora%20Core%0A%206%09%28Audio.so%3A%20undefined%20symbol%3A%20gmtime_%29&In-Reply-To=%3C463A8C16.2040603%40WA5ZNU.org%3E"
+       TITLE="[Wsjt-devel] Problem with WSJT compile on Fedora Core 6	(Audio.so: undefined symbol: gmtime_)">Leigh at WA5ZNU.org
+       </A><BR>
+    <I>Fri May  4 03:27:50 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000103.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+        <LI>Next message: <A HREF="000105.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Diane,
+Perhaps I need to apply Harry's recommendation to recompile the tools in 
+addition to this fix, but this didn't help:
+$ python ./wsjt.py
+Traceback (most recent call last):
+  File &quot;./wsjt.py&quot;, line 9, in ?
+    import Audio
+ImportError: /home/klotz/redhat/SOURCES/wsjt-5.9.6.r309/Audio.so: 
+undefined symbol: gmtime_r_
+
+&gt;<i> On Fri, Apr 27, 2007 at 09:34:16PM -0700, Leigh L. Klotz, Jr. wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> I'm trying to compile WSJT wsjt-5.9.6.r309 on FC6.  I am able to run the
+</I>&gt;&gt;<i> pre-compiled binary FB,
+</I>&gt;&gt;<i>     
+</I>&gt;<i> ...
+</I>&gt;<i>   
+</I>&gt;&gt;<i> I'm able to get through ./configure with no options and make, with a
+</I>&gt;&gt;<i> number of warnings.  But I can't get it to run.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I get
+</I>&gt;&gt;<i> $ python ./wsjt.py
+</I>&gt;&gt;<i> Traceback (most recent call last):
+</I>&gt;&gt;<i>   File &quot;./wsjt.py&quot;, line 9, in ?
+</I>&gt;&gt;<i>     import Audio
+</I>&gt;&gt;<i> ImportError: /home/klotz/redhat/SOURCES/wsjt-5.9.6.r309/Audio.so:
+</I>&gt;&gt;<i> undefined symbol: gmtime_
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It looks like it might come from get_fname.f90, but I'm not sure.  I saw
+</I>&gt;&gt;<i> that Bob N4HY had added GetSystemTime in jtaudio.c as part of the Linux
+</I>&gt;&gt;<i> port, but that doesn't seem to be the issue, as removing that code and
+</I>&gt;&gt;<i> recompiling still produces the unsatisfied link error.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I fixed this in the FreeBSD port and it is fixed in svn.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --- get_fname.F90.orig	Mon Dec 11 10:38:21 2006
+</I>&gt;<i> +++ get_fname.F90	Mon Dec 11 10:38:42 2006
+</I>&gt;<i> @@ -5,6 +5,7 @@
+</I>&gt;<i>    use dfport
+</I>&gt;<i>  #endif
+</I>&gt;<i>
+</I>&gt;<i> +  external gmtime_r
+</I>&gt;<i>    character hiscall*12,fname*24,tag*7
+</I>&gt;<i>    integer ntime
+</I>&gt;<i>    integer trperiod
+</I>&gt;<i> @@ -13,7 +14,7 @@
+</I>&gt;<i>    n1=ntime
+</I>&gt;<i>    n2=(n1+2)/trperiod
+</I>&gt;<i>    n3=n2*trperiod
+</I>&gt;<i> -  call gmtime(n3,it)
+</I>&gt;<i> +  call gmtime_r(n3,it)
+</I>&gt;<i>    it(5)=it(5)+1
+</I>&gt;<i>    it(6)=mod(it(6),100)
+</I>&gt;<i>    write(fname,1000) (it(j),j=6,1,-1)
+</I>&gt;<i>
+</I>&gt;<i> Try this and let me know if this fixes it for you.
+</I>&gt;<i>
+</I>&gt;<i> - 73, Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000103.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+	<LI>Next message: <A HREF="000105.html">[Wsjt-devel] Problem with WSJT compile on Fedora Core	6	(Audio.so: undefined symbol: gmtime_)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#104">[ date ]</a>
+              <a href="thread.html#104">[ thread ]</a>
+              <a href="subject.html#104">[ subject ]</a>
+              <a href="author.html#104">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

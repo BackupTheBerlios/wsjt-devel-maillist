@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Building WSJT-X on OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3CCAOctvfXV3ReOKkKvSbab6mvUdixQF6BB%3DC1qASL9%3DmWF%2B_3t8A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001278.html">
+   <LINK REL="Next"  HREF="001280.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Building WSJT-X on OS X</H1>
+    <B>Dave Wright</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3CCAOctvfXV3ReOKkKvSbab6mvUdixQF6BB%3DC1qASL9%3DmWF%2B_3t8A%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Building WSJT-X on OS X">hfradiopro at gmail.com
+       </A><BR>
+    <I>Sun May 12 07:47:20 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001278.html">[Wsjt-devel] Blocking calls to hamlib
+</A></li>
+        <LI>Next message: <A HREF="001280.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1279">[ date ]</a>
+              <a href="thread.html#1279">[ thread ]</a>
+              <a href="subject.html#1279">[ subject ]</a>
+              <a href="author.html#1279">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I decided to try to build WSJT-X on OS X 10.8 this evening.
+
+I have the OS X command line tools installed, I got the dependencies
+installed using HomeBrew (<A HREF="http://mxcl.github.io/homebrew/">http://mxcl.github.io/homebrew/</A>) and also
+installed the QT 5 packages for OS X.
+
+I change directory to wsjtx and try qmake &amp;&amp; make, and it generates the
+following error:
+
+In file included from mainwindow.cpp:3:
+./ui_mainwindow.h:38:10: fatal error: 'qwt_thermo.h' file not found
+#include &quot;qwt_thermo.h&quot;
+         ^
+1 warning and 1 error generated.
+
+
+Any idea where I should start on trying to troubleshoot this?  I'm not very
+fluent in all of the &quot;build speak&quot;, but I'd like to get this figured out.
+
+As a note, I saw a reference to creating a wsjtx_install directory.  I did
+so, and when I run the qmake &amp;&amp; make instruction, it creates an OS X app
+(wsjtx.app), but it is an incomplete app and doesn't run (obviously).
+
+Thanks in advance!!
+
+
+Dave
+K3DCW
+www.k3dcw.net
+
+&quot;Real radio bounces off the sky&quot;
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/3520e592/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/3520e592/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001278.html">[Wsjt-devel] Blocking calls to hamlib
+</A></li>
+	<LI>Next message: <A HREF="001280.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1279">[ date ]</a>
+              <a href="thread.html#1279">[ thread ]</a>
+              <a href="subject.html#1279">[ subject ]</a>
+              <a href="author.html#1279">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Tutorial edits and questions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Tutorial%20edits%20and%20questions&In-Reply-To=%3C52EA7C27.9030904%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002155.html">
+   <LINK REL="Next"  HREF="002157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Tutorial edits and questions</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Tutorial%20edits%20and%20questions&In-Reply-To=%3C52EA7C27.9030904%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Tutorial edits and questions">joe at princeton.edu
+       </A><BR>
+    <I>Thu Jan 30 17:21:59 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002155.html">[Wsjt-devel] Tutorial edits and questions
+</A></li>
+        <LI>Next message: <A HREF="002157.html">[Wsjt-devel] WSJT-X v1.3, r3673
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2156">[ date ]</a>
+              <a href="thread.html#2156">[ thread ]</a>
+              <a href="subject.html#2156">[ subject ]</a>
+              <a href="author.html#2156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Chuck,
+
+On 1/30/2014 10:35 AM, Charles Yahrling wrote:
+
+&gt;<i> 1) With the radio turned off the controls are delayed and a bit erratic,
+</I>&gt;<i> which I presume is normal behavior for the program.  Would you agree that
+</I>&gt;<i> we should make a recommendation to keep the radio on, say into a dummy
+</I>&gt;<i> load, while running thru the tutorial.?  Also I want to direct them to
+</I>&gt;<i> change the callsign to K1JT upfront so the on-screen color bars match the
+</I>&gt;<i> tutrorial.
+</I>
+Yes: either turn radio on, or disable CAT control.
+
+&gt;<i> 2. The tutorial states that there are at least 8 JT-9 signals and all but
+</I>&gt;<i> one are decodable.  I count 8 noticeable bumps in the scope trace. If
+</I>&gt;<i> that's what were talking about I'd like to point that out explicitly, ok?
+</I>
+Now that you've drawn my attention to it, I can see that really there 
+are only seven JT9 signals. (Three other vertical stripes on the 
+waterfall, and small blips on the green line, are too narrow to be JT9 
+signals.)
+
+I've changed that sentence to read &quot;Seven JT9 signals are present in the 
+example file, all decodable.&quot;  (not committed yet, I have other pending 
+changes as well).  You could add something more if you want to describe 
+what to look for, on the waterfall and spectral display.
+
+&gt;<i> 3) After loading the file I saw 7 decodes in the band activity panel screen
+</I>&gt;<i> but none in the Rx Frequency Panel.  I tried reloading the 130418_1742.wav
+</I>&gt;<i> sample file several times ( with radio on).
+</I>
+Maybe you did not set Rx Frequency to 1224 Hz, as instructed??  Use the 
+spinner control just above the Tx=Rx button.
+
+&gt;<i> Also, the red and green markers
+</I>&gt;<i> at the top of the wide graph do not move. I tried exiting the program and
+</I>&gt;<i> starting the load/decode over and that did not fix it.
+</I>
+Clicking anywhere on the waterfall moves the green marker to that 
+frequency.  Ctrl-click moves both green and red markers.
+
+Double-click on a decoded text line moves the green and red markers to 
+the frequency of that signal, UNLESS it's someone calling MyCall (and 
+therefore highlighted in red).  In that case, only the green marker is 
+moved.
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002155.html">[Wsjt-devel] Tutorial edits and questions
+</A></li>
+	<LI>Next message: <A HREF="002157.html">[Wsjt-devel] WSJT-X v1.3, r3673
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2156">[ date ]</a>
+              <a href="thread.html#2156">[ thread ]</a>
+              <a href="subject.html#2156">[ subject ]</a>
+              <a href="author.html#2156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A12F8E7.9000705%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000655.html">
+   <LINK REL="Next"  HREF="000659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A12F8E7.9000705%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 19 20:22:31 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000655.html">[Wsjt-devel] WSJT for Mac OS X
+</A></li>
+        <LI>Next message: <A HREF="000659.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stu,
+
+Many thanks for the information... it's consistent with what 
+I had concluded.
+
+Does it make sense to you that when we compile with g95 or 
+Compaq Visual Fortran, or use C fprintf() calls instead of 
+fortran write(), the program works OK?
+
+BTW: Compaq Fortran explicitly states that &quot;Fortran treats 
+each input/output statement as an atomic operation.&quot; 
+Apparently g95 and gcc do also... but gfortran does not.
+
+	-- Joe, K1JT
+
+Stu Phillips wrote:
+&gt;<i> Joe,
+</I>&gt;<i> 
+</I>&gt;<i> Unless the Fortran IO library is thread safe, you do indeed need Mutex
+</I>&gt;<i> locks around all the calls.  My guess is that the IO library makes use
+</I>&gt;<i> of static data and therefore isn't re-entrant.  An IO library call can
+</I>&gt;<i> get interrupted by another thread which can call Fortran IO.  If it
+</I>&gt;<i> does, the second call is likely to succeed (assuming it in turn doesn't
+</I>&gt;<i> get interrupted or rescheduled) and then the first call blows up when it
+</I>&gt;<i> is reactivated as the static data is no longer valid for its original
+</I>&gt;<i> call.
+</I>&gt;<i> 
+</I>&gt;<i> The purpose of the lock/unlock is to protect the static data - the mutex
+</I>&gt;<i> prevents the thread being descheduled and another thread being run.
+</I>&gt;<i> 
+</I>&gt;<i> Hope this helps - I have a lot of experience dealing with multi-threaded
+</I>&gt;<i> and interrupt driven software - once you get your head around it things
+</I>&gt;<i> are straight forward!
+</I>&gt;<i> 
+</I>&gt;<i> Stu N6TTO
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-bounces at lists.berlios.de</A>
+</I>&gt;<i> [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel-bounces at lists.berlios.de</A>] On Behalf Of Joe Taylor
+</I>&gt;<i> Sent: Tuesday, May 19, 2009 10:24 AM
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Subject: Re: [Wsjt-devel] gfortran
+</I>&gt;<i> 
+</I>&gt;<i> Hi all,
+</I>&gt;<i> 
+</I>&gt;<i> You may have noticed that in message [WSJT-SVN]r1248 I 
+</I>&gt;<i> stated that the &quot;gfortran problem&quot; has been solved.  By this 
+</I>&gt;<i> I mean that I think I understand correctly that gfortran 
+</I>&gt;<i> does not treat I/O operations as &quot;atomic&quot;, and thus its I/O 
+</I>&gt;<i> calls are not thread safe.  I made some code modifications 
+</I>&gt;<i> that correct the segfaults on program startup.  However, 
+</I>&gt;<i> it's still true that we have fortran I/O taking place 
+</I>&gt;<i> asynchronously, in different threads; I don't know whether 
+</I>&gt;<i> some other collisions can still happen.
+</I>&gt;<i> 
+</I>&gt;<i> As far as I can determine, g95 and gcc produce thread-safe code.
+</I>&gt;<i> 
+</I>&gt;<i> I am definitely no expert in threads programming, but I 
+</I>&gt;<i> think the &quot;correct&quot; way to fix our problem is to use mutex 
+</I>&gt;<i> lock/unlock pairs around blocks of code that include Fortran 
+</I>&gt;<i> I/O statements.
+</I>&gt;<i> 
+</I>&gt;<i> Anyone who knows more than I do about these things -- which 
+</I>&gt;<i> means knowing almost anything about them! -- please speak up 
+</I>&gt;<i> if I have something wrong.
+</I>&gt;<i> 
+</I>&gt;<i> Meanwhile, I'm looking at some examples of code that uses 
+</I>&gt;<i> mutexes.
+</I>&gt;<i> 
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000655.html">[Wsjt-devel] WSJT for Mac OS X
+</A></li>
+	<LI>Next message: <A HREF="000659.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

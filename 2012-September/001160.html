@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Crash Ver. 2.11 r2263
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Crash%20Ver.%202.11%20r2263&In-Reply-To=%3C5044CF40.2040902%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001161.html">
+   <LINK REL="Next"  HREF="001162.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Crash Ver. 2.11 r2263</H1>
+    <B>Pino Zollo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Crash%20Ver.%202.11%20r2263&In-Reply-To=%3C5044CF40.2040902%40gmail.com%3E"
+       TITLE="[Wsjt-devel] Crash Ver. 2.11 r2263">pinozollo at gmail.com
+       </A><BR>
+    <I>Mon Sep  3 17:39:44 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001161.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+        <LI>Next message: <A HREF="001162.html">[Wsjt-devel] Test message, please ignore.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1160">[ date ]</a>
+              <a href="thread.html#1160">[ thread ]</a>
+              <a href="subject.html#1160">[ subject ]</a>
+              <a href="author.html#1160">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Running and clicking on &quot;Tune&quot;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">pino at SIP-ubuntu</A>:/DEB/WSPR$ ./wspr
+******************************************************************
+WSPR Version 2.11_r2263, by K1JT
+Run date:   Mon Sep  3 15:36:33 2012 UTC
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+*** glibc detected *** python: double free or corruption (!prev):
+0x0950cd18 ***
+======= Backtrace: =========
+/lib/tls/i686/cmov/libc.so.6(+0x6b161)[0xb74bd161]
+/lib/tls/i686/cmov/libc.so.6(+0x6c9b8)[0xb74be9b8]
+/lib/tls/i686/cmov/libc.so.6(cfree+0x6d)[0xb74c1a9d]
+/usr/lib/libportaudio.so.2(+0xccee)[0xac535cee]
+/usr/lib/libportaudio.so.2(+0xd330)[0xac536330]
+/usr/lib/libportaudio.so.2(+0x11d88)[0xac53ad88]
+/usr/lib/libportaudio.so.2(Pa_WriteStream+0x7c)[0xac53070c]
+/DEB/WSPR/WsprMod/w.so(soundout_+0x14e)[0xac55705e]
+/DEB/WSPR/WsprMod/w.so(tx_+0x17a4)[0xac55e4f4]
+/lib/tls/i686/cmov/libpthread.so.0(+0x596e)[0xb779096e]
+/lib/tls/i686/cmov/libc.so.6(clone+0x5e)[0xb751f98e]
+======= Memory map: ========
+08048000-08228000 r-xp 00000000 08:07 916751     /usr/bin/python2.6
+08228000-08229000 r--p 001df000 08:07 916751     /usr/bin/python2.6
+08229000-08278000 rw-p 001e0000 08:07 916751     /usr/bin/python2.6
+08278000-08281000 rw-p 00000000 00:00 0
+08a64000-0952c000 rw-p 00000000 00:00 0          [heap]
+a3810000-a7811000 rw-s 00000000 00:10 2593326   
+/dev/shm/pulse-shm-305287925
+a7811000-a7812000 ---p 00000000 00:00 0
+a7812000-a8012000 rw-p 00000000 00:00 0
+a9c00000-a9c21000 rw-p 00000000 00:00 0
+a9c21000-a9d00000 ---p 00000000 00:00 0
+a9d8c000-a9d8d000 ---p 00000000 00:00 0
+a9d8d000-aa58d000 rw-p 00000000 00:00 0
+aa58d000-aa58e000 ---p 00000000 00:00 0
+aa58e000-aad8e000 rw-p 00000000 00:00 0
+aad8e000-aae26000 r--p 00000000 08:07 948369    
+/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf
+aae26000-aae27000 r-xp 00000000 08:07 1056593   
+/usr/lib/python2.6/dist-packages/PIL/_imagingtk.so
+aae27000-aae28000 r--p 00000000 08:07 1056593   
+/usr/lib/python2.6/dist-packages/PIL/_imagingtk.so
+aae28000-aae29000 rw-p 00001000 08:07 1056593   
+/usr/lib/python2.6/dist-packages/PIL/_imagingtk.so
+aae2e000-aae78000 r--p 00000000 08:07 1584012   
+/usr/share/fonts/truetype/msttcorefonts/Courier_New.ttf
+aae78000-aafa8000 rw-p 00000000 00:00 0
+aafa8000-abf3d000 r--p 00000000 08:07 1144158   
+/usr/share/fonts/truetype/unifont/unifont.ttf
+abf3d000-abf41000 r-xp 00000000 08:07 946858     /usr/lib/libXfixes.so.3.1.0
+abf41000-abf42000 r--p 00003000 08:07 946858     /usr/lib/libXfixes.so.3.1.0
+abf42000-abf43000 rw-p 00004000 08:07 946858     /usr/lib/libXfixes.so.3.1.0
+abf43000-abf4b000 r-xp 00000000 08:07 954490    
+/usr/lib/libXcursor.so.1.0.2
+abf4b000-abf4c000 r--p 00007000 08:07 954490    
+/usr/lib/libXcursor.so.1.0.2
+abf4c000-abf4d000 rw-p 00008000 08:07 954490    
+/usr/lib/libXcursor.so.1.0.2
+abf5b000-abf5c000 rw-p 00000000 00:00 0
+abf5c000-abf70000 r--p 00000000 08:07 948575    
+/usr/share/fonts/type1/gsfonts/n019003l.pfb
+abf70000-abf71000 rw-p 00000000 00:00 0
+abf71000-abfb5000 r--p 00000000 08:07 1584036   
+/usr/share/fonts/truetype/msttcorefonts/Arial.ttf
+abfb5000-abfb6000 r--s 00000000 08:07 149724    
+/var/cache/fontconfig/26de28bc8622bbc1fb67fd234c21975f-le32d4.cache-3
+abfb6000-abfb7000 r--s 00000000 08:07 136998    
+/var/cache/fontconfig/c05880de57d1f5e948fdfacc138775d9-le32d4.cache-3
+abfb7000-abfbd000 r--s 00000000 08:07 136901    
+/var/cache/fontconfig/945677eb7aeaf62f1d50efc3fb3ec7d8-le32d4.cache-3
+abfbd000-abfbf000 r--s 00000000 08:07 136993    
+/var/cache/fontconfig/99e8ed0e538f840c565b6ed5dad60d56-le32d4.cache-3
+abfbf000-abfc0000 r--s 00000000 08:07 173032    
+/var/cache/fontconfig/0fafd173547752dce4dee1a69e0b3c95-le32d4.cache-3
+abfc0000-abfc3000 r--s 00000000 08:07 136990    
+/var/cache/fontconfig/e383d7ea5fbe662a33d9b44caf393297-le32d4.cache-3
+abfc3000-abfc9000 r--s 00000000 08:07 149725    
+/var/cache/fontconfig/401a5dd6b567794a1d18dd9342dfa604-le32d4.cache-3
+abfc9000-abfca000 r--s 00000000 08:07 136982    
+/var/cache/fontconfig/e7071f4a29fa870f4323321c154eba04-le32d4.cache-3
+abfca000-abfcc000 r--s 00000000 08:07 172468    
+/var/cache/fontconfig/b5ea634b0fb353b8ea17632d1f9ef766-le32d4.cache-3
+abfcc000-abfcf000 r--s 00000000 08:07 136979    
+/var/cache/fontconfig/6eb3985aa4124903f6ff08ba781cd364-le32d4.cache-3
+abfcf000-abfd3000 r--s 00000000 08:07 136959    
+/var/cache/fontconfig/a755afe4a08bf5b97852ceb7400b47bc-le32d4.cache-3
+abfd3000-abfd7000 r--s 00000000 08:07 149739    
+/var/cache/fontconfig/515ca1ebc4b18308bea979be5704f9db-le32d4.cache-3
+abfd7000-abfde000 r--s 00000000 08:07 138223    
+/var/cache/fontconfig/6d41288fd70b0be22e8c3a91e032eec0-le32d4.cache-3
+abfde000-abfe9000 r--s 00000000 08:07 147431    
+/var/cache/fontconfig/0f34bcd4b6ee430af32735b75db7f02b-le32d4.cache-3
+abfe9000-ac00b000 r--s 00000000 08:07 139174    
+/var/cache/fontconfig/365b55f210c0a22e9a19e35191240f32-le32d4.cache-3
+ac00b000-ac013000 r--s 00000000 08:07 135047    
+/var/cache/fontconfig/d52a8644073d54c13679302ca1180695-le32d4.cache-3
+ac013000-ac018000 r-xp 00000000 08:07 957821     /usr/lib/libogg.so.0.6.0
+ac018000-ac019000 r--p 00004000 08:07 957821     /usr/lib/libogg.so.0.6.0
+ac019000-ac01a000 rw-p 00005000 08:07 957821     /usr/lib/libogg.so.0.6.0
+ac01a000-ac041000 r-xp 00000000 08:07 953074     /usr/lib/libvorbis.so.0.4.3
+ac041000-ac042000 r--p 00026000 08:07 953074     /usr/lib/libvorbis.so.0.4.3
+ac042000-ac043000 rw-p 00027000 08:07 953074     /usr/lib/libvorbis.so.0.4.3
+ac043000-ac12f000 r-xp 00000000 08:07 953077    
+/usr/lib/libvorbisenc.so.2.0.6
+ac12f000-ac130000 ---p 000ec000 08:07 953077    
+/usr/lib/libvorbisenc.so.2.0.6
+ac130000-ac13e000 r--p 000ec000 08:07 953077    
+/usr/lib/libvorbisenc.so.2.0.6
+ac13e000-ac13f000 rw-p 000fa000 08:07 953077    
+/usr/lib/libvorbisenc.so.2.0.6
+ac13f000-ac18a000 r-xp 00000000 08:07 958097     /usr/lib/libFLAC.so.8.2.0
+ac18a000-ac18b000 r--p 0004a000 08:07 958097     /usr/lib/libFLAC.so.8.2.0
+ac18b000-ac18c000 rw-p 0004b000 08:07 958097     /usr/lib/libFLAC.so.8.2.0
+ac18c000-ac1c3000 r-xp 00000000 08:07 266729     /lib/libdbus-1.so.3.4.0
+ac1c3000-ac1c4000 r--p 00036000 08:07 266729     /lib/libdbus-1.so.3.4.0
+ac1c4000-ac1c5000 rw-p 00037000 08:07 266729     /lib/libdbus-1.so.3.4.0
+ac1c5000-ac226000 r-xp 00000000 08:07 948321    
+/usr/lib/libsndfile.so.1.0.21
+ac226000-ac227000 ---p 00061000 08:07 948321    
+/usr/lib/libsndfile.so.1.0.21
+ac227000-ac228000 r--p 00061000 08:07 948321    
+/usr/lib/libsndfile.so.1.0.21
+ac228000-ac229000 rw-p 00062000 08:07 948321    
+/usr/lib/libsndfile.so.1.0.21
+ac229000-ac22d000 rw-p 00000000 00:00 0
+ac22d000-ac234000 r-xp 00000000 08:07 265856     /lib/libwrap.so.0.7.6
+ac234000-ac235000 r--p 00006000 08:07 265856     /lib/libwrap.so.0.7.6
+ac235000-ac236000 rw-p 00007000 08:07 265856     /lib/libwrap.so.0.7.6
+ac236000-ac242000 r-xp 00000000 08:07 946870     /usr/lib/libXi.so.6.1.0
+ac242000-ac243000 r--p 0000c000 08:07 946870     /usr/lib/libXi.so.6.1.0
+ac243000-ac244000 rw-p 0000d000 08:07 946870     /usr/lib/libXi.so.6.1.0
+ac244000-ac247000 r-xp 00000000 08:07 262020     /lib/libuuid.so.1.3.0
+ac247000-ac248000 r--p 00002000 08:07 262020     /lib/libuuid.so.1.3.0
+ac248000-ac249000 rw-p 00003000 08:07 262020     /lib/libuuid.so.1.3.0
+ac249000-ac292000 r-xp 00000000 08:07 958107    
+/usr/lib/libpulsecommon-0.9.21.so
+ac292000-ac293000 r--p 00048000 08:07 958107    
+/usr/lib/libpulsecommon-0.9.21.so./wspr: l&#237;nea 1: 21458
+Abortado                LD_LIBRARY_PATH=./lib python -O wspr.py
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">pino at SIP-ubuntu</A>:/DEB/WSPR$
+
+
+Best 73 de
+
+Pino ZP4KFX
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001161.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+	<LI>Next message: <A HREF="001162.html">[Wsjt-devel] Test message, please ignore.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1160">[ date ]</a>
+              <a href="thread.html#1160">[ thread ]</a>
+              <a href="subject.html#1160">[ subject ]</a>
+              <a href="author.html#1160">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

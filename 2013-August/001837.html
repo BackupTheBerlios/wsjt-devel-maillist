@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D0A1D.2050308%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001839.html">
+   <LINK REL="Next"  HREF="001843.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D0A1D.2050308%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">joe at princeton.edu
+       </A><BR>
+    <I>Thu Aug 15 19:04:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001839.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001843.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+I've been away for three days, now trying to catch up on the progress 
+you and others have been making.  I have cmake installed on my Windows 7 
+development machine, but I'm now stuck when cmake spits out the 
+following error:
+
+###################################################################
+CMake Error at 
+C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfigExtra
+s.cmake:16 (message):
+   Failed to find &quot;glu32&quot; in &quot;&quot;.
+Call Stack (most recent call first):
+ 
+C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake:50 
+(_
+qt5gui_find_extra_libs)
+ 
+C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake:127 
+(includ
+e)
+ 
+C:/QT/Qt5.1.0/5.1.0/mingw48_32/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake:83
+(find_package)
+   CMakeLists.txt:92 (find_package)
+###################################################################
+
+So, I guess this means it can't find libglu32.a ?  Such a file is 
+present in this machine at
+
+C:/QT/Qt5.1.0/Tools/mingw48_32/i686-w64-mingw32/lib/libglu32.a
+
+Should cmake find that, or should it be looking elsewhere?
+
+Quite possibly the problem is that I don't have the required Microsoft 
+SDK installed.  So, I tried to install it; the Windows installer quits 
+with this message:
+
+##########################################################################
+Setup could not find the file WinSDKTools\WinSDKTools_x86.msi at any of 
+the specified source locations 
+<A HREF="http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup">http://download.microsoft.com/download/A/6/A/A6AC035D-DA3F-4F0C-ADA4-37C8E5D34E3D/setup</A>
+
+Please attempt to resolve the problem and then start Windows SDK setup 
+again. If you continue to have problems with this issue, please visit 
+the SDK team support page at <A HREF="http://go.microsoft.com/fwlink/?LinkId=130245.">http://go.microsoft.com/fwlink/?LinkId=130245.</A>
+##########################################################################
+
+... and I find a ton of complaints about the same problem at
+
+<A HREF="http://blogs.msdn.com/b/windowssdk/archive/2009/02/12/troubleshooting-windows-sdk-server-2008-download-install.aspx">http://blogs.msdn.com/b/windowssdk/archive/2009/02/12/troubleshooting-windows-sdk-server-2008-download-install.aspx</A>
+
+and no suggested solution (that I have found).
+
+Without this SDK installed (which I guess is necessary because of 
+dependence on DirectX audio drivers?), I don't know what to do next.
+
+Since Qt5.1 builds WSJT-X correctly on this machine without help from 
+cmake, it seems that all necessary pre-requisites are here.  (But maybe 
+not, to build the program it the way you have prescribed.)
+
+Anyway, that's as far as UI have got, so far, in Windows.
+
+I've also had a shot at using cmake in Linux (Ubuntu 12.04).  Things 
+ground to a halt there right away because cmake is rev 2.8.7, and we 
+need 2.8.9.  I guess I should upgrade to Ubuntu 12.10 or 13.04?
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001839.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001843.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1837">[ date ]</a>
+              <a href="thread.html#1837">[ thread ]</a>
+              <a href="subject.html#1837">[ subject ]</a>
+              <a href="author.html#1837">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

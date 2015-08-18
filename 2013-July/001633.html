@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAudio for input and output
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3CCALNQy4-6CkRTgyvsDc61snqgcZQ-1HrnstLAaXRYq6isty0FDA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001629.html">
+   <LINK REL="Next"  HREF="001634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAudio for input and output</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3CCALNQy4-6CkRTgyvsDc61snqgcZQ-1HrnstLAaXRYq6isty0FDA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] QAudio for input and output">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed Jul 31 22:12:26 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001629.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+        <LI>Next message: <A HREF="001634.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1633">[ date ]</a>
+              <a href="thread.html#1633">[ thread ]</a>
+              <a href="subject.html#1633">[ subject ]</a>
+              <a href="author.html#1633">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Joe, Bill et al,
+
+On Wed, Jul 31, 2013 at 2:39 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As I see it:
+</I>&gt;<i>
+</I>&gt;<i> Advantages for Portaudio:
+</I>&gt;<i> 1. The coding has already been done, and we know that it works well in
+</I>&gt;<i> Windows, Linux, and OS X.
+</I>&gt;<i> 2. It provides access to all available Windows sound APIs (MME, DirectX,
+</I>&gt;<i> WASAPI, WDM-KS, ASIO).
+</I>&gt;<i>
+</I>&gt;<i> Advantages for QAudio
+</I>&gt;<i> 1. No need for a sound library external to Qt.
+</I>&gt;<i> 2. Integration with the rest of Qt is seamless.
+</I>&gt;<i> 3. Who needs all those other APIs, if the one presented by QAudio works
+</I>&gt;<i> well?  (Note that no program in the WSJT suite needs super-low latencies,
+</I>&gt;<i> etc.)
+</I>&gt;<i>
+</I>&gt;<i> My vote, assuming that it will accommodate all reasonable audio devices,
+</I>&gt;<i> is for QAudio.  But I will not be devastated if we eventually decide that
+</I>&gt;<i> Portaudio serves our needs better.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>I also vote for QAudio. It &quot;shoud&quot; make the code cleaner and the
+application lighter (one less lib to include). I will assist you and Bill
+with testing and debugging on Linux. This will prevent issues with 6 hands
+touching the same code!  I have to configure pulseaudio to manage the sound
+card I use for WSJT-X. Right now I have pulseaudio managing only the
+default onboard card (card 0). Cards 1 and 2 I use for SDR work and manage
+them with jackd. Card 3 is a homemade USB sound interface I use for WSJT-X.
+
+
+
+&gt;<i> Bill, my suggestion is that you do the sound out changes using QAudio
+</I>&gt;<i> rather than Portaudio.  We can then test it in Linux and OS X, as well as
+</I>&gt;<i> your Windows tests.  If all seems well, then you can convert your sound
+</I>&gt;<i> input code to QAudio.  (You'll probably want to ignore my QAudio code,
+</I>&gt;<i> except maybe to see what I did.  I'm sure I have made mistakes there.)
+</I>&gt;<i>
+</I>&gt;<i> Comments and opinions from others?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>The pitfalls I had with QAudio in the past were primarily related to
+threads. Since we will try running the audio from the GUI thread, there
+should be no thread-related issues. It remains to be seen if it will be
+possible to run the audio outuput without it running on a separate thread.
+We need to run some tests with WSJT-X on slower computers to make sure
+things are ok since a lot of graphics consume CPU cycles in the GUI thread
+and audio output can't starve from CPU.
+
+73,
+
+-- Edson PY2SDR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130731/5aba5614/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130731/5aba5614/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001629.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+	<LI>Next message: <A HREF="001634.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1633">[ date ]</a>
+              <a href="thread.html#1633">[ thread ]</a>
+              <a href="subject.html#1633">[ subject ]</a>
+              <a href="author.html#1633">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

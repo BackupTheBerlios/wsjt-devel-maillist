@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] configurable audio center for WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20configurable%20audio%20center%20for%20WSPR&In-Reply-To=%3C4A78687F.20205%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000723.html">
+   <LINK REL="Next"  HREF="000728.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] configurable audio center for WSPR</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20configurable%20audio%20center%20for%20WSPR&In-Reply-To=%3C4A78687F.20205%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] configurable audio center for WSPR">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Aug  4 18:57:35 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000723.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+        <LI>Next message: <A HREF="000728.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#725">[ date ]</a>
+              <a href="thread.html#725">[ thread ]</a>
+              <a href="subject.html#725">[ subject ]</a>
+              <a href="author.html#725">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Vojt&#283;ch,
+
+Congratulations on your implementation of a standalone Tx 
+capability for WSPR mode in the ATS-3b!  I have seen your 
+recent posts about it, and also your web site at 
+<A HREF="http://www.kufr.cz/~ok1iak/HAM/WSPR/">http://www.kufr.cz/~ok1iak/HAM/WSPR/</A> .
+
+&gt;<i> ATS-3b and other QRP kits usually have pretty narrow IF 
+</I>&gt;<i> bandwidth centered around 600 or 800Hz. Your software 
+</I>&gt;<i> expects the SSB IF filter be centered at 2.5kHz. Would 
+</I>&gt;<i> you please extend your WSPR software to provide configurable 
+</I>&gt;<i> audio frequency center?
+</I>
+WSPR uses a 1500 Hz audio center frequency, to be compatible 
+with normal SSB transceivers.  (I assume that you know this, 
+and that your mention of 2.5 kHz is just a typo.)
+
+Yes, it would be possible to make the audio center frequency 
+a user-configurable parameter.  I will put this idea on my 
+list of possible new program features.
+
+&gt;<i> I would like to add WSPR to my PocketDigi software, ... 
+</I>&gt;<i> I am having difficulties to read the Fortran code. I have 
+</I>&gt;<i> the encoder implemented. I know how to decode the message 
+</I>&gt;<i> from soft detected four bit symbols - I will just use 
+</I>&gt;<i> Phil Karn's code. It would help me a lot, if you could 
+</I>&gt;<i> describe in short how your receive algorithm works - how 
+</I>&gt;<i> many FFTs at which speed and spacing are you running, how 
+</I>&gt;<i> do you lock onto the sync vector and whether you run any 
+</I>&gt;<i> AFC and how the AFC is implemented.
+</I>
+When a 2-minute Rx interval is finished, WSPR starts a new 
+thread to decode the received signals.  The decoding 
+procedure follows a function-calling sequence that looks 
+like this:
+
+decode
+   |- mept162
+         |- mix162
+         |- spec162
+         |- sync162
+         |- twkfreq
+         |- decode162
+               |- fano232
+               |- wqdecode
+
+Functions of the individual routines are basically as follows:
+
+1. decode: interacts with remainder of WSPR program
+2. mept162: supervises the decoding procedure
+3. mix162: mixes 1500 Hz +/- 100 Hz to baseband and
+    downsamples by 1/32
+4. spec162: computes 2d spectrum for waterfall display
+5. sync162: does FFTs using symbol-length data arrays;
+    searches for WSPR sync patterns over a range of DT,
+    DF, and fdot (frequency drift); returns a list of
+    WSPR-signal candidates.
+6. twkfreq: removes frequency offset and drift
+7. decode162: computes soft symbols, removes interleaving,
+    and decodes the convolutional code using the Fano
+    sequential algorithm.
+8. wqdecode: expands the source-encoded 50-bit message to
+    give back the original user message.
+
+WSPR samples the Rx data at 12000 Hz, and channel symbols 
+are 8192 samples long.  After downsampling in mix162, the 
+rate is 375 Hz and symbols are 256 samples long.  Subroutine 
+sync162 calls ps162 to do the FFTs; to get a smaller 
+frequency bin width I use 512-point FFTs (256 data points 
+followed by 256 zeros), and transforms are computed at 
+128-point (half-symbol) steps.
+
+&gt;<i> If I do succeed, Simon Brown of the Ham Radio Deluxe &amp; DM780 
+</I>&gt;<i> fame will integrate the WSPR port also.
+</I>
+I had some communication with Simon Brown many months ago, 
+when he was working to implement JT65 in one of his 
+programs.  I have not heard from him in a long time, and I 
+do not know what became of his effort.
+
+
+
+I know that we are close neighbors!  I look forward to 
+meeting you some time soon.
+
+	-- 73, Joe, K1JT
+
+PS: Before hitting the &quot;send&quot; button, I realized that a 
+user-configurable RxBFO setting would be very easy to do, so 
+I went ahead and implemented it.  Please download and try 
+the file
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR_r1314.EXE">http://physics.princeton.edu/pulsar/K1JT/WSPR_r1314.EXE</A>
+
+You can put it in the same directory where you have already 
+installed WSPR.  Set your desired Rx BFO frequency on the 
+Setup --&gt; Options screen.
+
+Please let me know if it does what you want.
+
+There are a few other new features in this version, as well. 
+  In particular, it uses hamlib commands for some CAT 
+communication with popular transceivers.
+
+	-- Joe
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000723.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+	<LI>Next message: <A HREF="000728.html">[Wsjt-devel] configurable audio center for WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#725">[ date ]</a>
+              <a href="thread.html#725">[ thread ]</a>
+              <a href="subject.html#725">[ subject ]</a>
+              <a href="author.html#725">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

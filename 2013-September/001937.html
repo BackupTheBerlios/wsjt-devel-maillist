@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Configuration dialog proposal.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C5234EF00.3040907%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001936.html">
+   <LINK REL="Next"  HREF="001938.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Configuration dialog proposal.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C5234EF00.3040907%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Configuration dialog proposal.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sun Sep 15 01:19:28 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001936.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001938.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1937">[ date ]</a>
+              <a href="thread.html#1937">[ thread ]</a>
+              <a href="subject.html#1937">[ subject ]</a>
+              <a href="author.html#1937">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 14/09/2013 23:52, Murray Curtis wrote:
+Hi Murray,
+&gt;<i> Well done Bill, looks good.
+</I>Thanks, it was done in a bit of a rush today when I realised that adding 
+the few new options I needed would grow the existing dialog to a rather 
+large size.
+&gt;<i>
+</I>&gt;<i> Would the radio interface expose alternative port types?  It would 
+</I>&gt;<i> appear HamLib supports USB,  Device driver(?), UDP etc. But then I 
+</I>&gt;<i> imagine the configuration GUI has to change for each different port 
+</I>&gt;<i> type - bit of a pain.
+</I>I need to look at how that works, I've not managed to build the hamlib 
+source with USB support here, on Windows, and I don't have a direct USB 
+controlled radio to test with. The hamlib developers are currently 
+re-factoring the library to a monolithic build with no run-time shared 
+library loading. It will be interesting to see how that works out and 
+how big the resulting library is. I though the radios that did have USB 
+interfaces emulated a serial port so any information on those with 
+custom USB devices would be welcome.
+&gt;<i>
+</I>&gt;<i> Alternatively I was thinking of adding XML-RPC to WSJT-X. Some of my 
+</I>&gt;<i> homebrew radios run control software on the (Linux) PC and use XML-RPC 
+</I>&gt;<i> to talk to Fldigi.  It was relatively easy to add and works well.  
+</I>&gt;<i> Fldigi doesn't expose any options - just a simple on/off checkbox.
+</I>The new radio interface code works through an abstract interface that 
+needs to support a few basic radio commands like set frequency, set 
+mode, set split frequencies, set split mode on and off, set PTT on and 
+off and, either send and event when any of a defined set of parameter 
+change or support a query of the same parameters. Those parameters being 
+VFO A frequency and mode, VFO B frequency and mode if different from VFO 
+A, Tx VFO and Rx VFO, split mode state and, PTT state. Internally there 
+are concrete classes for each type of interface (hamlib, DX Lab Suite 
+Commander, HRD, OmniRig). Adding a new type of interface will be pretty 
+simple if it can do those functions. There is also a bit of factory 
+boilerplate to instantiate an implementation along with registering some 
+static values to allow the configuration dialog to understand the 
+capabilities without actually having to create a radio type.
+
+The biggest problem is testing all the possible radio types multiplied 
+by four for the different ways of interfacing. Unfortunately CAT 
+protocols are nowhere near standardised and each of the interfaces fail 
+in some way to hide the differences.
+
+I plan to write a stand alone program to exercise the radio interface 
+with built in data logging and want to push it out to anyone in the user 
+base who is willing to try it so I can get coverage of the variables.
+&gt;<i>
+</I>&gt;<i> BTW you have a typo in the tool tip for the frequencies tab.
+</I>Thanks, I've found 10 or so other errors but missed that one so there 
+are bound to be a few more :(
+&gt;<i>
+</I>&gt;<i> Cheers
+</I>&gt;<i> Murray
+</I>&gt;<i> VK3ACF
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 15/09/13 07:29, Bill Somerville wrote:
+</I>&gt;&gt;<i> Hi All,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> attached is a proposed revised configuration dialog. I would 
+</I>&gt;&gt;<i> appreciate any feedback.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You can give it a try in QtDesigner by loading it and pressing 
+</I>&gt;&gt;<i> Alt+Shift+R. Obviously the bare UI isn't functional but comments on 
+</I>&gt;&gt;<i> layout, suitability, wording, typos in the tool tips, grouping, 
+</I>&gt;&gt;<i> ordering, missing items, etc. are welcome.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If used, it would be coupled with a much improved radio interface 
+</I>&gt;&gt;<i> that could include setting mode and split automatically as well as 
+</I>&gt;&gt;<i> supporting OmniRig as a new way of interfacing to radios and much 
+</I>&gt;&gt;<i> improved HRD interfacing.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001936.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001938.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1937">[ date ]</a>
+              <a href="thread.html#1937">[ thread ]</a>
+              <a href="subject.html#1937">[ subject ]</a>
+              <a href="author.html#1937">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

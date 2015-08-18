@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090501012159.00633264%40richard-g8jvm%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000590.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090501012159.00633264%40richard-g8jvm%3E"
+       TITLE="[Wsjt-devel] gfortran">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri May  1 02:21:59 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000590.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 30 Apr 2009 16:16:39 -0400
+Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Joe and I would like to clear up the mystery of gfortran compiles
+</I>&gt;<i> breaking.
+</I>&gt;<i> 
+</I>&gt;<i> From: Peter Junker &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">dg6man at pjconsult.de</A>&gt;
+</I>&gt;<i> Date: Tue, 4 Nov 2008 13:24:24 +0100
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &quot;Upon launching the application I briefly get the GUI and then it
+</I>&gt;<i> crashes with a segfault. The problem can be reproduced.&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Has this been resolved with the most current wsjt/wspr ? Anyone else
+</I>&gt;<i> with reports?
+</I>&gt;<i> 
+</I>&gt;<i> Please report: OS, 64bit or not, version of gfortran etc.
+</I>&gt;<i> 
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+Hi I thought I'd try and replicate building with gfortran. Only I've
+just found another problem, which may potentially give problems.
+I've got copies of portadudio-v19 scattered all over the place, some
+have been pulled off of wsjt packages, some are svn downloads.
+Now with the recent versions, when I build portaudio to get the Pa_xxxx
+packages, the compile now fails with this:-
+
+
+ /usr/lib64/libjack.so -ldl /usr/lib64/libsamplerate.so /usr/lib64/libcelt.so -lrt -lm -lpthread -Wl,--rpath -Wl,/usr/local/lib -Wl,--rpath -Wl,/usr/lib64
+lib/.libs/libportaudio.so: undefined reference to `jack_port_lock'
+lib/.libs/libportaudio.so: undefined reference to `jack_port_unlock'
+collect2: ld returned 1 exit status
+make: *** [bin/paqa_devs] Error 1
+
+As portaudio-v19 is no longer included with the trunk allowing users to
+use their own libs, someone is guaranteed to get it from svn and get
+the same.
+
+Is there a quick fix for this, or shall I SHUT Pandora's box
+
+
+-- 
+Best wishes
+
+Richard Bown
+
+#########################################################################
+Registered Linux User 36561
+OS: Mandriva 2009.1 powerpack on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+#########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000590.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

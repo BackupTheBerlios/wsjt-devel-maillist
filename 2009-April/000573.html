@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fw: wsjt7 build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fw%3A%20wsjt7%20build&In-Reply-To=%3C20090417160934.09e72e0e%40richard-g8jvm%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000572.html">
+   <LINK REL="Next"  HREF="000574.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fw: wsjt7 build</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fw%3A%20wsjt7%20build&In-Reply-To=%3C20090417160934.09e72e0e%40richard-g8jvm%3E"
+       TITLE="[Wsjt-devel] Fw: wsjt7 build">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Apr 17 17:09:34 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000572.html">[Wsjt-devel] anyone wanta have a look at this
+</A></li>
+        <LI>Next message: <A HREF="000574.html">[Wsjt-devel] wsjt audio input not changing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#573">[ date ]</a>
+              <a href="thread.html#573">[ thread ]</a>
+              <a href="subject.html#573">[ subject ]</a>
+              <a href="author.html#573">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've forwarded this on to the reflector I now have WSPR and WSJT running
+on Ubuntu 9.04 AMD64.
+there is now a G95 64bit compiler in a .deb as well as other formats on
+<A HREF="http://www.g95.org/downloads.shtml">http://www.g95.org/downloads.shtml</A>
+
+On Fri, 17 Apr 2009 19:55:27 +1000
+Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt; wrote:
+
+&gt;<i> 
+</I>&gt;<i> One error is gone but the others remain.. I think the cause is the
+</I>&gt;<i> same though - conflicts between stdint.h in the source tree and the
+</I>&gt;<i> standard includes in /usr/include. 
+</I>&gt;<i> 
+</I>&gt;<i> Can you try to delete the stdint.h in the wsjt source?
+</I>&gt;<i> It may not build at all in that case, I'm not sure. I don't have g95
+</I>&gt;<i> so I can't try it.
+</I>&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> cheers
+</I>&gt;<i> Hamish  
+</I>
+
+
+
+
+Begin forwarded message:
+
+Date: Fri, 17 Apr 2009 15:56:08 +0100
+From: richard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard.bown at blueyonder.co.uk</A>&gt;
+To: Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt;
+Cc: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+Subject: Re: wsjt7 build
+
+
+On Fri, 17 Apr 2009 23:17:55 +1000
+Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt; wrote:
+
+&gt;<i> On Fri, Apr 17, 2009 at 12:12:19PM +0100, richard wrote:
+</I>&gt;<i> &gt; On Fri, 17 Apr 2009 20:55:05 +1000
+</I>&gt;<i> &gt; Hamish Moffatt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt; wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; On Fri, Apr 17, 2009 at 11:31:17AM +0100, richard wrote:
+</I>&gt;<i> &gt; &gt; &gt; I've deleted stdint.h from the wsjt source and ran make again.
+</I>&gt;<i> &gt; &gt; &gt; The failure has changed.
+</I>&gt;<i> &gt; &gt; &gt; I've attached the compile log
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; OK we're close... for some reason fourt.o has been compiled with
+</I>&gt;<i> &gt; &gt; incompatible compiler switches, can you &quot;make clean&quot; and build the
+</I>&gt;<i> &gt; &gt; whole lot again? Send me another log if it still fails.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Hamish
+</I>&gt;<i> &gt; I do a make clean every time Hamish,
+</I>&gt;<i> &gt; I started the script straight after running ./configure
+</I>&gt;<i> 
+</I>&gt;<i> ok.. so the Makefile.in has special rules for fourt.f which means it
+</I>&gt;<i> gets compiled with different flags, which are wrong.
+</I>&gt;<i> 
+</I>&gt;<i> So you can try two things. Both of them involve editing the following
+</I>&gt;<i> section of Makefile.in, line 127 in my checkout.
+</I>&gt;<i> 
+</I>&gt;<i> fourt.o: fourt.f
+</I>&gt;<i>         $(FC) -c -O fourt.f
+</I>&gt;<i> 
+</I>&gt;<i> Firstly, try just commenting both lines out (with # prefix) and seeing
+</I>&gt;<i> if it changes it. If it fails, try
+</I>&gt;<i> 
+</I>&gt;<i> fourt.o: fourt.f
+</I>&gt;<i>         $(FC) -c -fPIC -O fourt.f
+</I>&gt;<i> 
+</I>&gt;<i> which is a hack but might work.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hamish
+</I>
+Hi Hamish
+Sorry I didn't get back to you earlier. I had to go down to the local
+hospital to get my retinas photographed.
+
+
+Commenting out the 2 lines in the Makefile worked :)  :)
+
+
+wqencode.f90: In function &#8216;wqencode_&#8217;:
+wqencode.f90:308: warning: &#8216;i1&#8217; is used uninitialized in this function
+wqencode.f90:1: warning: &#8216;nwatts&#8217; may be used uninitialized in this
+function mv Audio.so WsjtMod
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at richard-g8jvm</A>:/usr/local/wsjt-r1121# python wsjt.py
+******************************************************************
+WSJT Version 7.03 r1105 , by K1JT
+Revision date: 2009-03-26 12:54:18 +0000 (Thu, 26 Mar 2009) 
+Run date:   Fri Apr 17 14:47:36 2009 UTC
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0        2         8       PnP Audio Device        : USB Audio
+(hw:1,0) 1       128        128       default
+   2        0        10       dmix
+   3       16         2       /dev/dsp1
+
+User requested devices:   Input = 0   Output = 0
+Default devices:          Input = 1   Output = 1
+Will open devices:        Input = 1   Output = 1
+bt_audio_service_open: connect() failed: Connection refused (111)
+bt_audio_service_open: connect() failed: Connection refused (111)
+Audio streams running normally.
+******************************************************************
+
+
+Now just sort out why wsjt wont run from /usr/local/bin.
+Not too worried about that, as it runs OK from the directory it was
+compiled in by using python wsjy.py
+
+Many thanks Hamish have a few tinnies as a reward
+-- 
+Best wishes
+
+Richard Bown
+
+#########################################################################
+Registered Linux User 36561
+OS: Ubuntu 9.04, Jaunty -dev, on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+#########################################################################
+
+
+-- 
+Best wishes
+
+Richard Bown
+
+#########################################################################
+Registered Linux User 36561
+OS: Ubuntu 9.04, Jaunty -dev, on AMD Dual Athlon 64 +4400: 8 GB RAM DDR2
+Ham Call: G8JVM , QRA IO82SP, Interests Microwave
+#########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000572.html">[Wsjt-devel] anyone wanta have a look at this
+</A></li>
+	<LI>Next message: <A HREF="000574.html">[Wsjt-devel] wsjt audio input not changing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#573">[ date ]</a>
+              <a href="thread.html#573">[ thread ]</a>
+              <a href="subject.html#573">[ subject ]</a>
+              <a href="author.html#573">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

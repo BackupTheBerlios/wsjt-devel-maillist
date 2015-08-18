@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Transceiver control woes.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C522890DA.9070907%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001909.html">
+   <LINK REL="Next"  HREF="001913.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Transceiver control woes.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C522890DA.9070907%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Transceiver control woes.">joe at princeton.edu
+       </A><BR>
+    <I>Thu Sep  5 16:10:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001909.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+        <LI>Next message: <A HREF="001913.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1912">[ date ]</a>
+              <a href="thread.html#1912">[ thread ]</a>
+              <a href="subject.html#1912">[ subject ]</a>
+              <a href="author.html#1912">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill and all,
+
+A few comments on the transceiver control woes.
+
+I agree that blocking operations in the GUI thread are potential 
+problems (unless we know that the maximum blocked time is acceptably 
+small).  Some months ago I ran into this problem when using hamlib calls 
+-- for example with my TS-2000, which requires setting 
+serial_handshake=Hardware.  With the standard hamlib routines compiled 
+from hamlib-1.2.15.3, this caused the program to hang &quot;forever&quot;.
+
+OK1ZIA helped me to solve the problem.  After adding:
+
+options.c_cc[VTIME] = rp-&gt;timeout / 100; // VTIME in deciseconds, 
+rp-&gt;timeout in miliseconds
+
+into serial_setup() before tcflush(), we fould that all works correctly.
+
+I don't know whether this required change has made it into the official 
+hamlib repository.  But Bill, it should definitely go into the source 
+from which you are building the hamlib routines.
+
+I minimized the use of multiple threads in early development of WSJT-X, 
+mainly because I was just learning my way around Qt.  I agree that we 
+may now be best served by putting rig control into a separate thread.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001909.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+	<LI>Next message: <A HREF="001913.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1912">[ date ]</a>
+              <a href="thread.html#1912">[ thread ]</a>
+              <a href="subject.html#1912">[ subject ]</a>
+              <a href="author.html#1912">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

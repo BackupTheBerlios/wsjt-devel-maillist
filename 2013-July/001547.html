@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 r 3500
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r%203500&In-Reply-To=%3C51EEEDD9.5080404%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001546.html">
+   <LINK REL="Next"  HREF="001548.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 r 3500</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20r%203500&In-Reply-To=%3C51EEEDD9.5080404%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 r 3500">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul 23 22:55:53 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001546.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+        <LI>Next message: <A HREF="001548.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1547">[ date ]</a>
+              <a href="thread.html#1547">[ thread ]</a>
+              <a href="subject.html#1547">[ subject ]</a>
+              <a href="author.html#1547">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David --
+
+VK4BDJ wrote:
+&gt;<i> Hi Joe.....with this revision i have completly lost CAT control on my
+</I>&gt;<i> FT450D
+</I>&gt;<i> therefore the +2khz does not work
+</I>
+CAT control in r3500 works OK here, both direct to my TS-2000 and via 
+Commander in Windows, and direct to the TS-2000 in Linux.  That's all I 
+can easily test.
+
+Changes were made in two areas:
+
+  -- the DTR/RTS checkbox is now two separate checkboxes
+
+  -- multiple tries at polling the radio for frequency are now made in 
+rigclass.cpp rather than mainwindow.cpp.
+
+Can you diagnose your problem any further?
+
+Important question: does anyone else observe a problem with CAT control 
+in revision 3500 ?
+
+      -- Joe, K1JT
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001546.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+	<LI>Next message: <A HREF="001548.html">[Wsjt-devel] WSJTX 1.1 r 3500
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1547">[ date ]</a>
+              <a href="thread.html#1547">[ thread ]</a>
+              <a href="subject.html#1547">[ subject ]</a>
+              <a href="author.html#1547">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

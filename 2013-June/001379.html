@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond%20%20-%20JT4&In-Reply-To=%3C28FBAF4C0DD641208D1CF0FB1AB26673%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001349.html">
+   <LINK REL="Next"  HREF="001389.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond%20%20-%20JT4&In-Reply-To=%3C28FBAF4C0DD641208D1CF0FB1AB26673%40shack2%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4">freevil at tiscali.co.uk
+       </A><BR>
+    <I>Sat Jun 15 12:23:45 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001349.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+        <LI>Next message: <A HREF="001389.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1379">[ date ]</a>
+              <a href="thread.html#1379">[ thread ]</a>
+              <a href="subject.html#1379">[ subject ]</a>
+              <a href="author.html#1379">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Agreed, it would of course change the mode.
+
+As WSJT-X is quite a major change, it would be the ideal time to make 
+changes to the sampling rate.
+To prevent confusion, JT4Xg could be a new designator.
+(same for JT65X ??)
+
+Question is what are the advantages, if any, of moving to 12000 sampling ??
+
+I see many soundcards do not sample at 11025, and perform a conversion (or 
+the driver/windows/Linux does) from 48KHz or above.
+Is there a performance hit as a result ?
+I imagine many cards do not convert well, expecting ears as an end user, not 
+a scientific instrument.
+
+If all modes use the same sample rate (12000) is it easier for one decoder 
+to identify the different modes, or multiple modes all at once ?
+I have wideband sampling and MAP65 in mind here.
+
+Simplifies dedicated hardware samplers.
+
+
+Thoughts ??
+
+Cheers, DAvid GM6BIG
+
+
+
+
+ ----- Original Message ----- 
+From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+To: &quot;WSJT Devel&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+Sent: Saturday, June 08, 2013 2:10 PM
+Subject: Re: [Wsjt-devel] WSJT-X Version 1.0 and beyond - JT4
+
+
+&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;<i> David GM6BIG wrote:
+</I>&gt;&gt;<i> Quote..
+</I>&gt;&gt;<i> ....Adding other WSJT modes: JT65, FSK441, ISCAT, JT4 ...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As you know I have a specific personal interest in JT4.
+</I>&gt;&gt;<i> When it is added to WSJT-X will the sampling rate change to 12000 from
+</I>&gt;&gt;<i> 11025 ??
+</I>&gt;&gt;<i> I can see this will have an impact on the tone spacing if it is changed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Curious to know how it will be done.
+</I>&gt;<i>
+</I>&gt;<i> The tone spacing is part of the protocol definition.  It can't be changed, 
+</I>&gt;<i> and still call the mode &quot;JT4&quot;.
+</I>&gt;<i>
+</I>&gt;<i> When the other modes are added to WSJT-X, they will remain backward 
+</I>&gt;<i> compatible with earlier versions of WSJT and other programs implementing 
+</I>&gt;<i> the WSJT modes.
+</I>&gt;<i>
+</I>&gt;&gt;<i> I have a PC part built with the intention of using it for WSJT compiling
+</I>&gt;&gt;<i> under Windows (XP at the moment).
+</I>&gt;&gt;<i> I am an assembler programmer (microcontrollers), not so much a high
+</I>&gt;&gt;<i> level language programmer
+</I>&gt;&gt;<i> Will be looking for some advice soon on what packages are required to
+</I>&gt;&gt;<i> achieve this !
+</I>&gt;<i>
+</I>&gt;<i> Basic information on compiling the WSJT programs has been available for 
+</I>&gt;<i> some time at <A HREF="http://physics.princeton.edu/pulsar/K1JT/devel.html">http://physics.princeton.edu/pulsar/K1JT/devel.html</A> .  This 
+</I>&gt;<i> is not a step-by step recipe -- but if you generally know what you're 
+</I>&gt;<i> doing with such tasks, it's enough to get you started.
+</I>&gt;<i>
+</I>&gt;<i> Building these programs is not for the faint of heart.
+</I>&gt;<i>
+</I>&gt;<i> -- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A> 
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001349.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+	<LI>Next message: <A HREF="001389.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1379">[ date ]</a>
+              <a href="thread.html#1379">[ thread ]</a>
+              <a href="subject.html#1379">[ subject ]</a>
+              <a href="author.html#1379">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

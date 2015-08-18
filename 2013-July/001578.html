@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F43483.5040305%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001577.html">
+   <LINK REL="Next"  HREF="001582.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F43483.5040305%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">joe at princeton.edu
+       </A><BR>
+    <I>Sat Jul 27 22:58:43 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001577.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001582.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1578">[ date ]</a>
+              <a href="thread.html#1578">[ thread ]</a>
+              <a href="subject.html#1578">[ subject ]</a>
+              <a href="author.html#1578">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>G4WJS wrote:
+&gt;<i> I was looking at the Qt 5.1 docs and the QAudioInput class is not
+</I>&gt;<i> described in the Audio overview, nor is it listed in the module class
+</I>&gt;<i> list. I suppose the docs are still a work in progress. Having found it
+</I>&gt;<i> by looking up in the full list of classes; yes it does seem to fit the
+</I>&gt;<i> requirement well.
+</I>
+Actually, I've found the documentation to be one of Qt's strongest 
+features.
+
+For QAudioInput and QAudioOutput go to
+
+<A HREF="http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudioinput.html">http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudioinput.html</A>
+<A HREF="http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudiooutput.html">http://qt-project.org/doc/qt-5.1/qtmultimedia/qaudiooutput.html</A>
+
+...
+
+A few hours ago I quickly cobbled together drop-in replacements for 
+soundin.h and soundin.cpp that use QAudioInput instead of PortAudio. 
+The code compiled and ran without problems, and within an hour WSJT-X 
+was decoding both JT65 and JT9 signals with the nes input routines.
+The same approach for audio output should not be any more difficult.
+
+I'm not suggesting that others should stop thinking about the best way 
+to do these tasks... just reporting that a baseline system (the input 
+device selection was temporarily hard-wired, for example) was easy to 
+get going.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001577.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001582.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1578">[ date ]</a>
+              <a href="thread.html#1578">[ thread ]</a>
+              <a href="subject.html#1578">[ subject ]</a>
+              <a href="author.html#1578">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

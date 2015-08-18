@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52DBC66C.1010403%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002046.html">
+   <LINK REL="Next"  HREF="002039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52DBC66C.1010403%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sun Jan 19 13:34:52 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002046.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+        <LI>Next message: <A HREF="002039.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2047">[ date ]</a>
+              <a href="thread.html#2047">[ thread ]</a>
+              <a href="subject.html#2047">[ subject ]</a>
+              <a href="author.html#2047">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 19/01/2014 12:13, Edson W. R. Pereira wrote:
+&gt;<i>
+</I>&gt;<i> Hello Bill,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Sun, Jan 19, 2014 at 8:52 AM, Bill Somerville 
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     On 18/01/2014 12:47, Edson W. R. Pereira wrote:
+</I>&gt;<i>     Hi Edson &amp; All,
+</I>&gt;<i>
+</I>&gt;<i>         Hello Joe,
+</I>&gt;<i>
+</I>&gt;<i>         Compiled clean and running without issues on Ubuntu 12.04. I
+</I>&gt;<i>         had to add a few missing entries to lib/CMakeLists.txt.
+</I>&gt;<i>
+</I>&gt;<i>         I've added a call to PSK_Reporter::sendSpots() in
+</I>&gt;<i>         MainWindow::on_bandComboBox_activated() to flush spots to
+</I>&gt;<i>         PSKReporter before changing bands. This should prevent spots
+</I>&gt;<i>         being reported on the wrong band.
+</I>&gt;<i>
+</I>&gt;<i>     I'm not sure this change achieves the desired behaviour in all
+</I>&gt;<i>     cases. Decodes are effectively buffered in the audio input buffers
+</I>&gt;<i>     so there is nothing to flush from the current period when a band
+</I>&gt;<i>     change is made.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> That is very true indeed.
+</I>Looking at the PSKReporter spot queue in WSJT-X it seems that queue 
+entries contain a frequency so I believe  there is no implicit problem 
+with entries in the queue so long as they are added with a correct 
+frequency.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     It may also be necessary to discard all spots destined for
+</I>&gt;<i>     PSKReporter that are decoded in a period where the Rx dial
+</I>&gt;<i>     frequency has changed either by the band dropdown or by the rig
+</I>&gt;<i>     VFO knob.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Yes. I am wandering how to best (read easier) way to implement this. 
+</I>&gt;<i> One possibility is to flag the audio detector object when there is a 
+</I>&gt;<i> band change. In this case when the buffer is full, it will discard the 
+</I>&gt;<i> buffer -- by not calling the detector. This way we could assure that a 
+</I>&gt;<i> corrupt buffer will not cause issues. What do you think?
+</I>I'm not sure that disabling decoding is a good thing, spots are 
+transient information and discarding a few doubtful ones is not an issue 
+for me, but discarding decodes is another matter. For example if that 
+rare one gets decoded, just as I arrive on a band or just after a leave 
+a band, I want to know about it even if I have moved. It may not be 
+feasible to give the correct frequency for a decode but it is still 
+useful information. Not having certainty about frequency makes it poor 
+spot information, but I know I've just moved, I can use the decode 
+information.
+
+I would keep a &quot;valid&quot; flag that is set at the start of each period and 
+reset whenever a band/dial frequency is detected. Then only add new 
+decodes to the PSKReporter spot queue when the flag is set. 
+Unfortunately the decoding process is asynchronous and can continue into 
+the subsequent period  to that which the message was sent. This last 
+fact makes it quite difficult to time the setting and resetting of any 
+such flag :(
+&gt;<i>
+</I>&gt;<i>     The situation with Hamspots via JTAlert is more complex since the
+</I>&gt;<i>     decodes are used for more than just spotting so it would be rather
+</I>&gt;<i>     unhelpful to block all decodes going to JTAlert from a period that
+</I>&gt;<i>     the dial frequency changed in.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I am not familiar with JTAlert -- Lnux user here. One thing that has 
+</I>&gt;<i> crossed my mind is that the band info could be written along with each 
+</I>&gt;<i> spot to ALL.TXT and decoded.txt. This way the spots could be post 
+</I>&gt;<i> processed and the band info would be readily available. What do you think?
+</I>As discussed above, the frequency of a decode is not always certain. If 
+we were to export the state of the &quot;valid&quot; flag I suggest above along 
+with each decode; then JTAlert or any other user of the decoded info 
+could know the certainty of the frequency.
+&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/bb4c3806/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/bb4c3806/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002046.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+	<LI>Next message: <A HREF="002039.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2047">[ date ]</a>
+              <a href="thread.html#2047">[ thread ]</a>
+              <a href="subject.html#2047">[ subject ]</a>
+              <a href="author.html#2047">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

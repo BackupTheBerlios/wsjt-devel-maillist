@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy4_EBfGiowhtLxwp_scP1BEYoVw9-C5R6UFt%2BuX8f8iwug%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001703.html">
+   <LINK REL="Next"  HREF="001706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCALNQy4_EBfGiowhtLxwp_scP1BEYoVw9-C5R6UFt%2BuX8f8iwug%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">ewpereira at gmail.com
+       </A><BR>
+    <I>Mon Aug  5 21:16:55 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001703.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001706.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1705">[ date ]</a>
+              <a href="thread.html#1705">[ thread ]</a>
+              <a href="subject.html#1705">[ subject ]</a>
+              <a href="author.html#1705">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill, Joe, et al,
+
+While we are at it, we may consider using the Hamlib API to get the list of
+rigs.
+
+Example code can be seen near line 1190 here:
+
+<A HREF="http://sourceforge.net/p/hamlib/code/ci/master/tree/tests/rigctl_parse.c">http://sourceforge.net/p/hamlib/code/ci/master/tree/tests/rigctl_parse.c</A>
+
+73,
+
+-- Edson PY2SDR
+
+On Mon, Aug 5, 2013 at 3:29 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Bill,
+</I>&gt;<i>
+</I>&gt;<i> I agree that options 2, 3, and 4 should be workable.  Do you want to go
+</I>&gt;<i> ahead with, say, option 2?
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 8/5/2013 12:35 PM, Bill Somerville wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 05/08/2013 16:35, Joe Taylor wrote:
+</I>&gt;&gt;<i> Hi Joe,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> If you see any show-stoppers or have other
+</I>&gt;&gt;&gt;&gt;<i> reservations, please make them known!
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> As it happens, I found an issue just minutes after sending the
+</I>&gt;&gt;&gt;<i> previous email. I was in a JT65 QSO and transmitting (as I always do)
+</I>&gt;&gt;&gt;<i> with the audio monitor on my transceiver turned ON.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Opening the Configuration screen during a transmission causes an brief
+</I>&gt;&gt;&gt;<i> audio interruption. This is bad! Maybe it's the reason that audio
+</I>&gt;&gt;&gt;<i> needs to be done in its own thread rather than the GUI thread? Bill,
+</I>&gt;&gt;&gt;<i> please investigate...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> This is due to the way we use a separate process to run the hamlib
+</I>&gt;&gt;<i> utility rigctl to get the list of supported radios. The config dialog
+</I>&gt;&gt;<i> blocks waiting for it to finish for up to 1s.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> There are a few of options:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 1) reduce the wait delay - not good since we shouldn't be blocking the
+</I>&gt;&gt;<i> GUI thread anyway,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2) don't wait and let the combo box of radios fill asynchronously (it is
+</I>&gt;&gt;<i> already using a signal so this is trivial). Currently we put the 9998 &amp;
+</I>&gt;&gt;<i> 9999 entries in after the wait, but we could hook the QProcess
+</I>&gt;&gt;<i> finished() signal to do that.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 3) use the hamlib API to lookup the supported radios assuming it can do
+</I>&gt;&gt;<i> it fast enough - if it can't then a QFuture might be ideal as it could
+</I>&gt;&gt;<i> return the full list on completion.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 4) Build the setup dialog at program startup and use show()/hide() to
+</I>&gt;&gt;<i> present it. This has the downside that it wouldn't pickup new audio
+</I>&gt;&gt;<i> devices, but that could be fixed pretty easily.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I think (2) is probably best value for the work although (3) is worth
+</I>&gt;&gt;<i> investigating at some point. The consequence of (2) is that the user
+</I>&gt;&gt;<i> might see the combobox of radios filling but that isn't serious IMHO.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -- Joe, K1JT
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> 73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i> ______________________________**_________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/da953304/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130805/da953304/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001703.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001706.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1705">[ date ]</a>
+              <a href="thread.html#1705">[ thread ]</a>
+              <a href="subject.html#1705">[ subject ]</a>
+              <a href="author.html#1705">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

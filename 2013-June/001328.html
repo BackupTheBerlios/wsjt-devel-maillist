@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx ubuntu packages available
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20ubuntu%20packages%20available&In-Reply-To=%3CCADTTAaw2MToYXr6cxS7sC8G3t5S2nFvrPG5J7WsPULnDBKDPSg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001332.html">
+   <LINK REL="Next"  HREF="001329.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx ubuntu packages available</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20ubuntu%20packages%20available&In-Reply-To=%3CCADTTAaw2MToYXr6cxS7sC8G3t5S2nFvrPG5J7WsPULnDBKDPSg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] wsjtx ubuntu packages available">jnogatch at gmail.com
+       </A><BR>
+    <I>Tue Jun  4 00:01:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001332.html">[Wsjt-devel] WSPRX and Unity (Ubuntu)
+</A></li>
+        <LI>Next message: <A HREF="001329.html">[Wsjt-devel] wsjtx ubuntu packages available
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1328">[ date ]</a>
+              <a href="thread.html#1328">[ thread ]</a>
+              <a href="subject.html#1328">[ subject ]</a>
+              <a href="author.html#1328">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>With much help from Kamal KA6MAL, wsjtx packages for Ubuntu 12.04,
+12.10, &amp; 13.04 are available:
+<A HREF="https://launchpad.net/~jnogatch/+archive/wsjtx">https://launchpad.net/~jnogatch/+archive/wsjtx</A>
+
+sudo add-apt-repository ppa:jnogatch/wsjtx
+sudo apt-get update
+sudo apt-get install wsjtx
+
+Debian packages are in the queue, but not available yet.
+
+It would be nice if one of you developers could verify installation,
+before it is announced to the broader audience.
+
+Note that package files are installed under /usr/share and /usr/lib,
+and the other files which were in wsjtx_install are in ~/.wsjtx/
+
+2 modifications were made, which have not yet been checked into the svn source:
+
+1. /dev/ttyS4-7 were added as choices in the Configuration menu.
+
+2. When no sound in/out devices have been saved in wsjtx.ini,
+Pa_GetDefaultInputDevice() and Pa_GetDefaultOutputDevice() are used to
+determine the devices. This allows wsjtx to come up the first time,
+without displaying error pop-up dialogs. This is an imperfect
+solution, because the corresponding index into the menu lists (which
+do not yet exist!) is not determined. It would be better if the name
+of the sound device was saved in wsjtx.ini because list numbering is
+not stable if USB soundcards are plugged/unplugged.
+
+I find 13.04 has severe graphics problems on my old laptops, with i915
+Intel graphics. I found 12.04 and 12.10 to be better, on the older
+laptops.
+
+73, John AC6SL
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001332.html">[Wsjt-devel] WSPRX and Unity (Ubuntu)
+</A></li>
+	<LI>Next message: <A HREF="001329.html">[Wsjt-devel] wsjtx ubuntu packages available
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1328">[ date ]</a>
+              <a href="thread.html#1328">[ thread ]</a>
+              <a href="subject.html#1328">[ subject ]</a>
+              <a href="author.html#1328">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

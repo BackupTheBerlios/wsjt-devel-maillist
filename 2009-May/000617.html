@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A09A52E.3000805%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000641.html">
+   <LINK REL="Next"  HREF="000619.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A09A52E.3000805%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 12 18:34:54 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000641.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000619.html">[Wsjt-devel] gfortan - off topic but...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#617">[ date ]</a>
+              <a href="thread.html#617">[ thread ]</a>
+              <a href="subject.html#617">[ subject ]</a>
+              <a href="author.html#617">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Kari and all,
+
+You are correct that I neglected to mention two packages 
+that must be installed to compile and run wsjt on *ubuntu.
+
+For the record, the full list of packages required after a 
+clean install of Xubuntu (and presumably also Ubuntu, 
+Kubuntu, ...) is:
+
+	subversion
+	python2.6-dev
+	python-pmw
+	python-numpy
+	python-imaging-tk
+	portaudio19-dev
+	libfftw3-dev
+	libsamplerate0-dev
+
+Then, of course, you must install either gfortran or g95.
+
+I had a bright idea this morning that maybe the 
+gfortran-compiled code fails only on multi-core CPUs... so I 
+tried again on an IBM T40 laptop.  No joy, with gfortran it 
+still crashes on startup; with g95 all is well.
+
+As far as I can tell, compiling WSJT or WSPR with gfortran 
+works only in Finland.  At least, it does not work in New 
+Jersey.  :-)
+
+Therefore, the recommended procedure is to compile using 
+g95.  Then it's a simple procedure -- just
+
+$ ./configure --enable-g95
+$ make
+$ python wsjt.py  (or python wspr.py)
+
+and the programs run without problems.
+
+	-- 73, Joe, K1JT
+
+PS: all of the machines I've tested use the basic 
+motherboard audio.  For example:
+
+pulsar23% python wsjt.py
+******************************************************************
+WSJT Version 7.04 r1203 , by K1JT
+Revision date: 2009-05-05 16:13:03 -0400 (Tue, 05 May 2009)
+Run date:   Tue May 12 16:30:22 2009 UTC
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+    0       16        16       /dev/dsp
+    1        2         2       Intel 82801DB-ICH4: Intel 
+82801DB-ICH4 (hw:0,0)
+    2        2         0       Intel 82801DB-ICH4: Intel 
+82801DB-ICH4 - MIC ADC (hw:0,1)
+    3        2         0       Intel 82801DB-ICH4: Intel 
+82801DB-ICH4 - MIC2 ADC (hw:0,2)
+    4        2         0       Intel 82801DB-ICH4: Intel 
+82801DB-ICH4 - ADC2 (hw:0,3)
+    5        0         2       Intel 82801DB-ICH4: Intel 
+82801DB-ICH4 - IEC958 (hw:0,4)
+    6        2         2       front
+Segmentation fault
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000641.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000619.html">[Wsjt-devel] gfortan - off topic but...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#617">[ date ]</a>
+              <a href="thread.html#617">[ thread ]</a>
+              <a href="subject.html#617">[ subject ]</a>
+              <a href="author.html#617">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

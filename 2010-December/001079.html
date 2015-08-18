@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3C4D18ED7E.3060604%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001078.html">
+   <LINK REL="Next"  HREF="001082.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Another approach to command-line WSPR (weak	computers)</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3C4D18ED7E.3060604%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Another approach to command-line WSPR (weak	computers)">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Dec 27 20:48:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001078.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+        <LI>Next message: <A HREF="001082.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1079">[ date ]</a>
+              <a href="thread.html#1079">[ thread ]</a>
+              <a href="subject.html#1079">[ subject ]</a>
+              <a href="author.html#1079">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan,
+
+I'm not sure that I understand exactly what you meant when saying that 
+&quot;IQ decoding&quot; took 1.5 minutes on your slow machine.  Do you mean the 
+call to iqdemod() alone takes that long?  If speed here is a major 
+bottleneck, there are many ways to improve the computational efficiency. 
+  [Little optimization of the algorithm was attempted, once I got it 
+working, since it seemed plenty fast enough on a recent-vintage computer.]
+
+The present iqdemod() begins by doing a complex FFT of length 
+NFFT=5,760,000.  Downsampling from 48000 to 12000 Hz is accomplished by 
+doing an inverse FFT (thus returning to the time domain) of length 
+NFFT4=1,440,000=NFFT/4.
+
+The long FFT alone requires some 46 MB of fast memory for data storage. 
+  Big speed penalties will be felt on machines with not enough memory, 
+or with relatively small level-1 cache.
+
+There is no fundamental need to process the whole 2-minute data block in 
+one go.  Breaking up the filtering and downsampling into smaller pieces 
+would be much more efficient, especially on small-memory, slow-CPU 
+machines.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001078.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+	<LI>Next message: <A HREF="001082.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1079">[ date ]</a>
+              <a href="thread.html#1079">[ thread ]</a>
+              <a href="subject.html#1079">[ subject ]</a>
+              <a href="author.html#1079">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

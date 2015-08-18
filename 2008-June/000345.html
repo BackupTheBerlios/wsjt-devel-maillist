@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080607201643.GA50509%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000344.html">
+   <LINK REL="Next"  HREF="000346.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080607201643.GA50509%40night.db.net%3E"
+       TITLE="[Wsjt-devel] revision 844">db at db.net
+       </A><BR>
+    <I>Sat Jun  7 22:16:43 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000344.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000346.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#345">[ date ]</a>
+              <a href="thread.html#345">[ thread ]</a>
+              <a href="subject.html#345">[ subject ]</a>
+              <a href="author.html#345">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jun 07, 2008 at 03:47:26PM -0400, Rick Kunath wrote:
+&gt;<i> Diane Bruce wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Missing fftw3f library. I will tighten up my configure check.
+</I>&gt;<i> &gt; Already noted with another compile error.
+</I>&gt;<i>
+</I>&gt;<i> What package is that part of? I do have fftw2 and 3 and devels
+</I>
+I don't know, I don't run any linux here anymore. I can tell you
+what package it is on FreeBSD
+
+pkg_info -W /usr/local/lib/libfftw3.so
+/usr/local/lib/libfftw3.so was installed by package fftw3-3.1.2
+
+Perhaps that will help?
+
+&gt;<i> <A HREF="file:///usr/lib/libsfftw.la">file:///usr/lib/libsfftw.la</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw.so">file:///usr/lib/libsfftw.so</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw.so.2">file:///usr/lib/libsfftw.so.2</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw.so.2.0.7">file:///usr/lib/libsfftw.so.2.0.7</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw_threads.a">file:///usr/lib/libsfftw_threads.a</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw_threads.la">file:///usr/lib/libsfftw_threads.la</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw_threads.so">file:///usr/lib/libsfftw_threads.so</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw_threads.so.2">file:///usr/lib/libsfftw_threads.so.2</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libsfftw_threads.so.2.0.7">file:///usr/lib/libsfftw_threads.so.2.0.7</A>
+</I>&gt;<i> <A HREF="file:///usr/include/sfftw.h">file:///usr/include/sfftw.h</A>
+</I>&gt;<i> <A HREF="file:///usr/include/sfftw_threads.h">file:///usr/include/sfftw_threads.h</A>
+</I>
+Careful. N.B. the 3 in the name, fftw3 is not the same as fftw
+There are two packages of programs libfftw and libfftw3. They
+are different.
+
+I will shortly be adding more notes to point this out.
+
+&gt;<i> <A HREF="file:///usr/share/doc/libfftw-devel/html/Calling-FFTW-from-Fortran.html">file:///usr/share/doc/libfftw-devel/html/Calling-FFTW-from-Fortran.html</A>
+</I>&gt;<i> <A HREF="file:///usr/share/doc/libfftw2/html/fftw_10.html">file:///usr/share/doc/libfftw2/html/fftw_10.html</A>
+</I>&gt;<i> <A HREF="file:///usr/share/doc/libfftw2/html/fftw_1.html">file:///usr/share/doc/libfftw2/html/fftw_1.html</A>
+</I>&gt;<i> <A HREF="file:///usr/share/doc/libfftw2/html/fftw_2.html">file:///usr/share/doc/libfftw2/html/fftw_2.html</A>
+</I>
+
+&gt;<i> <A HREF="file:///usr/include/fftw3.f">file:///usr/include/fftw3.f</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/pkgconfig/fftw3f.pc">file:///usr/lib/pkgconfig/fftw3f.pc</A>
+</I>&gt;<i> <A HREF="file:///usr/include/fftw3.h">file:///usr/include/fftw3.h</A>
+</I>&gt;<i> <A HREF="file:///usr/share/doc/libfftw2/html/fftw_3.html">file:///usr/share/doc/libfftw2/html/fftw_3.html</A>
+</I>&gt;<i> <A HREF="file:///usr/share/doc/libfftw-devel/fftw3.info">file:///usr/share/doc/libfftw-devel/fftw3.info</A>
+</I>&gt;<i> <A HREF="file:///usr/share/info/fftw3.info.lzma">file:///usr/share/info/fftw3.info.lzma</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/pkgconfig/fftw3.pc">file:///usr/lib/pkgconfig/fftw3.pc</A>
+</I>
+You will want one of the fftw3 library packages.
+I am hoping it is libfftw3f.* on all distributions, otherwise
+I will have more headaches in configure.
+
+&gt;<i> <A HREF="file:///usr/share/doc/libfftw2/fftw.texi">file:///usr/share/doc/libfftw2/fftw.texi</A>
+</I>
+No you do not want the libfftw2
+
+&gt;<i> <A HREF="file:///usr/lib/libfftw3f.a">file:///usr/lib/libfftw3f.a</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libfftw3f.la">file:///usr/lib/libfftw3f.la</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libfftw3f.so">file:///usr/lib/libfftw3f.so</A>
+</I>&gt;<i> <A HREF="file:///usr/lib/libfftw3f.so.3">file:///usr/lib/libfftw3f.so.3</A>
+</I>
+That should be it.
+I do a:
+AC_CHECK_LIB(fftw3f, fftwf_mkplan, \
+        [HAS_FFTW3FLIBS=1], [HAS_FFTW3FLIBS=0])
+in configure.
+
+% nm -na /usr/local/lib/libfftw3f.a |grep fftwf_mkplan |grep T
+00000080 T fftwf_mkplan
+
+so for you
+% nm -na /usr/lib/libfftw3f.a |grep fftwf_mkplan |grep T
+
+See if  you get something similar.
+
+The shim library has an extra _ added to the end so fortran can see it,
+it then calls the equivalent c function without the extra _
+i.e. fortran links with sfftw_plan_dft_1d__ then calls the c function
+sfftw_plan_dft_1d_
+
+% nm -na /usr/local/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+00002060 T sfftw_plan_dft_1d__
+000020b0 T sfftw_plan_dft_1d_
+
+It is possible it is different on other systems, YMMV.
+I hope not. *sigh*
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000344.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000346.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#345">[ date ]</a>
+              <a href="thread.html#345">[ thread ]</a>
+              <a href="subject.html#345">[ subject ]</a>
+              <a href="author.html#345">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

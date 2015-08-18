@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] feedback on win7 batch file install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20feedback%20on%20win7%20batch%20file%20install&In-Reply-To=%3C52F53474.8090905%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002252.html">
+   <LINK REL="Next"  HREF="002253.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] feedback on win7 batch file install</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20feedback%20on%20win7%20batch%20file%20install&In-Reply-To=%3C52F53474.8090905%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] feedback on win7 batch file install">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Feb  7 20:31:00 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002252.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+        <LI>Next message: <A HREF="002253.html">[Wsjt-devel] WSJT Docs - Win Setup - New Instruction(s)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2254">[ date ]</a>
+              <a href="thread.html#2254">[ thread ]</a>
+              <a href="subject.html#2254">[ subject ]</a>
+              <a href="author.html#2254">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Chuck,
+
+Sorry for the name confusion there.
+
+The svn checkout was my blunder, apologies for that. There are two
+methods for checking out source code, be it documentation or application:
+
+
+1). ** For Dev's with commit access ( docs ):
+- -change user-name to your Berlios user-name
+
+svn co <A HREF="https://user-name@svn.berlios.de/svnroot/repos/wsjt/branches/doc">https://user-name@svn.berlios.de/svnroot/repos/wsjt/branches/doc</A>
+
+
+2). ** For non-commit checkout ( docs ):
+- - Used for building apps or docs, browsing over, etc. You cannot
+commit via this URL
+
+svn co <A HREF="svn://svn.berlios.de/wsjt/branches/doc">svn://svn.berlios.de/wsjt/branches/doc</A>
+
+
+If you intend to check-in edits using [ svn commit ], you need to use
+method 1). above.
+
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+
+On 2/7/2014 19:05, Charles Yahrling wrote:
+&gt;<i> Hi Greg,
+</I>&gt;<i> 
+</I>&gt;<i> To be more concise on #6, the console started by wsjt-doc.bat
+</I>&gt;<i> terminated in the error I listed, both times, for both paths in the
+</I>&gt;<i> commands:
+</I>&gt;<i> 
+</I>&gt;<i> &quot;svn co <A HREF="svn://svn.berlios.de/wsjt/doc">svn://svn.berlios.de/wsjt/doc</A>
+</I>&gt;<i> 
+</I>&gt;<i> (not)
+</I>&gt;<i> 
+</I>&gt;<i> svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> A quick check of the svn tree *I* can see starts with
+</I>&gt;<i> root/branches. Could this be a rights issue? Do I have to be logged
+</I>&gt;<i> in to run the svn co?  Since it's open source I thought not but now
+</I>&gt;<i> I'm not so sure.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Either way, I have to be frank. I was hoping to work on the manual
+</I>&gt;<i> and learn more about the project. So far I have wasted hours and
+</I>&gt;<i> hours arm wrestling with the tools instead of contributing
+</I>&gt;<i> something useful. All I need is the latest text copy of the manual,
+</I>&gt;<i> some direction on what needs to be done, and a knowlegeable person
+</I>&gt;<i> to screen my suggestions before they are committed.  Does it make
+</I>&gt;<i> better sense to simply post a link to the latest point release
+</I>&gt;<i> manual copy and let Joe or his delegate combine edit suggestions at
+</I>&gt;<i> will? That's seems to be what is happening anyway.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> BTW, this is Chuck, not Chase. Don't want him blamed if you
+</I>&gt;<i> dislike the above comments. ;^]
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 72, chuck
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________ Wsjt-devel mailing
+</I>&gt;<i> list <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (MingW32)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS9TRzAAoJEAmfcyeKlj0x+q4H/R7RvJHSrheUrd1Dl9oxYbaV
+5MIJs8cj/IJX1q3dGr5WNNTMRopc/m37TBjpeVDg8J2yTBT7htflr52+BdC7IMRi
+MzUybjRyO5FGQTOLiwA6OP3+czZt63f3zZqvg/jbNMLNZ4sTpjsjAJrsWeh1ZLH3
+gWOKAXpwNg8trqebEQzyP3RPhVEkeXhMkVuuDdPDTIXam8rKnaEqcP70BdTel0X3
+i775XpiH73H/nVSDLrCQX5ONiC6M8wpbza/2JH3wosJEhFmODjAKKbns3GK51yNO
+2B0X2najcSGtw1dsEZVwopqyZs7eKUvjlIOoTJzHHfAjWAk0ktkq7sfJXd1rCTg=
+=8cin
+-----END PGP SIGNATURE-----
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002252.html">[Wsjt-devel] feedback on win7 batch file install
+</A></li>
+	<LI>Next message: <A HREF="002253.html">[Wsjt-devel] WSJT Docs - Win Setup - New Instruction(s)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2254">[ date ]</a>
+              <a href="thread.html#2254">[ thread ]</a>
+              <a href="subject.html#2254">[ subject ]</a>
+              <a href="author.html#2254">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

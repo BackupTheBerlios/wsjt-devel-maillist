@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v0.95 r 3248
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20r%203248&In-Reply-To=%3C518184DE.4060408%40msteiner.at%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001268.html">
+   <LINK REL="Next"  HREF="001270.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v0.95 r 3248</H1>
+    <B>Michael Steiner</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v0.95%20r%203248&In-Reply-To=%3C518184DE.4060408%40msteiner.at%3E"
+       TITLE="[Wsjt-devel] WSJT-X v0.95 r 3248">michael at msteiner.at
+       </A><BR>
+    <I>Wed May  1 23:10:54 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001268.html">[Wsjt-devel] Revision 3243
+</A></li>
+        <LI>Next message: <A HREF="001270.html">[Wsjt-devel] Blocking calls to hamlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1269">[ date ]</a>
+              <a href="thread.html#1269">[ thread ]</a>
+              <a href="subject.html#1269">[ subject ]</a>
+              <a href="author.html#1269">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Tim!
+
+Nothing special needed to do it.
+Download of Debian netinstall testing (what will be within short time 
+Debian 7.0)
+With synaptic added some packages like:
+gcc
+gcc-4.7-base
+g++
+g++-4.7
+libfftw3-dev
+libhamlib-dev
+libqwt5-qt4
+libqwt5-qt4-dev
+portaudio19-dev
+gfortran-4.7
+qtcreator
+etc.
+
+I don't remember exactly.
+Usually I search within synaptic for: &quot;fftw&quot;, &quot;portaudio&quot;, &quot;qt4&quot;, 
+&quot;hamlib&quot;, &quot;qtcreator&quot; and take from the resulting list all doc and dev 
+files looking usefull for me.
+As far as I remember it is nearly the same as you need for wsjt and wspr 
+plus the qt4 stuff.
+(I installed everything needed for wsjt and wspr too including all pyton 
+parts, because I want to use them too.)
+
+ From wsjtx base-dir changed to lib dir and running there &quot;make -f 
+Makefile.linux&quot;.
+
+Opening qtcreator and loading wsjtx.pro (base dir)
+
+The wsjtx.pro file I modified:
+
+Installation dir at line 12:   DESTDIR = ../wsjtx_install2
+to whatever is convenient for me
+
+Uncommenting line 48:   #DEFINES += __cplusplus
+to avoid annoying messages:
+&lt;command-line&gt;:0: Warnung:&quot;__cplusplus&quot; redefined [enabled by default]
+
+After that:
+Creating the installation dir.
+Within the installation dir created the dir &quot;save&quot;.
+Copying from wsprx/lib files jt9, jt9code and jt9sim to the above 
+defined installation dir.
+
+Telling qtcreator to compile everything.
+Starting wsjtx from the installation directory
+
+Rxing works fine, writes everything to the ALL.TXT file even when 
+transmitting.
+
+As soon as transmitting stoppes it crashes.
+For example when starting &quot;Tuning&quot; it comes up with the signal.
+When stopping &quot;tune&quot; it crash with this info:
+
+*** glibc detected *** ./wsjtx: free(): invalid pointer: 
+0x00007f9a10016540 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x76d76)[0x7f9a31235d76]
+/lib/x86_64-linux-gnu/libc.so.6(cfree+0x6c)[0x7f9a3123aaac]
+/usr/lib/x86_64-linux-gnu/libportaudio.so.2(+0xab15)[0x7f9a33db9b15]
+/usr/lib/x86_64-linux-gnu/libportaudio.so.2(+0xcf8d)[0x7f9a33dbbf8d]
+./wsjtx[0x445884]
+/usr/lib/x86_64-linux-gnu/libQtCore.so.4(+0x81d0b)[0x7f9a31d69d0b]
+/lib/x86_64-linux-gnu/libpthread.so.0(+0x6b50)[0x7f9a331b9b50]
+/lib/x86_64-linux-gnu/libc.so.6(clone+0x6d)[0x7f9a31299a7d]
+
+I have no idea how to do debugging.
+Have you knowledge about how and where to start?
+
+73,
+Michael oe1msb
+
+
+
+
+
+
+
+
+Am 2013-05-01 19:45, schrieb Tim Gimmel:
+&gt;<i>
+</I>&gt;<i> Sent from my iPhone
+</I>&gt;<i>
+</I>&gt;<i> On May 1, 2013, at 4:01 AM, Michael Steiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">michael at msteiner.at</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hello!
+</I>&gt;&gt;<i> Works fine at my Debian 7.0 system. (CAT not tested this moment).
+</I>&gt;&gt;<i> Thank you Joe and all real developers who made this excellent program available.
+</I>&gt;&gt;<i> Michael, oe1msb
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-deve">https://lists.berlios.de/mailman/listinfo/wsjt-deve</A>
+</I>&gt;<i> Michael, how did you get it to compile in Debian 7?  Is your disto a stock distro or have you added libraries and such?
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i> Tim
+</I>&gt;<i> KY4J
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001268.html">[Wsjt-devel] Revision 3243
+</A></li>
+	<LI>Next message: <A HREF="001270.html">[Wsjt-devel] Blocking calls to hamlib
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1269">[ date ]</a>
+              <a href="thread.html#1269">[ thread ]</a>
+              <a href="subject.html#1269">[ subject ]</a>
+              <a href="author.html#1269">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

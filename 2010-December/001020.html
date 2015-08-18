@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Bug report: attempted to start the decoder too soon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Bug%20report%3A%20attempted%20to%20start%20the%20decoder%20too%20soon&In-Reply-To=%3C4CFD1A59.9050000%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001019.html">
+   <LINK REL="Next"  HREF="001021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Bug report: attempted to start the decoder too soon</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Bug%20report%3A%20attempted%20to%20start%20the%20decoder%20too%20soon&In-Reply-To=%3C4CFD1A59.9050000%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Bug report: attempted to start the decoder too soon">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Dec  6 18:16:09 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001019.html">[Wsjt-devel] Bug report: attempted to start the decoder too soon
+</A></li>
+        <LI>Next message: <A HREF="001021.html">[Wsjt-devel] ATU tuneup and Save/Restore
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1020">[ date ]</a>
+              <a href="thread.html#1020">[ thread ]</a>
+              <a href="subject.html#1020">[ subject ]</a>
+              <a href="author.html#1020">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan,
+
+Like John, I haven't seen the condition you describe... but your 
+hypothesis is likely to be correct.  I'm a neophyte at programming 
+threads, and quite possibly have done something silly, somewhere.
+
+Supposedly, &quot;critical sections&quot; of Fortran code are enclosed in pairs of 
+calls to cs_lock/cs_unlock:
+
+   cs_lock()
+   ...
+   cs_unlock
+
+For the most part, these have been used to protect Fortran I/O -- 
+because those I/O routines are not re-entrant.  Some other things may 
+need &quot;cs_&quot; protection, as well.
+
+	-- Joe
+
+On 12/6/2010 10:37 AM, Sivan Toledo wrote:
+&gt;<i> I encountered another bug while testing the SVN version: the display keeps
+</I>&gt;<i> saying &quot;decoding&quot; and the console says &quot;Attempted to start decoder too
+</I>&gt;<i> soon&quot;. Could this be a race condition between update in wpsr.py and one of
+</I>&gt;<i> the f90 threads, maybe wspr2.f90? A race condition could perhaps also
+</I>&gt;<i> explain the reporting bug I experienced yesterday.
+</I>&gt;<i>
+</I>&gt;<i> Sivan
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001019.html">[Wsjt-devel] Bug report: attempted to start the decoder too soon
+</A></li>
+	<LI>Next message: <A HREF="001021.html">[Wsjt-devel] ATU tuneup and Save/Restore
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1020">[ date ]</a>
+              <a href="thread.html#1020">[ thread ]</a>
+              <a href="subject.html#1020">[ subject ]</a>
+              <a href="author.html#1020">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20WSJT%20r3619%20-%20Asterix%27s%20%3F&In-Reply-To=%3C52D6DEFC.8000202%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002026.html">
+   <LINK REL="Next"  HREF="002028.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20WSJT%20r3619%20-%20Asterix%27s%20%3F&In-Reply-To=%3C52D6DEFC.8000202%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jan 15 20:18:20 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002026.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+        <LI>Next message: <A HREF="002028.html">[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2027">[ date ]</a>
+              <a href="thread.html#2027">[ thread ]</a>
+              <a href="subject.html#2027">[ subject ]</a>
+              <a href="author.html#2027">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David --
+
+For example, in the line:
+170800  9  -10  0.1  -46   7 *    GB3CSB IO75XX     1***** A
+
+The * after the 7 indicates that the message contained the &quot;normal&quot; sync 
+pattern for JT4.  (Messages containing a signal report use an inverted 
+sync pattern.)
+
+The ***** near line end is the result of a &quot;quality&quot; estimator being 
+numerically too large to be printed in 5 columns.  (You're copying a 
+very strong signal.)
+
+For interest, send me a *.wav file containing a record that decodes with 
+the ***** symbols.  I'd like to look ate it.
+
+	-- 73, Joe, K1JT
+
+On 1/15/2014 1:45 PM, David GM6BIG wrote:
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> Should have said this is under WinXP.
+</I>&gt;<i> Same in r3636
+</I>&gt;<i>
+</I>&gt;<i> Cheers, DAvid
+</I>&gt;<i>
+</I>&gt;<i>    ----- Original Message -----
+</I>&gt;<i>    From: David GM6BIG
+</I>&gt;<i>    To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i>    Sent: Saturday, January 11, 2014 5:43 PM
+</I>&gt;<i>    Subject: [WSJT-SVN] WSJT r3619 - Asterix's ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i>    Good to see the averaging in JT4 now.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    Question though, what is the meaning of the asterix's in the decode window ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    From All.txt
+</I>&gt;<i>
+</I>&gt;<i>    170700  1  14/14                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    170800  9  -10  0.1  -46   7 *      GB3CSB IO75XX            1***** A
+</I>&gt;<i>    170800  1  15/15                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    170900  0  -20  5.3  -50   4
+</I>&gt;<i>    170900  1  15/15                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    171000  9  -11  0.1  -53   7 *      GB3CSB IO75XX            1***** A
+</I>&gt;<i>    171000  1  16/16                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    171100  0  -20  5.3  -57   7
+</I>&gt;<i>    171100  1  16/16                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    171200  9  -11  0.1  -59   7 *      GB3CSB IO75XX            1***** A
+</I>&gt;<i>    171200  1  17/17                    GB3CSB IO75XX            1    0
+</I>&gt;<i>    171300  0  -20  5.5  -63   7
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    73 David           GM6BIG
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    _______________________________________________
+</I>&gt;<i>    wsjt-svn mailing list
+</I>&gt;<i>    <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i>    <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-svn">https://lists.berlios.de/mailman/listinfo/wsjt-svn</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> wsjt-svn mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-svn at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-svn">https://lists.berlios.de/mailman/listinfo/wsjt-svn</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002026.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+	<LI>Next message: <A HREF="002028.html">[Wsjt-devel] [WSJT-SVN] WSJT r3619 - Asterix's ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2027">[ date ]</a>
+              <a href="thread.html#2027">[ thread ]</a>
+              <a href="subject.html#2027">[ subject ]</a>
+              <a href="author.html#2027">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

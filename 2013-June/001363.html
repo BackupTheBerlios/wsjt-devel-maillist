@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT logqso reports
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20logqso%20reports&In-Reply-To=%3C51B72EB2.1010705%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001361.html">
+   <LINK REL="Next"  HREF="001365.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT logqso reports</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20logqso%20reports&In-Reply-To=%3C51B72EB2.1010705%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT logqso reports">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 11 16:05:38 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001361.html">[Wsjt-devel] [wsjtgroup] In the works for WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="001365.html">[Wsjt-devel] WSJT logqso reports
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1363">[ date ]</a>
+              <a href="thread.html#1363">[ thread ]</a>
+              <a href="subject.html#1363">[ subject ]</a>
+              <a href="author.html#1363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+I'm copying this to wsjt-devel so others can see what we're discussing. 
+  Perhaps we'll get some other comments or advice.
+
+G4KLA wrote:
+&gt;<i> Just to report I have had first JT65 QSO with r3371.   All seems to
+</I>&gt;<i> work.    New wsjtx is a great idea...
+</I>
+I made several dozen JT65 QSOs yesterday.  As you say, it works well.  A 
+few rough edges, I'll soon turn to polishing things up a bit.
+
+&gt;<i> One thing I notice is that with fmin/fmax = 300/3000,  JT65 only
+</I>&gt;<i> is decoded, as I expect.  With fmin/fmax = 3000/4000  JT9 is decoded
+</I>&gt;<i> but also JT65.    Am I right that fmin/fmax sets a decode only window?
+</I>
+The present code uses fmin/fmax only for JT9, setting the decode range 
+for that mode.  The JT65 decode range is presently hard-wired at 
+500-2500 Hz in these lines near the top of jt65a.f90:
+
+         fa=500.0
+         fb=2500.0
+
+Probably these should be changed to something more like
+
+         fa=200.0
+         fb=2700.0
+
+Another possibility would be to remove the fmin/fmax controls and just 
+use the displayed upper frequency limit of the waterfall (call it fmax); 
+then let both decoders cover the whole range from 200 Hz to fmax.
+
+Or maybe have a single spinner control to set a JT65/JT9 dividing line: 
+decode JT65 below that point, JT9 above.  I'll have to see what the 
+decoder speed penalties might be.
+
+&gt;<i> Now what I need is rigctl to set XIT on or off on my TS870 as needed
+</I>&gt;<i> so that I can control everything using a VNC app on my ipad so I
+</I>&gt;<i> don't have to sit in the shack!!
+</I>
+Me, too!!  I hope to implement XIT control today.
+
+JT65 signal reports pose some issues.  The original JT65 message-packing 
+algorithm supported -30 &lt;= SNR &lt;= -01 dB.  This was fine for EME, where 
+no signals are stronger than around -10.
+
+Calculation of SNR in the JT65 decoder has traditionally been nonlinear 
+above -15 dB or so: values are compressed so that very strong signals 
+seldom (if ever) come out above -1, but anything in the -1 to -10 range 
+is actually close to meaningless.
+
+JT9 is much better at maintaining linearity of the dB scale, and the 
+message-packing algorithm now supports reports anywhere in the range -50 
+to +49 dB.  (This meant sacrificing the ability to convey some grid 
+locators within 2 degrees of the south pole, which I considered 
+acceptable.)  We could implement a linear scale for JT65, too, and allow 
+signal reports of 0-49 dB -- perhaps helpful, to advise people when 
+they're using much more power than required -- but until everyone starts 
+using WSJT-X, users of older versions of WSJT, JT65-HF, etc., will see 
+those signal reports displayed as grid locators near the south pole. 
+Not desirable!
+
+I guess we could have a user option &quot;Allow expanded signal reports&quot;, 
+with the default being OFF -- and suitable warnings in the User's Guide.
+
+	-- Joe, K1JT
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001361.html">[Wsjt-devel] [wsjtgroup] In the works for WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="001365.html">[Wsjt-devel] WSJT logqso reports
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1363">[ date ]</a>
+              <a href="thread.html#1363">[ thread ]</a>
+              <a href="subject.html#1363">[ subject ]</a>
+              <a href="author.html#1363">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

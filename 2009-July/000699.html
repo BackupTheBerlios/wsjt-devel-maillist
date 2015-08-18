@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT7, r1277
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3CBAEDA50D-D61B-40E7-9E7C-DE18741ED5D3%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000704.html">
+   <LINK REL="Next"  HREF="000700.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT7, r1277</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3CBAEDA50D-D61B-40E7-9E7C-DE18741ED5D3%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT7, r1277">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Jul 23 15:44:23 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000704.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+        <LI>Next message: <A HREF="000700.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#699">[ date ]</a>
+              <a href="thread.html#699">[ thread ]</a>
+              <a href="subject.html#699">[ subject ]</a>
+              <a href="author.html#699">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Joe,
+
+I have been watching developments - now that you are ready for a  
+test, I have downloaded 1277 and compiled. on Mac OS X without  
+problems (apart from a  number of warnings about variables which are  
+used but may not be initialised).   Using gfortran [Thread model:  
+posix gcc version 4.3.0]
+
+Now running JT65A on 14 MHz and see the following:
+
+  &quot;azdist0&quot; requested mutex when &quot;savedata&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+  &quot;&quot; requested mutex when &quot;spec&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+  &quot;&quot; requested mutex when &quot;spec&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+  &quot;azdist0&quot; requested mutex when &quot;deep65&quot; owned it.
+etc...
+
+There is an anonymous error:   &quot;&quot; requested mutex when &quot;spec&quot; owned  
+it&quot;  .
+
+How often do you expect to see these messages occurring?   (Not  
+errors, I agree)
+
+As previously reported, I have never seen problems (ie crashes) with  
+gfortran on the Mac.
+
+73 John  G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000704.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+	<LI>Next message: <A HREF="000700.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#699">[ date ]</a>
+              <a href="thread.html#699">[ thread ]</a>
+              <a href="subject.html#699">[ subject ]</a>
+              <a href="author.html#699">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

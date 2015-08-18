@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52D9B393.8040904%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002033.html">
+   <LINK REL="Next"  HREF="002035.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52D9B393.8040904%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644">joe at princeton.edu
+       </A><BR>
+    <I>Fri Jan 17 23:49:55 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002033.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+        <LI>Next message: <A HREF="002035.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2034">[ date ]</a>
+              <a href="thread.html#2034">[ thread ]</a>
+              <a href="subject.html#2034">[ subject ]</a>
+              <a href="author.html#2034">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I suppose you must have used SVN, not git.
+
+You need to build the library first:
+
+$ cd lib
+$ make -f Makefile.linux
+$ cd ..
+
+Then do your qmake and make.
+
+You may also need to create a destination directory.  See wsjtx.pro.
+
+On 1/17/2014 5:42 PM, Chuck Forsberg WA7KGX wrote:
+&gt;<i> Using 64 bit Fedora 20, Just now I did a git on wsjtx, issued qmake-qt5
+</I>&gt;<i> and then make.
+</I>&gt;<i> The make failed with &quot;cannot find -ljt9&quot;.
+</I>&gt;<i>
+</I>&gt;<i> What am I doing wrong?
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002033.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+	<LI>Next message: <A HREF="002035.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2034">[ date ]</a>
+              <a href="thread.html#2034">[ thread ]</a>
+              <a href="subject.html#2034">[ subject ]</a>
+              <a href="author.html#2034">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

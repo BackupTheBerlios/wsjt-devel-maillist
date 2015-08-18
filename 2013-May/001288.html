@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C1369063252.3591.11.camel%40Satellite-L670%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001287.html">
+   <LINK REL="Next"  HREF="001289.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X developments</H1>
+    <B>Patrick</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C1369063252.3591.11.camel%40Satellite-L670%3E"
+       TITLE="[Wsjt-devel] WSJT-X developments">f1ebk at free.fr
+       </A><BR>
+    <I>Mon May 20 17:20:52 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001287.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+        <LI>Next message: <A HREF="001289.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1288">[ date ]</a>
+              <a href="thread.html#1288">[ thread ]</a>
+              <a href="subject.html#1288">[ subject ]</a>
+              <a href="author.html#1288">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe and all,
+
+I have not started (yet) wsjtx on my Ubuntu 12.04, but I am using a
+Microham's Microkeyer II as an interface. I use DJ5QV's program (mhuxd)
+to control both PTT and CAT. This program provides some virtual ports
+such as /dev/mhuxd/ptt1 or /dev/mhuxd/cat1. These devices cannot be used
+directly if you do not have a way to configure your ports. 
+
+So it would be a good thing for wsjtx to give the operator as easy way
+to use such devices.
+
+Very 73
+
+Patrick, F1EBK
+
+
+
+*Le lundi 20 mai 2013 &#224; 10:58 -0400, Joe Taylor a &#233;crit :
+&gt;<i> Hi all -- and especially users of WSJT-X under Linux,
+</I>&gt;<i> 
+</I>&gt;<i> A few words about recent evolution of the WSJT-X code, and some upcoming 
+</I>&gt;<i> plans.
+</I>&gt;<i> 
+</I>&gt;<i> Up to now, all of my JT9 operating has been done under Windows.  Over 
+</I>&gt;<i> the past weekend I installed Ubuntu 12.04 LTS on my main hamshack 
+</I>&gt;<i> computer, so I could play with WSJT-X under a current distribution of 
+</I>&gt;<i> Linux.  Getting it to work in my setup involved some necessary changes 
+</I>&gt;<i> to ptt_unix.c and the way it is called from the GUI.  This effort drew 
+</I>&gt;<i> my attention to some weaknesses in the way we allow users to specify 
+</I>&gt;<i> such things as &quot;PTT Port&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> Is it true that everyone using WSJT-X under Linux has selected either 
+</I>&gt;<i> CAT of VOX for PTT Method?  It seems this must be the case, since we 
+</I>&gt;<i> have provided no way to select a device such as /dev/ttyS0 for PTT 
+</I>&gt;<i> control via the DTR or RTS line of a serial port.  Since that's what I 
+</I>&gt;<i> normally use in my station setup, I implemented it that way, temporarily 
+</I>&gt;<i> &quot;hard-wiring&quot; the code to use my device /dev/ttyS0.  (This code has not 
+</I>&gt;<i> been committed to the SVN repository, as yet.)
+</I>&gt;<i> 
+</I>&gt;<i> My present plan is to change the QComboBox now offering a list of PTT 
+</I>&gt;<i> Port options to a QLineEdit, instead.  Then one can type in a value such 
+</I>&gt;<i> as &quot;COM1&quot; in Windows, or &quot;/dev/ttyS0&quot; in *nix.
+</I>&gt;<i> 
+</I>&gt;<i> Does this make sense to everyone?
+</I>&gt;<i> 
+</I>&gt;<i> In making these tests I also became aware of a fact that should have 
+</I>&gt;<i> been obvious -- details of the GUI appearance are not just different on 
+</I>&gt;<i> Windows and Linux, but different on Linux distributions using different 
+</I>&gt;<i> window managers.  The default Ubuntu distribution even removes the menu 
+</I>&gt;<i> bar from the main window, displaying it instead at the top of screen. 
+</I>&gt;<i> (Yes, I learned how to disable this feature.)
+</I>&gt;<i> 
+</I>&gt;<i> Another change, this time already committed to the SVN repository: for 
+</I>&gt;<i> the present, at least, I disabled submodes JT9-5, JT9-10, and JT9-30, 
+</I>&gt;<i> (which are not being used, as far as I know).  The program's memory 
+</I>&gt;<i> requirements are now smaller by some 150 MB.
+</I>&gt;<i> 
+</I>&gt;<i> Comments and other proposals are welcome, as always.
+</I>&gt;<i> 
+</I>&gt;<i> 	-- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001287.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+	<LI>Next message: <A HREF="001289.html">[Wsjt-devel] WSJT-X developments
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1288">[ date ]</a>
+              <a href="thread.html#1288">[ thread ]</a>
+              <a href="subject.html#1288">[ subject ]</a>
+              <a href="author.html#1288">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

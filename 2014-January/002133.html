@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx.ini
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx.ini&In-Reply-To=%3C52E8CDF2.5080409%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002132.html">
+   <LINK REL="Next"  HREF="002136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx.ini</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx.ini&In-Reply-To=%3C52E8CDF2.5080409%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] wsjtx.ini">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jan 29 10:46:26 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002132.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+        <LI>Next message: <A HREF="002136.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2133">[ date ]</a>
+              <a href="thread.html#2133">[ thread ]</a>
+              <a href="subject.html#2133">[ subject ]</a>
+              <a href="author.html#2133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29/01/2014 05:07, Clark Sann wrote:
+Hi Clark,
+&gt;<i> I have finally got my development environment set up for wsjtx.  I can now build and link from the command line or from QtCreator on my Mac OSX 10.8.5.
+</I>&gt;<i>
+</I>&gt;<i> But I am having one remaining problem.  When I build and run an instance of wsjtx, the CAT port drop down list box does not list the serial port to be used by HamLib.  I have entered it into the .ini file.  I suspect I may not have the correct wsjtx.ini file. Has it changed from version 3590 which I downloaded from the website?  If so, where can I get a current version of it?
+</I>&gt;<i>
+</I>&gt;<i> Also, would it make sense to include it in SVN?
+</I>The .INI file is personal to your system. WSJT-X will create a vanilla 
+.INI file itself if there is none present. Default values are provided 
+for all entries where it makes sense to do so.
+
+The value default process is at the individual entry level; so it is 
+possible to return entries to their default value by simply editing the 
+.INI file and removing the entry in question.
+
+In an update to come soon after the current beta version goes to a full 
+release; the serial port fields in the configuration dialog will become 
+directly editable, so there will be no need to edit the .INI file 
+directly, to use a non-standard communications port.
+&gt;<i>
+</I>&gt;<i> Clark
+</I>&gt;<i> AL7EK
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002132.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+	<LI>Next message: <A HREF="002136.html">[Wsjt-devel] wsjtx.ini
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2133">[ date ]</a>
+              <a href="thread.html#2133">[ thread ]</a>
+              <a href="subject.html#2133">[ subject ]</a>
+              <a href="author.html#2133">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Show DXCC suggestion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Show%20DXCC%20suggestion&In-Reply-To=%3C001801cf1acd%24f4d96720%24de8c3560%24%40W1QA.COM%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002112.html">
+   <LINK REL="Next"  HREF="002116.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Show DXCC suggestion</H1>
+    <B>Bob McCormick W1QA</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Show%20DXCC%20suggestion&In-Reply-To=%3C001801cf1acd%24f4d96720%24de8c3560%24%40W1QA.COM%3E"
+       TITLE="[Wsjt-devel] WSJT-X Show DXCC suggestion">EME at W1QA.COM
+       </A><BR>
+    <I>Sun Jan 26 20:36:46 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002112.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 Wide Graph lower third
+</A></li>
+        <LI>Next message: <A HREF="002116.html">[Wsjt-devel] WSJT-X Show DXCC suggestion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2113">[ date ]</a>
+              <a href="thread.html#2113">[ thread ]</a>
+              <a href="subject.html#2113">[ subject ]</a>
+              <a href="author.html#2113">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The Show DXCC suggestion logic will false identify countries when users
+modify the standard WSJT CQ sequence:
+
+CQ MYCALL MYGRID
+
+To wit:
+
+CQ DX MYCALL - I want DX
+CQ MA MYCALL - I want Massachusetts
+
+Maybe a slight change in the parsing logic could help?  After finding the CQ
+if the next item delimited by spaces is 3 characters or less then throw it
+away and continue with the remaining string.  Excepting 3-character special
+event calls this should help with correctly identifying the calling station
+and its country.
+
+Bob W1QA
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002112.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 Wide Graph lower third
+</A></li>
+	<LI>Next message: <A HREF="002116.html">[Wsjt-devel] WSJT-X Show DXCC suggestion
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2113">[ date ]</a>
+              <a href="thread.html#2113">[ thread ]</a>
+              <a href="subject.html#2113">[ subject ]</a>
+              <a href="author.html#2113">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

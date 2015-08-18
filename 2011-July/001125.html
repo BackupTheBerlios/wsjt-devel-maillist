@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT -- Fortran runtime error: Cannot perform ENDFILE on a file already positioned after the EOF marker (At line 330 of file wsjt1.f90)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20--%20Fortran%20runtime%20error%3A%20Cannot%20perform%0A%20ENDFILE%20on%20a%20file%20already%20positioned%20after%20the%20EOF%20marker%20%28At%20line%20330%20of%0A%20file%20wsjt1.f90%29&In-Reply-To=%3C4E2EE98B.4010203%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001124.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT -- Fortran runtime error: Cannot perform ENDFILE on a file already positioned after the EOF marker (At line 330 of file wsjt1.f90)</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20--%20Fortran%20runtime%20error%3A%20Cannot%20perform%0A%20ENDFILE%20on%20a%20file%20already%20positioned%20after%20the%20EOF%20marker%20%28At%20line%20330%20of%0A%20file%20wsjt1.f90%29&In-Reply-To=%3C4E2EE98B.4010203%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT -- Fortran runtime error: Cannot perform ENDFILE on a file already positioned after the EOF marker (At line 330 of file wsjt1.f90)">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul 26 18:21:31 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001124.html">[Wsjt-devel] Some Pointers Please..-&gt; !
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1125">[ date ]</a>
+              <a href="thread.html#1125">[ thread ]</a>
+              <a href="subject.html#1125">[ subject ]</a>
+              <a href="author.html#1125">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jeffrey,
+
+gfortran 4.6 has a compiler bug that produces what you have seen.  See 
+<A HREF="http://gcc.gnu.org/bugzilla/show_bug.cgi?id=44477">http://gcc.gnu.org/bugzilla/show_bug.cgi?id=44477</A> , for example.
+
+As a work-around for the compiler bug, try changing lines 330-331 in 
+wsjt1.f90 from
+
+   endfile 11
+   call flush(11)
+
+to
+
+   endfile (11,err=901)
+901 call flush(11)
+
+I find no problems here when compiling this code with gfortran 4.4, 
+gfortran 4.5, or g95 0.92.  I don't have gfortran 4.6 installed, so I 
+can't test with that compiler.
+
+&gt;<i> I run the wsjt program after MANY fixups for the installer (I'll send
+</I>&gt;<i> patches if you are interested in fixes for the Unix/Linux installer.)
+</I>
+I don't know what you may mean by &quot;many fixups for the installer&quot;.  I 
+don't use any installer here.  When running under Linux, I simply start 
+WSJT from the directory in which it resides, using
+
+$ python wsjt.py
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001124.html">[Wsjt-devel] Some Pointers Please..-&gt; !
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1125">[ date ]</a>
+              <a href="thread.html#1125">[ thread ]</a>
+              <a href="subject.html#1125">[ subject ]</a>
+              <a href="author.html#1125">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

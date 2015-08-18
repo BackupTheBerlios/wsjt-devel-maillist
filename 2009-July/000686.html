@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] assistance required
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20assistance%20required&In-Reply-To=%3C20090710013511.60ca8c64%40g8jvm.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000706.html">
+   <LINK REL="Next"  HREF="000688.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] assistance required</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20assistance%20required&In-Reply-To=%3C20090710013511.60ca8c64%40g8jvm.ath.cx%3E"
+       TITLE="[Wsjt-devel] assistance required">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Fri Jul 10 02:35:11 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000706.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000688.html">[Wsjt-devel] assistance required_ SORTED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#686">[ date ]</a>
+              <a href="thread.html#686">[ thread ]</a>
+              <a href="subject.html#686">[ subject ]</a>
+              <a href="author.html#686">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi
+I suspect If got some hardware problems after the M-Audio D66 card was
+getting a bit hot due to the voltage reg chip not being screwed down to
+the card ground plane.
+The most obvious symptom was jackd timing out and dropping transport
+when running dttsp, thats now running again now the card running a lot
+cooler.
+BUT wsjt is running with no audio getting to it.  with no audio device
+in use portaudio pa_devs reports all 10 devices dev0 being the alsa
+D66.dev 0 selected in wsjt.
+as soon as wsjt is started all the ALSA devices disappear when pa_devs
+is run, I would expect the ALSA device for the D66 card no to be shown
+leaving the remaining 9 devices, but it just leaves /dev/dsp &amp; /devdsp0.
+
+this machine has had a complete reinstall and everything has been
+rebuilt, as I first thought it was a nasty config problem.
+
+Are there any test rxwav files that I could run though wsjt to check
+that is working.
+I'm 90% sure this is'nt a wsjt fault as other apps are not
+quite right,wsjt is build 1271.
+I'd appreciate any comments before I commit to replacing the card as
+that series of card is like rocking horse dung to get hold of
+
+TIA
+-- 
+Best wishes
+
+Richard Bown
+
+###################################################################################
+Registered Linux User 36561
+OS: Mandriva 2009.1 Spring Powerpack on an AMD Dual Athlon 64 +4400: 8
+GB RAM DDR2 Ham Call: G8JVM , QRA IO82SP, Interests Microwave 1.3
+GHz,2.3 GHz &amp; 5.7GHz &amp; 10 GHz
+###################################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000706.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000688.html">[Wsjt-devel] assistance required_ SORTED
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#686">[ date ]</a>
+              <a href="thread.html#686">[ thread ]</a>
+              <a href="subject.html#686">[ subject ]</a>
+              <a href="author.html#686">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

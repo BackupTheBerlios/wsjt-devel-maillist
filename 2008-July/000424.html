@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Upcoming beta release ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Upcoming%20beta%20release%20%3F&In-Reply-To=%3C4873A842.6020104%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000423.html">
+   <LINK REL="Next"  HREF="000425.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Upcoming beta release ?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Upcoming%20beta%20release%20%3F&In-Reply-To=%3C4873A842.6020104%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Upcoming beta release ?">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul  8 19:47:46 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000423.html">[Wsjt-devel] pointers please
+</A></li>
+        <LI>Next message: <A HREF="000425.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here's an update on recent activity recently with the WSJT 
+and WSPR code base.  You may have noticed that a lot has 
+been happening ...
+
+Major goals of this activity include the following:
+
+1. Implement encoding and decoding of structured QSO-style 
+messages for WSPR mode.
+
+2. Add support for WSPR mode to WSJT.
+
+3. Test a possible new EME-optimized mode, tentatively 
+called JT64.
+
+4. Clean up the code so that standard compilers produce few 
+warning messages, even with their &quot;fussiest&quot; warning modes 
+enabled.  This helps to make the code portable.
+
+5. Make the code &quot;endian independent&quot; so that it can run on 
+big-endian CPUs, including older (non-Intel) Macintoshes.
+
+6. Improve the &quot;configure&quot; script's ability to determine 
+everything necessary to permit successful building of the 
+executable programs on many platforms.
+
+
+A limited (beta) release of WSJT to enable more widespread 
+on-the-air testing of WSPR-mode QSOs will be desirable soon.
+
+At the same time, a new release of WSPR should be made, 
+updated so that it can decode the new WSPR-QSO-mode messages.
+
+A request:
+
+How about some volunteers for making installable .rpm, .deb, 
+etc., packages for released versions of WSJT, WSPR, maybe 
+even MAP65?  We have quite a few requests from people who 
+would like to use these programs under one or another flavor 
+of *nix, but are not comfortable building the programs on 
+their own.
+
+Some major programming tasks still to be undertaken:
+
+1. Begin to convert all WSJT modes to use a 12000 Hz 
+sampling rate, rather than 11025 Hz.  This is important 
+because so many Windows sound systems do a very poor job of 
+resampling from 48000 Hz (which usually is the hardware 
+sample rate) to 11025 Hz.
+
+2. Further cleanups of the code.  For example, we currently 
+use several different FFT routines in WSJT.  For performance 
+reasons, it may be desirable to replace them with calls to 
+the FFTW package.
+
+No doubt I have forgotten some things that should have been 
+in the above lists.  Comments and advice about any of these 
+matters will be appreciated!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000423.html">[Wsjt-devel] pointers please
+</A></li>
+	<LI>Next message: <A HREF="000425.html">[Wsjt-devel] Upcoming beta release ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#424">[ date ]</a>
+              <a href="thread.html#424">[ thread ]</a>
+              <a href="subject.html#424">[ subject ]</a>
+              <a href="author.html#424">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

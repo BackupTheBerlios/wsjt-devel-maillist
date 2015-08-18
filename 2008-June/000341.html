@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C484AD624.3050503%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000336.html">
+   <LINK REL="Next"  HREF="000343.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C484AD624.3050503%40charter.net%3E"
+       TITLE="[Wsjt-devel] revision 844">k9ao at charter.net
+       </A><BR>
+    <I>Sat Jun  7 20:40:36 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000336.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000343.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Diane Bruce wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> revision 844 of wsjt should check for a v19 portaudio in /usr/include
+</I>&gt;<i> and /usr/lib; then try for a v19 portaudio in /usr/local/include/portaudio2
+</I>&gt;<i> and /usr/local/lib/portaudio2 by default. The
+</I>&gt;<i> --with-portaudio-include-dir=&lt;path&gt; and --with-portaudio-lib-dir=&lt;path&gt;
+</I>&gt;<i> have been left in place as they will surely still be needed.
+</I>
+Checked out 845, configured with just the g95 switch, built and get this:
+
+python wsjt.py
+Traceback (most recent call last):
+   File &quot;wsjt.py&quot;, line 11, in &lt;module&gt;
+     from WsjtMod import Audio
+ImportError: /home/rick/SVN/wsjt/trunk/WsjtMod/Audio.so: undefined 
+symbol: sfftw_execute__
+
+I dod see a few other compiler complaints, scrolled by pretty fast.
+
+Rick Kunath, k9ao
+
+----------------------
+
+A few pasted below errors
+
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+buildmodule: Could not found the body of interfaced routine &quot;abc441&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;blanker&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode1&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode3&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;get_fname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;horizspec&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hscroll&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;i1tor4&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d65&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;rfile&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;savedata&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wsjtgen&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;runqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;flushqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;sleepqqq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehz&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fivehztx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;addnoise&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gran&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;msgparms&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;genwspr&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqencode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqdecode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;unpackpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpackname&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packtext2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpacktext2&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packprop&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine 
+&quot;unpackprop&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hash&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wsjtwspr&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gen64&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;. Skipping.
+Found executable /usr/bin/g95
+jtaudio.c: In function &#8216;jtaudio_&#8217;:
+jtaudio.c:263: warning: passing argument 7 of &#8216;Pa_OpenStream&#8217; from 
+incompatible pointer type
+jtaudio.c:298: warning: passing argument 7 of &#8216;Pa_OpenStream&#8217; from 
+incompatible pointer type
+jtaudio.c: In function &#8216;padevsub_&#8217;:
+jtaudio.c:401: warning: assignment discards qualifiers from pointer 
+target type
+start_portaudio.c: In function &#8216;start_threads_&#8217;:
+start_portaudio.c:28: warning: passing argument 3 of &#8216;pthread_create&#8217; 
+from incompatible pointer type
+start_portaudio.c:30: warning: passing argument 3 of &#8216;pthread_create&#8217; 
+from incompatible pointer type
+In file astro0.F90:87
+
+
+Plus a bunch complaining about precision loss and some not referenced 
+and being used.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000336.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000343.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

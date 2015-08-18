@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Configuration dialog proposal.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3CE84A1196-2318-4928-987A-5460162CCABF%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001940.html">
+   <LINK REL="Next"  HREF="001943.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Configuration dialog proposal.</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3CE84A1196-2318-4928-987A-5460162CCABF%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Configuration dialog proposal.">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Sun Sep 15 14:12:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001940.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001943.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1942">[ date ]</a>
+              <a href="thread.html#1942">[ thread ]</a>
+              <a href="subject.html#1942">[ subject ]</a>
+              <a href="author.html#1942">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bil
+
+&gt;<i> They simply allow '/dev/rig' as the CAT device and the user is expected to make a symlink to the actual device.
+</I>
+But /dev is reconstituted on reboot and the soft link is removed.  Several Mac users tried this and complained about the need to re-establish the link until I pointed out that the UserGuide explicitly told them how to extend the CAT list thus making meddling with /dev unnecessary.   
+
+So the link has  has be redone again, and then again.   Don't you think this is clumsy?   I don't agree with the suggestion.
+
+&gt;<i> CAT port and serial port may be different or the same with my current configuration code. 
+</I>
+Agreed.  It's just that the proposed naming convention is more logical (I think).  I assumed in your scheme  Serial port   would appear in wsjtx.ini  as SerialPort   and   CATPort would be so named although CATport already exists in wsjtx.ini but is used for something else.     It would be better for names in wsjtx.ini to match with names (if possible) on the configuration panel
+
+&gt;<i> IMHO just announcing in the release note for a version that certain configuration options will need resetting after an upgrade is probably the best overall solution.
+</I>
+Agreed.
+
+--- John G4KLA
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001940.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001943.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1942">[ date ]</a>
+              <a href="thread.html#1942">[ thread ]</a>
+              <a href="subject.html#1942">[ subject ]</a>
+              <a href="author.html#1942">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

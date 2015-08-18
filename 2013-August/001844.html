@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C1376592038.9741.YahooMailNeo%40web125501.mail.ne1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001842.html">
+   <LINK REL="Next"  HREF="001845.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C1376592038.9741.YahooMailNeo%40web125501.mail.ne1.yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">ki7mt at yahoo.com
+       </A><BR>
+    <I>Thu Aug 15 20:40:38 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001842.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001845.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1844">[ date ]</a>
+              <a href="thread.html#1844">[ thread ]</a>
+              <a href="subject.html#1844">[ subject ]</a>
+              <a href="author.html#1844">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill, Joe,
+
+Yes, I just verified it. In a terminal:&#160;
+
+cd ~/Projects/test-install/bin
+
+then
+
+./test-install/bin/wsjtx
+
+It decodes the first set of signals after restart, Note: I'm using dual decode, so i need to see if it happens with just JT65. It throws the error, but then proceeds to decode the signals, see screenshot:
+
+<A HREF="http://imagebin.org/267721">http://imagebin.org/267721</A>
+
+
+73's
+Greg
+KI7MT
+
+
+
+
+
+________________________________
+ From: Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A> 
+Sent: Thursday, August 15, 2013 12:17 PM
+Subject: Re: [Wsjt-devel] WSJT-X: CMake scripts
+ 
+
+
+On 15/08/2013 19:12, Greg Beam wrote:
+
+Hi Joe,
+Greg,
+
+Sorry, [ kvad ] v.s. [ kvasd ] was a typo on my part. kvasd is in the ~/{install-target}/bin directory after running Cmake &amp;&amp; make install. I believe it's being pulled in from the Install portion of the script, I didn't download or copying it to the./bin directory, but it's definitely there. 
+The CMake script downloads the kvasd program from the WSJT SVN server as part of he 'make install' target.
+
+Do you 'cd' to the test install bin directory before running
+    'wsjtx'?
+
+73's, Greg
+&gt;<i>KI7MT 
+</I>
+_______________________________________________
+Wsjt-devel mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/26cbb3c0/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/26cbb3c0/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001842.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001845.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1844">[ date ]</a>
+              <a href="thread.html#1844">[ thread ]</a>
+              <a href="subject.html#1844">[ subject ]</a>
+              <a href="author.html#1844">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

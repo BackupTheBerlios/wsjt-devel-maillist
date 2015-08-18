@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] CAT Herding - call for volunteers.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CAT%20Herding%20-%20call%20for%20volunteers.&In-Reply-To=%3C525058CD.60507%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001984.html">
+   <LINK REL="Next"  HREF="001986.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] CAT Herding - call for volunteers.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20CAT%20Herding%20-%20call%20for%20volunteers.&In-Reply-To=%3C525058CD.60507%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] CAT Herding - call for volunteers.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sat Oct  5 20:22:05 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001984.html">[Wsjt-devel] Feedback on r3587
+</A></li>
+        <LI>Next message: <A HREF="001986.html">[Wsjt-devel] CAT Herding - call for volunteers.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1985">[ date ]</a>
+              <a href="thread.html#1985">[ thread ]</a>
+              <a href="subject.html#1985">[ subject ]</a>
+              <a href="author.html#1985">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+sorry for the long post.
+
+For some time I have been working on an enhanced configuration dialog 
+for WSJTX. This has grown
+in scope to include an enhanced rig interface as well.
+
+To test my changes I need to run with as many different rig and rig 
+interface combinations as possible.
+This is where you can help me out, currently I'm at the stage where I 
+have the framework in place
+to support direct control of rigs using the hamlib library, via DX Lab 
+Suite Commander, via Ham Radio Deluxe
+and, via OmniRig. None of these interfaces is perfect and they all leak 
+rig implementation details to a
+greater or lesser extent. Add to this the vagaries of rig manufacturers 
+CAT command sets which seem
+to be different on each and every rig model. This means that I cannot 
+even guarantee basic functionality
+until I have a test run on a rig/interface combination.
+
+Rather than use the WSJT-X program as a test tool, I have written a 
+small test application that runs the
+new configuration dialog and is able to exercise the basic rig 
+manipulations and queries we need. The test
+application has extensive instrumentation built in so I can analyse 
+results of a test and hopefully update
+the code to fix defects and to accept new rig/interface combinations 
+quickly.
+
+What I am looking for is a few volunteers who are willing to try the 
+test program on their station to gather
+data. Currently I have a Windows build only, I am happy to make a Linux 
+or Mac build if required but would
+prefer to start with Windows. I intend to use Dropbox to deploy the 
+software and gather the results, if you
+are a Skype or ooVoo user that would help too, or phone on HF 
+(propagation permitting), or VHF/UHF of you
+are local to me in the UK. For complex issues I also use Mikogo desktop 
+sharing but this isn't essential since
+I think the instrumentation built into the test application will be 
+sufficient.
+
+I intend to extend the test to the whole user community, but for now, 
+since the instrumentation generates
+copious log files, I will target a few key radio models which will 
+hopefully eliminate the largest number of
+defects. Then I will reduce the instrumentation level and seek a wider 
+user base.
+
+Just to demonstrate the difficulties I face <A HREF="http://youtu.be/Pk7yqlTMvp8">http://youtu.be/Pk7yqlTMvp8</A> ;)
+
+So can you help me, what rig and interface do you have, can you spare 
+time to run some tests?
+
+Currently I have coverage of Icom (IC-756), Yaesu (FT-2000) and Elecraft 
+(K2 &amp; K3).
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001984.html">[Wsjt-devel] Feedback on r3587
+</A></li>
+	<LI>Next message: <A HREF="001986.html">[Wsjt-devel] CAT Herding - call for volunteers.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1985">[ date ]</a>
+              <a href="thread.html#1985">[ thread ]</a>
+              <a href="subject.html#1985">[ subject ]</a>
+              <a href="author.html#1985">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

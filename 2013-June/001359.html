@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re:  In the works for WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20In%20the%20works%20for%20WSJT-X&In-Reply-To=%3C51B4E143.1030108%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001358.html">
+   <LINK REL="Next"  HREF="001360.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re:  In the works for WSJT-X</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20In%20the%20works%20for%20WSJT-X&In-Reply-To=%3C51B4E143.1030108%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Fwd: Re:  In the works for WSJT-X">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun Jun  9 22:10:43 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001358.html">[Wsjt-devel] [WSJT-SVN] r3363 - in branches/wsjtx_k1jt_p1: . lib
+</A></li>
+        <LI>Next message: <A HREF="001360.html">[Wsjt-devel] wsjt_k1jt_p1 in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1359">[ date ]</a>
+              <a href="thread.html#1359">[ thread ]</a>
+              <a href="subject.html#1359">[ subject ]</a>
+              <a href="author.html#1359">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-------- Original Message --------
+Subject: Re: [Wsjt-devel] In the works for WSJT-X
+Date: Sun, 09 Jun 2013 16:02:59 -0400
+From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+To: John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt;
+
+John --
+
+No objection, of course, but you're playing with code that is intended
+to work for me -- not necessarily anyone else, at least without some
+instruction.
+
+As I mention before, there are some some hard-wired features that will
+probably bite you.
+
+I've set my TS-2000 Rx bandwidth limits at 200 - 5000 Hz, and dial
+frequency 14.076.  JT9 signals are then 3000 - 4000 Hz.  But the Tx SSB
+filter won't pass audio that high; so I set XIT = 2000 Hz and subtract
+2000 Hz from the audio frequency.
+
+You are probably trying to transmit at an audio frequency &lt; 2000 Hz.  So 
+after 2000 Hz is subtracted (for the supposed XIT), your tones come out 
+apparently &quot;inverted&quot;.
+
+	-- Joe
+
+On 6/9/2013 2:13 PM, John Nelson wrote:
+&gt;<i> Joe,
+</I>&gt;<i>
+</I>&gt;<i> a)  I get an array bound error for ss1 in sync9.f90.  It seems nzhsm can exceed 184
+</I>&gt;<i> b)  The TX tone is somehow inverted.   As I increase the TX frequency in the relevant box, the actual tone decreases in frequency.    Hmmmm.
+</I>&gt;<i> c)  After an update, I notice there is a lot more xx65 stuff in  the lib directory.  But only Makefile.MinGW deals with this.  OK - I made a linux Makefile
+</I>&gt;<i>
+</I>&gt;<i> I think I need to wait for further updates.   In the meantime I'll try and find out why the tone frequency is inverted...
+</I>&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001358.html">[Wsjt-devel] [WSJT-SVN] r3363 - in branches/wsjtx_k1jt_p1: . lib
+</A></li>
+	<LI>Next message: <A HREF="001360.html">[Wsjt-devel] wsjt_k1jt_p1 in Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1359">[ date ]</a>
+              <a href="thread.html#1359">[ thread ]</a>
+              <a href="subject.html#1359">[ subject ]</a>
+              <a href="author.html#1359">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

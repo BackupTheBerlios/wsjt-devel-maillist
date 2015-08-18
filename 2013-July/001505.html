@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Mutlitple Instances
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mutlitple%20Instances&In-Reply-To=%3CCAH-RX418wXYTHL1pyu%3DGiPRuKL2W6G7LV8h1mFAc-H7dUR76%2Bw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001504.html">
+   <LINK REL="Next"  HREF="001506.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Mutlitple Instances</H1>
+    <B>Josh Rovero</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Mutlitple%20Instances&In-Reply-To=%3CCAH-RX418wXYTHL1pyu%3DGiPRuKL2W6G7LV8h1mFAc-H7dUR76%2Bw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Mutlitple Instances">josh.rovero at gmail.com
+       </A><BR>
+    <I>Sat Jul 13 20:55:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001504.html">[Wsjt-devel] wsjt-x v1.1r3480
+</A></li>
+        <LI>Next message: <A HREF="001506.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1505">[ date ]</a>
+              <a href="thread.html#1505">[ thread ]</a>
+              <a href="subject.html#1505">[ subject ]</a>
+              <a href="author.html#1505">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Nothing about multiple instances is in the v1.1 user manual yet, so I was
+winging it.....
+
+I have installed the latest v1.1 r3482 package on
+Windows 7, in separate directories:
+
+  C:\wsjtx
+  C:\wsjtx2
+  C:\wsjtx3
+  C:\wsjtx4
+
+Each is configured to look in their own directory, and all have the
+Setup-&gt;Advanced-&gt;Allow multiple instances item checked.
+All are shut down after configuration, and all are configured one at a time.
+
+They get restarted in numeric order, and the configuration checks out.
+ However, when the second instance starts, the &quot;Decode&quot; button on the first
+instance turns on and stays on.  The spots from the first instance then get
+reported in the second instance.  They are not shown as decodes in the
+first instance.  And the spots are logged in the second instance's ALL.TXT
+file, which is in a different directory than the first instance's ALL.TXT
+file.
+
+If the spots included the manually entered window frequency offset, they'd
+be sorted in the destination ALL.TXT file.  But they only have the audio
+frequencies, so are all jumbled together.
+
+Is wsjt-x designed to merge the logging/spotting data, or keep it separate
+by instance?
+
+Thanks,
+
+A separate instance of r3482, built from source on Linux, is chugging away.
+Don't have more radios to throw at that machine, so haven't been able to
+try multiple instances on Linux.
+-- 
+P.J. &quot;Josh&quot; Rovero                   Ham Radio: KK1D
+<A HREF="http://www.roveroresearch.org">http://www.roveroresearch.org</A>   <A HREF="http://www.roveroresearch.info">http://www.roveroresearch.info</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130713/a9e7af96/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130713/a9e7af96/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001504.html">[Wsjt-devel] wsjt-x v1.1r3480
+</A></li>
+	<LI>Next message: <A HREF="001506.html">[Wsjt-devel] Mutlitple Instances
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1505">[ date ]</a>
+              <a href="thread.html#1505">[ thread ]</a>
+              <a href="subject.html#1505">[ subject ]</a>
+              <a href="author.html#1505">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

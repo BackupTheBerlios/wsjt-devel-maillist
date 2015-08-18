@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Public release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Public%20release%3F&In-Reply-To=%3C1216207941.6009.51.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000477.html">
+   <LINK REL="Next"  HREF="000480.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Public release?</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Public%20release%3F&In-Reply-To=%3C1216207941.6009.51.camel%40ham%3E"
+       TITLE="[Wsjt-devel] Public release?">hdpopov at gmail.com
+       </A><BR>
+    <I>Wed Jul 16 13:32:21 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000477.html">[Wsjt-devel] Public release?
+</A></li>
+        <LI>Next message: <A HREF="000480.html">[Wsjt-devel] Public release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Rick,
+
+My answer seems to be not compleat. I know fftw is compiled in some
+different way than before in Mandriva 2008.1. Richard reported. Perhaps
+you had to recompile. Here I use standard fftw deb of Debian repositary.
+I think we should always use standard distribution packages when we try
+to produce code which must work on all users computers. Well compiled
+the last revision of WSPR today and it stayed solid for almost an hour.
+(which is personal record here :)) Then I had again the error:
+
+ At line 56 of file mept162.F
+Traceback: (Innermost first)
+   Called from line 132 of file decode162.f
+   Called from line 63 of file mept162.F
+   Called from line 16 of file decode.F90
+   Called from line 86 of file wspr2.F90
+   Called from line -7622505 of file Segmentation fault
+
+Can you tell me how long WSPR is running on your computer without crash
+in hours?
+
+I am almost sure I do suffer from using newer version of a given library
+or program than it was used in development process. As it was with
+python-numpy 1.1.0. I had to downgrade to 1.04.0 to solve the problem
+thanks to Diane's advice. But why and who will downgrade their fresh
+installed Linux distributions just to use the code of WSJT. At my
+computer Disk space is always very valuable and I really hate to install
+Mbs of libraries which serve to only one program. 
+
+73, Harry LZ1BB
+
+
+On Tue, 2008-07-15 at 18:49 -0400, Rick Kunath wrote:
+&gt;<i> On Tuesday 15 July 2008 6:31:23 pm Harry Popov wrote:
+</I>&gt;<i> &gt; On Tue, 2008-07-15 at 14:36 -0400, Joe Taylor wrote:
+</I>&gt;<i> &gt; &gt; As of r964, I think we are about ready for a public release
+</I>&gt;<i> &gt; &gt; announcement.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I am definatrely against it! It is very easy to say that the problems
+</I>&gt;<i> &gt; Harry accounted concerned his own computer. I must say that it is not my
+</I>&gt;<i> &gt; computer's problem! The only reason I have problems is that I use modern
+</I>&gt;<i> &gt; Linux distribution. If you apdate your ancient Linux boxes you woill see
+</I>&gt;<i> &gt; my problems. What I mean?! Here on last Mandriva, Debian Testing, Ubuntu
+</I>&gt;<i> &gt; and Fedora I have the same problem. On different computers!!!
+</I>&gt;<i> 
+</I>&gt;<i> Harry,
+</I>&gt;<i> 
+</I>&gt;<i> I ran WSPR (the stand alone not the WSPR mode in WSJT) for a long time last 
+</I>&gt;<i> night here on Mandriva 2008.1 and didn't have any crashes. I did run the WSPR 
+</I>&gt;<i> mode in WSJT for a while too, no issues, but I didn't have it going for long. 
+</I>&gt;<i> And WSJT ran fine for long periods too.
+</I>&gt;<i> 
+</I>&gt;<i> Any way I can try more to duplicate your errors there?
+</I>&gt;<i> 
+</I>&gt;<i> How are your fftw libs compiled, do they have the --enable-type-prefix option 
+</I>&gt;<i> enabled and did you build the double and single (float) precision libs. I did 
+</I>&gt;<i> here, just trying to see what any differences might be.
+</I>&gt;<i> 
+</I>&gt;<i> Let me know and I'll have a go at trying to duplicate what's happening on your 
+</I>&gt;<i> end here. I want to make sure I know how to best duplicate the errors.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks again,
+</I>&gt;<i> 
+</I>&gt;<i> Rick Kunath
+</I>&gt;<i> _
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000477.html">[Wsjt-devel] Public release?
+</A></li>
+	<LI>Next message: <A HREF="000480.html">[Wsjt-devel] Public release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

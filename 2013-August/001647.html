@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] DXCC entity and worked B4 status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20entity%20and%20worked%20B4%20status&In-Reply-To=%3C51FA271F.1090807%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001638.html">
+   <LINK REL="Next"  HREF="001650.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] DXCC entity and worked B4 status</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20entity%20and%20worked%20B4%20status&In-Reply-To=%3C51FA271F.1090807%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] DXCC entity and worked B4 status">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Thu Aug  1 11:15:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001638.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+        <LI>Next message: <A HREF="001650.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1647">[ date ]</a>
+              <a href="thread.html#1647">[ thread ]</a>
+              <a href="subject.html#1647">[ subject ]</a>
+              <a href="author.html#1647">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Thanks David.  It seems to work OK but as Laurie has warned, it may fall 
+to bits with a large log file.
+
+There are three different greens depending on how 'important' the CQer 
+may be eg new country is the brightest green.  I didn't document it 
+because its not very effective - the leading symbol is much easier to 
+notice.
+
+I should have also noted that I've not tested it under Windows either.
+
+Cheers
+Murray
+VK3ACF
+
+
+On 01/08/13 08:10, David wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Murray....an interesting concept that works quite well
+</I>&gt;<i> i had to read the 'docs' several times before i 'got' it
+</I>&gt;<i> then had to find cty.dat
+</I>&gt;<i> running WSJTX r 3516 on Mint 15 Cinnamon (Ubuntu 13.04 base)
+</I>&gt;<i>
+</I>&gt;<i> notice that if you worked the station B4 it changes the green color 
+</I>&gt;<i> slightly
+</I>&gt;<i> and you dont get a ~ in front of the country name
+</I>&gt;<i>
+</I>&gt;<i> David VK4BDJ
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 31/07/13 21:41, Murray Curtis wrote:
+</I>&gt;&gt;<i> Hi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've just committed a first version of DXCC entity, rev 3512.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This version will display the DXCC entity of a station calling CQ. 
+</I>&gt;&gt;<i> This is preceded by a '!' if this is not in the log or '~' if you've 
+</I>&gt;&gt;<i> worked this entity before but not this call.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The log read is currently the wsjtx_log.adi in the install 
+</I>&gt;&gt;<i> directory.  This will be brought up into the config (devsetup) window 
+</I>&gt;&gt;<i> at some point. The code is also hard coded to look for cty.dat (the 
+</I>&gt;&gt;<i> DXCC data file) in the same install directory.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The feature is enabled/disabled in the drop down setup menu.  On 
+</I>&gt;&gt;<i> enable it will (re)read the log and cty.dat files and write to 
+</I>&gt;&gt;<i> qDebug() (stdout on Linux) a line showing the QSO and countries 
+</I>&gt;&gt;<i> worked counts.   It currently also writes some debug data when 
+</I>&gt;&gt;<i> searching for a CQ call.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Its pretty simple, knows nothing of bands and only deals with JT9 and 
+</I>&gt;&gt;<i> JT65 modes.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Feedback, good and bad is always welcome.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cheers
+</I>&gt;&gt;<i> Murray
+</I>&gt;&gt;<i> VK3ACF
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001638.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+	<LI>Next message: <A HREF="001650.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1647">[ date ]</a>
+              <a href="thread.html#1647">[ thread ]</a>
+              <a href="subject.html#1647">[ subject ]</a>
+              <a href="author.html#1647">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

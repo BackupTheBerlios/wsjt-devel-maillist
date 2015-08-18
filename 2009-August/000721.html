@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt r1313
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3C20090803231220.1e7ccc6c%40g8jvm.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000720.html">
+   <LINK REL="Next"  HREF="000722.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt r1313</H1>
+    <B>richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3C20090803231220.1e7ccc6c%40g8jvm.ath.cx%3E"
+       TITLE="[Wsjt-devel] wsjt r1313">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Tue Aug  4 00:12:20 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000720.html">[Wsjt-devel]  wsjt r1313
+</A></li>
+        <LI>Next message: <A HREF="000722.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#721">[ date ]</a>
+              <a href="thread.html#721">[ thread ]</a>
+              <a href="subject.html#721">[ subject ]</a>
+              <a href="author.html#721">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 3 Aug 2009 22:20:18 +0100
+John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt; wrote:
+
+&gt;<i> Richard writes:
+</I>&gt;<i> ---
+</I>&gt;<i> I just pulled down rev 1313, built it with gfortran and no
+</I>&gt;<i> segfaults, just runs
+</I>&gt;<i> ---
+</I>&gt;<i> I confirm the same thing:   running gfortran with Mac OS X 10.4.11  
+</I>&gt;<i> and 10.5.7.  This has been working like this since r908 !!
+</I>&gt;<i> 
+</I>&gt;<i> John  G4KLA
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+Its not just me then
+
+I would suggest however that some attention is paid to cleaning up the
+code.
+I see a lot of messages when compiling about skipping building sections
+and a good few warnings on both gfortran and g95
+
+
+for instance this lot when building with gfortran:-
+
+
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+buildmodule: Could not found the body of interfaced routine &quot;filbig2&quot;.
+Skipping. buildmodule: Could not found the body of interfaced routine
+&quot;abc441&quot;. Skipping. buildmodule: Could not found the body of interfaced
+routine &quot;blanker&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;decode1&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;decode2&quot;. Skipping. buildmodule: Could
+not found the body of interfaced routine &quot;decode3&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;get_fname&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;check_endian&quot;. Skipping. buildmodule: Could not
+found the body of interfaced routine &quot;iswap_int&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;iswap_short&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;horizspec&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;hscroll&quot;. Skipping. buildmodule: Could
+not found the body of interfaced routine &quot;pix2d&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pix2d65&quot;.
+Skipping. buildmodule: Could not found the body of interfaced routine
+&quot;rfile&quot;. Skipping. buildmodule: Could not found the body of interfaced
+routine &quot;savedata&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;wsjtgen&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;runqqq&quot;. Skipping. buildmodule: Could
+not found the body of interfaced routine &quot;flushqqq&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;sleepqqq&quot;.
+Skipping. buildmodule: Could not found the body of interfaced routine
+&quot;fivehz&quot;. Skipping. buildmodule: Could not found the body of interfaced
+routine &quot;fivehztx&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;addnoise&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;gran&quot;. Skipping. buildmodule: Could not
+found the body of interfaced routine &quot;genwspr&quot;. Skipping. buildmodule:
+Could not found the body of interfaced routine &quot;wqencode&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqdecode&quot;.
+Skipping. buildmodule: Could not found the body of interfaced routine
+&quot;packpfx&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;unpackpfx&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;packname&quot;. Skipping. buildmodule: Could
+not found the body of interfaced routine &quot;unpackname&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;packtext2&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;unpacktext2&quot;. Skipping. buildmodule: Could not
+found the body of interfaced routine &quot;packprop&quot;. Skipping. buildmodule:
+Could not found the body of interfaced routine &quot;unpackprop&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hash&quot;.
+Skipping. buildmodule: Could not found the body of interfaced routine
+&quot;wsjtwspr&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;gen64&quot;. Skipping. buildmodule: Could not found the
+body of interfaced routine &quot;cs_init&quot;. Skipping. buildmodule: Could not
+found the body of interfaced routine &quot;cs_destroy&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;th_create&quot;. Skipping. buildmodule: Could not found the body of
+interfaced routine &quot;th_exit&quot;. Skipping. buildmodule: Could not found
+the body of interfaced routine &quot;cs_lock&quot;. Skipping. buildmodule: Could
+not found the body of interfaced routine &quot;cs_unlock&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;.
+Skipping. Found executable /usr/bin/gfortran packpfx.f90:26.37:
+
+     if(pfx(3:3).eq.' ') pfx=' '//pfx
+                                    1
+Warning: CHARACTER expression will be truncated in assignment (3/4) at
+     (1) packpfx.f90:27.37:
+
+     if(pfx(3:3).eq.' ') pfx=' '//pfx
+                                    1
+Warning: CHARACTER expression will be truncated in assignment (3/4) at
+     (1) unpackpfx.f90:20.26:
+
+     call1=pfx//'/'//call1
+                         1
+Warning: CHARACTER expression will be truncated in assignment (12/16)
+     at (1) mv Audio.so WsjtMod
+
+
+
+But I bet the comment will be &quot; we've never seen that before&quot;
+
+I suspect that if some time was spent cleaning up, so sections of builds
+were not missed, that perhaps some of the causes would also go away.
+Probably find that sooner or later it will chunder along find a bit of
+a module that was skipped and fall over, seg fault
+
+GNU Fortran (GCC) 4.3.2 &amp; G95 (GCC 4.0.4 (g95 0.91!) Jan  3 2008) used
+-- 
+Best wishes
+
+Richard Bown
+
+###################################################################################
+Registered Linux User 36561
+OS: Mandriva 2009.1 Spring Powerpack on an AMD Dual Athlon 64 +4400: 8
+GB RAM DDR2 Ham Call: G8JVM , QRA IO82SP, Interests Microwave 1.3
+GHz,2.3 GHz &amp; 5.7GHz &amp; 10 GHz
+###################################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000720.html">[Wsjt-devel]  wsjt r1313
+</A></li>
+	<LI>Next message: <A HREF="000722.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#721">[ date ]</a>
+              <a href="thread.html#721">[ thread ]</a>
+              <a href="subject.html#721">[ subject ]</a>
+              <a href="author.html#721">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

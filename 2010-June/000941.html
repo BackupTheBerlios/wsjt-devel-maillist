@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT v7.06
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20v7.06&In-Reply-To=%3C4C2A5B7B.6040208%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000939.html">
+   <LINK REL="Next"  HREF="000940.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT v7.06</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20v7.06&In-Reply-To=%3C4C2A5B7B.6040208%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT v7.06">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 29 22:45:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000939.html">[Wsjt-devel] WSJT v7.06
+</A></li>
+        <LI>Next message: <A HREF="000940.html">[Wsjt-devel] Tests of Experimental Modes in WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#941">[ date ]</a>
+              <a href="thread.html#941">[ thread ]</a>
+              <a href="subject.html#941">[ subject ]</a>
+              <a href="author.html#941">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+I'm just back from some seashore time -- sorry to be slow in answering.
+
+It seems that the recently packaged WSJT v7.06 r1933 included the wrong 
+version of the KVASD decoder.  Please go to the download page again, 
+click on the link for WSJT 7.06, and reinstall over your previous 
+installation.  It now has the correct KVASD_g95.EXE.
+
+I'm not using CVF any more.  All Windows compiles are now using g95.
+
+	-- 73, Joe, K1JT
+
+On 6/27/2010 2:26 PM, John Nelson wrote:
+&gt;<i> I have been running WSJT v7.03 on an IBM Thinkpad without problems.
+</I>&gt;<i> Following a recent request for help I downloaded v7.06 and after a
+</I>&gt;<i> decode I get the following message:
+</I>&gt;<i>
+</I>&gt;<i> 'KVASD_g95' is not recognized as an internal or external command,
+</I>&gt;<i> operable program or batch file. Error in KV decoder or no decoder
+</I>&gt;<i> present - will use BM algorithm.
+</I>&gt;<i>
+</I>&gt;<i> I don't expect to see KVASD_g95 in the package and I don't - kvasd.exe
+</I>&gt;<i> is present. Making a shortcut KVASD_g95 to point to kvasd.exe doesn't help.
+</I>&gt;<i>
+</I>&gt;<i> in the source code, extract.f executes call
+</I>&gt;<i> runqqq('kvasd.exe','-q',iret) and runqqq executes
+</I>&gt;<i>
+</I>&gt;<i> #ifdef CVF
+</I>&gt;<i> iret=runqq(fname,cmnd) ? what is runqq ?
+</I>&gt;<i> #else
+</I>&gt;<i> iret=system('KVASD_g95 -q &gt; dev_null')
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i> where fname will be kvasd.exe but if CVF is false (how can that be) the
+</I>&gt;<i> call will be to KVASD_g95.
+</I>&gt;<i>
+</I>&gt;<i> Joe - is there an error in the Windows compiled version 7.06? (This is
+</I>&gt;<i> running with Windows XP fully uptodate.) Am I missing something?
+</I>&gt;<i>
+</I>&gt;<i> John G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000939.html">[Wsjt-devel] WSJT v7.06
+</A></li>
+	<LI>Next message: <A HREF="000940.html">[Wsjt-devel] Tests of Experimental Modes in WSJT8
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#941">[ date ]</a>
+              <a href="thread.html#941">[ thread ]</a>
+              <a href="subject.html#941">[ subject ]</a>
+              <a href="author.html#941">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.2.1%2C%20beta%20release%20r3587&In-Reply-To=%3C524F1AE3.9000102%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001980.html">
+   <LINK REL="Next"  HREF="001982.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.2.1%2C%20beta%20release%20r3587&In-Reply-To=%3C524F1AE3.9000102%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587">joe at princeton.edu
+       </A><BR>
+    <I>Fri Oct  4 21:45:39 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001980.html">[Wsjt-devel] Windows Vista Audio Input Stream Problems at 48kHz
+</A></li>
+        <LI>Next message: <A HREF="001982.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1981">[ date ]</a>
+              <a href="thread.html#1981">[ thread ]</a>
+              <a href="subject.html#1981">[ subject ]</a>
+              <a href="author.html#1981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill --
+
+Thanks for cobbling together a Vista fix so quickly.  I'm running it 
+now, and it appears to work properly in my Win7 machine with either
+
+[Tune]
+Audio\DisableInputResampling=false
+
+or
+
+[Tune]
+Audio\DisableInputResampling=true
+
+present in wsjtx.ini at program startup.  (I haven't yet looked at the 
+code, but I presume that in Win7 &quot;true&quot; means that it will use 12 kHz 
+sampling?
+
+I won't have time to make a new package until next week -- but (unless 
+advised otherwise) I will plan to do so before I leave for the UK on 
+Wednesday.
+
+In the meantime, you could send a copy of r3588 wsjtx.exe to one of the 
+guys who said it r3587 failed on Vista.  The executable should be a 
+drop-in replacement, and could confirm that the fix works.
+
+	-- Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001980.html">[Wsjt-devel] Windows Vista Audio Input Stream Problems at 48kHz
+</A></li>
+	<LI>Next message: <A HREF="001982.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1, beta release r3587
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1981">[ date ]</a>
+              <a href="thread.html#1981">[ thread ]</a>
+              <a href="subject.html#1981">[ subject ]</a>
+              <a href="author.html#1981">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

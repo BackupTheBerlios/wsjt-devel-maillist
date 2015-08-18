@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Short messages bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Short%20messages%20bug&In-Reply-To=%3C47B6DF20.3010109%40uni-ulm.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000219.html">
+   <LINK REL="Next"  HREF="000221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Short messages bug</H1>
+    <B>Christoph Fischer</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Short%20messages%20bug&In-Reply-To=%3C47B6DF20.3010109%40uni-ulm.de%3E"
+       TITLE="[Wsjt-devel] Short messages bug">christoph.fischer at uni-ulm.de
+       </A><BR>
+    <I>Sat Feb 16 14:03:28 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000219.html">[Wsjt-devel] Short messages bug
+</A></li>
+        <LI>Next message: <A HREF="000221.html">[Wsjt-devel] Broken code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+i just uploaded the patches for the pthread.h issue. Hopefully they do
+what we want.
+I could not reproduce the &quot;short message bug&quot; but i think it is also
+resolved. Could you please test that Harry?
+
+73&amp;55
+Chris
+DC6GF
+
+Harry Popov schrieb:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> On all modes except FSK441 and JT6M program breaks down if I try to
+</I>&gt;<i> transmit short messages: RO, RRR and 73. I got this error:
+</I>&gt;<i> 
+</I>&gt;<i> At line 14 of file chkmsg.f
+</I>&gt;<i> Fortran runtime error: Substring out of bounds: lower bound (0) of
+</I>&gt;<i> 'message' is less than one
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> P.S. I can not compile the original last revision. I did that with some
+</I>&gt;<i> code mods which Chris sent to me. Hope the code will be patched soon. I
+</I>&gt;<i> write this info just for information if some one try to compile under
+</I>&gt;<i> Linux without success.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000219.html">[Wsjt-devel] Short messages bug
+</A></li>
+	<LI>Next message: <A HREF="000221.html">[Wsjt-devel] Broken code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

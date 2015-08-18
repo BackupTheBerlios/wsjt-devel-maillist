@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.1, beta release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%2C%20beta%20release&In-Reply-To=%3C51D46FBF.2070000%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001449.html">
+   <LINK REL="Next"  HREF="001451.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.1, beta release</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%2C%20beta%20release&In-Reply-To=%3C51D46FBF.2070000%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.1, beta release">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Jul  3 20:38:55 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001449.html">[Wsjt-devel] WSJTX 1.1 r3455
+</A></li>
+        <LI>Next message: <A HREF="001451.html">[Wsjt-devel] [wsjtgroup] WSJT-X v1.1, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1450">[ date ]</a>
+              <a href="thread.html#1450">[ thread ]</a>
+              <a href="subject.html#1450">[ subject ]</a>
+              <a href="author.html#1450">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To:   Users and potential users of WSJT-X
+From: Joe Taylor, K1JT
+
+I invite you to test-drive version 1.1 of WSJT-X.  This version of the 
+program is &quot;bi-lingual&quot; -- it transmits and receives both JT9 and JT65 
+signals, switching between modes automatically as needed.  The maximum 
+displayed bandwidth has been increased from 1 to 5 kHz.  If your 
+receiver has an upper-sideband filter at least 4 kHz wide, on most bands 
+you can have all the JT65 *and* all the JT9 activity on screen at once, 
+available for making QSOs.
+
+Other improvements since v1.0, r3323 include the following:
+
+1. CAT control via DxLab Commander.
+2. Improved GUI appearance, especially on Linux and OS X.
+3. Compilable with Qt5 as well as Qt4.
+4. Fixed occasional program crashes caused by receiving a message in the
+form &quot;call1 call2&quot; (with no grid, report, etc.).
+5. Improved handling of audio device selection in Linux.
+6. Log QSO frequency, instead of dial frequency only.
+7. Added Tx Power to ADIF log information, with option to retain between 
+QSOs.
+8. Added option to retain between QSOs the Power and Comments fields for 
+ADIF and wsjtx logs.
+9. Added optional antenna description for PSK Reporter.
+10 Fixed a bug in handling of logged grid locator when none was 
+available on the double-clicked line.
+11. Fixed a bug that caused small differences in the lengths of 
+transmitted symbols.
+12. Tx message (highlighted in yellow) now includes a mode flag and the 
+audio frequency.
+13. Added a spinner control for Rx Freq.
+14. New on-screen button &quot;Lock Tx=Rx&quot; locks Tx and Rx frequencies together.
+15. Allow COM port number greater than 9 (Windows only).
+16. Don't clear DxGrid when user double-clicks on a message with no 
+grid, if the message's Tx call is same as DxCall.
+17. Double-click on yellow Tx message sets frequency, but does nothing else.
+18. Rationalized the logic of the CAT control indicator button. Now 
+colored grey/green/orange/red -- see User's Guide.
+
+
+Even if you are already familiar with version 1.0, you should first read 
+the new online WSJT-X User's Guide:
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJT-X_Users_Guide_v1.1.pdf">http://www.physics.princeton.edu/pulsar/K1JT/WSJT-X_Users_Guide_v1.1.pdf</A>
+
+You can download the Windows installation package from
+<A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3459.exe">http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3459.exe</A>
+
+The program also runs well under Linux and OS X, but presently on these 
+platforms you must compile it yourself.
+
+In many ways this release has been &quot;cleaned up&quot; and is more mature than 
+version 1.0.  But with the JT65 capabilities it also contains a lot of 
+new code.  Please send us bug reports and any suggestions for improvement.
+
+A new version of JT-Alert (by VK3AMA) is in the works.  At present your 
+JT9 activity will be handled as before -- but not your JT65 activity 
+with WSJT-X.
+
+Finally: This is a group effort.  My warmest thanks to AC6SL, G4KLA, 
+PY2SDR, and VK4BDJ (members of the WSJT Development Team), and to DJ0OT, 
+G4ILO, K0KC, K3WYC, NH7SR, W4TV, and VK3ACF, who been testing various 
+alpha versions of WSJT-X v1.1.  Your input is greatly appreciated!
+
+     -- 73, Joe, K1JT
+
+PS: If someone would like to cross-post this message to related email 
+lists, for example the JT65_HF Yahoo group, please feel free to do so.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001449.html">[Wsjt-devel] WSJTX 1.1 r3455
+</A></li>
+	<LI>Next message: <A HREF="001451.html">[Wsjt-devel] [wsjtgroup] WSJT-X v1.1, beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1450">[ date ]</a>
+              <a href="thread.html#1450">[ thread ]</a>
+              <a href="subject.html#1450">[ subject ]</a>
+              <a href="author.html#1450">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

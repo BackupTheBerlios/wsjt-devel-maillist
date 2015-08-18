@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] scope and purview
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20scope%20and%20purview&In-Reply-To=%3C52DE9145.2000007%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002050.html">
+   <LINK REL="Next"  HREF="002054.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] scope and purview</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20scope%20and%20purview&In-Reply-To=%3C52DE9145.2000007%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] scope and purview">joe at princeton.edu
+       </A><BR>
+    <I>Tue Jan 21 16:24:53 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002050.html">[Wsjt-devel] WSJT-X v1.2.2 r3654
+</A></li>
+        <LI>Next message: <A HREF="002054.html">[Wsjt-devel] test from cfytech
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2053">[ date ]</a>
+              <a href="thread.html#2053">[ thread ]</a>
+              <a href="subject.html#2053">[ subject ]</a>
+              <a href="author.html#2053">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Let me introduce two new team members, Chuck (KB1ZMX) and Chase (W4TI). 
+  They have volunteered to help with the documentation for WSJT-X -- an 
+important but all-too-easily neglected part of our development effort. 
+Greg, KI7MT, has also put significant effort into the documentation, 
+back in September.  I have been remiss in not following up on his work. 
+  This email is an attempt to start some coordination among these efforts.
+
+For a brief introduction on what Greg has done, point your web browser to
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/wsjtx-doc/wsjtx-main.html">http://physics.princeton.edu/pulsar/K1JT/wsjtx-doc/wsjtx-main.html</A>
+
+As stated at its top, this version of the WSJT-X User Guide is based on 
+the Version 1.2 guide that I produced, dated August 16, 2013.  Greg has 
+reformatted it using the markup language &quot;AsciiDoc&quot;; he has added a 
+bunch of HTML anchors and hyperlinks, and an &quot;Appendix D&quot; as an 
+illustration of rig-specific configuration.
+
+The source file for Greg's version of the manual can be seen at
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/wsjtx-doc/source/wsjtx-main.txt">http://physics.princeton.edu/pulsar/K1JT/wsjtx-doc/source/wsjtx-main.txt</A>
+
+Greg's description of what he did was sent to a few of us back in 
+September.  I will append it below, for all to see.
+
+I suggest that everyone should take a look at what Greg has done, and 
+then weigh in on whether you think this is a good way to go for WSJT-X 
+documentation.  You might also want to look at
+<A HREF="http://www.methods.co.nz/asciidoc/">http://www.methods.co.nz/asciidoc/</A> for an idea of how AsciiDoc works.
+I find it an attractive prospect -- one that should blend in well with 
+our multi-platform approach and our SVN repository.
+
+Your comments will be appreciated.
+
+	-- 73, Joe, K1JT
+
+Here's Greg's email of Sept 23, 2013:
+
+#############################################################################
+All,
+
+While all the Developers on the WSJT Dev team are highly skilled code 
+writers, allot of us in the user community may not be so savey with 
+C/C++/G95 etc but would like to contribute meaningful data to the 
+project. Maybe this is a way to do that.
+
+I had some time over the last few days while working on the Ubuntu 
+Manual stuff and thought I'd put together something that may be useful 
+for the WSJT application(s), in the case WSJT-X.
+
+
+Attached is a file (tar.gz or.tgz) containing 5 html files, the 
+associated .txt source files, Images + Icons used, and the example build 
+script to generate them.
+
+I used Asciidoc as the markup language (and the default templates), as 
+it is Very Simple, Fast and uses Text Source files. For those not 
+familiar with it, it can produce, XMl, HTML, XHTML, DocBook, LaTex, PDF, 
+e-pub, Slidy roff (man Pages) PS etc etc all with a simple one-line 
+command. The 5 finished files are W3C CSS-3.0 and XHTML 1.1 compliant. 
+Go to W3C validator, upload the file + check for full results.
+
+I used a single main file (wsjtx-doc.txt), but this could easily be 
+broken out into chapters/sections, allowing for easy community 
+contribution, which I think would be a good idea.
+
+The 5 files are non-data-uri, meaning, I did now embed the images, but 
+could easily be done with one switch --data-uri will make a stand alone 
+HTML file. It still needs allot of attention, but the base is there.
+
+In the archive, there are 3 versions of the main file, which use the 
+same source, wsjtx-doc.txt (all are CSS-3 and xhtml 1.1):
+
+
+wsjtx-main.html: Single File Doc, No Table of Contents (TOC)
+wsjtx-doc-toc.html: Single File, TOC at the Top, 2 Levels Down.
+wsjtx-doc-toc2.html: Single File, TOC2 = Left Frame TOC, 2 Levels down.
+
+Build Switch --toc-levels=X sets the resolution, default is (2), max is (4)
+
+e.g 1.0, 1.1, 1.1.1, 1.1.1.1
+
+The --toc switch in the build command determines if TOC's are used or 
+not, and if so which type. YOu can also turn them off/on in file headers 
+with :toc:
+
+In Order: No TOC, TOC @ Top, TOC in Left Frame
+
+asciidoc -a -o wsjtx-main-toc.html ${src_dir}/wsjtx-main.txt
+
+asciidoc -a toc -o wsjtx-main-toc.html ${src_dir}/wsjtx-main.txt
+
+asciidoc -a toc2 -o wsjtx-main-toc2.html ${src_dir}/wsjtx-main.txt
+
+
+The other two file are also single files, from a single source, but 
+neither have a TOC. They are just an example / idea on how we could 
+socialite and get participation from the user community to work on 
+documentation.
+
+
+I'm not sure whether including the source &amp; build structure within the 
+wsjtx svn branch is best, or maybe creating a WSJT documentation project 
+would be better, that way it could expand to WPSR, WSPRX MAP65, SimJT 
+and appeal to a much larger audience.
+
+In any case, let me know what ya think, worth the effort Y/N?, Scrap The 
+Idea, needs different approach, something else?
+
+
+73, Greg
+KI7MT
+#############################################################################
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002050.html">[Wsjt-devel] WSJT-X v1.2.2 r3654
+</A></li>
+	<LI>Next message: <A HREF="002054.html">[Wsjt-devel] test from cfytech
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2053">[ date ]</a>
+              <a href="thread.html#2053">[ thread ]</a>
+              <a href="subject.html#2053">[ subject ]</a>
+              <a href="author.html#2053">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

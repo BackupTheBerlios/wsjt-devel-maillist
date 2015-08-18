@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT24 format questions - update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT24%20format%20questions%20-%20update&In-Reply-To=%3C000701c94ed9%24407cf2d0%24fa01a8c0%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000541.html">
+   <LINK REL="Next"  HREF="000539.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT24 format questions - update</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT24%20format%20questions%20-%20update&In-Reply-To=%3C000701c94ed9%24407cf2d0%24fa01a8c0%40shack2%3E"
+       TITLE="[Wsjt-devel] JT24 format questions - update">aware at freeuk.com
+       </A><BR>
+    <I>Tue Nov 25 09:38:54 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000541.html">[Wsjt-devel] JT24 format questions
+</A></li>
+        <LI>Next message: <A HREF="000539.html">[Wsjt-devel] Ubuntu 8.10 / wsjt/map65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#548">[ date ]</a>
+              <a href="thread.html#548">[ thread ]</a>
+              <a href="subject.html#548">[ subject ]</a>
+              <a href="author.html#548">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Just a quick update on the JT4g...
+
+Something on the PC was interfering with the playout of the symbols from 
+WSJT. It was stopping short of the full number of symbols. Later it was 
+stopping short of sending the whole CWID, usually cutting off the last 
+letter.
+I have not identified the exact cause of the problem, but it runs fine on 
+another PC.
+
+With a corrected list of symbols I have now decoded a JT4g signal sent from 
+the PIC controlled DDS....
+
+Time to go to work...
+
+Cheers, David
+
+
+----- Original Message ----- 
+From: &quot;David GM6BIG&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">aware at freeuk.com</A>&gt;
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+Sent: Friday, November 21, 2008 8:16 AM
+Subject: Re: [Wsjt-devel] JT24 format questions
+
+
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> I am working all weekend so time will be short, but will go over my 
+</I>&gt;<i> findings
+</I>&gt;<i> again.
+</I>&gt;<i>
+</I>&gt;<i> I used the Audio program &quot;Audacity&quot; to capture the outgoing tones 
+</I>&gt;<i> generated
+</I>&gt;<i> and then used Audacity to analyse the captured WAV file.
+</I>&gt;<i> There may well be something wrong with this method.
+</I>&gt;<i> So I will try it again and set up a second PC so I can seperate the
+</I>&gt;<i> generation and capturing processes.
+</I>&gt;<i> There are a few other tests I can do to confirm the process.
+</I>&gt;<i>
+</I>&gt;<i> When I first did this, I was surprised at the short last symbol, and tried
+</I>&gt;<i> it again with the same result, although I did not critically look at the
+</I>&gt;<i> number or duration of the other symbols.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cheers, DAvid
+</I>&gt;<i>
+</I>&gt;<i> ----- Original Message ----- 
+</I>&gt;<i> From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+</I>&gt;<i> To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> Sent: Thursday, November 20, 2008 6:51 PM
+</I>&gt;<i> Subject: Re: [Wsjt-devel] JT24 format questions
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> Hi David,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sorry for the delay in answering your questions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> David GM6BIG wrote:
+</I>&gt;&gt;&gt;<i> Hi All,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I have been examining the JT4g signal and believe the symbol length to 
+</I>&gt;&gt;&gt;<i> be
+</I>&gt;&gt;&gt;<i> 233.333mS (7/30?), except the last symbol.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I measure.....
+</I>&gt;&gt;&gt;<i> 204 symbols of 233.333mS = 47.60000 Seconds
+</I>&gt;&gt;&gt;<i> + 1 short symbol of 186.593mS.
+</I>&gt;&gt;&gt;<i> No of symbols 205
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Is this correct ??
+</I>&gt;&gt;&gt;<i> If yes, then why the short symbol at the end ??
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No.  The symbol length in seconds (as defined in gen24.f) is
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   tsymbol = 2520.0/11025.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> which works out to 0.228571... seconds.  There are 207
+</I>&gt;&gt;<i> symbols, and all should have the same duration.  If you are
+</I>&gt;&gt;<i> measuring something different, then something's amiss
+</I>&gt;&gt;<i> somewhere...  As far as I can see, the array
+</I>&gt;&gt;<i> iwave(i=1,nwave) is being generated correctly in gen24.f.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Joe, have you had a look at a JT24x equivelent of the JT65code program
+</I>&gt;&gt;&gt;<i> for me ?
+</I>&gt;&gt;&gt;<i> Its a slow job doing it by hand from a .wav file!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have started on this task.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Joe
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000541.html">[Wsjt-devel] JT24 format questions
+</A></li>
+	<LI>Next message: <A HREF="000539.html">[Wsjt-devel] Ubuntu 8.10 / wsjt/map65
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#548">[ date ]</a>
+              <a href="thread.html#548">[ thread ]</a>
+              <a href="subject.html#548">[ subject ]</a>
+              <a href="author.html#548">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

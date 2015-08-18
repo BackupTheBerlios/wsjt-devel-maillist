@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C52090710.8090605%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001813.html">
+   <LINK REL="Next"  HREF="001862.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20JT65%2C%20JT9%2C%20CW%20and%2C%20tuning.&In-Reply-To=%3C52090710.8090605%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Aug 12 18:02:24 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001813.html">[Wsjt-devel] WSJTX v1.2 r3546
+</A></li>
+        <LI>Next message: <A HREF="001862.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1820">[ date ]</a>
+              <a href="thread.html#1820">[ thread ]</a>
+              <a href="subject.html#1820">[ subject ]</a>
+              <a href="author.html#1820">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+As part of improving the keying in wsjtx it has become apparent that the 
+current synthesiser can be simplified if sending MFSK data, CW data and, 
+tuning were 3 distinct functions rather than the current implementation 
+where they are intermingled.
+
+Does anyone have any objections if I were to divided them into three 
+separate algorithms sharing common base tools like sinusoid generation 
+and noise generation and keying. I would implement as three separate 
+messages (slots) to start one of the above with common a common signal 
+to notify of completion. There would be a common mute message that 
+toggles generation on and off without loss of synchronisation and, an 
+interrupt message (which would be also the means of terminating the tune 
+state). The main benefits would be simpler &amp; clearer code and the 
+possibility of the generator being responsible for implicit timing of 
+messages rather than having to run parallel timers.
+
+The only consequence I can see is that at present it is technically 
+possible to switch to a single tone tuning signal while sending an MFSK 
+data stream or CW message and then revert back to the message while 
+maintaining continuous phase. Given that a message is continuous phase 
+and amplitude I can't see any reason to switch back and forth between 
+tuning and message.
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001813.html">[Wsjt-devel] WSJTX v1.2 r3546
+</A></li>
+	<LI>Next message: <A HREF="001862.html">[Wsjt-devel] WSJT-X: JT65, JT9, CW and, tuning.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1820">[ date ]</a>
+              <a href="thread.html#1820">[ thread ]</a>
+              <a href="subject.html#1820">[ subject ]</a>
+              <a href="author.html#1820">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

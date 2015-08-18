@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: CMake scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D227D.1010901%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001844.html">
+   <LINK REL="Next"  HREF="001846.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: CMake scripts</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20CMake%20scripts&In-Reply-To=%3C520D227D.1010901%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: CMake scripts">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Aug 15 20:48:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001844.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+        <LI>Next message: <A HREF="001846.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1845">[ date ]</a>
+              <a href="thread.html#1845">[ thread ]</a>
+              <a href="subject.html#1845">[ subject ]</a>
+              <a href="author.html#1845">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/08/2013 19:40, Greg Beam wrote:
+&gt;<i> Hi Bill, Joe,
+</I>Hi Greg,
+&gt;<i>
+</I>&gt;<i> Yes, I just verified it. In a terminal:
+</I>&gt;<i>
+</I>&gt;<i> cd ~/Projects/test-install/bin
+</I>&gt;<i>
+</I>&gt;<i> then
+</I>&gt;<i>
+</I>&gt;<i> ./test-install/bin/wsjtx
+</I>Those two commands are not consistent. if you had 'cd'ed to 
+'~/Projects/test-install/bin' the the run command I would expect to be 
+'./wsjtx'
+
+The error message is consistent with you not changing directory to where 
+the wsjtx executable is located, this appears to be an implicit 
+requirement because wsjtx is assuming the working directory is the 
+directory where kvasd is located. You can see that because the error 
+message says it is trying to run './kvasd' not the './'.
+
+The other possibility is that the make install target is not installing 
+the kvasd program with execute mode set. I will check that out.
+&gt;<i>
+</I>&gt;<i> It decodes the first set of signals after restart, Note: I'm using 
+</I>&gt;<i> dual decode, so i need to see if it happens with just JT65. It throws 
+</I>&gt;<i> the error, but then proceeds to decode the signals, see screenshot:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://imagebin.org/267721">http://imagebin.org/267721</A>
+</I>&gt;<i>
+</I>&gt;<i> 73's
+</I>&gt;<i> Greg
+</I>&gt;<i> KI7MT
+</I>&gt;<i>
+</I>73
+Bill
+G4WJS.
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/5501ec8a/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130815/5501ec8a/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001844.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+	<LI>Next message: <A HREF="001846.html">[Wsjt-devel] WSJT-X: CMake scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1845">[ date ]</a>
+              <a href="thread.html#1845">[ thread ]</a>
+              <a href="subject.html#1845">[ subject ]</a>
+              <a href="author.html#1845">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

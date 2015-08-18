@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20wsjt&In-Reply-To=%3CCA%2B3iOz%3D%3Dw62UGL4K_84uFgSTey%3DGbgaQr3L9ggs9H8umTz-Cyg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001181.html">
+   <LINK REL="Next"  HREF="001184.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling wsjt</H1>
+    <B>Gergely Buday</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20wsjt&In-Reply-To=%3CCA%2B3iOz%3D%3Dw62UGL4K_84uFgSTey%3DGbgaQr3L9ggs9H8umTz-Cyg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] compiling wsjt">gbuday at gmail.com
+       </A><BR>
+    <I>Thu Mar  7 16:12:14 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001181.html">[Wsjt-devel] compiling wsjt
+</A></li>
+        <LI>Next message: <A HREF="001184.html">[Wsjt-devel] Query re WSJT9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Do us  favour and translate your error messages into English, please
+</I>
+Oops, sorry.
+
+On another machine I get the same:
+
+cp: cannot stat `/usr//share/wsjt/CALL3.TXT': No such file or directory
+cp: cannot stat `/usr//share/wsjt/wsjtrc': No such file or directory
+cp: cannot stat `/usr//share/wsjt/dmet_*.dat': No such file or directory
+cp: cannot stat `/usr//share/wsjt/dmet_10_-1_3.dat': No such file or directory
+
+and here it works, in spite of this. So the real problem on the
+original machine is
+
+Traceback (most recent call last):
+  File &quot;/usr//bin/wsjt.py&quot;, line 11, in &lt;module&gt;
+    from WsjtMod import Audio
+ImportError: cannot import name Audio
+
+- Gergely
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001181.html">[Wsjt-devel] compiling wsjt
+</A></li>
+	<LI>Next message: <A HREF="001184.html">[Wsjt-devel] Query re WSJT9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

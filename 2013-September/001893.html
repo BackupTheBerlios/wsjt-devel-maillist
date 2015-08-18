@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Status of WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3C52261F7E.8090309%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001904.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Status of WSJT-X</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3C52261F7E.8090309%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Status of WSJT-X">joe at princeton.edu
+       </A><BR>
+    <I>Tue Sep  3 19:42:22 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001904.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1893">[ date ]</a>
+              <a href="thread.html#1893">[ thread ]</a>
+              <a href="subject.html#1893">[ subject ]</a>
+              <a href="author.html#1893">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I'm happy to be back in the fold, after two weeks of relaxation on the 
+beach, sailing on tidal ponds, etc., etc., in beautiful Rhode Island.
+
+I'm still getting caught up on email traffic, but here's what I've 
+isolated as potentially important issues for WSJT-X:
+
+1. Several users report that Tx audio &quot;stutters&quot; when a window is 
+minimized or maximized.  When using PortAudio, this problem was 
+addressed (and solved) by increasing the size of low-level buffers in 
+soundout.  Something similar probably needs to be done in the present code.
+
+2. Qt setVoloume() has a bug that reduces the Tx audio level by (I 
+think) 6 dB.  I suggest that we obviate this issue for now by using 
+&quot;#ifdef Win32&quot; blocks to make the Tx Pwr slider act as
+a digital gain control when compiled for Windows.  I think this means 
+replacing the factor 32767 in line 137 of Modulator.cpp with a variable 
+whose value is controlled by the Tx Pwr slider.  Max value would be 
+32767, 3277 would be -20 dB, etc.
+
+3. Stuck in decode?  I never see this problem, but several users say 
+they do.  What's causing it?  Something to do with the ./.lock file 
+shared by wsjtx.exe and jt9.exe ?
+
+4. Tx at &#177; 1 kHz from desired frequency?  Is this a bug, or operator 
+mistakes?
+
+5. Failure to decode first transmission in response to a CQ?  I've had a 
+low-level concern about these reports for some time.  Possibly I've seen 
+such an issue myself, a few times, though I can't be sure.  (I certainly 
+don't see it 70% of the time, as KB3MOW reports.)
+
+6. LY2CG reports that if computer has no connection to internet. program 
+stops working after 5 minutes, even if PSK Reporter is not checked. 
+Edson, is something timing out after failing to connect with the PSK 
+Reporter site?
+
+I didn't list the &quot;Fortran traceback error message bug&quot; on program exit, 
+because there really isn't one.  It's the result of some extra 
+diagnostic code that I had put into timer.f90, and forgot to remove 
+before building the Windows distribution package for r3563.
+
+I haven't yet looked at the issue concerning jt9com_.nagain, but will do so.
+
+Are there other outstanding issues in WSJT-X v1.2 r3563 that need our 
+attention?
+
+The User's Guide should have more information on some configuration 
+options.  Murray, would you be willing to draft some suitable text about 
+the &quot;Show DXCC entity and worked B4 status&quot; option?  Where should
+such things go?  It would also be good to have a section in the manual 
+on &quot;Troubleshooting&quot;, perhaps modeled after Appendix D in the WSPR 2.0 
+manual, starting on page 18 of
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf">http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf</A> .
+Does anyone want to try drafting something similar for WSJT-X, 
+addressing the most common user problem areas ?
+
+Finally: does anyone have an opinion on whether we should improve the 
+organizational structure of our WSJT Developers Group?  Should we make 
+better use of the facilities of the Berlios repository -- for example, 
+bug tracking, posting of repository snapshots, etc?  Other suggestions??
+The present arrangements work, but they were never really planned... 
+they just grew, as the several programs were being developed.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001904.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1893">[ date ]</a>
+              <a href="thread.html#1893">[ thread ]</a>
+              <a href="subject.html#1893">[ subject ]</a>
+              <a href="author.html#1893">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

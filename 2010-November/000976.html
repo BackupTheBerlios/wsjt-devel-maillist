@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Jack
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Jack&In-Reply-To=%3C1289988688.1742.112.camel%40pierre-desktop%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000975.html">
+   <LINK REL="Next"  HREF="000977.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Jack</H1>
+    <B>Pierre Vanhoucke</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Jack&In-Reply-To=%3C1289988688.1742.112.camel%40pierre-desktop%3E"
+       TITLE="[Wsjt-devel] WSJT and Jack">pierre.vanhoucke at skynet.be
+       </A><BR>
+    <I>Wed Nov 17 11:11:28 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000975.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+        <LI>Next message: <A HREF="000977.html">[Wsjt-devel] Welcome to Sivan, 4X6IZ
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#976">[ date ]</a>
+              <a href="thread.html#976">[ thread ]</a>
+              <a href="subject.html#976">[ subject ]</a>
+              <a href="author.html#976">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Rob,
+
+On Tue, 2010-11-16 at 21:37 -0800, Rob Frohne wrote:
+&gt;<i> Hi Everyone,
+</I>&gt;<i> 
+</I>&gt;<i> I want to run WSJT from sdr-core (Dttsp) which uses Jack.  I tried it
+</I>&gt;<i> today, and I don't find WSJT in the qjackctrl connection list, but I
+</I>&gt;<i> do see Dttsp and system (which are the jack I/O) as  inputs and
+</I>&gt;<i> outputs I can choose from.  The problem is that the sound data doesn't
+</I>&gt;<i> seem to really get connected properly, because the audio level is at
+</I>&gt;<i> -38 db and doesn't go up and down as I increase the volume coming from
+</I>&gt;<i> sdr-core.  I was using 48 KHz and the .deb for WSPR 2.11 as of
+</I>&gt;<i> today.  
+</I>&gt;<i> 
+</I>&gt;<i> Does anyone have any pointers for me?  It appears that this has been
+</I>&gt;<i> discussed here before (see the thread quoted below), but possibly
+</I>&gt;<i> hasn't really been resolved.  Perhaps the next step is for me to
+</I>&gt;<i> download the code and build it so I can put some debugging statements
+</I>&gt;<i> in to see what seems to be amiss, but first perhaps some of you wise
+</I>&gt;<i> ones can give me some tips as to where to go poking.
+</I>
+I have solved my old WSPR problem by using the ALSA loopback sound card
+mechanism under Ubuntu 10.04 and Ubuntu 10.10. (it did not work with
+alsa-1.0.20 under Ubuntu 9.04 )
+
+The ALSA Loopback sound card is a virtual soundcard that is created once
+the ALSA kernel module snd-aloop is loaded. This virtual soundcard
+device, as its name indicates, sends back the output signal of
+applications using this card back to itself, so one has a chance to e.g.
+record this signal from this virtual device.
+
+In my case, I routed the output of Linrad to Loopback PCM (hw:3,0) and I
+connected the WSPR input to Loopback PCM (hw:3,1). This configuration
+seems to work pretty well with the blocking I/O's from WSPR 2.01 :-)
+
+In your case, I would try the following configuratin:
+Install snd-aloop and make sure that Loopback PCM (hw:3,0) is present in
+the qjackctrl connection list.
+Then I would try to connect the output of Dttsp to Loopback PCM (hw:3,0)
+using qjackctrl.
+Finally I would start WSPR and define Loopback PCM (hw:3,1) as its
+input.
+
+There is generic tutorial about snd-aloop and jack at:
+<A HREF="http://alsa.opensrc.org/index.php/Jack_and_Loopback_device_as_Alsa-to-Jack_bridge">http://alsa.opensrc.org/index.php/Jack_and_Loopback_device_as_Alsa-to-Jack_bridge</A>
+
+The only problem I encountered was related to the compilation of the
+snd-aloop.ko module:
+I needed several attempts before I managed to successfully compile
+alsadriver-1.0.21  under Ubuntu 10.04 .
+
+Later on I discovered a much easier apt-based solution for getting the
+precompiled  snd-aloop.ko module under Ubuntu 10.04 and Ubuntu 10.10:
+<A HREF="https://wiki.ubuntu.com/Audio/InstallingLinuxAlsaDriverModules">https://wiki.ubuntu.com/Audio/InstallingLinuxAlsaDriverModules</A>
+
+
+
+Hope it helps.
+
+Success and best 73,
+
+Pierre Vanhoucke / ON5GN
+
+ 
+&gt;<i> 
+</I>&gt;<i> Thanks &amp; 73,
+</I>&gt;<i> 
+</I>&gt;<i> Rob
+</I>&gt;<i> KL7NA
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>         Hi Pierre,
+</I>&gt;<i>         
+</I>&gt;<i>         Pierre Vanhoucke wrote:
+</I>&gt;<i>         
+</I>&gt;<i>         &gt; I compiled WSPR on my Ubuntu system which has portaudio with
+</I>&gt;<i>         Jack
+</I>&gt;<i>         &gt; installed.
+</I>&gt;<i>         &gt; When I start Jack and WSPR I can indeed select jack as an
+</I>&gt;<i>         input or
+</I>&gt;<i>         &gt; output device for WSPR (if the jack server is started with
+</I>&gt;<i>         the right
+</I>&gt;<i>         &gt; sample-rate=12000 and frames-per-period=2048 ). 
+</I>&gt;<i>         &gt; However there is no WSPR client visible in the &quot;connect&quot; box
+</I>&gt;<i>         of
+</I>&gt;<i>         &gt; qjackctl. As a consequence, I cannot connect the output of
+</I>&gt;<i>         Linrad to the
+</I>&gt;<i>         &gt; input of WSPR.
+</I>&gt;<i>         &gt; 
+</I>&gt;<i>         &gt; I think that the reason is that the sound.c module in WSPR
+</I>&gt;<i>         is using
+</I>&gt;<i>         &gt; portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode.
+</I>&gt;<i>         
+</I>&gt;<i>         This sounds plausible to me. WSPR does use blocking I/O for 
+</I>&gt;<i>         its calls to PortAudio; WSJT, MAP65, and MPA65-IQ use 
+</I>&gt;<i>         callback mode. There is no particularly good reason for 
+</I>&gt;<i>         this distinction. It came about when I was first writing 
+</I>&gt;<i>         WSPR; I wanted to try the &quot;other&quot; PortAudio method, to see 
+</I>&gt;<i>         what advantages/disadvantages there might be.
+</I>&gt;<i>         
+</I>&gt;<i>         If there turns out to be a good reason to convert WSPR to 
+</I>&gt;<i>         using the callback method, this could certainly be done.
+</I>&gt;<i>         
+</I>&gt;<i>         Do take note of the fact that starting with r1628, WSPR is 
+</I>&gt;<i>         using 48 kHz sampling instead of 12 kHz.
+</I>&gt;<i>         
+</I>&gt;<i>         Most of the WSPR code assumes a 12 kHz sample rate. I had 
+</I>&gt;<i>         thought that this would be a good match to nearly all of 
+</I>&gt;<i>         today's sound cards, which could use their 48 kHz native 
+</I>&gt;<i>         sample rate and do an easy filter/decimation stage to 
+</I>&gt;<i>         produce the 12 kHz samples requested by WSPR. I was 
+</I>&gt;<i>         astonished to learn from G3ZOD that when WSPR is started on 
+</I>&gt;<i>         a machine with a Delta44 sound card, Windows (or the Delta44 
+</I>&gt;<i>         driver?) sets its hardware sample rate to 44100 Hz (not 
+</I>&gt;<i>         48000 Hz!) and then does a relative poor sample-rate 
+</I>&gt;<i>         conversion to produce the 12000 Hz samples. Aarrgghh!
+</I>&gt;<i>         
+</I>&gt;<i>         So maybe it will be more reliable to have WSPR (and 
+</I>&gt;<i>         eventually WSJT?) sample at 48 kHz, and do any rate 
+</I>&gt;<i>         conversions myself.
+</I>&gt;<i>         
+</I>&gt;<i>         &gt; I will drop this question on the portaudio mailinglist to
+</I>&gt;<i>         get it
+</I>&gt;<i>         &gt; confirmed, unless someone else from this list can do it.
+</I>&gt;<i>         
+</I>&gt;<i>         Good idea. I will look forward to hearing what you learn.
+</I>&gt;<i>         
+</I>&gt;<i>         -- 73, Joe, K1JT
+</I>&gt;<i> -- 
+</I>&gt;<i> Rob Frohne, Ph.D., P.E.
+</I>&gt;<i> E.F. Cross School of Engineering
+</I>&gt;<i> Walla Walla University
+</I>&gt;<i> 100 SW 4th Street
+</I>&gt;<i> College Place, WA 99324
+</I>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000975.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+	<LI>Next message: <A HREF="000977.html">[Wsjt-devel] Welcome to Sivan, 4X6IZ
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#976">[ date ]</a>
+              <a href="thread.html#976">[ thread ]</a>
+              <a href="subject.html#976">[ subject ]</a>
+              <a href="author.html#976">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

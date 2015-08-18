@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] X64 wsjt
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20X64%20wsjt&In-Reply-To=%3C20080406200040.22b7bd95%40g77tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000242.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] X64 wsjt</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20X64%20wsjt&In-Reply-To=%3C20080406200040.22b7bd95%40g77tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] X64 wsjt">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Sun Apr  6 21:00:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000240.html">[Wsjt-devel] X64 wsjt
+</A></li>
+        <LI>Next message: <A HREF="000242.html">[Wsjt-devel] X64 wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 6 Apr 2008 19:40:24 +0100
+Richard &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard.bown at blueyonder.co.uk</A>&gt; wrote:
+
+&gt;<i> Hi All
+</I>&gt;<i> After killing the mobo in this machine, I'm trying to get wsjt
+</I>&gt;<i> running in the 64 bit version of Mandriva 2008.0
+</I>&gt;<i> I know Harry's rpm loads and runs OK on the i586 Mandriva 2008.1 (cooker)
+</I>&gt;<i> 
+</I>&gt;<i> but the x86_64 Mandriva 2008.1 is is bit unstable still.
+</I>&gt;<i> So I'm running x86_64 Mandriva 2008.8
+</I>&gt;<i> 
+</I>&gt;<i> the  wsjt-5.9.8.r558 build fails to build in the portaudio-v-19 section:-
+</I>&gt;<i> 
+</I>&gt;<i> gcc -o bin/.libs/paqa_devs -g -O2 -DPA_LITTLE_ENDIAN -pthread -I./include -I./src/common -I./src/os/unix -DPACKAGE_NAME=\&quot;\&quot;
+</I>&gt;<i> -DPACKAGE_TARNAME=\&quot;\&quot; -DPACKAGE_VERSION=\&quot;\&quot; -DPACKAGE_STRING=\&quot;\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DSTDC_HEADERS=1
+</I>&gt;<i> -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1
+</I>&gt;<i> -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_DLFCN_H=1 -DSIZEOF_SHORT=2 -DSIZEOF_INT=4 -DSIZEOF_LONG=8
+</I>&gt;<i> -DHAVE_CLOCK_GETTIME=1 -DHAVE_NANOSLEEP=1 -DPA_USE_ALSA=1 -DPA_USE_JACK=1 -DPA_USE_OSS=1 ./test/paqa_devs.c
+</I>&gt;<i> lib/.libs/libportaudio.so /usr/lib64/libasound.so /usr/lib64/libjack.so -ldl -lrt -lm -lpthread -Wl,--rpath -Wl,/usr/local/lib
+</I>&gt;<i> -Wl,--rpath -Wl,/usr/lib64 lib/.libs/libportaudio.so: undefined reference to `jack_port_lock' lib/.libs/libportaudio.so:
+</I>&gt;<i> undefined reference to `jack_port_unlock' collect2: ld returned 1 exit status make: *** [bin/paqa_devs] Error 1
+</I>&gt;<i> 
+</I>&gt;<i> Any ideas please ????
+</I>&gt;<i> 
+</I>&gt;<i> TIA
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>Just a further note:
+I downloaded the snaphot portaudio which compiles without any problems.
+How do I get the build f wsjt to use the pa libs from the snapshot.?
+
+
+
+-- 
+
+Best Wishes
+
+Richard Bown
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Registered Linux User 365161
+OS Mandriva 2008.1 Kernel 2.6.24.3-desktop-13nmb
+HAM Callsign G8JVM : Locator IO82SP
+QRV all bands 80mtrs to 3 cms ,( non WARC )
+<A HREF="http://www.software-radio.org.uk">http://www.software-radio.org.uk</A>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A computer is like a Native American Indian teepee, it has no gates, no windows and has an apache inside.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000240.html">[Wsjt-devel] X64 wsjt
+</A></li>
+	<LI>Next message: <A HREF="000242.html">[Wsjt-devel] X64 wsjt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

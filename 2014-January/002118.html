@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20hang&In-Reply-To=%3C52E597DE.8040401%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002120.html">
+   <LINK REL="Next"  HREF="002121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.2.2 r3659 hang</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20hang&In-Reply-To=%3C52E597DE.8040401%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.2.2 r3659 hang">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Jan 27 00:18:54 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002120.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+        <LI>Next message: <A HREF="002121.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2118">[ date ]</a>
+              <a href="thread.html#2118">[ thread ]</a>
+              <a href="subject.html#2118">[ subject ]</a>
+              <a href="author.html#2118">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 26/01/2014 17:49, Bob McCormick W1QA wrote:
+Hi Bib,
+&gt;<i>
+</I>&gt;<i> WSJT-X v1.2.2 r3659 on 64-bit Windows 7
+</I>&gt;<i>
+</I>&gt;<i> Left the application open / running on my system overnight with rig 
+</I>&gt;<i> tuned to 7.076 MHz.  Found it hung / Not Responding this morning when 
+</I>&gt;<i> I looked at the system.  No other applications (other than what 
+</I>&gt;<i> normally runs in the background) were open at the time.
+</I>&gt;<i>
+</I>&gt;<i> The last decode was 05:02Z and the waterfall shows probably the full 
+</I>&gt;<i> 48 seconds of 05:03Z (but no decodes) when it hung.  It created a 
+</I>&gt;<i> 140126_0503.wav file but size is zero.
+</I>&gt;<i>
+</I>&gt;<i> Task manager shows:
+</I>&gt;<i>
+</I>&gt;<i> wsjt.exe 39,216 K
+</I>&gt;<i>
+</I>&gt;<i> jt9.exe 3,176 K
+</I>&gt;<i>
+</I>&gt;<i> Killed the JT9 process -- main program still hung.  Attempting to 
+</I>&gt;<i> close (red X window control) either the main WSJT-X or Wide Graph 
+</I>&gt;<i> window didn't end the program -- had to choose &quot;close the program&quot;.
+</I>&gt;<i>
+</I>There has been an obscure bug reported for Qt v5 that causes program 
+freezes on some setups when a screen saver or login screen kicks in. One 
+known symptom is that it only affects the program that has focus. If you 
+regularly leave WSJT-X running unattended; you could try minimizing it 
+(main window &amp; waterfall) and see if the freeze still occurs. It may 
+also be possible to reproduce it on demand by typing CTRL+ALT+DEL to 
+bring up the login/task-manager screen.
+&gt;<i>
+</I>&gt;<i> Restarted the program and works just fine.
+</I>&gt;<i>
+</I>&gt;<i> Bob W1QA
+</I>&gt;<i>
+</I>&gt;<i> NB
+</I>&gt;<i>
+</I>&gt;<i> Not sure if attachments are allowed on this list -- I have a couple of 
+</I>&gt;<i> screen shots -- I'll try to attach them as a reply to this message to 
+</I>&gt;<i> keep it in the same thread once this makes it to the list.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/d7f54ef0/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140126/d7f54ef0/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002120.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+	<LI>Next message: <A HREF="002121.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 hang
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2118">[ date ]</a>
+              <a href="thread.html#2118">[ thread ]</a>
+              <a href="subject.html#2118">[ subject ]</a>
+              <a href="author.html#2118">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

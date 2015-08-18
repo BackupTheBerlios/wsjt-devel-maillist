@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] teething problems with FC15 64 bit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20teething%20problems%20with%20FC15%2064%20bit&In-Reply-To=%3C1311116197.1937.43.camel%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001119.html">
+   <LINK REL="Next"  HREF="001123.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] teething problems with FC15 64 bit</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20teething%20problems%20with%20FC15%2064%20bit&In-Reply-To=%3C1311116197.1937.43.camel%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] teething problems with FC15 64 bit">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Wed Jul 20 00:56:36 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001119.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+        <LI>Next message: <A HREF="001123.html">[Wsjt-devel] Some Pointers Please..-&gt; !
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1122">[ date ]</a>
+              <a href="thread.html#1122">[ thread ]</a>
+              <a href="subject.html#1122">[ subject ]</a>
+              <a href="author.html#1122">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+Yes I must be a masochist as every time I upgrade, I get grief.
+But I wanted Gnome 3 .
+Python version is 2.7.1 , but there are a lot of python3 files on the
+system. I don't think  python 3 is causing a problem except whats been
+removed from python 2.7.1.
+I can't remember seeing all the alsa-lib winges on start up before. I
+built from svn downloaded 2 days ago. It compiled with gfotran.
+I'm getting the Tkinter problems with the moon panel, I have installed
+python-imaging and python-imaging-tk and can't remember what else causes
+that.
+
+Does g2font relate to gnome2 font ????, which is unlikely to be used on
+gnome3.
+
+Pointers on fixing that appreciated
+Going to the end of the pasted section.
+the jackserver is installed with qjackctl, It seems to start then
+immediately fail.
+
+Also when selecting ffsk41 or iscat I get resampling errors.
+I haven't seen that before, again assistance in that area appreciated.
+
+Another also, can ISCAT-A be configured with less than a 15 secs period.
+I'd like to try some tests on 23 cms with that mode.
+
+--ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM phoneline
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.modem.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM phoneline
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 1410, in __call__
+    return self.func(*args)
+  File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 495, in callit
+    func(*args)
+  File &quot;/usr//bin/wsjt.py&quot;, line 1716, in update
+    graph2.create_text(80,13,anchor=CENTER,text=&quot;Moon&quot;,font=g2font)
+  File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 2213, in create_text
+    return self._create('text', args, kw)
+  File &quot;/usr/lib64/python2.7/lib-tk/Tkinter.py&quot;, line 2189, in _create
+    *(args + self._options(cnf, kw))))
+TclError: font &quot;&quot; doesn't exist
+ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports only playback stream
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server socket
+jack server is not running or cannot be started
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0        2         0       Conexant CX8801: CX88 Digital (hw:0,0)
+   1       12        10       M Audio Delta 66: ICE1712 multi (hw:1,0)
+   2        2         6       HDA ATI SB: ALC892 Analog (hw:2,0)
+   3        2         2       HDA ATI SB: ALC892 Digital (hw:2,1)
+   4        0         2       HDA ATI HDMI: HDMI 0 (hw:3,3)
+   5       32        32       pulse
+   6       32        32       default
+
+User requested devices:   Input =  1   Output =  1
+Default devices:          Input =  6   Output =  6
+Will open devices:        Input =  1   Output =  1
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.front.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM front
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.surround40.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM surround40
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM surround41
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM surround50
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.surround51.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM surround51
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.surround71.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM surround71
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM iec958
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.iec958.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM spdif
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM hdmi
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.hdmi.0:CARD=0,AES0=4,AES1=130,AES2=0,AES3=2'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM hdmi
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.modem.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline:CARD=0,DEV=0
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.modem.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline:CARD=0,DEV=0
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.modem.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM phoneline
+ALSA lib confmisc.c:1286:(snd_func_refer) Unable to find definition 'cards.CX88x.pcm.modem.0:CARD=0'
+ALSA lib conf.c:4184:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:4663:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM phoneline
+ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports only playback stream
+ALSA lib pcm_dmix.c:1018:(snd_pcm_dmix_open) unable to open slave
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server socket
+jack server is not running or cannot be started
+Audio streams running normally.
+******************************************************************
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+ Resample error.                  Infinity
+
+ Thanks
+Best wishes / 73
+Richard Bown
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+
+nil carborundum a illegitemis
+########################################################################
+Sent by Evolution 2.32.1 on Fedora FC15 x86_64 Dual core AMD Athlon 4400
+Ham Call:G8JVM 
+Maidenhead QRA: IO82SP38:LAT. 52 39.720':N LONG. 2 28.171 W (degs,mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001119.html">[Wsjt-devel] USB to serial issue ?
+</A></li>
+	<LI>Next message: <A HREF="001123.html">[Wsjt-devel] Some Pointers Please..-&gt; !
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1122">[ date ]</a>
+              <a href="thread.html#1122">[ thread ]</a>
+              <a href="subject.html#1122">[ subject ]</a>
+              <a href="author.html#1122">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

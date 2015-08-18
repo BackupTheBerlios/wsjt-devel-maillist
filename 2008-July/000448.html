@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR about ready for release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C1215957315.3765.14.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000441.html">
+   <LINK REL="Next"  HREF="000457.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR about ready for release?</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20about%20ready%20for%20release%3F&In-Reply-To=%3C1215957315.3765.14.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSPR about ready for release?">hdpopov at gmail.com
+       </A><BR>
+    <I>Sun Jul 13 15:55:15 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000441.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+        <LI>Next message: <A HREF="000457.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This time WSPR crashed with:
+   Called from line 132 of file decode162.f
+   Called from line 62 of file mept162.F
+   Called from line 16 of file decode.F90
+   Called from line 85 of file wspr2.F90
+   Called from line 16 of file decode.F90
+   Called from line 85 of file wspr2.F90
+   Called from line 22 of file Segmentation fault
+
+
+73, HP LZ1BB
+
+On Sun, 2008-07-13 at 11:37 +0300, Harry Popov wrote:
+&gt;<i> On Sat, 2008-07-12 at 21:25 -0400, Joe Taylor wrote:
+</I>&gt;<i> &gt; If you are able to 
+</I>&gt;<i> &gt; compile and run the program yourself, please give it a thorough 
+</I>&gt;<i> &gt; exercising on your system in the next few days.
+</I>&gt;<i> 
+</I>&gt;<i> GM from one underground and unknown tester. Well I did compile without
+</I>&gt;<i> problems WSPR r944 on my Debian Testing box. But if I use gfortran when
+</I>&gt;<i> I try to run it I have segmentation fault. Using g95 is much better.
+</I>&gt;<i> WSPR starts and run for a while. Next crashes with an error:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~/WSPR$ python wspr.py
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSPR Version 1.0_r944 , by K1JT
+</I>&gt;<i> Run date:   Sun Jul 13 08:16:36 2008 UTC
+</I>&gt;<i> 
+</I>&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;<i> Device  Channels  Channels
+</I>&gt;<i> ------------------------------------------------------------------
+</I>&gt;<i>    0       16        16       /dev/dsp
+</I>&gt;<i>    1        2         2       Sound Fusion CS46xx: CS46xx (hw:0,0)
+</I>&gt;<i>    2        0         2       Sound Fusion CS46xx: CS46xx - Rear
+</I>&gt;<i> (hw:0,1)
+</I>&gt;<i>    3        0         2       Sound Fusion CS46xx: CS46xx - IEC958
+</I>&gt;<i> (hw:0,2)
+</I>&gt;<i>    4        0         2       front
+</I>&gt;<i>    5        0         2       rear
+</I>&gt;<i>    6        0         2       iec958
+</I>&gt;<i>    7        0         2       spdif
+</I>&gt;<i>    8       128        128       default
+</I>&gt;<i>    9        0         2       dmix
+</I>&gt;<i> 
+</I>&gt;<i> User requested devices:  Input = 1   Output = 1
+</I>&gt;<i> Default devices:         Input = 0   Output = 0
+</I>&gt;<i> Will open devices:       Input = 1   Output = 1
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> At line 56 of file mept162.F
+</I>&gt;<i> Traceback: (Innermost first)
+</I>&gt;<i>    Called from line 132 of file decode162.f
+</I>&gt;<i>    Called from line 62 of file mept162.F
+</I>&gt;<i>    Called from line 16 of file decode.F90
+</I>&gt;<i>    Called from line 85 of file wspr2.F90
+</I>&gt;<i>    Called from line 33 of file wspr1.F90
+</I>&gt;<i> Fortran runtime error: Array element out of bounds: 45001 in (1:45000),
+</I>&gt;<i> dim=1
+</I>&gt;<i> 
+</I>&gt;<i> Hope this report is of any help. I have a question. I do use
+</I>&gt;<i> python-numpy 1.04. Is it important here to use this old release like in
+</I>&gt;<i> WSJT?
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000441.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+	<LI>Next message: <A HREF="000457.html">[Wsjt-devel] WSPR about ready for release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3CAANLkTinP%2BC22VRnsEVO6DUmRMJ3UA7L0X1SH1MurRheo%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001082.html">
+   <LINK REL="Next"  HREF="001076.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Another approach to command-line WSPR (weak	computers)</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3CAANLkTinP%2BC22VRnsEVO6DUmRMJ3UA7L0X1SH1MurRheo%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Another approach to command-line WSPR (weak	computers)">stoledo at tau.ac.il
+       </A><BR>
+    <I>Wed Dec 29 07:07:01 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001082.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+        <LI>Next message: <A HREF="001076.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1083">[ date ]</a>
+              <a href="thread.html#1083">[ thread ]</a>
+              <a href="subject.html#1083">[ subject ]</a>
+              <a href="author.html#1083">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Dec 28, 2010 at 12:00 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> By all means, go ahead and check your code into SVN.  Maybe include a brief
+</I>&gt;<i> text file explaining how to use it?
+</I>&gt;<i>
+</I>&gt;<i> Done.
+</I>
+To use, copy WsprMod/w.pyd to WsprModNoGui (I am sure there's a way to avoid
+this, probably by setting
+PYTHONPATH or something like that). Now just run &quot;python -O wspr_nogui.py&quot;
+instead of running wspr.py.
+
+The code uses the same wspr.ini and hopping.ini, so running it should be
+equivalent to starting up WSPR
+and letting it run without touching the GUI.
+
+I tested it in hopping and no-hopping modes, but RX only. Bugs typically
+show up as remaining calls
+to GUI functions.
+
+This is just a prototype; it can't be supported this way. one way make this
+maintainable is to refactor
+the Python codes into a functional part (scheduling, reading files, etc) and
+a control part. By refactoring i mean a clean separation of the GUI code
+from the functional code. Right now they are intertwined in a complex way.
+For example, update() does a lot of important functional things, but also
+updates the GUI.
+
+Once the program is refactored, we can support botha GUI controller and a
+text-based controller. In general this refactoring is a good structural
+change, but I doubt how many people will actually use the text-based GUI. A
+possibly more useful controller might be a TCP/IP controller that allows you
+to run WSPR on one machine but run the GUI on another machine, or through a
+web browser, etc. Even this is a bit esoteric.
+
+I can do the refactoring if there is interest. I will again do it in
+separate files that can then replace the existing ones, rather than by
+hacking away at wspr.py and the other GUI codes.
+
+Sivan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101229/08981d6e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101229/08981d6e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001082.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+	<LI>Next message: <A HREF="001076.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1083">[ date ]</a>
+              <a href="thread.html#1083">[ thread ]</a>
+              <a href="subject.html#1083">[ subject ]</a>
+              <a href="author.html#1083">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

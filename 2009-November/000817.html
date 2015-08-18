@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Error starting WSPR on KUBUNTU
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Error%20starting%20WSPR%20on%20KUBUNTU&In-Reply-To=%3C200911150859.05066.la3rk%40arrl.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000816.html">
+   <LINK REL="Next"  HREF="000818.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Error starting WSPR on KUBUNTU</H1>
+    <B>Olaf Devik</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Error%20starting%20WSPR%20on%20KUBUNTU&In-Reply-To=%3C200911150859.05066.la3rk%40arrl.net%3E"
+       TITLE="[Wsjt-devel] Error starting WSPR on KUBUNTU">la3rk at arrl.net
+       </A><BR>
+    <I>Sun Nov 15 08:59:04 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000816.html">[Wsjt-devel] WSPR 2.0 r1682
+</A></li>
+        <LI>Next message: <A HREF="000818.html">[Wsjt-devel] Error starting WSPR on KUBUNTU
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#817">[ date ]</a>
+              <a href="thread.html#817">[ thread ]</a>
+              <a href="subject.html#817">[ subject ]</a>
+              <a href="author.html#817">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>After compiling WSPR for KUBUNTU, I get the following error:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">olaf at D610</A>:/usr/local/src/wsjt/branches/wspr$ python wspr.py
+Traceback (most recent call last):
+  File &quot;wspr.py&quot;, line 25, in &lt;module&gt;
+    from WsprMod import w
+ImportError: cannot import name w
+
+There are some errors from the compilation, as below:
+
+Found executable /usr/bin/gfortran
+fthread.c:28: warning: function declaration isn&#8217;t a prototype
+/usr/bin/ld: cannot find -lfftw3single
+collect2: ld returned 1 exit status
+/usr/bin/ld: cannot find -lfftw3single
+collect2: ld returned 1 exit status
+error: Command &quot;/usr/bin/gfortran -Wall -Wall -shared 
+/tmp/tmpr2367c/padevsub.o /tmp/tmpr2367c/start_threads.o 
+/tmp/tmpr2367c/sound.o /tmp/tmpr2367c/gmtime2.o 
+/tmp/tmpr2367c/ptt_unix.o /tmp/tmpr2367c/nhash.o 
+/tmp/tmpr2367c/fthread.o 
+/tmp/tmpr2367c/tmp/tmpr2367c/src.linux-i686-2.6/wmodule.o 
+/tmp/tmpr2367c/tmp/tmpr2367c/src.linux-
+i686-2.6/fortranobject.o /tmp/tmpr2367c/wspr1.o 
+/tmp/tmpr2367c/wspr2.o /tmp/tmpr2367c/decode.o 
+/tmp/tmpr2367c/getutc.o /tmp/tmpr2367c/gran.o 
+/tmp/tmpr2367c/rx.o /tmp/tmpr2367c/startdec.o 
+/tmp/tmpr2367c/startrx.o /tmp/tmpr2367c/starttx.o 
+/tmp/tmpr2367c/tx.o /tmp/tmpr2367c/getfile.o 
+/tmp/tmpr2367c/paterminate.o /tmp/tmpr2367c/wqencode.o 
+/tmp/tmpr2367c/chklevel.o /tmp/tmpr2367c/genwspr.o 
+/tmp/tmpr2367c/wqdecode.o /tmp/tmpr2367c/hash.o 
+/tmp/tmpr2367c/packname.o /tmp/tmpr2367c/packtext2.o 
+/tmp/tmpr2367c/unpackname.o 
+/tmp/tmpr2367c/unpacktext2.o /tmp/tmpr2367c/audiodev.o 
+/tmp/tmpr2367c/fil1.o /tmp/tmpr2367c/packpfx.o 
+/tmp/tmpr2367c/packprop.o /tmp/tmpr2367c/unpackpfx.o 
+/tmp/tmpr2367c/unpackprop.o /tmp/tmpr2367c/msgtrim.o 
+/tmp/tmpr2367c/thnix.o /tmp/tmpr2367c/mept162.o 
+/tmp/tmpr2367c/getrms.o /tmp/tmpr2367c/wfile5.o 
+/tmp/tmpr2367c/mix162.o /tmp/tmpr2367c/sync162.o 
+/tmp/tmpr2367c/decode162.o /tmp/tmpr2367c/spec162.o 
+/tmp/tmpr2367c/set.o /tmp/tmpr2367c/xfft.o 
+/tmp/tmpr2367c/ps162.o /tmp/tmpr2367c/pctile.o 
+/tmp/tmpr2367c/xcor162.o /tmp/tmpr2367c/peakup.o 
+/tmp/tmpr2367c/db.o /tmp/tmpr2367c/inter_mept.o 
+/tmp/tmpr2367c/fano232.o /tmp/tmpr2367c/unpack50.o 
+/tmp/tmpr2367c/unpackcall.o /tmp/tmpr2367c/unpackgrid.o 
+/tmp/tmpr2367c/four2a.o /tmp/tmpr2367c/flat3.o 
+/tmp/tmpr2367c/sort.o /tmp/tmpr2367c/deg2grid.o 
+/tmp/tmpr2367c/ssort.o /tmp/tmpr2367c/gencwid.o 
+/tmp/tmpr2367c/morse.o /tmp/tmpr2367c/packcall.o 
+/tmp/tmpr2367c/packgrid.o /tmp/tmpr2367c/pack50.o 
+/tmp/tmpr2367c/encode232.o /tmp/tmpr2367c/nchar.o 
+/tmp/tmpr2367c/grid2deg.o /tmp/tmpr2367c/fchisq.o 
+/tmp/tmpr2367c/ccf2.o /tmp/tmpr2367c/twkfreq.o 
+/tmp/tmpr2367c/azdist.o /tmp/tmpr2367c/geodist.o 
+/tmp/tmpr2367c/tmp/tmpr2367c/src.linux-i686-2.6/w-
+f2pywrappers.o -L/usr/lib -L/usr/local/lib -L/usr/lib/gcc/i486-linux-
+gnu/4.4.1/ -lpthread -lportaudio -lfftw3f -lfftw3single -lgfortran -o 
+./w.so&quot; failed with exit status 1
+make: *** [WsprMod/w.so] Error 1
+
+Anybody with a clue how to solve this? I would very much like to 
+get this package to run under Linux.
+
+73 de Olaf
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000816.html">[Wsjt-devel] WSPR 2.0 r1682
+</A></li>
+	<LI>Next message: <A HREF="000818.html">[Wsjt-devel] Error starting WSPR on KUBUNTU
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#817">[ date ]</a>
+              <a href="thread.html#817">[ thread ]</a>
+              <a href="subject.html#817">[ subject ]</a>
+              <a href="author.html#817">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

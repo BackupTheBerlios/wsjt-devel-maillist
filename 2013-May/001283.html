@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Building WSJT-X on OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3CCAOctvfWAqmr8o2Fc-RUeEuLsUadURLxxPjgnw7vMJ5eR7fY%2BDQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001282.html">
+   <LINK REL="Next"  HREF="001284.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Building WSJT-X on OS X</H1>
+    <B>Dave Wright</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Building%20WSJT-X%20on%20OS%20X&In-Reply-To=%3CCAOctvfWAqmr8o2Fc-RUeEuLsUadURLxxPjgnw7vMJ5eR7fY%2BDQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Building WSJT-X on OS X">hfradiopro at gmail.com
+       </A><BR>
+    <I>Sun May 12 23:14:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001282.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+        <LI>Next message: <A HREF="001284.html">[Wsjt-devel] Fwd: r3271
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1283">[ date ]</a>
+              <a href="thread.html#1283">[ thread ]</a>
+              <a href="subject.html#1283">[ subject ]</a>
+              <a href="author.html#1283">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the tips, Greg.  I found the INCPATH changes last night, but
+didn't have to time to follow-up with it today due to Mother's Day and then
+work.  Will start playing again tonight, but let me say thanks for the
+pointers...you probably just saved me a bunch of frustration.
+
+73
+
+Dave
+
+Dave
+K3DCW
+www.k3dcw.net
+
+&quot;Real radio bounces off the sky&quot;
+
+
+On Sun, May 12, 2013 at 4:37 PM, Greg Beam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>&gt; wrote:
+
+&gt;<i> Hi Dave,
+</I>&gt;<i>
+</I>&gt;<i> I don't have a Mac in the shack :-) but the the XYL does development on a
+</I>&gt;<i> MacBook Pro with the latest SDK, Qt, etc etc with OS, 10.7. I did some
+</I>&gt;<i> poking around on to see where things were located.
+</I>&gt;<i>
+</I>&gt;<i> Couple Things:
+</I>&gt;<i>
+</I>&gt;<i> First, for the the Makfile.linux (make -f Makefile.linux) you need to edit
+</I>&gt;<i> the INCPATH:
+</I>&gt;<i>
+</I>&gt;<i> INCPATH =  -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'
+</I>&gt;<i>
+</I>&gt;<i> For me, Qwt-qt4 Libs were installed here:
+</I>&gt;<i>
+</I>&gt;<i> INCPATH =  -I'/lib/qt4-mac/include/qwt -I'/lib/qt4-mac/include/qwt/
+</I>&gt;<i> QtCore'
+</I>&gt;<i>
+</I>&gt;<i> You'll need to check on your box where the libs are located and adjust
+</I>&gt;<i> accordingly.
+</I>&gt;<i>
+</I>&gt;<i> Same thing for wsjtx.pro:
+</I>&gt;<i>
+</I>&gt;<i> Adjust the qwt/include and LIBS+= statement according to your system:
+</I>&gt;<i>
+</I>&gt;<i> unix {
+</I>&gt;<i> INCLUDEPATH += $$quote(/lib/qt4-mac/include/qwt)
+</I>&gt;<i> LIBS += ../wsjtx/lib/libjt9.a
+</I>&gt;<i> LIBS += -lhamlib
+</I>&gt;<i> LIBS += -lportaudio -lgfortran -lfftw3f -lqwt
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> echo $PATH showed the /libs dir in the path, so you could try excluding
+</I>&gt;<i> the INCLUDEPATH directive. If you know where they are, probably best to
+</I>&gt;<i> include it.
+</I>&gt;<i>
+</I>&gt;<i> One last thing. When you run make -f Makefile.linux the first time, you
+</I>&gt;<i> need to ensure the install directory wsjt_install actually exists,
+</I>&gt;<i> otherwise, jt9 will be copied to &quot;wsjt_install&quot; as a file, v.s. being
+</I>&gt;<i> placed in the directory of ../wsjt_install. It should be at the root level
+</I>&gt;<i> of the svn co ../wsjtx and ../wsjtx_install
+</I>&gt;<i>
+</I>&gt;<i> Good Luck,
+</I>&gt;<i>
+</I>&gt;<i> 73's Greg, KI7MT
+</I>&gt;<i> .
+</I>&gt;<i>
+</I>&gt;<i> -----------------------
+</I>&gt;<i>
+</I>&gt;<i> [Dave Wrote]
+</I>&gt;<i>
+</I>&gt;<i> I made a bit of progress working my way through the Makefile.linux, but am going to call it a night.  WIll pick it back up tomorrow, but would appreciate any guidance anyone may have on overall requirements for building for OS X 10.8.
+</I>&gt;<i>
+</I>&gt;<i> Will share any developments I get tomorrow.
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i>
+</I>&gt;<i> Dave
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Dave Wright
+</I>&gt;<i> K3DCWwww.k3dcw.net
+</I>&gt;<i>
+</I>&gt;<i> &quot;Real radio bounces off of the sky&quot;
+</I>&gt;<i>
+</I>&gt;<i> [/Dave Wrote]
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/a72a00cf/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130512/a72a00cf/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001282.html">[Wsjt-devel] Building WSJT-X on OS X
+</A></li>
+	<LI>Next message: <A HREF="001284.html">[Wsjt-devel] Fwd: r3271
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1283">[ date ]</a>
+              <a href="thread.html#1283">[ thread ]</a>
+              <a href="subject.html#1283">[ subject ]</a>
+              <a href="author.html#1283">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

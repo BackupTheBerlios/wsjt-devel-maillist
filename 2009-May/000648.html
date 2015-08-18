@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A1013B2.2080904%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000647.html">
+   <LINK REL="Next"  HREF="000649.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A1013B2.2080904%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] gfortran">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun May 17 15:40:02 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000647.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000649.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#648">[ date ]</a>
+              <a href="thread.html#648">[ thread ]</a>
+              <a href="subject.html#648">[ subject ]</a>
+              <a href="author.html#648">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jeff --
+
+Just to make sure: when you write about segfaults by one or another of 
+the WSJT-related programs, you mean after compiling with gfortran, 
+right?  And if you compile with g95, they run OK?
+
+Please confirm.
+
+	-- Joe, K1JT
+
+jeff millar wrote:
+&gt;<i> Diane...
+</I>&gt;<i> 
+</I>&gt;<i> The r1220 change made my desktop PC work with map65.
+</I>&gt;<i> 
+</I>&gt;<i>     * recent rebuild to ubuntu 9.04, while keeping /home.  
+</I>&gt;<i> 
+</I>&gt;<i> However, my laptop still segfaults after flashing the GUI.
+</I>&gt;<i> 
+</I>&gt;<i>     * ubuntu 9.04 via a long upgrade path
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Print statements show that execution never makes it to 
+</I>&gt;<i> start_portaudio.c, start_threads() after executing up to the call to 
+</I>&gt;<i> start_threads() in audio_INIT.F90.
+</I>&gt;<i> 
+</I>&gt;<i> hope this helps
+</I>&gt;<i> 
+</I>&gt;<i> jeff, wa1hco
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, May 15, 2009 at 3:20 PM, Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i>     On Fri, May 15, 2009 at 03:08:18PM -0400, jeff millar wrote:
+</I>&gt;<i>      &gt; I svn update'd the wsjt tree to rev 1220 and noted changes to
+</I>&gt;<i>      &gt; start_portaudio.c. Map65 now runs without segfault after startup.
+</I>&gt;<i>      &gt;
+</I>&gt;<i>      &gt; Thanks!!!
+</I>&gt;<i> 
+</I>&gt;<i>     You're welcome.
+</I>&gt;<i> 
+</I>&gt;<i>     - 73 Diane VA3DB
+</I>&gt;<i>     --
+</I>&gt;<i>     - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt; <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i>     &lt;<A HREF="http://www.db.net/%7Edb">http://www.db.net/%7Edb</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000647.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000649.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#648">[ date ]</a>
+              <a href="thread.html#648">[ thread ]</a>
+              <a href="subject.html#648">[ subject ]</a>
+              <a href="author.html#648">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

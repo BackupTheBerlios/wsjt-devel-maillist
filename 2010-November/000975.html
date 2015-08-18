@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Jack
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Jack&In-Reply-To=%3C4CE36A37.5020001%40wallawalla.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000971.html">
+   <LINK REL="Next"  HREF="000976.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Jack</H1>
+    <B>Rob Frohne</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Jack&In-Reply-To=%3C4CE36A37.5020001%40wallawalla.edu%3E"
+       TITLE="[Wsjt-devel] WSJT and Jack">kl7na.pskmail at gmail.com
+       </A><BR>
+    <I>Wed Nov 17 06:37:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000971.html">[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/
+</A></li>
+        <LI>Next message: <A HREF="000976.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#975">[ date ]</a>
+              <a href="thread.html#975">[ thread ]</a>
+              <a href="subject.html#975">[ subject ]</a>
+              <a href="author.html#975">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Everyone,
+
+I want to run WSJT from sdr-core (Dttsp) which uses Jack.  I tried it 
+today, and I don't find WSJT in the qjackctrl connection list, but I do 
+see Dttsp and system (which are the jack I/O) as  inputs and outputs I 
+can choose from.  The problem is that the sound data doesn't seem to 
+really get connected properly, because the audio level is at -38 db and 
+doesn't go up and down as I increase the volume coming from sdr-core.  I 
+was using 48 KHz and the .deb for WSPR 2.11 as of today.
+
+Does anyone have any pointers for me?  It appears that this has been 
+discussed here before (see the thread quoted below), but possibly hasn't 
+really been resolved.  Perhaps the next step is for me to download the 
+code and build it so I can put some debugging statements in to see what 
+seems to be amiss, but first perhaps some of you wise ones can give me 
+some tips as to where to go poking.
+
+Thanks &amp; 73,
+
+Rob
+KL7NA
+
+
+    Hi Pierre,
+
+    Pierre Vanhoucke wrote:
+
+     &gt;/I compiled WSPR on my Ubuntu system which has portaudio with Jack/
+     &gt;/installed./
+     &gt;/When I start Jack and WSPR I can indeed select jack as an input or/
+     &gt;/output device for WSPR (if the jack server is started with the right/
+     &gt;/sample-rate=12000 and frames-per-period=2048 ). /
+     &gt;/However there is no WSPR client visible in the &quot;connect&quot; box of/
+     &gt;/qjackctl. As a consequence, I cannot connect the output of Linrad
+    to the/
+     &gt;/input of WSPR./
+     &gt;//
+     &gt;/I think that the reason is that the sound.c module in WSPR is using/
+     &gt;/portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode./
+
+    This sounds plausible to me. WSPR does use blocking I/O for
+    its calls to PortAudio; WSJT, MAP65, and MPA65-IQ use
+    callback mode. There is no particularly good reason for
+    this distinction. It came about when I was first writing
+    WSPR; I wanted to try the &quot;other&quot; PortAudio method, to see
+    what advantages/disadvantages there might be.
+
+    If there turns out to be a good reason to convert WSPR to
+    using the callback method, this could certainly be done.
+
+    Do take note of the fact that starting with r1628, WSPR is
+    using 48 kHz sampling instead of 12 kHz.
+
+    Most of the WSPR code assumes a 12 kHz sample rate. I had
+    thought that this would be a good match to nearly all of
+    today's sound cards, which could use their 48 kHz native
+    sample rate and do an easy filter/decimation stage to
+    produce the 12 kHz samples requested by WSPR. I was
+    astonished to learn from G3ZOD that when WSPR is started on
+    a machine with a Delta44 sound card, Windows (or the Delta44
+    driver?) sets its hardware sample rate to 44100 Hz (not
+    48000 Hz!) and then does a relative poor sample-rate
+    conversion to produce the 12000 Hz samples. Aarrgghh!
+
+    So maybe it will be more reliable to have WSPR (and
+    eventually WSJT?) sample at 48 kHz, and do any rate
+    conversions myself.
+
+     &gt;/I will drop this question on the portaudio mailinglist to get it/
+     &gt;/confirmed, unless someone else from this list can do it./
+
+    Good idea. I will look forward to hearing what you learn.
+
+    -- 73, Joe, K1JT
+
+-- 
+Rob Frohne, Ph.D., P.E.
+E.F. Cross School of Engineering
+Walla Walla University
+100 SW 4th Street
+College Place, WA 99324
+(509) 527-2075			 <A HREF="http://people.wallawalla.edu/~rob.frohne">http://people.wallawalla.edu/~rob.frohne</A>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101116/b0d3b6f4/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101116/b0d3b6f4/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: frohro.vcf
+Type: text/x-vcard
+Size: 298 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101116/b0d3b6f4/attachment.vcf">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101116/b0d3b6f4/attachment.vcf</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000971.html">[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/
+</A></li>
+	<LI>Next message: <A HREF="000976.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#975">[ date ]</a>
+              <a href="thread.html#975">[ thread ]</a>
+              <a href="subject.html#975">[ subject ]</a>
+              <a href="author.html#975">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

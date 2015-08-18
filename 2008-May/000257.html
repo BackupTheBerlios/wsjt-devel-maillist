@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3CFD3A68E2-F18F-46F4-B415-ED262655D57F%40quidnet.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000255.html">
+   <LINK REL="Next"  HREF="000258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Continued development of WSJT, MAP65, WSPR</H1>
+    <B>Bruce Walker</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Continued%20development%20of%20WSJT%2C%20MAP65%2C%20WSPR&In-Reply-To=%3CFD3A68E2-F18F-46F4-B415-ED262655D57F%40quidnet.com%3E"
+       TITLE="[Wsjt-devel] Continued development of WSJT, MAP65, WSPR">bruce at quidnet.com
+       </A><BR>
+    <I>Thu May 15 21:27:56 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000255.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+        <LI>Next message: <A HREF="000258.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+On May 15, 2008, at 3:01 PM, Joe Taylor wrote:
+
+&gt;<i> Hi Bruce (and other WSJT/MAP65/WSPR developers),
+</I>&gt;<i>
+</I>&gt;<i> For historical reasons (aka laziness ?), I still use Python
+</I>&gt;<i> 2.3 in my Windows development machine.  I have therefore put
+</I>&gt;<i> a conditional import into f2py.py.
+</I>
+Good.
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> We definitely need to have autoconf/automake scripts for
+</I>&gt;<i> WSPR ... and also for MAP65.  I've never learned to do that
+</I>&gt;<i> properly; Diane, VA3DB, is responsible for the excellent
+</I>&gt;<i> ones in the WSJT trunk.  It should be possible to move these
+</I>&gt;<i> over to WSPR (and MAP65), I imagine, but I haven't put any
+</I>&gt;<i> effort into this.  I'm sure you can do it better than I can.
+</I>
+I was going to adopt the WSJT autoconf scripts for WSPR, but it's been  
+a busy work week, and I haven't had time yet.
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks for catching the pthread memory leak on Linux.
+</I>&gt;<i> Should this have been a problem in Win32/MinGW, which also
+</I>&gt;<i> uses pthreads and start_threads.c.  I haven't noticed that
+</I>&gt;<i> it's a problem in that environment.  Should it also be a
+</I>&gt;<i> problem in WJST?  I haven't noticed any problems there, either.
+</I>
+ll check WSJT...I've used it on linux many times, but probably never  
+left it running for extended periods.  WSPR was consuming about 16MB  
+every receive cycle (two 8MB thread stacks for receive and decode, I  
+imagine), so it was running out of VM after ~6-8 hours.
+
+As for windows, my guess is that Win32/MinGW pthreads implementation  
+isn't keeping around a big chunk of thead state the way linux is.  For  
+correct semantics, all it needs to keep around for an exited but not- 
+detached thread is the thread structure itself and the return value  
+from the thread function.   So I would guess it is leaking at least  
+small amounts of memory, or perhaps not implementing correct pthread  
+semantics (without detaching the thread, you should be able to  
+pthread_join() any exited thread and get back it's return value, so  
+that must be kept around somewhere).
+
+
+--bruce W1BW
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000255.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+	<LI>Next message: <A HREF="000258.html">[Wsjt-devel] Continued development of WSJT, MAP65, WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

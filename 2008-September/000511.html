@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR problem using Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20problem%20using%20Ubuntu%208.04&In-Reply-To=%3C48C7F09B.3070107%40andreas-weller.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000510.html">
+   <LINK REL="Next"  HREF="000512.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR problem using Ubuntu 8.04</H1>
+    <B>Andreas Weller</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20problem%20using%20Ubuntu%208.04&In-Reply-To=%3C48C7F09B.3070107%40andreas-weller.de%3E"
+       TITLE="[Wsjt-devel] WSPR problem using Ubuntu 8.04">weller at andreas-weller.de
+       </A><BR>
+    <I>Wed Sep 10 18:06:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000510.html">[Wsjt-devel] [Fwd: Re: Wspr crash &amp; problem with endianness	determination]
+</A></li>
+        <LI>Next message: <A HREF="000512.html">[Wsjt-devel] Wspr crash &amp; problem with endianness determination
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#511">[ date ]</a>
+              <a href="thread.html#511">[ thread ]</a>
+              <a href="subject.html#511">[ subject ]</a>
+              <a href="author.html#511">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+Yesterday I checked out the latest WSJT CVS version as I recently read
+an article about WSPR mode.
+But WSPR doesn't start. Here's the console output:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">andreas at notebook</A>:~/wsjt/branches/wspr$ python wspr.py 
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSPR Version 1.0_r987 , by K1JT
+</I>&gt;<i> Run date:   Wed Sep 10 16:00:33 2008 UTC
+</I>&gt;<i> 0-th dimension must be 6 but got 0 (not defined).
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;wspr.py&quot;, line 1028, in &lt;module&gt;
+</I>&gt;<i>     put_params()
+</I>&gt;<i>   File &quot;wspr.py&quot;, line 582, in put_params
+</I>&gt;<i>     w.acom1.callsign=(options.MyCall.get().strip().upper()+'      ')[:6]
+</I>&gt;<i> SystemError: error return without exception set
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">andreas at notebook</A>:~/wsjt/branches/wspr$ 
+</I>
+Any idea what's wrong with my installation?
+
+
+Regards,
+  Andreas Weller, DF1PAW
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000510.html">[Wsjt-devel] [Fwd: Re: Wspr crash &amp; problem with endianness	determination]
+</A></li>
+	<LI>Next message: <A HREF="000512.html">[Wsjt-devel] Wspr crash &amp; problem with endianness determination
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#511">[ date ]</a>
+              <a href="thread.html#511">[ thread ]</a>
+              <a href="subject.html#511">[ subject ]</a>
+              <a href="author.html#511">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

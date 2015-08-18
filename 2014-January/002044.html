@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] DXCC and Worked B4 Status documantation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20and%20Worked%20B4%20Status%20documantation&In-Reply-To=%3C52DB0D2C.6020002%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002043.html">
+   <LINK REL="Next"  HREF="002066.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] DXCC and Worked B4 Status documantation</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20and%20Worked%20B4%20Status%20documantation&In-Reply-To=%3C52DB0D2C.6020002%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] DXCC and Worked B4 Status documantation">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Sun Jan 19 00:24:28 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002043.html">[Wsjt-devel] V1.2.2 on Linux FC19 x85_64
+</A></li>
+        <LI>Next message: <A HREF="002066.html">[Wsjt-devel] DXCC and Worked B4 Status documantation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2044">[ date ]</a>
+              <a href="thread.html#2044">[ thread ]</a>
+              <a href="subject.html#2044">[ subject ]</a>
+              <a href="author.html#2044">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+
+I have some documentation below for 'Show DXCC and Worked B4 Status'.  I 
+think I sent this to the list once before but may have got lost.  I'm on 
+Linux and I'm not confident that my Libre Office docx files will retain 
+all the formatting. I just did a quick test saving the existing 1.2 doc 
+and it came out 10% smaller.  Hmm, that doesn't inspire confidence!  
+Could you or some other kind person please paste it into a suitable 
+place in the manual?
+
+I've done a fresh check out of R3651 on Linux (Mint 14) and it compiles 
+and runs fine.  The flatten feature works very well.
+
+I'm in discussions with Clark AL7EK about some changes to worked B4 and 
+the log file it uses but we'll hold off on any code changes until after 
+this release.
+
+Cheers
+Murray VK3ACF
+
+============================
+
+Show DXCC entity and worked B4 status
+
+This adds the name of the DXCC entity and whether you've worked this 
+entity and/or call before to any CQ calls displayed in the Band Activity 
+window. It considers JT9 and JT65 to be the same mode but does 
+differentiate between bands.
+
+While it will work on the Windows version of WSJT-X it is mainly 
+intended Linux and Mac users. Windows users can (and should) use 
+VK3AMA's excellent JT-Alert utility available from <A HREF="http://ham-apps.com">http://ham-apps.com</A>
+
+Your worked before status is displayed as a single character with a 
+change of background colour:
+
+! (bright green) New DXCC entity
+~ (mid green) You've already worked this DXCC entity but not this station.
+(dull green) You've previously worked the calling station.
+
+Following the above is the DXCC entity name abbreviated if required to 
+fit the available space.
+
+Requirements
+
+WSJTX expects the file cty.dat installed in wsjtx_install. This contains 
+the DXCC data, is regularly updated and can be downloaded from 
+<A HREF="http://www.country-files.com/cty/">http://www.country-files.com/cty/</A>
+
+Your previous history is read from wsjtx_log.adi (found in 
+wsjtx_install). This file is updated every time you log a QSO from 
+WSJT-X (but note that it can also be erased from the file menu). You can 
+append or overwrite this file by exporting your QSO history as an ADIF 
+file from another logging program. Turning 'Show DXCC entity and worked 
+B4 status' off and on again will cause WSJT-X to re-read this log file. 
+Note that very large ADIF log files may cause WSJT-X to slow down while 
+searching for calls.
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/02bd5b17/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/02bd5b17/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002043.html">[Wsjt-devel] V1.2.2 on Linux FC19 x85_64
+</A></li>
+	<LI>Next message: <A HREF="002066.html">[Wsjt-devel] DXCC and Worked B4 Status documantation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2044">[ date ]</a>
+              <a href="thread.html#2044">[ thread ]</a>
+              <a href="subject.html#2044">[ subject ]</a>
+              <a href="author.html#2044">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

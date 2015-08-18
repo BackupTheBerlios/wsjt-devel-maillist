@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] ImportError: cannot import name Audio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ImportError%3A%20cannot%20import%20name%20Audio&In-Reply-To=%3C50E95A78.5090503%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001172.html">
+   <LINK REL="Next"  HREF="001168.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] ImportError: cannot import name Audio</H1>
+    <B>DJ5AND</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ImportError%3A%20cannot%20import%20name%20Audio&In-Reply-To=%3C50E95A78.5090503%40gmx.net%3E"
+       TITLE="[Wsjt-devel] ImportError: cannot import name Audio">dj5and at gmx.net
+       </A><BR>
+    <I>Sun Jan  6 12:05:28 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001172.html">[Wsjt-devel] compile for windows
+</A></li>
+        <LI>Next message: <A HREF="001168.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1165">[ date ]</a>
+              <a href="thread.html#1165">[ thread ]</a>
+              <a href="subject.html#1165">[ subject ]</a>
+              <a href="author.html#1165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've been trying to compile and install wsjt from trunk (version 9.3
+revision 2589) partly successful.
+
+1) #~&gt;./configure and make result in a wsjt.py, which when permission is
+changed starts the GUI.
+
+2) #~&gt;python setyp.py install (as root) finishes without errors and
+3) #~&gt;wsjt results in &quot;python: can't open file 'usr//bin/wsjt.py: [Errno
+2] No such file or directory&quot; which can be worked around with
+4) #~&gt;wsjt.py resulting in:
+
+Traceback (most recent call last:)
+  File &quot;/usr/local/bin/wsjt.py&quot;, line 11, in &lt;module&gt;
+  from WsjtMod import Audio
+ImportError: cannot import Audio
+
+
+What do I need to do to get it properly installed, eventually archiving
+the local trunk folder?
+
+
+-- 
+73 de Sven, VK3SIX (DJ5AND)
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001172.html">[Wsjt-devel] compile for windows
+</A></li>
+	<LI>Next message: <A HREF="001168.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1165">[ date ]</a>
+              <a href="thread.html#1165">[ thread ]</a>
+              <a href="subject.html#1165">[ subject ]</a>
+              <a href="author.html#1165">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

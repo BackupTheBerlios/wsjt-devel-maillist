@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Easy WSJT installation on *nix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Easy%20WSJT%20installation%20on%20%2Anix&In-Reply-To=%3C1167824119.4058.32.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Easy WSJT installation on *nix</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Easy%20WSJT%20installation%20on%20%2Anix&In-Reply-To=%3C1167824119.4058.32.camel%40ham%3E"
+       TITLE="[Wsjt-devel] Easy WSJT installation on *nix">lz1bb at mail.bg
+       </A><BR>
+    <I>Wed Jan  3 12:35:19 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Wsjt-devel] Easy WSJT installation on *nix
+</A></li>
+        <LI>Next message: <A HREF="000006.html">[Wsjt-devel] Easy WSJT installation on *nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe,
+
+I appreciate such kind of wsjt package. There are plenty of small
+distributions which people use for some reasons. Just to mention Vector,
+DSL, Puppy etc. Installing deb or rpm packages on those might be a
+difficult task for most of the users.
+
+I found that libg2c.so.0 does not work here on my Mandriva 2007 with
+2.6.17 kernel. Monitor file name is always: Mon_700101_000000 . If I
+replace libg2c.so.0 with Mandriva's one all is fine.
+
+
+&gt;<i> Probably it will also be good to change the default PTT port to 
+</I>&gt;<i> &quot;/dev/ttyS0&quot;.   I thought this had already been done, but apparently not.
+</I>
+Yes this one will be nice. BTW Hamish already did that in his deb
+packages.
+
+&gt;<i> Would it also be best, in your opinion, to change the default audio 
+</I>&gt;<i> device to &quot;1&quot; for both input and output?
+</I>
+I do not know. Perhaps Hamish gave the best explanation. In my case
+Audio device 1 always works beter. No crash and beter decoding on all
+wsjt revisions. But it was just the oposite on my Compaq Armada 7800
+with ISA sound card /the same OS/. There the audio device 0 always works
+and nothing else.
+
+I am using the case to share experience with Windows WSJT. We tested on
+several hardware and different Windows versions. We always had best
+decode while NOT using MS sound mapper which is default device 0. All
+tests were done in FSK441 mode and difference was amasing. Especially on
+short, weak and phase shifted reflections.
+
+73, Harry LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Wsjt-devel] Easy WSJT installation on *nix
+</A></li>
+	<LI>Next message: <A HREF="000006.html">[Wsjt-devel] Easy WSJT installation on *nix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

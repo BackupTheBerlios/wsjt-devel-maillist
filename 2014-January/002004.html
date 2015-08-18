@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Suggested enhancement to ADI log
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Suggested%20enhancement%20to%20ADI%20log&In-Reply-To=%3C52C69752.20800%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002003.html">
+   <LINK REL="Next"  HREF="002006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Suggested enhancement to ADI log</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Suggested%20enhancement%20to%20ADI%20log&In-Reply-To=%3C52C69752.20800%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Suggested enhancement to ADI log">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Jan  3 11:56:18 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002003.html">[Wsjt-devel] Suggested enhancement to ADI log
+</A></li>
+        <LI>Next message: <A HREF="002006.html">[Wsjt-devel] Psk-reporter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2004">[ date ]</a>
+              <a href="thread.html#2004">[ thread ]</a>
+              <a href="subject.html#2004">[ subject ]</a>
+              <a href="author.html#2004">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Further comments below:
+
+On 03/01/2014 10:47, Bill Somerville wrote:
+&gt;<i> On 03/01/2014 09:08, John Nelson wrote:
+</I>&gt;<i> Hi John,
+</I>&gt;&gt;<i> A correspondent wrote to me today concerning the ADI log as follows:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &quot;One small enhancement that would be nice is if WSJT-X were to plug 
+</I>&gt;&gt;<i> in the OPERATOR field into the ADIF record, using the call of the 
+</I>&gt;&gt;<i> station at hand. My MLDX log (and perhaps that of many other folks) 
+</I>&gt;&gt;<i> is populated with all of my QSO's since becoming a ham back in 1964. 
+</I>&gt;&gt;<i> Over those 50 years, I've had several calls due to moves around the 
+</I>&gt;&gt;<i> country. Each record I populated into MLDX was set with my call at 
+</I>&gt;&gt;<i> the time of that QSO. So, it is very easy for me to see what QSO's I 
+</I>&gt;&gt;<i> had made with various calls. As it is now, WSJT-X does not fill in 
+</I>&gt;&gt;<i> that field, and it must be manually entered into the log after ADIF 
+</I>&gt;&gt;<i> import.&quot;
+</I>&gt;<i>
+</I>&gt;<i> There might need to be a configuration field to set the station 
+</I>&gt;<i> callsign since the callsign domain of JT65/JT9 is smaller than the 
+</I>&gt;<i> amateur callsign domain.
+</I>&gt;<i>
+</I>&gt;<i> This is really a logging program deficiency since STATION_CALLSIGN 
+</I>&gt;<i> (and OPERATOR) are core ADIF fields and the logging program should 
+</I>&gt;<i> provide a default for at least one of them where an incoming log 
+</I>&gt;<i> record doesn't have a values for either.
+</I>&gt;<i>
+</I>&gt;<i> Since STATION_CALLSIGN is supposed to be the callsign given on air for 
+</I>&gt;<i> a QSO, then I think that is the field we should provide if any.
+</I>
+Looking at the MLDX docs I see that it probably doesn't support the ADIF 
+field STATION_CALLSIGN either so that might complicate matters further :(
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> As regards this report:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Briefly, r3590 would crash often, when changing frequency or band,
+</I>&gt;&gt;&gt;&gt;<i> either by selecting a new freq/band or replying to a call on a 
+</I>&gt;&gt;&gt;&gt;<i> different
+</I>&gt;&gt;&gt;&gt;<i> frequency.
+</I>&gt;&gt;&gt;<i> Using v1.2.1 r3590 and noticed similar behaviour: the program 
+</I>&gt;&gt;&gt;<i> crashed a few
+</I>&gt;&gt;&gt;<i> times when I changed bands and once when I turned the radio off.
+</I>&gt;&gt;<i> I have received no problems from around 20 to 30 Mac users of r3590 
+</I>&gt;&gt;<i> about crashes when changing frequency as described above.   The code 
+</I>&gt;&gt;<i> seems to be stable.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --- John G4KLA
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002003.html">[Wsjt-devel] Suggested enhancement to ADI log
+</A></li>
+	<LI>Next message: <A HREF="002006.html">[Wsjt-devel] Psk-reporter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2004">[ date ]</a>
+              <a href="thread.html#2004">[ thread ]</a>
+              <a href="subject.html#2004">[ subject ]</a>
+              <a href="author.html#2004">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

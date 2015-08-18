@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Frequency hopping in WSPR
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTi%3DCZQDuz1giY-fMKhsU5advD6LB_nT%3DQCmgmRHi%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000991.html">
+   <LINK REL="Next"  HREF="000993.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Frequency hopping in WSPR</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Frequency%20hopping%20in%20WSPR&In-Reply-To=%3CAANLkTi%3DCZQDuz1giY-fMKhsU5advD6LB_nT%3DQCmgmRHi%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Frequency hopping in WSPR">stoledo at tau.ac.il
+       </A><BR>
+    <I>Fri Nov 26 07:13:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000991.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+        <LI>Next message: <A HREF="000993.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#992">[ date ]</a>
+              <a href="thread.html#992">[ thread ]</a>
+              <a href="subject.html#992">[ subject ]</a>
+              <a href="author.html#992">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have comments to both John and Joe regarding the hopping and T/R
+scheduling.
+
+Some randomization is necessary, and we probably need a lot of
+randomization, not just a bit. Suppose Johns the schedule to 20% Tx on 40m,
+30m and 20m, which with no randomization will result in a cycle of 15
+periods (1/2 hour), 5 on each band, starting with a Tx on each band. I set
+the schedule to 20% on 10m, 15m, and 20m. There are 15 ways for my cycle to
+align with John's. In only 9 of them there will be any overlap between our
+occupancy of 20m, and in 1 of the 9 we won't hear each other because we'll
+always transmit at the same time. In the other 8 out of 9, one of us will
+hear the other but not vice versa. That's not good.
+
+Joe's suggestion had some randomness but not much (25% chance for an extra
+or missing Rx cycle on each band to generate some jitter, and a random
+ordering of bands). My intuition is that it is more likely to result in long
+stretches of time where I and another station meet on the air than total
+randomization, but I didn't do the analysis.
+
+When somebody decides to hop, it essentially means that a &quot;full cycle&quot; gets
+much longer. Now a full cycle is a Tx period followed by Rx periods on some
+band. It can be 10 or 20 minutes before WSPR repeats itself (transmits
+again). With hopping, this will get longer. I think it means that people
+will be even less likely to stare at the GUI or wsprnet.org than they are
+now. They will check every hour or so what's going on, or will leave the
+setup running overnight and will check in the morning. In this usage mode,
+the feeling of control that John talked about is less important, I think.
+
+If we go with Joe's suggestion, we need to consider two difficulties, one
+with the UI and one with the software engineering. Both are solvable, but it
+would be good to discuss them before starting to hack.
+
+The UI question is when to create a new schedule. With total randomization,
+the program is very responsive to the GUI (and hence to the user). If you
+check or uncheck a band on the hopping panel or change the Tx fraction of
+some band, the next 2-minute period will already take account of the new
+setting when tossing the band and T/R coins. If the schedule has state, like
+the band permutation and the number of Rx cycles we decided to do for the
+current band, then you need to decide how to react when the user changes the
+setting. A complicated solution will try to see if it's possible to modify
+the existing state, say by dropping a band from the permutation. But it can
+get a bit complicated, say if we are currently on the band that's being
+dropped. Perhaps a sensible solution is to throw out all the state and
+compute a completely new schedule every time the user touches the hopping
+settings.
+
+The other consideration is the fact that scheduling is distributed between
+wspr.py and wspr2.f90. The former decides on band changes (I did this
+because that's where manual band changes were made, and because only wspr.py
+knows which bands exist). The latter decides on Tx vs. Rx. We can still
+implement any kind of strategy, but the split responsibilities will add some
+complexity to the code.
+
+Regards, Sivan
+
+On Thu, Nov 25, 2010 at 9:41 PM, John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt; wrote:
+
+&gt;<i> Hi Joe and Sivan and others,
+</I>&gt;<i>
+</I>&gt;<i> 1.  On-screen indicator?    Yes
+</I>&gt;<i>
+</I>&gt;<i> 2.   Ability to save/restore setups?    Yes
+</I>&gt;<i>
+</I>&gt;<i> 3.   Do we need separate Tx sliders?  Yes, definitely.  See (5) below.
+</I>&gt;<i>
+</I>&gt;<i> 4.   Write freq change to ALL_MEPT.TXT?     Ok
+</I>&gt;<i>
+</I>&gt;<i> 5.    Full random?     No.
+</I>&gt;<i>       I don't think this is necessary.    I would cycle through each
+</I>&gt;<i> band-plan in turn.     The time for this complete cycle is unlikely to be
+</I>&gt;<i> more than 10 to 14 minutes.    What is the advantage in randomizing this?
+</I>&gt;<i>   For a given band-selection, I don't see the need for a random decision to
+</I>&gt;<i> transmit or not.    I would select the TX slider to 50% and then expect that
+</I>&gt;<i> at every alternate selection of this band, transmit would be selected.    If
+</I>&gt;<i> 25% then every 4th time round; 100% then every time the band was selected,
+</I>&gt;<i> transmit would be enabled.   This gives the user full control of how often
+</I>&gt;<i> transmission would take place on any given band.    I found the randomize
+</I>&gt;<i> scheme meant that I could never know when a transmission would occur.
+</I>&gt;<i>
+</I>&gt;<i> 6.   Automatic ATUs?    My Kenwood TS870  has a memory for each band and
+</I>&gt;<i> ATU selection takes a fraction of a second on a band change.   When this is
+</I>&gt;<i> not available, then I agree that it would be difficult (impossible) to
+</I>&gt;<i> incorporate every possibility of ATU in the program and the user_hardware
+</I>&gt;<i> scheme would have to be used.
+</I>&gt;<i>
+</I>&gt;<i> 7.   Labels on the waterfall?  Yes please.   I agree with Sivan.   At the
+</I>&gt;<i> top rather than above the time stamp.
+</I>&gt;<i>
+</I>&gt;<i> 8.   Band map?    Hmmmm.    This is not easy - I don't have a useful
+</I>&gt;<i> suggestion.  All the information is, in any case, in the text box.
+</I>&gt;<i>
+</I>&gt;<i> --- John  G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101126/c049bb26/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101126/c049bb26/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000991.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+	<LI>Next message: <A HREF="000993.html">[Wsjt-devel] Frequency hopping in WSPR
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#992">[ date ]</a>
+              <a href="thread.html#992">[ thread ]</a>
+              <a href="subject.html#992">[ subject ]</a>
+              <a href="author.html#992">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

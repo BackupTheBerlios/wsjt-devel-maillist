@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20DBPSK%20and%204-FSK%20modes%20in%20WSJT&In-Reply-To=%3C46F80AB0.1090400%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000175.html">
+   <LINK REL="Next"  HREF="000177.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20DBPSK%20and%204-FSK%20modes%20in%20WSJT&In-Reply-To=%3C46F80AB0.1090400%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT">joe at Princeton.EDU
+       </A><BR>
+    <I>Mon Sep 24 21:06:24 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000175.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+        <LI>Next message: <A HREF="000177.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Harry,
+
+Thanks for sharing your thoughts on PSK.  I am wee aware of 
+all of the characteristics of PSK that you mention.
+
+1. Unlike PSK31, the PSK in JT2 is &quot;nearly constant 
+envelope&quot; -- which is another way of saying that the 
+transmitted bandwidth has been limited, but not nearly so 
+severely (relative to the keying rate) as is done in PSK31. 
+  Since the keying rate is less than 1/7 of that used in 
+PSK31, this still means that the transmitted bandwidth is 
+quite narrow.
+
+2. Amplifier linearity requirements: I believe that the vast 
+majority of WSJT operators use the same amplifier for WSJT 
+modes as they use for SSB.
+
+3. I emphasize, once again, that JT2 and JT4 are 
+*EXPERIMENTAL* modes.  If they do not work out well, for 
+whatever reason, they will not become permanent parts of WSJT.
+
+4. Under the assumption that JT2 *does* become part of a 
+released version of WSJT: anyone who has TVI problems with 
+JT2 can decide not to use it.  FSK441, JT6M, JT65, and the 
+other new mode, JT4, all generate continuous-phase, 
+constant-amplitude waveforms.
+
+5. If I had not had the benefit of on-the-air testing of 
+FSK441, JT44, JT6M, and JT65 long before they were released 
+for general use, there would be *no* WSJT modes today.
+
+	-- 73, Joe, K1JT
+
+Harry Popov wrote:
+&gt;<i> Reading hard about PSK I want to express my feelings against any PSK in
+</I>&gt;<i> WSJT program. Speaking with other hams proved my thoughts. Most of us
+</I>&gt;<i> are just on the edge of TVI. PSK will ruin neighbour TV sets. Beside
+</I>&gt;<i> that PSK is not so easy to adjust as a transmitting level. ANd the last.
+</I>&gt;<i> One must use low efficient linear amplifier. In contrast FSK works with
+</I>&gt;<i> high efficient nonlinear amplifiers, no TVI and heat problems. Transmit
+</I>&gt;<i> signal level is very easy to be adjusted. So I vote for FSK modes only.
+</I>&gt;<i> IMHO any PSK will degrade overal WSJT quolity.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000175.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+	<LI>Next message: <A HREF="000177.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#176">[ date ]</a>
+              <a href="thread.html#176">[ thread ]</a>
+              <a href="subject.html#176">[ subject ]</a>
+              <a href="author.html#176">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

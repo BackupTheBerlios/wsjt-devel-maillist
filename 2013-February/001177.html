@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re:  greetings developers
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20greetings%20developers&In-Reply-To=%3C5112576E.3030107%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001176.html">
+   <LINK REL="Next"  HREF="001178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re:  greetings developers</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20greetings%20developers&In-Reply-To=%3C5112576E.3030107%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Fwd: Re:  greetings developers">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Feb  6 14:15:26 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001176.html">[Wsjt-devel] Building map65 or any other projects.
+</A></li>
+        <LI>Next message: <A HREF="001178.html">[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1177">[ date ]</a>
+              <a href="thread.html#1177">[ thread ]</a>
+              <a href="subject.html#1177">[ subject ]</a>
+              <a href="author.html#1177">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+-------- Original Message --------
+Subject: Re: [Wsjt-devel] greetings developers
+Date: Sun, 03 Feb 2013 09:04:05 -0500
+From: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+To: Paul Decker &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">kg7hf at comcast.net</A>&gt;
+
+Hi Paul,
+
+KG7HF wrote:
+&gt;<i> I'm interested in taking a look at the wsjt programs ...
+</I>
+Perhaps it's time for a general update on the state of development work
+on WSJT, MAP65, and WSPR.
+
+I started this effort in 2001, and I made it open-source in 2005.  All
+three program suites have had their user interfaces written in Python,
+using the Tcl/Tk toolkit.  The number-crunching DSP code is written
+mostly in Fortran, with a bit of C thrown in.  The code could be
+compiled for Windows, Linux, OS-X, Free BSD, and other Unix-like
+operating systems, using free compilers and related tools.  Packaged
+click-to-install installation files were always provided for Windows,
+and sometimes also for Debian-based Linux distributions.  Some basic
+information on compiling the programs is provided on the WSJT web site
+at <A HREF="http://www.physics.princeton.edu/pulsar/K1JT/devel.html">http://www.physics.princeton.edu/pulsar/K1JT/devel.html</A> .  It is not
+always fully up-to-date.
+
+The project continues to be fully open-source, and uses free compiler
+tools and libraries.  Most of the code is my own; several contributors,
+most notably VA3DB and G4KLA, have worked hard on portability issues,
+making sure that the code compiles and runs well under Free BSD and OS-X.
+
+Recent development work has been mostly my own, once more.  The program
+GUIs are being re-written in C++, using the Qt Framework instead of
+Python.  This migration is complete with MAP65; experimental versions of
+WSJT and WSPR (called WSJT-X and WSPR-X) are now operational and
+available, although they do not yet have all the features of the older
+Python-based code.
+
+To compile the new Qt-based programs you need to have installed the free
+QT SDK and either g95 or gfortran.  (I tend to use g95 on Windows and
+gfortran on Linux, but this is not required.).  In Windows I use the
+MinGW system tools.  You need the FFTW3, Qwt, and Portaudio  libraries.
+  With all these tools in place, you can compile library libm65.a and
+the decoder m65 with the commands
+
+$ cd libm65
+$ make                     (in Linux, &quot;make -f Makefile.linux&quot;)
+
+Then open map65.pro in QtCreator and compile map65 from there.
+You might need to readjust some paths in the makefiles or the Qt project
+file map65.pro to suit your system.  Once you are properly set up,
+compiling MAP65 requires only a few typed commands or mouse-clicks.
+Installing and gaining familiarity with the necessary tools may take
+much longer.
+
+Thanks for your interest!  Let us know how you progress, and if/when you
+have ideas or code to contribute.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001176.html">[Wsjt-devel] Building map65 or any other projects.
+</A></li>
+	<LI>Next message: <A HREF="001178.html">[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1177">[ date ]</a>
+              <a href="thread.html#1177">[ thread ]</a>
+              <a href="subject.html#1177">[ subject ]</a>
+              <a href="author.html#1177">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

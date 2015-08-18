@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A084666.7050604%40st-andrews.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000613.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Johannes Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C4A084666.7050604%40st-andrews.ac.uk%3E"
+       TITLE="[Wsjt-devel] gfortran">jem74 at st-andrews.ac.uk
+       </A><BR>
+    <I>Mon May 11 17:38:14 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000610.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000613.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I recompiled with the gfortran debugging symbols, was on the todo list 
+most of the day but only just got round to it.
+Alas this may be more useful as it leads to what might be going wrong in 
+the io side of things.
+
+Starting program: /usr/bin/python /usr/bin/wsjt.py
+[Thread debugging using libthread_db enabled]
+[New Thread 0xb7e478c0 (LWP 29825)]
+[New Thread 0xb796db90 (LWP 29835)]
+******************************************************************
+WSJT Version 7.04 r1203 , by K1JT
+Revision date: 2009-05-05 21:13:03 +0100 (Tue, 05 May 2009)
+Run date:   Mon May 11 15:35:28 2009 UTC
+[New Thread 0xafc4ab90 (LWP 29843)]
+[New Thread 0xaf449b90 (LWP 29844)]
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xb7e478c0 (LWP 29825)]
+0xb0df8bbd in next_char (fmt=0xa064fb8, literal=0)
+     at ../../../src/libgfortran/io/format.c:91
+91	../../../src/libgfortran/io/format.c: No such file or directory.
+	in ../../../src/libgfortran/io/format.c
+(gdb) bt
+#0  0xb0df8bbd in next_char (fmt=0xa064fb8, literal=0)
+     at ../../../src/libgfortran/io/format.c:91
+#1  0xb0df8c41 in format_lex (fmt=0xa064fb8)
+     at ../../../src/libgfortran/io/format.c:181
+#2  0xb0df9a70 in *_gfortrani_parse_format (dtp=0xbf81afe0)
+     at ../../../src/libgfortran/io/format.c:981
+#3  0xb0e066a0 in data_transfer_init (dtp=0xbf81afe0, read_flag=0)
+     at ../../../src/libgfortran/io/transfer.c:1827
+#4  0xb10be8f9 in astro0 (nyear=@0xbf81b304, month=@0xbf81b2fc,
+     nday=@0xbf81b2f4, uth8=@0xbf81b2ec, nfreq=@0xbf81b2e4, 
+grid=@0xa062a00,
+     cauxra=@0xa060990, cauxdec=@0xa061130, azsun8=@0xbf81b2a0,
+     elsun8=@0xbf81b298, azmoon8=@0xbf81b290, elmoon8=@0xbf81b288,
+     azmoonb8=@0xbf81b280, elmoonb8=@0xbf81b278, ntsky=@0xbf81b2b8,
+     ndop=@0xbf81b2b4, ndop00=@0xbf81b2b0, dbmoon8=@0xbf81b270,
+     ramoon8=@0xbf81b268, decmoon8=@0xbf81b260, ha8=@0xbf81b258,
+     dgrd8=@0xbf81b250, sd8=@0xbf81b248, poloffset8=@0xbf81b240,
+     xnr8=@0xbf81b238, dfdt=@0xbf81b230, dfdt0=@0xbf81b228, 
+raaux8=@0xbf81b2ac,
+     decaux8=@0xbf81b2a8, azaux8=@0xbf81b220, elaux8=@0xbf81b218, _grid=6,
+     _cauxra=9, _cauxdec=9) at astro0.F90:110
+#5  0xb10ba886 in f2py_rout_Audio_astro0 (capi_self=0x9bd1338,
+     capi_args=0x9ea864c, capi_keywds=0x0, f2py_func=0xb10bda20 &lt;astro0&gt;)
+     at /tmp/tmp8KNWS-/src.linux-i686-2.5/Audiomodule.c:438
+#6  0xb10baef9 in fortran_call (fp=0xb7fa1ff4, arg=0x9ea864c, kw=0x0)
+
+
+
+
+Joe Taylor wrote:
+&gt;<i> Hi Kari, Johan and all,
+</I>&gt;<i> 
+</I>&gt;<i> This morning I burned a clean installation CD for Xubuntu 
+</I>&gt;<i> 9.04 and then did the following:
+</I>&gt;<i> 
+</I>&gt;<i> 1. Booted the CD into Xubuntu 9.04 in &quot;live CD&quot; mode.
+</I>&gt;<i> 2. Used the Synaptic package manager to install
+</I>&gt;<i> 	subversion
+</I>&gt;<i> 	python2.6-dev
+</I>&gt;<i> 	python-pmw
+</I>&gt;<i> 	portaudio19-dev
+</I>&gt;<i> 	libfftw3-dev
+</I>&gt;<i> 	libsamplerate0-dev
+</I>&gt;<i> 	gfortran
+</I>&gt;<i> 3. Installed g95 from the g95 web page
+</I>&gt;<i> 4. Downloaded the latest WSJT source code from the repository.
+</I>&gt;<i> 
+</I>&gt;<i> This all went very smoothly -- took about 20 minutes, max.
+</I>&gt;<i> 
+</I>&gt;<i> Then I compiled wsjt:
+</I>&gt;<i> 
+</I>&gt;<i> $ ./configure --enable-g95
+</I>&gt;<i> $ make
+</I>&gt;<i> $ python wsjt.py
+</I>&gt;<i> 
+</I>&gt;<i> WSJT runs perfectly.
+</I>&gt;<i> 
+</I>&gt;<i> Then
+</I>&gt;<i> 
+</I>&gt;<i> $ make clean
+</I>&gt;<i> $ ./configure --enable-gfortran
+</I>&gt;<i> $ make
+</I>&gt;<i> $ python wsjt.py
+</I>&gt;<i> 
+</I>&gt;<i> WSJT starts but crashes within a few seconds.
+</I>&gt;<i> 
+</I>&gt;<i> It remains a mystery why Kari is able to compile the program 
+</I>&gt;<i> with gfortran, and have it work, while I cannot.
+</I>&gt;<i> 
+</I>&gt;<i> BTW: I like Xubuntu.  Nice snappy user interface, no nonsense.
+</I>&gt;<i> 
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000610.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000613.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

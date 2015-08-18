@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Transceiver control woes.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C5228656B.7090905%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001910.html">
+   <LINK REL="Next"  HREF="001912.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Transceiver control woes.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C5228656B.7090905%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Transceiver control woes.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Sep  5 13:05:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001910.html">[Wsjt-devel] Request for a new function in WSJT-X and WSPR
+</A></li>
+        <LI>Next message: <A HREF="001912.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1909">[ date ]</a>
+              <a href="thread.html#1909">[ thread ]</a>
+              <a href="subject.html#1909">[ subject ]</a>
+              <a href="author.html#1909">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+
+currently I am trying to clean up the code related to transceiver 
+control. This started out as a small project to add OmniRig as a new 
+means of transceiver control. This project has grown into a revamp of 
+the implementation of the configuration dialog and transceiver control 
+in general.
+
+This is all going well and is basically complete. But I have found that 
+there are several problems with transceiver control as currently 
+implemented. They mostly boil down to either the libraries we use doing 
+blocking system calls or having to insert delays because it is easy to 
+overrun the transceiver CAT command interface. Here are some examples:
+
+Using hamlib to control a radio via a serial port, the library uses 
+blocking read_string() calls which might take some time or even timeout 
+if CAT commands are corrupted or lost. This one gets particularly 
+sluggish if the serial connection is lost.
+
+Using HRD, to implement split on some radios I have to send at least 
+three commands (switch VFO, set frequency, swicth VFO), if these are 
+sent in quick succession, on some radios (my Icom 756 for example) the 
+result is not what is expected. This is really an HRD defect but I doubt 
+we will get that fixed. I can work around it by inserting sleeps before 
+each command.
+
+Using OmniRig, OmniRig appears to poll the radio independently of 
+information requests and cache the results. This has a side effect that 
+a read frequency command immediately after opening the OmniRig 
+connection will fail. Again I think this a defect in the OmniRig server, 
+but I work around by inserting delays again.
+
+Both HRD and DX Lab Suite Commander are queried and controlled via a 
+TCP/IP socket. Currently our implementation uses blocking waits for 
+replies, since these are on the local loopback port there are no real 
+communication delays, but the program at the other end may (and does in 
+some cases) take some time to return replies.
+
+There are other similar issues. It seems to me that it may be worth 
+moving the whole &quot;talking to radios&quot; functionality off to a separate 
+thread and have the main GUI thread send messages to it, with subsequent 
+actions being continued on the return of a signal. This adds two areas 
+of complexity, firstly the inter thread communications and secondly the 
+splitting of main thread code into separate asynchronous parts around 
+transceiver control operations. The former is easily done with the 
+thread safe Qt signal and slot queued connection mechanism, the latter 
+is a bit more disruptive. And example would go something like:
+
+Current (pseudo) code:
+
+fn()
+{
+    do A
+    set Radio frequency
+    do B
+}
+
+new code:
+
+fn1()
+{
+    do A
+    send set Radio frequency message
+}
+
+fn2() // called asynchronously when radio frequency has been changed
+{
+    do B
+}
+
+obviously it's not quite that simple since fn2() has to know that it is 
+being called because of fn1()'s action rather than some other set 
+frequency message.
+
+In the case of regular queries like tracking the transceiver frequency 
+the implementation could change to a periodic signal fired from the 
+transceiver control thread automatically rather than polling from the 
+main thread. In this case the main thread code would probably be less 
+complex and some of the transceiver libraries we use already have an 
+automatic transceiver status change signalling mechanism for this very 
+purpose.
+
+The reason for this proposal is that all these potentially indeterminate 
+blocking operations are disrupting the continuous processing of incoming 
+and outgoing signals. Even though we are storing and synthesising sound 
+samples in a separate thread, we still require a very responsive GUI 
+thread for FFT calculations and related waterfall updates. More 
+generally; any blocking operation in a GUI thread is a &quot;bad smell&quot; that 
+usually leads to problems.
+
+Thoughts?
+
+73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001910.html">[Wsjt-devel] Request for a new function in WSJT-X and WSPR
+</A></li>
+	<LI>Next message: <A HREF="001912.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1909">[ date ]</a>
+              <a href="thread.html#1909">[ thread ]</a>
+              <a href="subject.html#1909">[ subject ]</a>
+              <a href="author.html#1909">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

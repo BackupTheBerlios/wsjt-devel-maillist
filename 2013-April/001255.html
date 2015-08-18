@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3CCALNQy4_%3D0fxvDiV-M0hF8sMGLVgaeiifcN7PRjWY21-rPjx5TA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001254.html">
+   <LINK REL="Next"  HREF="001256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT-X%20%26%20AT-897%20tuner&In-Reply-To=%3CCALNQy4_%3D0fxvDiV-M0hF8sMGLVgaeiifcN7PRjWY21-rPjx5TA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner">ewpereira at gmail.com
+       </A><BR>
+    <I>Tue Apr 30 15:27:31 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001254.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+        <LI>Next message: <A HREF="001256.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1255">[ date ]</a>
+              <a href="thread.html#1255">[ thread ]</a>
+              <a href="subject.html#1255">[ subject ]</a>
+              <a href="author.html#1255">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Last night I was studying a little about exceptions in Qt and learned that
+although it can deal with exceptions, it is designed in a way that it does
+not need to do so.
+
+<A HREF="http://qt-project.org/doc/qt-4.8/exceptionsafety.html">http://qt-project.org/doc/qt-4.8/exceptionsafety.html</A>
+
+&quot;Qt itself will not throw exceptions. Instead, error codes are used.&quot;
+
+Checking error codes is a more conservative approach, but works just fine.
+
+To get exceptions to work, it seems it needs to be enabled at compile time
+(Qt compile time).
+
+&quot;This has historical and practical reasons - turning on exceptions can
+increase the library size by over 20%.&quot;
+
+Which, for us, is not an option.
+
+So... I suggest we disable exceptions altogether. This will require some
+changes to the rigclass.cpp file in order to enable return codes where
+exceptions were used. I will take a look at this tonight and try to
+implement the code.
+
+It is indeed a bummer the callback doesn't work. I want to take a look at
+the guts of hamlib to see how it is implemented and see if there is any
+workaround. Meanwhile, we could check the radio QRG every minute before TX
+goes on. Any change to the dial frequency will not be immediately reflected
+on the wsprx display, but this should prevent TXing on the wrong and should
+alleviate the issues with some rigs that don't like frequent CAT commands.
+What do you think?
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, Apr 30, 2013 at 10:05 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Edson and all,
+</I>&gt;<i>
+</I>&gt;<i> Thanks for responding to the comment on wsjtgroup from G8HLH.  These not
+</I>&gt;<i> unexpected issues are the main reason for the comment
+</I>&gt;<i>
+</I>&gt;<i> &quot;CAT control diagnostics are presently rather rudimentary, we're still
+</I>&gt;<i> working on this&quot;
+</I>&gt;<i>
+</I>&gt;<i> that I put into the ChangeLog.  As you say, we need to put some effort
+</I>&gt;<i> into dealing with communication timeouts and other exceptions being thrown
+</I>&gt;<i> by hamlib.
+</I>&gt;<i>
+</I>&gt;<i> It seems that having WSJT-X set the radio to USB mode was a bad idea --
+</I>&gt;<i> many people want to use a &quot;data&quot; mode instead.  And the K3, in particular,
+</I>&gt;<i> seems to be a bit touchy about timing of CAT commands. Possibly polling the
+</I>&gt;<i> radio for frequency every second is too fast for some radios.  (It works
+</I>&gt;<i> fine on my TS-2000.)  Too bad the callback method does not work.
+</I>&gt;<i>
+</I>&gt;<i> With some small changes along these lines, and sorting out the exception
+</I>&gt;<i> handling, I think most people will be happy.  I'll have some time to work
+</I>&gt;<i> on this later today.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 4/30/2013 7:58 AM, Edson W. R. Pereira wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Roger et al,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It seems most of, if not all, these runtime errors are related to
+</I>&gt;&gt;<i> exceptions being thrown by hamlib. We are looking at this issues.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 73,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -- Edson
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Tue, Apr 30, 2013 at 6:40 AM, rodger_g8hlh&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g8hlh at blueyonder.</A>**co.uk&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g8hlh at blueyonder.co.uk</A>&gt;
+</I>&gt;&gt;<i> &gt;wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  **
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi All,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Small glitch appeared on last revision r3243. Using FT-897&amp;  LDG
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> AT-897Plus. Previous version no problem. Version r3243 On tuning my
+</I>&gt;&gt;&gt;<i> AT-897plus It now gives a Microsoft Visual C++ Runtime Library Message:-
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> This Application has requested the runtime to terminate in an unusual
+</I>&gt;&gt;&gt;<i> way.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Please contact the Applications Support Team for more information.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Unfortunately it give no further info On the previous release I had no
+</I>&gt;&gt;&gt;<i> problem, looks like its the two way comms that did it
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Trust this is of help.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ROG.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130430/d27acab8/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130430/d27acab8/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001254.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+	<LI>Next message: <A HREF="001256.html">[Wsjt-devel] [wsjtgroup] WSJT-X &amp; AT-897 tuner
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1255">[ date ]</a>
+              <a href="thread.html#1255">[ thread ]</a>
+              <a href="subject.html#1255">[ subject ]</a>
+              <a href="author.html#1255">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

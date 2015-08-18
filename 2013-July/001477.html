@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Band settings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DB470E.2090609%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001475.html">
+   <LINK REL="Next"  HREF="001480.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Band settings</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Band%20settings&In-Reply-To=%3C51DB470E.2090609%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] Band settings">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Tue Jul  9 01:11:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001475.html">[Wsjt-devel] Band settings
+</A></li>
+        <LI>Next message: <A HREF="001480.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1477">[ date ]</a>
+              <a href="thread.html#1477">[ thread ]</a>
+              <a href="subject.html#1477">[ subject ]</a>
+              <a href="author.html#1477">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe
+
+How about a 3 column table:  label, frequency, antenna.  The label 
+appears in the drop down menu and by default would be &quot;20M&quot;, &quot;30M&quot; etc 
+as we currently have.  We could give the drop down menu a few more 
+characters and make it editable.  The user could assign any combination 
+that he may want eg:
+
+20M  V     14076000        GP vertical
+20M  V     14078000        GP vertical
+20M  L     14078000        Delta loop at 15M
+30M  L     10139000        Delta loop at 15M
+etc
+
+The display on the main window remains much as it is, perhaps the label 
+(the drop down menu) will need a little extra room.  This is versatile 
+and the label can reveal the currently selected antenna without needing 
+to display the entire antenna description text on the main window.
+
+It also allows for other bands, a point that was raised in another email.
+
+Then again, given that many antennas are multiband, perhaps we shouldn't 
+tie the antenna to the frequency selector at all. Another drop down menu 
+with editable label and associated text field:
+
+Ant 1        GP Vertical
+Ant 2        Delta loop at 15M
+etc
+
+It just means we need to find room for another small drop down menu on 
+the main window, assuming we think that its important enough to warrant 
+that exposure?
+
+
+Hmm, sorry, in trying to keep this simple it seems to have become more 
+complex!
+
+Cheers
+Murray
+VK3ACF
+
+
+
+On 08/07/13 23:59, Joe Taylor wrote:
+&gt;<i> Hi Murray,
+</I>&gt;<i>
+</I>&gt;<i> Thanks for sharing your initial ideas on improvements to the &quot;Default 
+</I>&gt;<i> Frequancies&quot; tab.  A few reactions follow:
+</I>&gt;<i>
+</I>&gt;<i> VK3ACF wrote:
+</I>&gt;&gt;<i> OK, I'm on it. Thinking about this: Is it always the case that you'd
+</I>&gt;&gt;<i> want JT9 2kHz above the JT65 frequency?
+</I>&gt;<i>
+</I>&gt;<i> It would be nice if we could count on it being so simple.  At present 
+</I>&gt;<i> this rule is nominally followed on 80, 40, 20, 17, 15, and 10m.  I 
+</I>&gt;<i> think 160m and 12m could also follow the +2 kHz rule. (They don't now, 
+</I>&gt;<i> but arguably this hardly matters since there hasn't much JT9 activity 
+</I>&gt;<i> there yet.)  60m is a special case with its fixed channels, so I guess 
+</I>&gt;<i> the two modes should have the same default frequency.  On 30 m we have 
+</I>&gt;<i> a problem: already JT65 and WSPR are very close together.  Maybe we 
+</I>&gt;<i> should advocate moving JT65 down by 2 or 3 kHz... but I hesitate to 
+</I>&gt;<i> try to &quot;legislate&quot; such things without asking for community input.
+</I>&gt;<i> the same frequency
+</I>&gt;<i>
+</I>&gt;&gt;<i> What if you needed an extra
+</I>&gt;&gt;<i> 500Hz on the base frequency to work split say? What if you wanted a
+</I>&gt;&gt;<i> frequency for split that was different to JT65? That would require 3
+</I>&gt;&gt;<i> frequencies per band but if we're going to alter the layout of that page
+</I>&gt;&gt;<i> (the setup page), might as well try to make it work as well as we can.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sounds like it'll need to be 4 column table (4th column for antenna
+</I>&gt;&gt;<i> description) which I'm guessing will need to be in a scrolled window to
+</I>&gt;&gt;<i> cover all the bands.
+</I>&gt;<i>
+</I>&gt;<i> It seems to me that a 3-column table is best: a JT65 frequency, a JT9 
+</I>&gt;<i> frequency, and a column for antenna type.  We'll need to think about 
+</I>&gt;<i> how to implement which column is selected for use when a band 
+</I>&gt;<i> selection is executed.
+</I>&gt;<i>
+</I>&gt;<i> I would welcome any thoughts from others...
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001475.html">[Wsjt-devel] Band settings
+</A></li>
+	<LI>Next message: <A HREF="001480.html">[Wsjt-devel] Band settings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1477">[ date ]</a>
+              <a href="thread.html#1477">[ thread ]</a>
+              <a href="subject.html#1477">[ subject ]</a>
+              <a href="author.html#1477">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

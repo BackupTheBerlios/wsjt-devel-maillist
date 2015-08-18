@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3CCALNQy49qie%3DVexq6%2Bsk_35aEzwndp_WA1eHLmHhp_%3Dqp1eOVgA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002045.html">
+   <LINK REL="Next"  HREF="002047.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3CCALNQy49qie%3DVexq6%2Bsk_35aEzwndp_WA1eHLmHhp_%3Dqp1eOVgA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Jan 19 13:13:43 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002045.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+        <LI>Next message: <A HREF="002047.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2046">[ date ]</a>
+              <a href="thread.html#2046">[ thread ]</a>
+              <a href="subject.html#2046">[ subject ]</a>
+              <a href="author.html#2046">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Bill,
+
+
+On Sun, Jan 19, 2014 at 8:52 AM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+
+&gt;<i> On 18/01/2014 12:47, Edson W. R. Pereira wrote:
+</I>&gt;<i> Hi Edson &amp; All,
+</I>&gt;<i>
+</I>&gt;<i>  Hello Joe,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Compiled clean and running without issues on Ubuntu 12.04. I had to add a
+</I>&gt;&gt;<i> few missing entries to lib/CMakeLists.txt.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've added a call to PSK_Reporter::sendSpots() in
+</I>&gt;&gt;<i> MainWindow::on_bandComboBox_activated() to flush spots to PSKReporter
+</I>&gt;&gt;<i> before changing bands. This should prevent spots being reported on the
+</I>&gt;&gt;<i> wrong band.
+</I>&gt;&gt;<i>
+</I>&gt;<i> I'm not sure this change achieves the desired behaviour in all cases.
+</I>&gt;<i> Decodes are effectively buffered in the audio input buffers so there is
+</I>&gt;<i> nothing to flush from the current period when a band change is made.
+</I>&gt;<i>
+</I>
+That is very true indeed.
+
+
+&gt;<i>
+</I>&gt;<i> It may also be necessary to discard all spots destined for PSKReporter
+</I>&gt;<i> that are decoded in a period where the Rx dial frequency has changed either
+</I>&gt;<i> by the band dropdown or by the rig VFO knob.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>Yes. I am wandering how to best (read easier) way to implement this. One
+possibility is to flag the audio detector object when there is a band
+change. In this case when the buffer is full, it will discard the buffer --
+by not calling the detector. This way we could assure that a corrupt buffer
+will not cause issues. What do you think?
+
+
+&gt;<i> The situation with Hamspots via JTAlert is more complex since the decodes
+</I>&gt;<i> are used for more than just spotting so it would be rather unhelpful to
+</I>&gt;<i> block all decodes going to JTAlert from a period that the dial frequency
+</I>&gt;<i> changed in.
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>I am not familiar with JTAlert -- Lnux user here. One thing that has
+crossed my mind is that the band info could be written along with each spot
+to ALL.TXT and decoded.txt. This way the spots could be post processed and
+the band info would be readily available. What do you think?
+
+73,
+
+-- Edson PY2SDR
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/88570d22/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140119/88570d22/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002045.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+	<LI>Next message: <A HREF="002047.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2046">[ date ]</a>
+              <a href="thread.html#2046">[ thread ]</a>
+              <a href="subject.html#2046">[ subject ]</a>
+              <a href="author.html#2046">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Configuration dialog proposal.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C52350ECD.5020301%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001937.html">
+   <LINK REL="Next"  HREF="001956.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Configuration dialog proposal.</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Configuration%20dialog%20proposal.&In-Reply-To=%3C52350ECD.5020301%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Configuration dialog proposal.">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Sun Sep 15 03:35:09 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001937.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+        <LI>Next message: <A HREF="001956.html">[Wsjt-devel] Bug to fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1938">[ date ]</a>
+              <a href="thread.html#1938">[ thread ]</a>
+              <a href="subject.html#1938">[ subject ]</a>
+              <a href="author.html#1938">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 15/09/13 09:19, Bill Somerville wrote:
+&gt;<i> On 14/09/2013 23:52, Murray Curtis wrote:
+</I>&gt;<i> Hi Murray,
+</I>&gt;&gt;<i> Well done Bill, looks good.
+</I>&gt;<i> Thanks, it was done in a bit of a rush today when I realised that 
+</I>&gt;<i> adding the few new options I needed would grow the existing dialog to 
+</I>&gt;<i> a rather large size.
+</I>
+Just a note on size:  I regularly use a netbook for working portable.  
+The screen height is only 600 pixels.  Currently the main and config 
+windows (including your proposed one) fit that minimal size well.
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> Would the radio interface expose alternative port types?  It would 
+</I>&gt;&gt;<i> appear HamLib supports USB,  Device driver(?), UDP etc. But then I 
+</I>&gt;&gt;<i> imagine the configuration GUI has to change for each different port 
+</I>&gt;&gt;<i> type - bit of a pain.
+</I>&gt;<i> I need to look at how that works, I've not managed to build the hamlib 
+</I>&gt;<i> source with USB support here, on Windows, and I don't have a direct 
+</I>&gt;<i> USB controlled radio to test with. The hamlib developers are currently 
+</I>&gt;<i> re-factoring the library to a monolithic build with no run-time shared 
+</I>&gt;<i> library loading. It will be interesting to see how that works out and 
+</I>&gt;<i> how big the resulting library is. I though the radios that did have 
+</I>&gt;<i> USB interfaces emulated a serial port so any information on those with 
+</I>&gt;<i> custom USB devices would be welcome.
+</I>
+I just looked at the configs for the radios I figured would not have a 
+serial port; Flex, Kachina etc.  In their configurations under 'port 
+type' were examples of the ports I listed.  I found it a little 
+unintuitive so went the XML-RPC route instead.
+
+&gt;&gt;<i>
+</I>&gt;&gt;<i> Alternatively I was thinking of adding XML-RPC to WSJT-X. Some of my 
+</I>&gt;&gt;<i> homebrew radios run control software on the (Linux) PC and use 
+</I>&gt;&gt;<i> XML-RPC to talk to Fldigi.  It was relatively easy to add and works 
+</I>&gt;&gt;<i> well.  Fldigi doesn't expose any options - just a simple on/off 
+</I>&gt;&gt;<i> checkbox.
+</I>&gt;<i> The new radio interface code works through an abstract interface that 
+</I>&gt;<i> needs to support a few basic radio commands like set frequency, set 
+</I>&gt;<i> mode, set split frequencies, set split mode on and off, set PTT on and 
+</I>&gt;<i> off and, either send and event when any of a defined set of parameter 
+</I>&gt;<i> change or support a query of the same parameters. Those parameters 
+</I>&gt;<i> being VFO A frequency and mode, VFO B frequency and mode if different 
+</I>&gt;<i> from VFO A, Tx VFO and Rx VFO, split mode state and, PTT state. 
+</I>&gt;<i> Internally there are concrete classes for each type of interface 
+</I>&gt;<i> (hamlib, DX Lab Suite Commander, HRD, OmniRig). Adding a new type of 
+</I>&gt;<i> interface will be pretty simple if it can do those functions. There is 
+</I>&gt;<i> also a bit of factory boilerplate to instantiate an implementation 
+</I>&gt;<i> along with registering some static values to allow the configuration 
+</I>&gt;<i> dialog to understand the capabilities without actually having to 
+</I>&gt;<i> create a radio type.
+</I>
+Obviously XML-RPC knows nothing about radios.  It'll handle whatever 
+command we like.  Fldigi's list is actually much more extensive that I 
+remembered, see <A HREF="http://www.w1hkj.com/FldigiHelp-3.22/xmlrpc-control.html">http://www.w1hkj.com/FldigiHelp-3.22/xmlrpc-control.html</A>
+I'm thinking only of doing a bare minimum, ie what you listed above.  
+However it may be useful to some people if I include logging commands 
+too.  That way WSJT could use Fldigi or Fllog for logging (and I guess 
+others that share Fldigi's protocol).
+
+
+&gt;<i>
+</I>&gt;<i> The biggest problem is testing all the possible radio types multiplied 
+</I>&gt;<i> by four for the different ways of interfacing. Unfortunately CAT 
+</I>&gt;<i> protocols are nowhere near standardised and each of the interfaces 
+</I>&gt;<i> fail in some way to hide the differences.
+</I>True, but then isn't that what Hamlib is supposed to alleviate?  I like 
+to think of WSJT as being experimental software rather than a commercial 
+product. That excuses a lot! :-)
+
+Murray
+VK3ACF
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130915/7aacc724/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130915/7aacc724/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001937.html">[Wsjt-devel] WSJT-X: Configuration dialog proposal.
+</A></li>
+	<LI>Next message: <A HREF="001956.html">[Wsjt-devel] Bug to fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1938">[ date ]</a>
+              <a href="thread.html#1938">[ thread ]</a>
+              <a href="subject.html#1938">[ subject ]</a>
+              <a href="author.html#1938">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

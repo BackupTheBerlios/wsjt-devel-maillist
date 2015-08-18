@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX 1.1 on large monitor
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20on%20large%20monitor&In-Reply-To=%3C51EDB38F.7070900%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001539.html">
+   <LINK REL="Next"  HREF="001541.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX 1.1 on large monitor</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%201.1%20on%20large%20monitor&In-Reply-To=%3C51EDB38F.7070900%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX 1.1 on large monitor">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jul 23 00:34:55 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001539.html">[Wsjt-devel] WSJTX 1.1 on large monitor
+</A></li>
+        <LI>Next message: <A HREF="001541.html">[Wsjt-devel] WSJTX 1.1 on large monitor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1540">[ date ]</a>
+              <a href="thread.html#1540">[ thread ]</a>
+              <a href="subject.html#1540">[ subject ]</a>
+              <a href="author.html#1540">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+WSJT-X already has an undocumented feature that does at least some of 
+what you want.  Put a file named &quot;fonts.txt&quot; in the same directory as 
+the wsjtx executable, and make the contents of the file a single line of 
+the form
+
+   helvetica,10,50
+
+The first word is the name of a font family.  The numbers are (relative) 
+font size and weight.  When no such file is present, the default is the 
+same as
+
+   helvetica,8,50
+
+At present, I think this setting affects all labels but not the decoded 
+text windows.  If it were desirable, it would probably not be a big deal 
+to scale those windows as well.
+
+Let us know whether this is good for you.
+
+	-- Joe, K1JT
+
+On 7/22/2013 5:20 PM, David wrote:
+&gt;<i> Hi Joe...this is not a bug report but an FYI message
+</I>&gt;<i>
+</I>&gt;<i> my computer is an Acer AX3400 AMD Phenon X6 1035T
+</I>&gt;<i> Graphics card is a AMD Radeon HD 6570 HDMI output
+</I>&gt;<i> to a 24&quot; TV with HDMI input and using 1920 x 1080 resolution
+</I>&gt;<i>
+</I>&gt;<i> at such a high resolution WSJTX looks ok but the font in the Band
+</I>&gt;<i> Activity and
+</I>&gt;<i> RX Frequency looks quite small and is sometimes not easy to read
+</I>&gt;<i>
+</I>&gt;<i> i could put the screen to 1600 x 900 resolution but this looks a bit big
+</I>&gt;<i> on the screen...WSJTX looks very good then
+</I>&gt;<i>
+</I>&gt;<i> ive looked thru the code but cant find any lines to be able to increase
+</I>&gt;<i> the font size so will have to use it as is
+</I>&gt;<i>
+</I>&gt;<i> on a couple of other programs that i use i have been able to change font
+</I>&gt;<i> sizes
+</I>&gt;<i> to get a good look
+</I>&gt;<i>
+</I>&gt;<i> WSJTX 1.1 r3498 is looking good any runs very well
+</I>&gt;<i>
+</I>&gt;<i> 73 David VK4BDJ
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001539.html">[Wsjt-devel] WSJTX 1.1 on large monitor
+</A></li>
+	<LI>Next message: <A HREF="001541.html">[Wsjt-devel] WSJTX 1.1 on large monitor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1540">[ date ]</a>
+              <a href="thread.html#1540">[ thread ]</a>
+              <a href="subject.html#1540">[ subject ]</a>
+              <a href="author.html#1540">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

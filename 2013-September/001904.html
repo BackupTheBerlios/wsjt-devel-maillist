@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Status of WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3CCALNQy4_24sTRx4BkVpFfPmT15HMQE8sZeN-QLLTnJ3fDTrqCJA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001893.html">
+   <LINK REL="Next"  HREF="001907.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Status of WSJT-X</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Status%20of%20WSJT-X&In-Reply-To=%3CCALNQy4_24sTRx4BkVpFfPmT15HMQE8sZeN-QLLTnJ3fDTrqCJA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Status of WSJT-X">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed Sep  4 20:34:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001893.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="001907.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1904">[ date ]</a>
+              <a href="thread.html#1904">[ thread ]</a>
+              <a href="subject.html#1904">[ subject ]</a>
+              <a href="author.html#1904">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+#5 =&gt; I have seen this a couple of times here as well. One suspicion is
+that it could be related to frequency drift of the transceiver due to
+temperature change, but this needs empirical evidence. I will try to
+capture a wave file when this happens.
+
+#6 =&gt; There was a bug in PSK Reporter that could cause a crash in case of a
+DNS lookup failure. I have implemented some error checking to prevent the
+issue and will be committing it to SVN later today.
+
+Bug tracking could be a very useful tool.
+
+I have been running r3563 for several days under Ubuntu and it is quite
+stable.
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, Sep 3, 2013 at 2:42 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I'm happy to be back in the fold, after two weeks of relaxation on the
+</I>&gt;<i> beach, sailing on tidal ponds, etc., etc., in beautiful Rhode Island.
+</I>&gt;<i>
+</I>&gt;<i> I'm still getting caught up on email traffic, but here's what I've
+</I>&gt;<i> isolated as potentially important issues for WSJT-X:
+</I>&gt;<i>
+</I>&gt;<i> 1. Several users report that Tx audio &quot;stutters&quot; when a window is
+</I>&gt;<i> minimized or maximized.  When using PortAudio, this problem was addressed
+</I>&gt;<i> (and solved) by increasing the size of low-level buffers in soundout.
+</I>&gt;<i>  Something similar probably needs to be done in the present code.
+</I>&gt;<i>
+</I>&gt;<i> 2. Qt setVoloume() has a bug that reduces the Tx audio level by (I think)
+</I>&gt;<i> 6 dB.  I suggest that we obviate this issue for now by using &quot;#ifdef Win32&quot;
+</I>&gt;<i> blocks to make the Tx Pwr slider act as
+</I>&gt;<i> a digital gain control when compiled for Windows.  I think this means
+</I>&gt;<i> replacing the factor 32767 in line 137 of Modulator.cpp with a variable
+</I>&gt;<i> whose value is controlled by the Tx Pwr slider.  Max value would be 32767,
+</I>&gt;<i> 3277 would be -20 dB, etc.
+</I>&gt;<i>
+</I>&gt;<i> 3. Stuck in decode?  I never see this problem, but several users say they
+</I>&gt;<i> do.  What's causing it?  Something to do with the ./.lock file shared by
+</I>&gt;<i> wsjtx.exe and jt9.exe ?
+</I>&gt;<i>
+</I>&gt;<i> 4. Tx at &#177; 1 kHz from desired frequency?  Is this a bug, or operator
+</I>&gt;<i> mistakes?
+</I>&gt;<i>
+</I>&gt;<i> 5. Failure to decode first transmission in response to a CQ?  I've had a
+</I>&gt;<i> low-level concern about these reports for some time.  Possibly I've seen
+</I>&gt;<i> such an issue myself, a few times, though I can't be sure.  (I certainly
+</I>&gt;<i> don't see it 70% of the time, as KB3MOW reports.)
+</I>&gt;<i>
+</I>&gt;<i> 6. LY2CG reports that if computer has no connection to internet. program
+</I>&gt;<i> stops working after 5 minutes, even if PSK Reporter is not checked. Edson,
+</I>&gt;<i> is something timing out after failing to connect with the PSK Reporter site?
+</I>&gt;<i>
+</I>&gt;<i> I didn't list the &quot;Fortran traceback error message bug&quot; on program exit,
+</I>&gt;<i> because there really isn't one.  It's the result of some extra diagnostic
+</I>&gt;<i> code that I had put into timer.f90, and forgot to remove before building
+</I>&gt;<i> the Windows distribution package for r3563.
+</I>&gt;<i>
+</I>&gt;<i> I haven't yet looked at the issue concerning jt9com_.nagain, but will do
+</I>&gt;<i> so.
+</I>&gt;<i>
+</I>&gt;<i> Are there other outstanding issues in WSJT-X v1.2 r3563 that need our
+</I>&gt;<i> attention?
+</I>&gt;<i>
+</I>&gt;<i> The User's Guide should have more information on some configuration
+</I>&gt;<i> options.  Murray, would you be willing to draft some suitable text about
+</I>&gt;<i> the &quot;Show DXCC entity and worked B4 status&quot; option?  Where should
+</I>&gt;<i> such things go?  It would also be good to have a section in the manual on
+</I>&gt;<i> &quot;Troubleshooting&quot;, perhaps modeled after Appendix D in the WSPR 2.0 manual,
+</I>&gt;<i> starting on page 18 of
+</I>&gt;<i> <A HREF="http://physics.princeton.edu/**pulsar/K1JT/WSPR_2.0_User.pdf&lt;http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf">http://physics.princeton.edu/**pulsar/K1JT/WSPR_2.0_User.pdf&lt;http://physics.princeton.edu/pulsar/K1JT/WSPR_2.0_User.pdf</A>&gt;.
+</I>&gt;<i> Does anyone want to try drafting something similar for WSJT-X, addressing
+</I>&gt;<i> the most common user problem areas ?
+</I>&gt;<i>
+</I>&gt;<i> Finally: does anyone have an opinion on whether we should improve the
+</I>&gt;<i> organizational structure of our WSJT Developers Group?  Should we make
+</I>&gt;<i> better use of the facilities of the Berlios repository -- for example, bug
+</I>&gt;<i> tracking, posting of repository snapshots, etc?  Other suggestions??
+</I>&gt;<i> The present arrangements work, but they were never really planned... they
+</I>&gt;<i> just grew, as the several programs were being developed.
+</I>&gt;<i>
+</I>&gt;<i>         -- 73, Joe, K1JT
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130904/ecbcab06/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130904/ecbcab06/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001893.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="001907.html">[Wsjt-devel] Status of WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1904">[ date ]</a>
+              <a href="thread.html#1904">[ thread ]</a>
+              <a href="subject.html#1904">[ subject ]</a>
+              <a href="author.html#1904">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

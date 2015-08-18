@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Audio supported in Qt5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F5B1EF.2070208%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001589.html">
+   <LINK REL="Next"  HREF="001586.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Audio supported in Qt5</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Audio%20supported%20in%20Qt5&In-Reply-To=%3C51F5B1EF.2070208%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Audio supported in Qt5">joe at princeton.edu
+       </A><BR>
+    <I>Mon Jul 29 02:06:07 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001589.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001586.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1585">[ date ]</a>
+              <a href="thread.html#1585">[ thread ]</a>
+              <a href="subject.html#1585">[ subject ]</a>
+              <a href="author.html#1585">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Edson,
+
+Thanks for the very useful report on your investigation of audio support 
+in Qt5.
+
+We could decide not to use the QAudio classes, after all -- we already 
+know that PortAudio serves our purpose well.  We can put mutexes around 
+transfers of information to/from the sound threads, to make Bill happy.  :-)
+
+If using the Qt5 Audio classes requires putting a resampler into WSJT-X, 
+that would be easy to do.
+
+Either way, I think it's worth making some further tests before we decide.
+
+There's no question that in both Linux and Windows, PortAudio provides 
+the user with many more options.  Perhaps that's useful for power users; 
+but if the interfaces provided by QAudio work well for all sound cards 
+in a system, maybe simpler is better?
+
+I did a quick test on my shack computer to list the audio devices 
+offered to the user under QAudio and PortAudio.  The results are 
+appended below.  It seems that in Windows, as well as Linux, QAudio 
+interfaces to only one set of drivers.  It's not clear which ones, in 
+the Windows case.  Perhaps it's made clear somewhere in the 
+documentation, I haven't looked carefully.  Or maybe someone else on 
+this list knows more about it than I do?
+
+Portaudio seems to provide interfaces to all available drivers.
+
+	-- Joe, K1JT
+
+########################################################################
+QAudioInput
+----------------------------------
+&quot;Line In (High Definition Audio &quot;
+&quot;Line 1 (Virtual Audio Cable)&quot;
+&quot;Line 1/2 (M-Audio Delta 44)&quot;
+&quot;Line 2 (Virtual Audio Cable)&quot;
+&quot;Line 3 (Virtual Audio Cable)&quot;
+&quot;Line 3/4 (M-Audio Delta 44)&quot;
+&quot;Line 4 (Virtual Audio Cable)&quot;
+&quot;Line 5 (Virtual Audio Cable)&quot;
+&quot;Monitor (M-Audio Delta 44)&quot;
+&quot;Multichannel (M-Audio Delta 44)&quot;
+
+QAudioOutput
+----------------------------------
+&quot;Speakers (High Definition Audio&quot;
+&quot;Line 1 (Virtual Audio Cable)&quot;
+&quot;Line 1/2 (M-Audio Delta 44)&quot;
+&quot;Line 2 (Virtual Audio Cable)&quot;
+&quot;Line 3 (Virtual Audio Cable)&quot;
+&quot;Line 3/4 (M-Audio Delta 44)&quot;
+&quot;Line 4 (Virtual Audio Cable)&quot;
+&quot;Line 5 (Virtual Audio Cable)&quot;
+&quot;Multichannel (M-Audio Delta 44)&quot;
+
+PortAudio Input
+-----------------------------------
+MME Microsoft Sound Mapper - Input
+MME Line In (High Definition Audio
+MME Line 5 (Virtual Audio Cable)
+MME Line 4 (Virtual Audio Cable)
+MME Line 3/4 (M-Audio Delta 44)
+MME Line 3 (Virtual Audio Cable)
+MME Monitor (M-Audio Delta 44)
+MME Line 1 (Virtual Audio Cable)
+MME Multichannel (M-Audio Delta 44)
+MME Line 2 (Virtual Audio Cable)
+MME Line 1/2 (M-Audio Delta 44)
+DirectX Primary Sound Capture Driver
+DirectX Line In (High Definition Audio Device)
+DirectX Line 5 (Virtual Audio Cable)
+DirectX Line 4 (Virtual Audio Cable)
+DirectX Line 3/4 (M-Audio Delta 44)
+DirectX Line 3 (Virtual Audio Cable)
+DirectX Monitor (M-Audio Delta 44)
+DirectX Line 1 (Virtual Audio Cable)
+DirectX Multichannel (M-Audio Delta 44)
+DirectX Line 2 (Virtual Audio Cable)
+DirectX Line 1/2 (M-Audio Delta 44)
+ASIO ASIO4ALL v2
+ASIO M-Audio Delta ASIO
+WASAPI Line 5 (Virtual Audio Cable)
+WASAPI Line 4 (Virtual Audio Cable)
+WASAPI Line 3/4 (M-Audio Delta 44)
+WASAPI Line 3 (Virtual Audio Cable)
+WASAPI Monitor (M-Audio Delta 44)
+WASAPI Line 1 (Virtual Audio Cable)
+WASAPI Multichannel (M-Audio Delta 44)
+WASAPI Line In (High Definition Audio Device)
+WASAPI Line 2 (Virtual Audio Cable)
+WASAPI Line 1/2 (M-Audio Delta 44)
+WDM-KS Delta 44 1/2
+WDM-KS Delta 44 3/4
+WDM-KS Delta 44 Monitor
+WDM-KS Delta 44 Multi
+WDM-KS Virtual Cable 1
+WDM-KS Virtual Cable 2
+WDM-KS Virtual Cable 3
+WDM-KS Virtual Cable 4
+WDM-KS Virtual Cable 5
+
+PortAudio Output
+-----------------------------------
+MME Microsoft Sound Mapper - Output
+MME Speakers (High Definition Audio
+MME Line 1 (Virtual Audio Cable)
+MME Line 5 (Virtual Audio Cable)
+MME Line 1/2 (M-Audio Delta 44)
+MME Line 4 (Virtual Audio Cable)
+MME Line 3/4 (M-Audio Delta 44)
+MME Line 2 (Virtual Audio Cable)
+MME Line 3 (Virtual Audio Cable)
+MME Multichannel (M-Audio Delta 44)
+DirectX Primary Sound Driver
+DirectX Speakers (High Definition Audio Device)
+DirectX Line 1 (Virtual Audio Cable)
+DirectX Line 5 (Virtual Audio Cable)
+DirectX Line 1/2 (M-Audio Delta 44)
+DirectX Line 4 (Virtual Audio Cable)
+DirectX Line 3/4 (M-Audio Delta 44)
+DirectX Line 2 (Virtual Audio Cable)
+DirectX Line 3 (Virtual Audio Cable)
+DirectX Multichannel (M-Audio Delta 44)
+ASIO ASIO4ALL v2
+ASIO M-Audio Delta ASIO
+WASAPI Speakers (High Definition Audio Device)
+WASAPI Line 1 (Virtual Audio Cable)
+WASAPI Line 5 (Virtual Audio Cable)
+WASAPI Line 1/2 (M-Audio Delta 44)
+WASAPI Line 4 (Virtual Audio Cable)
+WASAPI Line 3/4 (M-Audio Delta 44)
+WASAPI Line 2 (Virtual Audio Cable)
+WASAPI Line 3 (Virtual Audio Cable)
+WASAPI Multichannel (M-Audio Delta 44)
+WDM-KS Delta 44 1/2
+WDM-KS Delta 44 3/4
+WDM-KS Delta 44 Multi
+WDM-KS Virtual Cable 1
+WDM-KS Virtual Cable 2
+WDM-KS Virtual Cable 3
+WDM-KS Virtual Cable 4
+WDM-KS Virtual Cable 5
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001589.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001586.html">[Wsjt-devel] Audio supported in Qt5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1585">[ date ]</a>
+              <a href="thread.html#1585">[ thread ]</a>
+              <a href="subject.html#1585">[ subject ]</a>
+              <a href="author.html#1585">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

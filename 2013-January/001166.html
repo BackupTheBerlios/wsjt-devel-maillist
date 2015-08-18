@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] ValueError: could not convert string to float W8WN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ValueError%3A%20could%20not%20convert%20string%20to%20float%20W8WN&In-Reply-To=%3C50EA1946.8060202%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001168.html">
+   <LINK REL="Next"  HREF="001169.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] ValueError: could not convert string to float W8WN</H1>
+    <B>DJ5AND</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20ValueError%3A%20could%20not%20convert%20string%20to%20float%20W8WN&In-Reply-To=%3C50EA1946.8060202%40gmx.net%3E"
+       TITLE="[Wsjt-devel] ValueError: could not convert string to float W8WN">dj5and at gmx.net
+       </A><BR>
+    <I>Mon Jan  7 01:39:34 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001168.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+        <LI>Next message: <A HREF="001169.html">[Wsjt-devel] Can't compile current WSPR on Fedora
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1166">[ date ]</a>
+              <a href="thread.html#1166">[ thread ]</a>
+              <a href="subject.html#1166">[ subject ]</a>
+              <a href="author.html#1166">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+(x)Ubuntu 12.04 has got wsjt 5.9.7.r383-1.6 in its repositories. (Not
+sure why this outdated version from 2007 is still in the repo and not
+being updated yet.)
+Unfortunately, starting wsjt only shows the GUI for ~1s and aborting with:
+
+Traceback (most recent call last):
+File &quot;/usr/share/wsjt/wsjt.py&quot; line 2131, in &lt;module&gt; ModeFSK441()
+File &quot;/usr/share/wsjt/wsjt.py&quot; line 568, in ModeFSK441 GenStdMsgs()
+File &quot;/usr/share/wsjt/wsjt.py&quot; line 1144, in GenStdMsgs
+Audio.gcom2.hiscall=(ToRadio.get()+'        ')[:12]
+ValueError: could not convert string to float W8WN
+
+System is a standard Ubuntu 12.04.1LTS x86_64 for testing in a VM.
+
+Many thanks,
+
+-- 
+73 de Sven, VK3SIX (DJ5AND)
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001168.html">[Wsjt-devel] ImportError: cannot import name Audio
+</A></li>
+	<LI>Next message: <A HREF="001169.html">[Wsjt-devel] Can't compile current WSPR on Fedora
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1166">[ date ]</a>
+              <a href="thread.html#1166">[ thread ]</a>
+              <a href="subject.html#1166">[ subject ]</a>
+              <a href="author.html#1166">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

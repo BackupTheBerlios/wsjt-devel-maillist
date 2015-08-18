@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel]  WSJT-X: Compiler and other tool versions.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSJT-X%3A%20Compiler%20and%20other%20tool%20versions.&In-Reply-To=%3C51F18EA6.9070508%40mubo.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001562.html">
+   <LINK REL="Next"  HREF="001569.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel]  WSJT-X: Compiler and other tool versions.</H1>
+    <B>Ton</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSJT-X%3A%20Compiler%20and%20other%20tool%20versions.&In-Reply-To=%3C51F18EA6.9070508%40mubo.nl%3E"
+       TITLE="[Wsjt-devel]  WSJT-X: Compiler and other tool versions.">pa0tbr at mubo.nl
+       </A><BR>
+    <I>Thu Jul 25 22:46:30 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001562.html">[Wsjt-devel] WSJTX r3504
+</A></li>
+        <LI>Next message: <A HREF="001569.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1563">[ date ]</a>
+              <a href="thread.html#1563">[ thread ]</a>
+              <a href="subject.html#1563">[ subject ]</a>
+              <a href="author.html#1563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Bill,
+
+I assume that WSJT-X works with the same toolset as for WSPR-X (Guys, 
+please correct me if I am wrong)
+I recently did the following for WSPR-X which worked for me:
+
+Install    7zip, to unpack .tar and .gz:
+Get        7z920.exe
+ From 
+<A HREF="http://sourceforge.net/projects/sevenzip/files/7-Zip/9.20/7z920.exe/download?use_mirror=freefr">http://sourceforge.net/projects/sevenzip/files/7-Zip/9.20/7z920.exe/download?use_mirror=freefr</A>
+Install
+
+Get        gcc-full-4.4.0-mingw32-bin-2.tar.lzma  2009-06-24    62.2 MB
+from 
+<A HREF="http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/">http://sourceforge.net/projects/mingw/files/MinGW/Base/gcc/Version4/Previous%20Release%20gcc-4.4.0/</A>
+Copy to    c:\MinGw
+Unpack in  c:\MinGw using 7zip &quot;Extract here&quot;
+
+Get        w32api-3.13-mingw32-dev.tar.gz
+ From <A HREF="http://downloads.sourceforge.net/mingw/w32api-3.13-mingw32-dev.tar.gz">http://downloads.sourceforge.net/mingw/w32api-3.13-mingw32-dev.tar.gz</A>
+Copy to    c:\MinGw
+Unpack in  c:\MinGw using 7zip &quot;Extract here&quot;
+
+Get        qt-win-opensource-4.8.5-mingw.exe
+            = Qt libraries 4.8.5 for Windows (minGW 4.4, 317 MB)
+&gt;<i>From       <A HREF="http://qt-project.org/downloads">http://qt-project.org/downloads</A>
+</I>Install    Run qt-win-opensource-4.8.5-mingw.exe
+Into       C:\Qt\4.8.5
+
+Get        mingw-get-inst-20120426.exe
+&gt;<i>From       <A HREF="http://sourceforge.net/projects/mingw/files/">http://sourceforge.net/projects/mingw/files/</A>
+</I>Install    Run mingw-get-inst-20120426.exe
+Into       c:\Gw
+            Select all components
+
+g95-MinGW.exe:
+I tried to download without success as follows:
+Get        Stable Version 0.93, October 2012  Self-extracting Windows x86
+&gt;<i>From       <A HREF="http://www.g95.org/downloads.shtml">http://www.g95.org/downloads.shtml</A>
+</I>Fortunately I found that I had a copy from a previous attempt, last year.
+I can send that file by email.
+Install    Accept suggestion to install in c:\mingw
+
+Settings   Go to Control Panel - System - Advanced - Environment Variables
+            Add  New system variable: LIBRARY_PATH, value: C:\MinGW\lib
+            Edit system variable PATH, add: 
+c:\MinGw;c:\g95;c:\MinGw\bin;c:\g95\bin;c:\svn;c:\qt\4.8.5\bin
+
+Get        qwt-6.0.1.zip    2011-08-01    3.5 MB
+            qwt-6.1.0.pdf    &lt;==== Not available?
+ From <A HREF="http://sourceforge.net/projects/qwt/files/qwt/6.0.1/">http://sourceforge.net/projects/qwt/files/qwt/6.0.1/</A>
+Install    See <A HREF="http://qwt.sourceforge.net/qwtinstall.html">http://qwt.sourceforge.net/qwtinstall.html</A>
+            1) Unzip and copy to c:\
+               Result in c:\qwt-6.0.1
+            2) See Readme and Install
+               qmake qwt.pro
+            make  (several warnings)
+            make install (several warnings)
+
+Get        pa_stable_v19_20111121.tgz
+&gt;<i>From       <A HREF="http://www.portaudio.com/download.html">http://www.portaudio.com/download.html</A>
+</I>Extract    to c:\PortAudio
+
+
+Copy       palir-02.dll, qwt.dll
+from       wsprx (downloaded program)
+to         c:\QtSupport\
+
+Copy C:\MinGw\lib\gcc-lib\i686-pc-mingw32\4.1.2\libf95.a
+To         C:\MinGw\lib\libf95.a
+
+Turtoise SVN
+I had to add the following for my Windows XP machine:
+Get        WindowsXP-KB942288-v3-x86.exe
+ From <A HREF="http://www.microsoft.com/en-us/download/details.aspx?id=8483">http://www.microsoft.com/en-us/download/details.aspx?id=8483</A>
+
+Get        tortoisesvn
+&gt;<i>From       <A HREF="http://tortoisesvn.net/downloads.html">http://tortoisesvn.net/downloads.html</A>
+</I>Install    Include command line
+
+
+Procedure:
+========
+Do         svn co -r 3058 <A HREF="svn://svn.berlios.de/wsjt/branches/wsprx">svn://svn.berlios.de/wsjt/branches/wsprx</A>
+Result     Source code is put in c:\wsprx
+Note       Omitting r 3058 will get the latest version
+
+Add        INCLUDEPATH += c:/portaudio/include
+Edit       Remove or comment out the line LIBS += -lusb   ( #LIBS += -lusb )
+To         c:\wsprx\wsprx.pro
+Note       I had problems finding usb.dll and was adviced by K1JT that:
+            The usb code is in file libusb0.dll, which is easy to find 
+on the web. But in fact I don't think you need        it (except 
+possibly for rig-control of a Softrock?).  Just remove (or comment out) 
+the line
+            LIBS += -lusb
+
+Edit       main.cpp
+            #include &lt;QtGui/QApplication&gt; =&gt; #include 
+&lt;QtWidgets/QApplication&gt;
+
+Do         cd \wsprx\lib
+            mingw32-make
+Result     Aborts with Error
+Do         mingw32-make
+Result     Aborts with Error
+Do         mingw32-make
+Result     Completes with Nothing to be done
+            Created wsprd.exe and wsprcode.exe
+
+Do         cd\wsprx
+            qmake.exe -o Makefile wsprx.pro
+Result     Updated make files
+
+Do         mingw32-make -f makefile.release
+Result     wsprx.exe
+In         wsprx_install
+
+Replace the wsprx.exe that was downloaded with the K1JT WSPR-X kit with 
+the newly built wsprx.exe
+
+Of course I like to hear from others how this can be simplified or improved.
+
+73,
+Ton PA0TBR
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001562.html">[Wsjt-devel] WSJTX r3504
+</A></li>
+	<LI>Next message: <A HREF="001569.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1563">[ date ]</a>
+              <a href="thread.html#1563">[ thread ]</a>
+              <a href="subject.html#1563">[ subject ]</a>
+              <a href="author.html#1563">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

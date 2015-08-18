@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed v1.1.1 beta release
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3CD06104B1-444D-4B71-A312-2F2D281B28FE%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001642.html">
+   <LINK REL="Next"  HREF="001651.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed v1.1.1 beta release</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20v1.1.1%20beta%20release&In-Reply-To=%3CD06104B1-444D-4B71-A312-2F2D281B28FE%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] Proposed v1.1.1 beta release">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Aug  1 12:05:18 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001642.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+        <LI>Next message: <A HREF="001651.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1649">[ date ]</a>
+              <a href="thread.html#1649">[ thread ]</a>
+              <a href="subject.html#1649">[ subject ]</a>
+              <a href="author.html#1649">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe,
+
+Downloaded r3417.  Only change to wsjtx.pro is to use Qt4 and not Qt5 in the defines.   Everything compiles OK.
+
+But:   on execution, Decode Busy goes true and never releases.
+
+Comments:   
+
+a) changes to jt9 are inconsequential  (one line removed from jt9.f90)
+b) changes to rigclass and devsetup seem minor
+c) changes to sound routines seem major &lt;&lt;&lt;&lt;
+
+Conclusion:  something about sound changes may have broken the system for MacOS.   Stable release for MacOS is probably still r3496.
+
+I will try earlier versions to find out where the problem seems to have been introduced...unless someone tells me that r3517 will only work with Qt5
+
+--- John G4KLA
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001642.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+	<LI>Next message: <A HREF="001651.html">[Wsjt-devel] Proposed v1.1.1 beta release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1649">[ date ]</a>
+              <a href="thread.html#1649">[ thread ]</a>
+              <a href="subject.html#1649">[ subject ]</a>
+              <a href="author.html#1649">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

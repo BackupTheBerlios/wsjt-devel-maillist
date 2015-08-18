@@ -1,0 +1,2527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FD995F.3080109%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001666.html">
+   <LINK REL="Next"  HREF="001668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3C51FD995F.3080109%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Sun Aug  4 01:59:27 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001666.html">[Wsjt-devel] r3522 - core dump on restart
+</A></li>
+        <LI>Next message: <A HREF="001668.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1667">[ date ]</a>
+              <a href="thread.html#1667">[ thread ]</a>
+              <a href="subject.html#1667">[ subject ]</a>
+              <a href="author.html#1667">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I have a working version of WSJT-X that uses the Qt audio input and 
+output streams. Qt5 is required to build this, PortAudio is not required.
+
+If anyone wants to test this (I have only tested on Windows so far) I 
+would appreciate any feedback on building or running.
+
+Attached is a patch which you can apply to the r3522 codebase, there are 
+four new files which all go in the top directory with the other main C++ 
+sources, I believe the patch program will create these.
+
+To apply the patch use the standard *nix patch command in the root 
+directory of the project as follows:
+
+patch -p0 -i &lt;patch-file-path&gt;
+
+As the changes are quite extensive I think a build and test on *nix and 
+OS-X might be better before any checkin.
+
+73
+Bill
+G4WJS.
+-------------- next part --------------
+Index: soundout.h
+===================================================================
+--- soundout.h	(revision 3522)
++++ soundout.h	(working copy)
+@@ -1,76 +1,52 @@
+-#ifndef SOUNDOUT_H
+-#define SOUNDOUT_H
++#ifndef SOUNDOUT_H__
++#define SOUNDOUT_H__
+ 
+-#include &lt;portaudio.h&gt;
+-
+ #include &lt;QObject&gt;
+ #include &lt;QString&gt;
++#include &lt;QAudioOutput&gt;
+ 
+-extern &quot;C&quot; int d2aCallback(const void *, void *,
+-                           unsigned long,
+-                           PaStreamCallbackTimeInfo const *,
+-                           PaStreamCallbackFlags,
+-                           void *);
++#include &quot;Modulator.hpp&quot;
+ 
++class QAudioDeviceInfo;
++
+ // An instance of this sends audio data to a specified soundcard.
+-// Output can be muted while underway, preserving waveform timing when
+-// transmission is resumed.
+ 
+ class SoundOutput : public QObject
+ {
+   Q_OBJECT;
+ 
+   Q_PROPERTY(bool running READ isRunning);
+-  Q_PROPERTY(bool mute READ isMuted WRITE mute);
+-  Q_PROPERTY(bool tune READ isTuning WRITE tune);
+ 
+-public:
+-  SoundOutput();
+-  ~SoundOutput();
++ private:
++  Q_DISABLE_COPY (SoundOutput);
+ 
++ public:
++  SoundOutput ()
++    : m_active(false)
++    {
++    }
++  ~SoundOutput ();
++
+   bool isRunning() const {return m_active;}
+-  bool isMuted() const {return m_callbackData.mute;}
+-  bool isTuning() const {return m_callbackData.tune;}
+-  double outputLatency() const {return m_outputLatency;}
+ 
+-  // the following can be called while the stream is running
+-  void setTxFreq(int n) {m_callbackData.ntxfreq = n;}
+-  void setXIT(int n) {m_callbackData.xit = n;}
+-  void mute(bool b = true) {m_callbackData.mute = b;}
+-  void tune(bool b = true) {m_callbackData.tune = b;}
+-
+-public slots:
+-  void start(qint32 deviceNumber, QString const&amp; mode,int TRPeriod,int nsps,int txFreq,int xit,double txsnrdb = 99.);
++public Q_SLOTS:
++  bool start(QAudioDeviceInfo const&amp; device, QIODevice * source);
+   void stop();
+ 
+-// Private members
++Q_SIGNALS:
++  void error (QString message) const;
++  void status (QString message) const;
++
+ private:
+-  PaStream * m_stream;
+-  PaTime m_outputLatency;
++  bool audioError () const;
+ 
+-  struct CallbackData
+-  {
+-    //Parameters sent to or received from callback function
+-    double volatile txsnrdb;
+-    double volatile dnsps;	//Samples per symbol (at 12000 Hz)
+-    int volatile    ntrperiod;	//T/R period (s)
+-    int volatile    ntxfreq;
+-    int volatile    xit;
+-    int volatile    ncall;
+-    int volatile    nsym;
+-    bool volatile   mute;
+-    bool volatile   bRestart;
+-    bool volatile   tune;
+-  } m_callbackData;
++private Q_SLOTS:
++  void handleStateChanged (QAudio::State) const;
+ 
+-  qint64  m_ms0;
++ private:
++  QScopedPointer&lt;QAudioOutput&gt; m_stream;
++
+   bool m_active;
+-
+-  friend int d2aCallback(const void *, void *,
+-			 unsigned long,
+-			 PaStreamCallbackTimeInfo const *,
+-			 PaStreamCallbackFlags,
+-			 void *);
+ };
+ 
+ #endif
+Index: Modulator.cpp
+===================================================================
+--- Modulator.cpp	(revision 0)
++++ Modulator.cpp	(working copy)
+@@ -0,0 +1,204 @@
++#include &quot;Modulator.hpp&quot;
++
++#include &lt;cstdlib&gt;
++#include &lt;cmath&gt;
++#include &lt;algorithm&gt;
++#include &lt;limits&gt;
++
++#include &lt;QDateTime&gt;
++
++extern float gran();		// Noise generator (for tests only)
++
++double const Modulator::m_twoPi = 2.0 * 3.141592653589793238462;
++
++//    float wpm=20.0;
++//    unsigned m_nspd=1.2*48000.0/wpm;
++//    m_nspd=3072;                           //18.75 WPM
++unsigned const Modulator::m_nspd = 2048 + 512; // 22.5 WPM
++
++Modulator::Modulator (unsigned frameRate, unsigned periodLengthInSeconds, QObject * parent)
++  : QIODevice (parent)
++  , m_frameRate (frameRate)
++  , m_period (periodLengthInSeconds)
++  , m_state (Idle)
++  , m_phi (0.)
++  , m_ic (0)
++  , m_isym0 (std::numeric_limits&lt;unsigned&gt;::max ()) // ensure we set up first symbol tone
++{
++}
++
++bool Modulator::open (std::vector&lt;int&gt; const * symbols, std::vector&lt;int&gt; const * cw, double framesPerSymbol, unsigned frequency, double dBSNR)
++{
++  m_symbols.reset (symbols);	// take over ownership (cannot throw)
++  m_cw.reset (cw);		// take over ownership (cannot throw)
++  m_addNoise = dBSNR &lt; 0.;
++  m_nsps = framesPerSymbol;
++  m_frequency = frequency;
++  m_amp = std::numeric_limits&lt;frame_t&gt;::max ();
++  m_state = Idle;
++
++  // noise generator parameters
++  if (m_addNoise)
++    {
++      m_snr = std::pow (10.0, 0.05 * (dBSNR - 6.0));
++      m_fac = 3000.0;
++      if (m_snr &gt; 1.0)
++	{
++	  m_fac = 3000.0 / m_snr;
++	}
++    }
++  
++  return QIODevice::open (QIODevice::ReadOnly);
++}
++
++qint64 Modulator::readData (char * data, qint64 maxSize)
++{
++  frame_t * frames (reinterpret_cast&lt;frame_t *&gt; (data));
++  unsigned numFrames (maxSize / sizeof (frame_t));
++
++  switch (m_state)
++    {
++    case Idle:
++      {
++	// Time according to this computer
++	qint64 ms = QDateTime::currentMSecsSinceEpoch() % 86400000;
++	unsigned mstr = ms % (1000 * m_period);
++	if (mstr &lt; 1000)	// send silence up to first second
++	  {
++	    std::fill (frames, frames + numFrames, 0);		 // silence
++	    return numFrames * sizeof (frame_t);
++	  }
++	m_ic = (mstr - 1000) * 48;
++
++	std::srand (mstr);		// Initialize random seed
++
++	m_state = Active;
++      }
++      // fall through
++
++    case Active:
++      {
++	unsigned isym (m_tuning ? 0 : m_ic / (4.0 * m_nsps)); // Actual fsample=48000
++
++	if (isym &gt;= m_symbols-&gt;size () &amp;&amp; (*m_cw)[0] &gt; 0)
++	  {
++	    // Output the CW ID
++	    m_dphi = m_twoPi * m_frequency / m_frameRate;
++
++	    unsigned const ic0 = m_symbols-&gt;size () * 4 * m_nsps;
++	    unsigned j (0);
++	    for (unsigned i = 0; i &lt; numFrames; ++i)
++	      {
++		m_phi += m_dphi;
++		if (m_phi &gt; m_twoPi)
++		  {
++		    m_phi -= m_twoPi;
++		  }
++		frame_t frame = std::numeric_limits&lt;frame_t&gt;::max () * std::sin (m_phi);
++		j = (m_ic - ic0) / m_nspd + 1;
++		if (!(*m_cw)[j])
++		  {
++		    frame = 0;
++		  }
++
++		frame = postProcessFrame (frame);
++
++		*frames++ = frame; //left
++#ifdef UNIX
++		*frames++ = frame; //right
++#endif
++		++m_ic;
++	      }
++	    if (j &gt; static_cast&lt;unsigned&gt; ((*m_cw)[0]))
++	      {
++		m_state = Done;
++	      }
++	    return numFrames * sizeof (frame_t);
++	  }
++
++	double const baud (12000.0 / m_nsps);
++
++	// fade out parameters (no fade out for tuning)
++	unsigned const i0 = m_tuning ? 999 * m_nsps : (m_symbols-&gt;size () - 0.017) * 4.0 * m_nsps;
++	unsigned const i1 = m_tuning ? 999 * m_nsps : m_symbols-&gt;size () * 4.0 * m_nsps;
++
++	for (unsigned i = 0; i &lt; numFrames; ++i)
++	  {
++	    isym = m_tuning ? 0 : m_ic / (4.0 * m_nsps); //Actual fsample=48000
++	    if (isym != m_isym0)
++	      {
++		double toneFrequency = m_frequency + (*m_symbols)[isym] * baud;
++		m_dphi = m_twoPi * toneFrequency / m_frameRate;
++		m_isym0 = isym;
++	      }
++	    m_phi += m_dphi;
++	    if (m_phi &gt; m_twoPi)
++	      {
++		m_phi -= m_twoPi;
++	      }
++	    if (m_ic &gt; i0)
++	      {
++		m_amp = 0.98 * m_amp;
++	      }
++	    if (m_ic &gt; i1)
++	      {
++		m_amp = 0.0;
++	      }
++
++	    frame_t frame (m_amp * std::sin (m_phi));
++
++	    frame = postProcessFrame (frame);
++
++	    *frames++ = frame;	//left
++#ifdef UNIX
++	    *frames++ = frame;	//right
++#endif
++	    ++m_ic;
++	  }
++
++	if (m_amp == 0.0) // TODO G4WJS: compare double with zero might not be wise
++	  {
++	    if ((*m_cw)[0] == 0)
++	      {
++		// no CW ID to send
++		m_state = Done;
++		return numFrames * sizeof (frame_t);
++	      }
++
++	    m_phi = 0.0;
++	  }
++
++	// done for this chunk - continue on next call
++	return numFrames * sizeof (frame_t);
++      }
++
++    case Done:
++      break;
++    }
++
++  Q_ASSERT (m_state == Done);
++  return 0;
++}
++
++Modulator::frame_t Modulator::postProcessFrame (frame_t frame) const
++{
++  if (m_muted)			// silent frame
++    {
++      return 0;
++    }
++
++  if (m_addNoise)
++    {
++      int i4 = m_fac * (gran () + frame * m_snr / 32768.0);
++      if (i4 &gt; std::numeric_limits&lt;frame_t&gt;::max ())
++	{
++	  i4 = std::numeric_limits&lt;frame_t&gt;::max ();
++	}
++      if (i4 &lt; std::numeric_limits&lt;frame_t&gt;::min ())
++	{
++	  i4 = std::numeric_limits&lt;frame_t&gt;::min ();
++	}
++      frame = i4;
++    }
++  return frame;
++}
+Index: mainwindow.h
+===================================================================
+--- mainwindow.h	(revision 3522)
++++ mainwindow.h	(working copy)
+@@ -7,6 +7,9 @@
+ #endif
+ #include &lt;QTimer&gt;
+ #include &lt;QDateTime&gt;
++#include &lt;QList&gt;
++#include &lt;QAudioDeviceInfo&gt;
++
+ #include &quot;soundin.h&quot;
+ #include &quot;soundout.h&quot;
+ #include &quot;commons.h&quot;
+@@ -14,6 +17,8 @@
+ #include &quot;rigclass.h&quot;
+ #include &quot;signalmeter.h&quot;
+ #include &quot;logbook/logbook.h&quot;
++#include &quot;Detector.hpp&quot;
++#include &quot;Modulator.hpp&quot;
+ 
+ #ifdef WIN32
+ #include &quot;PSKReporter.h&quot;
+@@ -37,8 +42,9 @@
+ 
+ public slots:
+   void showSoundInError(const QString&amp; errorMsg);
++  void showSoundOutError(const QString&amp; errorMsg);
+   void showStatusMessage(const QString&amp; statusMsg);
+-  void dataSink(int k);
++  void dataSink(qint64 bytes);
+   void diskDat();
+   void diskWriteFinished();
+   void freezeDecode(int n);
+@@ -191,8 +197,10 @@
+     qint32  m_nutc0;
+     qint32  m_nrx;
+     qint32  m_hsym;
+-    qint32  m_paInDevice;
+-    qint32  m_paOutDevice;
++    QAudioDeviceInfo m_audioInputDevice;
++    Detector m_detector;
++    QAudioDeviceInfo m_audioOutputDevice;
++    Modulator m_modulator;
+     qint32  m_TRperiod;
+     qint32  m_nsps;
+     qint32  m_hsymStop;
+@@ -372,6 +380,7 @@
+     void pollRigFreq();
+     bool gridOK(QString g);
+     QString baseCall(QString t);
++    void transmit (double snr = 99.);
+ };
+ 
+ extern void getfile(QString fname, int ntrperiod);
+Index: devsetup.cpp
+===================================================================
+--- devsetup.cpp	(revision 3522)
++++ devsetup.cpp	(working copy)
+@@ -1,7 +1,6 @@
+ #include &quot;devsetup.h&quot;
+ #include &lt;QDebug&gt;
+ #include &lt;QSettings&gt;
+-#include &lt;portaudio.h&gt;
+ #include &lt;QAudioDeviceInfo&gt;
+ #include &lt;QAudioInput&gt;
+ 
+@@ -12,7 +11,10 @@
+ qint32  g2_COMportOpen;
+ 
+ //----------------------------------------------------------- DevSetup()
+-DevSetup::DevSetup(QWidget *parent) :	QDialog(parent)
++DevSetup::DevSetup(QWidget *parent)
++  : QDialog(parent)
++  , m_audioInputDevices (QAudioDeviceInfo::availableDevices (QAudio::AudioInput))
++  , m_audioOutputDevices (QAudioDeviceInfo::availableDevices (QAudio::AudioOutput))
+ {
+   ui.setupUi(this);	                              //setup the dialog form
+   m_restartSoundIn=false;
+@@ -37,109 +39,43 @@
+   QString catPortDriver = settings.value(&quot;CATdriver&quot;,&quot;None&quot;).toString();
+   settings.endGroup();
+ 
+-/*
+-	QList&lt;QAudioDeviceInfo&gt; InDevices;
+-	QList&lt;QAudioDeviceInfo&gt; OutDevices;
+-	QAudioDeviceInfo deviceInfo;
+-
+-	InDevices = deviceInfo.availableDevices(QAudio::AudioInput);
+-	OutDevices = deviceInfo.availableDevices(QAudio::AudioOutput);
+-
+-	foreach (const QAudioDeviceInfo &amp;deviceInfo, InDevices) {
+-		ui.comboBoxSndIn-&gt;addItem(deviceInfo.deviceName(),
+-															qVariantFromValue(deviceInfo));
+-	}
+-
+-	foreach (const QAudioDeviceInfo &amp;deviceInfo, OutDevices) {
+-		ui.comboBoxSndOut-&gt;addItem(deviceInfo.deviceName(),
+-															 qVariantFromValue(deviceInfo));
+-	}
+-*/
+-
+-  int k,id;
+-  int numDevices=Pa_GetDeviceCount();
+-
+-  const PaDeviceInfo *pdi;
+-  int nchin;
+-  int nchout;
+-  char pa_device_name[128];
+-  char pa_device_hostapi[128];
+-
+-  k=0;
+-  for(id=0; id&lt;numDevices; id++ )  {
+-    pdi=Pa_GetDeviceInfo(id);
+-    nchin=pdi-&gt;maxInputChannels;
+-    if(nchin&gt;0) {
+-      m_inDevList[k]=id;
+-      if (id == m_paInDevice)
+-        m_nDevIn = k;
+-      k++;
+-      sprintf((char*)(pa_device_name),&quot;%s&quot;,pdi-&gt;name);
+-      sprintf((char*)(pa_device_hostapi),&quot;%s&quot;,
+-              Pa_GetHostApiInfo(pdi-&gt;hostApi)-&gt;name);
+-
+-#ifdef WIN32
+-      char *p,*p1;
+-      char p2[50];
+-      p1=(char*)&quot;&quot;;
+-      p=strstr(pa_device_hostapi,&quot;MME&quot;);
+-      if(p!=NULL) p1=(char*)&quot;MME&quot;;
+-      p=strstr(pa_device_hostapi,&quot;Direct&quot;);
+-      if(p!=NULL) p1=(char*)&quot;DirectX&quot;;
+-      p=strstr(pa_device_hostapi,&quot;WASAPI&quot;);
+-      if(p!=NULL) p1=(char*)&quot;WASAPI&quot;;
+-      p=strstr(pa_device_hostapi,&quot;ASIO&quot;);
+-      if(p!=NULL) p1=(char*)&quot;ASIO&quot;;
+-      p=strstr(pa_device_hostapi,&quot;WDM-KS&quot;);
+-      if(p!=NULL) p1=(char*)&quot;WDM-KS&quot;;
+-
+-      sprintf(p2,&quot;%2d   %d   %-8s  %-39s&quot;,id,nchin,p1,pa_device_name);
+-      QString t(p2);
+-#else
+-      QString t;
+-      t.sprintf(&quot;%2d   %d   %-8s  %-39s&quot;,id,nchin,
+-                Pa_GetHostApiInfo(pdi-&gt;hostApi)-&gt;name,pdi-&gt;name);
+-#endif
+-      ui.comboBoxSndIn-&gt;addItem(t);
+-    }
++  //
++  // loaad combo boxes with setup choices
++  //
++  {
++    int currentIndex = -1;
++    int defaultIndex = 0;
++    for (AudioDevices::const_iterator p = m_audioInputDevices.begin (); p != m_audioInputDevices.end (); ++p)
++      {
++	ui.comboBoxSndIn-&gt;addItem (p-&gt;deviceName ());
++	if (*p == m_audioInputDevice)
++	  {
++	    currentIndex = p - m_audioInputDevices.begin ();
++	  }
++	else if (*p == QAudioDeviceInfo::defaultInputDevice ())
++	  {
++	    defaultIndex = p - m_audioInputDevices.begin ();
++	  }
++      }
++    ui.comboBoxSndIn-&gt;setCurrentIndex (currentIndex != -1 ? currentIndex : defaultIndex);
+   }
+ 
+-  k=0;
+-  for(id=0; id&lt;numDevices; id++ )  {
+-    pdi=Pa_GetDeviceInfo(id);
+-    nchout=pdi-&gt;maxOutputChannels;
+-    if(nchout&gt;0) {
+-      m_outDevList[k]=id;
+-      if (id == m_paOutDevice)
+-        m_nDevOut = k;
+-      k++;
+-      sprintf((char*)(pa_device_name),&quot;%s&quot;,pdi-&gt;name);
+-      sprintf((char*)(pa_device_hostapi),&quot;%s&quot;,
+-              Pa_GetHostApiInfo(pdi-&gt;hostApi)-&gt;name);
+-
+-#ifdef WIN32
+-      char *p,*p1;
+-      char p2[50];
+-      p1=(char*)&quot;&quot;;
+-      p=strstr(pa_device_hostapi,&quot;MME&quot;);
+-      if(p!=NULL) p1=(char*)&quot;MME&quot;;
+-      p=strstr(pa_device_hostapi,&quot;Direct&quot;);
+-      if(p!=NULL) p1=(char*)&quot;DirectX&quot;;
+-      p=strstr(pa_device_hostapi,&quot;WASAPI&quot;);
+-      if(p!=NULL) p1=(char*)&quot;WASAPI&quot;;
+-      p=strstr(pa_device_hostapi,&quot;ASIO&quot;);
+-      if(p!=NULL) p1=(char*)&quot;ASIO&quot;;
+-      p=strstr(pa_device_hostapi,&quot;WDM-KS&quot;);
+-      if(p!=NULL) p1=(char*)&quot;WDM-KS&quot;;
+-      sprintf(p2,&quot;%2d   %d   %-8s  %-39s&quot;,id,nchout,p1,pa_device_name);
+-      QString t(p2);
+-#else
+-      QString t;
+-      t.sprintf(&quot;%2d   %d   %-8s  %-39s&quot;,id,nchout,
+-                Pa_GetHostApiInfo(pdi-&gt;hostApi)-&gt;name,pdi-&gt;name);
+-#endif
+-      ui.comboBoxSndOut-&gt;addItem(t);
+-    }
++  {
++    int currentIndex = -1;
++    int defaultIndex = 0;
++    for (AudioDevices::const_iterator p = m_audioOutputDevices.begin (); p != m_audioOutputDevices.end (); ++p)
++      {
++	ui.comboBoxSndOut-&gt;addItem (p-&gt;deviceName ());
++	if (*p == m_audioOutputDevice)
++	  {
++	    currentIndex = p - m_audioOutputDevices.begin ();
++	  }
++	else if (*p == QAudioDeviceInfo::defaultOutputDevice ())
++	  {
++	    defaultIndex = p - m_audioOutputDevices.begin ();
++	  }
++      }
++    ui.comboBoxSndOut-&gt;setCurrentIndex (currentIndex != -1 ? currentIndex : defaultIndex);
+   }
+ 
+   connect(&amp;p4, SIGNAL(readyReadStandardOutput()),
+@@ -167,8 +103,6 @@
+   ui.idIntSpinBox-&gt;setValue(m_idInt);
+   ui.pttMethodComboBox-&gt;setCurrentIndex(m_pttMethodIndex);
+   ui.saveDirEntry-&gt;setText(m_saveDir);
+-  ui.comboBoxSndIn-&gt;setCurrentIndex(m_nDevIn);
+-  ui.comboBoxSndOut-&gt;setCurrentIndex(m_nDevOut);
+   ui.cbID73-&gt;setChecked(m_After73);
+   ui.cbPSKReporter-&gt;setChecked(m_pskReporter);
+   ui.cbSplit-&gt;setChecked(m_bSplit and m_catEnabled);
+@@ -302,11 +236,17 @@
+   // Check to see whether SoundInThread must be restarted,
+   // and save user parameters.
+ 
+-  if(m_nDevIn!=ui.comboBoxSndIn-&gt;currentIndex() or
+-     m_paInDevice!=m_inDevList[m_nDevIn]) m_restartSoundIn=true;
++  if (m_audioInputDevice != m_audioInputDevices[ui.comboBoxSndIn-&gt;currentIndex ()])
++    {
++      m_audioInputDevice = m_audioInputDevices[ui.comboBoxSndIn-&gt;currentIndex ()];
++      m_restartSoundIn = true;
++    }
+ 
+-  if(m_nDevOut!=ui.comboBoxSndOut-&gt;currentIndex() or
+-     m_paOutDevice!=m_outDevList[m_nDevOut]) m_restartSoundOut=true;
++  if (m_audioOutputDevice != m_audioOutputDevices[ui.comboBoxSndOut-&gt;currentIndex ()])
++    {
++      m_audioOutputDevice = m_audioOutputDevices[ui.comboBoxSndOut-&gt;currentIndex ()];
++      m_restartSoundOut = true;
++    }
+ 
+   m_myCall=ui.myCallEntry-&gt;text();
+   m_myGrid=ui.myGridEntry-&gt;text();
+@@ -314,10 +254,6 @@
+   m_pttMethodIndex=ui.pttMethodComboBox-&gt;currentIndex();
+   m_pttPort=ui.pttComboBox-&gt;currentIndex();
+   m_saveDir=ui.saveDirEntry-&gt;text();
+-  m_nDevIn=ui.comboBoxSndIn-&gt;currentIndex();
+-  m_paInDevice=m_inDevList[m_nDevIn];
+-  m_nDevOut=ui.comboBoxSndOut-&gt;currentIndex();
+-  m_paOutDevice=m_outDevList[m_nDevOut];
+ 
+   m_macro.clear();
+   m_macro.append(ui.macro1-&gt;text());
+Index: Detector.cpp
+===================================================================
+--- Detector.cpp	(revision 0)
++++ Detector.cpp	(working copy)
+@@ -0,0 +1,83 @@
++#include &quot;Detector.hpp&quot;
++
++#include &lt;algorithm&gt;
++
++#include &lt;QDateTime&gt;
++#include &lt;QDebug&gt;
++
++#include &quot;commons.h&quot;
++
++Detector::Detector (unsigned frameRate, unsigned periodLengthInSeconds, unsigned bytesPerSignal, QObject * parent)
++  : QIODevice (parent)
++  , m_frameRate (frameRate)
++  , m_period (periodLengthInSeconds)
++  , m_bytesPerSignal (bytesPerSignal)
++  , m_monitoring (false)
++{
++  clear ();
++}
++
++bool Detector::reset ()
++{
++  clear ();
++  return QIODevice::reset ();
++}
++
++void Detector::clear ()
++{
++  // set index to roughly where we are in time (1s resolution)
++  jt9com_.kin = secondInPeriod () * m_frameRate;
++
++  // fill buffer with zeros
++  std::fill (jt9com_.d2, jt9com_.d2 + sizeof (jt9com_.d2) / sizeof (jt9com_.d2[0]), 0);
++}
++
++qint64 Detector::writeData (char const * data, qint64 maxSize)
++{
++  Q_ASSERT (!(maxSize % sizeof (jt9com_.d2[0])));
++
++  short const * frames (reinterpret_cast&lt;short const *&gt; (data));
++
++  qint64 framesAcceptable (sizeof (jt9com_.d2) / sizeof (jt9com_.d2[0]) - jt9com_.kin);
++  qint64 framesAccepted (std::min (maxSize / sizeof (jt9com_.d2[0]), framesAcceptable));
++  
++  if (framesAccepted &lt; maxSize / sizeof (jt9com_.d2[0]))
++    {
++      qDebug () &lt;&lt; &quot;dropped &quot; &lt;&lt; maxSize / sizeof (jt9com_.d2[0]) - framesAccepted &lt;&lt; &quot; frames of data on the floor!\n&quot;;
++    }
++
++  std::copy (frames, frames + framesAccepted, &amp;jt9com_.d2[jt9com_.kin]);
++
++  unsigned lastSignalIndex (jt9com_.kin * sizeof (jt9com_.d2[0]) / m_bytesPerSignal);
++  jt9com_.kin += framesAccepted;
++  unsigned currentSignalIndex (jt9com_.kin * sizeof (jt9com_.d2[0]) / m_bytesPerSignal);
++
++  if (currentSignalIndex != lastSignalIndex &amp;&amp; m_monitoring)
++    {
++      Q_EMIT bytesWritten (currentSignalIndex * m_bytesPerSignal);
++    }
++
++  if (!secondInPeriod ())
++    {
++      // next samples will be in new period so wrap around to start of
++      // buffer
++      //
++      // we don't bother calling reset () since we expect to fill the
++      // whole buffer and don't need to waste cycles zeroing
++      jt9com_.kin = 0;
++    }
++
++  return maxSize;		// we drop any data past the end of
++				// the buffer on the floor until the
++				// next period starts
++}
++
++unsigned Detector::secondInPeriod () const
++{
++  // we take the time of the data as the following assuming no latency
++  // delivering it to us (not true but close enough for us)
++  qint64 now (QDateTime::currentMSecsSinceEpoch ());
++
++  unsigned secondInToday ((now % 86400000LL) / 1000);
++  return secondInToday % m_period;
++}
+Index: commons.h
+===================================================================
+--- commons.h	(revision 3522)
++++ commons.h	(working copy)
+@@ -3,13 +3,12 @@
+ 
+ #define NSMAX 6827
+ #define NTMAX 120
++#define RX_SAMPLE_RATE 12000
+ 
+-extern &quot;C&quot; {
+-
+-extern struct {
++extern struct FortranCommon {
+   float ss[184*NSMAX];              //This is &quot;common/jt9com/...&quot; in fortran
+   float savg[NSMAX];
+-  short int d2[NTMAX*12000];
++  short int d2[NTMAX*RX_SAMPLE_RATE];
+   int nutc;                         //UTC as integer, HHMM
+   int ndiskdat;                     //1 ==&gt; data read from *.wav file
+   int ntrperiod;                    //TR period (seconds)
+@@ -29,6 +28,4 @@
+   char datetime[20];
+ } jt9com_;
+ 
+-}
+-
+ #endif // COMMONS_H
+Index: soundin.h
+===================================================================
+--- soundin.h	(revision 3522)
++++ soundin.h	(working copy)
+@@ -1,140 +1,47 @@
+-#ifndef QAUDIO_INPUT
+-#ifndef SOUNDIN_H
+-#define SOUNDIN_H
++#ifndef SOUNDIN_H__
++#define SOUNDIN_H__
+ 
+-#include &lt;portaudio.h&gt;
+-
+ #include &lt;QObject&gt;
+-#include &lt;QTimer&gt;
+ #include &lt;QString&gt;
++#include &lt;QScopedPointer&gt;
++#include &lt;QAudioInput&gt;
+ 
+-extern &quot;C&quot; int a2dCallback( const void *, void *, unsigned long, PaStreamCallbackTimeInfo const *, PaStreamCallbackFlags, void *);
++class QAudioDeviceInfo;
++class QAudioInput;
++class QIODevice;
+ 
+-// Gets audio data from soundcard and signals when a buffer of
+-// specified size is available.
++// Gets audio data from sound sample source and passes it to a sink device
+ class SoundInput : public QObject
+ {
+-  Q_OBJECT
++  Q_OBJECT;
+ 
+-public:
+-  SoundInput();
+-  ~SoundInput();
++ private:
++  Q_DISABLE_COPY (SoundInput);
+ 
+-  int  mstep() const {return m_step;}
+-
+-  /* these can be called while processing samples */
+-  void setMonitoring(bool b) {m_monitoring = b;}
+-  void setPeriod(int ntrperiod, int nsps)
++ public:
++  SoundInput (QObject * parent = 0)
++    : QObject (parent)
+   {
+-    m_TRperiod=ntrperiod;
+-    m_nsps=nsps;
+   }
+ 
+-signals:
+-  void readyForFFT(int k);
+-  void error(const QString&amp; message);
+-  void status(const QString&amp; message);
++  ~SoundInput ();
+ 
+-public slots:
+-  void start(qint32 device);
++Q_SIGNALS:
++  void error (QString message) const;
++  void status (QString message) const;
++
++public Q_SLOTS:
++  // sink must exist from the start call to any following stop () call
++  bool start(QAudioDeviceInfo const&amp;, int framesPerBuffer, QIODevice * sink);
+   void stop();
+ 
+ private:
+-  PaStream * m_inStream;
+-  qint32 m_step;
+-  qint32 m_TRperiod;
+-  qint32 m_TRperiod0;
+-  qint32 m_nsps;
+-  bool   m_monitoring;
+-  qint64 m_ms0;
+-  int m_ntr0;
+-  int m_nstep0;
+-  int m_nsps0;
++  bool audioError () const;
+ 
+-  QTimer m_intervalTimer;
++  QScopedPointer&lt;QAudioInput&gt; m_stream;
+ 
+-  struct CallbackData
+-  {
+-    //Parameters sent to/from the portaudio callback function
+-    int volatile kin;
+-    bool volatile bzero;
+-    bool volatile monitoring;
+-  } m_callbackData;
+-
+-private slots:
+-  void intervalNotify();
+-
+-  friend int a2dCallback(void const *, void *, unsigned long, PaStreamCallbackTimeInfo const *, PaStreamCallbackFlags, void *);
++private Q_SLOTS:
++  void handleStateChanged (QAudio::State) const;
+ };
+ 
+-#endif // SOUNDIN_H
+-
+-#else  // QAUDIO_INPUT
+-#ifndef SOUNDIN_H
+-#define SOUNDIN_H
+-
+-#include &lt;QObject&gt;
+-#include &lt;QTimer&gt;
+-#include &lt;QAudioDeviceInfo&gt;
+-#include &lt;QAudioInput&gt;
+-
+-// Gets audio data from soundcard and signals when a buffer of
+-// specified size is available.
+-class SoundInput : public QObject
+-{
+-	Q_OBJECT
+-
+-public:
+-	SoundInput();
+-	~SoundInput();
+-
+-	void setMonitoring(bool b) {m_monitoring = b;}
+-	void setPeriod(int ntrperiod, int nsps) /* this can be called while processing samples */
+-	{
+-		m_TRperiod=ntrperiod;
+-		m_nsps=nsps;
+-	}
+-	int  mstep() const {return m_step;}
+-	double samFacIn() const {return m_SamFacIn;}
+-
+-signals:
+-	void readyForFFT(int k);
+-	void error(const QString&amp; message);
+-	void status(const QString&amp; message);
+-
+-public slots:
+-	void start(qint32 device);
+-	void stop();
+-
+-private:
+-	bool m_dataSinkBusy;
+-	double m_SamFacIn;                     //(Input sample rate)/12000.0
+-	qint32 m_step;
+-	qint32 m_TRperiod;
+-	qint32 m_TRperiod0;
+-	qint32 m_nsps;
+-	bool   m_monitoring;
+-	qint64 m_ms0;
+-	int m_ntr0;
+-	int m_nBusy;
+-	int m_nstep0;
+-	int m_nsps0;
+-
+-	QTimer m_intervalTimer;
+-	QAudioDeviceInfo inputDevice;          // audioinput device name
+-	QAudioInput* audioInput;
+-	QIODevice* stream;
+-
+-	struct CallbackData
+-	{
+-		int kin;
+-		int ncall;
+-		bool bzero;
+-		bool monitoring;
+-	} m_callbackData;  //Parameters sent to/from the Notify function
+-
+-private slots:
+-  void intervalNotify();
+-};
+-#endif // SOUNDIN_H
+-#endif // QAUDIO_INPUT
++#endif
+Index: wsjtx.pro
+===================================================================
+--- wsjtx.pro	(revision 3522)
++++ wsjtx.pro	(working copy)
+@@ -4,7 +4,7 @@
+ #
+ #-------------------------------------------------
+ 
+-QT       += core gui network multimedia
++QT       += network multimedia
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+ CONFIG   += thread
+ #CONFIG   += console
+@@ -14,9 +14,7 @@
+ DESTDIR = ../wsjtx_install
+ VERSION = 1.1
+ TEMPLATE = app
+-#DEFINES = QT4
+ DEFINES = QT5
+-#DEFINES += QAUDIO_INPUT
+ 
+ win32 {
+ DEFINES += WIN32
+@@ -36,16 +34,31 @@
+ QMAKE_EXTRA_COMPILERS += gfortran
+ }
+ 
+-SOURCES += main.cpp mainwindow.cpp plotter.cpp about.cpp \
+-    soundin.cpp soundout.cpp devsetup.cpp widegraph.cpp \
+-    getfile.cpp displaytext.cpp getdev.cpp logqso.cpp \
+-    psk_reporter.cpp rigclass.cpp \
+-    signalmeter.cpp \
+-    meterwidget.cpp \
+-    logbook/logbook.cpp \
+-    logbook/countrydat.cpp \
+-    logbook/countriesworked.cpp \
+-    logbook/adif.cpp
++#
++# Order matters here as the link is in this order so referrers need to be after referred
++#
++SOURCES += \
++	logbook/adif.cpp \
++	logbook/countrydat.cpp \
++	logbook/countriesworked.cpp \
++	logbook/logbook.cpp \
++	rigclass.cpp \
++	psk_reporter.cpp \
++	Modulator.cpp \
++	Detector.cpp \
++	logqso.cpp \
++	displaytext.cpp \
++	getfile.cpp \
++	soundout.cpp \
++	soundin.cpp \
++	meterwidget.cpp \
++	signalmeter.cpp \
++	plotter.cpp \
++	widegraph.cpp \
++	devsetup.cpp \
++	about.cpp \
++	mainwindow.cpp \
++	main.cpp
+ 
+ win32 {
+ SOURCES += killbyname.cpp
+@@ -54,7 +67,7 @@
+ HEADERS  += mainwindow.h plotter.h soundin.h soundout.h \
+             about.h devsetup.h widegraph.h getfile.h \
+             commons.h sleep.h displaytext.h logqso.h \
+-            psk_reporter.h rigclass.h \
++            Detector.hpp Modulator.hpp psk_reporter.h rigclass.h \
+     signalmeter.h \
+     meterwidget.h \
+     logbook/logbook.h \
+@@ -62,9 +75,6 @@
+     logbook/countriesworked.h \
+     logbook/adif.h
+ 
+-# (Is the following really needed???)
+-#DEFINES += __cplusplus
+-
+ FORMS    += mainwindow.ui about.ui devsetup.ui widegraph.ui \
+     logqso.ui
+ 
+@@ -73,7 +83,7 @@
+ unix {
+ LIBS += ../wsjtx/lib/libjt9.a
+ LIBS += -lhamlib
+-LIBS += -lportaudio -lgfortran -lfftw3f
++LIBS += -lgfortran -lfftw3f
+ }
+ 
+ win32 {
+@@ -84,8 +94,6 @@
+ LIBS += ../wsjtx/libfftw3f_win.a
+ LIBS += ../wsjtx/libpskreporter.a
+ LIBS += ../wsjtx/libHRDInterface001.a
+-#LIBS += ../QtSupport/palir-02.dll
+-LIBS += /users/joe/wsjt/QtSupport/palir-02.dll
+ LIBS += libwsock32
+ LIBS += C:/MinGW/lib/libf95.a
+ 
+Index: Modulator.hpp
+===================================================================
+--- Modulator.hpp	(revision 0)
++++ Modulator.hpp	(working copy)
+@@ -0,0 +1,81 @@
++#ifndef MODULATOR_HPP__
++#define MODULATOR_HPP__
++
++#include &lt;vector&gt;
++
++#include &lt;QIODevice&gt;
++#include &lt;QScopedPointer&gt;
++
++//
++// Input device that generates PCM audio frames that encode a message
++// and an optional CW ID.
++//
++// Output can be muted while underway, preserving waveform timing when
++// transmission is resumed.
++//
++class Modulator : public QIODevice
++{
++  Q_OBJECT;
++
++  Q_PROPERTY (unsigned frequency READ frequency WRITE setFrequency);
++  Q_PROPERTY (bool tuning READ isTuning WRITE tune);
++  Q_PROPERTY (bool muted READ isMuted WRITE mute);
++
++private:
++  Q_DISABLE_COPY (Modulator);
++
++public:
++  Modulator (unsigned frameRate, unsigned periodLengthInSeconds, QObject * parent = 0);
++
++  bool isTuning () const {return m_tuning;}
++  Q_SLOT void tune (bool newState = true) {m_tuning = newState;}
++
++  bool isMuted () const {return m_muted;}
++  Q_SLOT void mute (bool newState = true) {m_muted = newState;}
++
++  unsigned frequency () const {return m_frequency;}
++  Q_SLOT void setFrequency (unsigned newFrequency) {m_frequency = newFrequency;}
++
++  bool open (std::vector&lt;int&gt; const * symbols, std::vector&lt;int&gt; const * cw, double framesPerSymbol, unsigned frequency, double dBSNR = 99.);
++
++  bool isSequential () const
++  {
++    return true;
++  }
++
++protected:
++  qint64 readData (char * data, qint64 maxSize);
++  qint64 writeData (char const * /* data */, qint64 /* maxSize */)
++  {
++    return -1;			// we don't consume data
++  }
++
++private:
++  typedef short frame_t;
++
++  frame_t postProcessFrame (frame_t frame) const;
++
++  QScopedPointer&lt;std::vector&lt;int&gt; const&gt; m_symbols;
++  QScopedPointer&lt;std::vector&lt;int&gt; const&gt; m_cw;
++
++  static double const m_twoPi;
++  static unsigned const m_nspd;	// CW ID WPM factor
++
++  int m_frameRate;
++  int m_period;
++  double m_nsps;
++  double m_frequency;
++  double m_snr;
++  enum {Idle, Active, Done} m_state;
++  bool m_tuning;
++  bool m_muted;
++  bool m_addNoise;
++  double m_phi;
++  double m_dphi;
++  double m_amp;
++  unsigned m_ic;
++  double m_fac;
++  unsigned m_isym0;
++};
++
++#endif
+Index: Detector.hpp
+===================================================================
+--- Detector.hpp	(revision 0)
++++ Detector.hpp	(working copy)
+@@ -0,0 +1,62 @@
++#ifndef DETECTOR_HPP__
++#define DETECTOR_HPP__
++
++#include &lt;QIODevice&gt;
++
++//
++// output device that distributes data in predefined chunks via a signal
++//
++// the underlying device for this abstraction is just the buffer that
++// stores samples throughout a receiving period
++//
++class Detector : public QIODevice
++{
++  Q_OBJECT;
++
++  Q_PROPERTY (bool monitoring READ isMonitoring WRITE setMonitoring);
++
++private:
++  Q_DISABLE_COPY (Detector);
++
++public:
++  //
++  // if the data buffer were not global storage and fixed size then we
++  // might want maximum size passed as constructor arguments
++  //
++  Detector (unsigned frameRate, unsigned periodLengthInSeconds, unsigned bytesPerSignal, QObject * parent = 0);
++
++  bool open ()
++  {
++    // we only support data consumption and want it as fast as possible
++    return QIODevice::open (QIODevice::WriteOnly | QIODevice::Unbuffered);
++  }
++
++  bool isSequential () const
++  {
++    return true;
++  }
++
++  bool isMonitoring () const {return m_monitoring;}
++  void setMonitoring (bool newState) {m_monitoring = newState;}
++
++  bool reset ();
++
++protected:
++  qint64 readData (char * /* data */, qint64 /* maxSize */)
++  {
++    return -1;			// we don't produce data
++  }
++
++  qint64 writeData (char const * data, qint64 maxSize);
++
++private:
++  void clear ();		// discard buffer contents
++  unsigned secondInPeriod () const;
++
++  unsigned m_frameRate;
++  unsigned m_period;
++  unsigned m_bytesPerSignal;
++  bool m_monitoring;
++};
++
++#endif
+Index: soundin.cpp
+===================================================================
+--- soundin.cpp	(revision 3522)
++++ soundin.cpp	(working copy)
+@@ -1,375 +1,127 @@
+-#ifndef QAUDIO_INPUT
+ #include &quot;soundin.h&quot;
+ 
+-#include &lt;QDateTime&gt;
++#include &lt;QAudioDeviceInfo&gt;
++#include &lt;QAudioFormat&gt;
++#include &lt;QAudioInput&gt;
+ #include &lt;QDebug&gt;
+ 
+-#define FRAMES_PER_BUFFER 1024
+-#define NSMAX 6827
+-#define NTMAX 120
++bool SoundInput::audioError () const
++{
++  bool result (true);
+ 
+-extern &quot;C&quot; {
+-#include &lt;portaudio.h&gt;
+-extern struct {
+-  float ss[184*NSMAX];              //This is &quot;common/jt9com/...&quot; in fortran
+-  float savg[NSMAX];
+-//  float c0[2*NTMAX*1500];
+-  short int d2[NTMAX*12000];
+-  int nutc;                         //UTC as integer, HHMM
+-  int ndiskdat;                     //1 ==&gt; data read from *.wav file
+-  int ntrperiod;                    //TR period (seconds)
+-  int mousefqso;                    //User-selected QSO freq (kHz)
+-  int newdat;                       //1 ==&gt; new data, must do long FFT
+-  int npts8;                        //npts in c0() array
+-  int nfa;                          //Low decode limit (Hz)
+-  int nfb;                          //High decode limit (Hz)
+-  int ntol;                         //+/- decoding range around fQSO (Hz)
+-  int kin;
+-  int nzhsym;
+-  int nsave;
+-  int nagain;
+-  int ndepth;
+-  int ntxmode;
+-  int nmode;
+-  char datetime[20];
+-} jt9com_;
+-}
++  Q_ASSERT_X (m_stream, &quot;SoundInput&quot;, &quot;programming error&quot;);
++  if (m_stream)
++    {
++      switch (m_stream-&gt;error ())
++	{
++	case QAudio::OpenError:
++	  Q_EMIT error (tr (&quot;An error opening the audio input device has occurred.&quot;));
++	  break;
+ 
+-//--------------------------------------------------------------- a2dCallback
+-int a2dCallback( const void *inputBuffer, void * /* outputBuffer */,
+-		 unsigned long framesToProcess,
+-		 const PaStreamCallbackTimeInfo * /* timeInfo */,
+-		 PaStreamCallbackFlags statusFlags,
+-		 void *userData )
++	case QAudio::IOError:
++	  Q_EMIT error (tr (&quot;An error occurred during read from the audio input device.&quot;));
++	  break;
+ 
+-// This routine called by the PortAudio engine when samples are available.
+-// It may be called at interrupt level, so don't do anything
+-// that could mess up the system like calling malloc() or free().
++	case QAudio::UnderrunError:
++	  Q_EMIT error (tr (&quot;Audio data not being fed to the audio input device fast enough.&quot;));
++	  break;
+ 
+-{
+-  SoundInput::CallbackData * udata = reinterpret_cast&lt;SoundInput::CallbackData *&gt;(userData);
+-  int nbytes,k;
++	case QAudio::FatalError:
++	  Q_EMIT error (tr (&quot;Non-recoverable error, audio input device not usable at this time.&quot;));
++	  break;
+ 
+-  if( (statusFlags&amp;paInputOverflow) != 0) {
+-    qDebug() &lt;&lt; &quot;Input Overflow in a2dCallback&quot;;
+-  }
+-  if(udata-&gt;bzero)
+-    { //Start of a new Rx sequence
+-      udata-&gt;kin = 0;		//Reset buffer pointer
+-      udata-&gt;bzero = false;
++	case QAudio::NoError:
++	  result = false;
++	  break;
++	}
+     }
+-
+-  nbytes=2*framesToProcess;	//Bytes per frame
+-  k=udata-&gt;kin;
+-  if(udata-&gt;monitoring) {
+-    memcpy(&amp;jt9com_.d2[k],inputBuffer,nbytes);      //Copy all samples to d2
+-  }
+-  udata-&gt;kin+=framesToProcess;
+-  jt9com_.kin=udata-&gt;kin; // we are the only writer to jt9com_ so no MT issue here
+-
+-  return paContinue;
++  return result;
+ }
+ 
+-SoundInput::SoundInput()
+-  : m_inStream(0),
+-    m_TRperiod(60),
+-    m_nsps(6912),
+-    m_monitoring(false),
+-    m_intervalTimer(this)
++bool SoundInput::start(QAudioDeviceInfo const&amp; device, int framesPerBuffer, QIODevice * sink)
+ {
+-	connect(&amp;m_intervalTimer, SIGNAL(timeout()), this,SLOT(intervalNotify()));
+-}
+-
+-void SoundInput::start(qint32 device)
+-{
+   stop();
+ 
+-//---------------------------------------------------- Soundcard Setup
+-  PaError paerr;
+-  PaStreamParameters inParam;
++  QAudioFormat format (device.preferredFormat());
++  format.setChannelCount (1);
++  format.setCodec (&quot;audio/pcm&quot;);
++  format.setSampleRate (12000);
++  format.setSampleType (QAudioFormat::SignedInt);
++  format.setSampleSize (16);
+ 
+-  m_callbackData.kin = 0;	 //Buffer pointer
+-  m_callbackData.bzero = false;	 //Flag to request reset of kin
+-  m_callbackData.monitoring = m_monitoring;
+-
+-  inParam.device=device;		    //### Input Device Number ###
+-  inParam.channelCount=1;                   //Number of analog channels
+-  inParam.sampleFormat=paInt16;             //Get i*2 from Portaudio
+-  inParam.suggestedLatency=0.05;
+-  inParam.hostApiSpecificStreamInfo=NULL;
+-
+-  paerr=Pa_IsFormatSupported(&amp;inParam,NULL,12000.0);
+-  if(paerr&lt;0) {
+-    emit error(&quot;PortAudio says requested soundcard format not supported.&quot;);
+-  }
+-  paerr=Pa_OpenStream(&amp;m_inStream, //Input stream
+-        &amp;inParam,		   //Input parameters
+-        NULL,			   //No output parameters
+-        12000.0,		   //Sample rate
+-        FRAMES_PER_BUFFER,	   //Frames per buffer
+-//        paClipOff+paDitherOff,            //No clipping or dithering
+-        paClipOff,		//No clipping
+-        a2dCallback,		//Input callback routine
+-        &amp;m_callbackData);	//userdata
+-  paerr=Pa_StartStream(m_inStream);
+-  if(paerr&lt;0) {
+-    emit error(&quot;Failed to start audio input stream.&quot;);
+-    return;
+-  }
+-  m_ntr0 = 99;		     // initial value higher than any expected
+-  m_intervalTimer.start(100);
+-  m_ms0 = QDateTime::currentMSecsSinceEpoch();
+-  m_nsps0 = 0;
+-}
+-
+-void SoundInput::intervalNotify()
+-{
+-  m_callbackData.monitoring = m_monitoring; // update monitoring
+-					    // status
+-
+-  qint64 ms = QDateTime::currentMSecsSinceEpoch();
+-  ms=ms % 86400000;
+-  int nsec = ms/1000;             // Time according to this computer
+-  int ntr = nsec % m_TRperiod;
+-
+-  int k=m_callbackData.kin;	// get a copy of kin to mitigate the
+-				// potential race condition with the
+-				// callback handler when a buffer
+-				// reset is requested below
+-
+-  // Reset buffer pointer and symbol number at start of minute
+-  if(ntr &lt; m_ntr0 or !m_monitoring or m_nsps!=m_nsps0) {
+-    m_nstep0=0;
+-    m_nsps0=m_nsps;
+-    m_callbackData.bzero = true; // request callback to reset buffer pointer
+-  }
+-
+-  if(m_monitoring) {
+-    int kstep=m_nsps/2;
+-    //      m_step=k/kstep;
+-    m_step=(k-1)/kstep;
+-    if(m_step != m_nstep0) {
+-      emit readyForFFT(k-1);         //Signal to compute new FFTs
+-      m_nstep0=m_step;
+-    }
+-  }
+-  m_ntr0=ntr;
+-}
+-
+-SoundInput::~SoundInput()
+-{
+-  if (m_inStream)
++  if (!format.isValid ())
+     {
+-      Pa_CloseStream(m_inStream), m_inStream = 0;
++      Q_EMIT error (tr (&quot;Requested input audio format is not valid.&quot;));
++      return false;
+     }
+-}
+ 
+-void SoundInput::stop()
+-{
+-  m_intervalTimer.stop();
+-  if (m_inStream)
++  // this function lies!
++  // if (!device.isFormatSupported (format))
++  //   {
++  //     Q_EMIT error (tr (&quot;Requested input audio format is not supported on device.&quot;));
++  //     return false;
++  //   }
++
++  m_stream.reset (new QAudioInput (device, format, this));
++  if (audioError ())
+     {
+-      Pa_StopStream(m_inStream);
+-      Pa_CloseStream(m_inStream), m_inStream = 0;
++      return false;
+     }
+-}
+ 
+-#else  // QAUDIO_INPUT
++  connect (m_stream.data(), &amp;QAudioInput::stateChanged, this, &amp;SoundInput::handleStateChanged);
+ 
+-#include &quot;soundin.h&quot;
++  m_stream-&gt;setBufferSize (m_stream-&gt;format ().bytesForFrames (framesPerBuffer));
+ 
+-#include &lt;QDateTime&gt;
++  m_stream-&gt;start (sink);
+ 
+-#define FRAMES_PER_BUFFER 1024
+-#define NSMAX 6827
+-#define NTMAX 120
++  qDebug () &lt;&lt; &quot;audio input buffer size = &quot; &lt;&lt; m_stream-&gt;bufferSize () &lt;&lt; &quot; bytes\n&quot;;
+ 
+-extern &quot;C&quot; {
+-#include &lt;portaudio.h&gt;
+-extern struct {
+-	float ss[184*NSMAX];              //This is &quot;common/jt9com/...&quot; in fortran
+-	float savg[NSMAX];
+-//  float c0[2*NTMAX*1500];
+-	short int d2[NTMAX*12000];
+-	int nutc;                         //UTC as integer, HHMM
+-	int ndiskdat;                     //1 ==&gt; data read from *.wav file
+-	int ntrperiod;                    //TR period (seconds)
+-	int mousefqso;                    //User-selected QSO freq (kHz)
+-	int newdat;                       //1 ==&gt; new data, must do long FFT
+-	int npts8;                        //npts in c0() array
+-	int nfa;                          //Low decode limit (Hz)
+-	int nfb;                          //High decode limit (Hz)
+-	int ntol;                         //+/- decoding range around fQSO (Hz)
+-	int kin;
+-	int nzhsym;
+-	int nsave;
+-	int nagain;
+-	int ndepth;
+-  int ntxmode;
+-	int nmode;
+-	char datetime[20];
+-} jt9com_;
++  return audioError () ? false : true;
+ }
+ 
+-QString reportAudioError(QAudio::Error audioError)
++void SoundInput::handleStateChanged (QAudio::State newState) const
+ {
+-	switch (audioError) {
+-	case QAudio::NoError: Q_ASSERT(false);
+-	case QAudio::OpenError: return QObject::tr(
+-					&quot;An error opening the audio device has occurred.&quot;);
+-	case QAudio::IOError: return QObject::tr(
+-					&quot;An error occurred during read/write of audio device.&quot;);
+-	case QAudio::UnderrunError: return QObject::tr(
+-					&quot;Audio data not being fed to the audio device fast enough.&quot;);
+-	case QAudio::FatalError: return QObject::tr(
+-					&quot;Non-recoverable error, audio device not usable at this time.&quot;);
+-	}
+-	Q_ASSERT(false);
+-	return &quot;&quot;;
+-}
++  switch (newState)
++    {
++    case QAudio::IdleState:
++      qDebug () &lt;&lt; &quot;SoundInput idle\n&quot;;
++      Q_EMIT status (tr (&quot;Idle&quot;));
++      break;
+ 
+-SoundInput::SoundInput()
+-	:	m_dataSinkBusy(false),
+-		m_TRperiod(60),
+-		m_nsps(6912),
+-		m_monitoring(false),
+-		m_intervalTimer(this)
+-{
+-//  qDebug() &lt;&lt; &quot;A&quot;;
+-  connect(&amp;m_intervalTimer, SIGNAL(timeout()), this,SLOT(intervalNotify()));
+-}
++    case QAudio::ActiveState:
++      qDebug () &lt;&lt; &quot;SoundInput active\n&quot;;
++      Q_EMIT status (tr (&quot;Receiving&quot;));
++      break;
+ 
+-void SoundInput::start(qint32 device)
+-{
+-	stop();
++    case QAudio::SuspendedState:
++      qDebug () &lt;&lt; &quot;SoundInput suspended\n&quot;;
++      Q_EMIT status (tr (&quot;Suspended&quot;));
++      break;
+ 
+-//---------------------------------------------------- Soundcard Setup
+-	m_callbackData.kin=0;                              //Buffer pointer
+-	m_callbackData.ncall=0;                            //Number of callbacks
+-	m_callbackData.bzero=false;                        //Flag to request reset of kin
+-	m_callbackData.monitoring=m_monitoring;
+-
+-	//### Temporary: hardwired device selection
+-	QAudioDeviceInfo  DeviceInfo;
+-	QList&lt;QAudioDeviceInfo&gt; m_InDevices;
+-	QAudioDeviceInfo  m_InDeviceInfo;
+-	m_InDevices = DeviceInfo.availableDevices(QAudio::AudioInput);
+-	inputDevice = m_InDevices.at(0);
+-	//###
+-//  qDebug() &lt;&lt; &quot;B&quot; &lt;&lt; m_InDevices.length() &lt;&lt; inputDevice.deviceName();
+-
+-	const char* pcmCodec = &quot;audio/pcm&quot;;
+-	QAudioFormat audioFormat = inputDevice.preferredFormat();
+-	audioFormat.setChannelCount(1);
+-	audioFormat.setCodec(pcmCodec);
+-	audioFormat.setSampleRate(12000);
+-	audioFormat.setSampleType(QAudioFormat::SignedInt);
+-	audioFormat.setSampleSize(16);
+-
+-//  qDebug() &lt;&lt; &quot;C&quot; &lt;&lt; audioFormat &lt;&lt; audioFormat.isValid();
+-
+-	if (!audioFormat.isValid()) {
+-		emit error(tr(&quot;Requested audio format is not available.&quot;));
+-		return;
++    case QAudio::StoppedState:
++      if (audioError ())
++	{
++	  qDebug () &lt;&lt; &quot;SoundInput error\n&quot;;
++	  Q_EMIT status (tr (&quot;Error&quot;));
+ 	}
+-
+-	audioInput = new QAudioInput(inputDevice, audioFormat);
+-//  qDebug() &lt;&lt; &quot;D&quot; &lt;&lt; audioInput-&gt;error() &lt;&lt; QAudio::NoError;
+-  if (audioInput-&gt;error() != QAudio::NoError) {
+-		emit error(reportAudioError(audioInput-&gt;error()));
+-		return;
++      else
++	{
++	  qDebug () &lt;&lt; &quot;SoundInput stopped\n&quot;;
++	  Q_EMIT status (tr (&quot;Stopped&quot;));
+ 	}
+-
+-	stream = audioInput-&gt;start();
+-//  qDebug() &lt;&lt; &quot;E&quot; &lt;&lt; stream-&gt;errorString();
+-
+-	m_ntr0 = 99;		     // initial value higher than any expected
+-	m_nBusy = 0;
+-	m_intervalTimer.start(100);
+-	m_ms0 = QDateTime::currentMSecsSinceEpoch();
+-	m_nsps0 = 0;
++      break;
++    }
+ }
+ 
+-void SoundInput::intervalNotify()
++void SoundInput::stop()
+ {
+-	m_callbackData.monitoring=m_monitoring;
+-	qint64 ms = QDateTime::currentMSecsSinceEpoch();
+-	ms=ms % 86400000;
+-	int nsec = ms/1000;             // Time according to this computer
+-	int ntr = nsec % m_TRperiod;
+-	static int k=0;
+-
+-//  qDebug() &lt;&lt; &quot;a&quot; &lt;&lt; ms &lt;&lt; nsec;
+-  // Reset buffer pointer and symbol number at start of minute
+-	if(ntr &lt; m_ntr0 or !m_monitoring or m_nsps!=m_nsps0) {
+-		m_nstep0=0;
+-		m_nsps0=m_nsps;
+-		m_callbackData.bzero=true;
+-		k=0;
+-	}
+-//	int k=m_callbackData.kin;
+-
+-// How many new samples are available?
+-	const qint32 bytesReady = audioInput-&gt;bytesReady();
+-//  qDebug() &lt;&lt; &quot;b&quot; &lt;&lt; bytesReady;
+-  Q_ASSERT(bytesReady &gt;= 0);
+-	Q_ASSERT(bytesReady % 2 == 0);
+-	if (bytesReady == 0) {
+-		return;
+-	}
+-
+-	qint32 bytesRead;
+-  bytesRead = stream-&gt;read((char*)&amp;jt9com_.d2[k], bytesReady);   // Get the new samples
+-  k += bytesRead/2;
+-//  qDebug() &lt;&lt; &quot;c&quot; &lt;&lt; bytesReady &lt;&lt; bytesRead;
+-  Q_ASSERT(bytesRead &lt;= bytesReady);
+-	if (bytesRead &lt; 0) {
+-		emit error(tr(&quot;audio stream QIODevice::read returned -1.&quot;));
+-		return;
+-	}
+-	Q_ASSERT(bytesRead % 2 == 0);
+-
+-	if(m_monitoring) {
+-		int kstep=m_nsps/2;
+-		m_step=(k-1)/kstep;
+-		if(m_step != m_nstep0) {
+-			if(m_dataSinkBusy) {
+-	m_nBusy++;
+-			} else {
+-	emit readyForFFT(k-1);         //Signal to compute new FFTs
+-			}
+-			m_nstep0=m_step;
+-		}
+-	}
+-	m_ntr0=ntr;
++  if (m_stream)
++    {
++      m_stream-&gt;stop ();
++    }
++  m_stream.reset ();
+ }
+ 
+-SoundInput::~SoundInput()
++SoundInput::~SoundInput ()
+ {
+-/*
+-	if (m_inStream)
+-		{
+-			Pa_CloseStream(m_inStream), m_inStream = 0;
+-		}
+-*/
+ }
+-/*
+-//		memcpy(jt9com_.d2[k],buf0,bytesRead);
+-//		k+=bytesRead/2;
+-  for(int i=0; i&lt;bytesRead/2; i++) {
+-    jt9com_.d2[k++]=buf0[i];
+-  }
+-*/
+-void SoundInput::stop()
+-{
+-	m_intervalTimer.stop();
+-/*
+-	if (m_inStream)
+-		{
+-			Pa_StopStream(m_inStream);
+-			Pa_CloseStream(m_inStream), m_inStream = 0;
+-		}
+-*/
+-}
+-
+-#endif // QAUDIO_INPUT
+Index: soundout.cpp
+===================================================================
+--- soundout.cpp	(revision 3522)
++++ soundout.cpp	(working copy)
+@@ -1,217 +1,118 @@
+ #include &quot;soundout.h&quot;
+ 
+-#include &lt;cmath&gt;
+-#include &lt;cstring&gt;
++#include &lt;QDateTime&gt;
++#include &lt;QAudioDeviceInfo&gt;
++#include &lt;QAudioOutput&gt;
+ 
+-#include &lt;QDateTime&gt;
+ #include &lt;QDebug&gt;
+ 
+-//#define FRAMES_PER_BUFFER 1024
+-
+-extern float gran();                  //Noise generator (for tests only)
+-extern int itone[126];                //Audio tones for all Tx symbols
+-extern int icw[250];                  //Dits for CW ID
+-extern int outBufSize;
+-
+-
+-//--------------------------------------------------------------- d2aCallback
+-int d2aCallback(const void *inputBuffer, void *outputBuffer,
+-                           unsigned long framesToProcess,
+-                           const PaStreamCallbackTimeInfo* timeInfo,
+-                           PaStreamCallbackFlags statusFlags,
+-                           void *userData )
++bool SoundOutput::audioError () const
+ {
+-  SoundOutput::CallbackData * udata = reinterpret_cast&lt;SoundOutput::CallbackData *&gt;(userData);
+-  short * wptr = reinterpret_cast&lt;short *&gt;(outputBuffer);
++  bool result (true);
+ 
+-  static double twopi=2.0*3.141592653589793238462;
+-  static double baud;
+-  static double phi=0.0;
+-  static double dphi;
+-  static double freq;
+-  static double snr;
+-  static double fac;
+-  static double amp;
+-  static int ic=0,j=0;
+-  static int isym0=-999;
+-  static short int i2;
+-  int isym,nspd;
++  Q_ASSERT_X (m_stream, &quot;SoundOutput&quot;, &quot;programming error&quot;);
++  if (m_stream)
++    {
++      switch (m_stream-&gt;error ())
++	{
++	case QAudio::OpenError:
++	  Q_EMIT error (tr (&quot;An error opening the audio output device has occurred.&quot;));
++	  break;
+ 
+-  udata-&gt;ncall++;
+-  if(udata-&gt;bRestart) {
+- // Time according to this computer
+-    qint64 ms = QDateTime::currentMSecsSinceEpoch() % 86400000;
+-    int mstr = ms % (1000*udata-&gt;ntrperiod );
+-    if(mstr&lt;1000)
+-      {
+-	std::memset(wptr, 0, framesToProcess * sizeof(*wptr)); // output silence
+-	return paContinue;
+-      }
+-    ic=(mstr-1000)*48;
+-    udata-&gt;bRestart=false;
+-    srand(mstr);                                //Initialize random seed
+-  }
+-  isym=ic/(4.0*udata-&gt;dnsps);                   //Actual fsample=48000
+-  if(udata-&gt;tune) isym=0;                      //If tuning, send pure tone
+-  if(udata-&gt;txsnrdb &lt; 0.0) {
+-    snr=std::pow(10.0,0.05*(udata-&gt;txsnrdb-6.0));
+-    fac=3000.0;
+-    if(snr&gt;1.0) fac=3000.0/snr;
+-  }
++	case QAudio::IOError:
++	  Q_EMIT error (tr (&quot;An error occurred during write to the audio output device.&quot;));
++	  break;
+ 
+-  if(isym&gt;=udata-&gt;nsym and icw[0]&gt;0) {              //Output the CW ID
+-    freq=udata-&gt;ntxfreq - udata-&gt;xit;
+-    dphi=twopi*freq/48000.0;
++	case QAudio::UnderrunError:
++	  Q_EMIT error (tr (&quot;Audio data not being fed to the audio output device fast enough.&quot;));
++	  break;
+ 
+-//    float wpm=20.0;
+-//    int nspd=1.2*48000.0/wpm;
+-//    nspd=3072;                           //18.75 WPM
+-    nspd=2048 + 512;                       //22.5 WPM
+-    int ic0=udata-&gt;nsym*4*udata-&gt;dnsps;
+-    for(uint i=0 ; i&lt;framesToProcess; i++ )  {
+-      phi += dphi;
+-      if(phi&gt;twopi) phi -= twopi;
+-      i2=32767.0*std::sin(phi);
+-      j=(ic-ic0)/nspd + 1;
+-      if(icw[j]==0) i2=0;
+-      if(udata-&gt;txsnrdb &lt; 0.0) {
+-        int i4=fac*(gran() + i2*snr/32768.0);
+-        if(i4&gt;32767) i4=32767;
+-        if(i4&lt;-32767) i4=-32767;
+-        i2=i4;
+-      }
+-      if(udata-&gt;mute)  i2=0;
+-      *wptr++ = i2;                   //left
+-#ifdef UNIX
+-      *wptr++ = i2;                   //right
+-#endif
+-      ic++;
+-    }
+-    if(j&gt;icw[0]) return paComplete;
+-    if(statusFlags==999999 and timeInfo==NULL and
+-       inputBuffer==NULL) return paContinue;   //Silence compiler warning:
+-    return paContinue;
+-  }
++	case QAudio::FatalError:
++	  Q_EMIT error (tr (&quot;Non-recoverable error, audio output device not usable at this time.&quot;));
++	  break;
+ 
+-  baud=12000.0/udata-&gt;dnsps;
+-  amp=32767.0;
+-  int i0=(udata-&gt;nsym-0.017)*4.0*udata-&gt;dnsps;
+-  int i1=udata-&gt;nsym*4.0*udata-&gt;dnsps;
+-  bool tune = udata-&gt;tune;
+-  if(tune) {                           //If tuning, no ramp down
+-    i0=999*udata-&gt;dnsps;
+-    i1=i0;
+-  }
+-  for(uint i=0 ; i&lt;framesToProcess; i++ )  {
+-    isym=ic/(4.0*udata-&gt;dnsps);                   //Actual fsample=48000
+-    if(tune) isym=0;                      //If tuning, send pure tone
+-    if(isym!=isym0) {
+-      freq=udata-&gt;ntxfreq + itone[isym]*baud - udata-&gt;xit;
+-      dphi=twopi*freq/48000.0;
+-      isym0=isym;
++	case QAudio::NoError:
++	  result = false;
++	  break;
++	}
+     }
+-    phi += dphi;
+-    if(phi&gt;twopi) phi -= twopi;
+-    if(ic&gt;i0) amp=0.98*amp;
+-    if(ic&gt;i1) amp=0.0;
+-    i2=amp*std::sin(phi);
+-    if(udata-&gt;txsnrdb &lt; 0.0) {
+-      int i4=fac*(gran() + i2*snr/32768.0);
+-      if(i4&gt;32767) i4=32767;
+-      if(i4&lt;-32767) i4=-32767;
+-      i2=i4;
+-    }
+-    if(udata-&gt;mute)  i2=0;
+-    *wptr++ = i2;                   //left
+-#ifdef UNIX
+-    *wptr++ = i2;                   //right
+-#endif
+-    ic++;
+-  }
+-  if(amp==0.0) {
+-    if(icw[0]==0) return paComplete;
+-    phi=0.0;
+-  }
+-  return paContinue;
++  return result;
+ }
+ 
+-SoundOutput::SoundOutput()
+-  : m_stream(0)
+-  , m_outputLatency(0.)
+-  , m_active(false)
++bool SoundOutput::start(QAudioDeviceInfo const&amp; device, QIODevice * source)
+ {
+-}
++  Q_ASSERT (source);
+ 
+-void SoundOutput::start(qint32 deviceNumber,QString const&amp; mode,int TRPeriod
+-			,int nsps,int txFreq,int xit,double txsnrdb)
+-{
+   stop();
+ 
+-  PaStreamParameters outParam;
++  QAudioFormat format (device.preferredFormat());
+ 
+-  outParam.device=deviceNumber;              //Output device number
+-  outParam.channelCount=1;                   //Number of analog channels
+ #ifdef UNIX
+-  outParam.channelCount=2;                   //Number of analog channels
++  format.setChannelCount (2);
++#else
++  format.setChannelCount (1);
+ #endif
+-  outParam.sampleFormat=paInt16;             //Send short ints to PortAudio
+-  outParam.suggestedLatency=0.05;
+-  outParam.hostApiSpecificStreamInfo=NULL;
+ 
+-  PaError paerr = Pa_IsFormatSupported(NULL,&amp;outParam,48000.0);
+-  if(paerr&lt;0) {
+-    qDebug() &lt;&lt; &quot;PortAudio says requested output format not supported.&quot;;
+-    qDebug() &lt;&lt; paerr &lt;&lt; deviceNumber;
+-    return;
+-  }
++  format.setCodec (&quot;audio/pcm&quot;);
++  format.setSampleRate (48000);
++  format.setSampleType (QAudioFormat::SignedInt);
++  format.setSampleSize (16);
++  if (!format.isValid ())
++    {
++      Q_EMIT error (tr (&quot;Requested output audio format is not valid.&quot;));
++      return false;
++    }
++  if (!device.isFormatSupported (format))
++    {
++      Q_EMIT error (tr (&quot;Requested output audio format is not supported on device.&quot;));
++      return false;
++    }
+ 
+-  m_callbackData.txsnrdb=txsnrdb;
+-  m_callbackData.dnsps=nsps;
+-  m_callbackData.nsym=85;
+-  if(mode==&quot;JT65&quot;) {
+-    m_callbackData.dnsps=4096.0*12000.0/11025.0;
+-    m_callbackData.nsym=126;
+-  }
+-  m_callbackData.ntrperiod=TRPeriod;
+-  m_callbackData.ntxfreq=txFreq;
+-  m_callbackData.xit=xit;
+-  m_callbackData.ncall=0;
+-  m_callbackData.bRestart=true;
++  m_stream.reset (new QAudioOutput (device, format, this));
++  if (audioError ())
++    {
++      return false;
++    }
++  connect (m_stream.data(), &amp;QAudioOutput::stateChanged, this, &amp;SoundOutput::handleStateChanged);
+ 
+-  paerr=Pa_OpenStream(&amp;m_stream,            //Output stream
+-        NULL,                               //No input parameters
+-        &amp;outParam,                          //Output parameters
+-        48000.0,                            //Sample rate
+-        outBufSize,                         //Frames per buffer
+-        paClipOff,                          //No clipping
+-        d2aCallback,                        //output callbeck routine
+-        &amp;m_callbackData);                   //userdata
++  m_stream-&gt;start (source);
++  if (audioError ())		// start the input stream
++    {
++      return false;
++    }
+ 
+-  paerr=Pa_StartStream(m_stream);
+-  if(paerr&lt;0) {
+-    qDebug() &lt;&lt; &quot;Failed to start audio output stream.&quot;;
+-    return;
+-  }
+-  const PaStreamInfo* p=Pa_GetStreamInfo(m_stream);
+-  m_outputLatency = p-&gt;outputLatency;
+-  m_ms0 = QDateTime::currentMSecsSinceEpoch();
+   m_active = true;
++  return true;
+ }
+ 
+-void SoundOutput::stop()
++void SoundOutput::handleStateChanged (QAudio::State newState) const
+ {
+-  if (m_stream)
++  switch (newState)
+     {
+-      Pa_StopStream(m_stream);
+-      Pa_CloseStream(m_stream), m_stream = 0;
++    case QAudio::IdleState: Q_EMIT status (tr (&quot;Idle&quot;)); break;
++    case QAudio::ActiveState: Q_EMIT status (tr (&quot;Sending&quot;)); break;
++    case QAudio::SuspendedState: Q_EMIT status (tr (&quot;Suspended&quot;)); break;
++
++    case QAudio::StoppedState:
++      if (audioError ())
++	{
++	  Q_EMIT status (tr (&quot;Error&quot;));
++	}
++      else
++	{
++	  Q_EMIT status (tr (&quot;Stopped&quot;));
++	}
++      break;
+     }
++}
++
++void SoundOutput::stop()
++{
++  m_stream.reset ();
+   m_active = false;
+ }
+ 
+ SoundOutput::~SoundOutput()
+ {
+-  if (m_stream)
+-    {
+-      Pa_CloseStream(m_stream), m_stream = 0;
+-    }
++  stop ();
+ }
+Index: main.cpp
+===================================================================
+--- main.cpp	(revision 3522)
++++ main.cpp	(working copy)
+@@ -4,9 +4,10 @@
+ #include &lt;QtGui&gt;
+ #endif
+ #include &lt;QApplication&gt;
+-#include &lt;portaudio.h&gt;
++
+ #include &quot;mainwindow.h&quot;
+ 
++
+ // Multiple instances:
+ QSharedMemory mem_jt9;
+ QUuid         my_uuid;
+@@ -48,13 +49,6 @@
+   }
+   memset(to,0,size);         //Zero all decoding params in shared memory
+ 
+-  //Initialize Portaudio
+-  PaError paerr=Pa_Initialize();
+-  if(paerr!=paNoError) {
+-    QMessageBox::critical( 0, &quot;Error&quot;, &quot;Unable to initialize PortAudio.&quot;);
+-    exit(1);
+-  }
+-
+ // Multiple instances:  Call MainWindow() with the UUID key
+   MainWindow w(&amp;mem_jt9, &amp;my_key, fontSize2, fontWeight2);
+   w.show();
+Index: mainwindow.cpp
+===================================================================
+--- mainwindow.cpp	(revision 3522)
++++ mainwindow.cpp	(working copy)
+@@ -1,13 +1,17 @@
+ //--------------------------------------------------------------- MainWindow
+ #include &quot;mainwindow.h&quot;
+ #include &quot;ui_mainwindow.h&quot;
++
++#include &lt;vector&gt;
++
++#include &lt;QScopedPointer&gt;
++
+ #include &quot;devsetup.h&quot;
+ #include &quot;plotter.h&quot;
+ #include &quot;about.h&quot;
+ #include &quot;widegraph.h&quot;
+ #include &quot;sleep.h&quot;
+ #include &quot;getfile.h&quot;
+-#include &lt;portaudio.h&gt;
+ #include &quot;logqso.h&quot;
+ 
+ #ifdef QT5
+@@ -15,8 +19,14 @@
+ #include &lt;QtConcurrent/QtConcurrentRun&gt;
+ #endif
+ 
+-int itone[126];                       //Audio tones for all Tx symbols
+-int icw[250];                         //Dits for CW ID
++#define NUM_JT65_SYMBOLS 126
++#define NUM_JT9_SYMBOLS 85
++#define NUM_CW_SYMBOLS 250
++#define TX_SAMPLE_RATE 48000
++
++int itone[NUM_JT65_SYMBOLS];	//Audio tones for all Tx symbols
++int icw[NUM_CW_SYMBOLS];	//Dits for CW ID
++
+ int outBufSize;
+ int rc;
+ qint32  g_COMportOpen;
+@@ -41,10 +51,16 @@
+                        qint32 fontSize2, qint32 fontWeight2, \
+                        QWidget *parent) :
+   QMainWindow(parent),
+-  ui(new Ui::MainWindow)
++  ui(new Ui::MainWindow),
++  m_audioInputDevice (QAudioDeviceInfo::defaultInputDevice ()), // start with default
++  m_detector (RX_SAMPLE_RATE, NTMAX / 2, 6912 / 2 * sizeof (jt9com_.d2[0]), this),
++  m_audioOutputDevice (QAudioDeviceInfo::defaultOutputDevice ()), // start with default
++  m_modulator (TX_SAMPLE_RATE, NTMAX / 2, this)
+ {
+   ui-&gt;setupUi(this);
+ 
++  m_detector.open ();
++
+   on_EraseButton_clicked();
+   QActionGroup* paletteGroup = new QActionGroup(this);
+   ui-&gt;actionCuteSDR-&gt;setActionGroup(paletteGroup);
+@@ -83,12 +99,15 @@
+           SLOT(doubleClickOnCall2(bool,bool)));
+ 
+   setWindowTitle(Program_Title_Version);
+-  connect(&amp;m_soundInput, SIGNAL(readyForFFT(int)),
+-             this, SLOT(dataSink(int)));
++  connect(&amp;m_detector, &amp;Detector::bytesWritten, this, &amp;MainWindow::dataSink);
+   connect(&amp;m_soundInput, SIGNAL(error(QString)), this,
+           SLOT(showSoundInError(QString)));
++  connect(&amp;m_soundOutput, SIGNAL(error(QString)), this,
++          SLOT(showSoundOutError(QString)));
+   connect(&amp;m_soundInput, SIGNAL(status(QString)), this,
+           SLOT(showStatusMessage(QString)));
++  // connect(&amp;m_soundOutput, SIGNAL(status(QString)), this,
++  //         SLOT(showStatusMessage(QString)));
+   createStatusBar();
+ 
+   connect(&amp;proc_jt9, SIGNAL(readyReadStandardOutput()),
+@@ -146,7 +165,7 @@
+   m_auto=false;
+   m_waterfallAvg = 1;
+   m_txFirst=false;
+-  m_soundOutput.mute(false);
++  m_modulator.mute(false);
+   m_btxMute=false;
+   m_btxok=false;
+   m_restart=false;
+@@ -299,11 +318,11 @@
+   watcher2 = new QFutureWatcher&lt;void&gt;;
+   connect(watcher2, SIGNAL(finished()),this,SLOT(diskWriteFinished()));
+ 
+-  m_soundInput.start(m_paInDevice);
+-  m_soundOutput.setTxFreq(m_txFreq);
+-  m_soundOutput.tune(false);
++  m_soundInput.start(m_audioInputDevice, RX_SAMPLE_RATE / 10, &amp;m_detector);
++  m_modulator.setFrequency(m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0));
++  m_modulator.tune(false);
+   m_monitoring=!m_monitorStartOFF;           // Start with Monitoring ON/OFF
+-  m_soundInput.setMonitoring(m_monitoring);
++  m_detector.setMonitoring(m_monitoring);
+   m_diskData=false;
+ 
+ // Create &quot;m_worked&quot;, a dictionary of all calls in wsjtx.log
+@@ -371,10 +390,12 @@
+ {
+   writeSettings();
+   m_soundOutput.stop();
++  m_modulator.close();
+   if(!m_decoderBusy) {
+     QFile lockFile(m_appDir + &quot;/.lock&quot;);
+     lockFile.remove();
+   }
++  m_detector.close ();
+   delete ui;
+ }
+ 
+@@ -404,19 +425,8 @@
+   settings.setValue(&quot;PTTmethod&quot;,m_pttMethodIndex);
+   settings.setValue(&quot;PTTport&quot;,m_pttPort);
+   settings.setValue(&quot;SaveDir&quot;,m_saveDir);
+-  char soundName[128];
+-  if (Pa_GetDeviceInfo( m_paInDevice)) {  // store name, number may be different next time
+-    snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+-      Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paInDevice)-&gt;hostApi)-&gt;name,
+-      Pa_GetDeviceInfo( m_paInDevice)-&gt;name);
+-    settings.setValue(&quot;SoundInName&quot;, soundName);
+-  }
+-  if (Pa_GetDeviceInfo( m_paOutDevice)) {  // store name, number may be different next time
+-    snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+-      Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paOutDevice)-&gt;hostApi)-&gt;name,
+-      Pa_GetDeviceInfo( m_paOutDevice)-&gt;name);
+-    settings.setValue(&quot;SoundOutName&quot;, soundName);
+-  }
++  settings.setValue(&quot;SoundInName&quot;, m_audioInputDevice.deviceName ());
++  settings.setValue(&quot;SoundOutName&quot;, m_audioOutputDevice.deviceName ());
+   settings.setValue(&quot;PaletteCuteSDR&quot;,ui-&gt;actionCuteSDR-&gt;isChecked());
+   settings.setValue(&quot;PaletteLinrad&quot;,ui-&gt;actionLinrad-&gt;isChecked());
+   settings.setValue(&quot;PaletteAFMHot&quot;,ui-&gt;actionAFMHot-&gt;isChecked());
+@@ -511,34 +521,35 @@
+   m_pttPort=settings.value(&quot;PTTport&quot;,0).toInt();
+   m_saveDir=settings.value(&quot;SaveDir&quot;,m_appDir + &quot;/save&quot;).toString();
+ 
+-  char soundName[128];
+-  QString savedName = settings.value( &quot;SoundInName&quot;, &quot;default&quot;).toString();
+-  for (m_paInDevice = Pa_GetDeviceCount() - 1; m_paInDevice &gt;= 0; m_paInDevice--) {
+-    snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+-      Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paInDevice)-&gt;hostApi)-&gt;name,
+-      Pa_GetDeviceInfo( m_paInDevice)-&gt;name);
+-    if ((savedName == soundName) &amp;&amp; (Pa_GetDeviceInfo(m_paInDevice)-&gt;maxInputChannels &gt; 0))
+-      break;
++  {
++    //
++    // retrieve audio input device
++    //
++    QString savedName = settings.value( &quot;SoundInName&quot;, &quot;default&quot;).toString();
++    QList&lt;QAudioDeviceInfo&gt; audioInputDevices (QAudioDeviceInfo::availableDevices (QAudio::AudioInput)); // available audio input devices
++    for (QList&lt;QAudioDeviceInfo&gt;::const_iterator p = audioInputDevices.begin (); p != audioInputDevices.end (); ++p)
++      {
++	if (p-&gt;deviceName () == savedName)
++	  {
++	    m_audioInputDevice = *p;
++	  }
++      }
+   }
+-  if (m_paInDevice &lt; 0) { // no match for device name?
+-    m_paInDevice = Pa_GetDefaultInputDevice();
+-    if (m_paInDevice == paNoDevice)  // no default input device?
+-      m_paInDevice = 0;
+-  }
+ 
+-  savedName = settings.value(&quot;SoundOutName&quot;, &quot;default&quot;).toString();
+-  for (m_paOutDevice = Pa_GetDeviceCount() - 1; m_paOutDevice &gt;= 0; m_paOutDevice--) {
+-    snprintf( soundName, sizeof( soundName), &quot;%s:%s&quot;,
+-      Pa_GetHostApiInfo( Pa_GetDeviceInfo( m_paOutDevice)-&gt;hostApi)-&gt;name,
+-      Pa_GetDeviceInfo( m_paOutDevice)-&gt;name);
+-    if ((savedName == soundName) &amp;&amp; (Pa_GetDeviceInfo(m_paOutDevice)-&gt;maxOutputChannels &gt; 0))
+-      break;
++  {
++    //
++    // retrieve audio output device
++    //
++    QString savedName = settings.value(&quot;SoundOutName&quot;, &quot;default&quot;).toString();
++    QList&lt;QAudioDeviceInfo&gt; audioOutputDevices (QAudioDeviceInfo::availableDevices (QAudio::AudioOutput)); // available audio output devices
++    for (QList&lt;QAudioDeviceInfo&gt;::const_iterator p = audioOutputDevices.begin (); p != audioOutputDevices.end (); ++p)
++      {
++	if (p-&gt;deviceName () == savedName)
++	  {
++	    m_audioOutputDevice = *p;
++	  }
++      }
+   }
+-  if (m_paOutDevice &lt; 0) { // no match for device name?
+-    m_paOutDevice = Pa_GetDefaultOutputDevice();
+-    if (m_paOutDevice == paNoDevice)  // no default output device?
+-      m_paOutDevice = 0;
+-  }
+ 
+   ui-&gt;actionCuteSDR-&gt;setChecked(settings.value(
+                                   &quot;PaletteCuteSDR&quot;,false).toBool());
+@@ -563,7 +574,7 @@
+   ui-&gt;RxFreqSpinBox-&gt;setValue(m_rxFreq);
+   m_txFreq=settings.value(&quot;TxFreq&quot;,1500).toInt();
+   ui-&gt;TxFreqSpinBox-&gt;setValue(m_txFreq);
+-  m_soundOutput.setTxFreq(m_txFreq);
++  m_modulator.setFrequency(m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0));
+   m_saveDecoded=ui-&gt;actionSave_decoded-&gt;isChecked();
+   m_saveAll=ui-&gt;actionSave_all-&gt;isChecked();
+   m_ndepth=settings.value(&quot;NDepth&quot;,3).toInt();
+@@ -655,7 +666,7 @@
+ }
+ 
+ //-------------------------------------------------------------- dataSink()
+-void MainWindow::dataSink(int k)
++void MainWindow::dataSink(qint64 bytes)
+ {
+   static float s[NSMAX];
+   static int ihsym=0;
+@@ -676,6 +687,7 @@
+   trmin=m_TRperiod/60;
+   slope=0.0;
+   if(g_pWideGraph!=NULL) slope=(float)g_pWideGraph-&gt;getSlope();
++  int k (bytes / sizeof (jt9com_.d2[0]) - 1);
+   symspec_(&amp;k,&amp;trmin,&amp;m_nsps,&amp;m_inGain,&amp;slope,&amp;px,s,&amp;df3,&amp;ihsym,&amp;npts8);
+   if(ihsym &lt;=0) return;
+   QString t;
+@@ -710,8 +722,11 @@
+ }
+ 
+ void MainWindow::showSoundInError(const QString&amp; errorMsg)
+- {QMessageBox::critical(this, tr(&quot;Error in SoundIn&quot;), errorMsg);}
++ {QMessageBox::critical(this, tr(&quot;Error in SoundInput&quot;), errorMsg);}
+ 
++void MainWindow::showSoundOutError(const QString&amp; errorMsg)
++ {QMessageBox::critical(this, tr(&quot;Error in SoundOutput&quot;), errorMsg);}
++
+ void MainWindow::showStatusMessage(const QString&amp; statusMsg)
+  {statusBar()-&gt;showMessage(statusMsg);}
+ 
+@@ -724,8 +739,8 @@
+   dlg.m_pttMethodIndex=m_pttMethodIndex;
+   dlg.m_pttPort=m_pttPort;
+   dlg.m_saveDir=m_saveDir;
+-  dlg.m_paInDevice=m_paInDevice;
+-  dlg.m_paOutDevice=m_paOutDevice;
++  dlg.m_audioInputDevice = m_audioInputDevice;
++  dlg.m_audioOutputDevice = m_audioOutputDevice;
+   dlg.m_pskReporter=m_pskReporter;
+   dlg.m_After73=m_After73;
+   dlg.m_macro=m_macro;
+@@ -769,8 +784,8 @@
+     m_pttMethodIndex=dlg.m_pttMethodIndex;
+     m_pttPort=dlg.m_pttPort;
+     m_saveDir=dlg.m_saveDir;
+-    m_paInDevice=dlg.m_paInDevice;
+-    m_paOutDevice=dlg.m_paOutDevice;
++    m_audioInputDevice = dlg.m_audioInputDevice;
++    m_audioOutputDevice = dlg.m_audioOutputDevice;
+     m_macro=dlg.m_macro;
+     m_dFreq=dlg.m_dFreq;
+     m_antDescription=dlg.m_antDescription;
+@@ -826,11 +841,11 @@
+     m_After73=dlg.m_After73;
+ 
+     if(dlg.m_restartSoundIn) {
+-      m_soundInput.start(m_paInDevice);
++      m_soundInput.start(m_audioInputDevice, RX_SAMPLE_RATE / 10, &amp;m_detector);
+     }
+ 
+     if(dlg.m_restartSoundOut) {
+-      m_soundOutput.start(m_paOutDevice,m_modeTx,m_TRperiod,m_nsps,m_txFreq,m_bSplit || m_bXIT ? m_XIT : 0);
++      transmit ();
+     }
+   }
+   m_catEnabled=dlg.m_catEnabled;
+@@ -859,7 +874,7 @@
+ void MainWindow::on_monitorButton_clicked()                  //Monitor
+ {
+   m_monitoring=true;
+-  m_soundInput.setMonitoring(true);
++  m_detector.setMonitoring(true);
+   m_diskData=false;
+ }
+ 
+@@ -901,7 +916,7 @@
+     ui-&gt;autoButton-&gt;setStyleSheet(m_pbAutoOn_style);
+   } else {
+     m_btxok=false;
+-    m_soundOutput.mute();
++    m_modulator.mute();
+     ui-&gt;autoButton-&gt;setStyleSheet(&quot;&quot;);
+     on_monitorButton_clicked();
+     m_repeatMsg=0;
+@@ -1122,7 +1137,7 @@
+ void MainWindow::on_stopButton_clicked()                       //stopButton
+ {
+   m_monitoring=false;
+-  m_soundInput.setMonitoring(m_monitoring);
++  m_detector.setMonitoring(m_monitoring);
+   m_loopall=false;  
+ }
+ 
+@@ -1163,7 +1178,7 @@
+ void MainWindow::on_actionOpen_triggered()                     //Open File
+ {
+   m_monitoring=false;
+-  m_soundInput.setMonitoring(m_monitoring);
++  m_detector.setMonitoring(m_monitoring);
+   QString fname;
+   fname=QFileDialog::getOpenFileName(this, &quot;Open File&quot;, m_path,
+                                        &quot;WSJT Files (*.wav)&quot;);
+@@ -1223,7 +1238,7 @@
+   for(int n=1; n&lt;=m_hsymStop; n++) {              // Do the half-symbol FFTs
+     k=(n+1)*kstep;
+     jt9com_.npts8=k/8;
+-    dataSink(k);
++    dataSink(k * sizeof (jt9com_.d2[0]));
+     if(n%10 == 1 or n == m_hsymStop)
+         qApp-&gt;processEvents();                   //Keep GUI responsive
+   }
+@@ -1718,7 +1733,7 @@
+     }
+     if(!bTxTime || m_btxMute) {
+       m_btxok=false;
+-      m_soundOutput.mute();
++      m_modulator.mute();
+     }
+   }
+ 
+@@ -1815,9 +1830,9 @@
+ 
+     signalMeter-&gt;setValue(0);
+     m_monitoring=false;
+-    m_soundInput.setMonitoring(false);
++    m_detector.setMonitoring(false);
+     m_btxok=true;
+-    m_soundOutput.mute(false);
++    m_modulator.mute(false);
+     m_transmitting=true;
+     ui-&gt;pbTxMode-&gt;setEnabled(false);
+     if(!m_tune) {
+@@ -1940,12 +1955,12 @@
+     QString t=ui-&gt;tx6-&gt;text();
+     double snr=t.mid(1,5).toDouble();
+     if(snr&gt;0.0 or snr &lt; -50.0) snr=99.0;
+-    m_soundOutput.start(m_paOutDevice,m_modeTx,m_TRperiod,m_nsps,m_txFreq,m_bSplit || m_bXIT ? m_XIT : 0,snr);
++    transmit (snr);
+     signalMeter-&gt;setValue(0);
+     m_monitoring=false;
+-    m_soundInput.setMonitoring(false);
++    m_detector.setMonitoring(false);
+     m_btxok=true;
+-    m_soundOutput.mute(false);
++    m_modulator.mute(false);
+     m_transmitting=true;
+     ui-&gt;pbTxMode-&gt;setEnabled(false);
+   }
+@@ -1954,6 +1969,7 @@
+ void MainWindow::stopTx()
+ {
+   m_soundOutput.stop();
++  m_modulator.close ();
+   m_transmitting=false;
+   ui-&gt;pbTxMode-&gt;setEnabled(true);
+   g_iptt=0;
+@@ -1961,7 +1977,7 @@
+   lab1-&gt;setText(&quot;&quot;);
+   ptt0Timer-&gt;start(200);                       //Sequencer delay
+   m_monitoring=true;
+-  m_soundInput.setMonitoring(true);
++  m_detector.setMonitoring(true);
+ }
+ 
+ void MainWindow::stopTx2()
+@@ -2573,7 +2589,6 @@
+   m_TRperiod=60;
+   m_nsps=6912;
+   m_hsymStop=173;
+-  m_soundInput.setPeriod(m_TRperiod,m_nsps);
+   lab3-&gt;setStyleSheet(&quot;QLabel{background-color: #ff6ec7}&quot;);
+   lab3-&gt;setText(m_mode);
+   ui-&gt;actionJT9_1-&gt;setChecked(true);
+@@ -2591,7 +2606,6 @@
+   m_TRperiod=60;
+   m_nsps=6912;                   //For symspec only
+   m_hsymStop=173;
+-  m_soundInput.setPeriod(m_TRperiod,m_nsps);
+   lab3-&gt;setStyleSheet(&quot;QLabel{background-color: #ffff00}&quot;);
+   lab3-&gt;setText(m_mode);
+   ui-&gt;actionJT65-&gt;setChecked(true);
+@@ -2609,7 +2623,6 @@
+   m_TRperiod=60;
+   m_nsps=6912;
+   m_hsymStop=173;
+-  m_soundInput.setPeriod(m_TRperiod,m_nsps);
+   lab3-&gt;setStyleSheet(&quot;QLabel{background-color: #ffa500}&quot;);
+   lab3-&gt;setText(m_mode);
+   ui-&gt;actionJT9_JT65-&gt;setChecked(true);
+@@ -2624,7 +2637,7 @@
+   m_txFreq=n;
+   if(g_pWideGraph!=NULL) g_pWideGraph-&gt;setTxFreq(n);
+   if(m_lockTxFreq) ui-&gt;RxFreqSpinBox-&gt;setValue(n);
+-  m_soundOutput.setTxFreq(n);
++  m_modulator.setFrequency(m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0));
+ }
+ 
+ void MainWindow::on_RxFreqSpinBox_valueChanged(int n)
+@@ -2954,7 +2967,7 @@
+   } else {
+     m_tune=true;
+     m_sent73=false;
+-    m_soundOutput.tune(m_tune);
++    m_modulator.tune();
+     m_repeatMsg=0;
+     ui-&gt;tuneButton-&gt;setStyleSheet(m_pbTune_style);
+   }
+@@ -2964,11 +2977,11 @@
+ {
+   if(m_tune) {
+     m_tune=false;
+-    m_soundOutput.tune(m_tune);
++    m_modulator.tune(m_tune);
+   }
+   if(m_auto) on_autoButton_clicked();
+   m_btxok=false;
+-  m_soundOutput.mute();
++  m_modulator.mute();
+   m_repeatMsg=0;
+   ui-&gt;tuneButton-&gt;setStyleSheet(&quot;&quot;);
+ }
+@@ -3104,8 +3117,7 @@
+       ret=rig-&gt;setSplitFreq(MHz(m_dialFreq)+m_XIT,RIG_VFO_B);
+     }
+   }
+-  if(m_bSplit) m_soundOutput.setXIT(m_XIT);
+-  if(!m_bSplit) m_soundOutput.setXIT(0);
++  m_modulator.setFrequency(m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0));
+ }
+ 
+ void MainWindow::setFreq4(int rxFreq, int txFreq)
+@@ -3151,10 +3163,29 @@
+         m_catEnabled=false;
+         ui-&gt;readFreq-&gt;setStyleSheet(&quot;QPushButton{background-color: red; \
+                                     border-width: 0px; border-radius: 5px;}&quot;);
++      }
++    } else {
++      int ndiff=1000000.0*(fMHz-m_dialFreq);
++      if(ndiff!=0) dialFreqChanged2(fMHz);
+     }
+-  } else {
+-    int ndiff=1000000.0*(fMHz-m_dialFreq);
+-    if(ndiff!=0) dialFreqChanged2(fMHz);
+   }
+ }
++
++void MainWindow::transmit (double snr)
++{
++  QScopedPointer&lt;std::vector&lt;int&gt; &gt; cw (new std::vector&lt;int&gt; (NUM_CW_SYMBOLS));
++  cw-&gt;assign (icw, icw + NUM_CW_SYMBOLS); // load data
++  if (m_modeTx == &quot;JT65&quot;)
++    {
++      QScopedPointer&lt;std::vector&lt;int&gt; &gt; symbols (new std::vector&lt;int&gt; (NUM_JT65_SYMBOLS));
++      symbols-&gt;assign (itone, itone + NUM_JT65_SYMBOLS); // load data
++      m_modulator.open (symbols.take (), cw.take (), 4096.0 * 12000.0 / 11025.0, m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0), snr);
++    }
++  else
++    {
++      QScopedPointer&lt;std::vector&lt;int&gt; &gt; symbols (new std::vector&lt;int&gt; (NUM_JT65_SYMBOLS));
++      symbols-&gt;assign (itone, itone + NUM_JT9_SYMBOLS); // load data
++      m_modulator.open (symbols.take (), cw.take (), m_nsps, m_txFreq - (m_bSplit || m_bXIT ? m_XIT : 0), snr);
++    }
++  m_soundOutput.start(m_audioOutputDevice, &amp;m_modulator);
+ }
+Index: devsetup.h
+===================================================================
+--- devsetup.h	(revision 3522)
++++ devsetup.h	(working copy)
+@@ -1,10 +1,13 @@
+ #ifndef DEVSETUP_H
+ #define DEVSETUP_H
+ 
++#include &quot;ui_devsetup.h&quot;
++
+ #include &lt;QDialog&gt;
+ #include &lt;QProcess&gt;
+ #include &lt;QMessageBox&gt;
+-#include &quot;ui_devsetup.h&quot;
++#include &lt;QAudioDeviceInfo&gt;
++
+ #include &quot;rigclass.h&quot;
+ 
+ class DevSetup : public QDialog
+@@ -19,12 +22,6 @@
+   qint32  m_idInt;
+   qint32  m_pttMethodIndex;
+   qint32  m_pttPort;
+-  qint32  m_nDevIn;
+-  qint32  m_nDevOut;
+-  qint32  m_inDevList[100];
+-  qint32  m_outDevList[100];
+-  qint32  m_paInDevice;
+-  qint32  m_paOutDevice;
+   qint32  m_catPortIndex;
+   qint32  m_rig;
+   qint32  m_rigIndex;
+@@ -39,8 +36,14 @@
+   qint32  m_poll;
+   qint32  m_tmp;
+ 
++  typedef QList&lt;QAudioDeviceInfo&gt; AudioDevices;
++  AudioDevices m_audioInputDevices; /* available input devices */
++  AudioDevices m_audioOutputDevices; /* available output devices */
++  QAudioDeviceInfo m_audioInputDevice; /* selected input device */
++  QAudioDeviceInfo m_audioOutputDevice; /* selected output device */
+   bool    m_restartSoundIn;
+   bool    m_restartSoundOut;
++
+   bool    m_pskReporter;
+   bool    m_firstCall;
+   bool    m_catEnabled;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001666.html">[Wsjt-devel] r3522 - core dump on restart
+</A></li>
+	<LI>Next message: <A HREF="001668.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1667">[ date ]</a>
+              <a href="thread.html#1667">[ thread ]</a>
+              <a href="subject.html#1667">[ subject ]</a>
+              <a href="author.html#1667">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

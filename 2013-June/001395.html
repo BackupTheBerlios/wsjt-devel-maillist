@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB4821.6070203%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001394.html">
+   <LINK REL="Next"  HREF="001396.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB4821.6070203%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1">djmunn at bigpond.com
+       </A><BR>
+    <I>Wed Jun 26 21:59:29 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001394.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+        <LI>Next message: <A HREF="001396.html">[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1395">[ date ]</a>
+              <a href="thread.html#1395">[ thread ]</a>
+              <a href="subject.html#1395">[ subject ]</a>
+              <a href="author.html#1395">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+
+-------- Original Message --------
+Subject: 	Re: [Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+Date: 	Thu, 27 Jun 2013 05:50:09 +1000
+From: 	David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt;
+To: 	John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt;
+
+
+
+Hi Joe....i am getting a error in compiling with
+'make -f Makefile.linux'
+libjt9.a (jt65a.o): in function 'jt65a'
+jt65a.f90(.text+0x340): undefined reference to 'decodr65a_'
+
+
+
+David VK4BDJ
+
+
+
+
+On 27/06/13 05:39, John Nelson wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> Code looks good.    Compiler warnings have been removed - mostly.
+</I>&gt;<i>
+</I>&gt;<i> It seems the C compiler here is more touchy than yours.
+</I>&gt;<i>
+</I>&gt;<i> 1)  in init_rs.c  and decode_rs.c this line:
+</I>&gt;<i>
+</I>&gt;<i> #define NULL ((void *)0)
+</I>&gt;<i>
+</I>&gt;<i> generates a warning about redefinition of NULL where NULL is originally defined in #include &lt;stdlib.h&gt;
+</I>&gt;<i>
+</I>&gt;<i> 2)  in setup65.f90  gfortran issues a warning in two places where:
+</I>&gt;<i>
+</I>&gt;<i>     go to 22
+</I>&gt;<i> ...
+</I>&gt;<i> 22 enddo
+</I>&gt;<i>
+</I>&gt;<i> and same again for label 122, where the goto label is on an &quot;enddo&quot; statement.
+</I>&gt;<i>
+</I>&gt;<i> Minor warnings .... can be ignored.
+</I>&gt;<i>
+</I>&gt;<i> --- John  G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130627/51bfbd45/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130627/51bfbd45/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001394.html">[Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+	<LI>Next message: <A HREF="001396.html">[Wsjt-devel] Fwd: Re:  [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1395">[ date ]</a>
+              <a href="thread.html#1395">[ thread ]</a>
+              <a href="subject.html#1395">[ subject ]</a>
+              <a href="author.html#1395">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

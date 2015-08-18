@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] FFTW expert - proper way to build for double/single	dual installation?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20FFTW%20expert%20-%20proper%20way%20to%20build%20for%20double/single%0A%09dual%20installation%3F&In-Reply-To=%3C485D11EE.9000006%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000365.html">
+   <LINK REL="Next"  HREF="000367.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] FFTW expert - proper way to build for double/single	dual installation?</H1>
+    <B>Rick Kunath</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20FFTW%20expert%20-%20proper%20way%20to%20build%20for%20double/single%0A%09dual%20installation%3F&In-Reply-To=%3C485D11EE.9000006%40charter.net%3E"
+       TITLE="[Wsjt-devel] FFTW expert - proper way to build for double/single	dual installation?">k9ao at charter.net
+       </A><BR>
+    <I>Sat Jun 21 16:36:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000365.html">[Wsjt-devel] test only
+</A></li>
+        <LI>Next message: <A HREF="000367.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've been working on getting WSJT/WSPR SVN to build on Mandriva 2008.1 
+here, and have had success finally. Special thanks to Diane Bruce, who 
+helped me identify that the single precision FFTW Fortran shims weren't 
+built correctly in the Mandriva rpm.
+
+I have been trying to get something solid from the FFTW folks, but no 
+response in quite a while. What I'm trying to determine, is what is the 
+correct way to build these libs for double and single precision while 
+maintaining compatibility for other apps that were build expecting the 
+normal double precision behavior?
+
+The FFTW web man page suggests this as the way to build double and 
+single precision libs on the same system:
+
+./configure --prefix=/usr --enable-type-prefix --enable-shared
+make
+make install
+make clean
+
+./configure --prefix=/usr --enable-float --enable-type-prefix 
+--enable-shared
+make
+make install
+
+The Mandriva 2008.1 rpms were built like this except that the 
+--enable-type-prefix was omitted from both the single and the double 
+precision builds. On the Mandriva builds the --enable-fortran option was 
+also included on both builds. I did rebuild the stock FFTW srpms on my 
+machine (that has gfortran and g95 installed) just to be sure, but no 
+Fortran shims were built. It wasn't until I built using the type-prefix 
+commands that I was able to build WSJT/WSPR SVN successfully on a test 
+machine. What I am trying to determine is what is the correct order to 
+build these, if it matters, and what needs to be done to make sure the 
+normal compatibility with default double precision libs building still 
+works.
+
+I'm hoping folks on the list might be able to shed some light on this 
+for me base don what works and has been tested on other distros.
+
+Thanks in advance to all who have helped me so much.
+
+Rick Kunath, k9ao
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000365.html">[Wsjt-devel] test only
+</A></li>
+	<LI>Next message: <A HREF="000367.html">[Wsjt-devel] WSJT on MacOSX 10.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#366">[ date ]</a>
+              <a href="thread.html#366">[ thread ]</a>
+              <a href="subject.html#366">[ subject ]</a>
+              <a href="author.html#366">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

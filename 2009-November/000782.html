@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Jack and WSPR and Linrad
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C1257438274.6345.38.camel%40pierre-desktop%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000779.html">
+   <LINK REL="Next"  HREF="000783.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Jack and WSPR and Linrad</H1>
+    <B>Pierre Vanhoucke</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Jack%20and%20WSPR%20and%20Linrad&In-Reply-To=%3C1257438274.6345.38.camel%40pierre-desktop%3E"
+       TITLE="[Wsjt-devel] Jack and WSPR and Linrad">pierre.vanhoucke at skynet.be
+       </A><BR>
+    <I>Thu Nov  5 17:24:34 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000779.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+        <LI>Next message: <A HREF="000783.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#782">[ date ]</a>
+              <a href="thread.html#782">[ thread ]</a>
+              <a href="subject.html#782">[ subject ]</a>
+              <a href="author.html#782">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+On Thu, 2009-11-05 at 08:23 -0500, Joe Taylor wrote:
+
+&gt;<i> &gt; I know that Leif is working on a Linrad version with portaudio which
+</I>&gt;<i> &gt; will allow us to use Jack as output.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; It would be nice to feed WSPR with the Jack output from Linrad.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Are there any plans to add Jack-input for WSPR ?
+</I>&gt;<i> 
+</I>&gt;<i> It had been a long time since I looked into Jack, and I do not remember 
+</I>&gt;<i> many of the details.  WSJT, MAP65, MAP65-IQ, and WSPR all use PortAudio 
+</I>&gt;<i> and the operating system's standard interfaces to supported sound 
+</I>&gt;<i> systems.  This is true for Windows, Linux, FreeBSD, and OS-X, and it is 
+</I>&gt;<i> true for &quot;pseudo devices&quot; like Virtual Audio Cable (VAC) under windows. 
+</I>&gt;<i> I assume that in Linux Jack will appear as one or more audio &quot;devices&quot; 
+</I>&gt;<i> that can be opened for input or output, through PortAudio.  If this is 
+</I>&gt;<i> correct, I do not think anything more needs to be done to use WSPR with 
+</I>&gt;<i> Jack.  Maybe I am wrong, though ?
+</I>
+I am not an expert in portaudio and Jack but this is what I found:
+
+I compiled WSPR on my Ubuntu system which has portaudio with Jack
+installed.
+When I start Jack and WSPR I can indeed select jack as an input or
+output device for WSPR (if the jack server is started with the right
+sample-rate=12000 and frames-per-period=2048 ). 
+However there is no WSPR client visible in the &quot;connect&quot; box of
+qjackctl. As a consequence, I cannot connect the output of Linrad to the
+input of WSPR.
+
+I think that the reason is that the sound.c module in WSPR is using
+portaudio in &quot;blocking I/O&quot;-mode instead of callback-mode.
+
+I will drop this question on the portaudio mailinglist to get it
+confirmed, unless someone else from this list can do it.
+
+Thanks for WSPR and best 73,
+
+Pierre / ON5GN
+
+ 
+
+
+
+
+   
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000779.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+	<LI>Next message: <A HREF="000783.html">[Wsjt-devel] Jack and WSPR and Linrad
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#782">[ date ]</a>
+              <a href="thread.html#782">[ thread ]</a>
+              <a href="subject.html#782">[ subject ]</a>
+              <a href="author.html#782">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

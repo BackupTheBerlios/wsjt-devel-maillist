@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT9-2 crashes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT9-2%20crashes&In-Reply-To=%3C51AE5683.60607%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001334.html">
+   <LINK REL="Next"  HREF="001337.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT9-2 crashes</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT9-2%20crashes&In-Reply-To=%3C51AE5683.60607%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] JT9-2 crashes">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun  4 23:05:07 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001334.html">[Wsjt-devel] JT9-2 crashes
+</A></li>
+        <LI>Next message: <A HREF="001337.html">[Wsjt-devel] JT9-2 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1336">[ date ]</a>
+              <a href="thread.html#1336">[ thread ]</a>
+              <a href="subject.html#1336">[ subject ]</a>
+              <a href="author.html#1336">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+Thanks for the report.
+
+I know there are some issues with JT9-2 (as there were, also, with the 
+-5, -10, and -30 submodes), but I don't consider it a high priority to 
+work on those problems.
+
+Those submodes were intended for experimentation at MF and LF.  Their 
+tone spacings are too small for them to work well with the Doppler 
+spreads and oscillator stabilities typical on the HF bands.  Moreover, 
+the T/R sequences are too slow (read &quot;boring&quot;) for most people to find 
+them attractive to use, most of the time.
+
+After all, JT9-2 offers a 3 dB advantage at best.  You can often 
+overcome a 3 dB shortfall simply by turning up the power (say, from 5 W 
+to 10 W), or waiting for QSB to bring the signal up by a bit.  Even with 
+that wait, you may finish the QSO sooner than you would with one of the 
+slower submodes.
+
+We have plenty of experience with these issues with JT modes used for 
+EME at VHF and UHF.  T/R sequences longer than one minute have never 
+been popular.  JT65 offers the ability to average several successive 
+transmissions, which works well when another 2-4 dB is needed to make a 
+QSO.  In principle such capability could be programmed for JT9, as well, 
+although I have no plans to do so at present.
+
+Bottom line: unless and until someone offers a persuasive argument that 
+JT9-2 (or a slower submode) has an important application and would see 
+significant use, I'm not planning to spend more time on it.
+
+	-- 73, Joe, K1JT
+
+On 6/4/2013 4:31 PM, David wrote:
+&gt;<i> Hi Joe....yesterday while trialling JT9-2 on my Ubuntu 13.04 machine
+</I>&gt;<i> it crashed several times at the decode point i think..the whole program
+</I>&gt;<i> dropped out
+</I>&gt;<i>
+</I>&gt;<i> if you want me to do some more tests i can
+</I>&gt;<i>
+</I>&gt;<i> 73 David VK4BDJ
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001334.html">[Wsjt-devel] JT9-2 crashes
+</A></li>
+	<LI>Next message: <A HREF="001337.html">[Wsjt-devel] JT9-2 crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1336">[ date ]</a>
+              <a href="thread.html#1336">[ thread ]</a>
+              <a href="subject.html#1336">[ subject ]</a>
+              <a href="author.html#1336">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

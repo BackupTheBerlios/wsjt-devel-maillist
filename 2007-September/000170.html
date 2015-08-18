@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20DBPSK%20and%204-FSK%20modes%20in%20WSJT&In-Reply-To=%3C46F4222F.6080507%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000171.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20DBPSK%20and%204-FSK%20modes%20in%20WSJT&In-Reply-To=%3C46F4222F.6080507%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Sep 21 21:57:35 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000171.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+No doubt you have noticed the recent flurry of &quot;commits&quot; to 
+the WSJT repository.  I should bring you up-to-date on 
+what's happening.
+
+I have been playing with two experimental new modes for WSJT 
+called JT2 and JT4.  JT2 is a possible replacement for 
+JT65A/B, for use at HF through 144 MHz.  JT4 is a possible 
+replacement for modes JT65B/C, intended for EME at 432 MHz 
+through 10 GHz and also for rainscatter at 10 GHz.  I 
+emphasize that both are presently experimental; if they 
+don't work out well, they will not become permanent parts of 
+WSJT.
+
+The basic specs are as follows:
+
+JT2 uses 72-bit messages with the same message structure and 
+source encoding as in JT65.  Instead of 64-tone FSK for the 
+data and one additional tone for sync (as in JT65), JT2 uses 
+2-tone FSK for the sync and binary PSK for the data.  A 
+long-constraint convolutional code (K=32, r=1/2) augments 
+the 72 user information bits to a total of 207 channel 
+symbols.  The keying rate and FSK tone separation are 4.375 
+Hz, so a transmission takes 207/4.375 = 47.3 seconds, nearly 
+the same as for JT65.
+
+On reception, sync is established by using noncoherent 
+detection of the FSK information.  The synchronizing 
+frequency offsets are then removed, and differential PSK 
+techniques are used to convert the encoded data to soft 
+channel symbols.  Finally, a sequential decoder using the 
+Fano algorithm decodes the user message.
+
+JT4 uses 4-tone FSK modulation to convey both a sync bit and 
+a data bit in each channel symbol, following the suggestion 
+made by Stewart Nelson nearly two years ago.  The sync 
+pattern and the encoding/decoding of user information are 
+the same as those used in JT2, except that noncoherent FSK 
+detection methods are used for data as well as sync. 
+Distinct submodes (JT4A, JT4B, ...) will use tone spacings 
+from a minimum of 4.375 Hz up to a maximum of perhaps 315 Hz.
+
+Some possible advantages of JT2 and JT4 relative to JT65 are 
+as follows:
+
+JT2 has a very narrow total bandwidth, just 8.75 Hz.   The 
+WSJT simulator shows it to have a S/N performance about 
+equal to JT65B, or perhaps slightly better.  Its narrow 
+bandwidth could be a big advantage -- especially for random 
+operation -- because 100 or more JT2 signals could easily 
+fit into a transceiver's SSB bandwidth without mutual 
+interference.  Some straightforward software enhancements 
+could then give WSJT many of the remarkable capabilities 
+that MAP65 now provides for JT65, including the decoding of 
+all of JT2 signals in the receiver passband (perhaps 2.5 to 
+5 kHz).  JT2 could be a very attractive and useful mode at 
+HF through 144 MHz.  If activity were concentrated in a few 
+5 kHz band segments, random operation could become easy for 
+all 144 MHz EME operators.  The main uncertainty in my mind 
+is whether 2-meter EME signals will have adequate phase 
+stability to make PSK modulation effective on that path. 
+This needs to be tested.
+
+At 432 MHz and higher frequencies, differentially 
+demodulated PSK will most likely fail ... and then JT4 may 
+be an attractive alternative.  The JT4 tone separation can 
+be as low as 4.375 Hz, making the total bandwidth 17.5 Hz: 
+about 1/10 the bandwidth of JT65A, or 1/20 of JT65B.  Larger 
+tone separations will be needed at microwave frequencies; I 
+believe something like 150 Hz should be adequate for 10 GHz 
+EME.   The S/N performance of JT4 may be 2 or 3 dB worse 
+than JT65B/C under ideal conditions on the lower UHF bands, 
+but on real EME paths -- especially at 1296 MHz and above -- 
+JT4 may actually be better than JT65.  At 10 GHz no present 
+WSJT mode can be used for EME, because libration-induced and 
+differential Doppler shifts broaden the reflected signals by 
+much more that the JT65C tone spacing.  With its wider 
+spacings JT4 should be effective there and it can provide 
+significant gain over CW.  JT4 should also work well for 
+rain scatter.
+
+Anyway, those are the basic facts and my present ideas ...
+
+WSJT r537 has implemented JT2 for both Tx and Rx and JT4 for 
+Tx only.  I will probably try some on-the-air tests before 
+proceeding much further.
+
+As always, comments and suggestions will be very welcome!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000171.html">[Wsjt-devel] Experimental DBPSK and 4-FSK modes in WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

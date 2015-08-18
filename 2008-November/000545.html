@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR 1.1 and suggestions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%201.1%20and%20suggestions&In-Reply-To=%3C49284F2F.6040808%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000544.html">
+   <LINK REL="Next"  HREF="000546.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR 1.1 and suggestions</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%201.1%20and%20suggestions&In-Reply-To=%3C49284F2F.6040808%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR 1.1 and suggestions">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Nov 22 19:27:59 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000544.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+        <LI>Next message: <A HREF="000546.html">[Wsjt-devel] WSPR 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#545">[ date ]</a>
+              <a href="thread.html#545">[ thread ]</a>
+              <a href="subject.html#545">[ subject ]</a>
+              <a href="author.html#545">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Patrick,
+
+
+Patrick F6IRF wrote:
+&gt;<i> re sampling rate-correction, a little addendum:
+</I>&gt;<i> Something I noticed, is that feeding the same RX audio to 2 PC's I could 
+</I>&gt;<i> see differences
+</I>&gt;<i> I made a post about it, some time ago on the WSPRnet forum 
+</I>&gt;<i> <A HREF="http://wsprnet.org/drupal/node/139">http://wsprnet.org/drupal/node/139</A>
+</I>&gt;<i> for example:
+</I>&gt;<i> PC1: 080924 1018 16 -19 1.5 10.140110 OK1DST JN79 33 0 2 0
+</I>&gt;<i> PC2: 080924 1018 11 -23 1.4 10.140110 OK1DST JN79 33 0 1 0
+</I>&gt;<i> PC1 080924 1032 29 -4 1.1 10.140147 EB1APK IN73 40 0 1 0
+</I>&gt;<i> PC2 080924 1032 24 -8 1.1 10.140147 EB1APK IN73 40 0 1 0
+</I>&gt;<i> 
+</I>&gt;<i> The PC1 uses a microham USB-sound device, while the PC2 is an IBM 
+</I>&gt;<i> &quot;thinkpad&quot; laptop
+</I>
+Some carefully controlled experiments would need to be done to establish 
+why your Thinkpad performed poorly in this comparison.  I have no way to 
+diagnose the problem, from your information.  I can say that my Thinkpad 
+performed OK when I ran it side-by-side with my regular station computer.
+
+&gt;<i> Last but not least: As already mentionned, I cannot get WSPR working on 
+</I>&gt;<i> my desktop soundcard (while I' ve been using WSJT on it successfully at 
+</I>&gt;<i> the beginning of JT6 )
+</I>
+I guess you will have to describe your problem.  If you are talking 
+about a properly functioning Windows sound system, I know of no reason 
+why it should not work.
+
+&gt;<i> Another point I forgot to mention:
+</I>&gt;<i> The WSPR displayed DT, seems to have 1s offset:
+</I>&gt;<i> - using my 2 stations sync on the same clock through dimension4 I see a 
+</I>&gt;<i> constant DT+1 (or 0.9 to 1.1)
+</I>&gt;<i> - I see the same DT +1 on a large majority of stations
+</I>&gt;<i> I see the same, when time synchronized manually using a DCF77 clock or a 
+</I>&gt;<i> GPS (when I don't have Internet access)
+</I>&gt;<i> When I operate JT65, I see DT 0, most of the time...
+</I>&gt;<i> But I am sure you  noticed it...
+</I>
+The DT displayed by WSPR is biased by +1 s because the Tx Audio starts 
+at t=1 s into an even minute.  Of course it would be trivial to remove 
+this bias, and probably that should be done.  I guess I just never 
+worried much about it.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000544.html">[Wsjt-devel] WSPR 1.1 and suggestions
+</A></li>
+	<LI>Next message: <A HREF="000546.html">[Wsjt-devel] WSPR 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#545">[ date ]</a>
+              <a href="thread.html#545">[ thread ]</a>
+              <a href="subject.html#545">[ subject ]</a>
+              <a href="author.html#545">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] issue under Fedora 15 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20issue%20under%20Fedora%2015%20%3F&In-Reply-To=%3C4DF91134.6070403%40f8arr.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001108.html">
+   <LINK REL="Next"  HREF="001111.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] issue under Fedora 15 ?</H1>
+    <B>f8arr</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20issue%20under%20Fedora%2015%20%3F&In-Reply-To=%3C4DF91134.6070403%40f8arr.org%3E"
+       TITLE="[Wsjt-devel] issue under Fedora 15 ?">f8arr at f8arr.org
+       </A><BR>
+    <I>Wed Jun 15 22:08:20 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001108.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+        <LI>Next message: <A HREF="001111.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1110">[ date ]</a>
+              <a href="thread.html#1110">[ thread ]</a>
+              <a href="subject.html#1110">[ subject ]</a>
+              <a href="author.html#1110">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I made a new test and here is my configure :
+
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g77... g77
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether g77 accepts -g... yes
+./configure: line 3077: test: =: unary operator expected
+checking uname -s... no
+checking for g95... no
+checking for gfortran... /usr/bin/gfortran
+*** gfortran compiler found at /usr/bin/gfortran
+*** No g95 compiler found
+checking for a v19 portaudio ... checking for Pa_GetVersion in 
+-lportaudio... yes
+checking if gcc is Apple GCC... no
+checking for library containing strerror... none required
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking whether gcc needs -traditional... no
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for rm... /bin/rm
+checking for cp... /bin/cp
+checking for mv... /bin/mv
+checking for ln... /bin/ln
+checking for sed... /bin/sed
+checking for ar... /usr/bin/ar
+checking for ld... /usr/bin/ld
+checking for test... /usr/bin/test
+checking for python... /usr/bin/python
+checking for f2py... /usr/bin/f2py
+checking OS... checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking sys/syslog.h usability... yes
+checking sys/syslog.h presence... yes
+checking for sys/syslog.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking libgen.h usability... yes
+checking libgen.h presence... yes
+checking for libgen.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking wait.h usability... yes
+checking wait.h presence... yes
+checking for wait.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for sys/resource.h... (cached) yes
+checking linux/ppdev.h usability... yes
+checking linux/ppdev.h presence... yes
+checking for linux/ppdev.h... yes
+checking dev/ppbus/ppi.h usability... no
+checking dev/ppbus/ppi.h presence... no
+checking for dev/ppbus/ppi.h... no
+checking for sys/stat.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking fftw3.h usability... yes
+checking fftw3.h presence... yes
+checking for fftw3.h... yes
+checking samplerate.h usability... yes
+checking samplerate.h presence... yes
+checking for samplerate.h... yes
+checking whether string.h and strings.h may both be included... yes
+checking for sfftw_destroy_plan_ in -lfftw3f... yes
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+configure: creating ./config.status
+config.status: creating Makefile
+
+***************
+Using gfortran as fortran compiler.
+
+Compiling wsjt
+
+Installing into: /usr/local
+
+
+I made a make a stil have the same error...
+
+At line 330 of file wsjt1.f90 (unit = 11, file = 
+'/home/f8arr/Downloads/trunk/decoded.txt')
+Fortran runtime error: Cannot perform ENDFILE on a file already 
+positioned after the EOF marker
+
+An idea ? I'm missing something ?
+
+73 qro f8arr
+
+
+
+On 06/14/2011 11:56 PM, f8arr wrote:
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> I get sources codes from SVN:
+</I>&gt;<i>
+</I>&gt;<i> svn co <A HREF="http://svn.berlios.de/svnroot/repos/wsjt/trunk">http://svn.berlios.de/svnroot/repos/wsjt/trunk</A>
+</I>&gt;<i>
+</I>&gt;<i> I ran the traditionnal ./configure followed by make.
+</I>&gt;<i>
+</I>&gt;<i> No issue. I ran WSJT and it worked normally during some minutes and 
+</I>&gt;<i> then crashed.
+</I>&gt;<i>
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 9.1 r2433 , by K1JT
+</I>&gt;<i> Revision date: 2011-05-13 18:54:55 +0200 (Fri, 13 May 2011)
+</I>&gt;<i> Run date:   Tue Jun 14 21:50:08 2011 UTC
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.center_lfe
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.surround71
+</I>&gt;<i> ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+</I>&gt;<i> (MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+</I>&gt;<i> ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+</I>&gt;<i> (MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.phoneline
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.phoneline
+</I>&gt;<i> ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports 
+</I>&gt;<i> only playback stream
+</I>&gt;<i> Cannot connect to server socket err = No such file or directory
+</I>&gt;<i> Cannot connect to server socket
+</I>&gt;<i> jack server is not running or cannot be started
+</I>&gt;<i>
+</I>&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;<i> Device  Channels  Channels
+</I>&gt;<i> ------------------------------------------------------------------
+</I>&gt;<i>    0        2         2       Intel ICH7: Intel ICH7 (hw:0,0)
+</I>&gt;<i>    1        2         0       Intel ICH7: Intel ICH7 - MIC ADC (hw:0,1)
+</I>&gt;<i>    2        2         0       Intel ICH7: Intel ICH7 - MIC2 ADC (hw:0,2)
+</I>&gt;<i>    3        2         0       Intel ICH7: Intel ICH7 - ADC2 (hw:0,3)
+</I>&gt;<i>    4        0         2       Intel ICH7: Intel ICH7 - IEC958 (hw:0,4)
+</I>&gt;<i>    5        0         2       front
+</I>&gt;<i>    6       32        32       pulse
+</I>&gt;<i>    7        0         2       dmix
+</I>&gt;<i>    8       32        32       default
+</I>&gt;<i>
+</I>&gt;<i> User requested devices:   Input =  0   Output =  0
+</I>&gt;<i> Default devices:          Input =  8   Output =  8
+</I>&gt;<i> Will open devices:        Input =  8   Output =  8
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.center_lfe
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.surround71
+</I>&gt;<i> ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+</I>&gt;<i> (MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+</I>&gt;<i> ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+</I>&gt;<i> (MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.phoneline
+</I>&gt;<i> ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM 
+</I>&gt;<i> cards.pcm.phoneline
+</I>&gt;<i> ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports 
+</I>&gt;<i> only playback stream
+</I>&gt;<i> Cannot connect to server socket err = No such file or directory
+</I>&gt;<i> Cannot connect to server socket
+</I>&gt;<i> jack server is not running or cannot be started
+</I>&gt;<i> Audio streams running normally.
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> At line 330 of file wsjt1.f90 (unit = 11, file = '/WSJT9/decoded.txt')
+</I>&gt;<i> Fortran runtime error: Cannot perform ENDFILE on a file already 
+</I>&gt;<i> positioned after the EOF marker
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I googled a bit but nothing really evident for me.
+</I>&gt;<i> If you have an idea.
+</I>&gt;<i>
+</I>&gt;<i> Regards
+</I>&gt;<i> f8arr
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110615/7077e69f/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110615/7077e69f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001108.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+	<LI>Next message: <A HREF="001111.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1110">[ date ]</a>
+              <a href="thread.html#1110">[ thread ]</a>
+              <a href="subject.html#1110">[ subject ]</a>
+              <a href="author.html#1110">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

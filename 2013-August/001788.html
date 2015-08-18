@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: commited r3542.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3C520673D1.6030005%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001799.html">
+   <LINK REL="Next"  HREF="001800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: commited r3542.</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3C520673D1.6030005%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X: commited r3542.">joe at princeton.edu
+       </A><BR>
+    <I>Sat Aug 10 19:09:37 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001799.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+        <LI>Next message: <A HREF="001800.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+Revision 3542 is running OK in Windows.  Only anomaly I've seen so far 
+is that the waterfall is black after a transmission ends and before the 
+top of the next minute.  It's very handy to have that small piece of 
+waterfall available on screen, to see the quiet time before everyone 
+starts transmitting again.
+
+Tx atten control seems to work properly, and it looks good in that location.
+
+Haven't tried Linux yet.
+
+	-- Joe, K1JT
+
+On 8/10/2013 11:34 AM, Bill Somerville wrote:
+&gt;<i> Hi All,
+</I>&gt;<i>
+</I>&gt;<i> some more changes. Highlights include audio channel selection and tx
+</I>&gt;<i> audio level control.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ===================================================================================
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> r3542 | bsomervi | 2013-08-10 16:29:55 +0100 (Sat, 10 Aug 2013) | 100 lines
+</I>&gt;<i>
+</I>&gt;<i> Added audio channel support.
+</I>&gt;<i>
+</I>&gt;<i> Audio input can be mono, left of stereo pair or, right of stereo
+</I>&gt;<i> pair. Audio output can be mono, left of stereo pair, right of stereo
+</I>&gt;<i> pair or, both of stereo pair (the same output goes to both channels in
+</I>&gt;<i> both mode). Settings are remembered between sessions.
+</I>&gt;<i>
+</I>&gt;<i> Stream channel suport is implemented mainly in the new AudioDevice
+</I>&gt;<i> class which is now the base class of Modulator and Detector.
+</I>&gt;<i>
+</I>&gt;<i> Audio channels are selected on the configuration screen. Only
+</I>&gt;<i> supported channel configurations per device can be selected.
+</I>&gt;<i>
+</I>&gt;<i> Audio output volume (actually attenuation) is now possible from the
+</I>&gt;<i> GUI. I have added a slider control to the main window; I don't
+</I>&gt;<i> necessarily propose this as a final release location for the widget as
+</I>&gt;<i> I understand that changes to the main screen are sensitive. This
+</I>&gt;<i> location is just a starting suggestion for a trial. The volume
+</I>&gt;<i> (attenuation) setting is remembered between sessions and is not device
+</I>&gt;<i> dependent. This addresses all issues of volume setting on *nix
+</I>&gt;<i> versions since there is no need to use pavucontrol to set audio
+</I>&gt;<i> levels. The volume (attenuation) action is logarithmic.
+</I>&gt;<i>
+</I>&gt;<i> Shaped CW keying has been implemented in Modulator although it is
+</I>&gt;<i> currently disabled as I am not 100% happy wth the implementation. If
+</I>&gt;<i> you want to try it define the C++ preprocessor macro WSJT_SOFT_KEYING
+</I>&gt;<i> in your build.
+</I>&gt;<i>
+</I>&gt;<i> The Modulator instance has been moved to the same thread as the
+</I>&gt;<i> SoundOutput instance as it should have been since the output callback
+</I>&gt;<i> already operates in that thread. Cross thread slots are now correctly
+</I>&gt;<i> called in a thread safe way as a result.
+</I>&gt;<i>
+</I>&gt;<i> A number of files where in the SVN repository with DOS line endings
+</I>&gt;<i> which I have removed. SVN users on Windows need set the config for
+</I>&gt;<i> native line endings so that DOS line endings are automatically
+</I>&gt;<i> stripped on checkin.
+</I>&gt;<i>
+</I>&gt;<i> The DevSetup class now holds it's UI o the heap to reduce imapact on
+</I>&gt;<i> build dependencies.
+</I>&gt;<i>
+</I>&gt;<i> The application settings are now passed to objects from the main.cpp
+</I>&gt;<i> file. Management of settings are moved to the responsible classes (top
+</I>&gt;<i> level windows). This has involved a few settings moving groups so
+</I>&gt;<i> users will see some settings reverting to default values on the first
+</I>&gt;<i> run of an update.
+</I>&gt;<i>
+</I>&gt;<i> Persistance of top level windows geometry and position is now handled
+</I>&gt;<i> in the recommened manner (constructor for load, closeEvent for store
+</I>&gt;<i> in modal windows and, hideEvent for store in modeless dialogs).
+</I>&gt;<i>
+</I>&gt;<i> The MainWindow class now holds its children as members rather than
+</I>&gt;<i> global variables.
+</I>&gt;<i>
+</I>&gt;<i> The LogQSO class now hides its implementation and takes responsibility
+</I>&gt;<i> for its own settings and widows rendering parameters. A new settings
+</I>&gt;<i> file group is implemented to persist the LogQSO class settings.
+</I>&gt;<i>
+</I>&gt;<i> The WideGraph class now hides its implementation and manages its own
+</I>&gt;<i> settings and window rendering parameters.
+</I>&gt;<i> ==================================================================
+</I>&gt;<i>
+</I>&gt;<i> 73
+</I>&gt;<i> Bill
+</I>&gt;<i> G4WJS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001799.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+	<LI>Next message: <A HREF="001800.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1788">[ date ]</a>
+              <a href="thread.html#1788">[ thread ]</a>
+              <a href="subject.html#1788">[ subject ]</a>
+              <a href="author.html#1788">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

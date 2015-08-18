@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Rx problems in WSJT.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Rx%20problems%20in%20WSJT.&In-Reply-To=%3C461D222F.7060908%40iol.pt%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000068.html">
+   <LINK REL="Next"  HREF="000072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Rx problems in WSJT.</H1>
+    <B>David Quental</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Rx%20problems%20in%20WSJT.&In-Reply-To=%3C461D222F.7060908%40iol.pt%3E"
+       TITLE="[Wsjt-devel] Rx problems in WSJT.">ct1drb at iol.pt
+       </A><BR>
+    <I>Wed Apr 11 20:00:15 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000068.html">[Wsjt-devel] Test email. Please do not reply.
+</A></li>
+        <LI>Next message: <A HREF="000072.html">[Wsjt-devel] Rx problems in WSJT.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+I have version r365 of WSJT under my OpenSuSE 10.2 and for the first
+time it compiled fine and worked fine. But now it does not receive,
+strange is that during compilation there is no problem, it compiles fine.
+
+Here is all output when I load wsjt:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ct1drb at linux-qfx0</A>:~/trunk&gt; python wsjt.py
+******************************************************************
+WSJT Version 5.9.6 r365 , by K1JT
+Revision date: 2007-03-02 21:43:37 +0000 (Sex, 02 Mar 2007)
+Run date:   Wed Apr 11 17:58:33 2007 UTC
+Using ALSA sound.
+audio_alsa_out: Audio Device name = plug:front
+audio_alsa_out: Number of channels = 2
+audio_alsa_out: audio rate : 11025 requested, 48000 provided by device/sec
+  stream       : PLAYBACK
+  access       : RW_NONINTERLEAVED
+  format       : S16_LE
+  subformat    : STD
+  channels     : 2
+  rate         : 48000
+  exact rate   : 48000 (48000/1)
+  msbits       : 16
+  buffer_size  : 16384
+  period_size  : 2048
+  period_time  : 42666
+  tick_time    : 4000
+  tstamp_mode  : NONE
+  period_step  : 1
+  sleep_min    : 0
+  avail_min    : 2048
+  xfer_align   : 1
+  start_threshold  : 16384
+  stop_threshold   : 16384
+  silence_threshold: 0
+  silence_size : 0
+  boundary     : 1073741824
+start_mode: DATA
+xrun_mode: STOP
+tstamp_mode: NONE
+period_step: 1
+sleep_min: 0
+avail_min: 2048
+xfer_align: 1
+silence_threshold: 0
+silence_size: 0
+boundary: 1073741824
+audio_alsa_out: Audio Device name = default
+audio_alsa_out: Number of channels = 2
+audio_alsa_out: audio rate : 11025 requested, 48000 provided by device/sec
+  stream       : CAPTURE
+  access       : RW_NONINTERLEAVED
+  format       : S16_LE
+  subformat    : STD
+  channels     : 2
+  rate         : 48000
+  exact rate   : 48000 (48000/1)
+  msbits       : 16
+  buffer_size  : 16384
+  period_size  : 1024
+  period_time  : 21333
+  tick_time    : 0
+  tstamp_mode  : NONE
+  period_step  : 1
+  sleep_min    : 0
+  avail_min    : 1024
+  xfer_align   : 1
+  start_threshold  : -1
+  stop_threshold   : 16384
+  silence_threshold: 0
+  silence_size : 0
+  boundary     : 1073741824
+start_mode: EXPLICIT
+xrun_mode: STOP
+tstamp_mode: NONE
+period_step: 1
+sleep_min: 0
+avail_min: 1024
+xfer_align: 1
+silence_threshold: 0
+silence_size: 0
+boundary: 1073741824
+pollerr
+playback xrun
+  state       : XRUN
+  trigger_time: 1176314317.741727000
+  tstamp      : 0.000000
+  delay       : 0
+  avail       : 24448
+  avail_max   : -8064
+                         
+
+Hope this will help.
+
+Best 73s.
+
+CT1DRB
+David Quental
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000068.html">[Wsjt-devel] Test email. Please do not reply.
+</A></li>
+	<LI>Next message: <A HREF="000072.html">[Wsjt-devel] Rx problems in WSJT.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#71">[ date ]</a>
+              <a href="thread.html#71">[ thread ]</a>
+              <a href="subject.html#71">[ subject ]</a>
+              <a href="author.html#71">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

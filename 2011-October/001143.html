@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] oss problem ????
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C4E8F469F.1050709%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001142.html">
+   <LINK REL="Next"  HREF="001144.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] oss problem ????</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20oss%20problem%20%3F%3F%3F%3F&In-Reply-To=%3C4E8F469F.1050709%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] oss problem ????">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Oct  7 20:36:15 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001142.html">[Wsjt-devel] oss problem ????
+</A></li>
+        <LI>Next message: <A HREF="001144.html">[Wsjt-devel] Can't access wspr source
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1143">[ date ]</a>
+              <a href="thread.html#1143">[ thread ]</a>
+              <a href="subject.html#1143">[ subject ]</a>
+              <a href="author.html#1143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I guess you're &quot;on your own&quot;, then.  I've have no trouble with the Delta 
+44 under the 3.0.0 Linux kernel.
+
+We should not be using the berlios wsjt-devel list any more.  Send to 
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.sourceforge.net</A>, instead.
+
+	-- K1JT
+
+On 10/7/2011 2:30 PM, Richard wrote:
+&gt;<i> On Fri, 07 Oct 2011 14:06:53 -0400
+</I>&gt;<i> Joe Taylor&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Joe I think you may have misunderstood what I was asking, or I didn't make it clear Sorry.
+</I>&gt;<i>
+</I>&gt;<i> What I have found is a dependent file on kernel 3, and I haven't out which yet, is causing the M-Audio
+</I>&gt;<i> D66 and series that use the ICE1712 module is causing the card to report as only half duplex at 48000.
+</I>&gt;<i> instead of it full range. hat series of card is widely use by Hams as it has a high dynamic range and a
+</I>&gt;<i> good sampling range.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I'm aware its going to bork as the sampling rate is incorrect, are the errors that I have prefixed with
+</I>&gt;<i> &quot;XXX&quot; caused by the 11025 sampling rate not being available or is there something else its not happy
+</I>&gt;<i> with.
+</I>&gt;<i> Unfortunately changing anything in .asoundrc wont help .
+</I>&gt;<i> I don't think its a kernel module at fault, as if I go back to kernel 2.6.35 with the current lib
+</I>&gt;<i> configuration I get the same. I think its one of the sound related libs or maybe something with
+</I>&gt;<i> libsamplerate that is causing the problem. Hence wondering if OSS support has been depreciated in the
+</I>&gt;<i> latest kernel series.
+</I>&gt;<i> I hope that clarifies it a bit better.
+</I>&gt;<i> thanks
+</I>&gt;&gt;<i> Richard wrote:
+</I>&gt;&gt;&gt;<i> Hi Joe
+</I>&gt;&gt;&gt;<i> I thought I'd give kernel 3.0.1 on Debian 6.5 a try, on Debian 6.0 with kernel 2.6.35 there are no
+</I>&gt;&gt;&gt;<i> problems I've found.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> However, the seems to be a problem possible with OSS, see below, One thing I did notice and I'll be
+</I>&gt;&gt;&gt;<i> flagging on the debian list is when K3.0.1 is loaded with its dependencies most of the audio modules
+</I>&gt;&gt;&gt;<i> get blacklisted .
+</I>&gt;&gt;&gt;<i> could you point me in the direction to find whats missing please.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ******************************************************************
+</I>&gt;&gt;&gt;<i> WSJT Version 9.1 r2442 , by K1JT
+</I>&gt;&gt;&gt;<i> Revision date: 2011-09-13 20:56:36 +0100 (Tue, 13 Sep 2011)
+</I>&gt;&gt;&gt;<i> Run date:   Fri Oct  7 13:58:34 2011 UTC
+</I>&gt;<i> XXX Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS,&amp;temp )' failed in
+</I>&gt;&gt;&gt;<i> 'src/hostapi/oss/pa_unix_oss.c', line: 397
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Audio     Input    Output     Device Name
+</I>&gt;&gt;&gt;<i> Device  Channels  Channels
+</I>&gt;&gt;&gt;<i> ------------------------------------------------------------------
+</I>&gt;&gt;&gt;<i>      0       16         0       /dev/dsp1
+</I>&gt;&gt;&gt;<i>      1        0        10       M Audio Delta 66: ICE1712 multi (hw:0,0)
+</I>&gt;&gt;&gt;<i>      2        2         0       Conexant CX8801: CX88 Digital (hw:1,0)
+</I>&gt;&gt;&gt;<i>      3        0        128       front
+</I>&gt;&gt;&gt;<i>      4        0        128       surround40
+</I>&gt;&gt;&gt;<i>      5        0        128       surround41
+</I>&gt;&gt;&gt;<i>      6        0        128       surround50
+</I>&gt;&gt;&gt;<i>      7        0        128       surround51
+</I>&gt;&gt;&gt;<i>      8        0        128       iec958
+</I>&gt;&gt;&gt;<i>      9        0        128       spdif
+</I>&gt;&gt;&gt;<i>     10       128        128       default
+</I>&gt;&gt;&gt;<i>     11        0        10       dmix
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> User requested devices:   Input =  5   Output =  5
+</I>&gt;&gt;&gt;<i> Default devices:          Input =  0   Output =  0
+</I>&gt;&gt;&gt;<i> Will open devices:        Input =  5   Output =  5
+</I>&gt;<i> XXX Expression 'ioctl( devHandle, SNDCTL_DSP_CHANNELS,&amp;temp )' failed in
+</I>&gt;<i> XXX 'src/hostapi/oss/pa_unix_oss.c', line: 397 Expression 'parameters-&gt;channelCount&lt;= maxChans' failed
+</I>&gt;<i> XXX in 'src/hostapi/alsa/pa_linux_alsa.c', line: 926 Expression 'ValidateParameters( inputParameters,
+</I>&gt;<i> XXX hostApi, StreamDirection_In )' failed in 'src/hostapi/alsa/pa_linux_alsa.c', line: 1136 Error
+</I>&gt;<i> XXX opening input audio stream. Errortext: Invalid number of channels
+</I>&gt;&gt;&gt;<i> 	Number: -9998
+</I>&gt;&gt;&gt;<i> Error opening output audio stream.
+</I>&gt;&gt;&gt;<i> 	Errortext: Invalid sample rate
+</I>&gt;&gt;&gt;<i> 	Number: -9997
+</I>&gt;&gt;&gt;<i> Error  3 in JTaudio, you will only be able to work offline.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Your screen dump says that you tried to open device 5 for both input and
+</I>&gt;&gt;<i> output.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As stated in the first error message (and in the table of devices
+</I>&gt;&gt;<i> above), device 5 is not an input device.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> As stated in the second error message, device 5 reports that it does not
+</I>&gt;&gt;<i> offer a sample rate of 11025 Hz.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Most likely, you can use the &quot;.asoundrc&quot; work-around described in the
+</I>&gt;&gt;<i> WSJT 9.0 Supplement to the User's Guide.  See page 8 of
+</I>&gt;&gt;<i> <A HREF="http://www.physics.princeton.edu/pulsar/K1JT/WSJT_9.0_Supplement.pdf">http://www.physics.princeton.edu/pulsar/K1JT/WSJT_9.0_Supplement.pdf</A> .
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> For details, you're on your own.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	-- Joe, K1JT
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001142.html">[Wsjt-devel] oss problem ????
+</A></li>
+	<LI>Next message: <A HREF="001144.html">[Wsjt-devel] Can't access wspr source
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1143">[ date ]</a>
+              <a href="thread.html#1143">[ thread ]</a>
+              <a href="subject.html#1143">[ subject ]</a>
+              <a href="author.html#1143">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

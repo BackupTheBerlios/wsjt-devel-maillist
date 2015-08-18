@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] MAP65 is back at Berlios
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20MAP65%20is%20back%20at%20Berlios&In-Reply-To=%3C4FBBD490.2060103%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001152.html">
+   <LINK REL="Next"  HREF="001151.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] MAP65 is back at Berlios</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20MAP65%20is%20back%20at%20Berlios&In-Reply-To=%3C4FBBD490.2060103%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] MAP65 is back at Berlios">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May 22 20:01:52 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001152.html">[Wsjt-devel] WSPR
+</A></li>
+        <LI>Next message: <A HREF="001151.html">[Wsjt-devel] WSJT and WSPR are back at Berlios!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1153">[ date ]</a>
+              <a href="thread.html#1153">[ thread ]</a>
+              <a href="subject.html#1153">[ subject ]</a>
+              <a href="author.html#1153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+Thanks to all who responded to my message announcing that source code 
+for WSJT and WSPR is once again available at the Berlios repository. 
+Today MAP65 has rejoined Berlios, as well.
+
+Of course WSJT, MAP65, and WSPR are distinct programs, but from the 
+repository's point of view they are part of the same project, &quot;wsjt&quot;. 
+In the repository, MAP65 and WSPR are &quot;branches&quot; off the WSJT &quot;trunk&quot;.
+
+Members of the development team can check out the MAP65 code with the 
+command:
+
+$ svn co <A HREF="https://loginname@svn.berlios.de/svnroot/repos/wsjt/branches/map65">https://loginname@svn.berlios.de/svnroot/repos/wsjt/branches/map65</A>
+
+Anyone can do an anonymous checkout of MAP65 with the command
+
+$ svn co <A HREF="svn://svn.berlios.de/wsjt/branches/map65">svn://svn.berlios.de/wsjt/branches/map65</A>
+
+As of yesterday, the most recent MAP65 code was revision 631.  After 
+being moved to Berlios, that same code has revision number 2465 in the 
+combined WSJT/MAP65/WSPR repository.
+
+If you have not been paying attention to recent developments, the 
+following comments may help to bring you up to date.
+
+MAP65 has been re-written so that the GUI is coded in C++ and Qt, rather 
+than Python.  The JT65 encode/decode routines are still mostly in 
+Fortran, for speed.  MAP65 supports sub-modes JT65A, B, and C and can be 
+used with single-  or dual-polarization antennas and receivers.  The 
+baseband sample rate must be either 96000 or 95238 Hz.  The former is 
+used for input from soundcards and the FUNcube Dongle, while the latter 
+is used with the SRR-IQ, other RFspace receivers, and Perseus.  As with 
+earlier versions, MAP65 can be used together with Linrad or SDR-Radio as 
+a front end.  The present version can also use input direct from a 
+soundcard (for example, with the IQ+ receiver) or from the FUNcube dongle.
+
+The C++/QT framework of MAP65 v2+ offers a number of advantages over the 
+older Python-based code.  The program is faster, more attractive, more 
+flexible, more modular, more platform independent, and easier to maintain.
+
+Future plans call for the same transition (Python to C++/Qt) to take 
+place for WSJT and WSPR.  If you are interested in helping with those 
+tasks -- or in other ways such as making installation packages for 
+Linux, OS X, FreeBSD, etc. -- please let me know!
+
+     -- 73, Joe, K1JT
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001152.html">[Wsjt-devel] WSPR
+</A></li>
+	<LI>Next message: <A HREF="001151.html">[Wsjt-devel] WSJT and WSPR are back at Berlios!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1153">[ date ]</a>
+              <a href="thread.html#1153">[ thread ]</a>
+              <a href="subject.html#1153">[ subject ]</a>
+              <a href="author.html#1153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

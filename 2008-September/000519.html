@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and COM ports beyond COM9
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20COM%20ports%20beyond%20COM9&In-Reply-To=%3C48CE85EA.3050304%40st-andrews.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000518.html">
+   <LINK REL="Next"  HREF="000520.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and COM ports beyond COM9</H1>
+    <B>Johannes McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20COM%20ports%20beyond%20COM9&In-Reply-To=%3C48CE85EA.3050304%40st-andrews.ac.uk%3E"
+       TITLE="[Wsjt-devel] WSJT and COM ports beyond COM9">jem74 at st-andrews.ac.uk
+       </A><BR>
+    <I>Mon Sep 15 17:57:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000518.html">[Wsjt-devel] WSJT and COM ports beyond COM9
+</A></li>
+        <LI>Next message: <A HREF="000520.html">[Wsjt-devel] COM PORT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#519">[ date ]</a>
+              <a href="thread.html#519">[ thread ]</a>
+              <a href="subject.html#519">[ subject ]</a>
+              <a href="author.html#519">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Just checked with a COM port set to number 27 and r1017 works perfect. I 
+checked with r996 and can confirm it doesn't work. So the fix seems to 
+do the job :)
+
+Johan
+
+Joe Taylor wrote:
+&gt;<i> I've had several reports recently of people trying to use a 
+</I>&gt;<i> COM port numbered COM10 and above to do the PTT task for 
+</I>&gt;<i> WSJT.  This doesn't work, and it turns out to be a little 
+</I>&gt;<i> known (at least unknown to me) peculiarity deep inside the 
+</I>&gt;<i> Win32 API.
+</I>&gt;<i>
+</I>&gt;<i> Anyway, there is supposedly a work-around, and I have now 
+</I>&gt;<i> compiled it into WSJT7 r1017.  Except to see that it still 
+</I>&gt;<i> works COM port numbers 9 and below, I haven't tested it -- 
+</I>&gt;<i> since I don't have a machine configured with a COM port 
+</I>&gt;<i> above 10.
+</I>&gt;<i>
+</I>&gt;<i> If you *do* have such a machine, please download and test
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT7r1017.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT7r1017.EXE</A>
+</I>&gt;<i>
+</I>&gt;<i> Place this file in your WSJT installation directory and 
+</I>&gt;<i> start it instead of your existing WSJT7.EXE.  If it works OK 
+</I>&gt;<i> with the large COM port numbers, please let me know!  ... 
+</I>&gt;<i> and you can then rename the file as WSJT7.EXE, replacing 
+</I>&gt;<i> your existing file of that name.
+</I>&gt;<i>
+</I>&gt;<i> 	-- 73, Joe, K1JT
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000518.html">[Wsjt-devel] WSJT and COM ports beyond COM9
+</A></li>
+	<LI>Next message: <A HREF="000520.html">[Wsjt-devel] COM PORT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#519">[ date ]</a>
+              <a href="thread.html#519">[ thread ]</a>
+              <a href="subject.html#519">[ subject ]</a>
+              <a href="author.html#519">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

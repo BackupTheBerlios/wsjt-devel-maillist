@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F3CFAA.2010105%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001575.html">
+   <LINK REL="Next"  HREF="001577.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F3CFAA.2010105%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">joe at princeton.edu
+       </A><BR>
+    <I>Sat Jul 27 15:48:26 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001575.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001577.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1576">[ date ]</a>
+              <a href="thread.html#1576">[ thread ]</a>
+              <a href="subject.html#1576">[ subject ]</a>
+              <a href="author.html#1576">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill,
+
+G4WJS wrote:
+&gt;&gt;<i> 1. When developing the decoder algorithms it was handy to compile them
+</I>&gt;&gt;<i> as stand-alone programs.
+</I>
+&gt;<i> OK, but this is not a good reason. For example...
+</I>&gt;<i>  ...
+</I>&gt;<i> ... it would be pretty easy to write a file reading wrapper, a GUI, or even a
+</I>&gt;<i> background service type decoder.
+</I>
+Of course there are a million ways these things could have been done. 
+What you see is the way I decided to do it -- and my reasons (as far as 
+I can remember them) were good enough for me.
+
+My goals have been to create tools and capabilities not otherwise 
+available in ham radio, and to package them in a functional way that 
+attracts many users.
+
+&gt;<i> I would like to contribute and
+</I>&gt;<i> as a professional software engineer I think my most helpful
+</I>&gt;<i> contributions might be in refactoring some of the structural design to
+</I>&gt;<i> reflect best practice. It would be great as a user with s/w development
+</I>&gt;<i> experience to be able to contribute to this project since I feel it will
+</I>&gt;<i> be very successful. I doubt if I could contribute much to the math and
+</I>&gt;<i> DSP side even though I have worked on embedded audio and video
+</I>&gt;<i> applications :(
+</I>
+We'll be happy to have you aboard.  The group already has others with 
+professional programming qualifications and experience far beyond mine. 
+  Anyone here should feel free to propose and code structural changes 
+that improve the performance, reliability, maintainability, user 
+friendliness, etc., of our programs.  If a new approach can be shown to 
+yield a clear advantage in one or more of these areas, it should not be 
+hard to convince others that changes are desirable.
+
+...
+
+Now, on thread safety, etc:
+
+&gt;<i> Some programmers make the boolean variable &quot;volatile&quot; ...
+</I>&gt;<i> ...
+</I>&gt;<i> These programmers throw scorn at the programmers that use &quot;volatile&quot;
+</I>&gt;<i> variables because ...
+</I>
+I'm not much into throwing scorn, but yes, I understand volatility ... 
+and also that (as you write)
+
+&gt;<i> Threads are difficult and should only be used when absolutely necessary,
+</I>&gt;<i> and then only very carefully.
+</I>
+This was, indeed, a contributing motivation for my writing the decoder 
+as an independent process.
+
+&gt;<i> I had a quick look at the Qt multimedia library and I'm not sure it fits
+</I>&gt;<i> the required model very well. I see a way of recording audio to a file
+</I>&gt;<i> (QAudioRecorder) and a way of probing the samples as they are recorded
+</I>&gt;<i> (QAudioProbe).
+</I>
+It probably requires more than a quick look.
+
+When I started work (about two years ago) on what became MAP65 v2.0, I 
+used classes QAudioInput and QAudioOutput.  They worked well; but the 
+code packaged with Qt 4.x did not support sample rates above 48 kHz and 
+I needed 4-channel, 96 kHz sampling for MAP65.  So I switched to using 
+PortAudio.
+
+WSJT-X does not need 96 kHz sampling, and anyway Qt5 has removed the 
+48-kHz rate restriction.  It should not be too difficult to go back to 
+using QAudioInput/QAudioOutput.  Edson (PY2SDR) is also looking into 
+good ways to handle this task.
+
+&gt;<i> I am currently implementing a few ideas in a test framework to try and
+</I>&gt;<i> develop a framework for WS type programs. I am looking a cleaner cross
+</I>&gt;<i> platform building, better GUI state handling, better fortran integration
+</I>&gt;<i> and, use of modern C++ programming techniques. I will try and plug in
+</I>&gt;<i> existing functionality as I go along to see how I can minimize the
+</I>&gt;<i> disruptive effect of any structural changes I propose.
+</I>&gt;<i>
+</I>&gt;<i> Expect more questions along these lines as I dig deeper into the
+</I>&gt;<i> functionality.
+</I>
+We look forward to seeing your proposal(s).
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001575.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001577.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1576">[ date ]</a>
+              <a href="thread.html#1576">[ thread ]</a>
+              <a href="subject.html#1576">[ subject ]</a>
+              <a href="author.html#1576">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

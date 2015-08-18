@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.1 r3471
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3471&In-Reply-To=%3CCALNQy4-Gvsf9TfQ7o-bEiffbYat7mrGCe07eC65JPPfxYFDJ%2Bg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001482.html">
+   <LINK REL="Next"  HREF="001497.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.1 r3471</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.1%20r3471&In-Reply-To=%3CCALNQy4-Gvsf9TfQ7o-bEiffbYat7mrGCe07eC65JPPfxYFDJ%2Bg%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.1 r3471">ewpereira at gmail.com
+       </A><BR>
+    <I>Wed Jul 10 23:36:35 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001482.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+        <LI>Next message: <A HREF="001497.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1496">[ date ]</a>
+              <a href="thread.html#1496">[ thread ]</a>
+              <a href="subject.html#1496">[ subject ]</a>
+              <a href="author.html#1496">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+r3478 compiling without issues and running fine so far on Ubuntu 12.04.2.
+
+I have a GUI suggestion for consideration: We could split the two decode
+areas into a separate window. This would allow a larger decode area and
+more space for future addictional GUI elements in the control window. The
+decode window and control window could be placed side-by-side and the
+spectrum window either above or below the decode and control windows.
+
+73,
+
+-- Edson PY2SDR
+
+
+On Tue, Jul 9, 2013 at 4:17 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Dear Colleagues,
+</I>&gt;<i>
+</I>&gt;<i> I think WSJT-X r3471, now integrated back into branches/wsjtx, is
+</I>&gt;<i> approaching a good state for release as Version 1.1.
+</I>&gt;<i>
+</I>&gt;<i> I posted a Windows package of r3471 earliet today so that Laurie, VK3AMA,
+</I>&gt;<i> could use it to test his new version of JT-Alert.
+</I>&gt;<i>
+</I>&gt;<i> It has a number of minor improvements and bug fixes relative to r3459. The
+</I>&gt;<i> Windows package and can be downloaded from
+</I>&gt;<i> <A HREF="http://www.physics.princeton.**edu/pulsar/K1JT/WSJTX_**110r3471.exe&lt;http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3471.exe">http://www.physics.princeton.**edu/pulsar/K1JT/WSJTX_**110r3471.exe&lt;http://www.physics.princeton.edu/pulsar/K1JT/WSJTX_110r3471.exe</A>&gt;,
+</I>&gt;<i> and of course you are more than welcome to try it on OS X and Linux, as
+</I>&gt;<i> well.
+</I>&gt;<i>
+</I>&gt;<i> Here's a quick list of differences from r3459:
+</I>&gt;<i>
+</I>&gt;<i> 1. Operating in &quot;Split Tx&quot; mode is now optional (but of course is required
+</I>&gt;<i> if you will transmit above 2.7 kHz.)
+</I>&gt;<i> 2. Correct TxMode label now appears on program startup.
+</I>&gt;<i> 3. &quot;Transmitting...&quot; message in ALL.TXT now has the correct TxMode.
+</I>&gt;<i> 4. File wsjt_status.txt includes the TxMode.
+</I>&gt;<i> 5. F4 clears Az, Dist, and the Tx message boxes.
+</I>&gt;<i> 6. You can decode JT9 signals in the JT65 frequency range, and ice-versa,
+</I>&gt;<i> by double-clicking the signal in the waterfall.
+</I>&gt;<i> 7. Better logic for enabling/disabling the TestPTT button.
+</I>&gt;<i> 8. Do not call getFreq() when the TestPTT button is clicked and PTTmethod
+</I>&gt;<i> is via CAT control.
+</I>&gt;<i> 9. New cold-start default frequencies, set at reasonable values for JT65.
+</I>&gt;<i> 10. Default macros as simple examples.
+</I>&gt;<i>
+</I>&gt;<i> This revision (or something close to it) will likely be released publicly
+</I>&gt;<i> soon.
+</I>&gt;<i>
+</I>&gt;<i> Please report any compilation or operational problems!
+</I>&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130710/08dc1828/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130710/08dc1828/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001482.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+	<LI>Next message: <A HREF="001497.html">[Wsjt-devel] WSJT-X v1.1 r3471
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1496">[ date ]</a>
+              <a href="thread.html#1496">[ thread ]</a>
+              <a href="subject.html#1496">[ subject ]</a>
+              <a href="author.html#1496">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

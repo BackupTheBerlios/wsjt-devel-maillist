@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wspr gui
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%20gui&In-Reply-To=%3C20080608102800.72b3cb80%40gb7tf.ath.cx%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000350.html">
+   <LINK REL="Next"  HREF="000355.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wspr gui</H1>
+    <B>Richard Bown</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wspr%20gui&In-Reply-To=%3C20080608102800.72b3cb80%40gb7tf.ath.cx%3E"
+       TITLE="[Wsjt-devel] wspr gui">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Sun Jun  8 11:28:00 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000350.html">[Wsjt-devel] wspr gui
+</A></li>
+        <LI>Next message: <A HREF="000355.html">[Wsjt-devel] wspr gui
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 7 Jun 2008 19:27:33 -0400
+Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt; wrote:
+
+&gt;<i> On Sat, Jun 07, 2008 at 11:54:23PM +0100, Richard Bown wrote:
+</I>&gt;<i> &gt; Hi
+</I>&gt;<i> &gt; I've got the wspr gui up,
+</I>&gt;<i> &gt; It doesn't seem to do much, apart from seg faulting in the tx
+</I>&gt;<i> &gt; period.
+</I>&gt;<i> 
+</I>&gt;<i> Please follow the instructions in BUGS, can you get a core file
+</I>&gt;<i> and do a gdb bt for me please?
+</I>&gt;<i> 
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> 
+</I>Hi I recompiled using the latest kernel, and this time it did not seg
+fault, it crashed leaving this:-( ignore the wrapping)
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">root at gb7tf</A> wspr]# python wspr.py
+******************************************************************
+WSPR Version 0.8_r831 , by K1JT
+Run date:   Sun Jun  8 08:36:13 2008 UTC
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0       16        16       /dev/dsp
+   1       16         2       /dev/dsp1
+   2       12        10       M Audio Delta 66: ICE1712 multi (hw:0,0)
+   3        2         8       PnP Audio Device        : USB Audio
+(hw:1,0) 4        0        10       front
+   5        0        10       surround40
+   6        0        10       surround51
+   7        0        128       iec958
+   8       128        128       spdif
+   9       128        128       default
+  10        0        10       dmix
+
+User requested devices:  Input = 3   Output = 3
+Default devices:         Input = 0   Output = 0
+Will open devices:       Input = 3   Output = 3
+******************************************************************
+Expression 'SetApproximateSampleRate( pcm, hwParams, sr )' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1291
+
+Expression 'PaAlsaStreamComponent_InitialConfigure( &amp;self-&gt;capture, inParams,
+self-&gt;primeBuffers, hwParamsCapture, &amp;realSr )' failed in
+'src/hostapi/alsa/pa_linux_alsa.c', line: 1862
+
+Expression 'PaAlsaStream_Configure( stream, inputParameters, outputParameters,
+sampleRate, framesPerBuffer, &amp;inputLatency, &amp;outputLatency,
+&amp;hostBufferSizeMode )' failed in 'src/hostapi/alsa/pa_linux_alsa.c',
+line: 1986
+
+An error occured while using the portaudio stream Error
+number: -9997 Error message: Invalid sample rate 
+An error occured while
+using the portaudio stream Error number: -10000 Error message:
+PortAudio not initialized 
+An error occured while using the portaudio
+stream Error number: -10000 Error message: PortAudio not initialized
+An error occured while using the portaudio stream Error number: -10000
+Error message: PortAudio not initialized
+An error occured while using the portaudio stream
+Error number: -10000
+Error message: PortAudio not initialized
+An error occured while using the portaudio stream
+Error number: -10000
+Error message: PortAudio not initialized
+Fortran runtime error: Array reference out of bounds for array 'freq',
+upper bound of dimension 1 exceeded (in file 'sync162.f', at line 190)
+
+One other and minor thing , in setup it accepts the port number to
+use , but not the callsign, its always Joes'
+
+The above error message is left when run as root.
+running as a user seg faults, but doesn't leave a core to debug.
+
+I copied the whole portaudio-v19/ directory from wsjt-5.9.7 into the
+wspr directory, which stopped the portaudio errors , now it seg faults
+both as root and user 
+
+73 Richard
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000350.html">[Wsjt-devel] wspr gui
+</A></li>
+	<LI>Next message: <A HREF="000355.html">[Wsjt-devel] wspr gui
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

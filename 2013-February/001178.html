@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fw%3A%20Wsjt-devel%20Digest%2C%20Vol%2063%2C%20Issue%203&In-Reply-To=%3C8E73581B0ACD4A8ABF4FB4CE2DACD757%40LABWEN%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001177.html">
+   <LINK REL="Next"  HREF="001180.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3</H1>
+    <B>Greg Cook</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fw%3A%20Wsjt-devel%20Digest%2C%20Vol%2063%2C%20Issue%203&In-Reply-To=%3C8E73581B0ACD4A8ABF4FB4CE2DACD757%40LABWEN%3E"
+       TITLE="[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3">g.cook at sheffield.ac.uk
+       </A><BR>
+    <I>Fri Feb  8 01:46:47 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001177.html">[Wsjt-devel] Fwd: Re:  greetings developers
+</A></li>
+        <LI>Next message: <A HREF="001180.html">[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1178">[ date ]</a>
+              <a href="thread.html#1178">[ thread ]</a>
+              <a href="subject.html#1178">[ subject ]</a>
+              <a href="author.html#1178">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe,
+
+Excellent example of the open source concept.
+
+I'm not very familiar with Python nor Qt, but we do teach the former here at 
+Sheffield, and I would be very interested in your reasons regarding the 
+change to Qt, relative strengths/weaknesses etc.
+
+Thanks
+
+Greg g4cui
+
+
+&gt;<i> Hi Paul,
+</I>&gt;<i>
+</I>&gt;<i> KG7HF wrote:
+</I>&gt;&gt;<i> I'm interested in taking a look at the wsjt programs ...
+</I>&gt;<i>
+</I>&gt;<i> Perhaps it's time for a general update on the state of development work
+</I>&gt;<i> on WSJT, MAP65, and WSPR.
+</I>&gt;<i>
+</I>&gt;<i> I started this effort in 2001, and I made it open-source in 2005.  All
+</I>&gt;<i> three program suites have had their user interfaces written in Python,
+</I>&gt;<i> using the Tcl/Tk toolkit.  The number-crunching DSP code is written
+</I>&gt;<i> mostly in Fortran, with a bit of C thrown in.  The code could be
+</I>&gt;<i> compiled for Windows, Linux, OS-X, Free BSD, and other Unix-like
+</I>&gt;<i> operating systems, using free compilers and related tools.  Packaged
+</I>&gt;<i> click-to-install installation files were always provided for Windows,
+</I>&gt;<i> and sometimes also for Debian-based Linux distributions.  Some basic
+</I>&gt;<i> information on compiling the programs is provided on the WSJT web site
+</I>&gt;<i> at <A HREF="http://www.physics.princeton.edu/pulsar/K1JT/devel.html">http://www.physics.princeton.edu/pulsar/K1JT/devel.html</A> .  It is not
+</I>&gt;<i> always fully up-to-date.
+</I>&gt;<i>
+</I>&gt;<i> The project continues to be fully open-source, and uses free compiler
+</I>&gt;<i> tools and libraries.  Most of the code is my own; several contributors,
+</I>&gt;<i> most notably VA3DB and G4KLA, have worked hard on portability issues,
+</I>&gt;<i> making sure that the code compiles and runs well under Free BSD and OS-X.
+</I>&gt;<i>
+</I>&gt;<i> Recent development work has been mostly my own, once more.  The program
+</I>&gt;<i> GUIs are being re-written in C++, using the Qt Framework instead of
+</I>&gt;<i> Python.  This migration is complete with MAP65; experimental versions of
+</I>&gt;<i> WSJT and WSPR (called WSJT-X and WSPR-X) are now operational and
+</I>&gt;<i> available, although they do not yet have all the features of the older
+</I>&gt;<i> Python-based code.
+</I>&gt;<i>
+</I>&gt;<i> To compile the new Qt-based programs you need to have installed the free
+</I>&gt;<i> QT SDK and either g95 or gfortran.  (I tend to use g95 on Windows and
+</I>&gt;<i> gfortran on Linux, but this is not required.).  In Windows I use the
+</I>&gt;<i> MinGW system tools.  You need the FFTW3, Qwt, and Portaudio  libraries.
+</I>&gt;<i>  With all these tools in place, you can compile library libm65.a and
+</I>&gt;<i> the decoder m65 with the commands
+</I>&gt;<i>
+</I>&gt;<i> $ cd libm65
+</I>&gt;<i> $ make                     (in Linux, &quot;make -f Makefile.linux&quot;)
+</I>&gt;<i>
+</I>&gt;<i> Then open map65.pro in QtCreator and compile map65 from there.
+</I>&gt;<i> You might need to readjust some paths in the makefiles or the Qt project
+</I>&gt;<i> file map65.pro to suit your system.  Once you are properly set up,
+</I>&gt;<i> compiling MAP65 requires only a few typed commands or mouse-clicks.
+</I>&gt;<i> Installing and gaining familiarity with the necessary tools may take
+</I>&gt;<i> much longer.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for your interest!  Let us know how you progress, and if/when you
+</I>&gt;<i> have ideas or code to contribute.
+</I>&gt;<i>
+</I>&gt;<i> -- 73, Joe, K1JT
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001177.html">[Wsjt-devel] Fwd: Re:  greetings developers
+</A></li>
+	<LI>Next message: <A HREF="001180.html">[Wsjt-devel] Fw: Wsjt-devel Digest, Vol 63, Issue 3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1178">[ date ]</a>
+              <a href="thread.html#1178">[ thread ]</a>
+              <a href="subject.html#1178">[ subject ]</a>
+              <a href="author.html#1178">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Portaudio and QtAudio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Portaudio%20and%20QtAudio&In-Reply-To=%3C6794E4E2-A433-4F73-9054-63064DB2B851%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001854.html">
+   <LINK REL="Next"  HREF="001856.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Portaudio and QtAudio</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Portaudio%20and%20QtAudio&In-Reply-To=%3C6794E4E2-A433-4F73-9054-63064DB2B851%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] Portaudio and QtAudio">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Fri Aug 16 09:40:44 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001854.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+        <LI>Next message: <A HREF="001856.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1853">[ date ]</a>
+              <a href="thread.html#1853">[ thread ]</a>
+              <a href="subject.html#1853">[ subject ]</a>
+              <a href="author.html#1853">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe and Bill,
+
+The USB Audio Codec on MacOSX supports a 11025Hz frame rate but not 12000 Hz.
+
+r3517 uses portaudio where the frame rate is specified as 12000 Hz but is able to negotiate with  the Mac codec to convert from 11025 to 12000.   QtAudio does not have this flexibility and consequently does not support MacOSX.
+
+Two possibilities can be considered.
+
+1).  Mac specific software is incorporated to convert a higher frame rate, e.g 48000 Hz to 12000 Hz.    
+The disadvantage of this is that there will be a need to have #ifdefs in various places which goes against the welcome move to remove #ifdefs as far as possible.
+
+2).  Change the input frame rate to follow MAP65, for instance, where 48000 Hz is used for both input and output.   Then incorporate as standard software a scheme to convert input frame rate to 12000 Hz as required.
+The advantage of this solution is that it retains generality for all platforms.
+
+Could Qt experts (and I am not one of these) give some consideration to solving this problem.  For the moment it is now a fact that beyond r3517 Mac OSX is outside the current WSJTX development project.
+
+--- John G4KLA
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001854.html">[Wsjt-devel] WSJTX v1.2 r3552
+</A></li>
+	<LI>Next message: <A HREF="001856.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1853">[ date ]</a>
+              <a href="thread.html#1853">[ thread ]</a>
+              <a href="subject.html#1853">[ subject ]</a>
+              <a href="author.html#1853">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

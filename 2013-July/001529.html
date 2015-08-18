@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Changes to support multiple instances
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Changes%20to%20support%20multiple%20instances&In-Reply-To=%3CCAH-RX41Hg%3D1h5-y1KBDD6KT8Sun8L7y9aMbuastmDod0PhbiOA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001528.html">
+   <LINK REL="Next"  HREF="001530.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Changes to support multiple instances</H1>
+    <B>Josh Rovero</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Changes%20to%20support%20multiple%20instances&In-Reply-To=%3CCAH-RX41Hg%3D1h5-y1KBDD6KT8Sun8L7y9aMbuastmDod0PhbiOA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Changes to support multiple instances">josh.rovero at gmail.com
+       </A><BR>
+    <I>Thu Jul 18 06:11:53 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001528.html">[Wsjt-devel] kvasd
+</A></li>
+        <LI>Next message: <A HREF="001530.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1529">[ date ]</a>
+              <a href="thread.html#1529">[ thread ]</a>
+              <a href="subject.html#1529">[ subject ]</a>
+              <a href="author.html#1529">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I am stress-testing the changes to support multiple instances
+of wsjtx.  Should be done by tomorow evening.
+
+The change involves relatively minor changes to the
+following files:
+     main.cpp
+     mainwindow.cpp
+     mainwindow.h
+     lib/jt9.f90
+     lib/jt9a.f90
+     lib/ipcomm.cpp
+
+The calling convention for jt9 changes from
+&quot;jt9 -s&quot; to &quot;jt9 -s &lt;shared_memory_key&gt;.
+The keys are programatically generated with QUuid and should
+be unique for each instantiation of wsjtx and its
+corresponding jt9.  Example:
+
+jt9 -s {ec40dd52-d366-4dfe-a885-b4695d43d09d}
+
+How should I submit the changes for review?
+
+-- 
+P.J. &quot;Josh&quot; Rovero                   Ham Radio: KK1D
+<A HREF="http://www.roveroresearch.org">http://www.roveroresearch.org</A>   <A HREF="http://www.roveroresearch.info">http://www.roveroresearch.info</A>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130718/da0e5d5d/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130718/da0e5d5d/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001528.html">[Wsjt-devel] kvasd
+</A></li>
+	<LI>Next message: <A HREF="001530.html">[Wsjt-devel] Time for release of Version 1.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1529">[ date ]</a>
+              <a href="thread.html#1529">[ thread ]</a>
+              <a href="subject.html#1529">[ subject ]</a>
+              <a href="author.html#1529">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel]  WSPR Rev2285
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSPR%20Rev2285&In-Reply-To=%3C57DB0E69-6193-4AB1-8759-892768FF578F%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001034.html">
+   <LINK REL="Next"  HREF="001038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel]  WSPR Rev2285</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%20WSPR%20Rev2285&In-Reply-To=%3C57DB0E69-6193-4AB1-8759-892768FF578F%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel]  WSPR Rev2285">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Dec  9 19:01:31 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001034.html">[Wsjt-devel] WSPR Rev2285
+</A></li>
+        <LI>Next message: <A HREF="001038.html">[Wsjt-devel] WSPR Rev2285
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1037">[ date ]</a>
+              <a href="thread.html#1037">[ thread ]</a>
+              <a href="subject.html#1037">[ subject ]</a>
+              <a href="author.html#1037">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+ &gt; The Rx/Tx algorithm in r2285 guarantees that if pctx&gt;0
+ &gt; at least 1 and no more than 3 of those six visits [in two
+ &gt; hours] will be a Tx cycle.
+
+Some statistics (not many but may be an indication of how this is  
+working):
+
+RxTx cycle started at 10:00 UTC    80 through 10 (RX on 80m and  
+60m).  pctx=33.    Columns show TX counts in 2 hour sections.   In  
+the third 2 hour section 160m RX was added.     The fourth cycle  
+ended a few minutes ago at 18:00 UTC.
+
+40:    4    1     4     2
+30:    4    2     3     2
+20:    2    2     1     3
+17:    0    3     1     0
+15:    1    2     1     2
+12:    4    4     2     1
+10:    3    1     4     2
+Tot:  18  15  16   12
+
+
+One consideration is that if fewer than 10 are selected (as in the  
+first two columns where 160m was not selected), then in place of the  
+missing 160m a random selection will be made from the other 9  
+bands.   This might throw the &quot;at least 1 and no more than 3 .. will  
+be a Tx cycle&quot;scheme off balance.
+
+However, in the third and fourth columns, 160m was selected as well  
+so this should satisfy your 10 band scheme properly.     There are  
+several places where the max. limit of 3 is exceeded and two where no  
+TX cycle was granted.    Should more forcing be done in the 6th cycle  
+if TX has not be granted for a given band e.g. 17m in the first and  
+last columns?
+
+Presumably the max. limit will depend on pctx?    What pctx are you  
+using?
+
+  -- John G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001034.html">[Wsjt-devel] WSPR Rev2285
+</A></li>
+	<LI>Next message: <A HREF="001038.html">[Wsjt-devel] WSPR Rev2285
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1037">[ date ]</a>
+              <a href="thread.html#1037">[ thread ]</a>
+              <a href="subject.html#1037">[ subject ]</a>
+              <a href="author.html#1037">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

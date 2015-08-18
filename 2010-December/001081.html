@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3CAANLkTinR4aZrqHBHdBJ_RQb_cdGSoPNcnAd2sTteO2Xs%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001076.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Another approach to command-line WSPR (weak	computers)</H1>
+    <B>Edson Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Another%20approach%20to%20command-line%20WSPR%20%28weak%0A%09computers%29&In-Reply-To=%3CAANLkTinR4aZrqHBHdBJ_RQb_cdGSoPNcnAd2sTteO2Xs%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Another approach to command-line WSPR (weak	computers)">ewpereira at gmail.com
+       </A><BR>
+    <I>Mon Dec 27 21:31:45 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001076.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1081">[ date ]</a>
+              <a href="thread.html#1081">[ thread ]</a>
+              <a href="subject.html#1081">[ subject ]</a>
+              <a href="author.html#1081">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sivan,
+
+Your work in removing the GUI code will also be very valuable. I would be
+very much interested in testing it if you could send me a tar file.
+
+The reason I did not worry much about I-Q processing is that I already use
+DttSP for demodulating other signals (phone and cw) in the 48 kHz passband
+of my online SDRZero receiver (
+<A HREF="http://appr.org.br/sdr-br/spectrometer.php?qth=GG56tv">http://appr.org.br/sdr-br/spectrometer.php?qth=GG56tv</A>). For WSPR I need to
+further process the demodulated samples and this could be done by resampling
+the demodulated wav file to 12 kHz using sox and passing the file to wspr0.
+Additional code would be used to upload the spots to WSPRnet (borrowed from
+wspr.py).
+
+73,
+
+-- Edson, pu2mwd, pu1jte, n1vtn, jf1afn
+
+On Mon, Dec 27, 2010 at 12:47 PM, Sivan Toledo &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">stoledo at tau.ac.il</A>&gt; wrote:
+
+&gt;<i> I appreciate the efforts that several of you are making on the command-line
+</I>&gt;<i> wspr0, but I still decided to try a different approach. I need the IQ
+</I>&gt;<i> processing and I am not eager to try to get a separate program to do the IQ
+</I>&gt;<i> demodulation (and not too eager to script together everything, although if
+</I>&gt;<i> Edson comes up with the scripts, I'll be happy to try them).
+</I>&gt;<i>
+</I>&gt;<i> What I did this morning is to produce a version of WSPR that uses the
+</I>&gt;<i> existing program but has no GUI. I basically removed or commented out all
+</I>&gt;<i> the GUI calls from wspr.py, produced stripped down versions of the codes in
+</I>&gt;<i> WsprMod without the GUI (basically just with the global variables, which
+</I>&gt;<i> wspr.py uses), and a tiny python code that replaces IntVar, StringVar, and
+</I>&gt;<i> DoubleVar (which came from Tkinter which I no longer import). I replaced
+</I>&gt;<i> some of the GUI updates with print statements, so I know what is going on.
+</I>&gt;<i> Another small modification was to replace update() with a modified function
+</I>&gt;<i> that runs forever in a loop, sleeping for 200ms at the end of each one. I
+</I>&gt;<i> can make the sleeping a bit more accurate (to compensate for the time
+</I>&gt;<i> processing in update takes, but I don't think it matters much).
+</I>&gt;<i>
+</I>&gt;<i> It took a couple of hours and it now works. I ran it for an hour or so and
+</I>&gt;<i> produced normal spots.
+</I>&gt;<i>
+</I>&gt;<i> This version of WSPR uses the existing wspr.ini and hopping.ini in the
+</I>&gt;<i> directory, so I can set these up with the GUI version (or in a text editor)
+</I>&gt;<i> and then run the GUI-less version in the same directory, and it has exactly
+</I>&gt;<i> the same behaviors, just no visual feedback and no way to tweak the behavior
+</I>&gt;<i> (e.g. to change hopping or to tune).
+</I>&gt;<i>
+</I>&gt;<i> I'll appreciate any comments on this. I realize that not many people will
+</I>&gt;<i> want it, and that if the group supports this mode, it will add maintenance
+</I>&gt;<i> overhead whether we stick to separate files (which will need to be modified
+</I>&gt;<i> when the main ones are) or integrate the no-hopping option into wspr.py.
+</I>&gt;<i>
+</I>&gt;<i> When I ran it on my slow computer (266 Geode processor), I discovered two
+</I>&gt;<i> things. One is that what was taking most of the CPU in WSPR is the GUI. The
+</I>&gt;<i> GUI version took about 80% CPU even when it was not decoding, just
+</I>&gt;<i> collection sound. The non-gui version takes only 10%. This might be somewhat
+</I>&gt;<i> important for people leaving their laptops WSPRing overnight, because they
+</I>&gt;<i> are less likely to heat up and turn on their fans. This is good.
+</I>&gt;<i>
+</I>&gt;<i> The other thing I discovered is that the IQ decoding takes a minute and a
+</I>&gt;<i> half on this machine, and the mept162 takes more than 30 seconds (I am not
+</I>&gt;<i> sure how long, but more than 30 seconds). So it clearly can't receive and
+</I>&gt;<i> decode all the 2-minute slots. I think that wspr2 is waiting for the decode
+</I>&gt;<i> to end before the next cycle begins, but I assume that this is not something
+</I>&gt;<i> that Joe planned for. Do you guys think that I'll simply get every second or
+</I>&gt;<i> every third slot processed and the rest will not be received, or will I get
+</I>&gt;<i> some garbage? I guess the reasonable thing is to get a machine that's a bit
+</I>&gt;<i> faster.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Sivan
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101227/07a26f98/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101227/07a26f98/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001076.html">[Wsjt-devel] Another approach to command-line WSPR (weak	computers)
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1081">[ date ]</a>
+              <a href="thread.html#1081">[ thread ]</a>
+              <a href="subject.html#1081">[ subject ]</a>
+              <a href="author.html#1081">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

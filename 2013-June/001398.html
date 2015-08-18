@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB4E2B.30200%40bigpond.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001397.html">
+   <LINK REL="Next"  HREF="001399.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1</H1>
+    <B>David</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20%5BWSJT-SVN%5D%20r3408%20-%20branches/wsjtx_k1jt_p1&In-Reply-To=%3C51CB4E2B.30200%40bigpond.com%3E"
+       TITLE="[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1">djmunn at bigpond.com
+       </A><BR>
+    <I>Wed Jun 26 22:25:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001397.html">[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+        <LI>Next message: <A HREF="001399.html">[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1398">[ date ]</a>
+              <a href="thread.html#1398">[ thread ]</a>
+              <a href="subject.html#1398">[ subject ]</a>
+              <a href="author.html#1398">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe ...i did mean 'decode65a'
+fat finger problems hi hi
+
+David
+
+
+
+On 27/06/13 06:18, Joe Taylor wrote:
+&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;<i> You can include jt65 on lines 19 and 104 of Makefile.linux if you 
+</I>&gt;<i> wish, but there's no need to compile the jt65 executable.  That's a 
+</I>&gt;<i> separate, stand-alone program for my own testing purposes; it's not 
+</I>&gt;<i> used by WSJT-X.
+</I>&gt;<i>
+</I>&gt;<i> As for your error message
+</I>&gt;<i>
+</I>&gt;<i> jt65a.f90(.text+0x340): undefined reference to 'decodr65a_'
+</I>&gt;<i>
+</I>&gt;<i> There's no reference to &quot;decodr65a&quot; anywhere in the code.  Both r3408 
+</I>&gt;<i> and r3409 compile &quot;out of the box&quot; here.
+</I>&gt;<i>
+</I>&gt;<i> Are you sure you didn't accidentally modify the call to decode65a ??
+</I>&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> On 6/26/2013 3:59 PM, David wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -------- Original Message --------
+</I>&gt;&gt;<i> Subject: Re: [Wsjt-devel] [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</I>&gt;&gt;<i> Date: Thu, 27 Jun 2013 05:57:54 +1000
+</I>&gt;&gt;<i> From: David &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">djmunn at bigpond.com</A>&gt;
+</I>&gt;&gt;<i> To: John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Joe ....in the Makefile .linux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> jt65 is missing from lines 19 and 104
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> David
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On 27/06/13 05:50, David wrote:
+</I>&gt;&gt;&gt;<i> Hi Joe....i am getting a error in compiling with
+</I>&gt;&gt;&gt;<i> 'make -f Makefile.linux'
+</I>&gt;&gt;&gt;<i> libjt9.a (jt65a.o): in function 'jt65a'
+</I>&gt;&gt;&gt;<i> jt65a.f90(.text+0x340): undefined reference to 'decodr65a_'
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> David VK4BDJ
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On 27/06/13 05:39, John Nelson wrote:
+</I>&gt;&gt;&gt;&gt;<i> Hi Joe,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Code looks good. Compiler warnings have been removed - mostly.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> It seems the C compiler here is more touchy than yours.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 1) in init_rs.c and decode_rs.c this line:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> #define NULL ((void *)0)
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> generates a warning about redefinition of NULL where NULL is
+</I>&gt;&gt;&gt;&gt;<i> originally defined in #include &lt;stdlib.h&gt;
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 2) in setup65.f90 gfortran issues a warning in two places where:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> go to 22
+</I>&gt;&gt;&gt;&gt;<i> ...
+</I>&gt;&gt;&gt;&gt;<i> 22 enddo
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> and same again for label 122, where the goto label is on an &quot;enddo&quot;
+</I>&gt;&gt;&gt;&gt;<i> statement.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Minor warnings .... can be ignored.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> --- John G4KLA
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001397.html">[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+	<LI>Next message: <A HREF="001399.html">[Wsjt-devel] Fwd: Re: [WSJT-SVN] r3408 - branches/wsjtx_k1jt_p1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1398">[ date ]</a>
+              <a href="thread.html#1398">[ thread ]</a>
+              <a href="subject.html#1398">[ subject ]</a>
+              <a href="author.html#1398">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

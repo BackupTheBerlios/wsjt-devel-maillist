@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR3%20doesn%27t%20set%20correct%20model%20in%20rigctl&In-Reply-To=%3C50434E10.20000%40dbernhardt.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="001161.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR3 doesn't set correct model in rigctl</H1>
+    <B>Daniel Bernhardt</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR3%20doesn%27t%20set%20correct%20model%20in%20rigctl&In-Reply-To=%3C50434E10.20000%40dbernhardt.com%3E"
+       TITLE="[Wsjt-devel] WSPR3 doesn't set correct model in rigctl">daniel at dbernhardt.com
+       </A><BR>
+    <I>Sun Sep  2 14:16:16 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="001161.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1159">[ date ]</a>
+              <a href="thread.html#1159">[ thread ]</a>
+              <a href="subject.html#1159">[ subject ]</a>
+              <a href="author.html#1159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I compiled WSPR 3.0.1 for Linux using SVN revision 2551. I noticed the 
+model setting for CAT control is not being forwarded correctly to 
+rigctl. No matter what I select in the &quot;Rig Number&quot; setting, rigctl is 
+always called with -m 1 instead of the selected number.
+
+Config parameter error: Invalid parameter
+  Error executing rigctl to set Tx mode:           1         512
+  rigctl -m     1 -r /dev/ttyUSB0 -s 38400 -C data_bits=8 -C stop_bits=2 
+-C serial_handshake=None T 1
+
+All other parameters from the CAT settings dialog are used by rigctl as 
+expected.
+
+Kind Regards,
+Daniel
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="001161.html">[Wsjt-devel] WSPR3 doesn't set correct model in rigctl
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1159">[ date ]</a>
+              <a href="thread.html#1159">[ thread ]</a>
+              <a href="subject.html#1159">[ subject ]</a>
+              <a href="author.html#1159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

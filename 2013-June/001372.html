@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [WSJT-SVN] r3382 - in branches/wsjtx_k1jt_p1: . lib
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3382%20-%20in%20branches/wsjtx_k1jt_p1%3A%20.%20lib&In-Reply-To=%3C67F0BBB7-A407-4F36-9A89-8F7CD7778461%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001371.html">
+   <LINK REL="Next"  HREF="001373.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [WSJT-SVN] r3382 - in branches/wsjtx_k1jt_p1: . lib</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5BWSJT-SVN%5D%20r3382%20-%20in%20branches/wsjtx_k1jt_p1%3A%20.%20lib&In-Reply-To=%3C67F0BBB7-A407-4F36-9A89-8F7CD7778461%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] [WSJT-SVN] r3382 - in branches/wsjtx_k1jt_p1: . lib">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Jun 12 18:39:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001371.html">[Wsjt-devel] [WSJT-SVN] r3377 - in branches/wsjtx_k1jt_p1: . lib
+</A></li>
+        <LI>Next message: <A HREF="001373.html">[Wsjt-devel] WSJT-X v1.1 beta, r3385
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1372">[ date ]</a>
+              <a href="thread.html#1372">[ thread ]</a>
+              <a href="subject.html#1372">[ subject ]</a>
+              <a href="author.html#1372">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+I notice that  kvasd  crashes from time to time with a bus error.   
+
+I have copied  kvasd  from the  the &quot;usual&quot;  wsjt  library (where it never crashes) to use in the new wsjtx.     Can I assume that  kvasd has not changed between  wsjt  and  wsjtx, in which case, I need to look elsewhere for a possible problem.    
+
+I notice that the data produced by kvasd and read back from kvasd.dat  is slightly different.   
+
+The line:    read(22,rec=2)nsec2,ncount,dat4    is the same for  wsjt   and   wsjtx   but  dat4 is defined differently:    dat4(4)  in wsjt    and  dat4(12)  in wsjtx.    Is this relevant?
+
+--- John g4KLA
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001371.html">[Wsjt-devel] [WSJT-SVN] r3377 - in branches/wsjtx_k1jt_p1: . lib
+</A></li>
+	<LI>Next message: <A HREF="001373.html">[Wsjt-devel] WSJT-X v1.1 beta, r3385
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1372">[ date ]</a>
+              <a href="thread.html#1372">[ thread ]</a>
+              <a href="subject.html#1372">[ subject ]</a>
+              <a href="author.html#1372">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

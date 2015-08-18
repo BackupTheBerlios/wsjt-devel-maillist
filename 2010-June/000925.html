@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Ubuntu 9.04 install observations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%209.04%20install%20observations&In-Reply-To=%3CAANLkTin-AOUiaWjZQz4mMWBNGZ_K1oOhmgPuda_ppWA9%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000926.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Ubuntu 9.04 install observations</H1>
+    <B>sconklin Lists</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%209.04%20install%20observations&In-Reply-To=%3CAANLkTin-AOUiaWjZQz4mMWBNGZ_K1oOhmgPuda_ppWA9%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Ubuntu 9.04 install observations">steve-ml at conklinhouse.com
+       </A><BR>
+    <I>Thu Jun  3 03:39:28 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000926.html">[Wsjt-devel] Ubuntu 9.04 install observations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#925">[ date ]</a>
+              <a href="thread.html#925">[ thread ]</a>
+              <a href="subject.html#925">[ subject ]</a>
+              <a href="author.html#925">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, May 31, 2010 at 12:30 PM, Steve Meuse &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Just did a fresh install on Ubuntu 9.04 and I noticed a few things.
+</I>&gt;<i>
+</I>&gt;<i> First, the complete package list that I needed to installed:
+</I>&gt;<i>
+</I>&gt;<i> subversion
+</I>&gt;<i> python-dev
+</I>&gt;<i> python2.5-dev
+</I>&gt;<i> python-imaging-tk
+</I>&gt;<i> python-pmw
+</I>&gt;<i> fftw3-dev
+</I>&gt;<i> portaudio19-dev
+</I>&gt;<i> libsamplerate0-dev
+</I>&gt;<i> python-f2py
+</I>&gt;<i> gfortran
+</I>&gt;<i> python-dev
+</I>&gt;<i>
+</I>&gt;<i> It wouldn't compile with just python2.5-dev, I ended up having to install
+</I>&gt;<i> python-dev, which I believe is now 2.6....
+</I>&gt;<i>
+</I>&gt;<i> Also, I noticed that Audio.so wasn't being copied (make install) to the
+</I>&gt;<i> WsjtMod directory under:
+</I>&gt;<i>
+</I>&gt;<i> /usr/local/lib/python2.6/dist-packages/WsjtMod/
+</I>&gt;<i>
+</I>&gt;<i> I had to copy it over by hand. Not sure if that was appropriate or what, but
+</I>&gt;<i> it was an oversight maybe we could update the Make/config scripts.
+</I>&gt;<i>
+</I>&gt;<i> Also, on Ubutnu 9.04 python gets installed into /usr/bin, but it seems like
+</I>&gt;<i> the default directory configure used was /usr/local which barfed up a bunch
+</I>&gt;<i> of errors when calling the /usr/local/bin/wsjt script. The gist is that the
+</I>&gt;<i> instal files went into /usr/local/share/wsjt, but since python was in
+</I>&gt;<i> /usr/bin it looked for those files in /usr/share/wsjt. To get around it I
+</I>&gt;<i> just made a symlink in /usr/local/bin/ to /usr/bin/python (which itself is a
+</I>&gt;<i> symlink!).
+</I>&gt;<i>
+</I>&gt;<i> Minor nits, I know, but maybe with some judicious adjustment of defaults we
+</I>&gt;<i> can get more folks using the Linux version :)
+</I>&gt;<i>
+</I>&gt;<i> I may attempt running it on 10.04, but I've had some stability issues on the
+</I>&gt;<i> machine that it's been installed on. Seems like a widespread issue from
+</I>&gt;<i> reading the forums, possible bad Intel video driver issues.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> -Steve
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Steve,
+
+Thanks for the detailed notes. FYI, we have a developer's team and
+mailing list for Ubuntu ham-related issues, I've forwarded this to
+that list so that if/when someone wants to have a look, we have your
+information.
+
+There is a bug open to update wsjt to the latest version. When this is
+done, it will probably be for the current and next releases, and so
+may not be backported to 9.04 or 9.10. That bug is here:
+<A HREF="https://bugs.launchpad.net/ubuntu/+source/wsjt/+bug/588359">https://bugs.launchpad.net/ubuntu/+source/wsjt/+bug/588359</A>
+
+If you do try to build wsjt on 10.04, please feel free to document the
+results in that bug. As you said, there are a few Intel graphics
+stability problems, but we're working them.
+
+Anyone is welcome to join the ubuntu-hams team or the
+ubuntu-hams-devel team. You can find more information here:
+
+<A HREF="https://launchpad.net/~ubuntu-hams">https://launchpad.net/~ubuntu-hams</A>
+<A HREF="https://launchpad.net/~ubuntu-hams-devel">https://launchpad.net/~ubuntu-hams-devel</A>
+
+Steve AI4QR
+(Ubuntu kernel developer)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000926.html">[Wsjt-devel] Ubuntu 9.04 install observations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#925">[ date ]</a>
+              <a href="thread.html#925">[ thread ]</a>
+              <a href="subject.html#925">[ subject ]</a>
+              <a href="author.html#925">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

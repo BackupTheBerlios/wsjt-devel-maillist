@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Compiler and other tool versions.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Compiler%20and%20other%20tool%20versions.&In-Reply-To=%3C51EFF652.7060201%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001555.html">
+   <LINK REL="Next"  HREF="001557.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Compiler and other tool versions.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Compiler%20and%20other%20tool%20versions.&In-Reply-To=%3C51EFF652.7060201%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Compiler and other tool versions.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jul 24 17:44:18 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001555.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+        <LI>Next message: <A HREF="001557.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1556">[ date ]</a>
+              <a href="thread.html#1556">[ thread ]</a>
+              <a href="subject.html#1556">[ subject ]</a>
+              <a href="author.html#1556">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 24/07/2013 15:53, Joe Taylor wrote:
+&gt;<i> Hi Bill,
+</I>
+Thanks for the info, some comments below.
+
+&gt;<i>
+</I>&gt;<i> G4WJS wrote:
+</I>&gt;&gt;<i> just trying to orientate myself with the project code.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Is there a recommended set of tool versions? Is there a minimum
+</I>&gt;&gt;<i> supported set of tool versions?
+</I>&gt;<i>
+</I>&gt;<i> No and No... but perhaps there should be.
+</I>
+Not necessarily, I assume the proportions that build their own is very 
+small so whatever works for them might be valid answer here.
+
+&gt;<i>
+</I>&gt;<i> I would be happy to hear advice and recommendations from anyone who 
+</I>&gt;<i> knows more about such organizational matters than I do.
+</I>&gt;<i>
+</I>&gt;<i> For the record: I'm not really a programmer -- just a physicist who 
+</I>&gt;<i> knows how to program (sort of).  There are real programmers here who 
+</I>&gt;<i> certainly know more than I about these things.
+</I>&gt;<i>
+</I>&gt;<i> In practice, we have come up to speed individually and found things 
+</I>&gt;<i> that work.  No doubt better organization could be arranged.
+</I>&gt;<i>
+</I>&gt;<i> Up to now, released versions have been built using Qt 4.7.4.  We have 
+</I>&gt;<i> been planning to move to Qt5 -- and as far as I'm concerned, we could 
+</I>&gt;<i> do that now.  (I asked about this and a number of other organizational 
+</I>&gt;<i> matters in an email on July 19, but have not had much response yet.)
+</I>
+I notice that the current Qt5 release for Windoze Mingw includes a Mingw 
+4.8 toolchain which can't be official since the Mingw.org site only goes 
+up to 4.7. This is one of the reasons I asked. Having said that it isn't 
+much use as gfortran isn't included so a unified build with that isn't 
+possible without hacking on the toolchain.
+
+&gt;<i>
+</I>&gt;&gt;<i> What compiler versions are used to build the current Windows binary
+</I>&gt;&gt;<i> release?
+</I>&gt;<i>
+</I>&gt;<i> My Windows builds have been done under MinGW using these tools:
+</I>&gt;<i>
+</I>&gt;<i> &gt; g95 --version
+</I>&gt;<i> G95 (GCC 4.1.2 (g95 0.92!) Jun 17 2009)
+</I>&gt;<i>
+</I>&gt;<i> &gt; g++ --version
+</I>&gt;<i> g++ (GCC) 4.4.0
+</I>&gt;<i>
+</I>&gt;<i> &gt; make --version
+</I>&gt;<i> GNU Make 3.81
+</I>&gt;<i>
+</I>&gt;<i> &gt; qmake --version
+</I>&gt;<i> QMake version 2.01a
+</I>&gt;<i> Using Qt version 4.7.4 in C:\QtSDK\Desktop\Qt\4.7.4\mingw\lib
+</I>
+When I was looking into the comms issues recently, I built with tools in 
+the Cygwin environment. They have a Mingw package with g++ &amp; gfortran at 
+4.7 and that seemed ok with Qt 5.1.0.
+
+I did have issues when running under gdb on Windows, the wsjtx exe 
+failed to exit cleanly. It SEGV'ed before the settings could be saved 
+which was annoying. I didn't manage to find the cause of this. The same 
+exe seemed Ok outside of gdb. This might be a toolchain version issue or 
+simply an issue with the source itself.
+
+&gt;<i>
+</I>&gt;<i> Advice?  Recommendations?
+</I>
+I guess the only thing that matters is if someone who has to build (for 
+some obscure platform for example) is restricted to an older version of 
+something in the toolchain.
+
+Perhaps those who make binary packages for other than Windows can 
+comment on what they use?
+
+Personally, with my C++ programmer hat on, I would prefer g++ &gt;= 4.7 as 
+the current ISO Standard support is weaker before that.
+
+My FORTRAN programmers hat was lost and forgotten many years ago (think 
+punched card decks passed to operators through a hatch in return for 
+dead trees some time later if there weren't any compiler errors).
+
+&gt;<i>
+</I>&gt;<i>     -- 73, Joe, K1JT
+</I>
+73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001555.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+	<LI>Next message: <A HREF="001557.html">[Wsjt-devel] WSJT-X: Compiler and other tool versions.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1556">[ date ]</a>
+              <a href="thread.html#1556">[ thread ]</a>
+              <a href="subject.html#1556">[ subject ]</a>
+              <a href="author.html#1556">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

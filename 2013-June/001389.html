@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond%20%20-%20JT4&In-Reply-To=%3CF214EEF4FB3F40F1B96CC58D46C7D9CF%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001379.html">
+   <LINK REL="Next"  HREF="001350.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20Version%201.0%20and%20beyond%20%20-%20JT4&In-Reply-To=%3CF214EEF4FB3F40F1B96CC58D46C7D9CF%40shack2%3E"
+       TITLE="[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4">freevil at tiscali.co.uk
+       </A><BR>
+    <I>Wed Jun 26 11:14:47 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001379.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+        <LI>Next message: <A HREF="001350.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1389">[ date ]</a>
+              <a href="thread.html#1389">[ thread ]</a>
+              <a href="subject.html#1389">[ subject ]</a>
+              <a href="author.html#1389">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Quote...
+....the data are re-sampled to 11025 Hz inside
+WSJT-X using a high-quality conversion algorithm that loses no
+sensitivity....
+
+That explains alot, and answers just about everything in one statement !
+Obviously no need to change if it can convert that well.
+
+Thanks again, DAvid
+
+
+
+----- Original Message ----- 
+From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+To: &quot;David GM6BIG&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">freevil at tiscali.co.uk</A>&gt;
+Sent: Monday, June 24, 2013 7:22 PM
+Subject: Re: [Wsjt-devel] WSJT-X Version 1.0 and beyond - JT4
+
+
+&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;&gt;<i> As WSJT-X is quite a major change, it would be the ideal time to make
+</I>&gt;&gt;<i> changes to the sampling rate.
+</I>&gt;&gt;<i> To prevent confusion, JT4Xg could be a new designator.
+</I>&gt;&gt;<i> (same for JT65X ??)
+</I>&gt;<i>
+</I>&gt;<i> There's no need to change the mode or have a new designator.  JT65A is 
+</I>&gt;<i> already incorporated into WSJT-X.  The program's sample rate is 12000 Hz 
+</I>&gt;<i> on input, and in JT65 mode the data are re-sampled to 11025 Hz inside 
+</I>&gt;<i> WSJT-X using a high-quality conversion algorithm that loses no 
+</I>&gt;<i> sensitivity.
+</I>&gt;<i>
+</I>&gt;<i> The output sample rate is 48000 Hz, and the Tx waveform is generated 
+</I>&gt;<i> on-the-fly during each transmission.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Question is what are the advantages, if any, of moving to 12000 sampling 
+</I>&gt;&gt;<i> ??
+</I>&gt;<i>
+</I>&gt;<i> Most recent sound cards and motherboard sound systems use a 48000 Hz 
+</I>&gt;<i> native sample rate.  Conversion to 12000 Hz is easy, but conversion to 
+</I>&gt;<i> 11025 Hz (done in the driver routines) often cuts corners so that the 
+</I>&gt;<i> final sample rate is off by around 0.7% -- a big error, by WSJT standards.
+</I>&gt;<i>
+</I>&gt;&gt;<i> I see many soundcards do not sample at 11025, and perform a conversion
+</I>&gt;&gt;<i> (or the driver/windows/Linux does) from 48KHz or above.
+</I>&gt;&gt;<i> Is there a performance hit as a result ?
+</I>&gt;<i>
+</I>&gt;<i> Yes, if lousy resampling algorithms are used.
+</I>&gt;<i>
+</I>&gt;&gt;<i> If all modes use the same sample rate (12000) is it easier for one
+</I>&gt;&gt;<i> decoder to identify the different modes, or multiple modes all at once ?
+</I>&gt;&gt;<i> I have wideband sampling and MAP65 in mind here.
+</I>&gt;<i>
+</I>&gt;<i> Again: no need to change the modes.  They are fundamentally defined in 
+</I>&gt;<i> terms of frequencies and tone durations, independent of sample rates.
+</I>&gt;<i>
+</I>&gt;<i> -- Joe, K1JT 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001379.html">[Wsjt-devel] WSJT-X Version 1.0 and beyond  - JT4
+</A></li>
+	<LI>Next message: <A HREF="001350.html">[Wsjt-devel] wsjtx dupe check
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1389">[ date ]</a>
+              <a href="thread.html#1389">[ thread ]</a>
+              <a href="subject.html#1389">[ subject ]</a>
+              <a href="author.html#1389">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

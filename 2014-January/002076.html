@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] DXCC and Worked B4 Status documantation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20and%20Worked%20B4%20Status%20documantation&In-Reply-To=%3C52DFAEE6.8000303%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002066.html">
+   <LINK REL="Next"  HREF="002049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] DXCC and Worked B4 Status documantation</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20and%20Worked%20B4%20Status%20documantation&In-Reply-To=%3C52DFAEE6.8000303%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] DXCC and Worked B4 Status documantation">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Wed Jan 22 12:43:34 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002066.html">[Wsjt-devel] DXCC and Worked B4 Status documantation
+</A></li>
+        <LI>Next message: <A HREF="002049.html">[Wsjt-devel] Introduction and problems with building WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2076">[ date ]</a>
+              <a href="thread.html#2076">[ thread ]</a>
+              <a href="subject.html#2076">[ subject ]</a>
+              <a href="author.html#2076">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bob
+
+The colours for the worked before status are currently hard coded in the 
+source.  But now that you know what the symbols mean that shouldn't 
+matter so much.
+
+Your work flow with the ADI log file would not seem to be uncommon.  I'm 
+currently thinking along the lines of giving the user a file selector in 
+the configuration window to choose where the worked B4 status is stored 
+and read from. That should help alleviate most of these problems.  Note 
+that most logging programs (DX Keeper included I pretty sure) can easily 
+deal with duplicate entries.  I just import the entire log and then 
+click delete duplicates (I'm using CQR Log).
+
+And.. if I'm setting up an extra tab on the configuration window I have 
+an opportunity to add colour pickers for the marked text, and the symbol 
+choices too I guess. But that won't be for this release.  Even the 
+documentation might get done!
+
+Cheers
+Murray
+VK3ACF
+
+
+
+On 22/01/14 11:04, Bob McCormick W1QA wrote:
+&gt;<i>
+</I>&gt;<i> ! (bright green) New DXCC entity
+</I>&gt;<i> ~ (mid green) You've already worked this DXCC entity but not this station.
+</I>&gt;<i> (dull green) You've previously worked the calling station.
+</I>&gt;<i> Is it possible to change the background colours?  On my system (decent
+</I>&gt;<i> monitors / high resolution) I have a hard time telling the difference
+</I>&gt;<i> between the mid green and the dull green.  (And I had no idea what the
+</I>&gt;<i> characters were preceding the DXCC country name until I read this post!)
+</I>
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> Requirements
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Your previous history is read from wsjtx_log.adi (found in wsjtx_install).
+</I>&gt;<i> \
+</I>&gt;&gt;<i> This file is updated every time you log a QSO from WSJT-X (but note that
+</I>&gt;<i> it
+</I>&gt;&gt;<i> can also be erased from the file menu).
+</I>&gt;<i> In my workflow I have been importing the ADI file into DXkeeper (log
+</I>&gt;<i> program) and then using the erase function ... figuring that the wsjtx.log
+</I>&gt;<i> file (which doesn't seem to get erased) was being used for the worked B4
+</I>&gt;<i> functionality.
+</I>&gt;<i>
+</I>&gt;<i> I think it's a lot easier to just import a whole file of the most recent
+</I>&gt;<i> batch of &quot;worked&quot; stations ... rather than letting the ADIF file build up
+</I>&gt;<i> and then having to come up with a way to determine what should be imported
+</I>&gt;<i> (into your logging program).  Maybe there's a way to accommodate this in a
+</I>&gt;<i> future version?
+</I>&gt;<i>
+</I>&gt;<i> Bob W1QA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002066.html">[Wsjt-devel] DXCC and Worked B4 Status documantation
+</A></li>
+	<LI>Next message: <A HREF="002049.html">[Wsjt-devel] Introduction and problems with building WSJT-X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2076">[ date ]</a>
+              <a href="thread.html#2076">[ thread ]</a>
+              <a href="subject.html#2076">[ subject ]</a>
+              <a href="author.html#2076">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

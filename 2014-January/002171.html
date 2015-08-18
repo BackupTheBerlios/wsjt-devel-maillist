@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Need help with nagging problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Need%20help%20with%20nagging%20problem&In-Reply-To=%3C1391132131.89091.YahooMailNeo%40web120702.mail.ne1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002168.html">
+   <LINK REL="Next"  HREF="002174.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Need help with nagging problem</H1>
+    <B>john clark</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Need%20help%20with%20nagging%20problem&In-Reply-To=%3C1391132131.89091.YahooMailNeo%40web120702.mail.ne1.yahoo.com%3E"
+       TITLE="[Wsjt-devel] Need help with nagging problem">n0ure at yahoo.com
+       </A><BR>
+    <I>Fri Jan 31 02:35:31 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002168.html">[Wsjt-devel] User's Guide
+</A></li>
+        <LI>Next message: <A HREF="002174.html">[Wsjt-devel] Need help with nagging problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2171">[ date ]</a>
+              <a href="thread.html#2171">[ thread ]</a>
+              <a href="subject.html#2171">[ subject ]</a>
+              <a href="author.html#2171">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe &amp; friends
+
+
+For many months I have had an intermittent (1 in 20 QSO) problem using wsjtx.
+From time-to-time the signal transmitted is significantly distorted.I tried to attach a GIF and wav file of a bad TX but the moderator rejected the email over 40k. So -- If you would like a copy of the GIF and wav files please send me a direct email request.
+
+I used VAC ver 4.13 Audio Repeater to record the wav file so I know that the distortion is not in the radio.
+I worked with Eugene Muzychenko for a couple of weeks but we were not able to find any configuration that would eliminate the problem.
+I am now working with Neal Campbell&#160; to do everything we can to ensure that the new i7 16G machine is correct.
+
+I've come here to ask for any ideas as to the cause and fix to my problem.
+Does anyone recognize the sound and wave forms in error?
+Is this a common DSP error pattern?
+
+Environment:
+
+i7 3930K 16 GB&#160; ASUS P9X79LE motherboard
+Windows 7 Home Premium
+Display AMD Radeon 7800
+Radio Apache-Labs 100D
+OpenHPSDR mRX PS v3.2.7
+WSJT-X v 1.3, r3673
+JTAlert 2.4.13
+DDUtil_V3
+HRD 6.1.4
+
+When this problem occurs I immediately HALT Tx and 
+then Enable Tx again. Most times this corrects the problem, but some 
+times it will occur for three cycles in a row.
+
+Only as a guess, as I have not read the code, I wonder if this caused by a 
+'hard slam' of signal at the start of the Tx between WSJT-X and VAC. 
+Could WSJT-X be modified to Tx a idle silent tone ( 1K -140dbm ) always, even when CAT Tx is not active, thus keeping all of the buffers in the 
+VAC chain full with something valid. I am assuming that zero is not a 
+good PCM value.
+
+As I am at &quot;wits end&quot;, all ideas will be appreciated.
+
+73
+John
+TI4/N0URE
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140130/089d941e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140130/089d941e/attachment.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002168.html">[Wsjt-devel] User's Guide
+</A></li>
+	<LI>Next message: <A HREF="002174.html">[Wsjt-devel] Need help with nagging problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2171">[ date ]</a>
+              <a href="thread.html#2171">[ thread ]</a>
+              <a href="subject.html#2171">[ subject ]</a>
+              <a href="author.html#2171">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] issue under Fedora 15 ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20issue%20under%20Fedora%2015%20%3F&In-Reply-To=%3C4DF7D909.1010902%40f8arr.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001113.html">
+   <LINK REL="Next"  HREF="001110.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] issue under Fedora 15 ?</H1>
+    <B>f8arr</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20issue%20under%20Fedora%2015%20%3F&In-Reply-To=%3C4DF7D909.1010902%40f8arr.org%3E"
+       TITLE="[Wsjt-devel] issue under Fedora 15 ?">f8arr at f8arr.org
+       </A><BR>
+    <I>Tue Jun 14 23:56:25 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001113.html">[Wsjt-devel] Wideband FSK441
+</A></li>
+        <LI>Next message: <A HREF="001110.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1108">[ date ]</a>
+              <a href="thread.html#1108">[ thread ]</a>
+              <a href="subject.html#1108">[ subject ]</a>
+              <a href="author.html#1108">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I get sources codes from SVN:
+
+svn co <A HREF="http://svn.berlios.de/svnroot/repos/wsjt/trunk">http://svn.berlios.de/svnroot/repos/wsjt/trunk</A>
+
+I ran the traditionnal ./configure followed by make.
+
+No issue. I ran WSJT and it worked normally during some minutes and then 
+crashed.
+
+******************************************************************
+WSJT Version 9.1 r2433 , by K1JT
+Revision date: 2011-05-13 18:54:55 +0200 (Fri, 13 May 2011)
+Run date:   Tue Jun 14 21:50:08 2011 UTC
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround71
+ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+(MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+(MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports 
+only playback stream
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server socket
+jack server is not running or cannot be started
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+    0        2         2       Intel ICH7: Intel ICH7 (hw:0,0)
+    1        2         0       Intel ICH7: Intel ICH7 - MIC ADC (hw:0,1)
+    2        2         0       Intel ICH7: Intel ICH7 - MIC2 ADC (hw:0,2)
+    3        2         0       Intel ICH7: Intel ICH7 - ADC2 (hw:0,3)
+    4        0         2       Intel ICH7: Intel ICH7 - IEC958 (hw:0,4)
+    5        0         2       front
+    6       32        32       pulse
+    7        0         2       dmix
+    8       32        32       default
+
+User requested devices:   Input =  0   Output =  0
+Default devices:          Input =  8   Output =  8
+Will open devices:        Input =  8   Output =  8
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.side
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.surround71
+ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+(MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+ALSA lib setup.c:565:(add_elem) Cannot obtain info for CTL elem 
+(MIXER,'IEC958 Playback Default',0,0,0): No such file or directory
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.hdmi
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.modem
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm.c:2212:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.phoneline
+ALSA lib pcm_dmix.c:957:(snd_pcm_dmix_open) The dmix plugin supports 
+only playback stream
+Cannot connect to server socket err = No such file or directory
+Cannot connect to server socket
+jack server is not running or cannot be started
+Audio streams running normally.
+******************************************************************
+At line 330 of file wsjt1.f90 (unit = 11, file = '/WSJT9/decoded.txt')
+Fortran runtime error: Cannot perform ENDFILE on a file already 
+positioned after the EOF marker
+
+
+I googled a bit but nothing really evident for me.
+If you have an idea.
+
+Regards
+f8arr
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110614/e87ca050/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20110614/e87ca050/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001113.html">[Wsjt-devel] Wideband FSK441
+</A></li>
+	<LI>Next message: <A HREF="001110.html">[Wsjt-devel] issue under Fedora 15 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1108">[ date ]</a>
+              <a href="thread.html#1108">[ thread ]</a>
+              <a href="subject.html#1108">[ subject ]</a>
+              <a href="author.html#1108">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

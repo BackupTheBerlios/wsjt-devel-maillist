@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E96E95.8000703%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002143.html">
+   <LINK REL="Next"  HREF="002148.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjtx%20v1.2.2%20r3663%20-%20multiple%20Error%20in%20KV%20decoder%0A%20msgs&In-Reply-To=%3C52E96E95.8000703%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs">joe at princeton.edu
+       </A><BR>
+    <I>Wed Jan 29 22:11:49 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002143.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+        <LI>Next message: <A HREF="002148.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2146">[ date ]</a>
+              <a href="thread.html#2146">[ thread ]</a>
+              <a href="subject.html#2146">[ subject ]</a>
+              <a href="author.html#2146">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 1/29/2014 2:44 PM, Chuck Forsberg WA7KGX wrote:
+&gt;<i> If the 64 bit  kvasd  Joe compiled at omen.com is present, there are
+</I>&gt;<i> no decodes after the first minute's batch.
+</I>&gt;<i> CPU utilization goes to 100 per cent and stays there.  Kvasd continues
+</I>&gt;<i> at 100 per cent CPU utilization even if wsjtx is terminated.  Rather than
+</I>&gt;<i> improving sensitivity by 2 db it makes wsjtx deaf.
+</I>
+&gt;<i> The downloadable kvasd is a 32 bit version.  Hardly anyone runs 32 bit
+</I>&gt;<i> Linux anymore.
+</I>
+&gt;<i> I finally got the 32 bit KVASD running. I had to poke, prod and cajole
+</I>&gt;<i> Rawhide (very unstable cutting edge developmental Linux) to install
+</I>&gt;<i> the required 32 bit libs.
+</I>
+Thanks for putting in such heroic efforts to make the pre-compiled 
+32-bit kvasd run on your very unstable cutting edge developmental Linux.
+
+We're not necessarily set up to support such systems with 
+click-to-install packages.  Please feel free to volunteer your help, if 
+you think there is a need.
+
+The KVASD decoder is necessarily an extra nuisance because of its 
+patented algorithm and non-open source code.  However, since 99% of our 
+users run Windows, the nuisance is well contained in practice.
+Moreover, the improved sensitivity of soft-decision decoding makes KVASD 
+well worth the extra effort -- especially for EME, the original target 
+purpose for JT65.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002143.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+	<LI>Next message: <A HREF="002148.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2146">[ date ]</a>
+              <a href="thread.html#2146">[ thread ]</a>
+              <a href="subject.html#2146">[ subject ]</a>
+              <a href="author.html#2146">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

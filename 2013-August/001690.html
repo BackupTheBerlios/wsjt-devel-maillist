@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20make%20-f%20makefile.linux%20under%20Qt5.1.0&In-Reply-To=%3C51FEE35B.4070908%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001688.html">
+   <LINK REL="Next"  HREF="001692.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compiling%20make%20-f%20makefile.linux%20under%20Qt5.1.0&In-Reply-To=%3C51FEE35B.4070908%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0">joe at princeton.edu
+       </A><BR>
+    <I>Mon Aug  5 01:27:23 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001688.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+        <LI>Next message: <A HREF="001692.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1690">[ date ]</a>
+              <a href="thread.html#1690">[ thread ]</a>
+              <a href="subject.html#1690">[ subject ]</a>
+              <a href="author.html#1690">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+AC6SL wrote:
+&gt;<i> No, you have not done anything wrong. It is unfortunate that
+</I>&gt;<i> lib/Makefile.linux is not sensitive to the QT5 setting in the
+</I>&gt;<i> directory above.
+</I>
+An improved Makefile.linux would be a welcome addition to the 
+repository.  I tend to write these things to work in my system, and quit 
+when it works.  It can certainly be improved.
+
+Maybe someone would even be interested in writing a ./configure script? 
+  I don't know how to do this.
+
+So, with the changes you describe below, does the program compile in Qt4 
+with Bill's QAudio patch installed?
+
+	-- Joe, K1JT
+
+&gt;<i> I found it necessary to make the changes below, in order to compile
+</I>&gt;<i> ipcomm with Qt5.
+</I>&gt;<i>
+</I>&gt;<i> Is it necessary to build ipcomm with Qt5 ? I do not know. However, on
+</I>&gt;<i> ubuntu 13.04, with only Qt5 installed, I want to be able to build
+</I>&gt;<i> ipcomm. Similarly, on older ubuntu 12.10, I want to build wsjtx using
+</I>&gt;<i> only Qt4, but found it was necessary to put an additional ifdef in
+</I>&gt;<i> mainwindow.cpp:
+</I>&gt;<i> #ifdef QT5
+</I>&gt;<i> #include&lt;QtConcurrent/QtConcurrentMap&gt;
+</I>&gt;<i> #include&lt;QtConcurrent/QtConcurrentRun&gt;
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -John AC6SL
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> $ diff lib/Makefile.linux old/lib/Makefile.linux
+</I>&gt;<i> 3c3
+</I>&gt;<i> &lt;  INCPATH =  -I'/usr/include/qt5' -I'/usr/include/qt5/QtCore'
+</I>&gt;<i> ---
+</I>&gt;&gt;<i> INCPATH =  -I'/usr/include/qt4' -I'/usr/include/qt4/QtCore'
+</I>&gt;<i> 6c6
+</I>&gt;<i> &lt;  CXX = g++ -fPIE
+</I>&gt;<i> ---
+</I>&gt;&gt;<i> CXX = g++
+</I>&gt;<i> 9,10c9,10
+</I>&gt;<i> &lt;  FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore -fPIE
+</I>&gt;<i> &lt;  CFLAGS = -I. -fbounds-check -mno-stack-arg-probe -fPIE
+</I>&gt;<i> ---
+</I>&gt;&gt;<i> FFLAGS = -O2 -fbounds-check -Wall -Wno-conversion -fno-second-underscore
+</I>&gt;&gt;<i> CFLAGS = -I. -fbounds-check -mno-stack-arg-probe
+</I>&gt;<i> 52c52
+</I>&gt;<i> &lt;  $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQt5Core
+</I>&gt;<i> ---
+</I>&gt;&gt;<i> $(CXX) -o jt9 $(OBJS2) libjt9.a -lfftw3f -lgfortran -lQtCore
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001688.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+	<LI>Next message: <A HREF="001692.html">[Wsjt-devel] compiling make -f makefile.linux under Qt5.1.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1690">[ date ]</a>
+              <a href="thread.html#1690">[ thread ]</a>
+              <a href="subject.html#1690">[ subject ]</a>
+              <a href="author.html#1690">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

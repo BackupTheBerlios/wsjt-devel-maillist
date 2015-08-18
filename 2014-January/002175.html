@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] New documentation branch
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20New%20documentation%20branch&In-Reply-To=%3C52EBB9B8.5060701%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002172.html">
+   <LINK REL="Next"  HREF="002176.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] New documentation branch</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20New%20documentation%20branch&In-Reply-To=%3C52EBB9B8.5060701%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] New documentation branch">joe at princeton.edu
+       </A><BR>
+    <I>Fri Jan 31 15:56:56 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002172.html">[Wsjt-devel] New documentation branch
+</A></li>
+        <LI>Next message: <A HREF="002176.html">[Wsjt-devel] New documentation branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2175">[ date ]</a>
+              <a href="thread.html#2175">[ thread ]</a>
+              <a href="subject.html#2175">[ subject ]</a>
+              <a href="author.html#2175">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+I don't see that a separate SVN branch for documentation would help 
+much, since commits to *any* branch of the WSJT project increment the 
+revision number as far as SVN is concerned.
+
+However, it might help to make it a policy not to make changes to both 
+code and documentation in the same &quot;commit&quot;.  In addition, we could make 
+it a policy to make a token change to mainwindow.cpp (so it will &quot;know&quot; 
+the new revision number) only when making other code changes.
+
+Then, even when there have been subsequent documentation-only updates, 
+the compiled program would still bear the revision number of the last 
+*code* update.  Does this make sense?
+
+	-- Joe, K1JT
+
+On 1/31/2014 4:16 AM, John Nelson wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> Version numbers are changing at a rapid pace with every new change to the documentation.
+</I>&gt;<i>
+</I>&gt;<i> Would there be an advantage in producing a separate documentation branch rather than maintaining documentation inside the wsjtx repository?
+</I>&gt;<i>
+</I>&gt;<i> This would separate changes to documentation from changes to actual code.   The advantage would be in dealing with reports from someone having difficulty with r3150 (an invented rev) when this in fact has the same code as in r3100 and the revision changes have had nothing to do with code changes but documentation.    It would be necessary for anyone wanting to deal with this report to download r3150, compile and test, only to discover that the current code revision is really r3100 - or ask the reporter to update code to r3150 and try again.      It seems to me that having revision numbers tied only to actual code changes would aid code maintenance.
+</I>&gt;<i>
+</I>&gt;<i> A separate documentation branch would be useful as documentation is prepared for WSPR-X, perhaps, MAP65 and so on.   This would all be in one place.
+</I>&gt;<i>
+</I>&gt;<i> --- John G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002172.html">[Wsjt-devel] New documentation branch
+</A></li>
+	<LI>Next message: <A HREF="002176.html">[Wsjt-devel] New documentation branch
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2175">[ date ]</a>
+              <a href="thread.html#2175">[ thread ]</a>
+              <a href="subject.html#2175">[ subject ]</a>
+              <a href="author.html#2175">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

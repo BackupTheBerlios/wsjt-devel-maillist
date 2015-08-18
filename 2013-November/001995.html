@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.2.1%20r3590%20-%20TX%20Sound%20setting%20jumps%0A%20to%2050%25%20all%20the%20time&In-Reply-To=%3C527AF1A6.7060008%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001994.html">
+   <LINK REL="Next"  HREF="001996.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT-X%20v1.2.1%20r3590%20-%20TX%20Sound%20setting%20jumps%0A%20to%2050%25%20all%20the%20time&In-Reply-To=%3C527AF1A6.7060008%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Fwd: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Nov  7 02:49:26 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001994.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time
+</A></li>
+        <LI>Next message: <A HREF="001996.html">[Wsjt-devel] ERROR WITH WSJT-X ON Macintosh 10.5.7 OS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1995">[ date ]</a>
+              <a href="thread.html#1995">[ thread ]</a>
+              <a href="subject.html#1995">[ subject ]</a>
+              <a href="author.html#1995">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/11/2013 00:34, Joe Taylor wrote:
+Hi Joe &amp; Flam,
+
+this is due to a defect in the Qt framework. I fixed it some time ago 
+and it was inserted into the forthcoming Qt 5.1.2 patch release.
+
+Unfortunately the QtProject team has decided to discard the 5.1.2 patch 
+release in favour of protecting the Qt 5.2 update release schedule.
+
+<A HREF="http://www.ics.com/this-week-in-qt/09-09-13#.UnrwKuJo3Q0">http://www.ics.com/this-week-in-qt/09-09-13#.UnrwKuJo3Q0</A>
+
+This means that we will have to wait a little longer for this upstream 
+defect repair to be available in an official Qt release.
+
+The current schedule for Qt 5.2 release is 3rd Dec 2013 
+(<A HREF="http://qt-project.org/wiki/Qt-5.2-release">http://qt-project.org/wiki/Qt-5.2-release</A>).
+
+73
+Bill
+G4WJS.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -------- Original Message --------
+</I>&gt;<i> Subject: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time
+</I>&gt;<i> Date: Wed, 6 Nov 2013 22:18:34 +0000
+</I>&gt;<i> From: OZ1AXG Flam &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">oz1axg at gmail.com</A>&gt;
+</I>&gt;<i> To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">k1jt at arrl.net</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Hi
+</I>&gt;<i>
+</I>&gt;<i> I just installed the newest version of WSJT-X v2.1.1 (beta)
+</I>&gt;<i> I like very much the new palette options btw :=)
+</I>&gt;<i>
+</I>&gt;<i> Im using Windows 7 with a dedicated sound card for digital modes. The TX
+</I>&gt;<i> Sound setting is playing me a trick or two with the new settings in 
+</I>&gt;<i> WSJT-X.
+</I>&gt;<i>
+</I>&gt;<i> No matter how I set the volume level in the windows volume mixer it keeps
+</I>&gt;<i> jumping to 50% of the max setting.
+</I>&gt;<i> I figured out that much that WSJT-X resets my setting at the start of 
+</I>&gt;<i> every
+</I>&gt;<i> TX.
+</I>&gt;<i>
+</I>&gt;<i> Is it possible to change this behavior ?
+</I>&gt;<i>
+</I>&gt;<i> Since I have many digimodes programs that can use the sound card, I 
+</I>&gt;<i> use the
+</I>&gt;<i> master volume (speakers) to adjust the general setting to the radio, and
+</I>&gt;<i> just sets the individual program to the maximum volume (in windows 7 the
+</I>&gt;<i> max volume is indicated with a vertical line, and the individual volume
+</I>&gt;<i> controls stick to that line)
+</I>&gt;<i>
+</I>&gt;<i> I have enclosed a screen dump of my setting in &quot;Volume Mixer&quot; -that
+</I>&gt;<i> illustrates the problem (WSJT-X has to low mic setting).
+</I>&gt;<i> PS: The PWR level in WSJT-X is set to maximum with this screendump
+</I>&gt;<i>
+</I>&gt;<i> vy 73 de
+</I>&gt;<i> OZ1AXG Flam
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20131107/3018ca4e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20131107/3018ca4e/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001994.html">[Wsjt-devel] Fwd: WSJT-X v1.2.1 r3590 - TX Sound setting jumps to 50% all the time
+</A></li>
+	<LI>Next message: <A HREF="001996.html">[Wsjt-devel] ERROR WITH WSJT-X ON Macintosh 10.5.7 OS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1995">[ date ]</a>
+              <a href="thread.html#1995">[ thread ]</a>
+              <a href="subject.html#1995">[ subject ]</a>
+              <a href="author.html#1995">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

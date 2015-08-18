@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-5.9.7-r386 source code
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-5.9.7-r386%20source%20code&In-Reply-To=%3C4D76370A.6060002%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001090.html">
+   <LINK REL="Next"  HREF="001092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-5.9.7-r386 source code</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-5.9.7-r386%20source%20code&In-Reply-To=%3C4D76370A.6060002%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-5.9.7-r386 source code">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Mar  8 15:02:50 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001090.html">[Wsjt-devel] WSJT-5.9.7-r386 source code
+</A></li>
+        <LI>Next message: <A HREF="001092.html">[Wsjt-devel] Error when building WSJT on Archlinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1091">[ date ]</a>
+              <a href="thread.html#1091">[ thread ]</a>
+              <a href="subject.html#1091">[ subject ]</a>
+              <a href="author.html#1091">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Gabriel,
+
+EA6VQ wrote:
+&gt;<i> I need to change the code of some &quot;old&quot; version of WSJT which still supports
+</I>&gt;<i> JT6M so that it only enables the RTS line for PTT. I'm having problems of
+</I>&gt;<i> compatibility with CW-Type which uses DTR for the CW keyer.  I know the
+</I>&gt;<i> latest beta version of WSJT9 allows to select the PTT line, but that version
+</I>&gt;<i> does not support JT6M that still is the most common mode used on 6m, at
+</I>&gt;<i> least here in Europe.
+</I>&gt;<i>
+</I>&gt;<i> I have downloaded the source code of version 5.9.7-r386 from berliOS
+</I>&gt;<i> (<A HREF="http://developer.berlios.de/project/showfiles.php?group_id=5666">http://developer.berlios.de/project/showfiles.php?group_id=5666</A>) and I see
+</I>&gt;<i> that making that change in ptt.c file is straightforward.
+</I>&gt;<i>
+</I>&gt;<i> The problem Is that in WSJT_Source_Code.txt says I should use the g0.bat,
+</I>&gt;<i> g1.bat, etc. files for compiling under Windows, but those .bat files were
+</I>&gt;<i> not in the wsjt-5.9.7.r386.tgz
+</I>&gt;<i> file I downloaded. I can see the g0, g1 and g99 for compiling in Linux, but
+</I>&gt;<i> not the rest of files.
+</I>
+Good to hear from you!  If your computer is already properly configured 
+for compiling WSJT, WSPR, MAP65, etc., then compiling WSJT in Windows 
+(with MinGW) is done with just a &quot;make&quot; command.  You must have 
+installed at least the following:
+
+- subversion
+- python2.5-dev
+- python-numpy
+- python-imaging-tk
+- python-pmw
+- libportaudio2
+- libportaudio-dev
+- libsamplerate0-dev
+- g95
+
+If you're not already set up in this way, it will surely be *much* 
+easier to install a SPST switch in your DTR line than to copmpile a 
+special version of the (obsolete) WSJT 5.9.7 or WSJT7.  :-)
+
+I'm willing to back-port the code that you want and compile a special 
+version of the old WSJT for you, but I have an important observation and 
+request first.
+
+Support for JT6M was not removed from WSJT lightly.  Strengths and 
+weaknesses of the JT6M mode were thoroughly analyzed and compared with 
+the new mode, ISCAT, over a period of several months.  Many, many 
+comparison tests were made by a test group that included members from 
+North America, Europe, and Australia.  Group members concluded 
+unanimously that ISCAT is significantly superior to JT6M.  Nobody argued 
+that JT6M's capabilities are competitive with ISCAT.
+
+So, my request is this: can you (or anyone else) explain to me why JT6M 
+is still widely used in EU, rather than ISCAT ??  Or why nobody made a 
+convincing argument for why JT6M is &quot;better&quot;, when the comparisons were 
+being made ??
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001090.html">[Wsjt-devel] WSJT-5.9.7-r386 source code
+</A></li>
+	<LI>Next message: <A HREF="001092.html">[Wsjt-devel] Error when building WSJT on Archlinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1091">[ date ]</a>
+              <a href="thread.html#1091">[ thread ]</a>
+              <a href="subject.html#1091">[ subject ]</a>
+              <a href="author.html#1091">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

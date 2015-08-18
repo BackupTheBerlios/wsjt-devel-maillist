@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] JT65b bug in Linux code?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT65b%20bug%20in%20Linux%20code%3F&In-Reply-To=%3Ca193eb4d1002061120h3b204e94y9174994789f7d8da%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000896.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] JT65b bug in Linux code?</H1>
+    <B>Steve Meuse</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20JT65b%20bug%20in%20Linux%20code%3F&In-Reply-To=%3Ca193eb4d1002061120h3b204e94y9174994789f7d8da%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] JT65b bug in Linux code?">smeuse at gmail.com
+       </A><BR>
+    <I>Sat Feb  6 20:20:46 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000896.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>New to the list, I looked in the archive but didn't see this covered.
+
+I'm running Ubuntu 9.04 64 bit.
+
+I had installed 5.9.7 r383 from .deb, I think. And I'm now running 7.05
+r1759 that I just pulled out of svn.
+
+The problem is that WSJT will crash when I go to transmit in JT65b mode. I
+think I've discovered the trigger. It only seems to crash when monitor is
+active. If I disable monitor it doesn't dump out on me.
+
+I'm also having an issue with the startup of the program. If I use the wsjt
+script that gets installed in /usr/local/bin, I get the following error
+message:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~/.wsjt$ /usr/local/bin/wsjt
+Traceback (most recent call last):
+  File &quot;/usr/local/bin/wsjt.py&quot;, line 11, in &lt;module&gt;
+    from WsjtMod import Audio
+ImportError: cannot import name Audio
+
+Which I'm guessing is an environment variable issie of some sort.
+
+
+
+Here is the output from both versions:
+
+(both examples in monitor mode, TX3 selected on transmit)
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~$ wsjt  &lt;--- script insalled in /usr/bin
+******************************************************************
+WSJT Version 5.9.7 r383 , by K1JT
+Revision date: 2007-05-04 23:17:52 +1000 (Fri, 04 May 2007)
+Run date:   Sat Feb  6 18:55:13 2010 UTC
+Using PortAudio.
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0       16        16       /dev/dsp
+   1       16        16       /dev/dsp1
+
+Default   Input:  0   Output:  0
+Requested Input:  1   Output:  1
+Opening device 1 for input, 1 for output.
+Audio streams running normally.
+******************************************************************
+At line 14 of file chkmsg.f
+Fortran runtime error: Substring out of bounds: lower bound (-1) of
+'message' is less than one
+
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">smeuse at dalek</A>:~/wsjt/trunk$ python wsjt.py   &lt;-- Running it out of the source
+directory....
+******************************************************************
+WSJT Version 7.05 r1759 , by K1JT
+Revision date: 2010-01-15 15:42:29 -0500 (Fri, 15 Jan 2010)
+Run date:   Sat Feb  6 19:08:13 2010 UTC
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0       16        16       /dev/dsp
+   1       16        16       /dev/dsp1
+
+User requested devices:   Input =  1   Output =  1
+Default devices:          Input =  0   Output =  0
+Will open devices:        Input =  1   Output =  1
+Audio streams running normally.
+******************************************************************
+Segmentation fault
+
+
+Does this simply have to do with how I'm launching the program? (I hope)
+
+
+
+
+
+-- 
+
+-Steve
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100206/40bb8dcc/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20100206/40bb8dcc/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000896.html">[Wsjt-devel] JT65b bug in Linux code?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

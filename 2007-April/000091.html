@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r366
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070426220110.GA19879%40cloud.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000085.html">
+   <LINK REL="Next"  HREF="000062.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r366</H1>
+    <B>Hamish Moffatt</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r366&In-Reply-To=%3C20070426220110.GA19879%40cloud.net.au%3E"
+       TITLE="[Wsjt-devel] r366">hamish at debian.org
+       </A><BR>
+    <I>Fri Apr 27 00:01:10 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000085.html">[Wsjt-devel] r366
+</A></li>
+        <LI>Next message: <A HREF="000062.html">[Wsjt-devel] [Fwd: Re:  WSJT on Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Apr 26, 2007 at 01:52:30PM -0400, Diane Bruce wrote:
+&gt;<i> On Thu, Apr 26, 2007 at 08:13:10PM +0300, Harry Popov wrote:
+</I>&gt;<i> &gt; It is even easier in Mandriva 2007. Just download and install rpm with
+</I>&gt;<i> &gt; portaudio 0.19 from the coocer. But it is not the best solution I think.
+</I>&gt;<i> &gt; Binaries from the coocer are not official packages yet. IMHO WSJT should
+</I>&gt;<i> &gt; use standard packages of distributions or ported in code of portaudio
+</I>&gt;<i> &gt; 0.19. Just a sugestion though...
+</I>&gt;<i> 
+</I>&gt;<i> That is what I am arguing as well, well as much as possible. What
+</I>&gt;<i> I am looking for is where Mandriva and other distributions put
+</I>&gt;<i> portaudio 0.19 ? On FreeBSD as I have said, they do not replace
+</I>&gt;<i> portaudio 0.18 but provide it as /usr/local/lib/portaudio2/portaudio.so etc.
+</I>&gt;<i> with the include files at /usr/local/include/portaudio2.
+</I>&gt;<i> Is it similarly set up on Mandriva?
+</I>
+On Debian,
+
+The shared libraries are /usr/lib/libportaudio.so.0.0.18 and
+/usr/lib/libportaudio.so.2.0.0, so there is no confict.
+
+The header files and libportaudio.so link conflict, so of the two
+development packages (libportaudio-dev and portaudio19-dev), only one
+can be installed at a time.
+
+This is standard on Debian - concurrent development targetting 
+multiple library versions is not required, but running applications
+build for multiple versions is.
+
+Hamish
+-- 
+Hamish Moffatt VK3SB &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at debian.org</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">hamish at cloud.net.au</A>&gt;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000085.html">[Wsjt-devel] r366
+</A></li>
+	<LI>Next message: <A HREF="000062.html">[Wsjt-devel] [Fwd: Re:  WSJT on Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

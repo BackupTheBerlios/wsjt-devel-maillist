@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: WSJT FreeBSD amd64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701041320i349eeec4m5e498b460a51a0b8%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: WSJT FreeBSD amd64</H1>
+    <B>Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701041320i349eeec4m5e498b460a51a0b8%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Fwd: WSJT FreeBSD amd64">mm0dqp at gmail.com
+       </A><BR>
+    <I>Thu Jan  4 22:20:48 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Wsjt-devel] EZ-install WSJT for *nix
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I should really be CC'ing all these emails about compiling on amd64
+Freebsd 6.1 to the reflector incase it is useful to someone :-/
+
+Cheers Erik MM0DQP
+
+---------- Forwarded message ----------
+From: Erik McKay &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">mm0dqp at gmail.com</A>&gt;
+Date: 04-Jan-2007 21:18
+Subject: WSJT FreeBSD
+To: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+
+
+Hi Diane,
+Got a bit of time tonight to try compile wsjt again. Did a reformat
+and installed a bare Freebsd 6.1 system with the minimums.
+As suspected the compile ran through until py-scipy fails at &quot;import
+umath&quot; with an &quot;undefined symbol 'ldexpf'&quot; from numpy :S although
+numpy compiled fine!
+A little bit of research led me to a post on a FreeBSD Port Forum
+
+QUOTE &gt;&gt;&gt;
+#On AMD64 6.0-RELEASE, the port builds and installs.  At run time this is
+#what you get:
+#Python 2.4.3 (#2, Nov 29 2006, 14:57:08)
+#[GCC 3.4.4 [FreeBSD] 20050518] on freebsd6
+#Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+#&gt;&gt;&gt; import numpy
+#Traceback (most recent call last):
+#  File &quot;&lt;stdin&gt;&quot;, line 1, in ?
+#  File &quot;/usr/local/lib/python2.4/site-packages/numpy/__init__.py&quot;, line 36,
+#in ?
+#    import core
+#  File &quot;/usr/local/lib/python2.4/site-packages/numpy/core/__init__.py&quot;, line
+#6, in ?
+#    import umath
+#ImportError: /usr/local/lib/python2.4/site-packages/numpy/core/umath.so:
+#Undefined symbol &quot;ldexpf&quot;
+#&gt;&gt;&gt;
+#
+#ldd reports that umath.so is linked to libm, but oddly it does not have
+#ldexpf!  Obviously an operating system problem, but I thought you might be
+#interested.
+#
+#Regards,
+#Kael
+&lt;&lt;&lt; <A HREF="http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html">http://lists.freebsd.org/pipermail/freebsd-ports/2006-November/037220.html</A>
+
+Cant see any follow up on this and I've looked fairly hard although
+that doesn't mean I missed the big billboard with the answer :)).
+
+Any ideas ??
+Cheers Erik MM0DQP
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Wsjt-devel] EZ-install WSJT for *nix
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

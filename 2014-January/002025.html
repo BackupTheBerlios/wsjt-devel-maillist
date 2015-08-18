@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Linux Development issues WSJTX and WSPRX
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20Development%20issues%20WSJTX%20and%20WSPRX&In-Reply-To=%3CCAD%2BDZ5hM_G%3Dz32mgP-H8Z7tHyJ8iJN5r4Ws4nOuG1nkqrAfMbQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002023.html">
+   <LINK REL="Next"  HREF="002026.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Linux Development issues WSJTX and WSPRX</H1>
+    <B>David Birnbaum</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Linux%20Development%20issues%20WSJTX%20and%20WSPRX&In-Reply-To=%3CCAD%2BDZ5hM_G%3Dz32mgP-H8Z7tHyJ8iJN5r4Ws4nOuG1nkqrAfMbQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Linux Development issues WSJTX and WSPRX">dbirnbau at gmail.com
+       </A><BR>
+    <I>Wed Jan 15 17:07:50 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002023.html">[Wsjt-devel]   sub test
+</A></li>
+        <LI>Next message: <A HREF="002026.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2025">[ date ]</a>
+              <a href="thread.html#2025">[ thread ]</a>
+              <a href="subject.html#2025">[ subject ]</a>
+              <a href="author.html#2025">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've been working on getting a working version of both WSJTX and WSPRX
+under Linux -- Ubuntu 13.10.
+
+So far I've found that the &quot;stock&quot; Qt distribution (5.0.2) doesn't give a
+clean compile of WSJTX, but under (separately installed) Qt 5.2.0 it does
+compile and run okay.
+
+However, WSPRX has problems regardless of which Qt I use.  With either I
+get a series of error messages in mainwindow.cpp:
+
+1) complaining that &quot;class QString has no member named &quot;toAscii&quot;.  See for
+example line 1162
+2) several messages that &quot;QtConcurrent&quot; has not been declared&quot;  See for
+example line 709.
+
+Is anybody else having this problem or has anyone solved it?
+
+dave
+k2lyv
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140115/22041612/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140115/22041612/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002023.html">[Wsjt-devel]   sub test
+</A></li>
+	<LI>Next message: <A HREF="002026.html">[Wsjt-devel] Linux Development issues WSJTX and WSPRX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2025">[ date ]</a>
+              <a href="thread.html#2025">[ thread ]</a>
+              <a href="subject.html#2025">[ subject ]</a>
+              <a href="author.html#2025">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

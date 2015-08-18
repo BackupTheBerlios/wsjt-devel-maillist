@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 5.9.7 r383 rpm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C46407116.80507%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000136.html">
+   <LINK REL="Next"  HREF="000138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 5.9.7 r383 rpm</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%205.9.7%20r383%20rpm&In-Reply-To=%3C46407116.80507%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT 5.9.7 r383 rpm">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue May  8 14:46:14 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000136.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+        <LI>Next message: <A HREF="000138.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Diane,
+
+Diane Bruce wrote:
+&gt;<i> On Tue, May 08, 2007 at 08:28:25AM -0400, Joe Taylor wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Harry, Diane, and all --
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>For what it's worth, for me WSJT 5.9.7 r383 compiles without
+</I>&gt;&gt;<i>problems on my Debian Linux machine, using the portaudio-v19
+</I>&gt;&gt;<i>code included with WSJT.  I use the following commands:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>./configure --enable-portaudio \
+</I>&gt;&gt;<i>--with-portaudio-include-dir=portaudio-v19/include \
+</I>&gt;&gt;<i>--with-portaudio-lib-dir=/home/joe/wsjt/trunk/portaudio-v19/lib/.libs
+</I>&gt;&gt;<i>make clean
+</I>&gt;&gt;<i>make
+</I>&gt;<i> 
+</I>&gt;<i> But then you have to build the portaudio-v19 separately, moreover
+</I>&gt;<i> wsjt will link against the .so not the .a in portaudio-v19/libs,
+</I>&gt;<i> which means the binary produced needs to know where the .so are.
+</I>
+Yes, I should have said that first I did the following (the 
+first line is just in case I messed up something seriously):
+
+% cp -pr portaudio-v19 portaudio-v19.0
+% cd portaudio-v19
+% ./configure
+% make clean
+% make
+
+So what are you suggesting I should do, instead?  Is the 
+idea to get portaudio static-linked into Audio.so?
+
+	-- Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000136.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+	<LI>Next message: <A HREF="000138.html">[Wsjt-devel] WSJT 5.9.7 r383 rpm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

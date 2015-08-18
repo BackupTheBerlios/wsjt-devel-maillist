@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCADTTAazK69sgrNGXruNLWLDq3hDZLuWSAWCvG%2BM81%3DBAYepzpw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001698.html">
+   <LINK REL="Next"  HREF="001704.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20QtMultimedia%20replacement%20for%20PortAudio.&In-Reply-To=%3CCADTTAazK69sgrNGXruNLWLDq3hDZLuWSAWCvG%2BM81%3DBAYepzpw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.">jnogatch at gmail.com
+       </A><BR>
+    <I>Mon Aug  5 20:03:34 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001698.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+        <LI>Next message: <A HREF="001704.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1701">[ date ]</a>
+              <a href="thread.html#1701">[ thread ]</a>
+              <a href="subject.html#1701">[ subject ]</a>
+              <a href="author.html#1701">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>1. Clean svn checkout of r3525 is missing 4 files: Detector.hpp,
+Detector.cpp, Modulator.hpp, Modulator.cpp
+    I used versions supplied in email, but who knows if I have the
+most up-to-date changes?
+
+2. Detector.cpp:44:95: error: no matching function for call to
+&#8216;min(long long unsigned int, size_t)&#8217;
+   As a work-around, I inserted a cast, but it would be better if both
+expressions were of type size_t.
+  qint64 framesAccepted (std::min (maxSize / sizeof (jt9com_.d2[0]),
+(long long unsigned int) framesAcceptable));
+   Even after that cast is inserted on line 44, gcc warns about line 46:
+     if (framesAccepted &lt; maxSize / sizeof (jt9com_.d2[0]))
+Detector.cpp: In member function &#8216;virtual qint64
+Detector::writeData(const char*, qint64)&#8217;:
+Detector.cpp:46:55: warning: comparison between signed and unsigned
+integer expressions [-Wsign-compare]
+
+
+3. After 3 or 4 minutes, psk reporter has a fatal problem:
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff6758ec6 in QHostAddress::toString() const () from
+/usr/lib/x86_64-linux-gnu/libQt5Network.so.5
+(gdb) where
+#0  0x00007ffff6758ec6 in QHostAddress::toString() const () from
+/usr/lib/x86_64-linux-gnu/libQt5Network.so.5
+#1  0x00007ffff677b3dd in ?? () from
+/usr/lib/x86_64-linux-gnu/libQt5Network.so.5
+#2  0x00007ffff677b9af in QUdpSocket::writeDatagram(char const*, long
+long, QHostAddress const&amp;, unsigned short) ()
+   from /usr/lib/x86_64-linux-gnu/libQt5Network.so.5
+#3  0x000000000041de50 in writeDatagram (port=4739, host=...,
+datagram=..., this=&lt;optimized out&gt;) at
+/usr/include/qt5/QtNetwork/qudpsocket.h:82
+#4  PSK_Reporter::sendReport (this=0x1159620) at psk_reporter.cpp:109
+#5  0x00007ffff5cf51fb in QMetaObject::activate(QObject*, int, int,
+void**) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#6  0x00007ffff5d010a2 in QTimer::timerEvent(QTimerEvent*) () from
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#7  0x00007ffff5cf629c in QObject::event(QEvent*) () from
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#8  0x00007ffff6b2b93c in QApplicationPrivate::notify_helper(QObject*,
+QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5
+#9  0x00007ffff6b2d832 in QApplication::notify(QObject*, QEvent*) ()
+from /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5
+#10 0x00007ffff5cd02fe in QCoreApplication::notifyInternal(QObject*,
+QEvent*) () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#11 0x00007ffff5d17a7c in QTimerInfoList::activateTimers() () from
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#12 0x00007ffff5d18254 in ?? () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#13 0x00007ffff5d18271 in ?? () from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#14 0x00007ffff3f38f05 in g_main_context_dispatch () from
+/lib/x86_64-linux-gnu/libglib-2.0.so.0
+#15 0x00007ffff3f39248 in ?? () from /lib/x86_64-linux-gnu/libglib-2.0.so.0
+#16 0x00007ffff3f39304 in g_main_context_iteration () from
+/lib/x86_64-linux-gnu/libglib-2.0.so.0
+#17 0x00007ffff5d1867c in
+QEventDispatcherGlib::processEvents(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;)
+()
+   from /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#18 0x00007ffff5ccf24b in
+QEventLoop::exec(QFlags&lt;QEventLoop::ProcessEventsFlag&gt;) () from
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#19 0x00007ffff5cd4c7e in QCoreApplication::exec() () from
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+#20 0x0000000000414df7 in main (argc=1, argv=&lt;optimized out&gt;) at main.cpp:55
+
+-John AC6SL
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001698.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+	<LI>Next message: <A HREF="001704.html">[Wsjt-devel] WSJT-X: QtMultimedia replacement for PortAudio.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1701">[ date ]</a>
+              <a href="thread.html#1701">[ thread ]</a>
+              <a href="subject.html#1701">[ subject ]</a>
+              <a href="author.html#1701">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

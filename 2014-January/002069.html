@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] direct frequency transmit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20direct%20frequency%20transmit&In-Reply-To=%3Cd048664fa54210f0fdb1f256569c83ee.squirrel%40webmail.montana.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002064.html">
+   <LINK REL="Next"  HREF="002072.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] direct frequency transmit</H1>
+    <B>Don Latham</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20direct%20frequency%20transmit&In-Reply-To=%3Cd048664fa54210f0fdb1f256569c83ee.squirrel%40webmail.montana.com%3E"
+       TITLE="[Wsjt-devel] direct frequency transmit">djl at montana.com
+       </A><BR>
+    <I>Wed Jan 22 01:28:29 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002064.html">[Wsjt-devel] WSJTX Documentation
+</A></li>
+        <LI>Next message: <A HREF="002072.html">[Wsjt-devel] direct frequency transmit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2069">[ date ]</a>
+              <a href="thread.html#2069">[ thread ]</a>
+              <a href="subject.html#2069">[ subject ]</a>
+              <a href="author.html#2069">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sent this to the &quot;other&quot; list, probably an error. I seek a comment or
+two. I'm not a really great programmer, a physics model or two in the
+longago, but I'm willing to struggle with this.
+For a couple of reasons, I'd like to modify the wsjt code (hopefully the
+latest) to output a single rs232 character, really an 8-bit binary that
+has the value, somehow, of the current modulation tone frequency as the
+transmit signal is developed. I think that there's already an open rs232
+protocol to get the ptt out. So the transmit frequency followed by a
+sequence of tone values could be sent on that port at a whacking great
+baudrate. There would be no modification to any of the other code, as
+the soundcard line output could proceed as usual. I'd like to be able to
+do direct frequency output. There are a big host of sdr receive nodules
+out there, but almost all of them simply ignore transmit.  Doing an ssb
+transmit chain for an inherently simple signal when there are lots of
+dds modules, etc that can be directly driven , and that there has to be
+a t/r chain controller anyway, seems like a lot of trouble. Of course,
+the zero frequency may have to be independently set.
+I seem to remember reading that the transmit tone does change value on a
+zero crossing, and that may be somewhat of a problem.
+Completely whacky, doable easily, or in between?
+Don
+
+-- 
+&quot;The power of accurate observation is commonly called cynicism by those
+who have not got it.&quot;
+ -George Bernard Shaw
+
+
+Dr. Don Latham AJ7LL
+Six Mile Systems LLC
+17850 Six Mile Road
+POB 134
+Huson, MT, 59846
+VOX 406-626-4304
+Skype: buffler2
+www.lightningforensics.com
+www.sixmilesystems.com
+
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002064.html">[Wsjt-devel] WSJTX Documentation
+</A></li>
+	<LI>Next message: <A HREF="002072.html">[Wsjt-devel] direct frequency transmit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2069">[ date ]</a>
+              <a href="thread.html#2069">[ thread ]</a>
+              <a href="subject.html#2069">[ subject ]</a>
+              <a href="author.html#2069">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

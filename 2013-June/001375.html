@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] More on WSJT-X v1.1 beta
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20More%20on%20WSJT-X%20v1.1%20beta&In-Reply-To=%3C51B9DDC6.5070501%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001376.html">
+   <LINK REL="Next"  HREF="001377.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] More on WSJT-X v1.1 beta</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20More%20on%20WSJT-X%20v1.1%20beta&In-Reply-To=%3C51B9DDC6.5070501%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] More on WSJT-X v1.1 beta">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jun 13 16:57:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001376.html">[Wsjt-devel] Help with compilation
+</A></li>
+        <LI>Next message: <A HREF="001377.html">[Wsjt-devel] kvasd.asc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1375">[ date ]</a>
+              <a href="thread.html#1375">[ thread ]</a>
+              <a href="subject.html#1375">[ subject ]</a>
+              <a href="author.html#1375">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A few last-minute details before I must leave.
+
+For those of you who are compiling WSJT-X for yourselves, and have read 
+the Quick Start Guide posted at
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT-X_1.1_Quick_Start.pdf">http://physics.princeton.edu/pulsar/K1JT/WSJT-X_1.1_Quick_Start.pdf</A>
+
+Copies of the sample files mentioned there have been posted at
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/130418_1742.wav">http://physics.princeton.edu/pulsar/K1JT/130418_1742.wav</A>
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/130610_2343.wav">http://physics.princeton.edu/pulsar/K1JT/130610_2343.wav</A>
+
+A Linux executable kvasd (compiled on Ubuntu 12.04) is posted at
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/kvasd">http://physics.princeton.edu/pulsar/K1JT/kvasd</A>
+
+This program is executed from within the Fortran subroutine extract.f90. 
+  Depending on how you install things, you might want to adjust the 
+system call that starts it:
+
+   iret=system('./kvasd -q &gt; dev_null')
+
+If anyone needs kvasd for OS X, G4KLA has a copy.
+
+That's all from here until after June 22...
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001376.html">[Wsjt-devel] Help with compilation
+</A></li>
+	<LI>Next message: <A HREF="001377.html">[Wsjt-devel] kvasd.asc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1375">[ date ]</a>
+              <a href="thread.html#1375">[ thread ]</a>
+              <a href="subject.html#1375">[ subject ]</a>
+              <a href="author.html#1375">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

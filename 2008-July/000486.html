@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Released software
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Released%20software&In-Reply-To=%3C487F378C.6040102%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000485.html">
+   <LINK REL="Next"  HREF="000487.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Released software</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Released%20software&In-Reply-To=%3C487F378C.6040102%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Released software">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Jul 17 14:14:04 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000485.html">[Wsjt-devel] WSPR 1.0 and WSJT 7 (beta release)
+</A></li>
+        <LI>Next message: <A HREF="000487.html">[Wsjt-devel] Released software
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Releasing WSPR 1.0 and the WSJT 7 beta has already brought 
+in some very useful information.
+
+Some program weaknesses just don't come to light until there 
+is thorough on-the-air testing by users.  I made many 
+WSPR-mode QSOs last evening, using both 10.139 and 14.076 
+MHz dial frequency, and I monitored many other QSOs.  I was 
+running both WSPR and WSJT most of the time.
+
+Some observations:
+
+1. WSPR needs some work on the way QSO-mode messages are 
+handled in the on-screen displays, and maybe also in the 
+uploading procedure.  Those things work fine for beacon-mode 
+messages, but not for all QSO-mode messages.  I had not 
+taken note of some changes made by Bruce to the Python code, 
+in which a decoded message is parsed into three fields 
+(call, grid, power) before being displayed on screen.   This 
+is fine for the beacon messages, but QSO-mode messages have 
+a much wider range of formats.  I will back out those 
+changes and go back to a column-oriented parsing of decoded 
+text, retaining the &quot;field&quot; information for uploaded 
+messages only.
+
+2. The decoder in WSPR performs better, on average, than the 
+one in WSJT.  I'm not yet sure of the cause, but I suspect 
+that it may have to do with the different sampling rate 
+(12000 in WSPR, and 11025 Hz in WSJT -- the latter is poorly 
+executed in many windows sound systems).  We will surely 
+want to address this problem, and correct it.
+
+3. Then there is &quot;Harry's problem&quot;.  On his machines, 
+compiling with gfortran produces executable code that 
+segfaults.  (Always?  Sometimes? )  Compiling with g95 
+produces executable code that runs for a while and then 
+sporadicly produces a crash, sometimes with error messages 
+and sometimes without.
+
+The problem does not exist in Windows executables, whether 
+compiled by CVF or by MinGW.  I do not think it exists in OS 
+X, or in BSD.  It does not exist on my Debian Sarge 
+distribution, where both gfortran and g95 executables work OK.
+
+But it does exist when the program is compiled and run with 
+the tools in certain late Linux distributions.  We know 
+there is a bug in numpy 1.1.0; but apparently there is 
+something else, as well.  We need to find a reproducible way 
+to generate the failure, and then identify the problem.
+
+I'm sure we will be getting more useful feedback over the 
+next week or so...
+
+	-- Joe
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000485.html">[Wsjt-devel] WSPR 1.0 and WSJT 7 (beta release)
+</A></li>
+	<LI>Next message: <A HREF="000487.html">[Wsjt-devel] Released software
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

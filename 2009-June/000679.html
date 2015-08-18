@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and (very) strong signals.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20%28very%29%20strong%20signals.&In-Reply-To=%3C252f4a900906061428m2c30c949v55a480a632f6fc4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000677.html">
+   <LINK REL="Next"  HREF="000680.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and (very) strong signals.</H1>
+    <B>Joe Large</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20%28very%29%20strong%20signals.&In-Reply-To=%3C252f4a900906061428m2c30c949v55a480a632f6fc4%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT and (very) strong signals.">w6cqz at w6cqz.org
+       </A><BR>
+    <I>Sat Jun  6 23:28:01 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000677.html">[Wsjt-devel] Rev 1257 crashing on startup...
+</A></li>
+        <LI>Next message: <A HREF="000680.html">[Wsjt-devel] JT2/4x  --- AFC &amp; Averaging ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all.
+
+As some of you may know from a previous posting, I am working on a new
+program for operating JT65 with a primary focus upon its use in the HF
+Bands.  The program is now in alpha testing with (at this writing) 33 users
+participating in its testing.  Many bugs have been found and squashed, but,
+one issue that's come to light is that of exceeding the dB level that can be
+expressed in a compacted JT65 exchange.
+
+While not a concern when dealing with JT65 in its primary role of an EME
+mode where signal levels would not be expected to even approach 0, let alone
+go positive, it is a problem seen with the stronger levels seen on HF.
+While generally rare, it's not unusual to see levels reported at 0, 1 or
+2dB.  Of the ~1.7 million spots contained in my database I have about 7000
+reported at &gt; -01dB.  Admittedly not a huge number, about .4%.
+
+Since confirming that reports &gt; -01 are sent as free text (often yielding
+the dreaded call sign pair only exchanges seen on HF) I have within my code
+placed a hard limit of -01 for the maximum signal report and would like to
+propose something similar for WSJT and other programs implementing the JT65
+protocol.  This would prevent the excursions into undefined territory.  Of
+course, it could also be left to the operator of WSJT to manually edit the
+report, but, not all users realize they're not really transmitting what is
+shown in the tx msg boxes or pay attention to the actual TX message as
+display in WSJT's lower right corner.  It makes no sense to modify the
+protocol to send &gt; -01dB reports as it's seldom seen thus my proposal of the
+hard limit of -01.
+
+Just an idea, perhaps it makes sense, perhaps it doesn't.
+
+73 - Joe - W6CQZ
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090606/5ea7d42e/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20090606/5ea7d42e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000677.html">[Wsjt-devel] Rev 1257 crashing on startup...
+</A></li>
+	<LI>Next message: <A HREF="000680.html">[Wsjt-devel] JT2/4x  --- AFC &amp; Averaging ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

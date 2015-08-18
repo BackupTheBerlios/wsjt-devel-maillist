@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F64494.7010606%40lavabit.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001584.html">
+   <LINK REL="Next"  HREF="001589.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X 1.1: Why is it done that way?</H1>
+    <B>Claude Frantz</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%201.1%3A%20Why%20is%20it%20done%20that%20way%3F&In-Reply-To=%3C51F64494.7010606%40lavabit.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X 1.1: Why is it done that way?">ClaudeFrantzX665 at lavabit.com
+       </A><BR>
+    <I>Mon Jul 29 12:31:48 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001584.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+        <LI>Next message: <A HREF="001589.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1588">[ date ]</a>
+              <a href="thread.html#1588">[ thread ]</a>
+              <a href="subject.html#1588">[ subject ]</a>
+              <a href="author.html#1588">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 07/28/2013 05:57 PM, Edson W. R. Pereira wrote:
+
+Edson,
+
+&gt;<i>     The idea behind pulseaudio is to liberate the application from the
+</I>&gt;<i>     need to deal with the hardware. The application, as client, requests
+</I>&gt;<i>     streams from the pulseaudio server. The selection of devices, the
+</I>&gt;<i>     mixer, the volume control are now a matter which pulseaudio has to
+</I>&gt;<i>     manage. There are tools available to the user. pulseaudio is now the
+</I>&gt;<i>     standard sound system of most modern Linux distributions.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I thought that was the purpose for ALSA! ;-)
+</I>
+Yes, you are right. It was the idea behind  portaudio too.
+
+&gt;<i> I understand the idea behind pulseaudio as a sound server. However, I
+</I>&gt;<i> had some bad experience with it in the past while trying to use it with
+</I>&gt;<i> fldigi and with SDR software. It added unnecessary latency, complexity
+</I>&gt;<i> and, at the time, it did not work well with jackd.
+</I>
+Early releases of pulseaudio have made many problems. pulseaudio is a 
+piece of software that has been released at a too early state. Myself, I 
+have never seen problems when using pulseaudio with fldigi. Of course, 
+the latency is lower if we use less software between the application 
+program and the hardware. But the complexity of the user interface 
+increases. I my own opinion, the pulseaudio interface to the classical 
+application is rather simple. At this level we are considering audio 
+streams and not more sound cards.
+
+&gt;<i> Also, there is the
+</I>&gt;<i> risk of some application injecting undesirable audio samples on a stream
+</I>&gt;<i> that is being transmitted.
+</I>
+This risk exists also when using the ALSA interface on pulseaudio. This 
+is the classical case when using portaudio on a modern Linux 
+distribution based on pulseaudio. Requesting to stop pulseaudio in order 
+to be able to run a specific application would not be a real practical 
+solution.
+
+&gt;<i> As far as I know, pulseaudio is (was) _*not*_
+</I>&gt;<i> designed for real-time audio. This is fine for using the computer to
+</I>&gt;<i> play music, but undesirable for low latency audio applications. Jackd
+</I>&gt;<i> shines in this respect.
+</I>
+As far as I know, pulseaudio was designed to be the standard sound 
+system on modern Linux systems. This the the case here, on Fedora. Jackd 
+was designed for another environment. There exists a jackd interface to 
+pulseaudio. I have never seen a classical Linux distribution based on 
+the native jackd.
+
+I'm using fldigi on pulseaudio without problems. I have used wsjt using 
+portaudio -&gt; ALSA -&gt; pulseaudio without problems. I have used wsjtx in 
+the same manner. pulseaudio's problem is the limited documentation 
+available and the lack of really useful error messages in the software. 
+The software we are speaking about here is not really critical at this 
+level, as I known.
+
+Best 88 de Claude
+
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001584.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+	<LI>Next message: <A HREF="001589.html">[Wsjt-devel] WSJT-X 1.1: Why is it done that way?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1588">[ date ]</a>
+              <a href="thread.html#1588">[ thread ]</a>
+              <a href="subject.html#1588">[ subject ]</a>
+              <a href="author.html#1588">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

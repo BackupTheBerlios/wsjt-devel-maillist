@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: commited r3542.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3CCALNQy4_DEmUPk8LCV30bUZC5%2BtkKzJxS0__5fcbAZ95E6L71CQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001783.html">
+   <LINK REL="Next"  HREF="001785.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: commited r3542.</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20commited%20r3542.&In-Reply-To=%3CCALNQy4_DEmUPk8LCV30bUZC5%2BtkKzJxS0__5fcbAZ95E6L71CQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: commited r3542.">ewpereira at gmail.com
+       </A><BR>
+    <I>Sat Aug 10 17:58:25 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001783.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+        <LI>Next message: <A HREF="001785.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1784">[ date ]</a>
+              <a href="thread.html#1784">[ thread ]</a>
+              <a href="subject.html#1784">[ subject ]</a>
+              <a href="author.html#1784">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bill,
+
+A quick test reveals the following issue.
+
+Conditions:
+
+1. Press Tune
+2. Change the Pwr control
+
+SoundOut: attn =  4.2 , vol =  0.380189
+QAudioOutput: Failed to set volume
+SoundOut: attn =  4.1 , vol =  0.389045
+QAudioOutput: Failed to set volume
+SoundOut: attn =  3.9 , vol =  0.40738
+QAudioOutput: Failed to set volume
+SoundOut: attn =  3.8 , vol =  0.416869
+QAudioOutput: Failed to set volume
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+SoundOut: attn =  3.7 , vol =  0.42658
+QAudioOutput: Failed to set volume
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+&quot;pa_stream_peek() failed: Invalid argument&quot;
+
+After this, the app freezes and I have to  kill it.
+
+I am running mono on both audio channels.
+
+73,
+
+-- Edson PY2SDR
+
+On Sat, Aug 10, 2013 at 12:52 PM, Edson W. R. Pereira
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ewpereira at gmail.com</A>&gt;wrote:
+
+&gt;<i>
+</I>&gt;<i> Hi Bill,
+</I>&gt;<i>
+</I>&gt;<i> My local copy was out of sync indeed. No warnings during the svn update of
+</I>&gt;<i> the version that had errors, but a fresh checkout did clear the issues. I
+</I>&gt;<i> will perform some tests this afternoon and will report back here on the
+</I>&gt;<i> list.
+</I>&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Sat, Aug 10, 2013 at 12:44 PM, Bill Somerville &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">g4wjs at classdesign.com</A>&gt;wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 10/08/2013 16:41, Edson W. R. Pereira wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Hi Bill,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Edson,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Compilation on Ubuntu 12.04 fails with the errors below:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &lt;snip&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Looks like you have an incomplete update. Do you have any conflicted
+</I>&gt;&gt;<i> files?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 73,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -- Edson PY2SDR
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  73
+</I>&gt;&gt;<i> Bill
+</I>&gt;&gt;<i> G4WJS.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130810/fa7c4692/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130810/fa7c4692/attachment-0001.html</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001783.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+	<LI>Next message: <A HREF="001785.html">[Wsjt-devel] WSJT-X: commited r3542.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1784">[ date ]</a>
+              <a href="thread.html#1784">[ thread ]</a>
+              <a href="subject.html#1784">[ subject ]</a>
+              <a href="author.html#1784">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Compiling/running r3622 on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compiling/running%20r3622%20on%20Linux&In-Reply-To=%3CCALNQy49d1Hcp7JB9MZjsAvdfsqRHgejPKYJuM5SrA%3D265Jj5cw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002011.html">
+   <LINK REL="Next"  HREF="002013.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Compiling/running r3622 on Linux</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Compiling/running%20r3622%20on%20Linux&In-Reply-To=%3CCALNQy49d1Hcp7JB9MZjsAvdfsqRHgejPKYJuM5SrA%3D265Jj5cw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Compiling/running r3622 on Linux">ewpereira at gmail.com
+       </A><BR>
+    <I>Fri Jan 10 17:36:22 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002011.html">[Wsjt-devel] Compiling/running r3622 on Linux
+</A></li>
+        <LI>Next message: <A HREF="002013.html">[Wsjt-devel] Compiling/running r3622 on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2012">[ date ]</a>
+              <a href="thread.html#2012">[ thread ]</a>
+              <a href="subject.html#2012">[ subject ]</a>
+              <a href="author.html#2012">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Hans,
+
+Did you compile Qt from sources on your machine? If so, make sure
+pulseaudio-dev is installed and the Qt configure script finds it.
+
+73,
+
+-- Edson PY2SDR
+
+
+
+On Fri, Jan 10, 2014 at 12:10 PM, Hansi Reiser &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">dl9rdz at darc.de</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I am trying to compile r3622 from svn on Linux Lubunty saucy.
+</I>&gt;<i> Actually I got it to compile without errors after some attempts,
+</I>&gt;<i> but now wsjtx does not find any audio devices. The configuration
+</I>&gt;<i> drop-down box for audio devices is empty.  On the other hand,
+</I>&gt;<i> the binary version of r3496 works perfectly on my machine.
+</I>&gt;<i> Any hints on what might be going wrong for me or how to debug
+</I>&gt;<i> the problem?
+</I>&gt;<i>
+</I>&gt;<i> On r3496 I observed some strange behaviour regarding prefix
+</I>&gt;<i> handling: When I enter &quot;OZ/DO1TI DL9RDZ&quot; into the free-text input
+</I>&gt;<i> field (next to &quot;Tx 1&quot;), wsjtx instead shows &quot;DO1TI 3B8/DL9RDZ&quot; as
+</I>&gt;<i> transmitted text. Or similarily, &quot;OZ/DO1TI 13GL&quot;, which should be
+</I>&gt;<i> sent as 13-char freetext, shows up as TX: &quot;DO1TI 3B8/73GL&quot;
+</I>&gt;<i> Is that a bug in r3496, maybe already fixed in r3622?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Hans dl9rdz
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140110/d2a638b9/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20140110/d2a638b9/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002011.html">[Wsjt-devel] Compiling/running r3622 on Linux
+</A></li>
+	<LI>Next message: <A HREF="002013.html">[Wsjt-devel] Compiling/running r3622 on Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2012">[ date ]</a>
+              <a href="thread.html#2012">[ thread ]</a>
+              <a href="subject.html#2012">[ subject ]</a>
+              <a href="author.html#2012">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] r3555  Window proportions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3555%20%20Window%20proportions&In-Reply-To=%3C520E01CD.3040303%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001863.html">
+   <LINK REL="Next"  HREF="001858.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] r3555  Window proportions</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20r3555%20%20Window%20proportions&In-Reply-To=%3C520E01CD.3040303%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] r3555  Window proportions">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Fri Aug 16 12:41:17 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001863.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+        <LI>Next message: <A HREF="001858.html">[Wsjt-devel] CMake questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1855">[ date ]</a>
+              <a href="thread.html#1855">[ thread ]</a>
+              <a href="subject.html#1855">[ subject ]</a>
+              <a href="author.html#1855">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all
+
+Just committed an addition to on_actionEnable_DXCC_entity_trigger() 
+which alters the proportion between the two text display windows 
+depending on whether you've enabled the DXCC feature or not.  Took a lot 
+of doc searching to find but, as is often the case, the implementation 
+is only a few simple lines of code.
+
+The proportions are hard coded but work OK on Linux using the default 
+fonts.  Not sure what it'll look like on other OSs.  Its only a 5% bias 
+to the left window so shouldn't have too much effect anyway.  Let me 
+know if you think the proportions could be improved.
+
+Cheers
+Murray
+VK3ACF
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001863.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+	<LI>Next message: <A HREF="001858.html">[Wsjt-devel] CMake questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1855">[ date ]</a>
+              <a href="thread.html#1855">[ thread ]</a>
+              <a href="subject.html#1855">[ subject ]</a>
+              <a href="author.html#1855">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

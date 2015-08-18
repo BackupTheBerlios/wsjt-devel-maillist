@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [wsjtgroup] WSJT Docs, Windows Setup, Help Needed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT%20Docs%2C%20Windows%20Setup%2C%20Help%20Needed&In-Reply-To=%3C52F2B02E.8060708%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002243.html">
+   <LINK REL="Next"  HREF="002245.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [wsjtgroup] WSJT Docs, Windows Setup, Help Needed</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bwsjtgroup%5D%20WSJT%20Docs%2C%20Windows%20Setup%2C%20Help%20Needed&In-Reply-To=%3C52F2B02E.8060708%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] [wsjtgroup] WSJT Docs, Windows Setup, Help Needed">ki7mt at yahoo.com
+       </A><BR>
+    <I>Wed Feb  5 22:42:06 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002243.html">[Wsjt-devel] WSJT Docs,  Windows Setup,  Help Needed
+</A></li>
+        <LI>Next message: <A HREF="002245.html">[Wsjt-devel] WSJT Docs, Windows Setup, Help Needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2244">[ date ]</a>
+              <a href="thread.html#2244">[ thread ]</a>
+              <a href="subject.html#2244">[ subject ]</a>
+              <a href="author.html#2244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hello All,
+
+First error, step 5.) :-/
+
+svn co <A HREF="svn://svn.berlios.de/wsjt/doc">svn://svn.berlios.de/wsjt/doc</A>
+
+not
+
+svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>
+
+G.
+
+
+On 2/5/2014 21:24, Greg Beam wrote:
+&gt;<i> Hello All,
+</I>&gt;<i> 
+</I>&gt;<i> If anyone has some spare time, I could use some help testing an
+</I>&gt;<i> Windows batch file that Auto-Installs Cygwin + Required packages
+</I>&gt;<i> for working on WSJT docs.
+</I>&gt;<i> 
+</I>&gt;<i> I've tested this on WinXP-32 &amp; Vista 32/64, but I do not have
+</I>&gt;<i> access to Win7/8.
+</I>&gt;<i> 
+</I>&gt;<i> Total Install Time: ~8.5 min (including download time) on slow
+</I>&gt;<i> internet
+</I>&gt;<i> 
+</I>&gt;<i> If interested, use the following to test:
+</I>&gt;<i> 
+</I>&gt;<i> Note(s):
+</I>&gt;<i> 
+</I>&gt;<i> a. I attached the zip file, but I'm unsure sure how the boards
+</I>&gt;<i> handle attachments, so I'm also providing a shared link to my
+</I>&gt;<i> Ubuntu One account:
+</I>&gt;<i> 
+</I>&gt;<i> b. This is a local folder only install, no shortcuts or system
+</I>&gt;<i> level integration will should happen. To remove, simply delete the
+</I>&gt;<i> wsjtx-doc folder.
+</I>&gt;<i> 
+</I>&gt;<i> 1). ** Download: <A HREF="http://ubuntuone.com/5TXl9swZpkJyBXjlbzsI8G">http://ubuntuone.com/5TXl9swZpkJyBXjlbzsI8G</A> 
+</I>&gt;<i> MD5SUM: 5f08b4759a2232ef1dbc2b0b7723b133 SHASUM:
+</I>&gt;<i> 8a268ceb1bb90e7bd4527ee95ab7092748975977
+</I>&gt;<i> 
+</I>&gt;<i> wsjt-doc.zip contains two files: - the folder itself:
+</I>&gt;<i> wsjt-doc - the windows batch file: wsjt-doc.bat
+</I>&gt;<i> 
+</I>&gt;<i> 2). ** Unzip the file wherever you like c:\ d:\ \Desktop
+</I>&gt;<i> \Documents USB-Key, etc. If using USB Key, install time is a good
+</I>&gt;<i> bit slower. For the example, I'll use c:\wsjt-doc as an example
+</I>&gt;<i> here.
+</I>&gt;<i> 
+</I>&gt;<i> 3). ** Download one the following installers, saving it to the 
+</I>&gt;<i> c:\wsjt-doc folder:
+</I>&gt;<i> 
+</I>&gt;<i> - <A HREF="http://cygwin.com/setup-x86.exe">http://cygwin.com/setup-x86.exe</A> -
+</I>&gt;<i> <A HREF="http://cygwin.com/setup-x86_64.exe">http://cygwin.com/setup-x86_64.exe</A>
+</I>&gt;<i> 
+</I>&gt;<i> 4). ** Browse to the c:\wsjt-doc folder, Double-Click on 
+</I>&gt;<i> wsjt-doc-setup.bat or Right-Click &gt;&gt; Open - On my slow internet, it
+</I>&gt;<i> was less than 9min to download and install.
+</I>&gt;<i> 
+</I>&gt;<i> 5). ** If the installer finishes successfully, Double-Click on 
+</I>&gt;<i> c:\wsjt-doc\wsjt-doc.bat to open the Cygwin terminal, then check
+</I>&gt;<i> out the WSJT documentation with:
+</I>&gt;<i> 
+</I>&gt;<i> svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>
+</I>&gt;<i> 
+</I>&gt;<i> 6). ** Once downloaded, build the docs with: ./build-doc.sh wsjtx
+</I>&gt;<i> 
+</I>&gt;<i> 7). ** If all went according to plan, you should have a copy of
+</I>&gt;<i> the latest WSJT-X User Guide in ..doc/wsjtx/ folder
+</I>&gt;<i> 
+</I>&gt;<i> 8). ** With your browser, open ..doc/wsjtx/wsjtx-main-toc2.html to 
+</I>&gt;<i> ensure it was built correctly.
+</I>&gt;<i> 
+</I>&gt;<i> If you run into any trouble, please send me a note with the details
+</I>&gt;<i> so I can try and make this work across most of the Windows
+</I>&gt;<i> versions.
+</I>&gt;<i> 
+</I>&gt;<i> 73's Greg, KI7MT <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+</I>&gt;<i> 
+</I>-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (MingW32)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS8rAuAAoJEAmfcyeKlj0xJDgH/3vwcR/hkynOLlWWzzCypfaD
+uM8azWetfkrAjF2qT91hGL02Sey2y67li6A1kY0RKReFT5rAZWbYT81UjiIs4L+t
+twvY2OPwfpiI48JxcBv/wGbQeBfyZnVjPo8s+B6ulbaddbxUYhSMg4WJw4SVU8ef
+3TJCJDUUyTRA2mye2SnX4lTWvLVXjmyLqlRzR1+CYFGDigi3QTLuVeq3QTYUE/xj
+lyzPoEk5H2uvjojYr87Kwotppj4DxDoa31I9zucLZdElVKNEVRwxU3uE40Fv8bux
+aV1U5npTs9JHYxEtrUqg1BDWcqnygQ1l2j05WO3C+yWMe5KNVVa/iW9NT3aUb5s=
+=3Upk
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002243.html">[Wsjt-devel] WSJT Docs,  Windows Setup,  Help Needed
+</A></li>
+	<LI>Next message: <A HREF="002245.html">[Wsjt-devel] WSJT Docs, Windows Setup, Help Needed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2244">[ date ]</a>
+              <a href="thread.html#2244">[ thread ]</a>
+              <a href="subject.html#2244">[ subject ]</a>
+              <a href="author.html#2244">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

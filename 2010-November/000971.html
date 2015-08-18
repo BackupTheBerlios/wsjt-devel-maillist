@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compile%20failure%20on%20Ubuntu%2010.10%20with%20/trunk/&In-Reply-To=%3CAANLkTiknudCCRc60XW0rbJ4fV%3Dx7AXdzgW9tQP7wgm1Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000974.html">
+   <LINK REL="Next"  HREF="000975.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/</H1>
+    <B>Steve Meuse</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20compile%20failure%20on%20Ubuntu%2010.10%20with%20/trunk/&In-Reply-To=%3CAANLkTiknudCCRc60XW0rbJ4fV%3Dx7AXdzgW9tQP7wgm1Q%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/">smeuse at gmail.com
+       </A><BR>
+    <I>Thu Nov  4 03:41:35 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000974.html">[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/
+</A></li>
+        <LI>Next message: <A HREF="000975.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#971">[ date ]</a>
+              <a href="thread.html#971">[ thread ]</a>
+              <a href="subject.html#971">[ subject ]</a>
+              <a href="author.html#971">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Do you have libportaudio installed?
+
+On Wed, Nov 3, 2010 at 9:33 PM, jeff millar &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wa1hco at gmail.com</A>&gt; wrote:
+
+&gt;<i> I noticed that .../trunk/... has merged with wsjt7a and ran the configure
+</I>&gt;<i> and make...and it failed.  But the wsjt7a branch still compiles correctly.
+</I>&gt;<i>
+</I>&gt;<i> any ideas?
+</I>&gt;<i>
+</I>&gt;<i> jeff, wa1hco
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;.
+</I>&gt;<i> Skipping.
+</I>&gt;<i> Found executable /usr/bin/gfortran
+</I>&gt;<i> In file included from
+</I>&gt;<i> /usr/lib/python2.6/dist-packages/numpy/core/include/numpy/ndarrayobject.h:239,
+</I>&gt;<i>                 from
+</I>&gt;<i> /usr/lib/python2.6/dist-packages/numpy/core/include/numpy/arrayobject.h:14,
+</I>&gt;<i>                 from /tmp/tmph0Ek8D/src.linux-i686-2.6/fortranobject.h:13,
+</I>&gt;<i>                 from /tmp/tmph0Ek8D/src.linux-i686-2.6/Audiomodule.c:17:
+</I>&gt;<i> /usr/include/inttypes.h:298: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;imaxabs&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:301: error: expected &#8216;)&#8217; before &#8216;__numer&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:305: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;strtoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:309: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;strtoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:313: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;wcstoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:318: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;wcstoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:386: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:402: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:416: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:433: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoumax&#8217;
+</I>&gt;<i> In file included from
+</I>&gt;<i> /usr/lib/python2.6/dist-packages/numpy/core/include/numpy/ndarrayobject.h:239,
+</I>&gt;<i>                 from
+</I>&gt;<i> /usr/lib/python2.6/dist-packages/numpy/core/include/numpy/arrayobject.h:14,
+</I>&gt;<i>                 from /tmp/tmph0Ek8D/src.linux-i686-2.6/fortranobject.h:13,
+</I>&gt;<i>                 from /tmp/tmph0Ek8D/src.linux-i686-2.6/Audiomodule.c:17:
+</I>&gt;<i> /usr/include/inttypes.h:298: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;imaxabs&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:301: error: expected &#8216;)&#8217; before &#8216;__numer&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:305: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;strtoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:309: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;strtoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:313: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;wcstoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:318: error: expected &#8216;=&#8217;, &#8216;,&#8217;, &#8216;;&#8217;, &#8216;asm&#8217; or
+</I>&gt;<i> &#8216;__attribute__&#8217; before &#8216;wcstoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:386: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:402: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;strtoumax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:416: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoimax&#8217;
+</I>&gt;<i> /usr/include/inttypes.h:433: error: expected &#8216;,&#8217; or &#8216;;&#8217; before &#8216;wcstoumax&#8217;
+</I>&gt;<i> error: Command &quot;gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2
+</I>&gt;<i> -Wall -Wstrict-prototypes -fPIC -DPACKAGE_NAME=&quot;wsjt&quot;
+</I>&gt;<i> -DPACKAGE_TARNAME=&quot;wsjt&quot; -DPACKAGE_VERSION=&quot;7.04&quot; -DPACKAGE_STRING=&quot;wsjt
+</I>&gt;<i> 7.04&quot; -DPACKAGE_BUGREPORT=&quot;&quot;
+</I>&gt;<i> -DFC_LIB_PATH=&quot;/usr/lib/gcc/i686-linux-gnu/4.4.5/&quot; -DFC=&quot;gfortran&quot;
+</I>&gt;<i> -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1
+</I>&gt;<i> -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1
+</I>&gt;<i> -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1
+</I>&gt;<i> -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1 -DHAVE_ERRNO_H=1
+</I>&gt;<i> -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1 -DHAVE_LIBGEN_H=1
+</I>&gt;<i> -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1 -DHAVE_TERMIOS_H=1
+</I>&gt;<i> -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1 -DHAVE_SYS_STAT_H=1
+</I>&gt;<i> -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1 -DTIME_WITH_SYS_TIME=1
+</I>&gt;<i> -DSTRING_WITH_STRINGS=1 -DNDEBUG=1 -DHAS_SAMPLERATE_H=1 -DHAS_PORTAUDIO=1
+</I>&gt;<i> -DHAS_PORTAUDIO_H=1 -DHAS_PORTAUDIO_LIB=1 -DHAS_FFTW3_H=1 -DHAS_FFTW3FLIBS=1
+</I>&gt;<i> -I/usr/include -I/usr/local/include -I. -I/tmp/tmph0Ek8D/src.linux-i686-2.6
+</I>&gt;<i> -I/usr/lib/python2.6/dist-packages/numpy/core/include
+</I>&gt;<i> -I/usr/include/python2.6 -c /tmp/tmph0Ek8D/src.linux-i686-2.6/Audiomodule.c
+</I>&gt;<i> -o /tmp/tmph0Ek8D/tmp/tmph0Ek8D/src.linux-i686-2.6/Audiomodule.o&quot; failed
+</I>&gt;<i> with exit status 1
+</I>&gt;<i> make: *** [WsjtMod/Audio.so] Error 1
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+
+-Steve
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101103/e8a8aa9a/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101103/e8a8aa9a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000974.html">[Wsjt-devel] compile failure on Ubuntu 10.10 with /trunk/
+</A></li>
+	<LI>Next message: <A HREF="000975.html">[Wsjt-devel] WSJT and Jack
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#971">[ date ]</a>
+              <a href="thread.html#971">[ thread ]</a>
+              <a href="subject.html#971">[ subject ]</a>
+              <a href="author.html#971">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

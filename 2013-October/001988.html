@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Fwd: Re: WSJT-X v1.2.1, beta release r3590
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20WSJT-X%20v1.2.1%2C%20beta%20release%20r3590&In-Reply-To=%3C525459F7.5000306%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001987.html">
+   <LINK REL="Next"  HREF="001990.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Fwd: Re: WSJT-X v1.2.1, beta release r3590</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Fwd%3A%20Re%3A%20WSJT-X%20v1.2.1%2C%20beta%20release%20r3590&In-Reply-To=%3C525459F7.5000306%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Fwd: Re: WSJT-X v1.2.1, beta release r3590">joe at princeton.edu
+       </A><BR>
+    <I>Tue Oct  8 21:16:07 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001987.html">[Wsjt-devel] CAT Herding - call for volunteers.
+</A></li>
+        <LI>Next message: <A HREF="001990.html">[Wsjt-devel] Fwd: Re: WSJT-X v1.2.1, beta release r3590
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1988">[ date ]</a>
+              <a href="thread.html#1988">[ thread ]</a>
+              <a href="subject.html#1988">[ subject ]</a>
+              <a href="author.html#1988">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Bill and all,
+
+The email exchanges copied below provide an example of a case in which 
+48000 Hz sampling fails to work, and we can't blame it on Vista.
+
+N4AU is using Win/XP and a SignaLink interface.  When he put
+
+[Tune]
+Audio\DisableInputResampling=true
+
+into his wsjtx.ini file, his setup started working.
+
+We might think about adding an option for 12000 or 48000 Hz input 
+sampling on the configuration screen.  Possibly for both input and output?
+
+FYI: I'll be away and out of email contact from tomorrow through October 18.
+
+	-- Joe, K1JT
+
+-------- Original Message --------
+Subject: Re: WSJT-X v1.2.1, beta release r3590
+Date: Tue, 8 Oct 2013 13:58:46 -0500
+From: Bobby Chandler &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bobbye at bellsouth.net</A>&gt;
+To: Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+
+That did it Joe!  Many thanks for the great programs.  I wish more would 
+use
+WSJTX.  PSK Reporter shows about 80% still using JT65hf.
+
+Thanks and 73,
+Bobby
+
+--------------------------------------------------
+From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+Sent: Tuesday, October 8, 2013 1:49 PM
+To: &quot;Bobby Chandler&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bobbye at bellsouth.net</A>&gt;
+Subject: Re: WSJT-X v1.2.1, beta release r3590
+
+&gt;<i> OK Bobby.  I guess I misunderstood what you meant by &quot;3556 works very
+</I>&gt;<i> well&quot;.
+</I>&gt;<i>
+</I>&gt;<i> You can force r3590 to sample at 12000 Hz (as done in r3556) by putting
+</I>&gt;<i> the following two lines at the end of your file wsjtx.ini:
+</I>&gt;<i>
+</I>&gt;<i> [Tune]
+</I>&gt;<i> Audio\DisableInputResampling=true
+</I>&gt;<i>
+</I>&gt;<i> You can do this by using Windows Notepad to open wsjtx.ini (in your WSJT-X
+</I>&gt;<i> installation directory).  Then copy-and-paste the two lines into the file,
+</I>&gt;<i> and save the file.
+</I>&gt;<i>
+</I>&gt;<i> -- Joe
+</I>&gt;<i>
+</I>&gt;<i> On 10/8/2013 2:20 PM, Bobby Chandler wrote:
+</I>&gt;&gt;<i> OK Joe. Neither decodes in 3556. I think it is the Signalink, but it
+</I>&gt;&gt;<i> does operate at 48000 in some other modes. The screen capture shows both
+</I>&gt;&gt;<i> waves in the waterfall display.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --------------------------------------------------
+</I>&gt;&gt;<i> From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt;
+</I>&gt;&gt;<i> Sent: Tuesday, October 8, 2013 11:35 AM
+</I>&gt;&gt;<i> To: &quot;Bobby Chandler&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">bobbye at bellsouth.net</A>&gt;
+</I>&gt;&gt;<i> Subject: Re: WSJT-X v1.2.1, beta release r3590
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Bobby,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On 10/8/2013 11:38 AM, Bobby Chandler wrote:
+</I>&gt;&gt;&gt;&gt;<i> Joe, 3590 will decode the samples (JT9 mode only if in JT9 for the
+</I>&gt;&gt;&gt;&gt;<i> first
+</I>&gt;&gt;&gt;&gt;<i> file). It doesn't decode from the radio or from my saved files. It
+</I>&gt;&gt;&gt;&gt;<i> might
+</I>&gt;&gt;&gt;&gt;<i> be the Signalink Audio CODEC. I see you changed the sample rate to
+</I>&gt;&gt;&gt;&gt;<i> 48000
+</I>&gt;&gt;&gt;&gt;<i> in the newer version. I have captured my screen and included a couple
+</I>&gt;&gt;&gt;&gt;<i> of
+</I>&gt;&gt;&gt;&gt;<i> my wav files. It's no big deal since 3556 works very well. Clock is
+</I>&gt;&gt;&gt;&gt;<i> always ok (use ntp).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> You say revision 3556 works very well. Could you send me a screen shot
+</I>&gt;&gt;&gt;<i> of decodes from either one of the wav fkiles you sent me, using r3556 ?
+</I>&gt;&gt;&gt;<i> Thanks!
+</I>&gt;&gt;&gt;<i> -- Joe, K1JT
+</I>
+&gt;<i> Hi Joe and all,
+</I>&gt;<i> I have nice traces in v3587 and 3590 but NO decodes.  I am running XP (3) and signalink with Kenwood TS570 and v 3556 works fine.  Any suggestions?
+</I>&gt;<i>
+</I>&gt;<i> Bobby/N4AU
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001987.html">[Wsjt-devel] CAT Herding - call for volunteers.
+</A></li>
+	<LI>Next message: <A HREF="001990.html">[Wsjt-devel] Fwd: Re: WSJT-X v1.2.1, beta release r3590
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1988">[ date ]</a>
+              <a href="thread.html#1988">[ thread ]</a>
+              <a href="subject.html#1988">[ subject ]</a>
+              <a href="author.html#1988">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

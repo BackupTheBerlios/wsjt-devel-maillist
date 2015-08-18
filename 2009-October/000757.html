@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR segfaults on 64 bit machines
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20segfaults%20on%2064%20bit%20machines&In-Reply-To=%3C4AEAE2F4.3040907%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000755.html">
+   <LINK REL="Next"  HREF="000760.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR segfaults on 64 bit machines</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20segfaults%20on%2064%20bit%20machines&In-Reply-To=%3C4AEAE2F4.3040907%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR segfaults on 64 bit machines">joe at Princeton.EDU
+       </A><BR>
+    <I>Fri Oct 30 13:58:28 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000755.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+        <LI>Next message: <A HREF="000760.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#757">[ date ]</a>
+              <a href="thread.html#757">[ thread ]</a>
+              <a href="subject.html#757">[ subject ]</a>
+              <a href="author.html#757">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Tom,
+
+Many thanks for sending your bug report!  I am delighted to hear that 
+WSPR now compiles and runs OK on your 64-bit gentoo system.  I will copy 
+this reply (including your original message) to the wsjt-devel list.  I 
+have committed your fix to the SVN repository.
+
+	-- 73, Joe, K1JT
+
+Thomas Beierlein wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i> 
+</I>&gt;<i> I recently found a bug in WSPR and send a mail to the list, but that did 
+</I>&gt;<i> not show up (maybe because I am not a list memeber). As I think the information
+</I>&gt;<i> is of interest I attach the original mail here.
+</I>&gt;<i> 
+</I>&gt;<i> 73, de Tom DL1JBE.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+&gt;<i> rom <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tb at forth-ev.de</A> Tue Oct 27 16:54:31 2009
+</I>&gt;<i> Date: Tue, 27 Oct 2009 16:54:31 +0100
+</I>&gt;<i> From: Thomas Beierlein &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tb at forth-ev.de</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> Subject: WSPR segfaults on 64bit machines
+</I>&gt;<i> 
+</I>&gt;<i> Hi there,
+</I>&gt;<i> 
+</I>&gt;<i> last days I started playing with WSPR1.12 on my 64 bit gentoo system. WSPR (and
+</I>&gt;<i> also the WSJT code from svn) crashed with a hard segfault regularly but not
+</I>&gt;<i> very predictable after the 2 minutes receiving intervall.
+</I>&gt;<i> 
+</I>&gt;<i> As I have only a gfortran compiler here I feared that it was related to the
+</I>&gt;<i> problems discussed here some time ago. But after some deeper look into the code
+</I>&gt;<i> I could isolate the problem as plain 64 bit related.
+</I>&gt;<i> 
+</I>&gt;<i> The problem lie into the nhash.c function. Its prototype states that it expects
+</I>&gt;<i> a size_t lenght parameter (which on 64bit systems is a 8 byte beast), but as 
+</I>&gt;<i> it turns out the fortran code calls it with only a pointer to an 4 byte 
+</I>&gt;<i> integer value. As a result the length parameter gots interpreted wrong as a
+</I>&gt;<i> very big number and we get a classical out of bounds access durign the building
+</I>&gt;<i> of the hash value.
+</I>&gt;<i> 
+</I>&gt;<i> I fixed it for the moment in declaring the prototype as:
+</I>&gt;<i> 
+</I>&gt;<i> uint32_t nhash_( const void *key, int *length0, uint32_t *initval0)
+</I>&gt;<i> 
+</I>&gt;<i> Works like a charme now.
+</I>&gt;<i> 
+</I>&gt;<i> 73 and thanks for the fine program,
+</I>&gt;<i> 
+</I>&gt;<i> 	Tom DL1JBE.
+</I>&gt;<i>
+</I>&gt;<i> -- &quot;Do what is needful!&quot; Ursula LeGuin: Earthsea -- 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000755.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+	<LI>Next message: <A HREF="000760.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#757">[ date ]</a>
+              <a href="thread.html#757">[ thread ]</a>
+              <a href="subject.html#757">[ subject ]</a>
+              <a href="author.html#757">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

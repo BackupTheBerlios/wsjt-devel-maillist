@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Ubuntu 14.04 64-bit / r3663 / kvasd decode issue(s)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%2014.04%2064-bit%20/%20r3663%20/%20kvasd%20decode%20issue%28s%29&In-Reply-To=%3C52E5112F.4070605%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002104.html">
+   <LINK REL="Next"  HREF="002106.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Ubuntu 14.04 64-bit / r3663 / kvasd decode issue(s)</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Ubuntu%2014.04%2064-bit%20/%20r3663%20/%20kvasd%20decode%20issue%28s%29&In-Reply-To=%3C52E5112F.4070605%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] Ubuntu 14.04 64-bit / r3663 / kvasd decode issue(s)">ki7mt at yahoo.com
+       </A><BR>
+    <I>Sun Jan 26 14:44:15 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002104.html">[Wsjt-devel] WSJTX-r3644 File Comparison (Win/*Nix)
+</A></li>
+        <LI>Next message: <A HREF="002106.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2105">[ date ]</a>
+              <a href="thread.html#2105">[ thread ]</a>
+              <a href="subject.html#2105">[ subject ]</a>
+              <a href="author.html#2105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hello All,
+
+This is a long e-mail, so grab a coffee :-)
+
+This may be a known issue, but I thought I'd write this up for others
+that have run into KVASD Errors / Not Found / Decode issues on 64-bit
+systems.
+
+I saw several posts about extract.f90 / F90 and ifdef statements. My
+problem does not appear to be related to that, but further testing is
+needed. I've not tested all areas of the GUI, but early indications
+are the problem is resolved.
+
+Bill S. helped me solve this last year, but I had forgotten about it
+until I hit the same issue this evening. KI7MT &lt;== goes looking for
+notes he knew to save, but couldn't remember where they were. :-) When
+I find the link about this from last year, I'll post it.
+
+HW / SW SETUP:
+* Ubuntu Daily Desktop ISO 2014-01-25
+* Ubuntu 14.04 (A2) 64-Bit Native Desktop Install + dist-upgrade
+* svn wsjtx-r3663
+
+REQUIRED PACKAGES FROM 12.04-LTS (from my notes last summer):
+* build-essential subversion gfortran libpulse-dev qtbase5-dev
+qtmultimedia5-dev libhamlib-dev libfftw3-dev pulseaudio
+libqt5multimedia5-plugins
+
+Note: The ubuntu-sdk-team/ppa does not appear to be needed for 14.04.
+
+INFO FROM LAUNCHPAD:
+== Ubuntu 14.04 LTS (development version) ==
+Ubuntu 14.04 LTS will have Qt 5.x, Ubuntu UI Toolkit and SDK uploads
+directly to the archives during the development cycle.
+
+BUILD STEPS
+* svn export <A HREF="svn://svn.berlios.de/wsjt/branches/wsjtx">svn://svn.berlios.de/wsjt/branches/wsjtx</A>
+* cd ./wsjtx/lib
+* make -f Makfile.linux
+* cd ..
+* export QT_SELECT=qt5  # qtchooser still an issue in 14.04 it seems
+* qmake
+* make -j5
+
+MINIMUM, POST BUILS STEPS:
+* cd .. &amp;&amp; mv ./wsjtx_install ./wsjtx-r3663 &amp;&amp; cd ./wsjtx-r3663
+* wget <A HREF="http://www.physics.princeton.edu/pulsar/K1JT/kvasd">http://www.physics.princeton.edu/pulsar/K1JT/kvasd</A>
+* chmod +x kvasd
+* ln -s ../wsjtx/Palettes ./Palettes
+* ln -s ../wsjtx/samples ./samples
+* ln -s ../wsjtx/mouse_commands.txt ./mouse_commands.txt
+* ln -s ../wsjtx/shortcuts.txt ./shortcuts.txt
+
+Note: You could just as easily copy the needed files, but linking
+saves a bit of disk space, and WSJTX does not seem to mind.
+
+SETUP &amp; OPEN .wav's
+* WSJTX launches ==&gt; no errors.
+* F2  Setup / Config ==&gt; no errors
+* Set Mode to JT65 + JT9 &amp; appropriate waterfall setting ==&gt; no errors
+* Open _1742.wav, decodes, no errors
+
+- -----
+!===&gt; * Open _2343, Pop-Up kvasd error: sh1: ./kvasd not found &lt;===!
+
+!==&gt; * Decode window has some decodes and: Error in KV decoder, or no
+KV decoder present (msg from extract.F90). &lt;===!
+- -----
+
+TROUBLE-SHOOTING - Sherlock Holmes was need for this one :-)
+* Run: ldd ./kvasd ==&gt; not a dynamic executable
+* Run: ./kvasd  ==&gt; no such file or directory
+* Run: readelf -a ./kvasd | grep interpreter
+- - Requesting program interpreter /lib/ld-linux.so.2
+* Run readelf -a ./kvasd | grep NEEDED
+- - libgfortran.so.3, libm.so.6, libgcc_s.so.1, libc.so.6
+
+* Run: locate
+- - libgfortran.so.3 ==&gt; Null # looking for 32-bit gfortran ??
+- - libm.so.6 ==&gt; /lib/x86_64-linux-gnu/libm.so.6  # present 64-bit
+- - libgcc_s.so.1 ==&gt; /lib/x86_64-linux-gnu/libm.so.6  # present 64-bit
+- - libc.so.6 ==&gt; /lib/x86_64-linux-gnu/libm.so.6  # present 64-bit
+
+GO FIND LIBRARIES
+* sudo apt-get install apt-file &amp;&amp; OK to cache update
+* apt-file search libgfortran.so.3 ==&gt; lib32gfortran3
+* apt-file search libm.so.6 ==&gt;  libc6-i386
+* apt-file search libgcc_s.so.1 ==&gt; lib32gcc
+* apt-file search libc.so.6 ==&gt; libc6-i386
+Note: Allot of packages get listed, 90%+ are irrelevant, like arm64,
+armhf, dbg, powerpc etc
+
+INSTALL MISSING LIBS:
+sudo apt-get install lib32gfortran3 libc6-i386 lib32gcc1
+
+RESULTS
+* Run: ldd ./kvasd ==&gt; all linked libs found, none missing
+* Run: ./kvasd ==&gt; displays K1JT's kvasd copyright message.
+* Re-Run WSJTX &amp;&amp; Open .wav files ==&gt; No Errors !!! &lt;===
+
+Decode Image: <A HREF="http://imagebin.org/288810">http://imagebin.org/288810</A>
+
+Note: Just FYI, ia32-libs is deprecated, it's now:
+sudo apt-get install &lt;package-name&gt;:i386 or lib32&lt;package&gt;
+
+Thanks Bill S. !!!!! without your post last year, I'd still be lost.
+
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.15 (GNU/Linux)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS5REvAAoJEAmfcyeKlj0xCIsIAI6gm71YlMiIGuD2/n4H9tpk
+oqfp3BsCO8TTRk7ujNIHkGjBQHxAZT7fQlXpJudBs5t6mz5MbSjxhAhb/JemsfID
+anOPZSzIiVhpndBL0bZLKV8dR0iOo63P4kCeDzgeFbHbx1A0BMJAjcAiwNLIVHwI
+CAr8jCd6MBt1zB6bkUqx6c9MWYL0LtPErflcLTZuI/2bFMztXc4+aOnSlO3LXSf8
+oW7sg3Dc6D/XQhBrhknc8wb4Bo9O3Q2sbE7Kh2tvRKy+FYKtmEMsJZ6m9wJS3Vi7
++MAjmhyoaCxwUHpEjVVz2pEetq0A/VORkXosLXs3/SH7JKAt0BZyYpJAYUE1PqM=
+=FGeB
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002104.html">[Wsjt-devel] WSJTX-r3644 File Comparison (Win/*Nix)
+</A></li>
+	<LI>Next message: <A HREF="002106.html">[Wsjt-devel] wsjtx v1.2.2 r3663 - multiple Error in KV decoder msgs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2105">[ date ]</a>
+              <a href="thread.html#2105">[ thread ]</a>
+              <a href="subject.html#2105">[ subject ]</a>
+              <a href="author.html#2105">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

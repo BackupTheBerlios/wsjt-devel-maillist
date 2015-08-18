@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Portaudio and QtAudio
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Portaudio%20and%20QtAudio&In-Reply-To=%3C520E3BEF.6030700%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001857.html">
+   <LINK REL="Next"  HREF="001863.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Portaudio and QtAudio</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Portaudio%20and%20QtAudio&In-Reply-To=%3C520E3BEF.6030700%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Portaudio and QtAudio">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Aug 16 16:49:19 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001857.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+        <LI>Next message: <A HREF="001863.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1860">[ date ]</a>
+              <a href="thread.html#1860">[ thread ]</a>
+              <a href="subject.html#1860">[ subject ]</a>
+              <a href="author.html#1860">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 16/08/2013 13:47, John Nelson wrote:
+&gt;<i> Bill,
+</I>Hi John &amp; Joe,
+&gt;<i>
+</I>&gt;<i> Thanks for the comment.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> r3517 uses portaudio where the frame rate is specified as 12000 Hz but is able to negotiate with  the Mac codec to convert from 11025 to 12000.   QtAudio does not have this flexibility and consequently does not support MacOSX.
+</I>&gt;<i> As above, its not Qt that is deficient here, its the OS-X Audio Framework.
+</I>&gt;<i>
+</I>&gt;<i> Yes, but portaudio knows how to cope with the curiosities of OS-X Audio (as seen in r3517) and Qt doesn't.  That was my observation.
+</I>I spoke to my OS-X expert. We have decided it needs a code change in Qt 
+to do rate conversion as it's not something that is switchable by an end 
+user setting.
+
+So I started looking at the Mac specific QAudioInput code and found that 
+it uses a sample rate and format converter already. So it looks like 
+there might be a bug in the Qt implementation that is stopping this 
+working correctly.
+
+I need a bit more time to grok the code and work out why it isn't 
+converting for us. I have also posted a question to the Qt forum about 
+our problem - <A HREF="http://qt-project.org/forums/viewthread/31356/">http://qt-project.org/forums/viewthread/31356/</A> .
+&gt;<i>
+</I>&gt;<i> Good - if it is easy to switch in simple rate conversions that would be excellent.
+</I>&gt;<i>
+</I>&gt;<i> John
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001857.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+	<LI>Next message: <A HREF="001863.html">[Wsjt-devel] Portaudio and QtAudio
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1860">[ date ]</a>
+              <a href="thread.html#1860">[ thread ]</a>
+              <a href="subject.html#1860">[ subject ]</a>
+              <a href="author.html#1860">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

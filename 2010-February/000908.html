@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B8445FC.7070107%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000907.html">
+   <LINK REL="Next"  HREF="000909.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%207.03%20%2B%207.05%20for%20Linux%20only%20works%20with%20FSK144%2C%0A%20all%20other%20modes%20won%27t%20be%20%22receiving%22&In-Reply-To=%3C4B8445FC.7070107%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Feb 23 22:17:48 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000907.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+        <LI>Next message: <A HREF="000909.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#908">[ date ]</a>
+              <a href="thread.html#908">[ thread ]</a>
+              <a href="subject.html#908">[ subject ]</a>
+              <a href="author.html#908">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 2/23/2010 4:01 PM, David A. Ranch wrote:
+
+&gt;<i> Ok, notice that I'm using Python2.4 though I think you're website cites
+</I>&gt;<i> that 2.5 is a requirement.
+</I>
+Python is a requirement, yes.  Python 2.3, 2.4, 2.5, and 2.6 are all 
+known to work fine with WSJT.  (But there are some broken Pythons 
+around, that do not work.)
+
+&gt;<i> $ wsjt
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>     File &quot;/usr//bin/wsjt.py&quot;, line 5, in&lt;module&gt;
+</I>&gt;<i>       from Tkinter import *
+</I>&gt;<i> ImportError: No module named Tkinter
+</I>
+So Python has started, but it (I guess this is your Python 2.5) does not 
+have Tkinter installed.  This, too, is required.
+
+
+&gt;<i> Hmmmm.. that's not good.  It ultimately came down to an issue with G95.
+</I>&gt;<i>    It's installer seems to be broken and can't properly install itself
+</I>&gt;<i> from sources.  I had to ultimately use their binaries and use them via a
+</I>&gt;<i> symlink.  I hate non-native binaries but it seems to work.
+</I>
+The g95 compiler is solid and reliable in every installation I've used it.
+
+&gt;<i> - Curious, is there any plan to make your tools compatible with gfortran
+</I>&gt;<i> (GCC 4.1.2)?  The configure script gives it as an option but your
+</I>&gt;<i> website says one must use G95.
+</I>
+Compiling with gfortran works fine too.  I use it all the time.
+
+&gt;<i> - In several respects, it seems like WSPR v2.0 has some very nice
+</I>&gt;<i> features.  It has rig control (doesn't properly set USB/LSB btw),
+</I>&gt;<i> support for sound cards that don't do 11025 sampling, etc.  Do you have
+</I>&gt;<i> any plans to update WSJT to have these features?
+</I>
+No.
+
+&gt;<i> - I really do like WSPR but as I understand it, your WSPR app is only
+</I>&gt;<i> for the beaconing effort.  To get 2way WSPR, you can only do that in
+</I>&gt;<i> WSJT today.  Any plans to add 2way WSPR to the &quot;wspr&quot; program?
+</I>
+The WSPR QSO mode is not popular and will probably not be retained.  For 
+most people it's too slow, and JT65 has similar sensitivity.
+
+	-- Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000907.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+	<LI>Next message: <A HREF="000909.html">[Wsjt-devel] WSJT 7.03 + 7.05 for Linux only works with FSK144, all other modes won't be &quot;receiving&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#908">[ date ]</a>
+              <a href="thread.html#908">[ thread ]</a>
+              <a href="subject.html#908">[ subject ]</a>
+              <a href="author.html#908">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

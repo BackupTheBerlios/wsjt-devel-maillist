@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt r1313
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3CFC48F814-DDFB-4357-BEE8-A720923B0590%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000721.html">
+   <LINK REL="Next"  HREF="000724.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt r1313</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%20r1313&In-Reply-To=%3CFC48F814-DDFB-4357-BEE8-A720923B0590%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] wsjt r1313">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Tue Aug  4 09:42:57 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000721.html">[Wsjt-devel] wsjt r1313
+</A></li>
+        <LI>Next message: <A HREF="000724.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#722">[ date ]</a>
+              <a href="thread.html#722">[ thread ]</a>
+              <a href="subject.html#722">[ subject ]</a>
+              <a href="author.html#722">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Richard,
+
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+...
+buildmodule: Could not found the body of interfaced routine  
+&quot;cs_lock&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine  
+&quot;cs_unlock&quot;. Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;a2d&quot;.  
+Skipping.
+
+etc. are not gfortran errors but f2py comments because it uses  
+certain keywords eg &quot;len&quot; and doesn't need these modules.   These  
+warnings do not produce segmentation errors.
+
+---
+Found executable /usr/bin/gfortran packpfx.f90:26.37:
+
+      if(pfx(3:3).eq.' ') pfx=' '//pfx
+                                     1
+Warning: CHARACTER expression will be truncated in assignment (3/4) at
+      (1) packpfx.f90:27.37:
+
+But I bet the comment will be &quot; we've never seen that before&quot;
+---
+
+Correct:   here is my version:
+
+wsjt-v7.04-r1313]  jmn% gfortran -c -Wall packpfx.f90
+wsjt-v7.04-r1313]  jmn% gfortran -c - Wall unpackpfx.f90
+
+No errors reported.
+
+--
+I suspect that if some time was spent cleaning up, so sections of builds
+were not missed, that perhaps some of the causes would also go away.
+--
+
+We have spent some time looking at all fortran and C errors produced  
+during the make phase.   Warnings about the use of variables which  
+may not have been initialized before use have been investigated and  
+fixed.    Warnings that remain refer only to variables that have been  
+defined but have not been used.     In my make phase, there are only  
+5 routines which generate this warning.    At the moment, there is no  
+particular need or urgency to fix these.   There are no other warning  
+messages.
+
+John  G4KLA
+
+
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000721.html">[Wsjt-devel] wsjt r1313
+</A></li>
+	<LI>Next message: <A HREF="000724.html">[Wsjt-devel] wsjt r1313
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#722">[ date ]</a>
+              <a href="thread.html#722">[ thread ]</a>
+              <a href="subject.html#722">[ subject ]</a>
+              <a href="author.html#722">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] revision 844
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080608165934.GB2750%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000351.html">
+   <LINK REL="Next"  HREF="000359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] revision 844</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20revision%20844&In-Reply-To=%3C20080608165934.GB2750%40night.db.net%3E"
+       TITLE="[Wsjt-devel] revision 844">db at db.net
+       </A><BR>
+    <I>Sun Jun  8 18:59:34 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000351.html">[Wsjt-devel] revision 844
+</A></li>
+        <LI>Next message: <A HREF="000359.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Jun 07, 2008 at 09:35:31PM -0400, Rick Kunath wrote:
+&gt;<i> Diane Bruce wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;&gt; nm -na /usr/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+</I>&gt;<i> &gt;&gt; 00001350 T sfftw_plan_dft_1d_
+</I>&gt;<i>
+</I>&gt;<i> nm -na /usr/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+</I>&gt;<i> 00001350 T sfftw_plan_dft_1d_
+</I>&gt;<i>
+</I>&gt;<i> That's what's there, not sure if it's right?
+</I>
+nm -na /usr/local/lib/libfftw3f.a |grep sfftw_plan_dft_1d
+00002060 T sfftw_plan_dft_1d__
+000020b0 T sfftw_plan_dft_1d_
+
+The _ version is the c callable, the __ is the fortran callable.
+
+&gt;<i> The package was built as shipped from Mandriva with the --enable-fortran
+</I>&gt;<i> compile time option specifically, among others.
+</I>
+Then I don't know.
+
+I was worried something like this would happen. Please see if you can
+resolve this for your OS on your own ? If I need to, I can write a
+shim for the few routines we use but I really don't think we want to do this.
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000351.html">[Wsjt-devel] revision 844
+</A></li>
+	<LI>Next message: <A HREF="000359.html">[Wsjt-devel] revision 844
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#358">[ date ]</a>
+              <a href="thread.html#358">[ thread ]</a>
+              <a href="subject.html#358">[ subject ]</a>
+              <a href="author.html#358">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

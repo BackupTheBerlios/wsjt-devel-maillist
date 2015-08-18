@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAudio for input and output
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3C51F93160.6040404%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001621.html">
+   <LINK REL="Next"  HREF="001629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAudio for input and output</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3C51F93160.6040404%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] QAudio for input and output">g4wjs at classdesign.com
+       </A><BR>
+    <I>Wed Jul 31 17:46:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001621.html">[Wsjt-devel] QAudio for input
+</A></li>
+        <LI>Next message: <A HREF="001629.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1628">[ date ]</a>
+              <a href="thread.html#1628">[ thread ]</a>
+              <a href="subject.html#1628">[ subject ]</a>
+              <a href="author.html#1628">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/07/2013 03:10, Joe Taylor wrote:
+&gt;<i> Hi Bill,
+</I>Hi Joe,
+&gt;<i>
+</I>&gt;&gt;<i> 1) The audio output routine appears to allow T/R period and #
+</I>&gt;&gt;<i> samples/symbol to be changed on the fly mid transmission. Is this really
+</I>&gt;&gt;<i> a valid thing to do?
+</I>&gt;<i>
+</I>&gt;<i> No.
+</I>OK, I'll make them start() arguments to enforce that invariant.
+&gt;<i>
+</I>&gt;&gt;<i> 2) I am struggling to understand the setting of SNR at the start of a
+</I>&gt;&gt;<i> transmission period and also live changes to it during transmission. It
+</I>&gt;&gt;<i> appears to be possible to start with it set to 99.0, can you explain how
+</I>&gt;&gt;<i> SNR changes the current transmission please?
+</I>&gt;<i>
+</I>&gt;<i> This is an undocumented feature that I've sometimes used for testing 
+</I>&gt;<i> the decoders.  Random gaussian noise is added to the generated audio 
+</I>&gt;<i> signal so that it will have a specified S/N.
+</I>&gt;<i>
+</I>&gt;<i> Specifying a positive SNR (for example, snr=99) is taken to mean &quot;this 
+</I>&gt;<i> is a normal transmission, don't add any noise.&quot;
+</I>OK, that makes sense now.
+
+Do we have any evidence that the Qt Audio system is not usable as a 
+straight swap out for portaudio?
+
+Do we have firm reasons to choose one system versus the other? I don't 
+see any technical implementation issues with either, they basically do 
+the same things the same ways with the Qt ones being a slightly higher 
+level abstraction.
+
+I ask because I would prefer to do the sound out changes with just one 
+system in mind rather than getting into a mess of compile time 
+switchable variants. I started to implement a small library to wrap the 
+two different audio systems, but it doesn't seem worth the effort if 
+they both work on all platforms we need. I assume Qt audio does, or will 
+soon, work on all Qt platforms.
+&gt;<i>
+</I>&gt;<i>     -- Joe
+</I>
+73
+Bill
+G4WJS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001621.html">[Wsjt-devel] QAudio for input
+</A></li>
+	<LI>Next message: <A HREF="001629.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1628">[ date ]</a>
+              <a href="thread.html#1628">[ thread ]</a>
+              <a href="subject.html#1628">[ subject ]</a>
+              <a href="author.html#1628">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

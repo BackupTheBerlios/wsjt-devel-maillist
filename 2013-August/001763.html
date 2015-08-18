@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Qt Audio in r3537
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Qt%20Audio%20in%20r3537&In-Reply-To=%3C52042CB4.2000808%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001762.html">
+   <LINK REL="Next"  HREF="001777.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Qt Audio in r3537</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Qt%20Audio%20in%20r3537&In-Reply-To=%3C52042CB4.2000808%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] Qt Audio in r3537">g4wjs at classdesign.com
+       </A><BR>
+    <I>Fri Aug  9 01:41:40 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001762.html">[Wsjt-devel] Qt Audio in r3537
+</A></li>
+        <LI>Next message: <A HREF="001777.html">[Wsjt-devel] Qt Audio in r3537
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1763">[ date ]</a>
+              <a href="thread.html#1763">[ thread ]</a>
+              <a href="subject.html#1763">[ subject ]</a>
+              <a href="author.html#1763">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 09/08/2013 00:19, Josh Rovero wrote:
+Hi Josh,
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Both the receive and transmit streams in r3537 have names like 
+</I>&gt;<i> QtmPulseContext, and the transmit audio level needs to be reset at 
+</I>&gt;<i> each transmission.  That keeps me a lot busier than I'd like.......
+</I>Yes this is a fairly serious issue. At the moment I have coded the sound 
+output to start a new stream every period. I didn't want to do it this 
+way but at the moment I don't have a way of reliably resuming a 
+suspended stream when needed. The best alternative I have so far is to 
+continuously stream audio output of silence between tx periods.
+
+This will still leave the issue that every time the application is 
+restarted a new stream will be created with a new name. See the thread 
+below for some more details including why we can't set the stream name.
+
+<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/2013-August/001711.html">https://lists.berlios.de/pipermail/wsjt-devel/2013-August/001711.html</A>
+
+I intend to have another try at keeping a single stream for output 
+throughout a application session.
+
+The other option is to fit an output volume control to wsjt-x, that we 
+could persist across sessions too.
+&gt;<i>
+</I>&gt;<i> Back under &quot;portaudio&quot;, my linux FC19 was actually using the alsa 
+</I>&gt;<i> pulseaudio plugin.... and I had a reasonably named (&quot;wsjtx&quot;) receive 
+</I>&gt;<i> audio stream and no problem maintaining the audio level settings on 
+</I>&gt;<i> the transmit stream.
+</I>&gt;<i>
+</I>&gt;<i> A while back, I did some integration of pulse audio into QS1R's 
+</I>&gt;<i> SDRMAXV using the multi-platform RtAudio framework 
+</I>&gt;<i> (<A HREF="http://www.music.mcgill.ca/~gary/rtaudio/">http://www.music.mcgill.ca/~gary/rtaudio/</A> 
+</I>&gt;<i> &lt;<A HREF="http://www.music.mcgill.ca/%7Egary/rtaudio/">http://www.music.mcgill.ca/%7Egary/rtaudio/</A>&gt;).  It allowed reasonable 
+</I>&gt;<i> names for the streams.
+</I>&gt;<i>
+</I>&gt;<i> There should be a way to do this in the Qt Multimedia framework.  If 
+</I>&gt;<i> not, RtAudio seemed to work well in Qt-compiled applications.
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> P.J. &quot;Josh&quot; Rovero                   Ham Radio: KK1D
+</I>&gt;<i> <A HREF="http://www.roveroresearch.org">http://www.roveroresearch.org</A> <A HREF="http://www.roveroresearch.info">http://www.roveroresearch.info</A>
+</I>&gt;<i>
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001762.html">[Wsjt-devel] Qt Audio in r3537
+</A></li>
+	<LI>Next message: <A HREF="001777.html">[Wsjt-devel] Qt Audio in r3537
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1763">[ date ]</a>
+              <a href="thread.html#1763">[ thread ]</a>
+              <a href="subject.html#1763">[ subject ]</a>
+              <a href="author.html#1763">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] wsjt 7.07 segmentation fault (64bits)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%207.07%20segmentation%20fault%20%2864bits%29&In-Reply-To=%3C87fwyppi4a.fsf%40penny.tippete.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000942.html">
+   <LINK REL="Next"  HREF="000944.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] wsjt 7.07 segmentation fault (64bits)</H1>
+    <B>Pierfrancesco Caci</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20wsjt%207.07%20segmentation%20fault%20%2864bits%29&In-Reply-To=%3C87fwyppi4a.fsf%40penny.tippete.net%3E"
+       TITLE="[Wsjt-devel] wsjt 7.07 segmentation fault (64bits)">ik5pvx at tippete.net
+       </A><BR>
+    <I>Sun Aug  8 11:29:41 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000942.html">[Wsjt-devel] WSJT v9.0
+</A></li>
+        <LI>Next message: <A HREF="000944.html">[Wsjt-devel] Compiling WSPR 2.00 r1714 under OS X 10.6.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello,
+I get a segmentation fault when trying to decode WSPR mode with 
+7.07 r2031 on a 64bit machine.
+
+Linux penny 2.6.32-23-generic #37-Ubuntu SMP Fri Jun 11 08:03:28 UTC 2010 x86_64 GNU/Linux
+
+
+Startup info as follows:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>:~ $ wsjt
+******************************************************************
+WSJT Version 7.07 r2031 , by K1JT
+Revision date: 2010-07-23 20:52:30 +0200 (Fri, 23 Jul 2010) 
+Run date:   Sun Aug  8 09:27:13 2010 UTC
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/lib-tk/Tkinter.py&quot;, line 1413, in __call__
+    return self.func(*args)
+  File &quot;/usr/lib/python2.6/lib-tk/Tkinter.py&quot;, line 498, in callit
+    func(*args)
+  File &quot;/usr/local/lib/python2.6/dist-packages/WsjtMod/astro.py&quot;, line 32, in update
+    t7aa=&quot;Spread: %7.1f %7.1f\n\n&quot; % (g.w1,g.w2)
+AttributeError: 'module' object has no attribute 'w1'
+
+Audio     Input    Output     Device Name
+Device  Channels  Channels
+------------------------------------------------------------------
+   0        2         8       NVidia CK804: NVidia CK804 (hw:0,0)
+   1        2         0       NVidia CK804: NVidia CK804 - MIC ADC (hw:0,1)
+   2        0         2       NVidia CK804: NVidia CK804 - IEC958 (hw:0,2)
+   3        0         8       front
+   4        0         4       surround40
+   5        0        128       surround41
+   6        0        128       surround50
+   7        0        128       surround51
+   8        0        128       surround71
+   9        0         2       iec958
+  10        0         2       spdif
+  11       32        32       pulse
+  12        0         2       dmix
+  13       32        32       default
+  14       16        16       /dev/dsp
+
+User requested devices:   Input =  0   Output =  0
+Default devices:          Input = 13   Output = 13
+Will open devices:        Input = 13   Output = 13
+Audio streams running normally.
+******************************************************************
+Traceback (most recent call last):
+  File &quot;/usr/local//bin/wsjt.py&quot;, line 2750, in &lt;module&gt;
+    if options.myname.get()==&quot;&quot;:
+AttributeError: 'module' object has no attribute 'myname'
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ik5pvx at penny</A>:~ $ 
+
+
+Strace of the crash:
+
+execve(&quot;/usr/local/bin/wsjt&quot;, [&quot;wsjt&quot;], [/* 49 vars */]) = 0
+brk(0)                                  = 0x2535000
+access(&quot;/etc/ld.so.nohwcap&quot;, F_OK)      = -1 ENOENT (No such file or directory)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbb4b83d000
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+open(&quot;/etc/ld.so.cache&quot;, O_RDONLY)      = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=145858, ...}) = 0
+mmap(NULL, 145858, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fbb4b819000
+close(3)                                = 0
+access(&quot;/etc/ld.so.nohwcap&quot;, F_OK)      = -1 ENOENT (No such file or directory)
+open(&quot;/lib/libc.so.6&quot;, O_RDONLY)        = 3
+read(3, &quot;\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0`\355\1\0\0\0\0\0&quot;..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1572232, ...}) = 0
+mmap(NULL, 3680296, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fbb4b29c000
+mprotect(0x7fbb4b416000, 2093056, PROT_NONE) = 0
+mmap(0x7fbb4b615000, 20480, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x179000) = 0x7fbb4b615000
+mmap(0x7fbb4b61a000, 18472, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fbb4b61a000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbb4b818000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbb4b817000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fbb4b816000
+arch_prctl(ARCH_SET_FS, 0x7fbb4b817700) = 0
+mprotect(0x7fbb4b615000, 16384, PROT_READ) = 0
+mprotect(0x617000, 4096, PROT_READ)     = 0
+mprotect(0x7fbb4b83f000, 4096, PROT_READ) = 0
+munmap(0x7fbb4b819000, 145858)          = 0
+getpid()                                = 9148
+rt_sigaction(SIGCHLD, {SIG_DFL, [CHLD], SA_RESTORER|SA_RESTART, 0x7fbb4b2cfaf0}, {SIG_DFL, [], 0}, 8) = 0
+geteuid()                               = 1000
+brk(0)                                  = 0x2535000
+brk(0x2556000)                          = 0x2556000
+getppid()                               = 9147
+stat(&quot;/home/ik5pvx&quot;, {st_mode=S_IFDIR|0755, st_size=20480, ...}) = 0
+stat(&quot;.&quot;, {st_mode=S_IFDIR|0755, st_size=20480, ...}) = 0
+open(&quot;/usr/local/bin/wsjt&quot;, O_RDONLY)   = 3
+fcntl(3, F_DUPFD, 10)                   = 10
+close(3)                                = 0
+fcntl(10, F_SETFD, FD_CLOEXEC)          = 0
+rt_sigaction(SIGINT, NULL, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGINT, {0x408189, ~[RTMIN RT_1], SA_RESTORER, 0x7fbb4b2cfaf0}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, NULL, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGQUIT, {SIG_DFL, ~[RTMIN RT_1], SA_RESTORER, 0x7fbb4b2cfaf0}, NULL, 8) = 0
+rt_sigaction(SIGTERM, NULL, {SIG_DFL, [], 0}, 8) = 0
+rt_sigaction(SIGTERM, {SIG_DFL, ~[RTMIN RT_1], SA_RESTORER, 0x7fbb4b2cfaf0}, NULL, 8) = 0
+read(10, &quot;#!/bin/sh\nif [ -e /usr/local/bin&quot;..., 8192) = 520
+stat(&quot;/usr/local/bin/python&quot;, {st_mode=S_IFREG|0755, st_size=2613296, ...}) = 0
+stat(&quot;/home/ik5pvx/.wsjt&quot;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+stat(&quot;/home/ik5pvx/.wsjt/CALL3.TXT&quot;, {st_mode=S_IFREG|0644, st_size=183688, ...}) = 0
+chdir(&quot;/home/ik5pvx/.wsjt&quot;)             = 0
+stat(&quot;/usr/local/sbin/python&quot;, 0x7fffb6429740) = -1 ENOENT (No such file or directory)
+stat(&quot;/usr/local/bin/python&quot;, {st_mode=S_IFREG|0755, st_size=2613296, ...}) = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fbb4b8179d0) = 9149
+wait4(-1, Exception in Tkinter callback
+Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/lib-tk/Tkinter.py&quot;, line 1413, in __call__
+    return self.func(*args)
+  File &quot;/usr/lib/python2.6/lib-tk/Tkinter.py&quot;, line 498, in callit
+    func(*args)
+  File &quot;/usr/local/lib/python2.6/dist-packages/WsjtMod/astro.py&quot;, line 32, in update
+    t7aa=&quot;Spread: %7.1f %7.1f\n\n&quot; % (g.w1,g.w2)
+AttributeError: 'module' object has no attribute 'w1'
+[{WIFSIGNALED(s) &amp;&amp; WTERMSIG(s) == SIGSEGV}], 0, NULL) = 9149
+--- SIGCHLD (Child exited) @ 0 (0) ---
+write(2, &quot;Segmentation fault\n&quot;, 19Segmentation fault
+)    = 19
+read(10, &quot;&quot;, 8192)                      = 0
+exit_group(139)                         = ?
+
+Let me know if you need other info.
+
+Pf, ik5pvx
+
+
+-- 
+Pierfrancesco Caci
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000942.html">[Wsjt-devel] WSJT v9.0
+</A></li>
+	<LI>Next message: <A HREF="000944.html">[Wsjt-devel] Compiling WSPR 2.00 r1714 under OS X 10.6.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

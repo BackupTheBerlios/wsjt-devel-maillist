@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT Documentation Migration Background
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Documentation%20Migration%20Background&In-Reply-To=%3C52F545F4.6080103%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002253.html">
+   <LINK REL="Next"  HREF="002256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT Documentation Migration Background</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20Documentation%20Migration%20Background&In-Reply-To=%3C52F545F4.6080103%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJT Documentation Migration Background">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Feb  7 21:45:40 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002253.html">[Wsjt-devel] WSJT Docs - Win Setup - New Instruction(s)
+</A></li>
+        <LI>Next message: <A HREF="002256.html">[Wsjt-devel] v1.3, r3673 - Truncated Message in RX Frequency List
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2255">[ date ]</a>
+              <a href="thread.html#2255">[ thread ]</a>
+              <a href="subject.html#2255">[ subject ]</a>
+              <a href="author.html#2255">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Hi Chuck, All,
+
+With the confusion surrounding the current documentation workflow, I
+thought I would provide a bit of background as to why things seem a
+bit chaotic at the moment.
+
+The decision to move from a Binary Method (MS Word, PDF, etc) to an
+Open Source (OS) text based method (AsciiDoc, XML, LaTeX, DocBook,
+etc) caught me off guard, and I've been playing catch-up. Normally,
+the back end process is in place before the shift happens and the
+authors are not caught up in the transition details.
+
+Traditionally, there are 4 to 5 activity types associated with open
+source documentation. Some projects have more, others less:
+
+Authors: Submit material for incorporation
+Editors: Submit + structure material for incorporation
+Translators: Translate to given languages
+Programers: Interface with VCS and provide build tools
+Designers: Work with CSS, HTML, Configs, Graphics
+Gatekeepers: Those controlling context integration
+
+Where one fits into these areas is a matter of choice coupled with
+abilities or a given desire to learn something new, which is a corner
+stones of the WSJT applications.
+
+In many OS programs, these areas are combined, one person may wear
+many hats. More often than not, this is due to resource availability.
+I was the one who brought the AsciiDoc idea to Joe, so I feel somewhat
+responsible for getting a working model put together and to ease the
+Author / Editor burden. This is taking me a bit of time to pull together.
+
+Over the last few days, there have been many changes, all of which
+impact Author / Editor activities. With the new document structure and
+minimalistic build process working, we can now focus on contribution
+workflows, for example:
+
+* Methods of contribution, how can one contribute?
+* What needs to be done (To-Do Lists), where do I get the list?
+* What tools are needed to &quot;Build&quot; v.s. &quot;Contribute&quot;
+* What format should submissions take, text, marked-up, what?
+* Where are the mark-up standards / definitions, how do I use them?
+* What the difference be contribution and building, how do they differ?
+* How can I commit directly to the source tree?
+* How to built &amp; Test, Windows v.s. *Nix?
+
+Those are just a few of the things that need ironing. While we do not
+have a rigid road-map, the end goal is clear, provide the best
+documentation we can, given the current state of transition.
+
+Suffice it to say, there are bumps in the process (rough sketch at
+best I think) and I would not expect that to be smooth any time soon.
+
+That said, if Editing is not one's cup of tea, a simple text document
+sent to the development list could be an input channel. The Yahoo
+group pages are filled with things that could be converted over useful
+documentation.
+
+If you have additional questions, comments or ideas to make the
+transition smoother, by all means, share them with the group. I am
+sure Joe is always open to improvement ideas.
+
+
+73's
+Greg, KI7MT
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2.0.22 (MingW32)
+Comment: Using GnuPG with Thunderbird - <A HREF="http://www.enigmail.net/">http://www.enigmail.net/</A>
+
+iQEcBAEBAgAGBQJS9UX0AAoJEAmfcyeKlj0xYs4H/jd+FNzcMY+FgW8RwUSdS7dv
+WqggBygZAhbCGtDUilTMSx8ubsFttxQusoYL4kWeUpuTdPAfn1zXY4HzmoIfmzEo
+XXUF1GkS2RneUdm11Esr8DHMtAI0jWZX1aPlns2bAD+gD084K36dNmpLA+vRhk7Z
+QuV+RqnrejJGLy7QU9st473IglRR4GYh1cvdEay07XNGG7VdB81a05Ur6rJop0HQ
+gDi5FV8w0TTDfY7zbaMCIXgvHBZvjHE9WYjfx9DStu68e7KEE5MVTgfwqnWUVvIz
+UBKyPJj+tM4w2dzA1RqeJrVn7sauLkC+67ZET0yz9f4mCa/wPgvjkvFVQXa2x40=
+=VWMV
+-----END PGP SIGNATURE-----
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002253.html">[Wsjt-devel] WSJT Docs - Win Setup - New Instruction(s)
+</A></li>
+	<LI>Next message: <A HREF="002256.html">[Wsjt-devel] v1.3, r3673 - Truncated Message in RX Frequency List
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2255">[ date ]</a>
+              <a href="thread.html#2255">[ thread ]</a>
+              <a href="subject.html#2255">[ subject ]</a>
+              <a href="author.html#2255">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

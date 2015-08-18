@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Threads
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Threads&In-Reply-To=%3CAANLkTinoYo5XX3f6%3DkUgxkRB2cgA-hkwdwGkEtxKPWYx%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001049.html">
+   <LINK REL="Next"  HREF="001051.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Threads</H1>
+    <B>Sivan Toledo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Threads&In-Reply-To=%3CAANLkTinoYo5XX3f6%3DkUgxkRB2cgA-hkwdwGkEtxKPWYx%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Threads">stoledo at tau.ac.il
+       </A><BR>
+    <I>Tue Dec 14 15:29:24 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001049.html">[Wsjt-devel] Threads
+</A></li>
+        <LI>Next message: <A HREF="001051.html">[Wsjt-devel] Bug report: attempted to start the decoder too soon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1050">[ date ]</a>
+              <a href="thread.html#1050">[ thread ]</a>
+              <a href="subject.html#1050">[ subject ]</a>
+              <a href="author.html#1050">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I agree, the overhead is tiny and the program is working.
+
+On Tue, Dec 14, 2010 at 4:26 PM, John Nelson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">jmn at rmnjmn.demon.co.uk</A>&gt; wrote:
+
+&gt;<i> Hi Sivan,
+</I>&gt;<i>
+</I>&gt;<i> &gt; perhaps it would be good to notify threads when they have something to
+</I>&gt;<i> do rather than let them die and start new ones in each cycle.
+</I>&gt;<i>
+</I>&gt;<i> True - but in the context of WSPR, the CPU time penalty in starting a
+</I>&gt;<i> thread (either tx or rx) every 2 minutes or so must be negligible.    Tx and
+</I>&gt;<i> Rx are mutually exclusive so the need to synchronize thread operation (which
+</I>&gt;<i> is the real task of condition variables) doesn't really arise, do you think?
+</I>&gt;<i>
+</I>&gt;<i> motto:  &quot;If it ain't broke, don't fix it&quot;....
+</I>&gt;<i>
+</I>&gt;<i>  -- John G4KLA
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101214/f18de481/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20101214/f18de481/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001049.html">[Wsjt-devel] Threads
+</A></li>
+	<LI>Next message: <A HREF="001051.html">[Wsjt-devel] Bug report: attempted to start the decoder too soon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1050">[ date ]</a>
+              <a href="thread.html#1050">[ thread ]</a>
+              <a href="subject.html#1050">[ subject ]</a>
+              <a href="author.html#1050">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

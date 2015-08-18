@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Introduction and problems with building WSJT-X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Introduction%20and%20problems%20with%20building%20WSJT-X&In-Reply-To=%3C52DD9107.8020309%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002049.html">
+   <LINK REL="Next"  HREF="002050.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Introduction and problems with building WSJT-X</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Introduction%20and%20problems%20with%20building%20WSJT-X&In-Reply-To=%3C52DD9107.8020309%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Introduction and problems with building WSJT-X">joe at princeton.edu
+       </A><BR>
+    <I>Mon Jan 20 22:11:35 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002049.html">[Wsjt-devel] Introduction and problems with building WSJT-X
+</A></li>
+        <LI>Next message: <A HREF="002050.html">[Wsjt-devel] WSJT-X v1.2.2 r3654
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2052">[ date ]</a>
+              <a href="thread.html#2052">[ thread ]</a>
+              <a href="subject.html#2052">[ subject ]</a>
+              <a href="author.html#2052">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Clark,
+
+We'll be happy to have you on the WSJT development team.  As you have 
+probably noticed, we're pretty loosely organized.  People work on what 
+interests them most, and what they are good at.  We use this list for 
+most communications.  When you're ready to be added to the group with 
+SVN &quot;commit&quot; permission, let me know your Berlios login name.
+
+As for your question on build environment: on Windows, we're using the 
+MinGW version of Qt 5.2.  You need g++ and gcc, and either g95 or 
+gfortran for the Fortran code.  Bill, G4WJS, uses CMake and make; I use 
+QtCreator, qmake, and make.  I actually still use QtCreator 2.7.2, which 
+came with Qt5.1, rather than v3.0 -- although 3.0 works fine for 
+everything I've tried *except* printing program listings.  That has a 
+bug that we are told will be fixed when Qt 5.2.1 is released.  With the 
+proper tools installed, and your working environment set correctly, no 
+code changes should be required for a good compile.
+
+	-- 73, Joe, K1JT
+
+On 1/20/2014 3:37 PM, Clark Sann wrote:
+&gt;<i> My name is Clark and my call sign is AL7EK.  I am a retired professional electrical engineer and software developer.  While employed I did a lot of .net development (industrial control, SCADA, data communications) but now that no one is paying me, I don't have much interest in Microsoft.  At home I have a bunch of OSX and IOS devices.  I've also dabbled with Linux quite a number of times at home.
+</I>&gt;<i>
+</I>&gt;<i> I'm familiar with C# and VB.net.  I'm learning Python, QT, and Objective C but I'm not competent with these yet.  I know a little C and C++.  I knew fortran about 40 years ago when I studied it in engineering school.
+</I>&gt;<i>
+</I>&gt;<i> If you'll have me, I'd like to help you guys develop WSJT-X.  I can certainly perform simple code changes, limited to my experience with C and Fortran.  While less exciting, I can also do testing and documentation.
+</I>&gt;<i>
+</I>&gt;<i> I've tried to setup Netbeans on my iMac with OSX 10.8.5 to compile WSJT-X but I'm having lots of problems doing that.  I've set that aside since I think you might be using QTCreator.
+</I>&gt;<i>
+</I>&gt;<i> Right now I am trying to set up QTCreator 3.0.0 and QT 5.2.0 to build and run wsjtx.  I've had no luck so far.  I am having to make quite a number of changes to the source that doesn't seem reasonable&#8230;..lots of changes in header files.  I also am missing some libraries.
+</I>&gt;<i>
+</I>&gt;<i> Before I bother you with my problems, I'm wondering if I'm even using the right tools.  Will I be able to build and run with QTCreator 3.0.0 and QT 5.2.0 or should I have installed other versions?  Please let me know what development tools are being used to develop wsjtx.
+</I>&gt;<i>
+</I>&gt;<i> I'd love to help on this project!
+</I>&gt;<i>
+</I>&gt;<i> Clark
+</I>&gt;<i> AL7EK
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002049.html">[Wsjt-devel] Introduction and problems with building WSJT-X
+</A></li>
+	<LI>Next message: <A HREF="002050.html">[Wsjt-devel] WSJT-X v1.2.2 r3654
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2052">[ date ]</a>
+              <a href="thread.html#2052">[ thread ]</a>
+              <a href="subject.html#2052">[ subject ]</a>
+              <a href="author.html#2052">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Debian Lenny
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C1214327397.3819.19.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000374.html">
+   <LINK REL="Next"  HREF="000377.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Debian Lenny</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C1214327397.3819.19.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT and Debian Lenny">lz1bb at mail.bg
+       </A><BR>
+    <I>Tue Jun 24 19:09:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000374.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+        <LI>Next message: <A HREF="000377.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#375">[ date ]</a>
+              <a href="thread.html#375">[ thread ]</a>
+              <a href="subject.html#375">[ subject ]</a>
+              <a href="author.html#375">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2008-06-24 at 11:41 -0400, Joe Taylor wrote:
+&gt;<i> Software does not break all by itself.  If you are running WSJT 5.9.7 
+</I>&gt;<i> r383, and if it was compiled properly, it will run without problems.  I 
+</I>&gt;<i> suggest deleting your WSJT.INI file and restarting the program.
+</I>
+Hi Joe,
+hanks for your prompt answer. WSJT.INI removed. The same error:
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~/WSJTSVN$ python -O wsjt.py
+******************************************************************
+WSJT Version 7.0 r863 , by K1JT
+Revision date: 2008-06-08 23:59:18 +0300 (Sun, 08 Jun 2008) 
+Run date:   Tue Jun 24 16:56:56 2008 UTC
+0-th dimension must be 12 but got 0 (not defined).
+Traceback (most recent call last):
+  File &quot;wsjt.py&quot;, line 2378, in &lt;module&gt;
+    ModeFSK441()
+  File &quot;wsjt.py&quot;, line 588, in ModeFSK441
+    GenStdMsgs()
+  File &quot;wsjt.py&quot;, line 1280, in GenStdMsgs
+    Audio.gcom2.hiscall=(ToRadio.get()+'            ')[:12]
+SystemError: error return without exception set
+
+&gt;<i> PS: Updating your software every day sounds like a recipe for continuous 
+</I>&gt;<i> headaches.  If you want to play computers, OK; but if you want to use 
+</I>&gt;<i> your software -- and don't know what to do when it fails to work -- 
+</I>&gt;<i> leave your OS alone.
+</I>&gt;<i> 
+</I>&gt;<i> I update my Linux only when I understand that a new release offers 
+</I>&gt;<i> something I need.
+</I>
+I sopose you have switched ON your Windows Updates. The same is here
+with Linux. I need at least security updates. The difference is that
+Microsoft is slow with updates and you do not have every day procedure.
+Linux society is quick and we updade more often. BTW Linux is in process
+of major upgrade right now. Especially Python. I do alarm developers
+team that WSJT is no more usable on Linux systems. I am not gilty about
+this Linux upgrade process. I do not cpmplain, just send my report. IMHO
+the WSJT code is reaslly working on developers machines only right now.
+Please update your Linux systems! You will have another point of
+view. :)
+
+73, Harry LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000374.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+	<LI>Next message: <A HREF="000377.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#375">[ date ]</a>
+              <a href="thread.html#375">[ thread ]</a>
+              <a href="subject.html#375">[ subject ]</a>
+              <a href="author.html#375">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

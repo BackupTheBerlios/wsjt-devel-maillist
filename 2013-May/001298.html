@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X developments
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519E3496.4050304%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001297.html">
+   <LINK REL="Next"  HREF="001299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X developments</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20developments&In-Reply-To=%3C519E3496.4050304%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT-X developments">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu May 23 17:24:06 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001297.html">[Wsjt-devel] WSJTX r3299
+</A></li>
+        <LI>Next message: <A HREF="001299.html">[Wsjt-devel] WSJT-X and Qt 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1298">[ date ]</a>
+              <a href="thread.html#1298">[ thread ]</a>
+              <a href="subject.html#1298">[ subject ]</a>
+              <a href="author.html#1298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Tim and all,
+
+KY4J wrote:
+&gt;<i> Some items I have seen as troublesome.
+</I>&gt;<i> o Very sensitive of the toolchain, I believe gcc&gt;= 4.5 will only work. Any
+</I>&gt;<i> distribution such as Debian Squeeze using gcc/g++/gfortran 4.4 and jt9 will not
+</I>&gt;<i> compile.
+</I>
+So?  There are probably an unlimited number of setups on which a 
+particular program may not compile, using trivial commands.  What, 
+exactly, fails for you, and why?  What are you suggesting should be 
+done?  We can't possibly ensure that all possible setups will compile 
+WSJT-X, out-of-the-box.
+
+&gt;<i> o Sound is very difficult to get running. I have it running using and external
+</I>&gt;<i> USB sound card, but unable to get running on the built in sound (on my toshiba
+</I>&gt;<i> laptop), however other sound chips are not so bad. I think Linux sound is broke
+</I>&gt;<i> so bad I not sure what can be done. I know most of the ws** apps usually use
+</I>&gt;<i> portaudio, but pulseaudio seems to now be in the middle between alsa in the
+</I>&gt;<i> kernel and application. What's a Linux using Ham to do? :)
+</I>
+Everyone I know who has set up ~/.asoundrc more or less as follows:
+
+$ cat /home/joe/.asoundrc
+
+pcm.radio {
+         type hw
+         card 0
+         device 0
+}
+pcm_slave.radioslave {
+         pcm radio
+         rate 48000
+}
+pcm.radioconv {
+         type rate
+         slave radioslave
+}
+
+... has found that selecting device &quot;radioconv&quot; for both input and 
+output works just fine.
+
+&gt;<i> o Build system needs tweaks.
+</I>
+The existing build system suits my needs very well.  But if you know of 
+ways it could be improved, make some suggestions.  Better still, make 
+the improvements and share them!
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001297.html">[Wsjt-devel] WSJTX r3299
+</A></li>
+	<LI>Next message: <A HREF="001299.html">[Wsjt-devel] WSJT-X and Qt 5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1298">[ date ]</a>
+              <a href="thread.html#1298">[ thread ]</a>
+              <a href="subject.html#1298">[ subject ]</a>
+              <a href="author.html#1298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

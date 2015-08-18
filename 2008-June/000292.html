@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C4841F4C9.5040105%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000293.html">
+   <LINK REL="Next"  HREF="000294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C4841F4C9.5040105%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]">joe at Princeton.EDU
+       </A><BR>
+    <I>Sun Jun  1 03:00:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000293.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+        <LI>Next message: <A HREF="000294.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Richard,
+
+Richard Bown wrote:
+
+&gt;<i> is the wsjt &amp; wspr code in the trunk or one of the branches ?
+</I>&gt;<i> 
+</I>&gt;<i> I've looked in the branches , but the linux code is 5.9.2,
+</I>&gt;<i> and I cant see anything new in the trunk
+</I>
+I can't imagine where you were looking.
+
+The following command gets you the latest WSJT:
+
+C:\temp&gt;svn co <A HREF="svn://svn.berlios.de/wsjt/trunk">svn://svn.berlios.de/wsjt/trunk</A>
+
+should produce something like this:
+
+A    trunk\set.f
+A    trunk\dmet_20_-3_2.dat
+A    trunk\decode65.f
+
+...
+
+A    trunk\getfile.F90
+A    trunk\xfft2.f
+A    trunk\wsjt.py
+Checked out revision 832.
+
+There are some 579 files in all.
+
+The latest WSPR:
+
+C:\temp&gt;svn co <A HREF="svn://svn.berlios.de/wsjt/branches/wspr">svn://svn.berlios.de/wsjt/branches/wspr</A>
+
+A    wspr\set.f
+A    wspr\decode.F90
+A    wspr\nhash.c
+A    wspr\Makefile.in
+A    wspr\geodist.f
+A    wspr\getutc.f90
+A    wspr\start_threads.c
+A    wspr\xcor162.f
+A    wspr\libpthreadGC2.a
+
+...
+
+A    wspr\grid2deg.f
+A    wspr\unpackgrid.f
+A    wspr\libportaudio.a
+A    wspr\getfile.F90
+A    wspr\install-sh
+Checked out revision 832.
+
+In this case, 218 files.
+
+The latest MAP65:
+
+C:\temp&gt;svn co <A HREF="svn://svn.berlios.de/wsjt/branches/map65">svn://svn.berlios.de/wsjt/branches/map65</A>
+
+... etc.
+
+	-- 73, Joe, K1JT
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000293.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+	<LI>Next message: <A HREF="000294.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

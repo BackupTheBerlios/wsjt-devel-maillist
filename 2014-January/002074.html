@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52DF5AD0.9080904%40omen.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002073.html">
+   <LINK REL="Next"  HREF="002078.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644</H1>
+    <B>Chuck Forsberg WA7KGX</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Proposed%20release%20of%20WSJT-X%20v1.2.2%20r3644&In-Reply-To=%3C52DF5AD0.9080904%40omen.com%3E"
+       TITLE="[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644">caf at omen.com
+       </A><BR>
+    <I>Wed Jan 22 06:44:48 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002073.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+        <LI>Next message: <A HREF="002078.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2074">[ date ]</a>
+              <a href="thread.html#2074">[ thread ]</a>
+              <a href="subject.html#2074">[ subject ]</a>
+              <a href="author.html#2074">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I finally got wsjt-x compiled and running on Fedora
+Heisenbug (20) as well as Rawhide.  I had to do the following:
+
+     0.  Add your user ID to dialout and audio in /etc/group; reboot
+     1. Load a bunch of libs
+     2. cd lib; make -f Makefile.linux
+     3. qmake-qt5
+     4. make
+     5.  find Pal* -type f - print | cpio -pmdvl ../wsjtx_install
+
+     6.  run wsjtx from wsjtx_install directory
+     7.   Configure wsjtx, adjust audio et al.
+
+I made one contact each from Heisenbug and Rawhide on a 64 bit system.
+
+What is kvasd?  wsjtx complains about it but works anyway.
+
+-- 
+      Chuck Forsberg WA7KGX   <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">caf at omen.com</A>   www.omen.com
+Developer of Industrial ZMODEM(Tm) for Embedded Applications
+   Omen Technology Inc      &quot;The High Reliability Software&quot;
+10255 NW Old Cornelius Pass Portland OR 97231   503-614-0430
+
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002073.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+	<LI>Next message: <A HREF="002078.html">[Wsjt-devel] Proposed release of WSJT-X v1.2.2 r3644
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2074">[ date ]</a>
+              <a href="thread.html#2074">[ thread ]</a>
+              <a href="subject.html#2074">[ subject ]</a>
+              <a href="author.html#2074">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

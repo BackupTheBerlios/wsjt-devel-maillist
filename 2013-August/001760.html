@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Version 1.2 beta release?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCADTTAaxFQ6n%3D_aHMr9_PknNKGkziUV_dXZkN2wta-Uy6k7xfzA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001759.html">
+   <LINK REL="Next"  HREF="001755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Version 1.2 beta release?</H1>
+    <B>John Nogatch</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Version%201.2%20beta%20release%3F&In-Reply-To=%3CCADTTAaxFQ6n%3D_aHMr9_PknNKGkziUV_dXZkN2wta-Uy6k7xfzA%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] Version 1.2 beta release?">jnogatch at gmail.com
+       </A><BR>
+    <I>Fri Aug  9 00:07:56 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001759.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+        <LI>Next message: <A HREF="001755.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> 1. This particular ubuntu 12.10 laptop has a problem with PulseAudio.
+</I>
+I had to run &quot;paprefs&quot; and disable the audio networking. Now I can run
+&quot;pavucontrol&quot; and it correctly displays my audio input and output
+devices.
+
+Qt5 still does not show any devices:
+~/REF/testQt5$ ./test y
+res: &quot;&quot;
+
+~/REF/testQt5$ ./test n
+res: &quot;&quot;
+
+But Qt4 does show some devices:
+~/REF/testQt4$ ./test y
+l: &quot;alsa_output.pci-0000_00_14.5.analog-stereo&quot;
+l: &quot;alsa_output.pci-0000_06_00.0.analog-stereo&quot;
+res: &quot;alsa_output.pci-0000_00_14.5.analog-stereo&quot;
+
+~/REF/testQt4$ ./test n
+res: &quot;alsa_output.pci-0000_00_14.5.analog-stereo&quot;
+
+
+-John AC6SL
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001759.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+	<LI>Next message: <A HREF="001755.html">[Wsjt-devel] Version 1.2 beta release?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1760">[ date ]</a>
+              <a href="thread.html#1760">[ thread ]</a>
+              <a href="subject.html#1760">[ subject ]</a>
+              <a href="author.html#1760">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

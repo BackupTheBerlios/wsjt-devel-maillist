@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] QAudio for input and output
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3C51F9A6C0.1010607%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001639.html">
+   <LINK REL="Next"  HREF="001641.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] QAudio for input and output</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20QAudio%20for%20input%20and%20output&In-Reply-To=%3C51F9A6C0.1010607%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] QAudio for input and output">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Aug  1 02:07:28 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001639.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+        <LI>Next message: <A HREF="001641.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1640">[ date ]</a>
+              <a href="thread.html#1640">[ thread ]</a>
+              <a href="subject.html#1640">[ subject ]</a>
+              <a href="author.html#1640">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/07/2013 21:12, Edson W. R. Pereira wrote:
+&gt;<i>
+</I>&gt;<i> Hello Joe, Bill et al,
+</I>Hi Edson,
+&gt;<i>
+</I>&gt;<i> I also vote for QAudio. It &quot;shoud&quot; make the code cleaner and the 
+</I>&gt;<i> application lighter (one less lib to include). I will assist you and 
+</I>&gt;<i> Bill with testing and debugging on Linux. This will prevent issues 
+</I>&gt;<i> with 6 hands touching the same code!  I have to configure pulseaudio 
+</I>&gt;<i> to manage the sound card I use for WSJT-X. Right now I have pulseaudio 
+</I>&gt;<i> managing only the default onboard card (card 0). Cards 1 and 2 I use 
+</I>&gt;<i> for SDR work and manage them with jackd. Card 3 is a homemade USB 
+</I>&gt;<i> sound interface I use for WSJT-X.
+</I>The QtMultimedia library is another library so it's not really any less, 
+but at least a lots of *nixes have the Qt libraries because of it's use 
+in KDE etc. It might be an issue that it's only in Qt5 because Linux 
+users with older distros might only have Qt4 in their repos.
+
+I'm not sure if it's possible to do a static build with Qt. It should be 
+so long as the C++ library is left as a shared lib.
+
+I'm actually developing on a Linux VM since Unix is my normal hang out. 
+I build and test on Windows because that's where I have radio 
+connectivity. I will see if I can get my dev VM configured for audio as 
+well as it's a bit of a PITA to keep copying sources around to build and 
+test.
+
+&lt;snip&gt;
+
+I have already completed the first round of changes with portaudio. The 
+question that started this part of the thread was aimed at avoiding 
+going down the dual implementation approach. I would like to move on by 
+swapping out portaudio for QAudioInput/QAudioOutput. We can always 
+revert back if there are any show stoppers.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Comments and opinions from others?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The pitfalls I had with QAudio in the past were primarily related to 
+</I>&gt;<i> threads. Since we will try running the audio from the GUI thread, 
+</I>&gt;<i> there should be no thread-related issues. It remains to be seen if it 
+</I>&gt;<i> will be possible to run the audio outuput without it running on a 
+</I>&gt;<i> separate thread. We need to run some tests with WSJT-X on slower 
+</I>&gt;<i> computers to make sure things are ok since a lot of graphics consume 
+</I>&gt;<i> CPU cycles in the GUI thread and audio output can't starve from CPU.
+</I>I believe the separate thread was adding latency rather than removing 
+it. The main blocking audio processing was away from wsjtx already, we 
+are only doing what we have to do to read/generate samples and I don't 
+think that part is very intensive. The main decode pass on the other 
+hand is, but that is already outside of the GUI loop by being done in a 
+separate process.
+
+I agree on running on more CPU cycle challenged systems, we need a 
+benchmark system somewhere that acts as a control test for performance 
+related changes. All my older machines are dead or dying so my slowest 
+machine is a quad core i7. There are stress testing tools around that 
+put a fixed load on a machine while using it for performance testing.
+&gt;<i>
+</I>&gt;<i> 73,
+</I>&gt;<i>
+</I>&gt;<i> -- Edson PY2SDR
+</I>73
+Bill
+G4WJS.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130801/3f2d9cad/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130801/3f2d9cad/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001639.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+	<LI>Next message: <A HREF="001641.html">[Wsjt-devel] QAudio for input and output
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1640">[ date ]</a>
+              <a href="thread.html#1640">[ thread ]</a>
+              <a href="subject.html#1640">[ subject ]</a>
+              <a href="author.html#1640">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

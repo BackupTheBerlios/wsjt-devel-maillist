@@ -1,0 +1,771 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C1212196169.19900.13.camel%40enterprise.gimmel.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000282.html">
+   <LINK REL="Next"  HREF="000284.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]</H1>
+    <B>Tim Gimmel</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C1212196169.19900.13.camel%40enterprise.gimmel.org%3E"
+       TITLE="[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]">tjg at henderson.net
+       </A><BR>
+    <I>Sat May 31 03:09:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000282.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+        <LI>Next message: <A HREF="000284.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#283">[ date ]</a>
+              <a href="thread.html#283">[ thread ]</a>
+              <a href="subject.html#283">[ subject ]</a>
+              <a href="author.html#283">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Diane,
+No luck for me yet, here is output of configure and compile.  I have
+attached Makefile.
+
+73 es thanks for the hard work!
+Tim KB4AMA
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/wspr$ ./configure
+--with-portaudio-include-dir=/usr/local/include
+--with-portaudio-lib-dir=/usr/local/lib
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking for g77... g77
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether g77 accepts -g... yes
+checking uname -s for Cygwin, Solaris or HPUX... no
+checking if gcc is Apple GCC... no
+checking for library containing strerror... none required
+checking for inline... inline
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking whether gcc needs -traditional... no
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for rm... /bin/rm
+checking for cp... /bin/cp
+checking for mv... /bin/mv
+checking for ln... /bin/ln
+checking for sed... /bin/sed
+checking for ar... /usr/bin/ar
+checking for ld... /usr/bin/ld
+checking for test... /usr/bin/test
+checking for python... /usr/bin/python
+checking for f2py... /usr/bin/f2py
+checking for g95... /usr/bin/g95
+checking g95 lib 
+path... /home/tim/src/g95-install/bin/../lib/gcc-lib/i686-suse-linux-gnu/4.0.3//
+checking for gfortran... /usr/bin/gfortran
+checking for gfortran42... (cached) /usr/bin/gfortran
+checking gfortran lib path... /usr/lib/gcc/i486-linux-gnu/4.1.2/
+checking OS... checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for inttypes.h... (cached) yes
+checking for stdint.h... (cached) yes
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking sys/syslog.h usability... yes
+checking sys/syslog.h presence... yes
+checking for sys/syslog.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking libgen.h usability... yes
+checking libgen.h presence... yes
+checking for libgen.h... yes
+checking sys/wait.h usability... yes
+checking sys/wait.h presence... yes
+checking for sys/wait.h... yes
+checking wait.h usability... yes
+checking wait.h presence... yes
+checking for wait.h... yes
+checking stdio.h usability... yes
+checking stdio.h presence... yes
+checking for stdio.h... yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking for sys/resource.h... (cached) yes
+checking linux/ppdev.h usability... yes
+checking linux/ppdev.h presence... yes
+checking for linux/ppdev.h... yes
+checking dev/ppbus/ppi.h usability... no
+checking dev/ppbus/ppi.h presence... no
+checking for dev/ppbus/ppi.h... no
+checking for sys/stat.h... (cached) yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking samplerate.h usability... yes
+checking samplerate.h presence... yes
+checking for samplerate.h... yes
+checking whether string.h and strings.h may both be included... yes
+checking for clock_gettime in -lrt... yes
+checking for snd_pcm_open in -lasound... yes
+checking size of int64_t... 8
+checking size of long long... 8
+checking for uint64_t... yes
+checking for int64_t... yes
+checking for u_int32_t... yes
+checking for u_int16_t... yes
+checking whether byte ordering is bigendian... no
+checking stdarg.h usability... yes
+checking stdarg.h presence... yes
+checking for stdarg.h... yes
+*** gfortran compiler found
+*** g95 compiler found
+configure: creating ./config.status
+config.status: creating Makefile
+
+
+Using gfortran as fortran compiler.
+
+
+Compiling wspr 0.8
+
+Installing into: /usr/local/
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tim at scotty</A>:~/src/wspr$ make
+/usr/bin/f2py -c --opt=&quot;-O -Wall -O0 -g  -Wall -O0 -g -DBIGSYM=1 -fPIC
+-DPACKAGE_NAME=\&quot;wspr\&quot; -DPACKAGE_TARNAME=\&quot;wspr\&quot; -DPACKAGE_VERSION=
+\&quot;0.8\&quot; -DPACKAGE_STRING=\&quot;wspr\ 
+0.8\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1
+-DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1
+-DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1
+-DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1
+-DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1
+-DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1
+-DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1
+-DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1
+-DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1
+-DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DSIZEOF_INT64_T=8
+-DSIZEOF_LONG_LONG=8 -DNDEBUG=1 -DPREFIX=\&quot;/usr/local/\&quot; -DFC_LIB_PATH=
+\&quot;/usr/lib/gcc/i486-linux-gnu/4.1.2/\&quot; -DFC=\&quot;gfortran\&quot;
+-DUSE_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_SAMPLERATE_H=1 -g -O2
+-fno-range-check -ffixed-line-length-none -ftrace=full -Wall
+-fbounds-check -fno-second-underscore -fPIC&quot; 
+\
+        --fcompiler=gnu95 --f77exec=gfortran --f90exec=gfortran \
+        --opt=&quot;-fbounds-check -g -O2 -fno-range-check
+-ffixed-line-length-none -ftrace=full -Wall -fbounds-check
+-fno-second-underscore -fPIC&quot; 
+\
+        -I/usr/local/include -I/usr/local/include  -DPACKAGE_NAME=\&quot;wspr
+\&quot; -DPACKAGE_TARNAME=\&quot;wspr\&quot; -DPACKAGE_VERSION=\&quot;0.8\&quot;
+-DPACKAGE_STRING=\&quot;wspr\ 
+0.8\&quot; -DPACKAGE_BUGREPORT=\&quot;\&quot; -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1
+-DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1
+-DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1
+-DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE_INTTYPES_H=1
+-DHAVE_STDINT_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_SYS_PARAM_H=1
+-DHAVE_ERRNO_H=1 -DHAVE_SYS_SYSLOG_H=1 -DHAVE_STDDEF_H=1
+-DHAVE_LIBGEN_H=1 -DHAVE_SYS_WAIT_H=1 -DHAVE_WAIT_H=1 -DHAVE_STDIO_H=1
+-DHAVE_TERMIOS_H=1 -DHAVE_SYS_RESOURCE_H=1 -DHAVE_LINUX_PPDEV_H=1
+-DHAVE_SYS_STAT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_SYS_IOCTL_H=1
+-DTIME_WITH_SYS_TIME=1 -DSTRING_WITH_STRINGS=1 -DSIZEOF_INT64_T=8
+-DSIZEOF_LONG_LONG=8 -DNDEBUG=1 -DPREFIX=\&quot;/usr/local/\&quot; -DFC_LIB_PATH=
+\&quot;/usr/lib/gcc/i486-linux-gnu/4.1.2/\&quot; -DFC=\&quot;gfortran\&quot;
+-DUSE_PORTAUDIO=1 -DHAS_PORTAUDIO_H=1 -DHAS_SAMPLERATE_H=1 -I.
+-L/usr/local/lib -L/usr/local/lib  -L/usr/lib/gcc/i486-linux-gnu/4.1.2/
+-lpthread  -lrt -lsamplerate -lportaudio\
+        -m w \
+        only: wspr1 getfile paterminate : \
+        wspr1.F90 wspr2.F90 decode.F90 getutc.f90 gran.f90 rx.F90
+startdec.F90 
+startrx.F90 starttx.F90 tx.F90 getfile.F90 paterminate.f90 rect.f90 
+bestdx.f90 wqencode.f90 wqdecode.f90 hash.f90 packname.f90
+packtext2.f90 
+unpackname.f90 unpacktext2.f90 packpfx.f90 packprop.f90 unpackpfx.f90 
+unpackprop.f90  mept162.F getrms.f wfile5.F mix162.f sync162.f
+decode162.f 
+spec162.f set.f xfft.f ps162.f pctile.f xcor162.f peakup.f db.f
+inter_mept.f 
+fano232.f unpack50.f unpackcall.f unpackgrid.f four2.f flat3.f sort.f 
+deg2grid.f ssort.f genmept.f packcall.f packgrid.f pack50.f encode232.f 
+nchar.f grid2deg.f fchisq.f ccf2.f twkfreq.f azdist.f geodist.f
+padevsub.c 
+start_threads.c sound.c gmtime2.c ptt_unix.c nhash.c
+running build
+running config_fc
+running build_src
+building extension &quot;untitled&quot; sources
+f2py options: ['only:', 'wspr1', 'getfile', 'paterminate', ':']
+f2py:&gt; /tmp/tmptiNrIH/src.linux-i686-2.4/untitledmodule.c
+creating /tmp/tmptiNrIH
+creating /tmp/tmptiNrIH/src.linux-i686-2.4
+Reading fortran codes...
+        Reading file 'wspr1.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'wspr2.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'decode.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'getutc.f90' (format:free)
+        Reading file 'gran.f90' (format:free)
+        Reading file 'rx.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'startdec.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'startrx.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'starttx.F90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'tx.F90' (format:free)
+Line #11 in tx.F90:&quot;  parameter (NMAX2=120*12000)&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'getfile.F90' (format:free)
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'paterminate.f90' (format:free)
+        Reading file 'rect.f90' (format:free)
+        Reading file 'bestdx.f90' (format:free)
+        Reading file 'acom1.f90' (format:free)
+Line #1 in acom1.f90:&quot;  parameter (NMAX=120*12000)
+&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'wqencode.f90' (format:free)
+        Reading file 'wqdecode.f90' (format:free)
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+        Reading file 'hash.f90' (format:free)
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+rmbadname1: Replacing &quot;string&quot; with &quot;string_bn&quot;.
+        Reading file 'packname.f90' (format:free)
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+        Reading file 'packtext2.f90' (format:free)
+        Reading file 'unpackname.f90' (format:free)
+rmbadname1: Replacing &quot;len&quot; with &quot;len_bn&quot;.
+        Reading file 'unpacktext2.f90' (format:free)
+        Reading file 'packpfx.f90' (format:free)
+        Reading file 'packprop.f90' (format:free)
+        Reading file 'unpackpfx.f90' (format:free)
+        Reading file 'unpackprop.f90' (format:free)
+        Reading file 'mept162.F' (format:fix,strict)
+Line #39 in mept162.F:&quot;         call 
+twkfreq(c2,c3,jz,a)                    !Remove drift&quot;
+        analyzeline: No name/args pattern found for line.
+        Reading file 'getrms.f' (format:fix,strict)
+Line #3 in getrms.f:&quot;      parameter (NMAX=120*12000)&quot;
+        determineexprtype: could not determine expressions ('120*12000')
+type.
+        Reading file 'wfile5.F' (format:fix,strict)
+        Reading file 'mix162.f' (format:fix,strict)
+Line #5 in mix162.f:&quot;      parameter (NFFT1=2*1024*1024)&quot;
+        determineexprtype: could not determine expressions
+('2*1024*1024') 
+type.
+Line #49 in mix162.f:&quot;      call four2a(c2,NFFT2,1,1,1)        !Return
+to time 
+domain&quot;
+        analyzeline: No name/args pattern found for line.
+        Reading file 'sync162.f' (format:fix,strict)
+Line #6 in sync162.f:&quot;      parameter (NFFT=512)             !Length of
+FFTs&quot;
+        determineexprtype: could not determine expressions 
+('512)             !length of fft') type.
+analyzeline: Failed to evaluate '512)             !length of fft'.
+Ignoring: 
+invalid syntax (line 1)
+Line #7 in sync162.f:&quot;      parameter (NH=NFFT/2)            !Length of
+power 
+spectra&quot;
+        determineexprtype: could not determine expressions 
+('nfft/2)            !length of power spectr') type.
+analyzeline: Failed to evaluate 'nfft/2)            !length of power
+spectr'. 
+Ignoring: invalid syntax (line 1)
+Line #8 in sync162.f:&quot;      parameter (NSMAX=351)            !Number of 
+half-symbol steps&quot;
+        determineexprtype: could not determine expressions 
+('351)            !number of half-symbol step') type.
+analyzeline: Failed to evaluate '351)            !number of half-symbol
+step'. 
+Ignoring: invalid syntax (line 1)
+Line #11 in sync162.f:&quot;      real psavg(-NH:NH)               !Average 
+spectrum of whole record&quot;
+        updatevars: could not crack entity 
+declaration &quot;psavg(-nh:nh)!average&quot;. Ignoring.
+Line #12 in sync162.f:&quot;      real s2(-NH:NH,NSMAX)            !2d
+spectrum, 
+stepped by half-sym&quot;
+        updatevars: could not crack entity declaration
+&quot;s2(-nh:nh,nsmax)!2d&quot;. 
+Ignoring.
+Line #12 in sync162.f:&quot;      real s2(-NH:NH,NSMAX)            !2d
+spectrum, 
+stepped by half-sym&quot;
+        updatevars: could not crack entity declaration &quot;half-sym&quot;.
+Ignoring.
+        Reading file 'decode162.f' (format:fix,strict)
+Line #135 in decode162.f:&quot;      call 
+inter_mept(symbol,-1)                      !Remove interleavi&quot;
+        analyzeline: No name/args pattern found for line.
+        Reading file 'spec162.f' (format:fix,strict)
+        Reading file 'set.f' (format:fix,strict)
+        Reading file 'xfft.f' (format:fix,strict)
+        Reading file 'ps162.f' (format:fix,strict)
+        Reading file 'pctile.f' (format:fix,strict)
+        Reading file 'xcor162.f' (format:fix,strict)
+        Reading file 'peakup.f' (format:fix,strict)
+        Reading file 'db.f' (format:fix,strict)
+        Reading file 'inter_mept.f' (format:fix,strict)
+        Reading file 'fano232.f' (format:fix,strict)
+Line #9 in fano232.f:&quot;      parameter (MAXDAT=(MAXBITS+7)/8)&quot;
+        determineexprtype: could not determine expressions ('(maxbits
++7)/8') 
+type.
+Line #11 in fano232.f:&quot;      integer*1 dat(MAXDAT)               !
+Decoded user 
+data, 8 bits per&quot;
+        updatevars: could not crack entity declaration &quot;dat(maxdat)!
+decoded&quot;. 
+Ignoring.
+Line #14 in fano232.f:&quot;      integer mettab(0:255,0:1)           !
+Metric 
+table&quot;
+        updatevars: could not crack entity 
+declaration &quot;mettab(0:255,0:1)!metric&quot;. Ignoring.
+Line #15 in fano232.f:&quot;      integer nstate(0:MAXBITS-1)      !Encoder
+state 
+of next node&quot;
+        updatevars: could not crack entity 
+declaration &quot;nstate(0:maxbits-1)!encoder&quot;. Ignoring.
+Line #16 in fano232.f:&quot;      integer gamma(0:MAXBITS-1)       !
+Cumulative 
+metric to this node&quot;
+        updatevars: could not crack entity 
+declaration &quot;gamma(0:maxbits-1)!cumulative&quot;. Ignoring.
+Line #17 in fano232.f:&quot;      integer metrics(0:3,0:MAXBITS-1) !Metrics
+indexed 
+by all possible &quot;
+        updatevars: could not crack entity 
+declaration &quot;metrics(0:3,0:maxbits-1)!metrics&quot;. Ignoring.
+Line #18 in fano232.f:&quot;      integer tm(0:1,0:MAXBITS-1)      !Sorted
+metrics 
+for current hypot&quot;
+        updatevars: could not crack entity 
+declaration &quot;tm(0:1,0:maxbits-1)!sorted&quot;. Ignoring.
+rmbadname1: Replacing &quot;for&quot; with &quot;for_bn&quot;.
+Line #20 in fano232.f:&quot;      integer ii(0:MAXBITS-1)          !Current
+branch 
+being tested&quot;
+        updatevars: could not crack entity 
+declaration &quot;ii(0:maxbits-1)!current&quot;. Ignoring.
+        Reading file 'conv232.f' (format:fix,strict)
+        Reading file 'unpack50.f' (format:fix,strict)
+        Reading file 'unpackcall.f' (format:fix,strict)
+        Reading file 'unpackgrid.f' (format:fix,strict)
+Line #3 in unpackgrid.f:&quot;      parameter (NGBASE=180*180)&quot;
+        determineexprtype: could not determine expressions ('180*180')
+type.
+        Reading file 'four2.f' (format:fix,strict)
+Line #39 in four2.f:&quot;      parameter(NMAX=2048*1024)&quot;
+        determineexprtype: could not determine expressions ('2048*1024')
+type.
+Line #82 in four2.f:&quot;      parameter(NMAX=2048*1024)&quot;
+        determineexprtype: could not determine expressions ('2048*1024')
+type.
+Line #140 in four2.f:&quot;      parameter(NMAX=2048*1024)&quot;
+        determineexprtype: could not determine expressions ('2048*1024')
+type.
+Line #261 in four2.f:&quot;      parameter(NMAX=4048*1024)&quot;
+        determineexprtype: could not determine expressions ('4048*1024')
+type.
+        Reading file 'flat3.f' (format:fix,strict)
+        Reading file 'sort.f' (format:fix,strict)
+        Reading file 'deg2grid.f' (format:fix,strict)
+Line #3 in deg2grid.f:&quot;      real dlong                        !West
+longitude 
+(deg)&quot;
+        updatevars: could not crack entity declaration &quot;dlong!west&quot;.
+Ignoring.
+Line #4 in deg2grid.f:&quot;      real dlat                         !
+Latitude 
+(deg)&quot;
+        updatevars: could not crack entity declaration &quot;dlat!
+latitude(deg)&quot;. 
+Ignoring.
+        Reading file 'ssort.f' (format:fix,strict)
+        Reading file 'genmept.f' (format:fix,strict)
+Line #8 in genmept.f:&quot;      parameter (NMAX=120*12000)     !Max length
+of wave 
+file&quot;
+        determineexprtype: could not determine expressions 
+('120*12000)     !max length of wave fil') type.
+analyzeline: Failed to evaluate '120*12000)     !max length of wave
+fil'. 
+Ignoring: invalid syntax (line 1)
+Line #9 in genmept.f:&quot;      character*22 message           !Message to
+be 
+generated&quot;
+        updatevars: could not crack entity declaration &quot;message!
+message&quot;. 
+Ignoring.
+Line #12 in genmept.f:&quot;      integer*2 iwave(NMAX)          !Generated
+wave 
+file&quot;
+        updatevars: could not crack entity 
+declaration &quot;iwave(nmax)!generated&quot;. Ignoring.
+Line #21 in genmept.f:&quot;      character*22 msgsent           !Message
+sent&quot;
+        updatevars: could not crack entity declaration &quot;msgsent!
+message&quot;. 
+Ignoring.
+Line #68 in genmept.f:&quot;      call encode232
+(data0,nbytes,symbol,MAXSYM)  !Convolutional encodin&quot;
+        analyzeline: No name/args pattern found for line.
+Line #69 in genmept.f:&quot;      call 
+inter_mept(symbol,1)                   !Apply interleaving&quot;
+        analyzeline: No name/args pattern found for line.
+        Reading file 'packcall.f' (format:fix,strict)
+Line #5 in packcall.f:&quot;      parameter (NBASE=37*36*10*27*27*27)&quot;
+        determineexprtype: could not determine expressions 
+('37*36*10*27*27*27') type.
+        Reading file 'packgrid.f' (format:fix,strict)
+Line #3 in packgrid.f:&quot;      parameter (NGBASE=180*180)&quot;
+        determineexprtype: could not determine expressions ('180*180')
+type.
+        Reading file 'pack50.f' (format:fix,strict)
+        Reading file 'encode232.f' (format:fix,strict)
+Line #5 in encode232.f:&quot;      integer*1 dat(nbytes)             !User
+data, 
+packed 8 bits per by&quot;
+        updatevars: could not crack entity declaration &quot;dat(nbytes)!
+user&quot;. 
+Ignoring.
+Line #6 in encode232.f:&quot;      integer*1 symbol(maxsym)          !
+Channel 
+symbols, one bit per by&quot;
+        updatevars: could not crack entity 
+declaration &quot;symbol(maxsym)!channel&quot;. Ignoring.
+        Reading file 'conv232.f' (format:fix,strict)
+        Reading file 'nchar.f' (format:fix,strict)
+        Reading file 'grid2deg.f' (format:fix,strict)
+        Reading file 'fchisq.f' (format:fix,strict)
+Line #3 in fchisq.f:&quot;      parameter (NMAX=120*375)&quot;
+        determineexprtype: could not determine expressions ('120*375')
+type.
+        Reading file 'ccf2.f' (format:fix,strict)
+        Reading file 'twkfreq.f' (format:fix,strict)
+        Reading file 'azdist.f' (format:fix,strict)
+        Reading file 'geodist.f' (format:fix,strict)
+Post-processing...
+        Block: untitled
+                        Block: wspr1
+                        Block: getfile
+                        Block: paterminate
+Post-processing (stage 2)...
+Building modules...
+        Building module &quot;untitled&quot;...
+                Constructing wrapper function &quot;wspr1&quot;...
+                  wspr1()
+buildmodule: Could not found the body of interfaced routine &quot;wspr2&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;decode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;getutc&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;gran&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;rx&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;startdec&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;startrx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;starttx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;tx&quot;.
+Skipping.
+                Constructing wrapper function &quot;getfile&quot;...
+                  getfile(fname,len_bn)
+                Constructing wrapper function &quot;paterminate&quot;...
+                  paterminate()
+buildmodule: Could not found the body of interfaced routine &quot;rect&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;bestdx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqencode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wqdecode&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;hash&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;packtext2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpackname&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpacktext2&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packprop&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpackpfx&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpackprop&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;mept162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;getrms&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;wfile5&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;mix162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;sync162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;decode162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;spec162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;set&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;move&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;zero&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;add&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;xfft&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;ps162&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pctile&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;xcor162&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;peakup&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;db&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;inter_mept&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fano232&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;unpack50&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpackcall&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;unpackgrid&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;four2a&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;bitrv&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;cool2&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fixrl&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;flat3&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;sort&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;deg2grid&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;ssort&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;genmept&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packcall&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;packgrid&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;pack50&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine
+&quot;encode232&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;nchar&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;grid2deg&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;fchisq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;ccf2&quot;.
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;twkfreq&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;azdist&quot;. 
+Skipping.
+buildmodule: Could not found the body of interfaced routine &quot;geodist&quot;. 
+Skipping.
+                Constructing COMMON block support for &quot;acom1&quot;...
+                  
+f0,ftx,rms,pctx,nsec,ndevin,ndevout,nsave,nrxdone,ndbm,nport,ndec,ndecdone,ntxdone,nreceiving,ntransmitting,ndiskdat,ndecoding,ntr,ndebug,idevin,idevout,idsec,nsectx,nreply,ntxfirst,nqso,ntest,ltest,iwave,infile,outfile,pttport,cdate,utctime,callsign,grid,rxtime,ctxmsg
+                Constructing COMMON block support for &quot;hdr&quot;...
+                  
+ariff,lenfile,awave,afmt,lenfmt,nfmt2,nchan2,nsamrate,nbytesec,nbytesam2,nbitsam2,adata,ndata,d2
+        Wrote C/API module &quot;untitled&quot; to 
+file &quot;/tmp/tmptiNrIH/src.linux-i686-2.4/untitledmodule.c&quot;
+        Fortran 77 wrappers are saved 
+to &quot;/tmp/tmptiNrIH/src.linux-i686-2.4/untitled-f2pywrappers.f&quot;
+  adding '/tmp/tmptiNrIH/src.linux-i686-2.4/fortranobject.c' to sources.
+  adding '/tmp/tmptiNrIH/src.linux-i686-2.4' to include_dirs.
+copying /usr/lib/python2.4/site-packages/numpy/f2py/src/fortranobject.c
+-&gt; /tmp/tmptiNrIH/src.linux-i686-2.4
+copying /usr/lib/python2.4/site-packages/numpy/f2py/src/fortranobject.h
+-&gt; /tmp/tmptiNrIH/src.linux-i686-2.4
+  adding '/tmp/tmptiNrIH/src.linux-i686-2.4/untitled-f2pywrappers.f' to 
+sources.
+running build_ext
+customize UnixCCompiler
+customize UnixCCompiler using build_ext
+customize Gnu95FCompiler
+customize Gnu95FCompiler using build_ext
+building 'untitled' extension
+compiling C sources
+C compiler: 
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -O2 -Wall
+-Wstrict-prototypes -fPIC
+
+error: unknown file type '' (from 'w')
+make: *** [w.so] Error 1
+
+
+
+On Fri, 2008-05-30 at 18:59 -0400, Diane Bruce wrote:
+&gt;<i> On Fri, May 30, 2008 at 06:27:59PM -0400, Diane Bruce wrote:
+</I>&gt;<i> &gt; On Fri, May 30, 2008 at 05:47:24PM -0400, Joe Taylor wrote:
+</I>&gt;<i> &gt; &gt; Hi Diane,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Yes, by all means go ahead and commit the changes of those file names to
+</I>&gt;<i> &gt; &gt; *.F90.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> 
+</I>&gt;<i> Folks, I have wspr compiling under either gfortran or g95 now.
+</I>&gt;<i> I'll want to do further digging, but I wont' get to that until
+</I>&gt;<i> Sunday at the earliest.
+</I>&gt;<i> 
+</I>&gt;<i> - 73 Diane VA3DB
+</I>&gt;<i> --
+</I>&gt;<i> - <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Makefile
+Type: text/x-makefile
+Size: 4061 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080530/72e79ee6/attachment.bin">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20080530/72e79ee6/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000282.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+	<LI>Next message: <A HREF="000284.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#283">[ date ]</a>
+              <a href="thread.html#283">[ thread ]</a>
+              <a href="subject.html#283">[ subject ]</a>
+              <a href="author.html#283">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

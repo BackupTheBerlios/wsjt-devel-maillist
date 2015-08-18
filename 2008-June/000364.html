@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT no more usable on Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1213110793.3891.22.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000363.html">
+   <LINK REL="Next"  HREF="000306.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT no more usable on Linux</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20no%20more%20usable%20on%20Linux&In-Reply-To=%3C1213110793.3891.22.camel%40ham%3E"
+       TITLE="[Wsjt-devel] WSJT no more usable on Linux">lz1bb at mail.bg
+       </A><BR>
+    <I>Tue Jun 10 17:13:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000363.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+        <LI>Next message: <A HREF="000306.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#364">[ date ]</a>
+              <a href="thread.html#364">[ thread ]</a>
+              <a href="subject.html#364">[ subject ]</a>
+              <a href="author.html#364">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2008-06-10 at 10:28 -0400, Diane Bruce wrote:
+&gt;<i> &gt; At line 22 of file synct.f
+</I>&gt;<i> &gt; Fortran runtime error: Array reference out of bounds for array 'c',
+</I>&gt;<i> &gt; upper bound of dimension 1 exceeded (330751 &gt; 330750)
+</I>&gt;<i> 
+</I>&gt;<i> Try it now.
+</I>
+Now wsjt crashes while decoding in JT6M mode with this error:
+At line 22 of file synct.f file: &quot;A;u&#65533;A&#237;A^&#65533;&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;A@&#65533;&#65533;A&#65533;&#65533;&#65533;Ak&#65533;&#65533;Ag&quot;
+Traceback: (Innermost first)
+   Called from line 217 of file wsjt1.F
+   Called from line 0 of file Segmentation fault
+
+I do not know what this strange symbol mean. Here is the error at the
+second try:
+At line 22 of file synct.f file: &quot;A(t&#65533;A&#65533;&#25887;&#65533;&#65533;A'&#65533;&#65533;A&#65533;&#65533;A'&#65533;&#65533;A&#65533;A&#65533;&#65533;&#65533;A|
+I&#65533;A&#2044;&#65533;A
+B&#65533;Aw&#815;Ao&#65533;&#65533;A5&#65533;&#65533;A&#1656;&#65533;A&#65533;&#65533;A&#65533;&#65533;&#65533;A]&#65533;&#65533;AZN&#65533;A$
+&#65533;AO&#65533;&#65533;A&#65533;~&#65533;A&#65533;&#65533;&#65533;A&#65533;
+
+&#65533;A&#65533;&#65533;&#65533;AX&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;&#65533;AME&#65533;A&#65533;.&#65533;A&#65533;&#65533;&#65533;At&#65533;&#65533;A&#65533;&#65533;&#65533;A&#65533;V&#65533;A&#1448;&#65533;A[&#65533;&#65533;A&#65533;
+&#65533;A&#65533;}&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;&#65533;A-%&#65533;A&#65533;?&#65533;A&gt;&#65533;&#65533;A&#747;&#65533;AcX&#65533;A&#342;&#65533;A &#65533;&#65533;A&#65533;X&#65533;A&#65533;&#65533;&#65533;A&#65533;&#65533;A
+&#65533;A&#65533;U&#65533;Aq&#65533;Arh&#65533;A8&#65533;A&#1209;&#65533;AA&lt;8&#65533;AO&#65533;&#65533;A&lt;8&#65533;A&#65533;2&#65533;A&#805;&#65533;A,U&#65533;A&#65533;)&#65533;A&#65533;A&#65533;l&#65533;A&#65533;&#65533;A&#65533;An4&#65533;A)&#65533;&#65533;A&#65533;&quot;&#65533;A&#1164;h&#65533;&#636;&#65533; &#65533;Aj&#65533;&#65533;A&#65533;
+&#65533;A&#65533;;&#65533;A&quot;
+Traceback: (Innermost first)
+   Called from line 217 of file wsjt1.F
+   Called from line 0 of file Segmentation fault
+
+
+73, Haeey LZ1BB
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000363.html">[Wsjt-devel] WSJT no more usable on Linux
+</A></li>
+	<LI>Next message: <A HREF="000306.html">[Wsjt-devel] WSPR &amp; gfortran, WSPR vs WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#364">[ date ]</a>
+              <a href="thread.html#364">[ thread ]</a>
+              <a href="subject.html#364">[ subject ]</a>
+              <a href="author.html#364">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

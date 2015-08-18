@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX v0.9 r3231
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20v0.9%20r3231&In-Reply-To=%3CCALNQy49QOEFp6dmVESFq2zD%3DrfqPezMPqknf9vYUR5G2AWK%2BEQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001247.html">
+   <LINK REL="Next"  HREF="001244.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX v0.9 r3231</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20v0.9%20r3231&In-Reply-To=%3CCALNQy49QOEFp6dmVESFq2zD%3DrfqPezMPqknf9vYUR5G2AWK%2BEQ%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJTX v0.9 r3231">ewpereira at gmail.com
+       </A><BR>
+    <I>Sat Apr 27 16:47:12 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001247.html">[Wsjt-devel] WSJTX v0.9 r3231
+</A></li>
+        <LI>Next message: <A HREF="001244.html">[Wsjt-devel] Welcome to AC6SL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1248">[ date ]</a>
+              <a href="thread.html#1248">[ thread ]</a>
+              <a href="subject.html#1248">[ subject ]</a>
+              <a href="author.html#1248">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Greg,
+
+One thing we need to keep in mind with packaging is to preserve the Qt
+application build mechanism (qmake). I have seen some attempts to not use
+qmake and this could make things very messy for us developers.
+
+73,
+
+-- Edson PY2SDR
+
+On Sat, Apr 27, 2013 at 10:49 AM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Greg,
+</I>&gt;<i>
+</I>&gt;<i> I am sure that we (I, for sure!) could benefit from your advice on
+</I>&gt;<i> packaging WSJT-X and its sister programs.
+</I>&gt;<i>
+</I>&gt;<i> We have taken some care to be sure that the WSJT-X code compiles and runs
+</I>&gt;<i> properly in Windows and Linux; we don't have anyone currently compiling the
+</I>&gt;<i> program in OS X or FreeBSD.  I make the Windows packages myself, simply
+</I>&gt;<i> using Inno Setup to bundle the executable and necessary support files into
+</I>&gt;<i> a Windows &quot;setup.exe&quot; file.  We don't yet have a standard packaging scheme
+</I>&gt;<i> for *nix.
+</I>&gt;<i>
+</I>&gt;<i> If you're interested, we'd be very happy to have your help and/or advice
+</I>&gt;<i> in devising a better system.
+</I>&gt;<i>
+</I>&gt;<i>         -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> PS: do you have a callsign?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 4/27/2013 9:14 AM, Greg Troxel wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Joe Taylor&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;  writes:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Hi David and all,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  r3231 dosent put the shortcut.txt and mouse_commands.txt into the
+</I>&gt;&gt;&gt;&gt;<i> wsjtx_install directory..had to do this by hand to get them to work
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Yes.  We haven't yet settled on a way to make a Linux distribution
+</I>&gt;&gt;&gt;<i> package.  For *nix, we are still in a &quot;compile and setup on your own&quot;
+</I>&gt;&gt;&gt;<i> way of doing things.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I would hope that when we're ready to do a &quot;Version 1.0&quot; release, we
+</I>&gt;&gt;&gt;<i> can also do at least a .deb package at the same time.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  From a packager viewpoint (I am one of the maintainers of pksrc, a
+</I>&gt;&gt;<i> multi-OS multi-CPU packaging system), the important thing is to have a
+</I>&gt;&gt;<i> clean and straightforward build that follows normal procedures.  Then,
+</I>&gt;&gt;<i> creating a package for almost all packaging systems is pretty easy.  So
+</I>&gt;&gt;<i> that means:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    in a README of some sort, describe the dependencies clearly, without
+</I>&gt;&gt;<i>    assuming much about the packaging system in use.  (The notion of
+</I>&gt;&gt;<i>    &quot;development packages&quot; to get include files and static libraries is a
+</I>&gt;&gt;<i>    linuxism; pkgsrc and other systems used on *BSD do not have this
+</I>&gt;&gt;<i>    split.)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    be able to ./configure, make, make install, using DESTDIR (to put the
+</I>&gt;&gt;<i>    installed files in a staging area; many packaging systems do that to
+</I>&gt;&gt;<i>    avoid having to be root to build and to avoid modifying the host
+</I>&gt;&gt;<i>    system).   autoconf isn't necessary, but the closer a program is to
+</I>&gt;&gt;<i>    one of the established mechanisms, the better.  packaging systems have
+</I>&gt;&gt;<i>    support for interacting with standard approaches.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    Install everything, including documentation, that the user is expected
+</I>&gt;&gt;<i>    to want to look at.  Include configure-time switches so that docs and
+</I>&gt;&gt;<i>    examples can be put in the directory that the packaging system's
+</I>&gt;&gt;<i>    placement rules expect.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    Ideally cross-compilation would be supported, via the normal autoconf
+</I>&gt;&gt;<i>    method.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  ______________________________**_________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/**mailman/listinfo/wsjt-devel&lt;https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>&gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130427/7fa26b90/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130427/7fa26b90/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001247.html">[Wsjt-devel] WSJTX v0.9 r3231
+</A></li>
+	<LI>Next message: <A HREF="001244.html">[Wsjt-devel] Welcome to AC6SL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1248">[ date ]</a>
+              <a href="thread.html#1248">[ thread ]</a>
+              <a href="subject.html#1248">[ subject ]</a>
+              <a href="author.html#1248">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

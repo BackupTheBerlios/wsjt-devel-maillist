@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73	functionality
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20async%20log%20QSO%20/%2073%0A%09functionality&In-Reply-To=%3C52E59A0A.2060102%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002110.html">
+   <LINK REL="Next"  HREF="002122.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73	functionality</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%20v1.2.2%20r3659%20async%20log%20QSO%20/%2073%0A%09functionality&In-Reply-To=%3C52E59A0A.2060102%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73	functionality">g4wjs at classdesign.com
+       </A><BR>
+    <I>Mon Jan 27 00:28:10 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002110.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73 functionality
+</A></li>
+        <LI>Next message: <A HREF="002122.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2119">[ date ]</a>
+              <a href="thread.html#2119">[ thread ]</a>
+              <a href="subject.html#2119">[ subject ]</a>
+              <a href="author.html#2119">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 26/01/2014 18:29, Bob McCormick W1QA wrote:
+Hi Bob,
+&gt;<i> I have these options checked / enabled:
+</I>&gt;<i> - Prompt me to log QSO
+</I>&gt;<i> - Tx disabled after sending 73
+</I>&gt;<i>
+</I>&gt;<i> Whilst in a JT9 QSO I was transmitting the R +dB sequence.  At 35 seconds in
+</I>&gt;<i> I clicked on the 73 button with the intention of preloading the next message
+</I>&gt;<i> in the sequence.  When the R +dB sequence completed transmission the Log QSO
+</I>&gt;<i> window opened.
+</I>&gt;<i>
+</I>&gt;<i> I waited for the RRR message to be received and then clicked OK in the Log
+</I>&gt;<i> QSO window.  That had the effect of toggling the Enable Tx function off.  I
+</I>&gt;<i> noticed that - and clicked Enable TX in time to get the 73 sequence
+</I>&gt;<i> successfully sent.
+</I>&gt;<i>
+</I>&gt;<i> And at the end of that sequence I got another Log QSO pop-up window.
+</I>&gt;<i>
+</I>&gt;<i> It would seem that by my clicking on the 73 button I've set a state
+</I>&gt;<i> somewhere that triggers the prompt for Log QSO no matter what the actual
+</I>&gt;<i> transmission was.  And with the other setting (to turn off transmit after
+</I>&gt;<i> 73) this logic results in two unexpected events.
+</I>&gt;<i>
+</I>&gt;<i> Would it be possible to adjust the code such that the post 73 sequence logic
+</I>&gt;<i> is only fired at the end of the real 73 sequence?
+</I>I suspect that what actually happened was that the message being sent 
+when you first clicked the &quot;73&quot; button changed from R+dB to the 73 
+message. Such changes of message are allowed during the TX period. The 
+rest of your description is consistent with that i.e. as far as the 
+program is concerned you changed your mind and switched to a 73 message 
+mid TX period. The shutdown of auto TX and the triggering of the log 
+window are following a valid 73 message being sent.
+
+It is best to only select the next message after the TX of the previous 
+message (more normally after the QSO partners decode has completed), 
+there is no &quot;TX message pre-loading&quot; capability as you describe it.
+&gt;<i>
+</I>&gt;<i> Bob W1QA
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002110.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO / 73 functionality
+</A></li>
+	<LI>Next message: <A HREF="002122.html">[Wsjt-devel] WSJT-X v1.2.2 r3659 async log QSO /	73	functionality
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2119">[ date ]</a>
+              <a href="thread.html#2119">[ thread ]</a>
+              <a href="subject.html#2119">[ subject ]</a>
+              <a href="author.html#2119">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

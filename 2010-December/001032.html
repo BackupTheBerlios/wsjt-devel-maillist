@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSPR Rev2283
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20Rev2283&In-Reply-To=%3C4CFFA499.8020908%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001031.html">
+   <LINK REL="Next"  HREF="001033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSPR Rev2283</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSPR%20Rev2283&In-Reply-To=%3C4CFFA499.8020908%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSPR Rev2283">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Dec  8 16:30:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001031.html">[Wsjt-devel] WSPR Rev2283
+</A></li>
+        <LI>Next message: <A HREF="001033.html">[Wsjt-devel] WSPR Rev2283
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1032">[ date ]</a>
+              <a href="thread.html#1032">[ thread ]</a>
+              <a href="subject.html#1032">[ subject ]</a>
+              <a href="author.html#1032">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi John,
+
+I've done a bit more testing here, too.
+
+In Windows, the only scheduling policy is SCHED_OTHER.  It permits 
+thread priorities between -15 and +15, with default 0.
+
+In Linux, the default scheduling policy is SCHED_OTHER, but SCHED_FIFO 
+and SCHED_RR are permitted if the program is run as root.  With 
+policy=SCHED_OTHER, thread priority is always 0.  With SCHED_FIFO and 
+SCHED_RR, thread priorities can range from 1 to 99.
+
+I guess from your report that in Mac OS X is simmilar to Linux except 
+the priority range is 15 to 47 rather than 1 to 99.
+
+I'm not sure that any of this is important for WSJT or WSPR.  Portaudio 
+and the soundcard drivers already manage priorities suitably for the 
+audio I/O tasks, so it's not clear that raising the priorities of WSPR 
+threads rx and tx above normal really does anything useful.  Possibly 
+the wspr2 thread (which handles scheduling within WSPR) should be &quot;above 
+normal&quot;, and the decode thread &quot;below normal&quot;.  This would be easy in 
+Windows, though a need for it is not clearly established.  In Linux or 
+Mac OS X we could use the SCHED_FIFO policy and then adjust priorities, 
+but again the need for it is not clearly established.
+
+Maybe it's best to leave well enough alone?  ... at least until we 
+demonstrate that there can be a timing problem.
+
+	-- Joe
+
+On 12/8/2010 5:49 AM, John Nelson wrote:
+&gt;<i> Hi Joe,
+</I>&gt;<i>
+</I>&gt;<i> I ran tests to find sched_get_priority ranges if SCHED_OTHER is used
+</I>&gt;<i>
+</I>&gt;<i> On Mac OS X: 15 to 47 (following the POSIX standard for SCHED_FIFO were
+</I>&gt;<i> at least 32 priority values should be defined).
+</I>&gt;<i> On Linux: 0 to 0 (SCHED_OTHER - the standard does not require that there
+</I>&gt;<i> be defined priorities)
+</I>&gt;<i> 1 to 99 (SCHED_FIFO)
+</I>&gt;<i>
+</I>&gt;<i> If WSPR is to be platform independent, then it might be best to use
+</I>&gt;<i> SCHED_FIFO (rather than SCHED_RR) and not SCHED_OTHER.
+</I>&gt;<i>
+</I>&gt;<i> It might also be best to decide on the middle range first by using
+</I>&gt;<i> sched_get_priority_max and sched_get_priority_min and taking the mean.
+</I>&gt;<i> Then raise and lower thread priority around that mean value. This would
+</I>&gt;<i> then work correctly on different platforms with different
+</I>&gt;<i> implementations of threading code.
+</I>&gt;<i>
+</I>&gt;<i> (I use this scheme in multi-threaded code I have written for Linux
+</I>&gt;<i> dealing with real-time data acquisition....)
+</I>&gt;<i>
+</I>&gt;<i> Comments Sivan?
+</I>&gt;<i>
+</I>&gt;<i> -- John G4KLA
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001031.html">[Wsjt-devel] WSPR Rev2283
+</A></li>
+	<LI>Next message: <A HREF="001033.html">[Wsjt-devel] WSPR Rev2283
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1032">[ date ]</a>
+              <a href="thread.html#1032">[ thread ]</a>
+              <a href="subject.html#1032">[ subject ]</a>
+              <a href="author.html#1032">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

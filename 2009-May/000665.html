@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] ./configure doesn't generate makefile
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20./configure%20doesn%27t%20generate%20makefile&In-Reply-To=%3C4A1348AF.9010405%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000664.html">
+   <LINK REL="Next"  HREF="000666.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] ./configure doesn't generate makefile</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20./configure%20doesn%27t%20generate%20makefile&In-Reply-To=%3C4A1348AF.9010405%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] ./configure doesn't generate makefile">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed May 20 02:02:55 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000664.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+        <LI>Next message: <A HREF="000666.html">[Wsjt-devel] compile on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#665">[ date ]</a>
+              <a href="thread.html#665">[ thread ]</a>
+              <a href="subject.html#665">[ subject ]</a>
+              <a href="author.html#665">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Jeff and all,
+
+WA1HCO wrote:
+&gt;<i> map65.py croaks if it doesn't have a WSJT.LOG file
+</I>
+Yes, that has always been true.  Just make an empty one.  One of these 
+days, I'll correct this minor flaw.
+
+&gt;<i> Testing g95 produced a running map65.  Why does the last stage take so 
+</I>&gt;<i> long, several minutes!?
+</I>
+It's a big program.  I suppose the optimizer is thinking things over.
+
+For reference: here, on a somewhat elderly Linux machine it compiles in 
+2.0 minutes.  On a somewhat newer Win/XP machine with MinGW it compiles 
+in 1.4 minutes.
+
+&gt;<i> Testing gfortran showed crashes.  Printf shows that it occurs after the 
+</I>&gt;<i> first thread creation.  This snippet from start_portaudio.c never prints 
+</I>&gt;<i> the &quot;after 1st...&quot; message.
+</I>
+This is our well-known problem with gfortran.  (See the wsjt-devel 
+traffic earlier today, and earlier as well.)  Probably the same kind of 
+fixes as those made today to WSJT will correct it.
+
+For now, if you want a working program, use g95.  Or use the 
+&quot;production&quot; version, on the WSJT web site, which is compiled with 
+Compaq Visual Fortran.
+
+MAP65 has a few rough edges.  The number of users is probably a few 
+dozen, as opposed to the several thousand users of WSJT and WSPR.  As a 
+consequence, given my limited time I don't feel the need for nearly as 
+much &quot;polish&quot; as is warranted on the other programs.
+
+I've been a heavy user of MAP65 for nearly two years, and a very happy 
+one.  The program provides amazing capabilities for EME.
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000664.html">[Wsjt-devel] ./configure doesn't generate makefile
+</A></li>
+	<LI>Next message: <A HREF="000666.html">[Wsjt-devel] compile on Ubuntu 9.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#665">[ date ]</a>
+              <a href="thread.html#665">[ thread ]</a>
+              <a href="subject.html#665">[ subject ]</a>
+              <a href="author.html#665">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

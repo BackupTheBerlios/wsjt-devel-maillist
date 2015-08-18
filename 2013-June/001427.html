@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3CCALNQy4_3Lbv2dGGa8aZ79MbVBrg%2BzxprxnxunN1Fq2At4mz%3DEw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001422.html">
+   <LINK REL="Next"  HREF="001425.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals</H1>
+    <B>Edson W. R. Pereira</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20r3421%20unable%20to%20decode%20JT9%20signals&In-Reply-To=%3CCALNQy4_3Lbv2dGGa8aZ79MbVBrg%2BzxprxnxunN1Fq2At4mz%3DEw%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals">ewpereira at gmail.com
+       </A><BR>
+    <I>Sun Jun 30 21:23:01 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001422.html">[Wsjt-devel] r3426 on Linux
+</A></li>
+        <LI>Next message: <A HREF="001425.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1427">[ date ]</a>
+              <a href="thread.html#1427">[ thread ]</a>
+              <a href="subject.html#1427">[ subject ]</a>
+              <a href="author.html#1427">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+On my system, r3348 simply does not decode any JT9 signals. I've double
+checked the binary and did a clean make. Spectrum scrolls normally, the jt9
+process is loaded and is running. JT65 signals are being decoded fine
+(without kvasd). I've tried JT9, JT65 and JT9+JT65 mode combinations.
+
+I am attaching the wav file I cannot decode with r3348. Could you try on
+your system and see if you can decode?
+
+Is there anyone on the list successfully running r3348 using Ubuntu 12.04.2
+64-bits?
+
+73,
+
+-- Edson PY2SDR
+
+On Sat, Jun 29, 2013 at 4:15 PM, Joe Taylor &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at princeton.edu</A>&gt; wrote:
+
+&gt;<i> Hi Edson,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  I did try running from the file menu, but the decoder silently fails. If I
+</I>&gt;&gt;<i> do the same on r3348, the decoder works.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> It's running OK here, in both Windows and Linux -- from within WSJT-X and
+</I>&gt;<i> from the command line.
+</I>&gt;<i>
+</I>&gt;<i> Here's the output from r3424, using the command line in Windows:
+</I>&gt;<i>
+</I>&gt;<i> C:\Users\joe\wsjt_k1jt\wsjtx_**install&gt;jt9  1 4
+</I>&gt;<i> save/Samples/130610_2343.wav
+</I>&gt;<i> 2343  -7  0.3 3196 @ WB8QPG IZ0MIT -11
+</I>&gt;<i> 2343 -16  1.0 3372 @ KK4HEG KE0CO CN87
+</I>&gt;<i> 2343  16  0.1 3490 @ CQ AG4M EM75
+</I>&gt;<i> 2343 -18 -1.3 3567 @ CQ TA4A KM37
+</I>&gt;<i> 2343 -14  0.1 3627 @ CT1FBK IK5YZT R+02
+</I>&gt;<i> 2343 -22  0.3 3721 @ KF5SLN KB1SUA FN42
+</I>&gt;<i> 2343 -15  0.2 3774 @ CQ M0ABA JO01
+</I>&gt;<i> 2343  -1  0.2 3843 @ EI3HGB DD2EE JO31
+</I>&gt;<i> 2343 -19  0.3  718 # VE6WQ SQ2NIJ -14
+</I>&gt;<i> 2343  -7  0.3  815 # KK4DSD W7VP -16
+</I>&gt;<i> 2343 -10  0.5  975 # CQ DL7ACA JO40
+</I>&gt;<i> 2343  -9  0.8 1089 # N2SU W0JMW R-14
+</I>&gt;<i> 2343 -11  0.8 1259 # YV6BFE F6GUU R-08
+</I>&gt;<i> 2343  -9  1.6 1471 # VA3UG F1HMR 73
+</I>&gt;<i> 2343  -1  0.6 1718 # BG THX JOE 73
+</I>&gt;<i> 2343 -14  1.3 1951 # RA3Y VE3NLS 73
+</I>&gt;<i> 2343 -20  0.4 2065 # K2OI AJ4UU R-20
+</I>&gt;<i> &lt;DecodeFinished&gt;   1   1
+</I>&gt;<i>
+</I>&gt;<i> Here's the same thing in Linux:
+</I>&gt;<i>
+</I>&gt;<i> Opti745% pwd
+</I>&gt;<i> /home/joe/wsjt_k1jt/wsjtx_**install
+</I>&gt;<i> Opti745% jt9 1 4 save/Samples/130610_2343.wav
+</I>&gt;<i> 2343  -7  0.3 3196 @ WB8QPG IZ0MIT -11
+</I>&gt;<i> 2343 -16  1.0 3372 @ KK4HEG KE0CO CN87
+</I>&gt;<i> 2343  16  0.1 3490 @ CQ AG4M EM75
+</I>&gt;<i> 2343 -18 -1.3 3567 @ CQ TA4A KM37
+</I>&gt;<i> 2343 -14  0.1 3627 @ CT1FBK IK5YZT R+02
+</I>&gt;<i> 2343 -22  0.3 3721 @ KF5SLN KB1SUA FN42
+</I>&gt;<i> 2343 -15  0.2 3774 @ CQ M0ABA JO01
+</I>&gt;<i> 2343  -1  0.2 3843 @ EI3HGB DD2EE JO31
+</I>&gt;<i> 2343 -19  0.3  718 # VE6WQ SQ2NIJ -14
+</I>&gt;<i> 2343  -7  0.3  815 # KK4DSD W7VP -16
+</I>&gt;<i> 2343 -10  0.5  975 # CQ DL7ACA JO40
+</I>&gt;<i> 2343  -9  0.8 1089 # N2SU W0JMW R-14
+</I>&gt;<i> 2343 -11  0.8 1259 # YV6BFE F6GUU R-08
+</I>&gt;<i> 2343  -9  1.6 1471 # VA3UG F1HMR 73
+</I>&gt;<i> 2343  -1  0.6 1718 # BG THX JOE 73
+</I>&gt;<i> 2343 -14  1.3 1951 # RA3Y VE3NLS 73
+</I>&gt;<i> 2343 -20  0.4 2065 # K2OI AJ4UU R-20
+</I>&gt;<i> &lt;DecodeFinished&gt;   1   1
+</I>&gt;<i> Opti745%
+</I>&gt;<i>
+</I>&gt;<i> Are you sure that you're using the version of jt9 compiled from r3424?
+</I>&gt;<i>
+</I>&gt;<i> BTW: You're right about kvasd: it's used only for JT65.
+</I>&gt;<i>
+</I>&gt;<i>         -- Joe
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130630/412bb51a/attachment-0001.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130630/412bb51a/attachment-0001.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: 130629_1553.wav
+Type: audio/x-wav
+Size: 1440044 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130630/412bb51a/attachment-0001.wav">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130630/412bb51a/attachment-0001.wav</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001422.html">[Wsjt-devel] r3426 on Linux
+</A></li>
+	<LI>Next message: <A HREF="001425.html">[Wsjt-devel] WSJTX r3421 unable to decode JT9 signals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1427">[ date ]</a>
+              <a href="thread.html#1427">[ thread ]</a>
+              <a href="subject.html#1427">[ subject ]</a>
+              <a href="author.html#1427">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

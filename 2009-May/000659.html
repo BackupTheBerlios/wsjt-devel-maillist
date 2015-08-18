@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] gfortran
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090519194148.GA37687%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000658.html">
+   <LINK REL="Next"  HREF="000660.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] gfortran</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20gfortran&In-Reply-To=%3C20090519194148.GA37687%40night.db.net%3E"
+       TITLE="[Wsjt-devel] gfortran">db at db.net
+       </A><BR>
+    <I>Tue May 19 21:41:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000658.html">[Wsjt-devel] gfortran
+</A></li>
+        <LI>Next message: <A HREF="000660.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, May 19, 2009 at 02:22:31PM -0400, Joe Taylor wrote:
+&gt;<i> Hi Stu,
+</I>&gt;<i>
+</I>&gt;<i> Many thanks for the information... it's consistent with what
+</I>&gt;<i> I had concluded.
+</I>
+I had a look at the source code for gfortran and g95. The gfortran
+code appears to be thread safe with local variable space, but I have
+not fully analysed it yet. What is far more interesting is gfortran
+has write.c format.c etc. and I have not found the equivalent code in the g95
+code yet. I'll keep looking.
+
+&gt;<i> Does it make sense to you that when we compile with g95 or
+</I>&gt;<i> Compaq Visual Fortran, or use C fprintf() calls instead of
+</I>&gt;<i> fortran write(), the program works OK?
+</I>
+It is still quite possible we are blowing up the thread space, which
+would explain why gfortran has worked on some platforms and not others.
+A common implementation of threads allocates a separate stack for each
+thread, if a stack happens to overflow into the thread stack below it,
+it can easily crash the program in seemingly random ways.
+
+For example on my system. (7.2-RELEASE FreeBSD)
+
+**** stack.c ****
+#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+
+int
+main(void)
+{
+        pthread_attr_t attr;
+        size_t stacksize;
+
+        pthread_attr_init(&amp;attr);
+        pthread_attr_getstacksize(&amp;attr, &amp;stacksize);
+
+        printf(&quot;stacksize = %x\n&quot;, stacksize);
+}
+**** end of stack.c ****
+% cc -o stack stack.c -lpthread
+% ./stack
+stacksize = 100000
+
+I'd be curious to see the stacksizes allocated on machines where gfortran
+has been failing.
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000658.html">[Wsjt-devel] gfortran
+</A></li>
+	<LI>Next message: <A HREF="000660.html">[Wsjt-devel] gfortran
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

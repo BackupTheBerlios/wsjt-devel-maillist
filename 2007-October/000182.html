@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Experimental Digital Modes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20Digital%20Modes&In-Reply-To=%3C470E5043.6060908%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000181.html">
+   <LINK REL="Next"  HREF="000183.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Experimental Digital Modes</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20Digital%20Modes&In-Reply-To=%3C470E5043.6060908%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Experimental Digital Modes">joe at Princeton.EDU
+       </A><BR>
+    <I>Thu Oct 11 18:33:07 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000181.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+        <LI>Next message: <A HREF="000183.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#182">[ date ]</a>
+              <a href="thread.html#182">[ thread ]</a>
+              <a href="subject.html#182">[ subject ]</a>
+              <a href="author.html#182">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To:      Users of WSJT
+From:    Joe Taylor, K1JT
+Subject: Experimental Modes JT2 and JT4
+Date:    October 11, 2007
+
+Thanks to all who have tested the experimental modes JT2 and 
+JT4 in WSJT 5.9.8 r558 ... and special thanks if you 
+reported your observations to me or on one of the relevant 
+reflectors, or sent me representative wave files.  I can 
+report that over the past few days QSOs have now been made 
+with both JT2 and JT4 on amateur bands and propagation modes 
+ranging from trans-Atlantic nighttime DX on 1.8 MHz to 144 
+MHz EME.  In addition, JT4 has been used to send and receive 
+messages on 10 GHz EME.
+
+If you have not sent comments or a report, it's not too 
+late!  Please note that some of the most useful wave files 
+are those containing received signals that you think 
+&quot;should&quot; have decoded, but did not.  I am interested in 
+reports of all types of on-the-air tests, from HF to microwaves.
+
+As described in the announcement posted several days ago at 
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT">http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT</A> , the 
+new modes are basically functional but do not yet have 
+certain amenities that JT65 users are accustomed to.  The 
+new modes show considerable promise, but for a number of 
+reasons they are not yet ready for general use:
+
+1. Decoding performance is overly dependent on the average 
+audio level at the sound card input, and perhaps other factors.
+
+2. Software AFC should be included, to correct small 
+frequency drifts.
+
+3. Options for message averaging and matched filtering 
+should be included in the decoders.
+
+These improvements should not be very difficult to make, but 
+my own schedule is such that they will probably take at 
+least some weeks to complete.
+
+
+I have not heard much from others about the appearance of 
+JT2 and JT4 signals on the SpecJT waterfall, or the 
+perceived operational importance of the narrow bandwidths of 
+these modes compared to JT65.  Some relevant facts are these:
+
+1. JT65B, the dominant mode for 144 MHz EME, has bandwidth 
+B=355 Hz.  JT65A, mostly used on HF and 50 MHz, had B=177 
+Hz.  These modes have a narrow &quot;sync tone&quot; only 2.7 Hz wide, 
+which is easy to recognize on a waterfall display.
+
+2. JT2 has bandwidth B=8.75 Hz and JT4A B=17.5 Hz.  In these 
+modes sync information is embedded in the data stream. 
+Waterfall traces of JT2 and JT4 signals are therefore much 
+narrower than the full extent of JT65 signals, but appear 
+&quot;fuzzy&quot; compared to the JT65 sync tone.
+
+3. Many JT2 or JT4A signals can fit into the bandpass of a 
+standard SSB transceiver without interfering.  This means 
+that random digital EME operation could become easy if, for 
+example, JT2 activity were concentrated in a relatively 
+small (5 or 10 kHz?) portion of each band.  It would then be 
+possible for WSJT to acquire many of the advantages of the 
+MAP65 software, which at present are available only to those 
+with wide-band receiving systems like Linrad.
+
+4. The probability for collisions between JT65 signals or 
+between a JT65 signal and a birdie is much larger than that 
+for the much narrower JT2 or JT4A signals.  On the other 
+hand, the JT65 decoder is relatively mature and has been 
+made remarkably immune to QRM.  The performance of JT2 and 
+JT4 in comparable situations is not yet known.
+
+Community input on these matters is needed!  Assuming that 
+the present deficiencies of JT2/JT4 can be corrected, so 
+that S/N performance is essentially equal to that of JT65, 
+do you consider the narrow bandwidth of JT2/JT4 to be a 
+significant advantage?  Or should we forget about JT2/JT4 
+(at least on bands where JT65 is now widely used), and stick 
+with JT65?  Please share your views on these and any other 
+questions you think relevant.
+
+	  -- 73, Joe, K1JT
+
+PS: I will be traveling for much of the next week, so any 
+responses will likely be delayed.
+
+For reference:
+
+The original announcement about JT2 and JT4 is at 
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT">http://physics.princeton.edu/pulsar/K1JT/JT2_JT4.TXT</A> .
+
+The experimental version of WSJT with these modes can be 
+downloaded from 
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT598.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT598.EXE</A> .
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000181.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+	<LI>Next message: <A HREF="000183.html">[Wsjt-devel] Experimental Digital Modes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#182">[ date ]</a>
+              <a href="thread.html#182">[ thread ]</a>
+              <a href="subject.html#182">[ subject ]</a>
+              <a href="author.html#182">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

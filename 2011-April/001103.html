@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT9%20Graphic%20window%20bug%20in%20JT4%20%3F%3F%3F%20%2B%20Various&In-Reply-To=%3C002501cbf3e3%2461f9aeb0%24fa01a8c0%40shack2%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001102.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various</H1>
+    <B>David GM6BIG</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT9%20Graphic%20window%20bug%20in%20JT4%20%3F%3F%3F%20%2B%20Various&In-Reply-To=%3C002501cbf3e3%2461f9aeb0%24fa01a8c0%40shack2%3E"
+       TITLE="[Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various">freevil at tiscali.co.uk
+       </A><BR>
+    <I>Wed Apr  6 00:47:02 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001102.html">[Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1103">[ date ]</a>
+              <a href="thread.html#1103">[ thread ]</a>
+              <a href="subject.html#1103">[ subject ]</a>
+              <a href="author.html#1103">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe,
+
+Good to hear it was an easy fix.
+Just a little bug, but better to squash it before it bites.
+
+FB on the filtering - I should have made the connection with the keying 
+rate...
+Still learning here :)
+
+Thanks, DAvid
+
+
+
+
+----- Original Message ----- 
+From: &quot;Joe Taylor&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">joe at Princeton.EDU</A>&gt;
+To: &quot;WSJT Devel&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">wsjt-devel at lists.berlios.de</A>&gt;
+Sent: Tuesday, April 05, 2011 3:36 PM
+Subject: Re: [Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various
+
+
+&gt;<i> Hi David,
+</I>&gt;<i>
+</I>&gt;<i> Many thanks for catching the WSJT bug that can prevent graphic output in 
+</I>&gt;<i> the JT4 modes.  I guess I change modes so frequently, during testing 
+</I>&gt;<i> sessions, that I never noticed it.
+</I>&gt;<i>
+</I>&gt;<i> It was easy to fix.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Also, in the grabs you will see successful decodes of -24 and -25 using
+</I>&gt;&gt;<i> the A or B filters.
+</I>&gt;&gt;<i> Looks like it may be possible to us a still narrower filter (in this
+</I>&gt;&gt;<i> unscattered, non doppler shifted mode...).
+</I>&gt;&gt;<i> Would it be possible to try that...??
+</I>&gt;<i>
+</I>&gt;<i> Sorry, no.
+</I>&gt;<i>
+</I>&gt;<i> Not because of any programming issue; it's just basic physics.  The JT4A 
+</I>&gt;<i> mode (and the &quot;A&quot; filter in any of the other JT4 sub-modes) uses channel 
+</I>&gt;<i> bandwidth equal to the keying rate, 4.375 Hz.  This means the switched 
+</I>&gt;<i> tones are actually that wide, and any narrower filters would remove signal 
+</I>&gt;<i> as well as noise.
+</I>&gt;<i>
+</I>&gt;<i> -- 73, Joe, K1JT
+</I>&gt;<i>
+</I>&gt;<i> PS: I haven't posted a release with this bug fixed, because I'm presently 
+</I>&gt;<i> working on other enhancements.  I imagine that this bug is sufficiently 
+</I>&gt;<i> minor that you can wait...
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001102.html">[Wsjt-devel] WSJT9 Graphic window bug in JT4 ??? + Various
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1103">[ date ]</a>
+              <a href="thread.html#1103">[ thread ]</a>
+              <a href="subject.html#1103">[ subject ]</a>
+              <a href="author.html#1103">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

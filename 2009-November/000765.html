@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Alsa messages; Debian packages
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AEEE21E.8010505%40mail.bg%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000764.html">
+   <LINK REL="Next"  HREF="000766.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Alsa messages; Debian packages</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Alsa%20messages%3B%20Debian%20packages&In-Reply-To=%3C4AEEE21E.8010505%40mail.bg%3E"
+       TITLE="[Wsjt-devel] Alsa messages; Debian packages">hdpopov at gmail.com
+       </A><BR>
+    <I>Mon Nov  2 14:43:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000764.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+        <LI>Next message: <A HREF="000766.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#765">[ date ]</a>
+              <a href="thread.html#765">[ thread ]</a>
+              <a href="subject.html#765">[ subject ]</a>
+              <a href="author.html#765">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Taylor wrote:
+
+&gt;<i> 1. I have implemented a &quot;make deb&quot; command that creates a 
+</I>&gt;<i> *.deb package that installs easily on Ubuntu (and possible 
+</I>&gt;<i> other Debian-based linux distributions). 
+</I>&gt;<i> 
+</I>&gt;<i> If you download this file you can install and execute WSPR 
+</I>&gt;<i> on Ubuntu with the command
+</I>&gt;<i> 
+</I>&gt;<i> % sudo dpkg --instdir=. -i wspr_2.00r1596_i386.deb
+</I>&gt;<i> % cd WSPR
+</I>&gt;<i> % ./wspr
+</I>&gt;<i> 
+</I>&gt;<i> I'm told that if you use GUI methods -- download the file to 
+</I>&gt;<i> the Ubuntu desktop and double-click on it -- WSPR is 
+</I>&gt;<i> installed under the root directory, i.e., at /WSPR.  Does 
+</I>&gt;<i> anybody know how to change the .deb file so that it will go 
+</I>&gt;<i> into a better place such as $HOME ?  Is this the best place?
+</I>
+Hi Joe,
+
+It is not a good idea to install all files of any Linux programs in one 
+and the same folder. This is fine in Windows but in Linux the developers 
+have created strict rules which file where to be installed.
+
+Here is an example where I install each of the files of WSJT in the rpms 
+which I prepared ago. The Linux rules are the same for both deb and rpm 
+development. Actually they are the same rules used in the original 
+Ubuntu WSJT deb file.
+
+Yes the program  will work fine if you install all files in one folder 
+but this is out of the Linux rules. I kindly please you to remove &quot;make 
+deb&quot; command until things are regulated. Other way we will distribute at 
+least bad manners between Linux users. Breaking the Linux rules is 
+actually much worst than bad manners.
+
+/usr/bin/KVASD
+/usr/bin/wsjt
+/usr/lib/wsjt/Audio.so
+/usr/share/doc/wsjt/WSJT_User_600.pdf
+/usr/share/doc/wsjt/WSJT_Quick_Reference.pdf
+/usr/share/doc/wsjt/changelog.gz
+/usr/share/doc/wsjt/copyright
+/usr/share/doc/wsjt/examples
+/usr/share/doc/wsjt/examples/W8WN_010809_110400.WAV
+/usr/share/pixmaps/wsjt-mini.xpm
+/usr/share/pixmaps/wsjt.png
+/usr/share/pixmaps/wsjt.xpm
+/usr/share/wsjt/CALL3.TXT.gz
+/usr/share/wsjt/Pmw.py
+/usr/share/wsjt/PmwBlt.py
+/usr/share/wsjt/PmwColor.py
+/usr/share/wsjt/TSKY.DAT.gz
+/usr/share/wsjt/astro.py
+/usr/share/wsjt/g.py
+/usr/share/wsjt/options.py
+/usr/share/wsjt/palettes.py
+/usr/share/wsjt/smeter.py
+/usr/share/wsjt/specjt.py
+/usr/share/wsjt/wsjt.py
+/usr/share/wsjt/wsjtrc
+
+I do start the program by a wrapper named wsjt. It check and if not 
+existing creates ~/.wsjt folder and populate it with some necessory 
+files. Actually this happens only once at the first start. Here is the 
+wrapper which actually I shamesly plagiarized from Hamish, VK3SB:
+
+#!/bin/sh
+if [ -e /usr/local/bin/python ] ; then
+	LOCALBASE=/usr/local/
+else
+	LOCALBASE=/usr/
+fi
+if [ ! -e ~/.wsjt ] ; then
+	mkdir ~/.wsjt
+	mkdir ~/.wsjt/RxWav
+fi
+if [ ! -e ~/.wsjt/CALL3.TXT ] ; then
+	cp -f ${LOCALBASE}/share/wsjt/CALL3.TXT ~/.wsjt
+fi
+cd ~/.wsjt
+python ${LOCALBASE}/bin/wsjt.py
+
+I hope this helps.
+
+73, Harry LZ1BB
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000764.html">[Wsjt-devel] wspr 2.0_r1612 serial port TX not working
+</A></li>
+	<LI>Next message: <A HREF="000766.html">[Wsjt-devel] Alsa messages; Debian packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#765">[ date ]</a>
+              <a href="thread.html#765">[ thread ]</a>
+              <a href="subject.html#765">[ subject ]</a>
+              <a href="author.html#765">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

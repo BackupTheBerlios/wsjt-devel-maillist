@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Segmentation Fault in Ubuntu Gutsy distro
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Segmentation%20Fault%20in%20Ubuntu%20Gutsy%20distro&In-Reply-To=%3C1212675356.3814.19.camel%40ham%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000300.html">
+   <LINK REL="Next"  HREF="000302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Segmentation Fault in Ubuntu Gutsy distro</H1>
+    <B>Harry Popov</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Segmentation%20Fault%20in%20Ubuntu%20Gutsy%20distro&In-Reply-To=%3C1212675356.3814.19.camel%40ham%3E"
+       TITLE="[Wsjt-devel] Segmentation Fault in Ubuntu Gutsy distro">lz1bb at mail.bg
+       </A><BR>
+    <I>Thu Jun  5 16:15:55 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000300.html">[Wsjt-devel] WSPR crash Mandriva 2008.1
+</A></li>
+        <LI>Next message: <A HREF="000302.html">[Wsjt-devel] Reminder about WSJT development
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I reproduced the problem in Debian Testing too. WSJT compiles. But when
+started I see program interface for a while and program crashes. No
+error messages except &quot;segmentation fault&quot;. This is while wsjt is
+compiled with gfortran. If I compile with g95 then it compiles and start
+fine. But period id name in main interface is always with name 00000.
+
+BTW several Ubuntu users reported segmentation error while compiling
+with gfortran. They reported wsjt deb is not working after fresh Ubuntu
+install. It worked ONLY if distro-uppgrade was performed to upgrade to
+next Ubuntu release.
+
+BTW WSJT Deb is *NOT* working in Debian Testing since a long time. I
+reported but there was not any attention. It broked after an update. But
+I can not remember what was updated. Not working since then.
+
+73, Harry LZ1BB
+
+On Sat, 2008-03-01 at 10:56 +1100, Hamish Moffatt wrote:
+&gt;<i> On Fri, Feb 29, 2008 at 09:14:04AM -0700, <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">douglas.j.wetzel at L-3com.com</A> wrote:
+</I>&gt;<i> &gt; Lurking here, I haven't seen a discussion of the segmentation fault crash that I have seen and has been reported to the Ubuntu dev group in the Gutsy Gibbon  7.1 distro.  I haven't yet tried to compile under 7.1, but I'm curious whether that would fix the crash, or if there's some insight as to the cause.
+</I>&gt;<i> 
+</I>&gt;<i> Ubuntu's package is just a recompile of my Debian package. I installed
+</I>&gt;<i> wsjt in my gutsy installation here and it ran OK though.
+</I>&gt;<i> 
+</I>&gt;<i> You need to install the package python-numpy manually, as there is a
+</I>&gt;<i> missing dependency (which has been fixed for the upcoming Hardy/8.04
+</I>&gt;<i> release). However that causes it not to start at all, rather than
+</I>&gt;<i> crashing.
+</I>&gt;<i> 
+</I>&gt;<i> Can you send more details? Or a pointer to a bug report in Launchpad
+</I>&gt;<i> etc?
+</I>&gt;<i> 
+</I>&gt;<i> Hamish
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000300.html">[Wsjt-devel] WSPR crash Mandriva 2008.1
+</A></li>
+	<LI>Next message: <A HREF="000302.html">[Wsjt-devel] Reminder about WSJT development
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

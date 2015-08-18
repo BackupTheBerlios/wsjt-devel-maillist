@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on Debian 5.0.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-August/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Debian%205.0.1&In-Reply-To=%3C200908091135.53428.pinozollo%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000737.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on Debian 5.0.1</H1>
+    <B>Pino Zollo</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Debian%205.0.1&In-Reply-To=%3C200908091135.53428.pinozollo%40gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT on Debian 5.0.1">pinozollo at gmail.com
+       </A><BR>
+    <I>Sun Aug  9 17:35:53 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000737.html">[Wsjt-devel] Information for Mac OS X users
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#738">[ date ]</a>
+              <a href="thread.html#738">[ thread ]</a>
+              <a href="subject.html#738">[ subject ]</a>
+              <a href="author.html#738">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody from Pino ZP4KFX
+
+I am new to the list...maybe somebody can give me some help.
+
+WSJT 6 is working fine on my hardware on  Debian 4.0, but the version which 
+comes with Debian 5.0 does not work.
+
+So I did try to compile version 7 from the source distribution....it was a 
+good match but the i did succeed finally.
+
+....but I get the same error as on the distributed version.
+
+-----------------
+ wsjt
+******************************************************************
+WSJT Version 7.03 r1090 , by K1JT
+Revision date: 2009-03-03 11:03:26 -0500 (Tue, 03 Mar 2009) 
+Run date:   Sun Aug  9 15:20:37 2009 UTC
+0-th dimension must be 12 but got 0 (not defined).
+Traceback (most recent call last):
+  File &quot;/usr//bin/wsjt.py&quot;, line 2518, in &lt;module&gt;
+    ModeFSK441()
+  File &quot;/usr//bin/wsjt.py&quot;, line 617, in ModeFSK441
+    GenStdMsgs()
+  File &quot;/usr//bin/wsjt.py&quot;, line 1342, in GenStdMsgs
+    Audio.gcom2.hiscall=(ToRadio.get()+(' '*12))[:12]
+SystemError: error return without exception set
+-------------------
+
+Here is how I did to compile:
+
+I first tried version wsjt-5.9.7.r386 . It compiles but does not recognise the 
+portaudio-V19 which are installed on my computer.
+It uses its own.
+It gives the same error as shown above.
+
+Then tried wsjt-7.03_r1090 ....it also does not recognise portaudio-V19 but 
+can not compile its own, so a moved  into a directory the libs as compiled by 
+wsjt-5.9.7.r386 and I could finally compile using:
+
+./configure  --with-portaudio-include-dir=/usr/include/portaudio19 --with-portaudio-lib-dir=/usr/lib/portaudio19
+
+Always the same error as above at running.
+Then tried also adding --enable-g95 to use a different FORTRAN compiler but no 
+improvement.
+
+Can somebody give me a help. ...
+
+Best 73
+
+Pino ZP4KFX
+-- 
+Key ID: 0xF6768208 
+Key fingerprint = B16D 0A7C 5B29 A334 CE6A  71F6 EAF8 3D88 F676 8208
+Key server: <A HREF="hkp://wwwkeys.eu.pgp.net">hkp://wwwkeys.eu.pgp.net</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000737.html">[Wsjt-devel] Information for Mac OS X users
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#738">[ date ]</a>
+              <a href="thread.html#738">[ thread ]</a>
+              <a href="subject.html#738">[ subject ]</a>
+              <a href="author.html#738">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

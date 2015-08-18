@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C20080530212857.GA41666%40night.db.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000278.html">
+   <LINK REL="Next"  HREF="000280.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]</H1>
+    <B>Diane Bruce</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20%5Bdb%40db.net%3A%20Re%3A%20%20wspr%20run%20error%20Debian%20Linux%5D&In-Reply-To=%3C20080530212857.GA41666%40night.db.net%3E"
+       TITLE="[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]">db at db.net
+       </A><BR>
+    <I>Fri May 30 23:28:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000278.html">[Wsjt-devel] wspr run error Debian Linux
+</A></li>
+        <LI>Next message: <A HREF="000280.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Oooooopsies. I thought I had forwarded this to the list, not privately
+to Tim!
+
+----- Forwarded message from Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt; -----
+
+Date: Fri, 30 May 2008 12:31:57 -0400
+From: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+To: Diane Bruce &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A>&gt;
+Cc: Tim Gimmel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">tjg at gimmel.org</A>&gt;
+Subject: Re: [Wsjt-devel] wspr run error Debian Linux
+In-Reply-To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">20080530045340.GA79258 at night.db.net</A>&gt;
+User-Agent: Mutt/1.4.2.3i
+X-UIDL: )k!#!8UP!!,6M&quot;!Kf:!!
+X-Bogosity: Ham, tests=bogofilter, spamicity=0.000000, version=1.1.7
+
+Ok,
+
+The good news and the bad news.
+
+I have it mostly sorted out here finally, with the side effect
+that both gfortran and g95 will work now. As I expected, g95 and gfortran
+take different options to compile properly -and- the options to f2py
+change. The -fcompiler option is different for gnu95 vs. gfortran.
+
+There is one slight problem. I do not see a -cpp option for gfortran,
+it appears to rely upon upper or lower casing of the extension to
+envoke or not envoke the CPP preprocessor. When it is upper cased,
+the CPP preprocessor is envoke, otherwise it is not. This is part of the
+reason gfortran would not work on wspr. In wsjt, the right files have the
+right casing, so the cpp works. I do not think it would matter at
+all for the compiler used in windows if I rename the files, but
+I want to check with Joe first before committing these changes.
+
+Can you guys wait for Joe to approve? or should I put a snapshot up?
+
+For Joe, the affected files are:
+
+decode.f90
+getfile.f90
+mept162.f
+rx.f90
+startdec.f90
+startrx.f90
+starttx.f90
+tx.f90
+wfile5.f
+wspr1.f90
+wspr2.f90
+
+i.e. decode.f90 becomes decode.F90,
+     getfile.f90 becomes getfile.F90 etc.
+
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+
+----- End forwarded message -----
+
+So can I commit these changes?
+
+The slight glitch I see here is
+wspr1.F90 and wspr2.F90 appear to be the same file.
+night% diff -u wspr1.F90 wspr2.F90
+
+And python complains of a runtime error, missing wspr1
+
+WSPR Version 0.8_r798 , by K1JT
+Run date:   Fri May 30 21:28:26 2008 UTC
+Traceback (most recent call last):
+  File &quot;wspr.py&quot;, line 1031, in &lt;module&gt;
+    w.wspr1()
+AttributeError: 'module' object has no attribute 'wspr1'
+
+
+- 73 Diane VA3DB
+--
+- <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at FreeBSD.org</A> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">db at db.net</A> <A HREF="http://www.db.net/~db">http://www.db.net/~db</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000278.html">[Wsjt-devel] wspr run error Debian Linux
+</A></li>
+	<LI>Next message: <A HREF="000280.html">[Wsjt-devel] [db at db.net: Re:  wspr run error Debian Linux]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

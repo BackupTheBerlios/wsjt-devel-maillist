@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX V1.1 Release version
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20V1.1%20Release%20version&In-Reply-To=%3C51EABA9B.6020300%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001534.html">
+   <LINK REL="Next"  HREF="001536.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX V1.1 Release version</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20V1.1%20Release%20version&In-Reply-To=%3C51EABA9B.6020300%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJTX V1.1 Release version">joe at Princeton.EDU
+       </A><BR>
+    <I>Sat Jul 20 18:28:11 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001534.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+        <LI>Next message: <A HREF="001536.html">[Wsjt-devel] WSJTX Package for MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1535">[ date ]</a>
+              <a href="thread.html#1535">[ thread ]</a>
+              <a href="subject.html#1535">[ subject ]</a>
+              <a href="author.html#1535">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+G1OXB wrote:
+&gt;<i> The &quot;Split&quot; TX mode scheme works with both radios as long as you leave time, about 5 seconds, for a lot of reading
+</I>&gt;<i> and writing (seems like more than really necessary) of the A and B frequencies  by the CIV controller
+</I>&gt;<i> before manualy setting the SPLIT mode or activating the antenna tuner on the radio.
+</I>&gt;<i> Both  of these actions can cause current CAT commands to be aborted and sometimes leave the A / B VFOs
+</I>&gt;<i> incorrectly set.
+</I>
+I've no idea why your setup should need 5 seconds or a lot of reading 
+and writing of frequencies, but I don't have your hardware.  These 
+things take a fraction of a second here.
+
+Why are you setting Split mode or activating an antenna tuner after you 
+double-click on a decode to call a station??  These things can be done 
+once and for all, when you change bands.
+
+&gt;<i> I have been looking at the source code to see how difficult it would be to compile it myself.
+</I>&gt;<i> It looks like a lot of effort.
+</I>
+1. Install necessary software tools
+2. $ mkdir ../wsjt_install
+3. $ cd lib
+4. $ make -f Makefile.Mingw    (or make -f Makefile.linux)
+5. $ cd ..
+6. $ qmake wsjtx.pro
+7. $ make
+
+&gt;<i> Looking at the sources for the first time, they are an odd mixture of
+</I>&gt;<i>old-style Fortran and the latest GUI language.
+</I>
+Perhaps you consider the mixture odd.  As we say, there are many ways to 
+skin a cat.
+
+I find the code mixture a well-optimized choice that produces a snappy, 
+convenient, appealing, and platform-independent GUI together with 
+extremely efficient number crunching.
+
+	-- 73, Joe, K1JT
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001534.html">[Wsjt-devel] WSJTX V1.1 Release version
+</A></li>
+	<LI>Next message: <A HREF="001536.html">[Wsjt-devel] WSJTX Package for MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1535">[ date ]</a>
+              <a href="thread.html#1535">[ thread ]</a>
+              <a href="subject.html#1535">[ subject ]</a>
+              <a href="author.html#1535">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

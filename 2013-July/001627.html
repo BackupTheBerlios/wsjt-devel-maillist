@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] DXCC entity and worked B4 status
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20entity%20and%20worked%20B4%20status&In-Reply-To=%3C51F90DA6.9060000%40littlewoodmansion.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001625.html">
+   <LINK REL="Next"  HREF="001623.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] DXCC entity and worked B4 status</H1>
+    <B>Murray Curtis</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20DXCC%20entity%20and%20worked%20B4%20status&In-Reply-To=%3C51F90DA6.9060000%40littlewoodmansion.com%3E"
+       TITLE="[Wsjt-devel] DXCC entity and worked B4 status">murray at littlewoodmansion.com
+       </A><BR>
+    <I>Wed Jul 31 15:14:14 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001625.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+        <LI>Next message: <A HREF="001623.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1627">[ date ]</a>
+              <a href="thread.html#1627">[ thread ]</a>
+              <a href="subject.html#1627">[ subject ]</a>
+              <a href="author.html#1627">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>G'Day Laurie
+
+I expect you're quite right and no, I've not tested it with a large 
+file.  It will no doubt need some thought if its to be developed as a 
+more capable feature for WSJTX.
+
+As I've said in another email, I have no intention of competing with 
+JTAlert, its just that you don't make a version for Linux :-).
+
+Murray
+VK3ACF
+
+
+On 31/07/13 21:57, Laurie VK3AMA wrote:
+&gt;<i> Murray,
+</I>&gt;<i>
+</I>&gt;<i> I suggest you test against a large (several thousand entry) adi file. 
+</I>&gt;<i> Once the file gets large and with many decodes to process at the end 
+</I>&gt;<i> of the RX cycle you will experience performance degradation due to 
+</I>&gt;<i> searching against a two non-indexed flatfiles (cty.dat and log.adi) 
+</I>&gt;<i> for each callsign.
+</I>&gt;<i>
+</I>&gt;<i> de Laurie, VK3AMA
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> On 31/07/2013 9:41 PM, Murray Curtis wrote:
+</I>&gt;&gt;<i> Hi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I've just committed a first version of DXCC entity, rev 3512.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This version will display the DXCC entity of a station calling CQ. 
+</I>&gt;&gt;<i> This is preceded by a '!' if this is not in the log or '~' if you've 
+</I>&gt;&gt;<i> worked this entity before but not this call.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The log read is currently the wsjtx_log.adi in the install 
+</I>&gt;&gt;<i> directory.  This will be brought up into the config (devsetup) window 
+</I>&gt;&gt;<i> at some point. The code is also hard coded to look for cty.dat (the 
+</I>&gt;&gt;<i> DXCC data file) in the same install directory.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The feature is enabled/disabled in the drop down setup menu.  On 
+</I>&gt;&gt;<i> enable it will (re)read the log and cty.dat files and write to 
+</I>&gt;&gt;<i> qDebug() (stdout on Linux) a line showing the QSO and countries 
+</I>&gt;&gt;<i> worked counts.   It currently also writes some debug data when 
+</I>&gt;&gt;<i> searching for a CQ call.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Its pretty simple, knows nothing of bands and only deals with JT9 and 
+</I>&gt;&gt;<i> JT65 modes.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Feedback, good and bad is always welcome.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cheers
+</I>&gt;&gt;<i> Murray
+</I>&gt;&gt;<i> VK3ACF
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130731/3f8d7cdd/attachment.html">https://lists.berlios.de/pipermail/wsjt-devel/attachments/20130731/3f8d7cdd/attachment.html</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001625.html">[Wsjt-devel] DXCC entity and worked B4 status
+</A></li>
+	<LI>Next message: <A HREF="001623.html">[Wsjt-devel] QAUDIO_INPUT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1627">[ date ]</a>
+              <a href="thread.html#1627">[ thread ]</a>
+              <a href="subject.html#1627">[ subject ]</a>
+              <a href="author.html#1627">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

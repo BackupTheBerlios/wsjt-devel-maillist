@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT7, r1277
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3CE9B40207-3F8D-4ECF-B823-43DB9DE05CB4%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000701.html">
+   <LINK REL="Next"  HREF="000703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT7, r1277</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT7%2C%20r1277&In-Reply-To=%3CE9B40207-3F8D-4ECF-B823-43DB9DE05CB4%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT7, r1277">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Thu Jul 23 21:01:02 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000701.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+        <LI>Next message: <A HREF="000703.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hullo Joe,
+
+I updated to 1283 but, as in 1277, I occasionally get this error
+
+Error in KV decoder, or no KV decoder present.
+Return code:   35328.  Will use BM algorithm.
+
+which I have never had in rev.1105 or earlier.
+
+In addition, there is a problem in extract.f
+
+             if(first) write(*,1000) iret
+  1000       format('Error in KV decoder, or no KV decoder present.'/
+      +         'Return code:',i8,'.  Will use BM algorithm.')
+             ndec=0
+             first=.false.
+             go to 20
+          endif
+          read(22,rec=2) nsec2,ncount,dat4
+          call cs_unlock
+
+so that when this error occurs there should be    call cs_unlock    
+before  the go to 20.   Otherwise jump to 20 skips the unlock and the  
+system hangs on a mutex forever.
+
+That is a simple fix.  More importantly, I am puzzled as to why the  
+error in kvasd is generated in the first place....
+
+What is error   35328?    Any ideas?
+
+73 John   G4KLA
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000701.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+	<LI>Next message: <A HREF="000703.html">[Wsjt-devel] WSJT7, r1277
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

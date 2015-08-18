@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT-X: Transceiver control woes.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C5228F217.2000403%40classdesign.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001919.html">
+   <LINK REL="Next"  HREF="001921.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT-X: Transceiver control woes.</H1>
+    <B>Bill Somerville</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT-X%3A%20Transceiver%20control%20woes.&In-Reply-To=%3C5228F217.2000403%40classdesign.com%3E"
+       TITLE="[Wsjt-devel] WSJT-X: Transceiver control woes.">g4wjs at classdesign.com
+       </A><BR>
+    <I>Thu Sep  5 23:05:27 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001919.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+        <LI>Next message: <A HREF="001921.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1920">[ date ]</a>
+              <a href="thread.html#1920">[ thread ]</a>
+              <a href="subject.html#1920">[ subject ]</a>
+              <a href="author.html#1920">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 05/09/2013 15:10, Joe Taylor wrote:
+Hi Joe,
+&gt;<i> Bill and all,
+</I>&gt;<i>
+</I>&gt;<i> A few comments on the transceiver control woes.
+</I>&gt;<i>
+</I>&gt;<i> I agree that blocking operations in the GUI thread are potential 
+</I>&gt;<i> problems (unless we know that the maximum blocked time is acceptably 
+</I>&gt;<i> small).  Some months ago I ran into this problem when using hamlib 
+</I>&gt;<i> calls -- for example with my TS-2000, which requires setting 
+</I>&gt;<i> serial_handshake=Hardware.  With the standard hamlib routines compiled 
+</I>&gt;<i> from hamlib-1.2.15.3, this caused the program to hang &quot;forever&quot;.
+</I>&gt;<i>
+</I>&gt;<i> OK1ZIA helped me to solve the problem.  After adding:
+</I>&gt;<i>
+</I>&gt;<i> options.c_cc[VTIME] = rp-&gt;timeout / 100; // VTIME in deciseconds, 
+</I>&gt;<i> rp-&gt;timeout in miliseconds
+</I>&gt;<i>
+</I>&gt;<i> into serial_setup() before tcflush(), we fould that all works correctly.
+</I>&gt;<i>
+</I>&gt;<i> I don't know whether this required change has made it into the 
+</I>&gt;<i> official hamlib repository.  But Bill, it should definitely go into 
+</I>&gt;<i> the source from which you are building the hamlib routines.
+</I>The repo master branch for hamlib has:
+
+   /*
+    * VTIME in deciseconds, rp-&gt;timeout in miliseconds
+    */
+   options.c_cc[VTIME] = (rp-&gt;timeout + 99) / 100;
+   options.c_cc[VMIN] = 1;
+
+at that location which is ok I think.
+&gt;<i>
+</I>&gt;<i> I minimized the use of multiple threads in early development of 
+</I>&gt;<i> WSJT-X, mainly because I was just learning my way around Qt.  I agree 
+</I>&gt;<i> that we may now be best served by putting rig control into a separate 
+</I>&gt;<i> thread.
+</I>Ok, this isn't something to be taken on lightly. I will get my basic 
+changes in that area in first and then think about a strategy for moving 
+to a threaded transceiver control option.
+
+In the mean time I have been setting up for a fully static build of 
+wsjtx.exe and jt9.exe. This is not a trival exercise as there are many 
+deficiencies in teh Qt5 static build process. Nevertheless I have 
+succeeded, on Windows where it matters most, and I would like to push 
+out an &quot;alpha test&quot; version of wsjtx for other developers to test. The 
+static linking allows me to push out executables without an installer or 
+interfering with existing installations. This is purely to get test 
+coverage of different transceivers and CAT interfaces. I have tested 
+direct CAT with Icom 756 and CT-17 interface, same hardware via OmniRig 
+and same radio via DX Lab Suite Commander and a microHam interface. If 
+it is OK with you Joe I would like to proceed with this with dev group 
+members.
+&gt;<i>
+</I>&gt;<i>     -- Joe, K1JT
+</I>73
+Bill
+G4WJS.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001919.html">[Wsjt-devel] Uniform Sampling rate
+</A></li>
+	<LI>Next message: <A HREF="001921.html">[Wsjt-devel] WSJT-X: Transceiver control woes.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1920">[ date ]</a>
+              <a href="thread.html#1920">[ thread ]</a>
+              <a href="subject.html#1920">[ subject ]</a>
+              <a href="author.html#1920">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

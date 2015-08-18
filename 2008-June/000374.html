@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT and Debian Lenny
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C48611599.2000204%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000373.html">
+   <LINK REL="Next"  HREF="000375.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT and Debian Lenny</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20and%20Debian%20Lenny&In-Reply-To=%3C48611599.2000204%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT and Debian Lenny">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Jun 24 17:41:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000373.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+        <LI>Next message: <A HREF="000375.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#374">[ date ]</a>
+              <a href="thread.html#374">[ thread ]</a>
+              <a href="subject.html#374">[ subject ]</a>
+              <a href="author.html#374">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Harry --
+
+Software does not break all by itself.  If you are running WSJT 5.9.7 
+r383, and if it was compiled properly, it will run without problems.  I 
+suggest deleting your WSJT.INI file and restarting the program.
+
+	-- 73, Joe, K1JT
+
+PS: Updating your software every day sounds like a recipe for continuous 
+headaches.  If you want to play computers, OK; but if you want to use 
+your software -- and don't know what to do when it fails to work -- 
+leave your OS alone.
+
+I update my Linux only when I understand that a new release offers 
+something I need.
+
+Harry Popov wrote:
+&gt;<i> After several days without WSJT I try to fire it up today. It was not
+</I>&gt;<i> possible. I get this mistake:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">harry at ham</A>:~$ wsjt
+</I>&gt;<i> ******************************************************************
+</I>&gt;<i> WSJT Version 5.9.7 r383 , by K1JT
+</I>&gt;<i> Revision date: 2007-05-04 23:17:52 +1000 (Fri, 04 May 2007) 
+</I>&gt;<i> Run date:   Tue Jun 24 15:01:09 2008 UTC
+</I>&gt;<i> 0-th dimension must be 12 but got 0 (not defined).
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;/usr/share/wsjt/wsjt.py&quot;, line 2131, in &lt;module&gt;
+</I>&gt;<i>     ModeFSK441()
+</I>&gt;<i>   File &quot;/usr/share/wsjt/wsjt.py&quot;, line 568, in ModeFSK441
+</I>&gt;<i>     GenStdMsgs()
+</I>&gt;<i>   File &quot;/usr/share/wsjt/wsjt.py&quot;, line 1144, in GenStdMsgs
+</I>&gt;<i>     Audio.gcom2.hiscall=(ToRadio.get()+'            ')[:12]
+</I>&gt;<i> SystemError: error return without exception set
+</I>&gt;<i> *********************************************************
+</I>&gt;<i> 
+</I>&gt;<i> I did try to start WSJT installed by Debian deb (this is r383), I did
+</I>&gt;<i> compile the last beta too with both gfortran and g95. As you see no
+</I>&gt;<i> segmentation fault this time but the error above. The only changes in my
+</I>&gt;<i> Linux box are the regular updates I do each day. Can some one help me? I
+</I>&gt;<i> need WSJT now while MS and Tropo confitions are goog.
+</I>&gt;<i> 
+</I>&gt;<i> 73, Harry LZ1BB
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000373.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+	<LI>Next message: <A HREF="000375.html">[Wsjt-devel] WSJT and Debian Lenny
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#374">[ date ]</a>
+              <a href="thread.html#374">[ thread ]</a>
+              <a href="subject.html#374">[ subject ]</a>
+              <a href="author.html#374">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

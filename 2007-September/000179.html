@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] Experimental modes JT2 and JT4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20modes%20JT2%20and%20JT4&In-Reply-To=%3C46FAB69E.2040903%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000178.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] Experimental modes JT2 and JT4</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20Experimental%20modes%20JT2%20and%20JT4&In-Reply-To=%3C46FAB69E.2040903%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] Experimental modes JT2 and JT4">joe at Princeton.EDU
+       </A><BR>
+    <I>Wed Sep 26 21:44:30 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000178.html">[Wsjt-devel] JT2 and JT4 tests
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Colleagues,
+
+Here's an updated status report on the experimental modes 
+JT2 and JT4 in WSJT:
+
+I have now exchanged and recorded many transmissions in 
+over-the-air tests using these modes.  JT2 was used with 
+W6CQZ on the 30 m band, and JT2, JT4A, and JT4B have been 
+used with DF2ZC via EME on 2 meters.  Many error-free 
+decodings have been obtained with all of the mode/band 
+combinations tried.  The first JT4A QSO (via EME, with 
+DF2ZC) was of &quot;Ragchew&quot; quality, with 100% copy at each end.
+
+You will recall that JT2 uses 2FSK modulation and DBPSK 
+modulation for the encoded user information.  In this way it 
+is able to send both a sync bit and a data bit in each 
+channel symbol.  JT4 uses 4FSK modulation, and also sends a 
+sync bit and data bit in each symbol.  Both JT2 and JT4 use 
+the same message structure as JT65.
+
+In a very few words, the tests so far show that:
+
+1. JT2 works, but to be competitive with JT65 it needs 
+either better phase stability than I have observed on the 
+paths in question, or a better phase tracking algorithm than 
+I have so far implemented.  Further effort is warranted, but 
+at present JT2 is frustrating to use because seemingly 
+adequate transmissions too often fail to decode.
+
+2. JT4 works extremely well.  Early tests with the WSJT 
+simulator show that its S/N performance is the same as JT65B 
+(to within about 0.5 dB uncertainty).
+
+Averaging over successive transmissions and &quot;deep search&quot; 
+decoding have not yet been implemented in either JT2 or JT4.
+
+For testing purposes I have specified 7 submodes of JT4, 
+namely JT4A through JT4G.  The only difference in the 
+generated signals is the separation between tones and the 
+total occupied bandwidth, which are as follows (numbers are 
+in Hz):
+
+JT4   Spacing   BW
+-------------------
+  A     4.375   17.5
+  B     8.75    35.0
+  C    17.5     70.0
+  D    39.375  157.5
+  E    78.75   315.0
+  F   157.5    630.0
+  G   315.0   1260.0
+
+I hope in the near future to have some tests made using JT4 
+for 10 GHz EME.
+
+A compiled and packaged version of WSJT 5.9.7 r550 with the 
+above features has been placed at
+
+<A HREF="http://physics.princeton.edu/pulsar/K1JT/WSJT597r550.EXE">http://physics.princeton.edu/pulsar/K1JT/WSJT597r550.EXE</A>
+
+as an aid to making further tests.  Of course, you can also 
+compile the latest code for either Windows of *nix from the 
+SVN repository.
+
+As always, comments, suggestions, and reports of any tests 
+will be very welcome!
+
+	-- 73, Joe, K1JT
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000178.html">[Wsjt-devel] JT2 and JT4 tests
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#179">[ date ]</a>
+              <a href="thread.html#179">[ thread ]</a>
+              <a href="subject.html#179">[ subject ]</a>
+              <a href="author.html#179">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

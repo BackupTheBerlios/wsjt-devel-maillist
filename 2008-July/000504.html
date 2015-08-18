@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT on Mac OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Mac%20OS%20X&In-Reply-To=%3C725AB34F-7790-4648-B707-24175653983B%40rmnjmn.demon.co.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000502.html">
+   <LINK REL="Next"  HREF="000505.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT on Mac OS X</H1>
+    <B>John Nelson</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20on%20Mac%20OS%20X&In-Reply-To=%3C725AB34F-7790-4648-B707-24175653983B%40rmnjmn.demon.co.uk%3E"
+       TITLE="[Wsjt-devel] WSJT on Mac OS X">jmn at rmnjmn.demon.co.uk
+       </A><BR>
+    <I>Wed Jul 23 17:35:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000502.html">[Wsjt-devel] WSPR Crash
+</A></li>
+        <LI>Next message: <A HREF="000505.html">[Wsjt-devel] WSJT on Mac OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have submitted a modification to specjt.py (which has been tested  
+on FreeBSD) which inserts a sub-menu-bar on the SPECJT window to  
+include the speed buttons and the BW button and Freq readout.     I  
+forgot to include this when the changes were made for Mac menus.
+
+One problem remains:   when the SPECJT window is moved, the call on  
+root.geometry in specjt.py returns the position *not* of the SPECJT  
+window but that of the WSJT window.   As a result, the coordinates of  
+a mouse click in the waterfall graphics area are incorrectly  
+delivered (in event.x and event.y).  The coordinates are given  
+relative to the WSJT window.
+
+If specjt.py is launched on its own (of course, it won't work, but  
+the test is needed) then root.geometry returns the correct  
+information and mouse coordinates are correctly returned when the  
+window is moved on the screen.
+
+I have not managed to crack this problem.  It evidently does not  
+occur on other OS's.  So, for Mac users, do *not* move the SPECJT  
+window.   If you particularly want it in some special place, edit  
+WSJT.INI and change:    SpecJTGeometry +80+40     where  the numerals  
+refer to +x+y coordinates of the window.
+
+If any one knows how to solve this problem (I have tried a variety of  
+different calls, but none works) please let me know.
+
+    John   G4KLA
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000502.html">[Wsjt-devel] WSPR Crash
+</A></li>
+	<LI>Next message: <A HREF="000505.html">[Wsjt-devel] WSJT on Mac OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

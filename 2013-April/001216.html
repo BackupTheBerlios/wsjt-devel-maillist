@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT 0.9 r3200
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%200.9%20r3200&In-Reply-To=%3C51769A43.7060404%40princeton.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001212.html">
+   <LINK REL="Next"  HREF="001213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT 0.9 r3200</H1>
+    <B>Joe Taylor</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%200.9%20r3200&In-Reply-To=%3C51769A43.7060404%40princeton.edu%3E"
+       TITLE="[Wsjt-devel] WSJT 0.9 r3200">joe at Princeton.EDU
+       </A><BR>
+    <I>Tue Apr 23 16:27:15 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001212.html">[Wsjt-devel] WSJT 0.9 r3200
+</A></li>
+        <LI>Next message: <A HREF="001213.html">[Wsjt-devel] svn co of formal release versions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1216">[ date ]</a>
+              <a href="thread.html#1216">[ thread ]</a>
+              <a href="subject.html#1216">[ subject ]</a>
+              <a href="author.html#1216">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+With revision 3201, WSJT-X once again compiles and runs OK in Linux.
+
+You will need to have installed the hamlib development package.  I did 
+this by downloading hamlib-1.2.15.3.tar.gz from SourceForge and 
+compiling from source, but in many distributions it's probably 
+sufficient to do something like
+
+$ apt-get install libhamlib++-dev
+$ apt-get install libhamlib-dev
+
+It's still true that this new code (with CAT control via direct calls to 
+hamlib functions, as opposed to executing the stand-alone program 
+rigctl) is unfinished and not thoroughly tested.  I'm working to further 
+these goals now.
+
+Let us know if you still have problems building the program!
+
+	-- Joe, K1JT
+
+On 4/22/2013 11:24 PM, David wrote:
+&gt;<i> Hi Joe....put a copy of rigclass.h into /usr/include/hamlib
+</I>&gt;<i> rig.h was already there
+</I>&gt;<i>
+</I>&gt;<i> found problems in rig.h when compiling
+</I>&gt;<i> and then read the svn revision
+</I>&gt;<i> note that its not finished
+</I>&gt;<i>
+</I>&gt;<i> David
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 23/04/13 12:19, David wrote:
+</I>&gt;&gt;<i> Hi ..should be rigclass.h wanted maiwindow.h
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> David
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On 23/04/13 12:15, David wrote:
+</I>&gt;&gt;&gt;<i> Hi Joe....when i try to compile with QT Creator it comes up with a error
+</I>&gt;&gt;&gt;<i> hamlib/rigclass No such file or directory
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 73 David VK4BDJ
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Wsjt-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001212.html">[Wsjt-devel] WSJT 0.9 r3200
+</A></li>
+	<LI>Next message: <A HREF="001213.html">[Wsjt-devel] svn co of formal release versions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1216">[ date ]</a>
+              <a href="thread.html#1216">[ thread ]</a>
+              <a href="subject.html#1216">[ subject ]</a>
+              <a href="author.html#1216">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

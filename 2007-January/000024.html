@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJT FreeBSD amd64
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701060457p15612cap1dbc4be15a3323d2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJT FreeBSD amd64</H1>
+    <B>Erik McKay</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJT%20FreeBSD%20amd64&In-Reply-To=%3C14faef240701060457p15612cap1dbc4be15a3323d2%40mail.gmail.com%3E"
+       TITLE="[Wsjt-devel] WSJT FreeBSD amd64">mm0dqp at gmail.com
+       </A><BR>
+    <I>Sat Jan  6 13:57:34 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[Wsjt-devel] Fwd: Using OSS -- WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Group,
+Sorry about the name spelling Hamish, I'm half Swedish so maybe thats
+where it all went wrong hihi :)) .
+
+Jonathan , yup understand why -fPIC should and shouldn't be used in
+different situations, but I think portaudio code is compiled into a
+'shared object' and needs to be compiled with -fPIC -DPIC on CERTAIN
+archs ? I'm still learning with this stuff so I probably misunderstood
+the whole thing :)
+
+All the best , Erik MM0DQP
+
+On 06/01/07, Naylor Jonathan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">naylorjs at yahoo.com</A>&gt; wrote:
+&gt;<i> The -fPIC is to generate position independent code, not platform
+</I>&gt;<i> independent. On the x86 series of chips it permanently reserves a
+</I>&gt;<i> register which causes a slow down due to the lack of registers to start
+</I>&gt;<i> with, the poor optimiser doesn't stand a chance! It is ONLY used for
+</I>&gt;<i> creating shared objects and serves no purpose for static linking, so
+</I>&gt;<i> get rid of it. -fPIC is used with -DPIC. To make the code platform
+</I>&gt;<i> dependent use one of the -mXXX compiler directives on GCC.
+</I>&gt;<i>
+</I>&gt;<i> Jonathan
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do You Yahoo!?
+</I>&gt;<i> Tired of spam?  Yahoo! Mail has the best spam protection around
+</I>&gt;<i> <A HREF="http://mail.yahoo.com">http://mail.yahoo.com</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[Wsjt-devel] WSJT FreeBSD amd64
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[Wsjt-devel] Fwd: Using OSS -- WSJT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

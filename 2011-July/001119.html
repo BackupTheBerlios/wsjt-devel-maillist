@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] USB to serial issue ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C1310494354.1933.17.camel%40bigun.g8jvm.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="001121.html">
+   <LINK REL="Next"  HREF="001122.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] USB to serial issue ?</H1>
+    <B>Richard</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20USB%20to%20serial%20issue%20%3F&In-Reply-To=%3C1310494354.1933.17.camel%40bigun.g8jvm.com%3E"
+       TITLE="[Wsjt-devel] USB to serial issue ?">richard.bown at blueyonder.co.uk
+       </A><BR>
+    <I>Tue Jul 12 20:12:33 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="001121.html">[Wsjt-devel] short burst FSK441 for aircraft scatter
+</A></li>
+        <LI>Next message: <A HREF="001122.html">[Wsjt-devel] teething problems with FC15 64 bit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1119">[ date ]</a>
+              <a href="thread.html#1119">[ thread ]</a>
+              <a href="subject.html#1119">[ subject ]</a>
+              <a href="author.html#1119">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2011-06-13 at 17:04 +0200, f8arr wrote:
+&gt;<i> Hello moonbouncers.
+</I>&gt;<i> 
+</I>&gt;<i> Apologies for the bandwich, this is a Linux issue. But perhaps someone
+</I>&gt;<i> has allready faced it ...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Here is the case : 
+</I>&gt;<i> In order to have a TX port on WSJT I use /dev/ttyUSB0 from prolific
+</I>&gt;<i> pl2303.
+</I>&gt;<i> At boot, the serial comes up to TX.
+</I>&gt;<i> On messages I have only this message : 
+</I>&gt;<i> 
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.706035] usb 3-1: new
+</I>&gt;<i> full speed USB device using uhci_hcd and address 8
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852805] usb 3-1: New USB
+</I>&gt;<i> device found, idVendor=067b, idProduct=2303
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852814] usb 3-1: New USB
+</I>&gt;<i> device strings: Mfr=1, Product=2, SerialNumber=0
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852819] usb 3-1:
+</I>&gt;<i> Product: USB-Serial Controller
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.852823] usb 3-1:
+</I>&gt;<i> Manufacturer: Prolific Technology Inc.
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.855943] pl2303 3-1:1.0:
+</I>&gt;<i> pl2303 converter detected
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station kernel: [ 3574.868109] usb 3-1: pl2303
+</I>&gt;<i> converter now attached to ttyUSB0
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station mtp-probe: checking bus 3, device 8:
+</I>&gt;<i> &quot;/sys/devices/pci0000:00/0000:00:1d.1/usb3/3-1&quot;
+</I>&gt;<i> Jun 13 17:00:08 f8arr2-station mtp-probe: bus: 3, device: 8 was not an
+</I>&gt;<i> MTP device
+</I>&gt;<i> 
+</I>&gt;<i> Of course, If I run WSJT it can't commute the TX with an error message
+</I>&gt;<i> &quot;Can't connect to /dev/ttyUSB0&quot;
+</I>&gt;<i> 
+</I>&gt;<i> My user is on the &quot;dialout&quot; and &quot;uucp&quot; group.
+</I>&gt;<i> 
+</I>&gt;<i> I tried exactly the same manipulation with my only real RS232 port and
+</I>&gt;<i> it works like a charm.. (but dedicated to an other action).
+</I>&gt;<i> Of course, same configuration was ok under my ubuntu 10.04. but I
+</I>&gt;<i> switched to Fedora 15...
+</I>&gt;<i> 
+</I>&gt;<i> If someone had a idea.. it would be great. My freind google didn't
+</I>&gt;<i> came with something looking good...
+</I>&gt;<i> 
+</I>&gt;<i> regards
+</I>&gt;<i> F8ARR - Guillaume
+</I>&gt;<i> 
+</I>
+Hi 
+This seems to be a generic problem with USB on linux.
+Create a group called usbusers and add yourself to the group.
+
+Next in /etc/udev/rules.d
+create a file 11-usbuser.rules
+and in it this line
+ACTION==&quot;add&quot;, BUS==&quot;usb&quot;, GROUP:=&quot;usbuser&quot;, MODE:=&quot;0666&quot;
+
+HTH, sorry I missed it earlier
+-- 
+Best wishes / 73
+Richard Bown
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">richard at g8jvm.com</A>
+
+nil carborundum a illegitemis
+########################################################################
+Sent by Evolution 2.32.1 on Fedora FC15 x86_64 Dual core AMD Athlon 4400
+Ham Call:G8JVM 
+Maidenhead QRA: IO82SP38:LAT. 52 39.720':N LONG. 2 28.171 W (degs,mins )
+QRV HF + VHF Microwave 23 cms:140W,13 cms:100W,6 cms:10W &amp; 3 cms:5W
+########################################################################
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="001121.html">[Wsjt-devel] short burst FSK441 for aircraft scatter
+</A></li>
+	<LI>Next message: <A HREF="001122.html">[Wsjt-devel] teething problems with FC15 64 bit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1119">[ date ]</a>
+              <a href="thread.html#1119">[ thread ]</a>
+              <a href="subject.html#1119">[ subject ]</a>
+              <a href="author.html#1119">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Wsjt-devel] WSJTX - Docs Update
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/wsjt-devel/2014-January/index.html" >
+   <LINK REL="made" HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20-%20Docs%20Update&In-Reply-To=%3C52E21AE1.2060108%40yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="002093.html">
+   <LINK REL="Next"  HREF="002092.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Wsjt-devel] WSJTX - Docs Update</H1>
+    <B>Greg Beam</B> 
+    <A HREF="mailto:wsjt-devel%40lists.berlios.de?Subject=Re%3A%20%5BWsjt-devel%5D%20WSJTX%20-%20Docs%20Update&In-Reply-To=%3C52E21AE1.2060108%40yahoo.com%3E"
+       TITLE="[Wsjt-devel] WSJTX - Docs Update">ki7mt at yahoo.com
+       </A><BR>
+    <I>Fri Jan 24 08:48:49 CET 2014</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="002093.html">[Wsjt-devel] WSJTX - Docs Update
+</A></li>
+        <LI>Next message: <A HREF="002092.html">[Wsjt-devel] established UID kb1zmx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2096">[ date ]</a>
+              <a href="thread.html#2096">[ thread ]</a>
+              <a href="subject.html#2096">[ subject ]</a>
+              <a href="author.html#2096">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joe, All,
+
+See comments below.
+
+On 01/23/2014 01:26 PM, Joe Taylor wrote:
+&gt;<i> Hi Greg (and all),
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for your continued work on the User's Guide.  As it happens, I
+</I>&gt;<i> did more-or-less the same thing, yesterday, splitting wsjtx-main.txt
+</I>&gt;<i> into a number of smaller files.  I then did some extensive editing on them.
+</I>&gt;<i> 
+</I>&gt;<i> Today I merged my edits into (more or less) your file structure, and
+</I>&gt;<i> committed everything to the SVN repository.  As noted in the commit Log
+</I>&gt;<i> message, Sections 6.2, 8, and beyond definitely need work.  Other
+</I>&gt;<i> polishing is also desirable, and no doubt there will be further
+</I>&gt;<i> additions and/or changes.
+</I>
+** I pulled the latest svn this evening, looks pretty good. I'll wait
+until you've finished your edits before messing about any further.
+
+&gt;<i> [Note: It's possible that we've gone somewhat too far in splitting the
+</I>&gt;<i> files into small pieces.  Some of the new files are only a few hundred
+</I>&gt;<i> characters long.]
+</I>
+** Yes, that is a potential problem using this method. Maybe a standard
+practice, at the Section level, leave the first paragraph in
+wsjtx-main.txt or something?
+
+&gt;<i> 
+</I>&gt;<i> By tomorrow I hope to finish what I know needs to be done to Section 6.2
+</I>&gt;<i> and from Section 8 to the end.  Then I'll let it stand for a bit.
+</I>&gt;<i> At that point, others can look it over and decide what they think still
+</I>&gt;<i> needs work, what parts they'd like to work on, etc.
+</I>
+** Section 9: The JT9 Protocol, decoding discrete blocks
+- I found a few Asciidoc plug-in's that may be useful in building a
+diagram for this. It would require a couple small python modules, but
+they are in the repo's. The following links illustrate the possibilities:
+
+Main Plug-in Page: <A HREF="http://asciidoc.org/plugins.html">http://asciidoc.org/plugins.html</A>
+Diag Specific Page: <A HREF="https://code.google.com/p/asciidoc-diag-filter/">https://code.google.com/p/asciidoc-diag-filter/</A>
+
+- I can have a crack at this, but I'm not sure I fully understand all
+the elements in play, so it may need a bit of editing after.
+
+&gt;<i> If you want to see what it looks like now, do something like this:
+</I>&gt;<i> 
+</I>&gt;<i> $ cd wsjtx
+</I>&gt;<i> $ svn up
+</I>&gt;<i> $ cd doc
+</I>&gt;<i> $ build-dos-sh toc2
+</I>
+** To Build: ./build-doc.sh toc2
+- We can drop the .sh extension(s) if it is easier to use that way.
+
+General Comments:
+
+** build-check.sh
+- I have the basic script finished. As it stands now it only pulls the
+&quot;review&quot; flag, as the files have not been updated yet.
+
+- If we want to utilize this capability, it may be worth writing up what
+which tags will be used initially, then I can add to the check
+capabilities for them.
+
+- The tag line can contain more that just status=review, etc etc. It
+could have release version info, editor, or whatever information is
+deemed appropriate. Then we simply parse the line for whatever is needed.
+
+** Stylesheet, Config, and .js
+- It's too much for this post, but I'll send a separate e-mail on
+recommendations for setting up a standalone build system, which will
+allow customizing the stylesheet.
+
+&gt;<i> ... and then point your browser at the newly generated file
+</I>&gt;<i> wsjtx-main-toc2.html
+</I>&gt;<i> 
+</I>&gt;<i>     -- Joe, K1JT
+</I>
+73's
+Greg
+<A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">ki7mt at yahoo.com</A>
+
+&gt;<i> _______________________________________________
+</I>&gt;<i> Wsjt-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">Wsjt-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/wsjt-devel">https://lists.berlios.de/mailman/listinfo/wsjt-devel</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="002093.html">[Wsjt-devel] WSJTX - Docs Update
+</A></li>
+	<LI>Next message: <A HREF="002092.html">[Wsjt-devel] established UID kb1zmx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2096">[ date ]</a>
+              <a href="thread.html#2096">[ thread ]</a>
+              <a href="subject.html#2096">[ subject ]</a>
+              <a href="author.html#2096">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/wsjt-devel">More information about the Wsjt-devel
+mailing list</a><br>
+</body></html>
